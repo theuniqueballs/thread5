@@ -19,6 +19,7 @@ Batch-Prompt Conveyer Belt
 ## Структура
 
 - `batches/` — батчи T5-NN (RAW+ / данбуру-формат) + `_TEMPLATE.md`
+- `special/` — SPECIAL ORDERS: штучки вне цикла (заказы автора: подарки, приколы, одна сцена) — SO-NN.md, тот же RAW+ формат, без раскрытия темы
 - `docs/` — LAWS.md (рабочий лист писца), TASTE, RENDERER_FACTS, NICHE, LIVING-NOTES, EXAMPLE-T4-44
 - `specs/` — данные-активы T4 (позы ×240, палитры ×120, носители ×280, OC-канон ×20, …)
 - `verdicts/` — вербатим-вердикты автора по батчам
