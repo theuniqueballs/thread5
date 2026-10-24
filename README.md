@@ -18,10 +18,10 @@ Batch-Prompt Conveyer Belt
 
 ## Структура
 
-- `batches/` — батчи T5-NN (RAW+ / данбуру-формат) + `_TEMPLATE.md`
-- `docs/` — LAWS.md (рабочий лист писца), TASTE, RENDERER_FACTS, NICHE, LIVING-NOTES, EXAMPLE-T4-44, ARS-NOVEAU, RENDER-TROUBLES
-- `specs/` — данные-активы T4 (позы ×240, палитры ×120, носители ×280, OC-канон ×20, …)
-- `verdicts/` — вербатим-вердикты автора по батчам
+- `batches/` — сюда кладёшь свои батчи T5-NN (формат: `_TEMPLATE.md`)
+- `docs/` — крафт-знание: LAWS.md (рабочий лист писца), RENDERER_FACTS, NICHE, ARS-NOVEAU (истории до тегов), RENDER-TROUBLES (травмы рендера → лечение)
+- `specs/` — крафт-данные T4 (позы ×240, палитры ×120, носители ×280, кинетики ×107, bans, policy, RAW+); личные активы автора — пустые заглушки
+- `verdicts/` — сюда падают вербатим-вердикты (из прилавка или от руки)
 
 ## Ветви
 
