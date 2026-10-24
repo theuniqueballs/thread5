@@ -1,0 +1,530 @@
+{
+ "version": "1.9.0",
+ "born": "2026-09-19",
+ "reforged": "2026-09-21 (v1.2.0) — RENDER verdict T4-03 (author's eye on 24 renders): R 7/7 ✅, X 2/2 ✅, R+ 1/15 ❌ («еле-еле» P10), OC R+ 0/3 ❌. v1.1.0 made claims prompt-honest but put the weight on cameltoe/tape — tags the renderer will not draw. v1.2.0 is built from what the renders actually did: the edge reads through WET/SEE-THROUGH thin fabric with NO underlayer; cameltoe is flavor, never the claim. 2026-09-21 (v1.3.0) — техника-карта автора (rating-techniques.json v1.0.0): X counter_neg расширен блоком X Cut hold (блок 9: + penis, cum, uncensored, spread legs, nude lower body); закон суммы факторов (блок 8) и слой-карта живут в техника-карте и гейтятся отдельно (technique-layers) | 2026-10-08 (v1.5.0) — вердикт T4-25 (закон №14 NEG-смежности): through_fabric counter_neg разгружен от nipple-терминов. | 2026-10-12 (v1.7.0) — авторский приказ из чата (ретро-фикс T4-28, закон №25 «NEG-гигиена»): banned_terms в NEG (15 терминов: visible pantyline, topless, exposed breasts, naked, nude, bare breasts, nsfw, nipples through clothing, clothed nipples, extreme fanservice, exposed genitals, vulva, pubic hair, sex, sexual act); X-блок удалён из универсальной сборки NEG; through_fabric counter_neg = подслой-лок (bra/camisole/bandeau/undershirt), nudity-слой снят; on_skin держит nipples exposed/areola + подслой; R/PG13 counter_neg без exposed genitals.",
+ "source": "author's tier table (2026-09-19) + 3.2 CARRIER_LIBRARY science + Claude-thread N30/N31 empirics + author's rating-techniques table (2026-09-21, X Cut hold блок 9)",
+ "note": "A recipe is what makes a tier CLAIM true at render: signal tags (the claim), carriers (the mechanism), counter-NEG (the boundary), prose floor (what survives PH). The rating gate grades every slot against its declared tier's recipe.",
+ "tiers": {
+  "PG13": {
+   "name": "the tease tier",
+   "signals": [
+    "sexy outfit",
+    "bikini",
+    "cleavage",
+    "thighs",
+    "off-shoulder",
+    "bare shoulders",
+    "short shorts",
+    "miniskirt",
+    "midriff",
+    "zettai ryouiki",
+    "thighhighs"
+   ],
+   "signal_min": 2,
+   "carrier_classes": [
+    "S",
+    "E",
+    "W",
+    "B"
+   ],
+   "carrier_note": "skin-framing (S) and exposure-positioning (E) lead; fabric states stay non-sheer; B shape-telegraph at L/M degree",
+   "counter_neg": [
+    "nipples",
+    "areola",
+    "lingerie visible"
+   ],
+   "prose_floor": "state nouns >= 2; the outfit IS the claim",
+   "typical_genres": [
+    "NICHE",
+    "VOLT-light"
+   ],
+   "opener": "anime style"
+  },
+  "R": {
+   "name": "the underwear tier",
+   "signals": [
+    "lingerie",
+    "panties",
+    "bra",
+    "underwear",
+    "upskirt",
+    "erotic pose",
+    "microbikini",
+    "garter belt",
+    "thong",
+    "boyshorts",
+    "pantyshot"
+   ],
+   "signal_min": 2,
+   "carrier_classes": [
+    "L",
+    "U",
+    "D",
+    "W"
+   ],
+   "carrier_note": "layers negotiate (L) and context undresses (U); the D kinetic axis makes the pose erotic (the author's table puts the POSE in the signal set); waistband/strap/cup states are the vocabulary",
+   "counter_neg": [
+    "nipples",
+    "areola",
+    "cameltoe"
+   ],
+   "prose_floor": "state nouns >= 3; underwear state named explicitly, never implied",
+   "typical_genres": [
+    "VOLT"
+   ],
+   "opener": "anime style, ecchi anime style"
+  },
+  "RPLUS": {
+   "name": "the edge tier",
+   "signals": [
+    "covered nipples",
+    "breast clinging",
+    "cameltoe",
+    "camel toe",
+    "clothed nipples",
+    "extreme fanservice",
+    "see-through",
+    "wet clothes",
+    "visible pantyline",
+    "tight clothes",
+    "almost naked",
+    "topless with tape",
+    "taped nipples",
+    "handbra",
+    "arms covering chest"
+   ],
+   "signals_hard": [
+    "visible pantyline",
+    "clothed nipples",
+    "covered nipples",
+    "taped nipples",
+    "topless with tape",
+    "handbra"
+   ],
+   "hard_min": 1,
+   "signal_min": 2,
+   "mechanisms": {
+    "bumps": {
+     "hard": [
+      "clothed nipples",
+      "covered nipples"
+     ],
+     "amplifiers": [
+      "wet clothes",
+      "tight clothes",
+      "extreme fanservice",
+      "cameltoe",
+      "camel toe"
+     ],
+     "counter_neg": [
+      "bra",
+      "camisole",
+      "bandeau",
+      "undershirt"
+     ],
+     "note": "ЗАКОН №28 «ПРОСВЕТ-ЧЁТКОСТЬ» (ПРИНЯТ 2026-10-14, вердикт T4-31: EXP-изоляция тона 7/8 X; квитанции ×27 за T4-28/29/30/31): R+ через-ткань = канал БУГОРКОВ БЕЗ ЦВЕТА — DRY тёмная вещь + «covered nipples, clothed nipples» ПЕРВЫМИ в блоке груди + «dark garment» + clinging + «sweat glistening» (НЕ «wet clothes»). P30-коктейль — единственный выживший (T4-31: «тут видно меньше, они без цвета, просто бугорки»). «nipples through clothing» / «see-through»+влага / sheer — X-драйверы по определению (рендерер НЕ симулирует физику ткани: нарисовал цветной сосок через свитер P09 и не-сквозную жёлтую P12). Свет НЕ на зоне (P04: призма-свет осветлил чёрное → белый → X). Купальник — исключение: мокрый one-piece держит R+ (P21-золото). Светлый/средний верх — канал НЕ-через-ткани (pantyline / tape / handbra). Формула T4-26 «wet light covered» 17/25 — ДЕПРЕЦИРОВАНА (T4-29 ×7 + T4-30 ×6 + T4-31 ×14 X-квитанций). Доставка стохастична: кадр лучшей вероятности + перекидка.",
+     "required_state": [
+      "fabric clinging",
+      "breast clinging",
+      "sweat glistening",
+      "tight"
+     ],
+     "underlayer_block": [
+      "bra",
+      "sports bra",
+      "push-up bra",
+      "camisole",
+      "bandeau",
+      "tube top",
+      "swimsuit top",
+      "paddest bra",
+      "padded bra"
+     ],
+     "underlayer_block_applies_to": [
+      "clothed nipples",
+      "covered nipples",
+      "see-through"
+     ],
+     "dead_fabrics_lower": [
+      "jeans",
+      "denim",
+      "sweatpants",
+      "breeches",
+      "trousers",
+      "slacks",
+      "leather skirt",
+      "leather pants",
+      "vinyl",
+      "suede",
+      "suit"
+     ],
+     "dead_fabrics_upper": [
+      "velvet",
+      "leather",
+      "vinyl",
+      "suede",
+      "wool coat",
+      "parka",
+      "flannel",
+      "suit"
+     ],
+     "lower_claims": [
+      "visible pantyline"
+     ],
+     "upper_claims": [
+      "nipples through clothing",
+      "clothed nipples",
+      "see-through"
+     ],
+     "bare_under_marker": [
+      "nothing underneath",
+      "no bra",
+      "without underlayer",
+      "worn without a bra",
+      "worn without underlayer",
+      "unlined"
+     ],
+     "bare_under_note": "POS обязан нести позитивное утверждение голого подслоя — NEG-лока мало (вердикт T4-05 P07: лифчик нарисован ПОВЕРХ NEG-лока). Проверяет noun-lock bare-under.",
+     "framing_tag": [
+      "close-up",
+      "cowboy shot",
+      "upper body",
+      "portrait",
+      "pov",
+      "close on"
+     ],
+     "framing_note": "Кадрирование заявки живёт ТЕГОМ в тег-блоке (§9-септима, правило 2) — salience-chain звено LEGIBILITY.",
+     "counter_neg_note": "v1.7.0 (авторский приказ из чата, ретро-фикс T4-28, закон №25 «NEG-гигиена» + закон №20 «чистых рук», δ T4-26): NEG through_fabric лочит ТОЛЬКО подслой (bra/camisole/bandeau/undershirt — рендерер дорисовывает подслой сам, P12/P14 T4-03). Nipple-термины запрещены (закон №14, v1.5.0), nudity-термины запрещены (закон №25, v1.7.0): naked breasts/topless/exposed genitals в NEG гасили clothed-заявку целиком — автор: «ты буквально руинишь картинки». X-граница держится КОНСТРУКТИВНО (закон №21: свет-на-зоне, слабый просвет, именованная тонкая вещь), не негативно.",
+     "bare_under_marker_note": "ζ-пара T4-26 (P29 vs P30): токен braless слегка ГАСИТ заявку («еле видны» vs «видны более отчётливо») — из стандарта изъят (закон №20 «чистых рук», ревизия №16); bare-under утверждается ТОЛЬКО фразой: nothing underneath / worn without a bra / no bra / unlined.",
+     "counter_neg_lifted": [
+      "nipples exposed",
+      "areola",
+      "naked breasts",
+      "topless",
+      "exposed genitals",
+      "vulva",
+      "pubic hair",
+      "sex",
+      "sexual act",
+      "nude",
+      "nsfw",
+      "bare breasts",
+      "exposed breasts",
+      "naked",
+      "visible pantyline",
+      "nipples through clothing",
+      "clothed nipples",
+      "extreme fanservice"
+     ],
+     "fabric_tone_law": {
+      "law": 28,
+      "ratified": "2026-10-14, вердикт T4-31 (закон №28 принят: EXP-изоляция тона 7/8 X, тон-пары обе половины X при wet/через)",
+      "dark_fabrics": [
+       "black",
+       "ink",
+       "midnight",
+       "charcoal",
+       "espresso",
+       "dark navy",
+       "deep navy",
+       "oxblood",
+       "void",
+       "absolute-black",
+       "sumi",
+       "ink-indigo",
+       "ink-black"
+      ],
+      "dark_rule": "бугорки-канал («clothed nipples» + «covered nipples») — ТОЛЬКО на тёмной вещи, DRY (P08 ink-indigo, P20 black, P30 oxblood — все R+; P30 — единственный выживший T4-31)",
+      "light_mid_rule": "на светлой/средней ткани каналов через-ткани НЕТ ВООБЩЕ: pantyline / taped nipples / handbra / мокрый купальник (P21). Формула T4-26 wet-light-covered — ДЕПРЕЦИРОВАНА (№28: квитанции ×27)",
+      "light_on_chest_ban": "«light on chest» запрещён; свет НЕ на зоне заявки (P04: свет ОСВЕТЛЯЕТ ткань — чёрное под призмой отрендерилось белым → цветной сосок → X)",
+      "cluster_cap": 3,
+      "cluster_note": "не более 3 светлых несущих верхов на батч (вердикт T4-26 «белая рубашка хламит» + T4-28 7 подряд); контракт назначает тон вещи (dark/mid/light) ротацией"
+     },
+     "canonical_danbooru": {
+      "note": "GitHub-ресёрч 2026-10-11 (строгий список 14 589 danbooru-тегов): «nipples through clothing», «clothed nipples», «light on chest», «tight clothes», «nothing underneath» — НЕ danbooru-теги, рендерер рисует ведущее существительное как сырой язык",
+      "canonical_tags": [
+       "covered nipples",
+       "see-through",
+       "wet clothes",
+       "breast clinging",
+       "no bra",
+       "see-through shirt",
+       "see-through dress",
+       "see-through leotard"
+      ],
+      "kept_phrases": [
+       "nothing underneath (ζ-ревизия №16: утверждает голый подслой, доказано T4-26)",
+       "clothed nipples (только как мягкая половина пары с covered nipples на светлой ткани)"
+      ]
+     },
+     "finishers": {
+      "leg_spread_panties": "R+-финишер (T4-28 P22, автор: «можно было спокойно раздвинуть ноги и показать трусики, чтобы добить рейтинг»): на нижней заявке в кадре — legs apart + именованные трусики в кадре держат R+ без X; только на lower-заявках, кадр от пояса"
+     },
+     "forbidden_tags": [
+      "nipples through clothing",
+      "wet clothes",
+      "sheer"
+     ],
+     "forbidden_note": "№28 hard: на R+-слоте эти теги = X-заявка. «see-through» без влаги — риск-тег (warn-квитанция). «wet clothes» легален ТОЛЬКО в категории swim (P21-золото: мокрый купальник держит R+).",
+     "risk_tags": [
+      "see-through"
+     ]
+    },
+    "on_skin": {
+     "hard": [
+      "taped nipples",
+      "topless with tape",
+      "handbra"
+     ],
+     "amplifiers": [
+      "arms covering chest",
+      "almost naked",
+      "extreme fanservice"
+     ],
+     "counter_neg": [
+      "nipples exposed",
+      "areola",
+      "bra",
+      "camisole",
+      "bandeau",
+      "undershirt"
+     ],
+     "counter_neg_lifted": [
+      "naked breasts",
+      "topless",
+      "exposed genitals",
+      "vulva",
+      "pubic hair",
+      "sex",
+      "sexual act",
+      "nude",
+      "nsfw",
+      "bare breasts",
+      "exposed breasts",
+      "naked"
+     ],
+     "note": "the edge lives ON bare skin (tape, hands) — «topless, naked breasts» MUST be lifted from NEG or the renderer closes the chest (verdict T4-03). Zone carries ≤1 layer + the claim",
+     "render_risk": "experimental — unproven at render (T4-03 OC-2: tape died to the NEG conflict + layers). Lawful only with: lifted counter-NEG, single layer on the zone, claim early in the tag-run. Expect re-rolls; prefer through_fabric when in doubt"
+    }
+   },
+   "carrier_classes": [
+    "W",
+    "I",
+    "E",
+    "M"
+   ],
+   "carrier_note": "sheer/imprint/compression physics; cameltoe is I-class (imprint) by science; CORE-4 mandatory (>=4 classes x 4 mechanism groups); sheer-family <=2 carriers per prompt; the claim zone carries <=1 garment layer + the claim target (layer-clarity law, verdict T4-03)",
+   "counter_neg": [
+    "nipples exposed",
+    "areola",
+    "bra",
+    "camisole",
+    "bandeau",
+    "undershirt"
+   ],
+   "prose_floor": "state nouns >= 4; the hard claim is a RENDER-PROVEN signal (pantyline / nipples through clothing / see-through / tape) on a NAMED thin garment with its fabric state (wet / sheer) named in the TAG BLOCK — prose amplifies what the tags claim, it never substitutes them (render verdict T4-03: the renderer reads the tag-run, not the poetry)",
+   "typical_genres": [
+    "VOLT",
+    "EXQUISITE"
+   ],
+   "opener": "anime style, ecchi anime style",
+   "pose_risk_law": "RENDER LAW v1.3.0: R+/X — только LOW/MID позы (HIGH × R+ = амплификатор мутаций: P04 дрейф · P22 мутация · P17 недолёт, вердикт T4-05). Компилятор назначает, писец не оспаривает."
+  },
+  "X": {
+   "name": "the bare tier",
+   "signals": [
+    "nipples through clothing",
+    "nipples",
+    "topless",
+    "exposed breasts",
+    "naked",
+    "nude",
+    "bare breasts",
+    "nsfw"
+   ],
+   "signal_min": 2,
+   "carrier_classes": [
+    "B",
+    "E",
+    "D",
+    "U"
+   ],
+   "carrier_note": "bare-state nouns stated plainly and at least doubled in prose (the render-confirmed half of the old recipe); situational (U) or fantasy amplification stages the bareness; open mouth is an OPTIONAL amplifier, never a requirement (the stub is retired); composition and light do the art — the body is already the claim",
+   "counter_neg": [
+    "exposed genitals",
+    "vulva",
+    "pubic hair",
+    "sex",
+    "sexual act",
+    "covered breasts",
+    "bra",
+    "clothing on chest",
+    "penis",
+    "cum",
+    "uncensored",
+    "spread legs",
+    "nude lower body"
+   ],
+   "prose_floor": "state nouns >= 4; the bare state named in both tag block and prose (the doubling law); staging (where/light/witness) carries the dignity",
+   "typical_genres": [
+    "VOLT",
+    "EXQUISITE"
+   ],
+   "opener": "anime style, ecchi anime style, hentai anime style",
+   "platform_note": "X posts are algorithmically suppressed on Yodayo — art-for-art slots, default 2 per batch Через-ткань теперь главный X-механизм наряду с bare-state.",
+   "render_note": "render-proven 2/2 at T4-03: the bare state doubled (tags + prose) PLUS the coverage-block NEG («covered breasts, bra, clothing on chest») makes the renderer commit — the NEG is the tool that renders the tier. v1.3.0: counter_neg расширен X Cut hold (техника-карта автора, блок 9): + penis, cum, uncensored, spread legs, nude lower body — гейт требует ВСЕ термины в NEG X-слота; гейт technique-layers держит кадрирование/низ в одежде (блок 9: low body не в кадре или закрыт) v1.9.0 (закон №28): через-ткань = X-заявка по определению — «nipples through clothing» + wet/sheer/светлый тон рисуют ЦВЕТНОЙ сосок через любую ткань (P09 свитер, P12 не-сквозная жёлтая — рендерер не симулирует физику); заливать осознанно, X Cut hold держит низ.",
+   "pose_risk_law": "RENDER LAW v1.3.0: R+/X — только LOW/MID позы (HIGH × R+ = амплификатор мутаций: P04 дрейф · P22 мутация · P17 недолёт, вердикт T4-05). Компилятор назначает, писец не оспаривает.",
+   "mechanisms": {
+    "through_fabric": {
+     "hard": [
+      "nipples through clothing",
+      "see-through"
+     ],
+     "required_state": [
+      "wet clothes",
+      "see-through",
+      "breast clinging"
+     ],
+     "amplifiers": [
+      "wet clothes",
+      "tight clothes",
+      "extreme fanservice"
+     ],
+     "note": "№28: мокрая/сквозная/светлая через-заявка = X-канал (вся квитанционная база T4-28..31). Подслоя нет (underlayer рисуется вместо заявки), X Cut hold — флоор.",
+     "underlayer_block": [
+      "bra",
+      "camisole",
+      "bandeau",
+      "undershirt"
+     ],
+     "underlayer_block_applies_to": [
+      "nipples through clothing",
+      "see-through"
+     ]
+    }
+   }
+  },
+  "XXX": {
+   "name": "never",
+   "signals": [],
+   "note": "a sexual act — NEVER used, ever. Hard floor. Any XXX signal in POS is a hard-gate failure of the whole batch."
+  }
+ },
+ "eternal_floors": {
+  "anti_loli": [
+   "child",
+   "children",
+   "childish",
+   "chibi",
+   "young girl",
+   "immature body",
+   "oversized head",
+   "loli",
+   "shota"
+  ],
+  "leak_guard": [
+   "signature",
+   "watermark",
+   "artist name",
+   "logo"
+  ],
+  "candle_guard": [
+   "candle",
+   "candles",
+   "candelabra",
+   "lamp",
+   "lantern",
+   "torch",
+   "chandelier",
+   "brazier"
+  ],
+  "face_guard": [
+   "realistic facial structure",
+   "photorealistic facial proportions",
+   "natural human nose bridge",
+   "realistic lip shape",
+   "semi-realistic anime face",
+   "2.5D face",
+   "3D face"
+  ],
+  "note_v1_7_0": "genital_lock (exposed genitals, vulva, pubic hair) удалён из вечных флооров законом №25 (авторский приказ 2026-10-12): X-блок в NEG не нужен R+/R-батчам (X=0 всю RAW-эру, рендерер не рисует X сам) и гасит ecchi-энергию (δ T4-26: жирный NEG подавляет смежные сигналы). X-тир держит свой coverage-блок в tiers.X.counter_neg."
+ },
+ "default_spread": {
+  "mains_21": {
+   "R": 7,
+   "RPLUS": 12,
+   "X": 2
+  },
+  "note": "3.2's standing spread, kept until an order changes it; NICHE slots typically PG-13/R and rating-forgiven on strong concepts; EXQUISITE rides by vibe"
+ },
+ "render_law": {
+  "born": "2026-09-21 · render verdict T4-03 (24 renders, author's eye)",
+  "scoreboard": {
+   "R": "7/7",
+   "X": "2/2",
+   "RPLUS_mains": "1/15 (P10 barely)",
+   "OC_RPLUS": "0/3",
+   "T4_31": "R+ 8/25 · ↑14 ↓5 · EXP-изоляция тона 7/8 X (P30 — единственный R+)"
+  },
+  "laws": [
+   "the renderer obeys NEG coverage-blocks and fabric-STATE tags (wet clothes / see-through) on thin garments",
+   "the renderer ignores shape-name tags: cameltoe never rendered (0 attempts); tape constructs mostly die",
+   "an underlayer (bra/camisole/bandeau) under a sheer garment renders the UNDERLAYER — the tier drops to R",
+   "3+ layers on a zone = the renderer picks a modest combination (PG-13/R)",
+   "signal tags at the TAIL of the tag-run render weak — claims sit in the first ~12 tags",
+   "opaque structured fabrics (jeans/denim/leather/velvet/sweatpants/breeches/suit) never carry an edge",
+   "R+ delivery is stochastic (~1/8 even when lawful): the gate enforces the best-odds construct, the author re-rolls",
+   "meta-layers mute the claim (T4-26 δ/ε/ζ, 3/3 pairs): NEG blocks suppress adjacent signals, tag-clusters occupy the tag-run without adding, tokens (braless) slightly mute — the claim is steered by SCENE DESCRIPTION (contact, geometry, fabric state, light on the zone), never by meta-layers (закон №20 «чистых рук»)",
+   "flat tension = X-risk (T4-26 P08/P22 both X, P04 on the edge): fabric stretched tight across the chest WITHOUT light-on-zone and the full §9 chain overshoots into X ('nipples drawn ON the clothes') — the cure is constructive (light on the zone, weak see-through, named garment), NEVER negative (закон №14 forbids nipple-gating NEG) — закон №21",
+   "TAG = COMMAND (закон №28, T4-31): the renderer does NOT simulate fabric physics — «see-through»/«nipples through clothing» draw a COLORED nipple through a sweater (P09) and a non-translucent yellow top (P12); density and weight of the fabric do not stop the tag",
+   "LIGHT SETS TONE (закон №28, T4-31 P04): light falling ON the claim-zone LIGHTENS the fabric — sheer black under a prism light rendered WHITE with a colored nipple → X; the zone's light stays off-frame or rim",
+   "DRY-DARK-BUMPS is the ONLY surviving R+ through-formula (закон №28, T4-31 P30): dark garment + covered-first + clinging + sweat-not-wet — the T4-26 wet-light-covered formula is deprecated (27 receipts)"
+  ],
+  "meta": "VLM holistic grading OVER-READS the edge tier (VLM said 8/12 R+, the author's eye said 1/15) — edge-tier verdicts belong to the author; the VLM loop may verify scene/structure, never the edge itself",
+  "changelog_v1_6_0": "2026-10-09, вердикт T4-26 «THE OTHER VERSION» (карта CAUSAL-MAP-T4-26): (1) закон №20 «чистых рук» — δ (старый NEG гасит: «еле видны» vs «сильно видны», P25/P26), ε (NATURAL-кластер −1 к чистому контакт-описанию, P27/P28), ζ (braless-токен −1 к фразе, P29/P30) — все три A/B-пары решил чистый вариант; (2) закон №21 плоской натяжки — P08/P22 X-перелёты без света-на-зоне, P04 на грани; выжившие P14/P33 = натяжка+свет+вещь; (3) braless-токен изъят из bare_under_marker (ζ-ревизия №16); (4) закон №14 NEG-смежности ПОДТВЕРЖДЁН дифференциалом δ — в конституцию без оговорок."
+ },
+ "changelog_v1_4_0": "2026-09-23, вердикт T4-05 (§9-септима): (1) through_fabric — bare-underMarker обязателен в POS («nothing underneath / braless»): NEG-лока мало, рендерер рисует лифчик ПОВЕРХ него (P07); (2) through_fabric — framing_tag обязателен (close-up / cowboy shot / upper body): кадрирование живёт тегом, не прозой; (3) R+/X — pose_risk LOW/MID только (RENDER LAW v1.3.0): HIGH-поза × R+ = амплификатор мутаций (P04 дрейф · P22 мутация · P17 недолёт); (4) danbooru homonyms — только составными (P08: aurora → aurora_(arknights)).",
+ "changelog_v1_5_0": "2026-10-08, вердикт T4-25 «NO NORMAL OPTIONS»: (1) through_fabric.counter_neg — убраны «nipples exposed», «areola» (закон №14 NEG-смежности: NEG запрещает слой, а не ступень; старый список через гейт rating-recipe ЗАСТАВЛЯЛ гасить clothed-заявку — P04 погиб с «ничё не видно»); (2) X-граница тира через через-ткань заявки теперь на naked breasts/topless/exposed genitals. Гипотезу проверяет EXP-пара δ (H7) батча T4-26: тот же кадр, старый NEG vs новый.",
+ "neg_law": {
+  "version": "1.0.0",
+  "born": "2026-10-12",
+  "order": "Приказ автора (чат, ретро-фикс T4-28, дословно): «ненужно в негативе: visible pantyline, topless, exposed breasts, naked, nude, bare breasts, nsfw, nipples through clothing, clothed nipples, extreme fanservice, exposed genitals, vulva, pubic hair, sex, sexual act» + «ты буквально — руинишь картинки. Реально.»",
+  "banned_terms": [
+   "visible pantyline",
+   "topless",
+   "exposed breasts",
+   "naked",
+   "nude",
+   "bare breasts",
+   "nsfw",
+   "nipples through clothing",
+   "clothed nipples",
+   "extreme fanservice",
+   "exposed genitals",
+   "vulva",
+   "pubic hair",
+   "sex",
+   "sexual act"
+  ],
+  "scope": "R+/R/PG-13 слоты всех батчей. X-тир не активен с T4-23 (X=0); его coverage-блок (tiers.X.counter_neg) — рендер-инструмент X-тира, закон его не трогает.",
+  "structure": "NEG = face_guard + anti_loli + leak_guard + candle_guard (если POS не зовёт свет семантически) + male-лок (male, man, 1boy, 2girls) + ANTI-WASH (washed-out, faded colors, low contrast — Five Locks, закон №23) + канал-блок (through_fabric: bra/camisole/bandeau/undershirt; on-skin: nipples exposed/areola + подслой; R: nipples/areola/cameltoe) + защита тела-плана ФОРМОЙ (petite/slender/curvy/full-figured — N30: возрастные теги запрещены даже в NEG) + канон-щит (не те цвета/ушки/хвост) + анти-теза сцены. Никаких «no X»-фраз (мужской блок уже в NEG — не дублировать «no male»).",
+  "why": "закон №20 «чистых рук» (δ T4-26: старый жирный NEG гасил заявки — «еле видны» vs «сильно видны»); nude-смежные термины в NEG глушат ecchi-энергию R+ слота; рендерер не генерирует X из R+/R-промптов (X=0 за всю RAW-эру при живом X-блоке — блок ничего не держал, только весил)."
+ },
+ "changelog_v1_7_0": "2026-10-12, авторский приказ из чата (ретро-фикс T4-28 «Dead on the inside» — проза в POS + мусорный NEG): (1) закон №25 «NEG-гигиена» — neg_law.banned_terms запрещены в NEG (X-блок удалён из universal сборки, вечные флооры без genital_lock); (2) through_fabric.counter_neg = bra/camisole/bandeau/undershirt (подслой-лок — единственная граница канала; nudity-слой снят: «руинишь картинки»); (3) on_skin.counter_neg = nipples exposed/areola + подслой; (4) R/PG13 counter_neg без exposed genitals; (5) RPLUS top-level counter_neg = nipples exposed/areola/подслой. Закон №14 «NEG-смежности» (v1.5.0) ПОДТВЕРЖДЁН автором расширенно: NEG лочит подслой, никогда — ступень и слой. X-граница — только конструктивно (закон №21).",
+ "changelog_v1_8_1": "2026-10-12, webDevReview #8 (инженерный аудит): (1) required_state through_fabric += breast clinging — светлая формула закона №27 (covered + clothed + clinging без wet) раньше валила hard rating-recipe на законопослушном слоте; (2) note очищен от легаси-«LIGHT garment» (противоречил №27: через-ткань теперь только тёмная); версия — единственная честная правка данных, остальное в коде гейта.",
+ "changelog_v1_8_0": "2026-10-11, вердикт T4-28 (прозвище «волт разной степени», 4-5/10, 7 X-слайдов «слишком прорисованы соски»): (1) закон №27 «канал R+: бугорок да, розовое нет» — fabric_tone_law в through_fabric: through-заявка только на тёмной ткани, светлая/средняя — covered/clothed nipples + состояние ткани, «light on chest» запрещён на sheer/wet, кластер светлых несущих верхов ≤3; (2) canonical_danbooru — словарь каноничных тегов канала (ресёрч строгого списка 14 589: through/clothed-фразы — не теги); (3) signals += covered nipples, breast clinging; (4) finishers.leg_spread_panties (P22-квитанция). Прогоны: T4-28 P20/P08 — R+ на тёмной ткани, 7 X на светлой — матрица доказана глазом автора.",
+ "weights_raw": {
+  "born": "2026-10-14 · вердикт T4-31, дословно: «в целом, можно попробовать подрочить веса 1.2, 1.1 и прочую хуйню, раз мы пишем в RAW формате»",
+  "format": "(tag:1.1)",
+  "weights_allowed": [
+   0.8,
+   0.9,
+   1.1,
+   1.2
+  ],
+  "policy": "вес — точечный усилитель/гаситель тега в RAW-синтаксисе площадки: усиление канала тира, приглушение шумовых тегов, X Cut hold-термины",
+  "guard": "вес НЕ меняет канал тира (закон №28 весом не обходится); максимум 3 весовых тега на слот; вес — только на тегах из тег-рана, не на прозе; каждый весовой тег попадает в EXP-квитанцию",
+  "exp_t4_32": "A/B-изоляция: (covered nipples:1.1)+(fabric clinging:1.2) на R+-бугорках против невзвешенного контроля; (nipples through clothing:1.2) на X; грязная отрисовка сосков (T4-31 «пиздец неаккуратно и убого») — кандидат (nipples through clothing:0.9)"
+ },
+ "changelog_v1_9_0": "2026-10-14, вердикт T4-31 (закон №28 принят, квитанция №29 «ДРЕСС-КОД», №26-эскалация): (1) через-ткань = X-заявка по определению: «nipples through clothing» перенесён R+→X (overclaim-машinery автоматически банит его на R+), signals_hard R+ = бугорки/пантлайн/tape/handbra; (2) механизм through_fabric → bumps (P30-коктейль: DRY + dark + covered-first + clinging + sweat glistening), forbidden_tags [nipples through clothing, wet clothes, sheer] + risk_tags [see-through]; (3) fabric_tone_law → закон №28: light/mid верх — каналов через-ткани НЕТ (формула T4-26 wet-light-covered депрец. — квитанции ×27), исключение — категория swim (P21-золото); (4) X получает механизм through_fabric + сигналы через-ткани; (5) ЛЕГАЛИЗАЦИЯ ВЕСОВ RAW (автор: «подрочить веса 1.2, 1.1») — weights_raw: 0.8–1.2, максимум 3/слот, канал тира весом не обходится, EXP T4-32; (6) render_law +3 закона (tag=command, light-sets-tone, dry-dark-bumps)."
+}
