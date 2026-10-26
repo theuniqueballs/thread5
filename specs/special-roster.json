@@ -7,21 +7,28 @@
     {
       "name": "Hecate",
       "origin": "персонаж создательницы (подарочные заказы автора)",
-      "orders": ["SO-01", "SO-05"],
+      "orders": [
+        "SO-01",
+        "SO-05"
+      ],
       "canon_run": "very long white hair with dark-navy inner hair, blunt white bangs with small black strands at the center, loose windswept strands, large curved black ram horns with ribbed texture, red ribbon tied around one horn, vivid glowing red eyes, pale porcelain skin, oversized black knit sweater with a wide neckline fallen off one shoulder",
-      "notes": "Канон-деталь создательницы: чёрные волоски посерёдке чёлки (blunt white bangs with small black strands at the center) — обязателен в POS, квитанция SO-01 v2. Свитер — валюта канона (последняя мягкая вещь кадра). Вердикт SO-01: планка EXQUISITE — «не загружено, но и не простецкая хуйня». SO-05 «CYBERPSYCHOSIS»: психоз без хрома на теле — свет-швы и эхо, свитер остаётся."
+      "notes": "Канон-деталь создательницы: чёрные волоски посерёдке чёлки (blunt white bangs with small black strands at the center) — обязателен в POS, квитанция SO-01 v2. Свитер — валюта канона (последняя мягкая вещь кадра). Вердикт SO-01: планка EXQUISITE — «не загружено, но и не простецкая хуйня». SO-05 «CYBERPSYCHOSIS»: психоз без хрома на теле — свет-швы и эхо, свитер остаётся. ВЕРДИКТ SO-05 v1 (оба слота мертвы): психоз строится ХРОМОМ и его количеством (ресёрч-первым!), не светом/эхом; v2 = хром наращивается поверх канона, лицо и мягкость защищены."
     },
     {
       "name": "Ereshkigal",
       "origin": "Fate/Grand Order",
-      "orders": ["SO-03"],
+      "orders": [
+        "SO-03"
+      ],
       "canon_run": "very long blonde hair, blonde twintails tied with black ribbons, vivid red eyes, pale skin, small gold hair ornament, black gothic dress with gold trim",
       "notes": "Рендер-вердикт SO-03: «ножки на заднем фоне, игрушки - охуенно, идея со стикером - забавно» — PL36 читается фоном даже в крупном плане, масса стада = один объект, прикол одной наклейкой (валидированный ход, ≤1 на заказ). Мрак её родной эстетики в мягких заказах гасить в NEG."
     },
     {
       "name": "Miramme",
       "origin": "референс-картинка автора",
-      "orders": ["SO-04"],
+      "orders": [
+        "SO-04"
+      ],
       "canon_run": "messy black bob with crimson-red inner color and red streaks, messy side-swept bangs covering one eye, two large curved glossy black ram horns with ribbed texture, pointed elf ears, multiple silver ear piercings, long dangling cross earring, glowing red eyes, small fangs, pale skin, curvy body, wide hips, large soft breasts, long black claw-like nails, black bat wings with deep-red membrane, thin black devil tail ending in a spade, thick black leather choker with a large silver O-ring, black lace crop top with red plaid pattern, black leather harness with silver buckles and rings, cross pendant on a chain, oversized black jacket slipping off both shoulders with deep-red lining and white occult sigils on the sleeve, black lace-trimmed shorts, black leather thigh straps, black cracked-pattern thighhigh stocking on one leg, black fingerless glove",
       "notes": "Appearance забран построчно с референса (SO-04, прецедент «построчный канон-чек»). Вердикт: «очень милый промпт, неплохо» — нежность доехала на уровне промпта; ждать рендер-квитанцию по «когти × фарфор» и орбу-ночнику. Референсный гот-собор в мягких заказах гасить в NEG."
     }
