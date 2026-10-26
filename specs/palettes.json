@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "born": "2026-09-19",
-  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей)",
+  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)",
   "palettes": [
     {
       "id": "P01_NOIR_VELVET",
@@ -3969,6 +3969,348 @@
       "family": "EXP-WINDOW (PALETTE_EXTENSION_v5 · приказ 2026-10-17 «чтобы хватало на 9 слотов EXP»)",
       "legacy_3slot": false,
       "source": "PALETTE_EXTENSION_v5 (2026-10-17, вердикт T4-33 + палитрный приказ)"
+    },
+    {
+      "id": "P121_STOPPED_GREEN",
+      "name": "Stopped Green",
+      "dominant": [
+        "signal-green-deep",
+        "asphalt-graphite"
+      ],
+      "secondary": [
+        "crosswalk-bone-faded"
+      ],
+      "accent1": [
+        "suspended-amber-dust",
+        "the-only-moving-light"
+      ],
+      "accent2": [
+        "crow-coat-sheen"
+      ],
+      "shadow": "soot-black",
+      "forbidden": [
+        "pastel",
+        "mint",
+        "powder-pink",
+        "cream-dominant",
+        "baby-blue"
+      ],
+      "light_type": "frozen_signal_green_hum",
+      "sd_fragment": "signal-green-deep asphalt-graphite with crosswalk-bone-faded secondary, suspended-amber-dust accent, crow-coat-sheen edge",
+      "mood": "the-second-before-the-world-remembers",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P122_SOY_AMBER_RAIN",
+      "name": "Soy Amber Rain",
+      "dominant": [
+        "soy-amber-deep",
+        "tarp-shadow-umber"
+      ],
+      "secondary": [
+        "steam-white-gauze"
+      ],
+      "accent1": [
+        "lacquer-lantern-red",
+        "the-only-warmth"
+      ],
+      "accent2": [
+        "rain-silver-thread"
+      ],
+      "shadow": "charcoal-brown",
+      "forbidden": [
+        "saturated-cyan",
+        "electric-violet",
+        "pure-white",
+        "hot-pink"
+      ],
+      "light_type": "steam_backlit_lantern_warm",
+      "sd_fragment": "soy-amber-deep tarp-shadow-umber with steam-white-gauze secondary, lacquer-lantern-red accent, rain-silver-thread edge",
+      "mood": "five-minutes-of-warmth-the-city-does-not-charge-for",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P123_BEACON_RED_RAIN",
+      "name": "Beacon Red Rain",
+      "dominant": [
+        "rain-slate-deep",
+        "rooftop-tar"
+      ],
+      "secondary": [
+        "storm-pearl-grey"
+      ],
+      "accent1": [
+        "beacon-red-pulse",
+        "the-answering-circle"
+      ],
+      "accent2": [
+        "tarp-blue-grey"
+      ],
+      "shadow": "ink-black",
+      "forbidden": [
+        "pastel",
+        "mint",
+        "powder-pink",
+        "cream-dominant"
+      ],
+      "light_type": "red_pulse_through_sheer_rain",
+      "sd_fragment": "rain-slate-deep rooftop-tar with storm-pearl-grey secondary, beacon-red-pulse accent, tarp-blue-grey edge",
+      "mood": "the-sky-answering-a-fist",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P124_ROPE_NIGHT",
+      "name": "Rope Night",
+      "dominant": [
+        "steel-dark-night",
+        "rope-jute"
+      ],
+      "secondary": [
+        "crate-canvas-khaki"
+      ],
+      "accent1": [
+        "sodium-lamp-amber",
+        "the-kept-heat"
+      ],
+      "accent2": [
+        "tag-brass"
+      ],
+      "shadow": "midnight-charcoal",
+      "forbidden": [
+        "pastel",
+        "mint",
+        "powder-pink",
+        "baby-blue"
+      ],
+      "light_type": "sodium_amber_from_below",
+      "sd_fragment": "steel-dark-night rope-jute with crate-canvas-khaki secondary, sodium-lamp-amber accent, tag-brass edge",
+      "mood": "supplied-by-nobody-visible",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P125_CABINET_DEMO",
+      "name": "Cabinet Demo",
+      "dominant": [
+        "cabinet-dark-plum-brown",
+        "row-shadow-umber"
+      ],
+      "secondary": [
+        "dead-screen-grey"
+      ],
+      "accent1": [
+        "demo-pink-scan",
+        "the-only-company"
+      ],
+      "accent2": [
+        "coin-gold-dim"
+      ],
+      "shadow": "deep-umber",
+      "forbidden": [
+        "pure-white",
+        "saturated-cyan",
+        "baby-blue",
+        "pastel"
+      ],
+      "light_type": "demo_loop_flicker_low",
+      "sd_fragment": "cabinet-dark-plum-brown row-shadow-umber with dead-screen-grey secondary, demo-pink-scan accent, coin-gold-dim edge",
+      "mood": "bought-sleep-paid-in-coins",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P126_CAGE_BRASS",
+      "name": "Cage Brass",
+      "dominant": [
+        "cage-iron-dark",
+        "grease-graphite"
+      ],
+      "secondary": [
+        "indicator-brass"
+      ],
+      "accent1": [
+        "bulb-warm-dim",
+        "the-only-witness"
+      ],
+      "accent2": [
+        "mirror-silver-fog"
+      ],
+      "shadow": "coal-black",
+      "forbidden": [
+        "hot-pink",
+        "electric-violet",
+        "pure-white",
+        "pastel"
+      ],
+      "light_type": "single_dim_bulb_and_brass",
+      "sd_fragment": "cage-iron-dark grease-graphite with indicator-brass secondary, bulb-warm-dim accent, mirror-silver-fog edge",
+      "mood": "sleeping-freight-between-floors",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P127_SEAM_PORCELAIN",
+      "name": "Seam Porcelain",
+      "dominant": [
+        "porcelain-pale",
+        "tile-grey-cool"
+      ],
+      "secondary": [
+        "mirror-fog-silver"
+      ],
+      "accent1": [
+        "seam-silver-bright",
+        "the-honest-line"
+      ],
+      "accent2": [
+        "led-amber-dot"
+      ],
+      "shadow": "ash-violet",
+      "forbidden": [
+        "neon",
+        "hot-pink",
+        "fire-pure",
+        "saturated-cyan"
+      ],
+      "light_type": "bathroom_cold_and_seam_glint",
+      "sd_fragment": "porcelain-pale tile-grey-cool with mirror-fog-silver secondary, seam-silver-bright accent, led-amber-dot edge",
+      "mood": "the-line-where-she-became-shiny",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P128_VIAL_AMBER",
+      "name": "Vial Amber",
+      "dominant": [
+        "fridge-cold-white",
+        "sink-green-grey"
+      ],
+      "secondary": [
+        "vial-amber-row"
+      ],
+      "accent1": [
+        "injector-needle-silver",
+        "the-second-thought"
+      ],
+      "accent2": [
+        "label-red-faint"
+      ],
+      "shadow": "slate-black",
+      "forbidden": [
+        "neon",
+        "hot-pink",
+        "fire-orange",
+        "pastel"
+      ],
+      "light_type": "fridge_cold_and_amber_glow",
+      "sd_fragment": "fridge-cold-white sink-green-grey with vial-amber-row secondary, injector-needle-silver accent, label-red-faint edge",
+      "mood": "the-waiting-room-she-carries-with-her",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P129_FEVER_ASH",
+      "name": "Fever Ash",
+      "dominant": [
+        "tile-bone-warm",
+        "fever-flush"
+      ],
+      "secondary": [
+        "towel-damp-grey"
+      ],
+      "accent1": [
+        "chrome-heat-shimmer",
+        "the-betraying-warmth"
+      ],
+      "accent2": [
+        "door-crack-light"
+      ],
+      "shadow": "ash-brown",
+      "forbidden": [
+        "neon",
+        "fluorescent",
+        "hot-pink",
+        "pure-cold-white"
+      ],
+      "light_type": "one_hallway_crack_of_light",
+      "sd_fragment": "tile-bone-warm fever-flush with towel-damp-grey secondary, chrome-heat-shimmer accent, door-crack-light edge",
+      "mood": "the-body-billing-her-back",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P130_STILL_TABLE",
+      "name": "Still Table",
+      "dominant": [
+        "table-oak-dark",
+        "room-ember-dim"
+      ],
+      "secondary": [
+        "chrome-pate-cool"
+      ],
+      "accent1": [
+        "tremor-red-thin",
+        "the-one-hair-off"
+      ],
+      "accent2": [
+        "paper-receipt-bone"
+      ],
+      "shadow": "chestnut-black",
+      "forbidden": [
+        "neon",
+        "saturated-cyan",
+        "hot-pink",
+        "pure-white"
+      ],
+      "light_type": "diner_ember_dim_after_midnight",
+      "sd_fragment": "table-oak-dark room-ember-dim with chrome-pate-cool secondary, tremor-red-thin accent, paper-receipt-bone edge",
+      "mood": "counting-a-tremor-like-small-change",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P131_JUNK_GLASS",
+      "name": "Junk Glass",
+      "dominant": [
+        "shop-glass-green-grey",
+        "dusk-street-umber"
+      ],
+      "secondary": [
+        "velvet-pad-plum"
+      ],
+      "accent1": [
+        "price-tag-cream",
+        "the-verdict"
+      ],
+      "accent2": [
+        "scale-brass-old"
+      ],
+      "shadow": "brass-black",
+      "forbidden": [
+        "neon",
+        "hot-pink",
+        "saturated-cyan",
+        "pure-white"
+      ],
+      "light_type": "dusk_through_shop_glass",
+      "sd_fragment": "shop-glass-green-grey dusk-street-umber with velvet-pad-plum secondary, price-tag-cream accent, scale-brass-old edge",
+      "mood": "the-price-of-what-she-was",
+      "family": "NIGHT-CITY (v6)",
+      "legacy_3slot": false,
+      "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
     }
   ],
   "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",

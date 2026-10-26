@@ -32,7 +32,7 @@
     "W": {
       "name": "Fabric State",
       "mech": "FABRIC",
-      "count": 30
+      "count": 38
     },
     "A": {
       "name": "Cleft & Mound",
@@ -42,7 +42,7 @@
     "B": {
       "name": "Shape Telegraph / Body Topography",
       "mech": "BODY",
-      "count": 30
+      "count": 41
     },
     "C": {
       "name": "Seat & Cheek",
@@ -57,7 +57,7 @@
     "E": {
       "name": "Garment Displacement",
       "mech": "POSITION",
-      "count": 32
+      "count": 40
     },
     "L": {
       "name": "Layer Interplay",
@@ -77,7 +77,7 @@
     "D": {
       "name": "Kinetic Weight",
       "mech": "PHYSICS",
-      "count": 28
+      "count": 40
     },
     "M": {
       "name": "Compression & Press",
@@ -369,6 +369,78 @@
         "carrier": "the cold making the silk stand off her shape in a bell, not a cling",
         "deg": "L",
         "note": "ANTI-cling: cold fabric refuses — negative-space carrier",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W31",
+        "name": "Suspended Skirt Arc",
+        "carrier": "the skirt hanging off the hip in a suspended arc that refuses to settle, not touching the thigh it belongs to",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W32",
+        "name": "Steam-Cling Front",
+        "carrier": "the steam pressing the thin front against the chest and belly, a cling warmer than water and half as honest",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W33",
+        "name": "Rain-Plaster Back",
+        "carrier": "the soaked fabric plastered sheer along the spine line, the back reading through like a map it did not volunteer",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W34",
+        "name": "Canvas Dust-Print",
+        "carrier": "crate-canvas dust printing its weave across the thin tank during the catch",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W35",
+        "name": "Half-Shrug Jacket Weight",
+        "carrier": "the jacket holding its half-shrug by its own weight, one side carrying the fabric, the other side free",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W36",
+        "name": "Knot-Crop Hem",
+        "carrier": "the shirt knotted above the navel, the hem gathered in one spiral the knot owns",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W37",
+        "name": "Open-Collar Drape",
+        "carrier": "the open collar holding its arc by fabric weight, not by a hand — the shirt decided",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W38",
+        "name": "Strap-Pull Crease",
+        "carrier": "the strap pulled down for the work leaving its warm crease-track along the shoulder",
+        "deg": "L",
+        "note": null,
         "mat": null,
         "sheer_family": false
       }
@@ -769,6 +841,105 @@
         "carrier": "her silhouette through the paper screen, the chest's profile in lamp light",
         "deg": "M",
         "note": "japanese register",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B31",
+        "name": "Stride Weight Suspend",
+        "carrier": "the stride caught mid-transfer, the hip weight hanging in the air it was crossing",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B32",
+        "name": "Steam-Nape Curl",
+        "carrier": "the steam curling the damp strands at the nape into small honest spirals",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B33",
+        "name": "Rain-Slick Shoulder Shine",
+        "carrier": "the rain-slick shoulder shining anew on every pulse of the light",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B34",
+        "name": "Rib-Line Bare",
+        "carrier": "the one-strap opening the side bare down to where the rib-line starts its count",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B35",
+        "name": "Forearm Tendon-Cable Map",
+        "carrier": "the working forearm readable: tendons for the living part, thin cables for the chrome part",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B36",
+        "name": "Palm-Glass Cold Ring",
+        "carrier": "the cold ring the flat palm leaves on the glass, a handprint of temperature",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B37",
+        "name": "Temple Seam Shine",
+        "carrier": "the RealSkinn seam shining faint along its line — soft, warm, hairless, shiny",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B38",
+        "name": "Port-Collar Halo",
+        "carrier": "the dark collar of the port sitting in the skin like a coin pressed halfway in",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B39",
+        "name": "Cheek-Glass Warm Print",
+        "carrier": "the warm print a sleeping cheek leaves ghosting on the cold glass",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B40",
+        "name": "Fever Sheen Collarbones",
+        "carrier": "the fever sheening the collarbones in a fine sweat the shiver cannot shake off",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B41",
+        "name": "Knuckle-Flat Tension",
+        "carrier": "both palms pressed flat: the skin tension readable flat between the knuckles",
+        "deg": "L",
+        "note": null,
         "mat": null,
         "sheer_family": false
       }
@@ -1386,6 +1557,78 @@
         "name": "Petticoat Drop",
         "carrier": "the petticoat's waistband surrendered to the dance's last spin, the skirt's whole line an inch lower",
         "deg": "H",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E33",
+        "name": "Waistband Suspended Line",
+        "carrier": "the waistband hanging in the stopped motion, its line open honest at the tilt",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E34",
+        "name": "Hem Steam-Arrest",
+        "carrier": "the hem arrested by the steam at the hip line, neither up nor down",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E35",
+        "name": "Wet Hem Weight Line",
+        "carrier": "the wet hem pulling its heavy straight line at the thighs",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E36",
+        "name": "One-Strap Overalls",
+        "carrier": "the overalls worn on one strap, the second hanging loose along the thigh",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E37",
+        "name": "Sleeve Rolled Working-High",
+        "carrier": "the sleeve rolled working-high over the elbow for the joint work",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E38",
+        "name": "Knot Above Navel",
+        "carrier": "the shirt knotted above the navel, the midriff honest below it",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E39",
+        "name": "Collar Open To Sternum",
+        "carrier": "the collar open down to the sternum, the buttons holding their verdict",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E40",
+        "name": "Strap Off The Port",
+        "carrier": "the garment edge pulled aside from the port like a curtain held for a scene",
+        "deg": "L",
         "note": null,
         "mat": null,
         "sheer_family": false
@@ -2113,6 +2356,114 @@
         "id": "CR-D28",
         "name": "Arms-Crossed Gathering",
         "carrier": "the arms crossed on the cold walk, the gathering she can't quite hold",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D29",
+        "name": "Steam Curtain Rise",
+        "carrier": "the steam rising in one curtain between her and the street, breaking the silhouette",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D30",
+        "name": "Beacon Pulse Circle",
+        "carrier": "the beacon pulse growing its circle through the rain with every beat",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D31",
+        "name": "Crane-Rope Sway",
+        "carrier": "the crate swaying on the rope in one slow arc, the rope singing its count",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D32",
+        "name": "Cable Jolt Half-Second",
+        "carrier": "the cabin jolt for half a second, the sleeping body still catching the counter-swing",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D33",
+        "name": "Fever Heat-Shimmer",
+        "carrier": "the chrome radiating its heat-shimmer into the air above the worn plates",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D34",
+        "name": "Demo-Loop Flicker",
+        "carrier": "the demo screen flickering its loop rhythm against the closed lids",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D35",
+        "name": "World-Stop Grain",
+        "carrier": "the world stopped: dust and drops hanging in the air like grain",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D36",
+        "name": "Injector Cold Second",
+        "carrier": "the injector's cold second arriving under the skin, then the warmth arguing back",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D37",
+        "name": "Tag-Flutter Draft",
+        "carrier": "the draft fluttering the price tag on its string",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D38",
+        "name": "Kettle Thread Steam",
+        "carrier": "the kettle's steam arriving as one thin thread across the working light",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D39",
+        "name": "Mirror Fog Circle",
+        "carrier": "the mirror fogging a circle that breathes with her",
+        "deg": "L",
+        "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D40",
+        "name": "Tremor One-Hair",
+        "carrier": "one chrome finger trembling a single hair off its line, the whole silence counting it",
         "deg": "L",
         "note": null,
         "mat": null,
