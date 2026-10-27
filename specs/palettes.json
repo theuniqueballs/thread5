@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "born": "2026-09-19",
-  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)",
+  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
   "palettes": [
     {
       "id": "P01_NOIR_VELVET",
@@ -4311,6 +4311,465 @@
       "family": "NIGHT-CITY (v6)",
       "legacy_3slot": false,
       "source": "NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS)"
+    },
+    {
+      "id": "P132_GAMBIT_IVORY",
+      "name": "Gambit Ivory",
+      "dominant": [
+        "deep-ebony",
+        "ivory-maple"
+      ],
+      "secondary": [
+        "board-felt-green"
+      ],
+      "accent1": [
+        "felt-red-move-sheet"
+      ],
+      "accent2": "brass-hip",
+      "shadow": "walnut-black",
+      "forbidden": [
+        "neon",
+        "pure-white",
+        "hot-pink"
+      ],
+      "light_type": "hotel-lobby-window-shaft",
+      "sd_fragment": "deep-ebony ivory-maple board-felt-green with felt-red-move-sheet accent, brass-hip edge",
+      "mood": "the-offer-standing-in-the-open",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P133_CLOCK_BRASS",
+      "name": "Clock Brass",
+      "dominant": [
+        "tournament-brass",
+        "walnut-deep"
+      ],
+      "secondary": [
+        "blind-canvas-cream"
+      ],
+      "accent1": [
+        "flag-crimson-snap"
+      ],
+      "accent2": "steel-silver",
+      "shadow": "clock-black",
+      "forbidden": [
+        "neon",
+        "pure-white"
+      ],
+      "light_type": "hall-first-light",
+      "sd_fragment": "tournament-brass walnut-deep blind-canvas-cream with flag-crimson-snap accent, steel-silver edge",
+      "mood": "the-move-not-yet-made",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P134_PROJECTION_PLUM",
+      "name": "Projection Plum",
+      "dominant": [
+        "hall-plum-dark",
+        "projection-pale"
+      ],
+      "secondary": [
+        "wing-membrane-red"
+      ],
+      "accent1": [
+        "ghost-square-glow"
+      ],
+      "accent2": "beam-black",
+      "shadow": [
+        "neon",
+        "saturated-green"
+      ],
+      "forbidden": "single-projector-beam",
+      "light_type": "hall-plum-dark projection-pale wing-membrane-red with ghost-square-glow accent, beam-black shadow",
+      "sd_fragment": "the-position-on-her-skin",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P135_EMBER_STUDY",
+      "name": "Ember Study",
+      "dominant": [
+        "study-ember-deep",
+        "walnut-old"
+      ],
+      "secondary": [
+        "leather-chair-brown"
+      ],
+      "accent1": [
+        "wisp-gold-bright"
+      ],
+      "accent2": "pipe-smoke-grey",
+      "shadow": "fire-shadow-black",
+      "forbidden": [
+        "neon",
+        "pure-white",
+        "hot-pink"
+      ],
+      "light_type": "ember-low-glow",
+      "sd_fragment": "study-ember-deep walnut-old leather-chair-brown with wisp-gold-bright accent, pipe-smoke-grey edge",
+      "mood": "the-hand-that-never-arrives",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P136_FLOODLIGHT_POOL",
+      "name": "Floodlight Pool",
+      "dominant": [
+        "pool-night-blue",
+        "tile-black-bottom"
+      ],
+      "secondary": [
+        "water-caustic-white"
+      ],
+      "accent1": [
+        "lane-rope-bright"
+      ],
+      "accent2": "deck-shadow-ink",
+      "shadow": [
+        "neon",
+        "hot-pink",
+        "saturated-green"
+      ],
+      "forbidden": "floodlight-from-above",
+      "light_type": "pool-night-blue tile-black-bottom water-caustic-white with lane-rope-bright accent, deck-shadow-ink shadow",
+      "sd_fragment": "the-concession-underwater",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P137_TRAIN_NIGHT_NAVY",
+      "name": "Train Night Navy",
+      "dominant": [
+        "sleeper-navy-deep",
+        "window-night-black"
+      ],
+      "secondary": [
+        "berth-linen-cream"
+      ],
+      "accent1": [
+        "reading-light-amber"
+      ],
+      "accent2": "couloir-blue",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "single-berth-lamp-low",
+      "light_type": "sleeper-navy-deep window-night-black berth-linen-cream with reading-light-amber accent, couloir-blue edge",
+      "sd_fragment": "the-long-way-to-moscow",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P138_CAPTURE_BRASS",
+      "name": "Capture Brass",
+      "dominant": [
+        "side-room-umber",
+        "captured-ivory"
+      ],
+      "secondary": [
+        "bowl-brass-deep"
+      ],
+      "accent1": [
+        "felt-green-square"
+      ],
+      "accent2": "shelf-shadow-black",
+      "shadow": [
+        "neon",
+        "hot-pink"
+      ],
+      "forbidden": "one-shaded-bulb-low",
+      "light_type": "side-room-umber captured-ivory bowl-brass-deep with felt-green-square accent, shelf-shadow-black edge",
+      "sd_fragment": "the-taken-counted",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P139_FLAGFALL_CRIMSON",
+      "name": "Flagfall Crimson",
+      "dominant": [
+        "hall-ink-deep",
+        "clock-face-bone"
+      ],
+      "secondary": [
+        "flag-crimson-deep"
+      ],
+      "accent1": [
+        "panic-blush-warm"
+      ],
+      "accent2": "flag-shadow-black",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "hall-top-light-hard",
+      "light_type": "hall-ink-deep clock-face-bone flag-crimson-deep with panic-blush-warm accent, flag-shadow-black shadow",
+      "sd_fragment": "the-second-that-ran-out",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P140_SIMUL_SCHOOLHOUSE",
+      "name": "Simul Schoolhouse",
+      "dominant": [
+        "chalkboard-green-deep",
+        "desk-wood-warm"
+      ],
+      "secondary": [
+        "chalk-pale"
+      ],
+      "accent1": [
+        "simul-number-red"
+      ],
+      "accent2": "coat-hook-shadow",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "window-dapple-cold",
+      "light_type": "chalkboard-green-deep desk-wood-warm chalk-pale with simul-number-red accent, coat-hook-shadow edge",
+      "sd_fragment": "thirty-boards-one-girl",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P141_PHASE_GLASS",
+      "name": "Phase Glass",
+      "dominant": [
+        "partition-glass-grey",
+        "ghost-cold-blue"
+      ],
+      "secondary": [
+        "dust-sheet-ivory"
+      ],
+      "accent1": [
+        "phase-edge-pale"
+      ],
+      "accent2": "room-shadow-ink",
+      "shadow": [
+        "neon",
+        "hot-pink"
+      ],
+      "forbidden": "cold-window-backlight",
+      "light_type": "partition-glass-grey ghost-cold-blue dust-sheet-ivory with phase-edge-pale accent, room-shadow-ink shadow",
+      "sd_fragment": "the-world-with-a-hole-in-it",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P142_CHECKER_SLATE",
+      "name": "Checker Slate",
+      "dominant": [
+        "floor-slate-black",
+        "floor-bone-white"
+      ],
+      "secondary": [
+        "oni-skin-jade"
+      ],
+      "accent1": [
+        "diamond-crimson-accents"
+      ],
+      "accent2": "skirting-shadow",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "cold-hall-daylight",
+      "light_type": "floor-slate-black floor-bone-white oni-skin-jade with diamond-crimson-accents accent, skirting-shadow edge",
+      "sd_fragment": "the-square-she-stands-on",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P143_COIL_VERDIGRIS",
+      "name": "Coil Verdigris",
+      "dominant": [
+        "board-hall-verdigris",
+        "bronze-deep"
+      ],
+      "secondary": [
+        "skin-human-warm"
+      ],
+      "accent1": [
+        "tell-eye-gold"
+      ],
+      "accent2": "coil-shadow-green",
+      "shadow": [
+        "neon",
+        "hot-pink"
+      ],
+      "forbidden": "skylight-soft",
+      "light_type": "board-hall-verdigris bronze-deep skin-human-warm with tell-eye-gold accent, coil-shadow-green edge",
+      "sd_fragment": "the-tell-she-doesnt-know",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P144_REFUSED_SPOT",
+      "name": "Refused Spot",
+      "dominant": [
+        "stage-black-absolute"
+      ],
+      "secondary": [
+        "crest-ember-low"
+      ],
+      "accent1": [
+        "spot-edge-bone"
+      ],
+      "accent2": "spot-shadow-deep",
+      "shadow": [
+        "neon",
+        "pure-white",
+        "hot-pink"
+      ],
+      "forbidden": "single-follow-spot",
+      "light_type": "stage-black-absolute crest-ember-low with spot-edge-bone accent, spot-shadow-deep shadow",
+      "sd_fragment": "the-square-light-cannot-take",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P145_SWEEP_SILK",
+      "name": "Sweep Silk",
+      "dominant": [
+        "robe-silk-ink-deep"
+      ],
+      "secondary": [
+        "coat-room-warm-dark"
+      ],
+      "accent1": [
+        "piece-ivory-bright"
+      ],
+      "accent2": "hanger-shadow-black",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "coat-room-bulb-dim",
+      "light_type": "robe-silk-ink-deep coat-room-warm-dark with piece-ivory-bright accent, hanger-shadow-black edge",
+      "sd_fragment": "the-ritual-after-the-game",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P146_BLINDS_GRID",
+      "name": "Blinds Grid",
+      "dominant": [
+        "office-umber-deep"
+      ],
+      "secondary": [
+        "slat-shadow-black"
+      ],
+      "accent1": [
+        "grid-gold-stripe"
+      ],
+      "accent2": "room-shadow-ink",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "blinds-slat-sun",
+      "light_type": "office-umber-deep slat-shadow-black with grid-gold-stripe accent, room-shadow-ink shadow",
+      "sd_fragment": "the-board-without-a-board",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P147_OXBLOOD_PRESS",
+      "name": "Oxblood Press",
+      "dominant": [
+        "oxblood-knit-deep"
+      ],
+      "secondary": [
+        "backroom-mirror-silver"
+      ],
+      "accent1": [
+        "doorway-gold-thin"
+      ],
+      "accent2": "coat-shadow-black",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "doorway-behind-camera",
+      "light_type": "oxblood-knit-deep backroom-mirror-silver with doorway-gold-thin accent, coat-shadow-black edge",
+      "sd_fragment": "the-last-check-before-stage",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P148_FINAL_BLITZ",
+      "name": "Final Blitz",
+      "dominant": [
+        "clock-hall-brass-deep"
+      ],
+      "secondary": [
+        "scoresheet-ivory"
+      ],
+      "accent1": [
+        "ink-flourish-blue"
+      ],
+      "accent2": "table-shadow-black",
+      "shadow": [
+        "neon",
+        "pure-white",
+        "hot-pink"
+      ],
+      "forbidden": "hall-spot-on-sheet",
+      "light_type": "clock-hall-brass-deep scoresheet-ivory with ink-flourish-blue accent, table-shadow-black edge",
+      "sd_fragment": "the-signature-before-the-move",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P149_SCALE_ROOM",
+      "name": "Scale Room",
+      "dominant": [
+        "weighing-brass-deep",
+        "faille-platinum-pale"
+      ],
+      "secondary": [
+        "memory-box-ivory"
+      ],
+      "accent1": [
+        "verdict-ruby-thin"
+      ],
+      "accent2": "grid-window-shadow",
+      "shadow": [
+        "neon",
+        "hot-pink",
+        "pure-white"
+      ],
+      "forbidden": "grid-window-platinum",
+      "light_type": "weighing-brass-deep faille-platinum-pale memory-box-ivory with verdict-ruby-thin accent, grid-window-shadow edge",
+      "sd_fragment": "the-verdict-one-degree-from-smiling",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
+    },
+    {
+      "id": "P150_MARIONETTE_TIN",
+      "name": "Marionette Tin",
+      "dominant": [
+        "stage-curtain-crimson-deep"
+      ],
+      "secondary": [
+        "tin-foil-river-silver"
+      ],
+      "accent1": [
+        "bisque-warm-glow"
+      ],
+      "accent2": "wings-shadow-black",
+      "shadow": [
+        "neon",
+        "pure-white"
+      ],
+      "forbidden": "footlight-warm-low",
+      "light_type": "stage-curtain-crimson-deep tin-foil-river-silver with bisque-warm-glow accent, wings-shadow-black shadow",
+      "sd_fragment": "the-doll-who-pulls-her-own-strings",
+      "family": "gambit_wave",
+      "source": "QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05)"
     }
   ],
   "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",

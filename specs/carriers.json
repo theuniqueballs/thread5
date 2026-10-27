@@ -32,7 +32,7 @@
     "W": {
       "name": "Fabric State",
       "mech": "FABRIC",
-      "count": 38
+      "count": 49
     },
     "A": {
       "name": "Cleft & Mound",
@@ -42,7 +42,7 @@
     "B": {
       "name": "Shape Telegraph / Body Topography",
       "mech": "BODY",
-      "count": 41
+      "count": 49
     },
     "C": {
       "name": "Seat & Cheek",
@@ -57,7 +57,7 @@
     "E": {
       "name": "Garment Displacement",
       "mech": "POSITION",
-      "count": 40
+      "count": 50
     },
     "L": {
       "name": "Layer Interplay",
@@ -77,7 +77,7 @@
     "D": {
       "name": "Kinetic Weight",
       "mech": "PHYSICS",
-      "count": 40
+      "count": 50
     },
     "M": {
       "name": "Compression & Press",
@@ -441,6 +441,105 @@
         "carrier": "the strap pulled down for the work leaving its warm crease-track along the shoulder",
         "deg": "L",
         "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W39",
+        "name": "Pawn-Line Pressure",
+        "carrier": "the thin blouse pressed flat against her by her own palm the way a piece is set on its square",
+        "deg": "M",
+        "note": "contact-physics: ткань прижата — ладонь ставит её, как фигуру",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W40",
+        "name": "Dark-Silk Settle",
+        "carrier": "the dark silk settling into one new fold after the move is done",
+        "deg": "L",
+        "note": "пусть складка читается как ход, который уже сделан",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W41",
+        "name": "Score-Sheet Crease",
+        "carrier": "the folded scoresheet's edge printing a straight crease through the thin skirt",
+        "deg": "M",
+        "note": "бумажный залом как нижняя заявка-сосед",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W42",
+        "name": "Board-Edge Nap",
+        "carrier": "the sleeve's nap rubbed pale where her forearm rides the board's edge all game",
+        "deg": "L",
+        "note": "износ = часы за доской",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W43",
+        "name": "Knit Flag-Tension",
+        "carrier": "the knit's loops stretching taut across the chest at the held breath",
+        "deg": "M",
+        "note": "натяжка петли = замирание перед ходом",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W44",
+        "name": "Satin Slip-Track",
+        "carrier": "the satin strap sliding its own warm track off the shoulder",
+        "deg": "L",
+        "note": "дорожка скольжения — ткани отдано ровно одно движение",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W45",
+        "name": "Linen Offer-Fold",
+        "carrier": "the linen folded open in the exact V of an offered line",
+        "deg": "M",
+        "note": "вырез = открытая линия размена",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W46",
+        "name": "Slate-Cool Drape",
+        "carrier": "the cool heavy drape hanging straight as a ruled rank",
+        "deg": "L",
+        "note": "ткань держит горизонталь, как разлиновку",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W47",
+        "name": "Wool Pen-Stripe",
+        "carrier": "the fountain pen'sclip printing a thin stripe through the wool cardigan",
+        "deg": "M",
+        "note": "ручка-полоса = подпись перед ходом",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W48",
+        "name": "Felt-Rub Velvet",
+        "carrier": "the felt of the piece bases leaving a soft velvet nap on her palm-side sleeve",
+        "deg": "L",
+        "note": "фетр фигур = её второй воротник",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-W49",
+        "name": "Lane-Sheen Wet",
+        "carrier": "the wet fabric carrying one clean lane of sheen where the water ran",
+        "deg": "M",
+        "note": "вода оставила одну светлую дорожку блеска",
         "mat": null,
         "sheer_family": false
       }
@@ -940,6 +1039,78 @@
         "carrier": "both palms pressed flat: the skin tension readable flat between the knuckles",
         "deg": "L",
         "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B52",
+        "name": "Hip-Curve Tilt",
+        "carrier": "the hip's curve tilting its own read through the smooth skirt",
+        "deg": "M",
+        "note": "бедро читается наклоном, не плотностью",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B53",
+        "name": "Rim-Read Silhouette",
+        "carrier": "the rim light reading her outline while the body stays quiet inside it",
+        "deg": "M",
+        "note": "контровый рим ведёт силуэт",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B54",
+        "name": "Mound At The Fold",
+        "carrier": "the soft mound sitting exactly where the fold crosses",
+        "deg": "M",
+        "note": "полнота в месте залома ткани",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B55",
+        "name": "Two-Ridge Read",
+        "carrier": "the two low ridges reading through the dry dark garment",
+        "deg": "M",
+        "note": "пара бугорков на сухом тёмном",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B56",
+        "name": "Feather-Track Lines",
+        "carrier": "the forearm feather-tracks printing fine parallel lines along the muscle",
+        "deg": "L",
+        "note": "перья ведут линии предплечья",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B57",
+        "name": "Pressed-Arm Tension",
+        "carrier": "the pressed forearm's tension reading flat and honest across the chest",
+        "deg": "M",
+        "note": "прижатая рука держит натяжение",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B58",
+        "name": "Wet-Suit Contour",
+        "carrier": "the wet suit drawing its own contour map of the body beneath",
+        "deg": "M",
+        "note": "мокрая ткань рисует контур",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-B59",
+        "name": "Turn-Read Dome",
+        "carrier": "the quarter-turn reading the chest's dome before the face arrives",
+        "deg": "M",
+        "note": "поворот читает грудь раньше лица",
         "mat": null,
         "sheer_family": false
       }
@@ -1630,6 +1801,96 @@
         "carrier": "the garment edge pulled aside from the port like a curtain held for a scene",
         "deg": "L",
         "note": null,
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E41",
+        "name": "Rank-Line Exposure",
+        "carrier": "the hem riding up exactly to the rank line the light drew on her thigh",
+        "deg": "M",
+        "note": "край ткани совпал с клеткой света",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E42",
+        "name": "Clock-Button Lean",
+        "carrier": "the lean to the clock button opening the neckline one honest inch",
+        "deg": "L",
+        "note": "наклон к часам открывает линию",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E43",
+        "name": "Award-Curtain Part",
+        "carrier": "the wrap parted by her own deciding hand — the concession visible",
+        "deg": "M",
+        "note": "разман: ткань раздвинута решением",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E44",
+        "name": "Resign-Shrug Drop",
+        "carrier": "the shrug of resignation letting the cardigan drop off one shoulder",
+        "deg": "L",
+        "note": "плечо сползло со словом «сдаюсь»",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E45",
+        "name": "Handoff Hem",
+        "carrier": "the hem gathered and handed to the light like a piece from hand to hand",
+        "deg": "M",
+        "note": "подол передан — открыта линия ног",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E46",
+        "name": "Vault-Clavicle Open",
+        "carrier": "the raised arm opening the collarbone's whole vault to the lamp-side",
+        "deg": "L",
+        "note": "ключицы открыты подъёмом",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E47",
+        "name": "Twist-Back Gap",
+        "carrier": "the back seam twisted open by the half-turn, one full line of spine bare",
+        "deg": "M",
+        "note": "скрутка = открытая вертикаль",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E48",
+        "name": "Curtain-Bow Silhouette",
+        "carrier": "the stage bow leaving the dress hanging while the body reads through",
+        "deg": "L",
+        "note": "ткань висит — тело читается",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E49",
+        "name": "Podium Strap-Loose",
+        "carrier": "the strap loosened while reaching for the captured pieces on the score sheet",
+        "deg": "L",
+        "note": "лямка ослабла на счёте",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-E50",
+        "name": "Checklist-Unbutton",
+        "carrier": "the top two buttons undone like items crossed off a checklist of concessions",
+        "deg": "M",
+        "note": "расстёгнутое = размен по списку",
         "mat": null,
         "sheer_family": false
       }
@@ -2468,6 +2729,96 @@
         "note": null,
         "mat": null,
         "sheer_family": false
+      },
+      {
+        "id": "CR-D41",
+        "name": "Piece-Settle Beat",
+        "carrier": "the piece has settled; the fabric's hem still carries one beat of the placement",
+        "deg": "M",
+        "note": "ткань доигрывает движение руки",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D42",
+        "name": "Clock-Flag Snap",
+        "carrier": "the flag snapped down and her whole frame carried the flinch",
+        "deg": "M",
+        "note": "флаг упал — тело вздрогнуло",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D43",
+        "name": "Draft-Through-File",
+        "carrier": "the corridor draft running through the opened door like a piece down an open file",
+        "deg": "M",
+        "note": "сквозняк идёт по открытой линии",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D44",
+        "name": "Echo-Stillness",
+        "carrier": "the room frozen; her skirt still finishing the turn",
+        "deg": "M",
+        "note": "мир замер — ткань опаздывает",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D45",
+        "name": "Weight-Transfer Lag",
+        "carrier": "the weight transfer arriving one beat late through the hip",
+        "deg": "L",
+        "note": "вес опаздывает на полшага",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D46",
+        "name": "Piece-Lift Sway",
+        "carrier": "the lifted piece's gravity still swaying the low hem",
+        "deg": "L",
+        "note": "фигура поднята — подол качнулся",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D47",
+        "name": "Pensee-Still",
+        "carrier": "everything still but the one strand of hair still deciding",
+        "deg": "L",
+        "note": "неподвижность мысли — жива одна прядь",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D48",
+        "name": "Chalk-Dust Settle",
+        "carrier": "the chalk dust settling on the wool of her shoulder",
+        "deg": "L",
+        "note": "пыль оседает = время анализа",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D49",
+        "name": "Impulse-Finger Twitch",
+        "carrier": "the finger already twitching toward the move the face has not allowed",
+        "deg": "M",
+        "note": "палец раньше решения",
+        "mat": null,
+        "sheer_family": false
+      },
+      {
+        "id": "CR-D50",
+        "name": "Cold-Metal Ring",
+        "carrier": "the cold metal piece leaving its ring-print on the bare forearm",
+        "deg": "M",
+        "note": "холодный круг металла на коже",
+        "mat": null,
+        "sheer_family": false
       }
     ],
     "M": [
@@ -3007,6 +3358,8 @@
     "mat affinity (A=mature / B=adult woman / C=young woman, all 18+, aesthetic direction only) extracted from note text 'mat: X'; null when absent. 3.2 batch quotas: FAM-A <=35%, FAM-C >=15%, R+-subset <=50% one register.",
     "sheer_family marked per §4G (see-through/sheer/transparent/wet/soaked/translucent + worn-thin/gauze/plastered/rain-sag); flagged, never removed.",
     "PH doctrine: every carrier is noun-led (§4D-3) — the NOUN carries the claim.",
-    "Source section order was W,B,E,D,A,C,F,G,H,I,L,M,S,U; output uses canonical mech-group order W,A,B,C,S,E,L,U,F,D,M,I,G,H. Nothing reordered inside classes."
+    "Source section order was W,B,E,D,A,C,F,G,H,I,L,M,S,U; output uses canonical mech-group order W,A,B,C,S,E,L,U,F,D,M,I,G,H. Nothing reordered inside classes.",
+    "QUEENSGAMBIT wave (2026-10-28, T5-05): W39-48 / E41-50 / D41-50 — гамбит-семейство: размен виден на ткани, линия открыта тканью, физика хода на теле.",
+    "QUEENSGAMBIT wave 2 (2026-10-28): B52-B59 + W49 — докрытие BODY/FABRIC после окна."
   ]
 }
