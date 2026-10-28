@@ -19,7 +19,8 @@ Batch-Prompt Conveyer Belt
 ## Структура
 
 - `batches/` — батчи T5-NN (RAW+ / данбуру-формат) + `_TEMPLATE.md` (винтаж);
-  рабочие артефакты сеансов — `batches/T5-NN/01-sol … 05-furnace`
+  рабочие артефакты сеансов — `batches/T5-NN/00-brief, 01-sol … 05-furnace`
+  (бриф — по `_BRIEF-TEMPLATE.md`)
 - `special/` — SPECIAL ORDERS: штучки вне цикла (заказы автора: подарки, приколы, одна сцена) — SO-NN.md, тот же RAW+ формат, без раскрытия темы
 - `docs/ars/` — **ARS NOVEAU v2, солнечная система**: `00-OVERVIEW` (карта),
   `01-SOL` (ядро: идея, HEAT, истории, ЛУНА) → `02-MERCURY` (каст, ULTIMATE
@@ -30,7 +31,8 @@ Batch-Prompt Conveyer Belt
 - `specs/` — данные-активы T4 (позы ×240, палитры ×120, носители ×280,
   OC-канон ×20, `ultimate-dice.json`, `furnace-ledger.json`, …)
 - `verdicts/` — вербатим-вердикты автора по батчам
-- `tools/gates.py` — машинные гейты печи
+- `tools/` — `gates.py` (машинные гейты печи), `window.py` (станция окна:
+  одна квитанция окна ротации на батч)
 
 ## Законы кратко
 
