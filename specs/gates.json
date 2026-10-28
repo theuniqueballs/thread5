@@ -1,0 +1,72 @@
+{
+  "id": "gates",
+  "name": "Машинные гейты печи — пороги и режимы прогонки батчей",
+  "version": "1.0.0",
+  "born": "2026-10-28",
+  "born_from": "Внешний аудит конвейера 2026-10-28, контур 2 (8.2.1–8.2.6), принят автором (вердикт T5-05 + «моё мнение готово», 2026-10-28). Причина: печь мерила счётчики, а не рендер-физику — 9/9 ✓ при 16 NEG-коллизиях и салиенсе за чанком.",
+  "law": "Гейт проверяет СОГЛАСОВАННОСТЬ текста и физику заявки, не пишет промпты и не заменяет вердикт (LAWS §9: единственный законодатель качества — вердикт автора). Новые аудиты стартуют в WARN-режиме (8.6: не ужесточать флоры из одного вердикта); FAIL-режим — только для классов, уже оплаченных законом (NEG-смежность A3, hard-флоры, burn-реестр, ecchi-ключ по прямому вердикту).",
+  "claim": {
+    "signal_lexemes": [
+      "visible pantyline", "pantyline", "covered nipples", "clothed nipples",
+      "nipples", "nipple", "tape cross", "tape over", "taped nipples",
+      "wet clothes", "see-through", "handbra", "bare chest", "topless",
+      "boyshorts", "panties", "lingerie", "breast clinging", "breast shape",
+      "cameltoe", "crossed forearms over"
+    ],
+    "maxTokenRplus": 60,
+    "maxTokenR": 75,
+    "note": "Заявка ≤ токена 60 (аудит 8.2.2; граница первого семантического чанка CLIP ~77 с запасом). Единица — слово (аудит, прил. Б). R+ за 60 — FAIL; R за 75 — WARN (порог R мягкий до двух вердиктов)."
+  },
+  "pos": {
+    "targetTokens": 110,
+    "hardTokens": 150,
+    "note": "POS-бюджет в словах: цель ≤110 (уровень T5-01), hard 150 (аудит 8.2.2). Старый счётчик «~300 тегов» — легаси, больше не гейт."
+  },
+  "neg": {
+    "unitMaxWords": 3,
+    "noClassFail": true,
+    "noClassPattern": "^(no|missing|without|not)\\s+(.+)$",
+    "note": "NEG-линтер (аудит 8.2.1): (а) класс «no X» запрещён — при лексеме X в POS того же слота FAIL (отрицать можно только неправильные варианты: feathered wings при wings, human ears при elf-ушах); (б) юнит NEG длиннее 3 слов — WARN (многословные смысловые негативы глушат нужные элементы: урок «shadow undressed», P23 v1)."
+  },
+  "copypaste": {
+    "ngramWords": 6,
+    "failSharedBySlots": 3,
+    "boilerplateStrip": [
+      "masterpiece, best quality, anime artstyle",
+      "stylized 2D anime face", "anime eyes", "small nose", "small mouth",
+      "anime style", "original character", "1girl", "solo"
+    ],
+    "abPairsExempt": true,
+    "note": "Анти-копипаст (аудит 8.2.5): verbatim n-граммы ≥6 слов между слотами; общая для ≥3 слотов — FAIL (урок «4 рендера-близнеца» T5-05), общая для пары — WARN. A/B-пары, объявленные в шапке, исключены (одна переменная — закон)."
+  },
+  "channels": {
+    "registry": "specs/delivery-stats.json",
+    "burnRegistry": "specs/burned.json",
+    "rplusLiveOnly": true,
+    "candidateQuotaPerBatch": 2,
+    "candidateMark": "☠",
+    "exempt": ["oc-rplus"],
+    "expOverlayExempt": true,
+    "enforce": "warn",
+    "escalate": "FAIL после двух вердиктов подряд с недоставкой кандидата (KPI аудита: ≥70% R+ на live-каналах к пятому батчу)",
+    "note": "Канал-реестр v0.8 (аудит 8.2.3): R+ назначается live-каналам; candidate-каналы ≤2 на батч и только с пометкой ☠; pantyline-квота ≤2. Волна 2 — режим WARN, эскалация по KPI."
+  },
+  "burn": {
+    "note": "Burn-гейт (8.2.4): палитры/позы/кинетики/носители слота против specs/burned.json; повтор без ⚗ — FAIL немедленно (класс оплачен дважды: SO-05 v1+v2, повтор T5-05)."
+  },
+  "header": {
+    "ecchiKeyForbidden": true,
+    "ecchiKeyNote": "Вердикт T5-05 (2026-10-28 14:24): «Тег Ecchi anime style ничего не делает. буквально, я проверял» — ключ снят с обязательного шаблона (raw-plus.json v1.2.0); присутствие в POS — FAIL.",
+    "hardFloors": [
+      "exposed genitals", "vulva", "pubic hair", "child", "children",
+      "childish", "chibi", "young girl", "immature body", "oversized head",
+      "loli", "shota", "signature", "watermark", "artist name", "logo", "milf"
+    ],
+    "candleFloorWords": ["candle", "lamp"],
+    "antiWash": ["washed-out", "faded colors", "low contrast"],
+    "windowStatement": true,
+    "spreadCheck": true,
+    "expCountCheck": true,
+    "note": "Валидация шапки (8.2.6): каждое заявление шапки сверяется с фактом (спред, EXP-оверлей, окно, ecchi-ключ) — отчёт «заявление → факт → вердикт соответствия» прикладывается к батчу."
+  }
+}
