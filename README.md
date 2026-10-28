@@ -18,11 +18,19 @@ Batch-Prompt Conveyer Belt
 
 ## Структура
 
-- `batches/` — батчи T5-NN (RAW+ / данбуру-формат) + `_TEMPLATE.md`
+- `batches/` — батчи T5-NN (RAW+ / данбуру-формат) + `_TEMPLATE.md` (винтаж);
+  рабочие артефакты сеансов — `batches/T5-NN/01-sol … 05-furnace`
 - `special/` — SPECIAL ORDERS: штучки вне цикла (заказы автора: подарки, приколы, одна сцена) — SO-NN.md, тот же RAW+ формат, без раскрытия темы
-- `docs/` — LAWS.md (рабочий лист писца), TASTE, RENDERER_FACTS, NICHE, LIVING-NOTES, EXAMPLE-T4-44
-- `specs/` — данные-активы T4 (позы ×240, палитры ×120, носители ×280, OC-канон ×20, …)
+- `docs/ars/` — **ARS NOVEAU v2, солнечная система**: `00-OVERVIEW` (карта),
+  `01-SOL` (ядро: идея, HEAT, истории, ЛУНА) → `02-MERCURY` (каст, ULTIMATE
+  DICE, Дрессер) → `03-VENUS` (сцена) → `04-EARTH` (сборка POS/NEG) →
+  `05-FURNACE` (ревью, блокнот `specs/furnace-ledger.json`)
+- `docs/` — LAWS.md (физика системы), TASTE, RENDERER_FACTS, NICHE,
+  LIVING-NOTES (архив), STORAGE-AUDIT, EXAMPLE-T4-44 (винтаж)
+- `specs/` — данные-активы T4 (позы ×240, палитры ×120, носители ×280,
+  OC-канон ×20, `ultimate-dice.json`, `furnace-ledger.json`, …)
 - `verdicts/` — вербатим-вердикты автора по батчам
+- `tools/gates.py` — машинные гейты печи
 
 ## Законы кратко
 

@@ -1,5 +1,10 @@
 # THREAD 4 — Batch T4-44: "ночь, шторм над обсерваторией" — БАТЧ (RAW+ / данбуру-формат)
 
+> ⚠ **ВИНТАЖ T4.** Эталон ФОРМЫ промпта, не шаблон. Мастер шаблона —
+> `specs/raw-plus.json` v1.2.0: ecchi-ключ снят (вердикт T5-05), заявка
+> стоит ≤ токена 60 после канон/тела-блока. Не копировать тег-раны отсюда
+> без сверки с мастером. Владелец: EARTH (docs/ars/04-EARTH.md).
+
 The law is light refraction through ionized storm air, bending both photons and fabric. Every frame carries this physics: wind-whipped clothes cling, revealing hidden layers as if X-rayed, while lightning flashes freeze the moment. Act I establishes the storm's arrival, clothing first responding to the pressure; Act II intensifies the lensing effect, garments becoming translucent under the focused light; Act III culminates in a lightning strike, freezing the fabric's tension and the body's reaction in one exposed, electric moment.
 
 ТЕМА-СЛОВА: telescope, rain, wind, lightning, obsidian, glass, storm, lens
