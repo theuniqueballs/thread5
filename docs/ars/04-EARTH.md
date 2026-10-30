@@ -40,6 +40,56 @@ FURNACE — классы. Предложение искоренения форм
 артефактах. Если при сборке тебе кажется, что история слаба — ты
 записываешь это в заметку FURNACE, а не переписываешь сюжет.
 
+## ЗАКОН СВЕТА — поведение, не прибор (v2, 2026-10-28)
+
+Эмпирика T5-06 (A/B автора): POS-слово прибора сильнее NEG-гарда —
+`lamp` стояла в NEG и всё равно заспавнилась; `bulb` в POS дала
+лампочку в кадре (в гарде её не было). Замена POS на поведение —
+«the light holding the beam line and her chest bright» — прибор ушёл.
+NEG-гард — страховка, не лечение.
+
+### Правило
+POS не называет осветительные приборы: bulb, lightbulb, lamp, lantern,
+candle, torch, chandelier, brazier, headlamp, flashlight, sconce, neon
+sign, light fixture. Свет пишем ПОВЕДЕНИЕМ: куда падает, какого цвета,
+что делает на зоне заявки. Прибор в кадре — только если он часть образа
+(метка [INTENTIONAL] в плане VENUS): тогда имя в POS осознанно, а
+приборные слова его NEG-гарда сняты (NEG-линтер: не отрицать
+заявленное).
+
+### Формула (1–2 приёма на слот)
+направление (overhead shaft · uplight from below · raking side light ·
+backlit-rim · off-screen light) → цвет-температура (warm amber, cold
+teal) → форма (pool, halo, spill, glow, beam) → на чём (the seam, her
+chest line, the wet hem).
+
+### Таблица замены
+
+| POS-прибор (спавнит) | Поведение (не спавнит) |
+|---|---|
+| the bulb light / lamp light | the light / warm amber glow |
+| the loft bulb | the loft light / overhead light |
+| lantern | halo of warm light, soft orange spill |
+| candle | flickering warm glow, dancing shadows |
+| torch, brazier | ember glow, fire-warm spill |
+| headlamp, flashlight | focused beam cutting the dark |
+| accent on the bulb | accent on the glow / in the light |
+
+## СЛОВА ТЕМЫ — по делу (v2, 2026-10-30, вердикт T5-07)
+
+Эмпирика T5-07: полный запрет слов темы режет живую плоть кадра —
+«тут бы Dungeon прижилось неплохо» (автор). Слово темы, называющее
+ПРЕДМЕТ кадра/среды, отрисовывается и работает на тему сильнее
+заменителя.
+
+### Правило
+Слово темы легально в POS, когда называет отрисовываемый предмет:
+`the dungeon floor`, `tribal paint`, `the cryo-frost`, `the tribal
+carvings`. НИКОГДА: IP/франшизы и названия игр (D&D, dungeons and
+dragons, GTFO), фраза-титул темы целиком, слова-персонажи (омонимы
+данбуру — только составные). Реестр ТЕМА-СЛОВА в шапке батча несёт
+разметку: «легально как предмет» / «никогда (IP)».
+
 ## ПРОТОКОЛ
 
 ### 1. Сборка POS (шаблон `raw-plus.json`, порядок мастера)
@@ -54,21 +104,22 @@ anime style, original character, 1girl, solo,
 [кадрирование тегом]
 [палитра sd_fragment + акцент accent1 именованным цветом]
 stylized 2D anime face, anime eyes ([цвет, состояние]), small nose, small mouth,
-[свет НА зоне заявки]
+[свет НА зоне заявки — поведением, не прибором (§ ЗАКОН СВЕТА)]
 masterpiece, best quality, anime artstyle.
 ```
 
 - **SALIENCE**: заявка ≤ токена 60, стоит сразу после канон/тела-блока
   (эталон T4-44). Ранние теги весят больше.
-- POS ≤110 слов цель / 150 hard — счётчиком гейта. (Цель 110 — открытый
-  вопрос автору, см. OVERVIEW; hard 150 — закон.)
+- POS ≤130 слов цель / 150 hard — счётчиком гейта. (Цель 130 — оплата
+  вердиктом T5-07 «мне всё очень понравилось» при 20/33 слотов в
+  111–150; было 110 — открытый вопрос закрыт. Hard 150 — закон.)
 - Способ раскраски MERCURY вписан (палитра-фрагмент), ecchi-ключа НЕТ
   (v1.2.0, присутствие ключа — FAIL).
 
 ### 2. Сборка NEG
 
 - Базовый NEG = hard-флоры LAWS §2 (genital lock, anti-loli floor,
-  leak guard, candle/lamp guard, milf-запрет...) + wash-блок
+  leak guard, candle/lamp/bulb guard, milf-запрет...) + wash-блок
   (`washed-out, faded colors, low contrast`) + мёртвые ткани.
 - Слоевые/канон-локи слота — из заметок MERCURY (подслой под sheer,
   покрытие, чужие фичи кина).
@@ -122,8 +173,11 @@ FAIL → чинишь → повтор. Собранный файл — `batches
 
 - [ ] gates.py: FAIL 0
 - [ ] ecchi-ключ отсутствует во всех POS
-- [ ] тема-слова и название темы не в POS; проза не зовёт людей
+- [ ] слова темы — только предметами кадра; IP-имена/титулы — 0 (§ СЛОВА
+      ТЕМЫ); проза не зовёт людей
 - [ ] каждая заявка ≤ токена 60 и сразу после канон/тела-блока
 - [ ] NEG-линтер чист; юниты ≤3 слов
 - [ ] копипаст-бампы разбиты
 - [ ] hard-флоры §2 в каждом NEG; wash-блок на месте
+- [ ] POS чист от слов-приборов света (§ ЗАКОН СВЕТА); в
+      [INTENTIONAL]-слотах приборные NEG-слова сняты

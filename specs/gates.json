@@ -1,26 +1,42 @@
 {
   "id": "gates",
   "name": "Машинные гейты печи — пороги и режимы прогонки батчей",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "born": "2026-10-28",
   "born_from": "Внешний аудит конвейера 2026-10-28, контур 2 (8.2.1–8.2.6), принят автором (вердикт T5-05 + «моё мнение готово», 2026-10-28). Причина: печь мерила счётчики, а не рендер-физику — 9/9 ✓ при 16 NEG-коллизиях и салиенсе за чанком.",
   "law": "Гейт проверяет СОГЛАСОВАННОСТЬ текста и физику заявки, не пишет промпты и не заменяет вердикт (LAWS §9: единственный законодатель качества — вердикт автора). Новые аудиты стартуют в WARN-режиме (8.6: не ужесточать флоры из одного вердикта); FAIL-режим — только для классов, уже оплаченных законом (NEG-смежность A3, hard-флоры, burn-реестр, ecchi-ключ по прямому вердикту).",
   "claim": {
     "signal_lexemes": [
-      "visible pantyline", "pantyline", "covered nipples", "clothed nipples",
-      "nipples", "nipple", "tape cross", "tape over", "taped nipples",
-      "wet clothes", "see-through", "handbra", "bare chest", "topless",
-      "boyshorts", "panties", "lingerie", "breast clinging", "breast shape",
-      "cameltoe", "crossed forearms over"
+      "visible pantyline",
+      "pantyline",
+      "covered nipples",
+      "clothed nipples",
+      "nipples",
+      "nipple",
+      "tape cross",
+      "tape over",
+      "taped nipples",
+      "wet clothes",
+      "see-through",
+      "handbra",
+      "bare chest",
+      "topless",
+      "boyshorts",
+      "panties",
+      "lingerie",
+      "breast clinging",
+      "breast shape",
+      "cameltoe",
+      "crossed forearms over"
     ],
     "maxTokenRplus": 60,
     "maxTokenR": 75,
     "note": "Заявка ≤ токена 60 (аудит 8.2.2; граница первого семантического чанка CLIP ~77 с запасом). Единица — слово (аудит, прил. Б). R+ за 60 — FAIL; R за 75 — WARN (порог R мягкий до двух вердиктов)."
   },
   "pos": {
-    "targetTokens": 110,
+    "targetTokens": 130,
     "hardTokens": 150,
-    "note": "POS-бюджет в словах: цель ≤110 (уровень T5-01), hard 150 (аудит 8.2.2). Старый счётчик «~300 тегов» — легаси, больше не гейт."
+    "note": "POS-бюджет в словах: цель ≤130 (оплачено вердиктом T5-07 2026-10-30 «мне всё очень понравилось» при 20/33 слотов в 111–150; было 110 — уровень T5-01), hard 150 (аудит 8.2.2). Старый счётчик «~300 тегов» — легаси, больше не гейт."
   },
   "neg": {
     "unitMaxWords": 3,
@@ -33,8 +49,14 @@
     "failSharedBySlots": 3,
     "boilerplateStrip": [
       "masterpiece, best quality, anime artstyle",
-      "stylized 2D anime face", "anime eyes", "small nose", "small mouth",
-      "anime style", "original character", "1girl", "solo"
+      "stylized 2D anime face",
+      "anime eyes",
+      "small nose",
+      "small mouth",
+      "anime style",
+      "original character",
+      "1girl",
+      "solo"
     ],
     "abPairsExempt": true,
     "note": "Анти-копипаст (аудит 8.2.5): verbatim n-граммы ≥6 слов между слотами; общая для ≥3 слотов — FAIL (урок «4 рендера-близнеца» T5-05), общая для пары — WARN. A/B-пары, объявленные в шапке, исключены (одна переменная — закон)."
@@ -45,7 +67,9 @@
     "rplusLiveOnly": true,
     "candidateQuotaPerBatch": 2,
     "candidateMark": "☠",
-    "exempt": ["oc-rplus"],
+    "exempt": [
+      "oc-rplus"
+    ],
     "expOverlayExempt": true,
     "enforce": "warn",
     "escalate": "FAIL после двух вердиктов подряд с недоставкой кандидата (KPI аудита: ≥70% R+ на live-каналах к пятому батчу)",
@@ -58,12 +82,33 @@
     "ecchiKeyForbidden": true,
     "ecchiKeyNote": "Вердикт T5-05 (2026-10-28 14:24): «Тег Ecchi anime style ничего не делает. буквально, я проверял» — ключ снят с обязательного шаблона (raw-plus.json v1.2.0); присутствие в POS — FAIL.",
     "hardFloors": [
-      "exposed genitals", "vulva", "pubic hair", "child", "children",
-      "childish", "chibi", "young girl", "immature body", "oversized head",
-      "loli", "shota", "signature", "watermark", "artist name", "logo", "milf"
+      "exposed genitals",
+      "vulva",
+      "pubic hair",
+      "child",
+      "children",
+      "childish",
+      "chibi",
+      "young girl",
+      "immature body",
+      "oversized head",
+      "loli",
+      "shota",
+      "signature",
+      "watermark",
+      "artist name",
+      "logo",
+      "milf"
     ],
-    "candleFloorWords": ["candle", "lamp"],
-    "antiWash": ["washed-out", "faded colors", "low contrast"],
+    "candleFloorWords": [
+      "candle",
+      "lamp"
+    ],
+    "antiWash": [
+      "washed-out",
+      "faded colors",
+      "low contrast"
+    ],
     "windowStatement": true,
     "spreadCheck": true,
     "expCountCheck": true,

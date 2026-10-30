@@ -1,0 +1,493 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.1.0)",
+ "batch": "batches/T5-08.md",
+ "sha256": "990b649f0763b65daee18d7bd7647160f919370aee95aa20b974780329bc3a5d",
+ "utc": "2026-10-30T17:15:59+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "pos-budget",
+   "msg": "POS 144 слов > цель 130"
+  },
+  {
+   "slot": "P02",
+   "gate": "pos-budget",
+   "msg": "POS 144 слов > цель 130"
+  },
+  {
+   "slot": "P03",
+   "gate": "pos-budget",
+   "msg": "POS 137 слов > цель 130"
+  },
+  {
+   "slot": "P05",
+   "gate": "pos-budget",
+   "msg": "POS 134 слов > цель 130"
+  },
+  {
+   "slot": "P07",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «wrap on both sides»"
+  },
+  {
+   "slot": "P09",
+   "gate": "pos-budget",
+   "msg": "POS 133 слов > цель 130"
+  },
+  {
+   "slot": "P10",
+   "gate": "pos-budget",
+   "msg": "POS 136 слов > цель 130"
+  },
+  {
+   "slot": "P11",
+   "gate": "pos-budget",
+   "msg": "POS 133 слов > цель 130"
+  },
+  {
+   "slot": "P13",
+   "gate": "pos-budget",
+   "msg": "POS 132 слов > цель 130"
+  },
+  {
+   "slot": "P14",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «tunic on both shoulders»"
+  },
+  {
+   "slot": "P14",
+   "gate": "pos-budget",
+   "msg": "POS 139 слов > цель 130"
+  },
+  {
+   "slot": "P15",
+   "gate": "pos-budget",
+   "msg": "POS 131 слов > цель 130"
+  },
+  {
+   "slot": "P16",
+   "gate": "pos-budget",
+   "msg": "POS 135 слов > цель 130"
+  },
+  {
+   "slot": "P17",
+   "gate": "pos-budget",
+   "msg": "POS 138 слов > цель 130"
+  },
+  {
+   "slot": "P18",
+   "gate": "pos-budget",
+   "msg": "POS 135 слов > цель 130"
+  },
+  {
+   "slot": "P21",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «cloak on both shoulders»"
+  },
+  {
+   "slot": "P21",
+   "gate": "pos-budget",
+   "msg": "POS 131 слов > цель 130"
+  },
+  {
+   "slot": "P22",
+   "gate": "pos-budget",
+   "msg": "POS 131 слов > цель 130"
+  },
+  {
+   "slot": "P23",
+   "gate": "pos-budget",
+   "msg": "POS 132 слов > цель 130"
+  },
+  {
+   "slot": "P24",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «river full and high»"
+  },
+  {
+   "slot": "P24",
+   "gate": "pos-budget",
+   "msg": "POS 148 слов > цель 130"
+  },
+  {
+   "slot": "P25",
+   "gate": "pos-budget",
+   "msg": "POS 148 слов > цель 130"
+  },
+  {
+   "slot": "P26",
+   "gate": "pos-budget",
+   "msg": "POS 135 слов > цель 130"
+  },
+  {
+   "slot": "P27",
+   "gate": "pos-budget",
+   "msg": "POS 134 слов > цель 130"
+  },
+  {
+   "slot": "P28",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «nightgown on both shoulders»"
+  },
+  {
+   "slot": "P28",
+   "gate": "pos-budget",
+   "msg": "POS 148 слов > цель 130"
+  },
+  {
+   "slot": "P29",
+   "gate": "pos-budget",
+   "msg": "POS 135 слов > цель 130"
+  },
+  {
+   "slot": "P30",
+   "gate": "pos-budget",
+   "msg": "POS 136 слов > цель 130"
+  },
+  {
+   "slot": "P32",
+   "gate": "pos-budget",
+   "msg": "POS 147 слов > цель 130"
+  },
+  {
+   "slot": "P33",
+   "gate": "pos-budget",
+   "msg": "POS 138 слов > цель 130"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "nix-cryostasis-still",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 44,
+   "posWords": 144
+  },
+  {
+   "id": "P02",
+   "slug": "doe-gtfo-research",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 57,
+   "posWords": 144
+  },
+  {
+   "id": "P03",
+   "slug": "rin-nothing-at-home",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 49,
+   "posWords": 137
+  },
+  {
+   "id": "P04",
+   "slug": "living-paint-passport",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 129
+  },
+  {
+   "id": "P05",
+   "slug": "tail-dipped-painter",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 134
+  },
+  {
+   "id": "P06",
+   "slug": "bead-memory-thread",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 130
+  },
+  {
+   "id": "P07",
+   "slug": "shadow-stayed-behind",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 128
+  },
+  {
+   "id": "P08",
+   "slug": "rune-fleece-shearing",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 125
+  },
+  {
+   "id": "P09",
+   "slug": "totem-turned-watching",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 32,
+   "posWords": 133
+  },
+  {
+   "id": "P10",
+   "slug": "ears-paint-the-rain",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 136
+  },
+  {
+   "id": "P11",
+   "slug": "tow-rope-claim",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 133
+  },
+  {
+   "id": "P12",
+   "slug": "hooflight-trail",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 118
+  },
+  {
+   "id": "P13",
+   "slug": "smoke-woven-fitting",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 46,
+   "posWords": 132
+  },
+  {
+   "id": "P14",
+   "slug": "treewrit-lesson",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 139
+  },
+  {
+   "id": "P15",
+   "slug": "pollen-lantern-flight",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 131
+  },
+  {
+   "id": "P16",
+   "slug": "rain-column-single",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 42,
+   "posWords": 135
+  },
+  {
+   "id": "P17",
+   "slug": "ash-dress-too-small",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 60,
+   "posWords": 138
+  },
+  {
+   "id": "P18",
+   "slug": "net-of-lanterns-haul",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 135
+  },
+  {
+   "id": "P19",
+   "slug": "ancestral-water-cradle",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 127
+  },
+  {
+   "id": "P20",
+   "slug": "river-answers-pattern",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 129
+  },
+  {
+   "id": "P21",
+   "slug": "howl-parts-the-fog",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 131
+  },
+  {
+   "id": "P22",
+   "slug": "mushroom-toll-road",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 131
+  },
+  {
+   "id": "P23",
+   "slug": "moon-bead-threadwork",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 132
+  },
+  {
+   "id": "P24",
+   "slug": "river-worn-as-dress",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 148
+  },
+  {
+   "id": "P25",
+   "slug": "crimson-tear-vial",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 50,
+   "posWords": 148
+  },
+  {
+   "id": "P26",
+   "slug": "crest-and-covenant-tape",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 46,
+   "posWords": 135
+  },
+  {
+   "id": "P27",
+   "slug": "breath-opened-brooch",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 134
+  },
+  {
+   "id": "P28",
+   "slug": "ring-worn-inside",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 43,
+   "posWords": 148
+  },
+  {
+   "id": "P29",
+   "slug": "cocoon-scroll-letter",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 135
+  },
+  {
+   "id": "P30",
+   "slug": "tail-ring-key-hunt",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 136
+  },
+  {
+   "id": "P31",
+   "slug": "mute-bell-lazy-rise",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 130
+  },
+  {
+   "id": "P32",
+   "slug": "kintsugi-windup-still",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 60,
+   "posWords": 147
+  },
+  {
+   "id": "P33",
+   "slug": "palm-print-clay",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 138
+  }
+ ]
+}
