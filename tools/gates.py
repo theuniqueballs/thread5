@@ -1,20 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-THREAD 5 — машинные гейты печи (контур 2 внешнего аудита 2026-10-28, 8.2.1–8.2.6).
+THREAD 5 — машинные гейты печи (аудит 2026-10-28, 8.2.1–8.2.6 + аудит 2026-10-31, рек. 1–4).
 
 Проверяет СОГЛАСОВАННОСТЬ текста батча и физику заявок. Не пишет промпты,
 не заменяет вердикт автора (LAWS §9: единственный законодатель — вердикт).
 
+v1.2.0 (внешний аудит 2026-10-31, F1–F8): гейт «R+ без заявки» (claim-exists),
+поиск заявки без порядка слов, POS-флоры (milf/приборы/имена OC/IP/титул темы),
+реестровые коды (палитры/позы/кинетики/носители), каст кинов (12–14/21,
+active/gold, RF≤2, карантин R30), межбатчевый копипаст (6-граммы против двух
+предыдущих партий), формат строки слота (метки ⚗/☠ за скобкой); парсер терпит
+метки внутри скобок.
+
 Прогон:
-    python3 tools/gates.py batches/T5-05.md
-    python3 tools/gates.py batches/T5-05R.md --json specs/gate-receipts/2026-10-28-T5-05R.json
+    python3 tools/gates.py batches/T5-08.md \
+        --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
+        --md batches/T5-08.gate-report.md
 """
 
 import hashlib
 import json
 import re
 import sys
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -60,8 +69,10 @@ class Slot:
         if parts:
             self.genre = parts[0]
         for p in parts:
-            if p in ("R+", "R", "PG-13", "X"):
-                self.rating = p
+            # аудит 2026-10-31, F3: метка внутри скобок («R+ ☠») не гасит тир
+            p_clean = p.replace("☠", "").replace("⚗", "").strip()
+            if p_clean in ("R+", "R", "PG-13", "X"):
+                self.rating = p_clean
         m = re.search(r"\bPL\d+\b", paren)
         if m:
             self.pose = m.group(0)
@@ -220,15 +231,30 @@ CLAIM_RE = re.compile(
 )
 
 
+# Поиск заявки БЕЗ порядка слов (аудит 2026-10-31, F1/P19: «forearms crossed
+# over her bare breasts» против лексемы «crossed forearms over»).
+MULTIWORD_CLAIMS = [
+    s for s in GATES["claim"]["signal_lexemes"] if len(words(s)) > 1
+]
+
+
 def claim_token(slot):
     for m in CLAIM_RE.finditer(slot.pos):
         prefix = slot.pos[: m.start()]
         return len(words(prefix)), m.group(0).lower()
+    wl = words(slot.pos)
+    for lex in MULTIWORD_CLAIMS:
+        lw = words(lex)
+        if sum(1 for w in lw if w not in STOP) < 2:
+            continue  # общие наборы («tape over») без порядка не маттим
+        n = len(lw)
+        for i in range(len(wl) - n + 1):
+            if sorted(wl[i: i + n]) == sorted(lw):
+                return i, f"{lex} (без порядка слов)"
     return None, None
 
 
-def check_salience(slot, fails, warns):
-    idx, sig = claim_token(slot)
+def check_salience(slot, idx, sig, fails, warns):
     if idx is None:
         return idx
     if slot.mark:  # умышленный нарушитель (EXP-полигон, закон ⚗) — не гейтится
@@ -377,6 +403,207 @@ def check_header(text, header, slots, fails, warns):
         warns.append(("BATCH", "header", "в шапке нет заявления окна ротации"))
 
 
+def load_oc_names():
+    data = json.loads(
+        (ROOT / GATES["posFloors"]["ocNamesRegistry"]).read_text(encoding="utf-8")
+    )
+    return [k for k, v in data.get("ocs", {}).items() if v.get("active", True)]
+
+
+def load_race_statuses():
+    data = json.loads((ROOT / "specs/races.json").read_text(encoding="utf-8"))
+    return {r["id"]: r.get("status", "?") for r in data.get("races", [])}
+
+
+def load_registry_ids(rel, pattern):
+    data = json.loads((ROOT / rel).read_text(encoding="utf-8"))
+    ids = set()
+
+    def walk(o):
+        if isinstance(o, dict):
+            v = o.get("id")
+            if isinstance(v, str) and re.fullmatch(pattern, v):
+                ids.add(v)
+            for x in o.values():
+                walk(x)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+
+    walk(data)
+    return ids
+
+
+def batch_title(text):
+    m = re.search(r'Batch T5-\d+R?:\s*«(.+?)»', text)
+    if not m:
+        m = re.search(r'Batch T5-\d+R?:\s*"(.+?)"', text)
+    return m.group(1) if m else None
+
+
+def check_claim_exists(slot, idx, fails, warns):
+    """Аудит 2026-10-31, F1/рек.1: R+/X слот без лексемы заявки в POS."""
+    cfg = GATES["claimGate"]
+    if slot.rating not in ("R+", "X") or slot.mark:
+        return
+    if idx is None:
+        msg = (
+            f"{slot.rating} без лексемы заявки в POS — тир держится только "
+            f"THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; эскалация: {cfg['escalation']})"
+        )
+        (fails if cfg["mode"] == "fail" else warns).append(
+            (slot.sid, "claim-exists", msg)
+        )
+
+
+def check_registry(slot, registries, warns):
+    """Аудит 2026-10-31, F4/рек.3: коды слота против реестров specs/*.json."""
+    pairs = [
+        ("палитра", registries["palettes"], [slot.palette]),
+        ("поза", registries["poses"], [slot.pose]),
+        ("кинетика", registries["kinetics"], slot.kinetics),
+        ("носитель", registries["carriers"], slot.carriers),
+    ]
+    for kind, (path, ids), codes in pairs:
+        for c in codes:
+            if c and c not in ids:
+                warns.append(
+                    (slot.sid, "registry",
+                     f"{kind} {c} не в реестре {path} — опечатка кода? (аудит 2026-10-31, F4)")
+                )
+
+
+def check_pos_floors(slots, text, oc_names, warns):
+    """Аудит 2026-10-31, §8: сторона POS, которую гейты v1.1 не видели."""
+    cfg = GATES["posFloors"]
+    title = batch_title(text)
+    # имена-омонимы обычных слов (ash/doe/rue/sol/mab) матчатся только
+    # с заглавной — «ash-brown hair» и «pale ash» не имя OC (v1.2.1 прогон)
+    case_names = set(cfg.get("namesCaseSensitive", []))
+    for s in slots:
+        if re.search(r"\bmilf\b", s.pos, re.I):
+            warns.append(
+                (s.sid, "pos-floors",
+                 "слово milf в POS — banned everywhere (policy writer_rules)"))
+        if "[intentional]" not in s.pos.lower():
+            for dw in cfg["deviceWords"]:
+                if re.search(rf"\b{re.escape(dw)}\b", s.pos, re.I):
+                    warns.append(
+                        (s.sid, "pos-floors",
+                         f"приборное слово «{dw}» в POS — закон света v2: свет поведением, прибор только по [INTENTIONAL] (T5-06)"))
+        for nm in oc_names:
+            if nm in case_names:
+                hit = re.search(rf"\b{re.escape(nm)}\b", s.pos)
+            else:
+                hit = re.search(rf"\b{re.escape(nm)}\b", s.pos, re.I)
+            if hit:
+                warns.append(
+                    (s.sid, "pos-floors",
+                     f"имя OC «{nm}» в POS — имена OC никогда не в POS (LAWS §2.4)"))
+        for ip in cfg["ipNames"]:
+            if ip.lower() in s.pos.lower():
+                warns.append(
+                    (s.sid, "pos-floors",
+                     f"IP-имя «{ip}» в POS (LAWS §6)"))
+        if title and title.lower() in s.pos.lower():
+            warns.append(
+                (s.sid, "pos-floors",
+                 f"титул темы «{title}» целиком в POS — тема живёт тегами по делу (LAWS §6)"))
+
+
+def check_race_cast(header, slots, statuses, warns):
+    """Аудит 2026-10-31, §8: каст кинов против races.json и шапки."""
+    cfg = GATES["raceCast"]
+    mains = [s for s in slots if s.genre not in ("OC", "EXP")]
+    counts = Counter(
+        c for s in mains for c in re.findall(r"\bR\d{2}\b", s.paren)
+    )
+    for c, n in sorted(counts.items()):
+        st = statuses.get(c)
+        if c in cfg["quarantine"]:
+            warns.append(("BATCH", "race-cast",
+                          f"{c} в карантине (races.json v2.3.0) — не назначать (в батче {n}×)"))
+        elif st in (None, "?"):
+            warns.append(("BATCH", "race-cast",
+                          f"{c} не в реестре races.json"))
+        elif st not in ("active", "gold"):
+            warns.append(("BATCH", "race-cast",
+                          f"{c} статус «{st}» — не назначать (в батче {n}×)"))
+        if n > cfg["rfMax"]:
+            warns.append(("BATCH", "race-cast",
+                          f"{c} использован {n}× > RF {cfg['rfMax']}"))
+    declared = re.search(r"каст\s+(\d{1,2})/(\d{1,2})", header)
+    fact = sum(1 for s in mains if re.search(r"\bR\d{2}\b", s.paren))
+    if declared and int(declared.group(1)) != fact:
+        warns.append(
+            ("BATCH", "race-cast",
+             f"шапка заявляет каст {declared.group(1)}/{declared.group(2)}, по факту {fact} (аудит 2026-10-31, F5)"))
+    if fact < cfg["min"] or fact > cfg["max"]:
+        warns.append(
+            ("BATCH", "race-cast",
+             f"каст {fact}/{len(mains)} вне вилки {cfg['min']}–{cfg['max']} (policy v1.8)"))
+
+
+def check_slot_format(slots, warns):
+    """Аудит 2026-10-31, F3/рек.3: метки ⚗/☠ — только за закрывающей скобкой."""
+    for s in slots:
+        end = s.header_line.rfind(")")
+        if end != -1 and any(ch in s.header_line[:end] for ch in "⚗☠"):
+            warns.append(
+                (s.sid, "slot-format",
+                 "метка ⚗/☠ внутри скобок — конвенция: только за скобкой (F3)"))
+
+
+def batch_number(path):
+    m = re.search(r"T5-(\d+)", Path(path).name)
+    return int(m.group(1)) if m else -1
+
+
+def pos_grams(slots):
+    grams = {}
+    n = GATES["copypaste"]["ngramWords"]
+    for s in slots:
+        wl = words(strip_boilerplate(s.pos))
+        for i in range(len(wl) - n + 1):
+            g = " ".join(wl[i: i + n])
+            grams.setdefault(g, set()).add(s.sid)
+    return grams
+
+
+def check_cross_batch(batch_path, slots, warns):
+    """Аудит 2026-10-31, F6/рек.4: 6-граммы против двух предыдущих партий."""
+    cfg = GATES["crossBatch"]
+    num = batch_number(batch_path)
+    prevs = sorted(
+        (p for p in (ROOT / "batches").glob("T5-*.md")
+         if not p.name.endswith(".gate-report.md")
+         and p.resolve() != Path(batch_path).resolve()
+         and 0 < batch_number(p) < num),
+        key=lambda p: (batch_number(p), p.stat().st_mtime),
+        reverse=True,
+    )[: cfg["prevDepth"]]
+    if not prevs:
+        return []
+    seen = {}
+    for p in prevs:
+        _, _, pslots = parse_batch(p)
+        for g, ids in pos_grams(pslots).items():
+            seen.setdefault(g, (p.name, ids))
+    hits = []
+    for g, ids in pos_grams(slots).items():
+        if g in seen:
+            hits.append((sorted(ids), g, seen[g][0], sorted(seen[g][1])))
+    if hits:
+        src = ", ".join(sorted({h[2] for h in hits}))
+        warns.append(
+            ("BATCH", "cross-copypaste",
+             f"{len(hits)} общих {GATES['copypaste']['ngramWords']}-грамм с предыдущими партиями ({src}) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"))
+    return [
+        {"gram": g, "slotsHere": a, "sourceBatch": p, "slotsThere": b}
+        for a, g, p, b in hits[: cfg["maxListed"]]
+    ]
+
+
 def main():
     if len(sys.argv) < 2:
         print(__doc__)
@@ -393,15 +620,31 @@ def main():
     ab_pairs = ab_pairs_from_header(header)
     burned = load_burned()
     channels = load_channels()
+    oc_names = load_oc_names()
+    race_statuses = load_race_statuses()
+    reg_cfg = GATES["registry"]
+    registries = {
+        "palettes": (reg_cfg["palettes"],
+                     load_registry_ids(reg_cfg["palettes"], r"P\d{1,3}_[A-Z0-9_]+")),
+        "poses": (reg_cfg["poses"],
+                  load_registry_ids(reg_cfg["poses"], r"PL\d+")),
+        "kinetics": (reg_cfg["kinetics"],
+                     load_registry_ids(reg_cfg["kinetics"], r"K\d{1,3}")),
+        "carriers": (reg_cfg["carriers"],
+                     load_registry_ids(reg_cfg["carriers"], r"CR-[A-Z]\d+")),
+    }
 
     fails, warns = [], []
     slot_rows = []
     for s in slots:
         check_floors(s, fails)
         check_neg_linter(s, fails, warns)
-        idx = check_salience(s, fails, warns)
+        idx, sig = claim_token(s)
+        check_salience(s, idx, sig, fails, warns)
+        check_claim_exists(s, idx, fails, warns)
         n = check_pos_budget(s, fails, warns)
         check_burn(s, burned, fails)
+        check_registry(s, registries, warns)
         ch_status = ""
         if s.channel and s.channel in channels:
             ch_status = channels[s.channel]["status"]
@@ -413,6 +656,10 @@ def main():
     check_copypaste(slots, ab_pairs, fails, warns)
     check_channels(slots, channels, fails, warns)
     check_header(text, header, slots, fails, warns)
+    check_pos_floors(slots, text, oc_names, warns)
+    check_race_cast(header, slots, race_statuses, warns)
+    check_slot_format(slots, warns)
+    cross_shared = check_cross_batch(batch_path, slots, warns)
 
     verdict = "FAIL" if fails else "PASS"
     sha = hashlib.sha256(batch_path.read_bytes()).hexdigest()
@@ -428,6 +675,7 @@ def main():
         "fails": [{"slot": a, "gate": b, "msg": c} for a, b, c in fails],
         "warns": [{"slot": a, "gate": b, "msg": c} for a, b, c in warns],
         "slot_table": slot_rows,
+        "crossBatchShared": cross_shared,
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")

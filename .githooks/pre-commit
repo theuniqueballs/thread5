@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# THREAD 5 — sha-замок квитанций (внешний аудит 2026-10-31, F2/рек. 2).
+#
+# На каждый изменённый батч: гейты должны проходить, а sha256 файла —
+# совпадать с последней квитанцией. Несовпадение блокирует коммит:
+# перегенерируй квитанцию ТЕМ ЖЕ коммитом:
+#
+#   python3 tools/gates.py batches/T5-NN.md \
+#       --json specs/gate-receipts/<дата>-T5-NN-v12.json \
+#       --md batches/T5-NN.gate-report.md
+#
+# Установка для клона: git config core.hooksPath .githooks
+set -u
+changed=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^batches/T5-[0-9]+R?\.md$' || true)
+[ -z "$changed" ] && exit 0
+rc=0
+for f in $changed; do
+  echo "гейт-замок: $f"
+  if ! python3 tools/gates.py "$f" >/dev/null; then
+    echo "  ✗ гейты FAIL на $f — коммит заблокирован"
+    rc=1
+    continue
+  fi
+  sha=$(sha256sum "$f" | cut -d' ' -f1)
+  latest=$(grep -rl "\"batch\": \"batches/$(basename "$f")\"" specs/gate-receipts --include='*.json' 2>/dev/null | xargs -r ls -t 2>/dev/null | head -1)
+  if [ -n "$latest" ]; then
+    rsha=$(python3 -c "import json,sys;print(json.load(open('$latest'))['sha256'])" 2>/dev/null || true)
+    if [ -n "$rsha" ] && [ "$rsha" != "$sha" ]; then
+      echo "  ✗ sha256 $f ≠ квитанции $latest — перегенерируй квитанцию тем же коммитом"
+      rc=1
+    else
+      echo "  ✓ гейты PASS, sha совпадает с $latest"
+    fi
+  else
+    echo "  ~ квитанции нет (батч до-гейтовый) — sha-сверка пропущена"
+  fi
+done
+exit $rc

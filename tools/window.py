@@ -12,9 +12,13 @@ SOL / MERCURY / VENUS — вместо ручного перечитывания
 Прогон:
     python3 tools/window.py                    # окно глубиной 3, в stdout
     python3 tools/window.py --depth 3 --out batches/T5-NN/window.md
+    python3 tools/window.py --for T5-06 --out batches/T5-06/window.md
+    # --for: окно ИМЕННО для названной партии (по номеру, не по mtime) —
+    # добор пропущенных квитанций задним числом (аудит 2026-10-31, F2)
 """
 
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -116,7 +120,27 @@ def main():
     if "--out" in argv:
         out = Path(argv[argv.index("--out") + 1])
 
-    paths = delivered_batches()[:depth]
+    if "--for" in argv:
+        # Окно для конкретной партии (аудит 2026-10-31, F2): предыдущие по
+        # НОМЕРУ, не по mtime — mtime-порядок врёт после правок старых файлов.
+        target = argv[argv.index("--for") + 1]
+        m = re.search(r"T5-(\d+)", target)
+        if not m:
+            print(f"--for: не понял партию «{target}»")
+            sys.exit(2)
+        tnum = int(m.group(1))
+
+        def bnum(p):
+            mm = re.search(r"T5-(\d+)", p.name)
+            return int(mm.group(1)) if mm else -1
+
+        paths = sorted(
+            (p for p in delivered_batches() if 0 < bnum(p) < tnum),
+            key=lambda p: (bnum(p), p.stat().st_mtime),
+            reverse=True,
+        )[:depth]
+    else:
+        paths = delivered_batches()[:depth]
     if not paths:
         print("нет сданных батчей — окно пустое")
         sys.exit(0)
