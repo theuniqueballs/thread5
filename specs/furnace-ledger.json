@@ -99,9 +99,11 @@
    "id": "F-011",
    "class": "слово прибора света проникает в POS из палитра-фрагмента (sodium-lamp-amber)",
    "caught": "T5-08, самопрогон EARTH (P11): sd_fragment палитры P124_ROPE_NIGHT содержит 'lamp'",
-   "what_done": "починено в батче ('sodium-amber'); класс жив: гейт не проверяет приборные слова в POS",
-   "status": "fixed_in_batch",
-   "source": "ЗАКОН СВЕТА v2 (04-EARTH); предложение EARTH: гейт device-words в POS"
+   "what_done": "починено в батче ('sodium-amber'); класс закрыт машиной: гейт device-words в POS живёт в posFloors.deviceWords (specs/gates.json v1.2.0, волна внешнего аудита 2026-10-31; [INTENTIONAL] освобождает практический прибор по метке). v1.3.0: статус поднят до fixed_by_gate — вердикт T5-08 (2026-10-31) получен, возражений на гейт нет",
+   "status": "fixed_by_gate",
+   "source": "ЗАКОН СВЕТА v2 (04-EARTH); предложение EARTH: гейт device-words в POS",
+   "verified": "прогон gates v1.3.0 по T5-06/07/08 — 0 FAIL по pos-floors device-words",
+   "closed": "2026-10-31"
   },
   {
    "id": "F-012",

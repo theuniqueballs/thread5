@@ -272,6 +272,10 @@ def check_salience(slot, idx, sig, fails, warns):
 
 def check_pos_budget(slot, fails, warns):
     n = len(words(slot.pos))
+    if GATES["pos"].get("unlimited"):
+        # Вердикт T5-08 (2026-10-31): бюджет POS не ограничивается — решение
+        # автора (ответ на F8 аудита). Число слов остаётся в отчёте.
+        return n
     if n > GATES["pos"]["hardTokens"]:
         fails.append((slot.sid, "pos-budget", f"POS {n} слов > hard {GATES['pos']['hardTokens']}"))
     elif n > GATES["pos"]["targetTokens"]:
@@ -441,19 +445,33 @@ def batch_title(text):
     return m.group(1) if m else None
 
 
-def check_claim_exists(slot, idx, fails, warns):
-    """Аудит 2026-10-31, F1/рек.1: R+/X слот без лексемы заявки в POS."""
+def check_claim_exists(slot, idx, fails, warns, batch_no=-1):
+    """Аудит 2026-10-31, F1/рек.1: R+/X слот без лексемы заявки в POS.
+
+    v1.3.0 (вердикт T5-08, 2026-10-31): эскалация исполнена — FAIL;
+    исторические партии (номер < applyFrom) остаются в WARN-эре:
+    задним числом не переписываются (урок F2).
+    """
     cfg = GATES["claimGate"]
     if slot.rating not in ("R+", "X") or slot.mark:
         return
     if idx is None:
-        msg = (
-            f"{slot.rating} без лексемы заявки в POS — тир держится только "
-            f"THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; эскалация: {cfg['escalation']})"
+        escalated = (
+            cfg["mode"] == "fail"
+            and not (cfg.get("applyFrom") and batch_no < cfg["applyFrom"])
         )
-        (fails if cfg["mode"] == "fail" else warns).append(
-            (slot.sid, "claim-exists", msg)
-        )
+        if not escalated:
+            msg = (
+                f"{slot.rating} без лексемы заявки в POS — тир держится только "
+                f"THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; WARN-эра: эскалация с T5-{cfg.get('applyFrom', '?'):02d})"
+            )
+            warns.append((slot.sid, "claim-exists", msg))
+        else:
+            msg = (
+                f"{slot.rating} без лексемы заявки в POS — тир держится только "
+                f"THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; FAIL с T5-{cfg.get('applyFrom', '?'):02d})"
+            )
+            fails.append((slot.sid, "claim-exists", msg))
 
 
 def check_registry(slot, registries, warns):
@@ -617,6 +635,7 @@ def main():
         out_md = Path(sys.argv[sys.argv.index("--md") + 1])
 
     text, header, slots = parse_batch(batch_path)
+    batch_no = batch_number(batch_path)
     ab_pairs = ab_pairs_from_header(header)
     burned = load_burned()
     channels = load_channels()
@@ -641,7 +660,7 @@ def main():
         check_neg_linter(s, fails, warns)
         idx, sig = claim_token(s)
         check_salience(s, idx, sig, fails, warns)
-        check_claim_exists(s, idx, fails, warns)
+        check_claim_exists(s, idx, fails, warns, batch_no)
         n = check_pos_budget(s, fails, warns)
         check_burn(s, burned, fails)
         check_registry(s, registries, warns)
