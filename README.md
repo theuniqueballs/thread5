@@ -27,14 +27,18 @@ Batch-Prompt Conveyer Belt
   DICE, Дрессер) → `03-VENUS` (сцена) → `04-EARTH` (сборка POS/NEG) →
   `05-FURNACE` (ревью, блокнот `specs/furnace-ledger.json`)
 - `docs/` — LAWS.md (физика системы), TASTE, RENDERER_FACTS, NICHE,
-  LIVING-NOTES (архив), STORAGE-AUDIT, EXAMPLE-T4-44 (винтаж)
+  ANTI-MOVES (библиотека гарантированного трупа), LIVING-NOTES (архив),
+  STORAGE-AUDIT, EXAMPLE-T4-44 (винтаж)
 - `specs/` — данные-активы T4 (позы ×240, палитры ×120, носители ×280,
-  OC-канон ×20, `ultimate-dice.json`, `furnace-ledger.json`, …)
+  OC-канон ×20, `ultimate-dice.json`, `furnace-ledger.json`,
+  `moves-ledger.json` (реестр ходов: износ/отставка/триггеры), …)
 - `verdicts/` — вербатим-вердикты автора по батчам
-- `tools/` — `gates.py` (машинные гейты печи v1.2: флоры, заявка/салиенс,
-  claim-exists, POS-флоры, реестровые коды, каст кинов, межбатчевый
-  копипаст, формат строк), `window.py` (станция окна: квитанция окна
-  ротации на батч; `--for T5-NN` — окно задним числом по номеру партии)
+- `tools/` — `gates.py` (машинные гейты печи: флоры, заявка/салиенс,
+  claim-exists, char-spec, oc-class-floor, neg-anchor, header-contract,
+  movesGate — износ ходов, storyCardsGate — карточки историй),
+  `window.py` (станция окна: квитанция окна ротации на батч; `--for
+  T5-NN` — окно задним числом), `taste.py` (вкус → план: ВКУС-БРИФ из
+  вердикт-квитанций), `validate.py` (валидатор спеков до гейтов)
 - sha-замок квитанций: `git config core.hooksPath .githooks` — изменённый
   батч без свежей машинной квитанции не коммитится (аудит 2026-10-31, F2)
 

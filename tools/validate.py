@@ -22,6 +22,11 @@ THREAD 5 — валидатор спек (ревизия 2026-11-01, docs/THREAD
   7. policy.json ↔ gates.json: решение по POS-бюджету одно, не три (2.1);
   8. pre-commit хук установлен: core.hooksPath=.githooks (1.11b) —
      свежий клон без setup.sh коммитит без замка молча.
+  9. moves-ledger.json: структура реестра ходов (директива роста
+     2026-11-01, идея 3): id M## уникальны, retired/standing легальны,
+     applications числятся, отставка только вердиктом, триггер-индекс
+     указывает только на известные ходы (v1.7.0);
+ 10. header-contract: applyFrom — int, паттерны компилируются (v1.7.0).
 
 Прогон:
     python3 tools/validate.py
@@ -29,6 +34,7 @@ THREAD 5 — валидатор спек (ревизия 2026-11-01, docs/THREAD
 """
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -41,7 +47,8 @@ RACE_STATUSES = {"active", "gold", "banned", "quarantine"}
 REQUIRED_GATES_KEYS = [
     "claim", "claimGate", "ocClassGate", "charSpecGate", "pos", "neg",
     "copypaste", "crossBatch", "channels", "registry", "posFloors",
-    "raceCast", "burn", "header", "headerContract",
+    "raceCast", "burn", "header", "headerContract", "movesGate",
+    "storyCardsGate",
 ]
 
 fails = []
@@ -78,6 +85,9 @@ def main():
         pf = gates.get("posFloors") or {}
         if "ocNamesRegistry" in pf:
             refs.append(("posFloors.ocNamesRegistry", pf["ocNamesRegistry"]))
+        mg = gates.get("movesGate") or {}
+        if "ledger" in mg:
+            refs.append(("movesGate.ledger", mg["ledger"]))
         ch = gates.get("channels") or {}
         if "registry" in ch:
             refs.append(("channels.registry", ch["registry"]))
@@ -209,6 +219,61 @@ def main():
         for k, o in ocs.items():
             if not isinstance(o, dict) or not o.get("name"):
                 fail(f"oc-canon.json: «{k}» без поля name — гейты имени ослепнут")
+
+    # ── 9. moves-ledger.json (директива роста 2026-11-01, идея 3) ──────
+    ml = data.get("moves-ledger.json")
+    if ml:
+        rules = ml.get("rules") or {}
+        if not rules.get("retireOnlyByVerdict"):
+            fail(
+                "moves-ledger.json: rules.retireOnlyByVerdict не выставлен — "
+                "машина не имеет права отставлять ходы (LAWS §9)"
+            )
+        ws = rules.get("wearWarnStreak")
+        if not isinstance(ws, int) or ws < 2:
+            fail(f"moves-ledger.json: wearWarnStreak={ws!r} — нужен int ≥ 2")
+        if gates:
+            gw = (gates.get("movesGate") or {}).get("wearStreak")
+            if gw is not None and gw != ws:
+                fail(
+                    f"wearWarnStreak: moves-ledger.json={ws}, gates.json={gw} — "
+                    "два источника правды по порогу износа"
+                )
+        moves = ml.get("moves") or []
+        mids = [m.get("id") for m in moves]
+        dupes = sorted({i for i in mids if mids.count(i) > 1})
+        if dupes:
+            fail(f"moves-ledger.json: дубликаты id ходов {dupes}")
+        for m in moves:
+            mid = m.get("id", "?")
+            if not (isinstance(mid, str) and re.fullmatch(r"M\d{2}", mid)):
+                fail(f"moves-ledger.json: id «{mid}» вне формата M##")
+            if not m.get("name") or not isinstance(m.get("triggers"), list):
+                fail(f"moves-ledger.json: {mid} без name/triggers — триггер-закон ослепнет")
+            if not isinstance(m.get("standing"), bool):
+                fail(f"moves-ledger.json: {mid} без standing (bool) — movesGate не отличит ход-закон от приёма")
+            if m.get("retired") is not None and not isinstance(m.get("retired"), str):
+                fail(f"moves-ledger.json: {mid} retired должен быть null или строкой-вердиктом")
+            if not isinstance(m.get("applications"), list):
+                fail(f"moves-ledger.json: {mid} без applications — счёт износа молчит")
+        ti = ml.get("triggerIndex") or {}
+        for key, ids in ti.items():
+            if not isinstance(ids, list) or not ids:
+                fail(f"moves-ledger.json: triggerIndex[«{key}»] пуст — закон триггера не зависит от памяти")
+            for i in ids:
+                if i not in mids:
+                    fail(f"moves-ledger.json: triggerIndex[«{key}»] указывает на неизвестный ход «{i}»")
+
+    # ── 10. header-contract: applyFrom int, паттерны компилируются ──────
+    if gates:
+        for req in (gates.get("headerContract") or {}).get("require", []):
+            af = req.get("applyFrom")
+            if af is not None and not isinstance(af, int):
+                fail(f"headerContract.{req.get('key')}: applyFrom={af!r} — нужен int или отсутствие")
+            try:
+                re.compile(req.get("pattern", ""))
+            except re.error as e:
+                fail(f"headerContract.{req.get('key')}: pattern не компилируется — {e}")
 
     # ── вердикт ──────────────────────────────────────────────────────────
     if fails:

@@ -30,6 +30,15 @@ ocClassGate на T5-10 не ломает подсчёты; (1.8) канон-ве
 (canonExempt). Спеки валидируются tools/validate.py ДО гейтов (1.3);
 pre-commit: untracked-квитанции блокируют коммит, special/SO-батчи под
 замком, setup.sh ставит хук (1.11).
+v1.7.0 (директива роста автора 2026-11-01, чат, «десять инициатив»):
+(идея 2) header-contract несёт applyFrom на ключе — декларации
+«ГИПОТЕЗА ДВИЖКА» и «ХОДЫ» обязательны с T5-10 (SO-кометы вне —
+короткая орбита, движка нет); (идея 3) movesGate — декларация ходов
+против specs/moves-ledger.json: M-id вне реестра / отставленный →
+WARN, ход в 3 сданных батчах подряд → WARN «износ хода» (standing
+не считает износ; отставка — только вердиктом); (идея 1) storyCardsGate —
+батч ≥10 без batches/T5-NN/stories.md → WARN «бюджет мысли не
+проверяем пост-фактум» (пилот story-cards T5-10).
 
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
@@ -39,6 +48,7 @@ pre-commit: untracked-квитанции блокируют коммит, specia
 
 import hashlib
 import json
+import os
 import re
 import sys
 from collections import Counter
@@ -508,7 +518,7 @@ def check_header(text, header, slots, fails, warns, oc_names=()):
         warns.append(("BATCH", "header", "в шапке нет заявления окна ротации"))
 
 
-def check_header_contract(header, warns):
+def check_header_contract(header, warns, batch_no=-1):
     """Ревизия 2026-11-01, 1.2: молчаливая пропускаемость — системный дефект.
 
     Почти каждая проверка шапки делала «if нет данных: return» — молча.
@@ -516,17 +526,102 @@ def check_header_contract(header, warns):
     (F5: каст 12 vs 14) ловили люди, потому что машине было «нечего
     сравнивать». Контргейт: обязательная декларация шапки отсутствует →
     WARN «декларация не найдена, проверка пропущена». Молчание шумит.
+
+    v1.7.0 (директива роста 2026-11-01): ключ может нести applyFrom —
+    для батчей с номером < applyFrom требование молчит (объявленная
+    эра, урок F2 — не переписываем историю задним числом); SO-кометы
+    (номер -1) вне prereg движка: короткая орбита, движка нет.
     """
     cfg = GATES.get("headerContract", {})
     if cfg.get("mode") != "warn":
         return
     for req in cfg.get("require", []):
+        apply_from = req.get("applyFrom")
+        if apply_from and (batch_no < 0 or batch_no < apply_from):
+            # v1.7.0: объявленная эра (история не шумит); SO-кометы (-1) вне
+            # prereg движка — короткая орбита, движка нет (OVERVIEW «КОМЕТА»)
+            continue
         if not re.search(req["pattern"], header):
             warns.append(
                 ("BATCH", "header-contract",
                  f"декларация не найдена: {req['label']} — проверка «{req['key']}» "
                  f"пропущена, шапка неполная (ревизия 2026-11-01, 1.2)")
             )
+
+
+def load_moves_ledger():
+    rel = (GATES.get("movesGate") or {}).get("ledger", "specs/moves-ledger.json")
+    return json.loads((ROOT / rel).read_text(encoding="utf-8"))
+
+
+def check_moves_gate(header, warns, batch_no=-1):
+    """Директива роста 2026-11-01, идея 3 («ходы должны умирать»)."""
+    cfg = GATES.get("movesGate", {})
+    m = re.search(r"^ХОДЫ.*$", header, re.M)
+    if not m:
+        return  # обязательность декларации — header-contract (с T5-10)
+    block = m.group(0)
+    declared = sorted(set(re.findall(r"\bM\d{2}\b", block)))
+    try:
+        ledger = load_moves_ledger()
+    except Exception as e:
+        warns.append(("BATCH", "moves",
+                      f"реестр ходов не читается ({e}) — сверка молчит, молчание шумит"))
+        return declared
+    moves = {mv.get("id"): mv for mv in ledger.get("moves", [])}
+    for mid in declared:
+        mv = moves.get(mid)
+        if mv is None:
+            warns.append(("BATCH", "moves",
+                          f"{mid} вне реестра ходов — ход рождается только вердиктом "
+                          f"(ARS §6 / LAWS §9); сначала вердикт, потом применение"))
+            continue
+        if mv.get("retired"):
+            warns.append(("BATCH", "moves",
+                          f"{mid} в отставке ({mv.get('retired')}) — применение вне закона; "
+                          f"вернуть ход может только вердикт"))
+        if mv.get("standing") or not mv.get("applications"):
+            continue
+        nums = sorted({a["no"] for a in mv["applications"] if isinstance(a.get("no"), int)})
+        if batch_no >= 1:
+            # текущий батч считает своё применение из декларации шапки:
+            # реестр обновляется только пост-верdict, ждать записи — значит
+            # гейт молчал бы ровно на том батче, где износ уже случился
+            streak = 1
+            n = batch_no - 1
+            while n in nums:
+                streak += 1
+                n -= 1
+            if streak >= int(cfg.get("wearStreak", 3)):
+                warns.append(("BATCH", "moves",
+                              f"износ хода {mid} «{mv.get('name')}»: применён в {streak} "
+                              f"сданных батчах подряд (порог {cfg.get('wearStreak')}) — "
+                              f"та же смерть, только на уровне хода; лампа автору, "
+                              f"отставка — только вердиктом"))
+    return declared
+
+
+def check_story_cards(batch_path, warns, batch_no=-1):
+    """Директива роста 2026-11-01, идея 1 (story-cards, пилот T5-10)."""
+    cfg = GATES.get("storyCardsGate", {})
+    apply_from = int(cfg.get("applyFrom", 10))
+    if batch_no >= 0 and batch_no < apply_from:
+        return False
+    p = Path(batch_path)
+    if not p.is_absolute():
+        p = ROOT / p
+    cards = p.with_suffix("") / "stories.md"
+    if not cards.exists():
+        try:
+            shown = Path(os.path.relpath(cards, ROOT))
+        except ValueError:
+            shown = cards
+        warns.append(("BATCH", "story-cards",
+                      f"{shown} не найден — карточки историй отсутствуют, "
+                      f"бюджет мысли не проверяем пост-фактум (директива роста 2026-11-01, "
+                      f"идея 1; пилот — мейн-пул)"))
+        return False
+    return True
 
 
 def load_oc_names():
@@ -949,7 +1044,9 @@ def main():
     cp_canon_exempt = check_copypaste(slots, ab_pairs, fails, warns, canon_grams)
     check_channels(slots, channels, fails, warns)
     check_header(text, header, slots, fails, warns, oc_names)
-    check_header_contract(header, warns)
+    check_header_contract(header, warns, batch_no)
+    moves_declared = check_moves_gate(header, warns, batch_no)
+    story_cards_ok = check_story_cards(batch_path, warns, batch_no)
     check_pos_floors(slots, text, oc_names, warns)
     check_race_cast(header, slots, race_statuses, warns, oc_names)
     check_slot_format(slots, warns)
@@ -976,6 +1073,8 @@ def main():
         "crossBatchShared": cross_shared,
         "crossBatchCanonExempt": cross_canon_exempt,
         "copypasteCanonExempt": cp_canon_exempt,
+        "movesDeclared": moves_declared,
+        "storyCards": story_cards_ok,
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
