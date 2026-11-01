@@ -2,9 +2,9 @@
   "version": "1.0.0",
   "born": "2026-09-19",
   "source": "3.2 OC_CANON.yaml (THREAD 3.0 format, canon v1.7.1)",
-  "canon_version": "2.3.0",
+  "canon_version": "2.4.0",
   "usage_policy": "Tarot / element / zodiac fields below are REGISTRY DATA for the author's own\nseries (Rider-Waite-style card prompts, zodiac prompts). They are NOT batch\nmaterial. Without the author's explicit per-request direction, NO card, sign,\nor ability symbolism may appear in any batch prompt — not in POS, not in NEG,\nnot in theses, palettes, or prompt naming. Batch prompts use the OC's\nAPPEARANCE and origin-continuity motifs only. Card/zodiac assignments stay\nhere so the author can look them up for HIS series.",
-  "selection_rule": "────────────────────────────────────────────────────\nPer session: author selects 3 of the 20 active OCs by vibe/theme fit.\nNo forced rotation schedule — author's call each time.\n(2026-10-11: 16 → 19 — счётчик застыл в сентябре, канон вырос до 19.)\n(2026-10-13: 19 → 20 — Lucy promoted from T4-29 P18.)\n(2026-10-16: canon v2.3.0 — FAM-семейство сисек прописано КАЖДОЙ ОС (A=6 / B=8 / C=6, вердикт T4-29 P01 «прописывать размер груди в канонах»). body_type теперь тег-формат: FAM-x (B-диапазон) + теги груди — писец вплетает VERBATIM, проза не попадает в POS. Исходная проза тел — в specs/oc-body-archive.json.)",
+  "selection_rule": "────────────────────────────────────────────────────\nPer session: author selects 3 of the 20 active OCs by vibe/theme fit.\nNo forced rotation schedule — author's call each time.\n(2026-10-11: 16 → 19 — счётчик застыл в сентябре, канон вырос до 19.)\n(2026-10-13: 19 → 20 — Lucy promoted from T4-29 P18.)\n(2026-10-16: canon v2.3.0 — FAM-семейство сисек прописано КАЖДОЙ ОС (A=6 / B=8 / C=6, вердикт T4-29 P01 «прописывать размер груди в канонах»). body_type теперь тег-формат: FAM-x (B-диапазон) + теги груди — писец вплетает VERBATIM, проза не попадает в POS. Исходная проза тел — в specs/oc-body-archive.json.)\n(2026-11-01: 20 → 21 — Hana promoted from T5-09 P31 «ledger-of-debts», кандидат «Вель», вердикт: «Дай ей имя Hana и выдай всё, что нужно выдать ОС. Таро и т.д.» — первая конверсия EXP-кандидата приказом. Таро V Hierophant / элемент VELVET / знак Capricorn — assistant-assigned, pending author veto.)",
   "ocs": {
     "Sue": {
       "name": "Sue",
@@ -433,6 +433,34 @@
         "T4-29 P18 'mirror-chest-first-milf-shimmer' (VOLT · PL194 · P91_MIDNIGHT_BODEGA · R+ delivered; вердикт автора: «Очень милая девчуля» → канон)"
       ],
       "wardrobe_policy": "signature: светоловящие платья и слипы cool-static-семейства, citrus-wedge-акценты; ткань пропускает свечение кожи — wet/sheer её домашний канал под законом №27 (бугорок да — розовое нет)"
+    },
+    "Hana": {
+      "name": "Hana",
+      "tarot": "V — The Hierophant (assistant-assigned 2026-11-01, pending author veto) — карта контрактов: каждая услуга — договор; она ведёт книгу невыплаченного; свободная старшая на момент промоции (после Hana свободны III Empress, IV Emperor, XVI Tower, XXI World)",
+      "element": "VELVET (assistant-assigned, pending author veto) — сатин-бархат: мягкое давление, оставляющее след; вежливый голод в тактильном материале",
+      "zodiac": "Capricorn (assistant-assigned, pending author veto; SHARED w/ Nix) — знак ведения книг: дисциплина, терпение, учёт; гроссбух — её коза",
+      "birth": "promoted from T5-09 P31 'ledger-of-debts' (EXP · кандидат «Вель» · R37 Succubus-kin · R+ delivered; вердикт T5-09 2026-11-01, прилавок: «31 очень милая, думаю можно будет забрать её в основной пул. Дай ей имя Hana и выдай всё, что нужно выдать ОС. Таро и т.д.») — первая конверсия EXP-кандидата в ОС прямым приказом автора (Коко T5-08 P31 — положительный сигнал без приказа, остаётся кандидатом)",
+      "race": "R37 Succubus-kin (races.json v2.3.0: small curved horns satin-black; spade-tail slim with a sway; tiny bat-wing frags at the shoulder blades; heart-shaped pupils on option; skin warm satin candle-lit; tail-slit MANDATORY)",
+      "appearance_lock": "ЛОК по канону VERBATIM промпта T5-09 P31 (канон = рендер, прецедент Ana/Lucy): small curved satin-black horns; slim spade-tail with one chipped tip; tiny bat-wing frags at the shoulder line; heart-shaped pupils in wine-red eyes; warm satin skin; tall curvy build, heavy soft breasts — FAM-A (B5-B7)",
+      "hair": "ЦВЕТ НЕ ФИКСИРОВАН в POS T5-09 (NEG запретил blonde/silver/white только); предложение писца до вето автора: deep-black с wine-red отливом (под рога satin-black и глаза wine-red) — подтвердить/переиграть по следующей сдаче",
+      "eyes": "wine-red eyes; heart-shaped pupils on option (зрачки-сердца — расовая опция R37, в T5-09 включены)",
+      "skin": "warm satin skin (R37: warm satin, candle-lit)",
+      "body_type": "tall curvy build, heavy soft breasts — FAM-A (B5-B7)",
+      "signature_marks": [
+        "chipped tip on her spade-tail (скол на кончике хвоста-спати — метка)",
+        "brass-clasped ledger of uncollected debts (гроссбух неоплаченных услуг на латунной застёжке — предмет-подпись; страница переворачивается сама)",
+        "tiny bat-wing frags at the shoulder blades",
+        "heart-shaped pupils (option)"
+      ],
+      "emotional_register": "polite businesslike hunger — вежливый деловой голод: учёт вежлив, голод терпелив (регистр кандидата «Вель»)",
+      "anti_shield": "horns gone, whole unchipped tail, large full wings, petite, slender, athletic, small-chested, blonde hair, silver hair, white hair, round pupils, blank/closed ledger, warm human skin tone",
+      "neg_additions": "horns gone, tail whole unchipped, wings large, gown closed, ledger blank",
+      "id": "hana",
+      "active": true,
+      "render_receipts": [
+        "T5-09 P31 'ledger-of-debts' (EXP · кандидат «Вель» · R37 Succubus-kin · PL61 · P54_ART_DECO_PLATINUM · R+ delivered; вердикт 2026-11-01: «31 очень милая» → промоция в ростер, имя Hana)"
+      ],
+      "wardrobe_policy": "signature: tail-slit MANDATORY (раса R37 — платье/юбка с продуманным выходом хвоста, wrap-closures вместо back-zip); деловой шик гроссбуха: tailored slit gown, латунная фурнитура"
     }
   },
   "inactive_reserve": {
@@ -462,9 +490,9 @@
     }
   },
   "registries": {
-    "tarot": "(finalized 2026-09-03; legacy ten fixed by author master\nlist; Zia + Rin added 2026-09-04 from N13 P15/P18; Una added 2026-09-05\nfrom N15 №11, pending author veto):\nSue — IX Hermit · Miyu — I Magician · Yui — XIX Sun · Sol — II High Priestess ·\nNoa — VII Chariot · Doe — 0 Fool · Lua — XVIII Moon · Nix — VIII Strength ·\nVae — XV Devil · Ash — XIII Death · Lyn — X Wheel of Fortune ·\nRue — XII Hanged Man · Mab — XIV Temperance · Zia — VI Lovers · Rin — XVII Star ·\nUna — XI Justice\nFree cards for future OCs: III Empress, IV Emperor, V Hierophant,\nXVI Tower, XX Judgement, XXI World.",
-    "element": "(legacy ten author-fixed; six assistant-assigned):\nSue — VOID · Miyu — SPIRIT · Yui — LIGHT · Sol — FIRE · Noa — EARTH ·\nDoe — STORM · Lua — SHADOW · Nix — STEEL · Vae — EMBER · Ash — BONE ·\nLyn — DUSK · Rue — DUST · Mab — CLAY · Zia — GALE · Rin — HEARTH ·\nUna — SCALE",
-    "zodiac": "(Sue/Miyu/Yui author-fixed; rest assistant-assigned pending veto;\n16 OCs over 12 signs — four shared pairs, flagged):\nSue — Pisces · Miyu — Gemini · Yui — Aries · Sol — Leo · Noa — Sagittarius ·\nDoe — Aquarius · Lua — Scorpio · Nix — Capricorn · Vae — Taurus · Ash — Virgo ·\nLyn — Libra · Rue — Cancer · Mab — Pisces (shared w/ Sue) ·\nZia — Gemini (shared w/ Miyu) · Rin — Aquarius (shared w/ Doe) ·\nUna — Libra (shared w/ Lyn)"
+    "tarot": "(finalized 2026-09-03; legacy ten fixed by author master\nlist; Zia + Rin added 2026-09-04 from N13 P15/P18; Una added 2026-09-05\nfrom N15 №11, pending author veto; Hana added 2026-11-01 from T5-09 P31,\npending author veto):\nSue — IX Hermit · Miyu — I Magician · Yui — XIX Sun · Sol — II High Priestess ·\nNoa — VII Chariot · Doe — 0 Fool · Lua — XVIII Moon · Nix — VIII Strength ·\nVae — XV Devil · Ash — XIII Death · Lyn — X Wheel of Fortune ·\nRue — XII Hanged Man · Mab — XIV Temperance · Zia — VI Lovers · Rin — XVII Star ·\nUna — XI Justice · Ana — III Empress · Lucy — XX Judgement · Hana — V Hierophant\nFree cards for future OCs: IV Emperor, XVI Tower, XXI World.",
+    "element": "(legacy ten author-fixed; six assistant-assigned; Hana 2026-11-01):\nSue — VOID · Miyu — SPIRIT · Yui — LIGHT · Sol — FIRE · Noa — EARTH ·\nDoe — STORM · Lua — SHADOW · Nix — STEEL · Vae — EMBER · Ash — BONE ·\nLyn — DUSK · Rue — DUST · Mab — CLAY · Zia — GALE · Rin — HEARTH ·\nUna — SCALE · Ana — GOLD · Lucy — NEON · Hana — VELVET",
+    "zodiac": "(Sue/Miyu/Yui author-fixed; rest assistant-assigned pending veto;\nOCs over 12 signs — shared pairs flagged; Hana 2026-11-01 — вторая Capricorn):\nSue — Pisces · Miyu — Gemini · Yui — Aries · Sol — Leo · Noa — Sagittarius ·\nDoe — Aquarius · Lua — Scorpio · Nix — Capricorn · Vae — Taurus · Ash — Virgo ·\nLyn — Libra · Rue — Cancer · Mab — Pisces (shared w/ Sue) ·\nZia — Gemini (shared w/ Miyu) · Rin — Aquarius (shared w/ Doe) ·\nUna — Libra (shared w/ Lyn) · Ana — Taurus (shared w/ Vae) ·\nLucy — Cancer (shared w/ Rue) · Hana — Capricorn (shared w/ Nix)"
   },
   "notes": [
     "2026-09-03 v1.1.0 — TAROT/ELEMENT master list arrived from author (10 legacy",
@@ -482,9 +510,10 @@
     "2026-09-23 (T4-05 verdict processing): Ana canonized (III — The Empress, gold-leaf skin UNIQUE, outfit per PH — no canonical garment); Ash's veil rewritten ('всё кроме рта', eyes permission-gated). Canon v1.7.1 → v1.7.2.",
     "2026-09-25 (T4-05 OC re-render receipt, author order «пофикси мне Ana»): Ana anti_shield/neg_additions extended — fairy/butterfly/large/transparent wings, full-body scales, tail family, blonde/golden hair defaults. Hair and gold-leaf skin must sit EARLY in the tag run (the old prompt carried them only in the face lock — the tail of the run renders weak). Canon v1.7.2 → v1.7.3.",
     "2026-09-25 (author order, chat): Ana v1.8.0 — CANON = THE RENDER. Blonde hair with cyan-teal streaks, large glossy obsidian eyes, teal crystal horns, head fin-fans, large translucent cyan wings, gold-teal scale fields (exclusive), finned tail. The v1.7.3 receipt-laws are reversed: those «violations» were the author intent. Hair/scale tags stay EARLY in the tag run.",
-    "2026-10-13 (T4-29 verdict processing): Lucy canonized — XX Judgement (pending veto), element NEON, fluorescent-milk-green skin UNIQUE, mint hair (контракт-план), pale-green half-closed eyes (рендер), FAM-A milf register; wardrobe: cool-static светоловящая семья. Канон = рендер (прецедент Ana v1.8.0). Canon v2.1.0 → v2.2.0."
+    "2026-10-13 (T4-29 verdict processing): Lucy canonized — XX Judgement (pending veto), element NEON, fluorescent-milk-green skin UNIQUE, mint hair (контракт-план), pale-green half-closed eyes (рендер), FAM-A milf register; wardrobe: cool-static светоловящая семья. Канон = рендер (прецедент Ana v1.8.0). Canon v2.1.0 → v2.2.0.",
+    "2026-11-01 (T5-09 verdict processing): Hana canonized — первая конверсия EXP-кандидата в ОС прямым приказом («Дай ей имя Hana и выдай всё, что нужно выдать ОС. Таро и т.д.»). Кандидат «Вель», R37 Succubus-kin, T5-09 P31 «ledger-of-debts» R+ delivered. Пакет: V Hierophant (pending veto) / VELVET / Capricorn (shared w/ Nix); appearance-lock VERBATIM промпта (рога satin-black, хвост-спати со сколом кончика, крыло-фрагменты, зрачки-сердца option, вино-красные глаза, warm satin, FAM-A); волосы НЕ зафиксированы в POS — предложение deep-black/wine-red до вето. Канон = рендер (прецедент Ana/Lucy). Canon v2.3.0 → v2.4.0."
   ],
-  "note_on_status": "19 ACTIVE OCs (3 drawn per session by author vibe/theme fit, no forced rotation). Rae and Iya are INACTIVE RESERVE (added accidentally, never used, bios retained). SP-registry characters (Nicole, Puppet/Valentine, Ereshkigal/Tito_Lopes) live in download/SP_ORDERS.md, never in OC canon.",
+  "note_on_status": "ACTIVE: 19 (18 прежних + Hana с промоции 2026-11-01; Ama и Ila спят — active=null). 3 drawn per session by author vibe/theme fit, no forced rotation. Rae and Iya are INACTIVE RESERVE (added accidentally, never used, bios retained). SP-registry characters (Nicole, Puppet/Valentine, Ereshkigal/Tito_Lopes) live in download/SP_ORDERS.md, never in OC canon.",
   "fam_scale": {
     "source": "pools.json b_fam (semейства неизменны)",
     "FAM-A": "B5-B7 LARGE — full/heavy/generous",

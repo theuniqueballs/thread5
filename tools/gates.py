@@ -474,6 +474,36 @@ def check_claim_exists(slot, idx, fails, warns, batch_no=-1):
             fails.append((slot.sid, "claim-exists", msg))
 
 
+def check_oc_class_floor(slots, fails, warns, batch_no=-1, oc_names=()):
+    """Вердикт T5-09 (2026-11-01, прилавок): OC-промпты — класс EXQUISITE не ниже.
+
+    «Единственное, я бы хотел чтобы ОС промпты были класса Exquisite, не
+    меньше, чтобы они прорабатывались очень хорошо и были сильно более
+    детализированные». Прямое решение автора в вердикте — FAIL сразу без
+    WARN-эры (прецедент ecchi-ключа, T5-05); исторические партии
+    (номер < applyFrom) не переписываются (урок F2).
+    OC-слот опознаётся по тегу OC в скобках ИЛИ по имени канонной OC в
+    скобках — с T5-10 класс EXQUISITE вытесняет OC-тег с первого места
+    («(EXQUISITE · Sue · R+…)»). Вето автора — правкой applyFrom/mode.
+    """
+    cfg = GATES.get("ocClassGate", {})
+    if cfg.get("mode") != "fail":
+        return
+    if cfg.get("applyFrom") and batch_no < cfg["applyFrom"]:
+        return
+    floor = cfg.get("floor", "EXQUISITE")
+    names = {n for n in oc_names if n}
+    for s in slots:
+        tokens = {t.strip() for t in s.paren.split("·")}
+        is_oc = "OC" in tokens or bool(tokens & names)
+        if is_oc and s.genre != floor:
+            fails.append(
+                (s.sid, "oc-class-floor",
+                 f"OC-слот в классе «{s.genre}» — вердикт T5-09: класс {floor}, "
+                 f"не меньше (ультра своего жанра: канон-проработка и детали)")
+            )
+
+
 def check_registry(slot, registries, warns):
     """Аудит 2026-10-31, F4/рек.3: коды слота против реестров specs/*.json."""
     pairs = [
@@ -678,6 +708,7 @@ def main():
     check_pos_floors(slots, text, oc_names, warns)
     check_race_cast(header, slots, race_statuses, warns)
     check_slot_format(slots, warns)
+    check_oc_class_floor(slots, fails, warns, batch_no, oc_names)
     cross_shared = check_cross_batch(batch_path, slots, warns)
 
     verdict = "FAIL" if fails else "PASS"
