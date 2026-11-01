@@ -62,11 +62,11 @@
 
 | Сеанс | Статус | Артефакт | Стык |
 |---|---|---|---|
-| 01 SOL | ⬜ | `01-sol.md` | SOL→MERCURY: ⬜ |
-| 02 MERCURY | ⬜ | `02-mercury.md` | MERCURY→VENUS: ⬜ |
-| 03 VENUS | ⬜ | `03-venus.md` | VENUS→EARTH: ⬜ |
-| 04 EARTH | ⬜ | `batches/T5-10.md` | EARTH→FURNACE: ⬜ |
-| 05 FURNACE | ⬜ | `05-furnace.md` + gate-report | PASS / FAIL |
+| 01 SOL | ✅ | `01-sol.md` | SOL→MERCURY: ✅ |
+| 02 MERCURY | ✅ | `02-mercury.md` | MERCURY→VENUS: ✅ |
+| 03 VENUS | ✅ | `03-venus.md` | VENUS→EARTH: ✅ |
+| 04 EARTH | ✅ | `batches/T5-10.md` + `stories.md` (пилот) | EARTH→FURNACE: ✅ |
+| 05 FURNACE | ✅ | `05-furnace.md` + gate-report | **PASS 0F/0W** (v1.7.1) |
 
 ## Квитанция станции окна
 
@@ -79,7 +79,10 @@ Burn-актив (19 кодов) — 0 назначений.
 
 ## Бунты SOL
 
-- (нет)
+- Бунтов 0. Тема разыграна бытом: witch-лексика свободна (директива
+  автора), приборный вакуум соблюдён без [INTENTIONAL], движок
+  «предмет-субъект» без единого жеста-каста. Анти-шаблон «ведьма варит»
+  — 0 слотов.
 
 ## Открытые вопросы автору
 
