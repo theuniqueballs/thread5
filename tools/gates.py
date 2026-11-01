@@ -18,6 +18,18 @@ char-spec — POS каждого слота несёт идентичность 
 пропущенный параметр = импровизация рендерера (урок T5-09 P26/P31:
 POS без единого тега волос). FAIL с T5-10, исторические партии — WARN-эра;
 ⚗ НЕ освобождает (идентичность — не предмет эксперимента).
+v1.6.0 (ревизия 2026-11-01, docs/THREAD5-REVIEW-2026-11-01.md, слой
+«Сразу»): (1.1) NEG-линтер видит якорные стили «X gone / X intact /
+X off / X on / X visible» — stem-сверка с POS, паразит без референса —
+WARN, намеренный — [NEG-ANCHOR]; (1.2) контргейт header-contract —
+отсутствующая декларация шапки (спред/EXP-оверлей/окно/каст/HEAT) =
+WARN «проверка пропущена»: молчание шумит; (1.7) спред и каст фильтруют
+OC по тегу/имени в скобках (is_oc_slot), не по жанру — миграция
+ocClassGate на T5-10 не ломает подсчёты; (1.8) канон-вербатим ОС
+(oc-canon.json) выведен из копипаст-WARN, исключения видны в квитанции
+(canonExempt). Спеки валидируются tools/validate.py ДО гейтов (1.3);
+pre-commit: untracked-квитанции блокируют коммит, special/SO-батчи под
+замком, setup.sh ставит хук (1.11).
 
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
@@ -164,6 +176,16 @@ def ab_pairs_from_header(header):
     }
 
 
+def is_oc_slot(s, oc_names=()):
+    """Ревизия 2026-11-01, 1.7: OC опознаётся по тегу/имени в скобках, не по жанру.
+
+    С T5-10 жанр OC-слотов становится EXQUISITE (ocClassGate) — жанровые
+    фильтры спреда/каста иначе начнут считать бывшие OC-слоты мейнами.
+    """
+    tokens = {t.strip() for t in s.paren.split("·")}
+    return "OC" in tokens or bool(tokens & {n for n in oc_names if n})
+
+
 def check_floors(slot, fails):
     neg = slot.neg.lower()
     for f in GATES["header"]["hardFloors"]:
@@ -219,6 +241,34 @@ def check_neg_linter(slot, fails, warns):
                     (slot.sid, "neg-no-class",
                      f"«{unit}» отрицает то, что заявлено в POS (→ {', '.join(hit)})")
                 )
+        else:
+            # Ревизия 2026-11-01, 1.1: якорные стили «X gone / X intact /
+            # X off / X on / X visible» — раньше гейтом не видны вообще.
+            # Stem-сверка X с POS: якорь без референса — паразит-NEG →
+            # WARN; намеренный паразит — пометка [NEG-ANCHOR].
+            cfg_a = GATES["neg"]
+            mark = cfg_a.get("anchorMark", "[NEG-ANCHOR]")
+            probe = re.sub(re.escape(mark), " ", unit, flags=re.I).strip().lower()
+            am = re.match(
+                r"^(.+?)\s+("
+                + "|".join(cfg_a.get("anchorStyles", []))
+                + r")$",
+                probe,
+            )
+            if am:
+                xstems = set()
+                for tw in words(am.group(1)):
+                    if tw in STOP or len(tw) < 3:
+                        continue
+                    xstems |= stem_variants(tw)
+                marked = mark.lower() in slot.neg.lower()
+                if not (xstems & pos_stems) and not marked:
+                    warns.append(
+                        (slot.sid, "neg-anchor",
+                         f"якорь-юнит «{unit}» ({am.group(2)}) не ссылается ни на "
+                         f"один элемент POS — паразит-NEG? намеренный якорь пометь "
+                         f"{mark} (ревизия 2026-11-01, 1.1)")
+                    )
         low = unit.lower()
         if low == "nipples exposed" and re.search(
             r"covered nipples|clothed nipples|see-through|wet clothes|pantyline",
@@ -296,14 +346,49 @@ def strip_boilerplate(pos):
     return out
 
 
-def check_copypaste(slots, ab_pairs, fails, warns):
+def load_canon_grams():
+    """Ревизия 2026-11-01, 1.8: n-граммы канон-вербатима ОС (oc-canon.json).
+
+    Канон ОС повторяется от партии к партии по праву (ЛОКи внешности),
+    это не копипаст: 6-граммы из текстовых полей ростера не шумят
+    парными и межбатчевыми WARN. FAIL ≥3 слотов каноном не гасится.
+    Исключения не молчат: счётчик canonExempt в квитанции.
+    """
+    rel = GATES["copypaste"].get("canonWhitelist")
+    if not rel:
+        return frozenset()
+    try:
+        data = json.loads((ROOT / rel).read_text(encoding="utf-8"))
+    except Exception:
+        return frozenset()
+    n = GATES["copypaste"]["ngramWords"]
+    grams = set()
+
+    def collect(o):
+        if isinstance(o, str):
+            wl = words(o)
+            for i in range(len(wl) - n + 1):
+                grams.add(" ".join(wl[i: i + n]))
+        elif isinstance(o, dict):
+            for v in o.values():
+                collect(v)
+        elif isinstance(o, list):
+            for v in o:
+                collect(v)
+
+    for oc in (data.get("ocs") or {}).values():
+        collect(oc)
+    return frozenset(grams)
+
+
+def check_copypaste(slots, ab_pairs, fails, warns, canon_grams=frozenset()):
     gram_slots = {}
     for s in slots:
         wl = words(strip_boilerplate(s.pos))
         for i in range(len(wl) - GATES["copypaste"]["ngramWords"] + 1):
             g = " ".join(wl[i: i + GATES["copypaste"]["ngramWords"]])
             gram_slots.setdefault(g, set()).add(s.sid)
-    fails_seen, warn_pairs = set(), set()
+    fails_seen, warn_pairs, canon_exempt = set(), set(), []
     for g, ids in gram_slots.items():
         if len(ids) >= GATES["copypaste"]["failSharedBySlots"]:
             key = ("FAIL", tuple(sorted(ids)), g)
@@ -317,9 +402,13 @@ def check_copypaste(slots, ab_pairs, fails, warns):
             pair = frozenset(ids)
             if pair in ab_pairs:
                 continue
+            if g in canon_grams:
+                canon_exempt.append({"gram": g, "slots": sorted(ids)})
+                continue
             warn_pairs.add((tuple(sorted(ids)), g))
     for (a, b), g in sorted(warn_pairs)[:20]:
         warns.append((f"{a}+{b}", "copypaste", f"пара делит n-грамму: «{g}»"))
+    return canon_exempt
 
 
 def load_burned():
@@ -384,7 +473,7 @@ def check_channels(slots, channels, fails, warns):
         )
 
 
-def check_header(text, header, slots, fails, warns):
+def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
             if "ecchi anime style" in s.pos.lower():
@@ -401,7 +490,13 @@ def check_header(text, header, slots, fails, warns):
         )
     spread = re.search(r"R\+×(\d+)\s*·\s*R×(\d+)", header)
     if spread:
-        mains = [s for s in slots if s.genre not in ("OC", "EXP")]
+        # Ревизия 2026-11-01, 1.7: фильтр по is_oc_slot, не по жанру —
+        # с T5-10 жанр OC-слотов EXQUISITE и жанровый фильтр ложно считал
+        # бы их мейнами.
+        mains = [
+            s for s in slots
+            if s.genre != "EXP" and not is_oc_slot(s, oc_names)
+        ]
         rplus = sum(1 for s in mains if s.rating == "R+")
         r = sum(1 for s in mains if s.rating == "R")
         if (rplus, r) != (int(spread.group(1)), int(spread.group(2))):
@@ -411,6 +506,27 @@ def check_header(text, header, slots, fails, warns):
             )
     if GATES["header"]["windowStatement"] and "Окно" not in header:
         warns.append(("BATCH", "header", "в шапке нет заявления окна ротации"))
+
+
+def check_header_contract(header, warns):
+    """Ревизия 2026-11-01, 1.2: молчаливая пропускаемость — системный дефект.
+
+    Почти каждая проверка шапки делала «if нет данных: return» — молча.
+    Нет спреда → гейт молчит. Нет каста → молчит. Аудитовские находки
+    (F5: каст 12 vs 14) ловили люди, потому что машине было «нечего
+    сравнивать». Контргейт: обязательная декларация шапки отсутствует →
+    WARN «декларация не найдена, проверка пропущена». Молчание шумит.
+    """
+    cfg = GATES.get("headerContract", {})
+    if cfg.get("mode") != "warn":
+        return
+    for req in cfg.get("require", []):
+        if not re.search(req["pattern"], header):
+            warns.append(
+                ("BATCH", "header-contract",
+                 f"декларация не найдена: {req['label']} — проверка «{req['key']}» "
+                 f"пропущена, шапка неполная (ревизия 2026-11-01, 1.2)")
+            )
 
 
 def load_oc_names():
@@ -498,11 +614,8 @@ def check_oc_class_floor(slots, fails, warns, batch_no=-1, oc_names=()):
     if cfg.get("applyFrom") and batch_no < cfg["applyFrom"]:
         return
     floor = cfg.get("floor", "EXQUISITE")
-    names = {n for n in oc_names if n}
     for s in slots:
-        tokens = {t.strip() for t in s.paren.split("·")}
-        is_oc = "OC" in tokens or bool(tokens & names)
-        if is_oc and s.genre != floor:
+        if is_oc_slot(s, oc_names) and s.genre != floor:
             fails.append(
                 (s.sid, "oc-class-floor",
                  f"OC-слот в классе «{s.genre}» — вердикт T5-09: класс {floor}, "
@@ -675,10 +788,15 @@ def check_pos_floors(slots, text, oc_names, warns):
                  f"титул темы «{title}» целиком в POS — тема живёт тегами по делу (LAWS §6)"))
 
 
-def check_race_cast(header, slots, statuses, warns):
+def check_race_cast(header, slots, statuses, warns, oc_names=()):
     """Аудит 2026-10-31, §8: каст кинов против races.json и шапки."""
     cfg = GATES["raceCast"]
-    mains = [s for s in slots if s.genre not in ("OC", "EXP")]
+    # Ревизия 2026-11-01, 1.7: is_oc-фильтр вместо жанрового — миграция
+    # ocClassGate (T5-10: жанр OC → EXQUISITE) не разваливает каст.
+    mains = [
+        s for s in slots
+        if s.genre != "EXP" and not is_oc_slot(s, oc_names)
+    ]
     counts = Counter(
         c for s in mains for c in re.findall(r"\bR\d{2}\b", s.paren)
     )
@@ -734,8 +852,12 @@ def pos_grams(slots):
     return grams
 
 
-def check_cross_batch(batch_path, slots, warns):
-    """Аудит 2026-10-31, F6/рек.4: 6-граммы против двух предыдущих партий."""
+def check_cross_batch(batch_path, slots, warns, canon_grams=frozenset()):
+    """Аудит 2026-10-31, F6/рек.4: 6-граммы против двух предыдущих партий.
+
+    Ревизия 2026-11-01, 1.8: канон-вербатим ОС (oc-canon.json) не шумит —
+    гасится с прозрачным счётчиком (возврат (shared, canonExempt)).
+    """
     cfg = GATES["crossBatch"]
     num = batch_number(batch_path)
     prevs = sorted(
@@ -747,15 +869,20 @@ def check_cross_batch(batch_path, slots, warns):
         reverse=True,
     )[: cfg["prevDepth"]]
     if not prevs:
-        return []
+        return [], []
     seen = {}
     for p in prevs:
         _, _, pslots = parse_batch(p)
         for g, ids in pos_grams(pslots).items():
             seen.setdefault(g, (p.name, ids))
     hits = []
+    canon_exempt = []
     for g, ids in pos_grams(slots).items():
         if g in seen:
+            if g in canon_grams:
+                canon_exempt.append({"gram": g, "slotsHere": sorted(ids),
+                                     "sourceBatch": seen[g][0]})
+                continue
             hits.append((sorted(ids), g, seen[g][0], sorted(seen[g][1])))
     if hits:
         src = ", ".join(sorted({h[2] for h in hits}))
@@ -765,7 +892,7 @@ def check_cross_batch(batch_path, slots, warns):
     return [
         {"gram": g, "slotsHere": a, "sourceBatch": p, "slotsThere": b}
         for a, g, p, b in hits[: cfg["maxListed"]]
-    ]
+    ], canon_exempt[: cfg["maxListed"]]
 
 
 def main():
@@ -787,6 +914,7 @@ def main():
     channels = load_channels()
     oc_names = load_oc_names()
     race_statuses = load_race_statuses()
+    canon_grams = load_canon_grams()
     reg_cfg = GATES["registry"]
     registries = {
         "palettes": (reg_cfg["palettes"],
@@ -818,15 +946,18 @@ def main():
             "channel": s.channel or "", "channelStatus": ch_status,
             "claimToken": idx, "posWords": n,
         })
-    check_copypaste(slots, ab_pairs, fails, warns)
+    cp_canon_exempt = check_copypaste(slots, ab_pairs, fails, warns, canon_grams)
     check_channels(slots, channels, fails, warns)
-    check_header(text, header, slots, fails, warns)
+    check_header(text, header, slots, fails, warns, oc_names)
+    check_header_contract(header, warns)
     check_pos_floors(slots, text, oc_names, warns)
-    check_race_cast(header, slots, race_statuses, warns)
+    check_race_cast(header, slots, race_statuses, warns, oc_names)
     check_slot_format(slots, warns)
     check_oc_class_floor(slots, fails, warns, batch_no, oc_names)
     check_char_spec(slots, fails, warns, batch_no)
-    cross_shared = check_cross_batch(batch_path, slots, warns)
+    cross_shared, cross_canon_exempt = check_cross_batch(
+        batch_path, slots, warns, canon_grams
+    )
 
     verdict = "FAIL" if fails else "PASS"
     sha = hashlib.sha256(batch_path.read_bytes()).hexdigest()
@@ -843,6 +974,8 @@ def main():
         "warns": [{"slot": a, "gate": b, "msg": c} for a, b, c in warns],
         "slot_table": slot_rows,
         "crossBatchShared": cross_shared,
+        "crossBatchCanonExempt": cross_canon_exempt,
+        "copypasteCanonExempt": cp_canon_exempt,
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
