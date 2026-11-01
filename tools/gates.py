@@ -6,12 +6,18 @@ THREAD 5 — машинные гейты печи (аудит 2026-10-28, 8.2.1�
 Проверяет СОГЛАСОВАННОСТЬ текста батча и физику заявок. Не пишет промпты,
 не заменяет вердикт автора (LAWS §9: единственный законодатель — вердикт).
 
-v1.2.0 (внешний аудит 2026-10-31, F1–F8): гейт «R+ без заявки» (claim-exists),
-поиск заявки без порядка слов, POS-флоры (milf/приборы/имена OC/IP/титул темы),
-реестровые коды (палитры/позы/кинетики/носители), каст кинов (12–14/21,
-active/gold, RF≤2, карантин R30), межбатчевый копипаст (6-граммы против двух
-предыдущих партий), формат строки слота (метки ⚗/☠ за скобкой); парсер терпит
-метки внутри скобок.
+v1.2.0 (внешний аудит 2026-10-31, F1–F8): claim-exists, поиск заявки без
+порядка слов, POS-флоры, реестровые коды, каст кинов, межбатчевый
+копипаст, формат строки слота.
+v1.3.0 (вердикт T5-08, 2026-10-31): claim-exists эскалирован до FAIL,
+POS-бюджет снят (pos.unlimited). v1.4.0 (вердикт T5-09, 2026-11-01):
+oc-class-floor — OC-промпты класса EXQUISITE не ниже (FAIL с T5-10).
+v1.5.0 (директива автора 2026-11-01, рендер Hana для закрепления):
+char-spec — POS каждого слота несёт идентичность ЯВНО (цвет волос /
+цвет глаз / кожа / тело, specs/hair-eye-library.json + стемы gates.json);
+пропущенный параметр = импровизация рендерера (урок T5-09 P26/P31:
+POS без единого тега волос). FAIL с T5-10, исторические партии — WARN-эра;
+⚗ НЕ освобождает (идентичность — не предмет эксперимента).
 
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
@@ -504,6 +510,116 @@ def check_oc_class_floor(slots, fails, warns, batch_no=-1, oc_names=()):
             )
 
 
+def _char_spec_stems():
+    """Словарь цветовых стемов char-spec: hair-eye-library + дополнения gates.json."""
+    cfg = GATES["charSpecGate"]
+    data = json.loads(
+        (ROOT / cfg["hairEyeRegistry"]).read_text(encoding="utf-8")
+    )
+    hair = set(data.get("hair", [])) | set(cfg.get("hairColorStems", []))
+    eyes = set(data.get("eyes", [])) | set(cfg.get("eyeColorStems", []))
+    return hair, eyes
+
+
+def _stem_alt(stems):
+    return "|".join(
+        re.escape(s) for s in sorted(stems, key=len, reverse=True)
+    )
+
+
+def _token_has_stem(token, stems):
+    t = (token or "").lower()
+    return any(s in t for s in stems)
+
+
+def check_char_spec(slots, fails, warns, batch_no=-1):
+    """Директива автора 2026-11-01 (рендер Hana для закрепления, чат):
+    «ВЕЗДЕ должно быть указано ВСЁ о персонаже… палитра это епта не
+    паннацея, всё надо указывать в позитиве, каждую рисуемую мелочь».
+
+    Гейт char-spec: POS каждого слота несёт идентичность ЯВНО — цвет волос,
+    цвет глаз, кожу, тело (список require в gates.json — вето автора правкой
+    списка). Пропущенный параметр = импровизация рендерера: урок T5-09
+    P26/P31 (EXP) — POS без единого тега волос, NEG запретил только
+    blonde/silver/white, рендер вывел цвет из палитры P54_ART_DECO_PLATINUM
+    (platinum-silver) → незаписанный блонд, закреплённый автором как канон
+    Hana (oc-canon v2.5.0). E3-развязка hair-eye-library подтверждена
+    законом: палитра — настроение/свет, hair/eye — идентичность.
+    Исторические партии (номер < applyFrom) — WARN-эра, задним числом не
+    переписываются (урок F2). ⚗-метка НЕ освобождает: идентичность — не
+    предмет эксперимента (в отличие от заявки, check_salience).
+    """
+    cfg = GATES["charSpecGate"]
+    require = set(cfg.get("require", []))
+    if not require:
+        return
+    hair_stems, eye_stems = _char_spec_stems()
+    hair_re = re.compile(
+        rf"\b(?:{_stem_alt(hair_stems)})[a-z-]*\s+(?:[a-z-]+\s+){{0,2}}hair\b",
+        re.I,
+    )
+    # причёска без слова hair: «choppy black bob», «a choppy black bob»
+    hair_style_re = re.compile(
+        rf"\b(?:{_stem_alt(hair_stems)})[a-z-]*\s+(?:[a-z-]+\s+){{0,2}}"
+        rf"(?:{'|'.join(cfg.get('hairStyleWords', []))})\b",
+        re.I,
+    )
+    eye_pre_re = re.compile(
+        rf"\b(?:{_stem_alt(eye_stems)})[a-z-]*\s+(?:[a-z-]+\s+){{0,1}}eyes?\b",
+        re.I,
+    )
+    # цвет ПОСЛЕ слова глаза: «left eye red, right eye blue», face-lock
+    # «anime eyes (wine-red, mood)»
+    eye_post_re = re.compile(r"\beyes?\b\s*(?:\()?\s*([a-z][a-z-]*)", re.I)
+    skin_re = re.compile(r"\bskin\b", re.I)
+    body_re = re.compile(
+        r"\b(?:build|breasts|body|figure|bust|chest|hips|waist|thighs|fullness|hourglass)\b",
+        re.I,
+    )
+    hair_alt = cfg.get("hairAlt", [])
+    skin_alt = cfg.get("skinAlt", [])
+    eye_exempt = cfg.get("eyeExempt", [])
+    escalated = cfg["mode"] == "fail" and not (
+        cfg.get("applyFrom") and batch_no < cfg["applyFrom"]
+    )
+    sink = fails if escalated else warns
+    era = (
+        f"FAIL с T5-{cfg.get('applyFrom', '?'):02d}"
+        if escalated
+        else f"WARN-эра: FAIL с T5-{cfg.get('applyFrom', '?'):02d}"
+    )
+    for s in slots:
+        low = s.pos.lower()
+        missing = []
+        if "hairColor" in require and not (
+            hair_re.search(s.pos)
+            or hair_style_re.search(s.pos)
+            or any(a in low for a in hair_alt)
+        ):
+            missing.append("цвет волос")
+        if "eyeColor" in require:
+            eye_ok = bool(eye_pre_re.search(s.pos)) or any(
+                _token_has_stem(m.group(1), eye_stems)
+                for m in eye_post_re.finditer(s.pos)
+            )
+            if not eye_ok and any(a in low for a in eye_exempt):
+                eye_ok = True  # глаза не видны: вуаль/повязка
+            if not eye_ok:
+                missing.append("цвет глаз")
+        if "skin" in require and not (
+            skin_re.search(s.pos) or any(a in low for a in skin_alt)
+        ):
+            missing.append("кожа")
+        if "body" in require and not body_re.search(s.pos):
+            missing.append("тело")
+        if missing:
+            sink.append(
+                (s.sid, "char-spec",
+                 f"POS без {', '.join(missing)} — параметр не задан, рендерер "
+                 f"импровизирует (F-016, директива «ВЕЗДЕ ВСЁ» 2026-11-01; {era})")
+            )
+
+
 def check_registry(slot, registries, warns):
     """Аудит 2026-10-31, F4/рек.3: коды слота против реестров specs/*.json."""
     pairs = [
@@ -709,6 +825,7 @@ def main():
     check_race_cast(header, slots, race_statuses, warns)
     check_slot_format(slots, warns)
     check_oc_class_floor(slots, fails, warns, batch_no, oc_names)
+    check_char_spec(slots, fails, warns, batch_no)
     cross_shared = check_cross_batch(batch_path, slots, warns)
 
     verdict = "FAIL" if fails else "PASS"
