@@ -1,8 +1,8 @@
 {
   "id": "ultimate-dice",
   "name": "ULTIMATE DICE",
-  "version": "1.0.0",
-  "born": "2026-10-28",
+  "version": "1.2.0",
+  "born": "2026-10-28 · v1.1.0 — приказ автора 2026-11-03: гардероб на кодах (CLOSET) и свет-типы (LIGHTS v2) под кубиком · v1.2.0 — приказ автора 2026-11-03 (вечер): причёски на кодах (SALON) под кубиком — «добавь туда клёвые причёски… добавишь ещё причёсок чтобы было суперово»",
   "owner": "MERCURY (docs/ars/02-MERCURY.md)",
   "born_from": "директива автора (чат, 2026-10-28): выборка цветов, палитр, глаз и волос — кубиком; способ воспроизведения палитры (пастель, масло, флюоресцентная, контрастная, монохром) — кубиком, чтобы не хуярить наугад",
   "law": "раздача не по вкусу писца, а броском; бросок записан в карточку слота (02-mercury.md); переброс легален ТОЛЬКО на коллизию — окно ротации, burn-реестр, collision_table, hard-флор, мёртвая ткань под тир — с записанной причиной",
@@ -13,7 +13,9 @@
       "paint_method": "this.paint_methods",
       "hair_eye": "specs/hair-eye-library.json (ОС — только канон VERBATIM)",
       "kin": "specs/races.json (active/gold; banned никогда)",
-      "gar": "specs/pools.json#sections.gar"
+      "gar": "specs/closet.json (CLOSET: полка → код CL-XX-NN; vault-полка кубиком не выдаётся)",
+      "light": "specs/lights.json (LIGHTS v2: LT01-LT16, тип света без предметов)",
+      "hair_style": "specs/salon.json (SALON: полка → код HS-NN; ОС — канон VERBATIM, кубик не кидается; конфликт с кин-анатомией — переброс)"
     },
     "inheritance": "B-половинка A/B-пары (EXP) наследует палитру A",
     "batch_caps": {
@@ -21,7 +23,15 @@
       "palette_max_reuse": 3,
       "white_thin_garment_max": 3,
       "gar_min_distinct": 10,
-      "gar_upper_half_min": 4
+      "gar_upper_half_min": 4,
+      "closet_min_distinct": 12,
+      "shelf_min_distinct": 6,
+      "vault_raid_cap_per_5_batches": 1,
+      "hair_min_distinct": 12,
+      "hair_single_code_max": 2,
+      "hair_xr_max_each": 1,
+      "light_min_distinct": 6,
+      "light_single_max_pct": 35
     }
   },
   "paint_methods": [

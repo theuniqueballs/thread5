@@ -45,6 +45,16 @@ v1.7.1 (заказ T5-10, чат автора 2026-11-01, вечер): IP-бло
 (никаких флоров/NEG на тему-слова). Данные-only изменение, гейты
 не тронуты — дельта к v1.7.0 ожидается +0.
 
+v1.8.0 (вердикт-директива автора 2026-11-03, «чистка негатива» + формат):
+negHygiene — NEG v3 против «горохострелов»: изъятые классы (гениталии,
+возраст-стек, solo-хвосты) в NEG ≥T5-12 — WARN; приборных юнитов >2 —
+WARN (база держит candle/lamp); цветовые гарды волос — только canon-lock
+ОС и ≤2 юнита; семантических гардов > negBase.perSlotGuardsMax — WARN
+(«как на войну собрался»); условные гарды (2girls/see-through/wet
+clothes) без референса в POS — WARN. formatGate — POS ≥4 семантических
+строк (не башенка; строка ≤140 знаков), NEG ≤3 строк: пустые строки не
+считаются, WARN с applyFrom 12. Исторические партии не переписываются.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -98,6 +108,8 @@ class Slot:
         self.thesis = ""
         self.pos = ""
         self.neg = ""
+        self.pos_lines = []
+        self.neg_lines = []
         parts = [p.strip() for p in paren.split("·")]
         if parts:
             self.genre = parts[0]
@@ -128,8 +140,10 @@ def parse_batch(path):
         nonlocal mode, buf
         if cur is not None and mode == "pos":
             cur.pos = norm_ws(" ".join(buf))
+            cur.pos_lines = [l for l in buf if l]
         elif cur is not None and mode == "neg":
             cur.neg = norm_ws(" ".join(buf))
+            cur.neg_lines = [l for l in buf if l]
         mode, buf = None, []
 
     for ln in lines:
@@ -201,9 +215,28 @@ def is_oc_slot(s, oc_names=()):
     return "OC" in tokens or bool(tokens & {n for n in oc_names if n})
 
 
-def check_floors(slot, fails):
+def removed_neg_classes():
+    """negBase v3 (gates.json v1.8.0): классы, изъятые из NEG вердиктом
+    2026-11-03 («Чистка негатива (частичная)»). Слова остаются флорами POS,
+    но NEG их больше не несёт — гейт не должен требовать изъятое."""
+    nb = GATES.get("negBase", {})
+    out = set()
+    for units in nb.get("removedClasses", {}).values():
+        out.update(u.lower() for u in units)
+    return out
+
+
+def neg_v3_active(batch_no):
+    nb = GATES.get("negBase", {})
+    return batch_no >= int(nb.get("applyFrom", 10**9))
+
+
+def check_floors(slot, fails, batch_no=-1):
     neg = slot.neg.lower()
+    skip = removed_neg_classes() if neg_v3_active(batch_no) else set()
     for f in GATES["header"]["hardFloors"]:
+        if f.lower() in skip:
+            continue
         if f.lower() not in neg:
             fails.append((slot.sid, "floor", f"NEG нет hard-флоры: {f}"))
     for w in GATES["header"]["candleFloorWords"]:
@@ -293,6 +326,87 @@ def check_neg_linter(slot, fails, warns):
                 (slot.sid, "neg-self-shot",
                  "«nipples exposed» в NEG сквозь-ткань слота глушит заявку (каталог A3)")
             )
+
+
+def check_neg_hygiene(slot, fails, warns, batch_no=-1, oc_names=()):
+    """v1.8.0 — NEG v3 против «горохострелов» (вердикт автора 2026-11-03).
+    Изъятые классы / приборы >2 / цветовые гарды волос вне canon-lock ОС /
+    гарды > perSlotGuardsMax / условные гарды без референса в POS → WARN."""
+    cfg = GATES.get("negBase") or {}
+    if not cfg or (0 <= batch_no < cfg.get("applyFrom", 10 ** 9)):
+        return
+    units = [norm_ws(u) for u in slot.neg.split(",") if norm_ws(u)]
+    low = [u.lower() for u in units]
+    low_set = set(low)
+
+    for cls, lst in (cfg.get("removedClasses") or {}).items():
+        for u in lst:
+            if u.lower() in low_set:
+                warns.append((slot.sid, "neg-hygiene",
+                              f"«{u}» — класс «{cls}» изъят из NEG (negBase v3): "
+                              f"никогда не рисовался бы и без нас"))
+
+    base_set = {b.lower() for b in cfg.get("always", [])}
+    cond_map = cfg.get("conditional") or {}
+    semantic = 0
+    for u, ul in zip(units, low):
+        if ul in base_set:
+            continue
+        semantic += 1
+        need = cond_map.get(u) or cond_map.get(ul)
+        if need and not re.search(need, slot.pos, re.I):
+            warns.append((slot.sid, "neg-hygiene",
+                          f"гард «{u}» без референса в POS (нужен: {need}) — "
+                          f"паразит-NEG (negBase v3, смежно закону №14)"))
+    if semantic > cfg.get("perSlotGuardsMax", 4):
+        warns.append((slot.sid, "neg-hygiene",
+                      f"семантических гардов {semantic} > {cfg.get('perSlotGuardsMax', 4)} — "
+                      f"NEG собрался на войну (вердикт 2026-11-03)"))
+
+    dev_words = ("candle", "candles", "candelabra", "lamp", "bulb", "lightbulb",
+                 "lantern", "torch", "chandelier", "brazier", "streetlight",
+                 "floodlight", "spotlight")
+    devs = [u for u in low if u in dev_words]
+    if len(devs) > 2:
+        warns.append((slot.sid, "neg-hygiene",
+                      f"приборных юнитов {len(devs)} > 2 — база v3 держит только candle, lamp "
+                      f"(закон света v2: POS без приборов)"))
+
+    hc = [u for u in low if re.search(r"^(?:not\s+)?[a-z\-]+\s+hair$", u)]
+    if hc and not is_oc_slot(slot, oc_names):
+        warns.append((slot.sid, "neg-hygiene",
+                      f"цветовые гарды волос ({', '.join(hc)}) — только canon-lock ОС; "
+                      f"у рандомных девиц цвет пишет POS VERBATIM (negBase v3)"))
+    elif len(hc) > 2:
+        warns.append((slot.sid, "neg-hygiene",
+                      f"цветов волос в NEG {len(hc)} > 2 — «несколько цветов волос» "
+                      f"лишняя хуйня (вердикт 2026-11-03)"))
+
+
+def check_format_gate(slot, warns, batch_no=-1):
+    """v1.8.0 — формат-гейт «не башенка» (вердикт автора 2026-11-03):
+    POS ≥ posMinLines семантических строк, NEG ≤ negMaxLines строк,
+    строка ≤ maxLineChars. Пустые строки не считаются."""
+    cfg = GATES.get("formatGate") or {}
+    if not cfg or (0 <= batch_no < cfg.get("applyFrom", 10 ** 9)):
+        return
+    mx = cfg.get("maxLineChars", 140)
+    pos_lines = [l for l in getattr(slot, "pos_lines", []) if l.strip()]
+    if pos_lines:
+        if len(pos_lines) < cfg.get("posMinLines", 4):
+            warns.append((slot.sid, "format",
+                          f"POS собран в {len(pos_lines)} строку(и) — башенка: разбросай "
+                          f"по семантическим строкам (≥{cfg.get('posMinLines', 4)})"))
+        for l in pos_lines:
+            if len(l) > mx:
+                warns.append((slot.sid, "format",
+                              f"POS-строка {len(l)} знаков > {mx} — башенка, читается "
+                              f"по вертикали, а не разом"))
+    neg_lines = [l for l in getattr(slot, "neg_lines", []) if l.strip()]
+    if neg_lines and len(neg_lines) > cfg.get("negMaxLines", 3):
+        warns.append((slot.sid, "format",
+                      f"NEG в {len(neg_lines)} строках > {cfg.get('negMaxLines', 3)} — "
+                      f"лишние абзацы ни к чему (вердикт 2026-11-03)"))
 
 
 CLAIM_RE = re.compile(
@@ -1030,8 +1144,10 @@ def main():
     fails, warns = [], []
     slot_rows = []
     for s in slots:
-        check_floors(s, fails)
+        check_floors(s, fails, batch_no)
         check_neg_linter(s, fails, warns)
+        check_neg_hygiene(s, fails, warns, batch_no, oc_names)
+        check_format_gate(s, warns, batch_no)
         idx, sig = claim_token(s)
         check_salience(s, idx, sig, fails, warns)
         check_claim_exists(s, idx, fails, warns, batch_no)

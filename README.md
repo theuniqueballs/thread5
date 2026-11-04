@@ -4,6 +4,10 @@ Batch-Prompt Conveyer Belt
 Конвейер промпт-батчей для аниме-рендеров (Tsubaki.2 Pro → Yodayo).
 Наследник THREAD 4 — на новом ядре, без посредников.
 
+> **Статус: 5.1 BETA** (2026-11-02). Гигиена проведена: винтаж T4, старые аудиты
+> и челлендж-эксперимент — в `archive/2026-11-02-hygiene/`. Новый формат
+> (NL + аниме-теги + PH) — проект в `docs/T5-1-BETA.md`, переезд — `HANDOVER-T5-1.md`.
+
 ## Петля (всё, что имеет ценность)
 
 ```
@@ -18,7 +22,7 @@ Batch-Prompt Conveyer Belt
 
 ## Структура
 
-- `batches/` — батчи T5-NN (RAW+ / данбуру-формат) + `_TEMPLATE.md` (винтаж);
+- `batches/` — батчи T5-NN (RAW+ / данбуру-формат);
   рабочие артефакты сеансов — `batches/T5-NN/00-brief, 01-sol … 05-furnace`
   (бриф — по `_BRIEF-TEMPLATE.md`)
 - `special/` — SPECIAL ORDERS: штучки вне цикла (заказы автора: подарки, приколы, одна сцена) — SO-NN.md, тот же RAW+ формат, без раскрытия темы
@@ -28,7 +32,9 @@ Batch-Prompt Conveyer Belt
   `05-FURNACE` (ревью, блокнот `specs/furnace-ledger.json`)
 - `docs/` — LAWS.md (физика системы), TASTE, RENDERER_FACTS, NICHE,
   ANTI-MOVES (библиотека гарантированного трупа), LIVING-NOTES (архив),
-  STORAGE-AUDIT, EXAMPLE-T4-44 (винтаж)
+  STORAGE-AUDIT
+- `archive/` — гигиена 2026-11-02: винтаж T4 (EXAMPLE-T4-44, _TEMPLATE),
+  обработанные аудиты, челлендж-эксперимент «Чистый лист» (+чемоданы)
 - `specs/` — данные-активы T4 (позы ×240, палитры ×120, носители ×280,
   OC-канон ×20, `ultimate-dice.json`, `furnace-ledger.json`,
   `moves-ledger.json` (реестр ходов: износ/отставка/триггеры), …)

@@ -1,0 +1,44 @@
+{
+ "id": "body",
+ "name": "BODY / NATURAL v2 — телесный протокол VOLT",
+ "version": "1.0.0",
+ "born": "2026-11-03, вердикт-директива автора на язык T5-11: «Сделать больше уточнений по телу. Состояние в данный момент времени, грудь, руки, бёдра, попа - всё это требует довольно детального описания в промптах вольт, если этого не требуется в нише... стоит она ко мне лицом, можешь смачно-вкусно описать мне как выглядит в данный момент всё что спереди, а-ля грудь и бёдра, но не описывать при этом то, что сзади. Протокол NATURAL, уже был когда-то создан, но забыт. Больше всего относится к баффу VOLT на самом деле. Не надо рисовать мускулистых женщин... не пиши это в негативе, просто напиши в правилах»",
+ "law": "ТЕЛО — ЧАСТЬ ЗАЯВКИ. В VOLT тело несёт второй тег-ран после лица: грудь/руки/бёдра/попа/ноги с СОСТОЯНИЕМ НА МОМЕНТ КАДРА. Описывается ТОЛЬКО видимое камере (visibility law). Вес/мягкость/провис/сплющивание — контакт-геометрией в прозе (NATURAL v2, ревизия №15: тег-кластер мёртв, braless-токен изъят). Мускулистых женщин не собираем — правилом сборки, не негативом.",
+ "natural_v2": {
+  "history": "приказ P06 (T4-25): «взять на заметку протокол NATURAL для тела и телесных типов»; вердикт T4-26 (ревизия №15): тег-кластер NATURAL мёртв («слишком упруго / висит в воздухе» лечится не кластером тегов) — жива КОНТАКТ-ГЕОМЕТРИЯ. v1.0.0 (2026-11-03): реанимация приказа как буфф VOLT — тело в прозе геометрией контакта.",
+  "geometry_verbs": [
+   "the weight settles / pools / spills",
+   "soft weight pressing flat where it meets the surface",
+   "gravity voting one direction",
+   "the bust line lagging a half-beat behind the turn",
+   "flesh reshaping honestly against the contact",
+   "the fold breathing with her",
+   "the curve sinking a finger-width into the support"
+  ],
+  "failure_it_cures": ["слишком упруго / неестественно круглая", "висит в воздухе", "пластиковая грудь без физики", "поза без веса тела"]
+ },
+ "visibility_law": {
+  "text": "КАМЕРА ВИДИТ — ПРОЗА ПИШЕТ. Тело описывается по тому, что реально в кадре: стоит лицом → грудь, живот, бёдра спереди, руки, ноги — смачно и вкусно; спиной → спина, лопатки, попа, задняя линия бёдер; профиль → силуэтная линия, проекция груди, изгиб спины/попа одной линией. НЕВИДИМОЕ НЕ ОПИСЫВАЕТСЯ: попа при фронтальной камере не существует; грудь со спины не существует. Парность в парах A/B и у зеркал: зеркало/отражение открывает вторую сторону — тогда можно обе.",
+  "map": {
+   "front": ["breast shape/state", "cleavage line", "belly/navel", "front hip-line", "arms/hands", "thighs front", "neck/collarbones"],
+   "back": ["shoulder blades", "back dimples", "spine line", "ass", "rear thigh line", "tail (kin)", "wing/horn roots (kin)"],
+   "profile": ["silhouette line", "bust projection", "spine curve", "ass curve", "belly line"]
+  },
+  "note": "стыковка с camera.json: дистанция/угол камеры определяют список зон; zones visible = zones written (не наоборот)."
+ },
+ "detail_default_volt": {
+  "order": "после face-lock, до одежды: 1) грудь — форма + состояние момента; 2) руки — что ДЕЛАЮТ; 3) бёдра — ширина/линия/состояние; 4) попа — только когда видна; 5) ноги — линия/опора; 6) кожа — состояние момента (мокрая/запыхавшаяся/в пыли/раскрасневшаяся).",
+  "breast_states": ["soft settled", "full and heavy", "perky small", "modest neat", "mid-bounce with the step", "pressed flat by the lean", "spilling past the cup edge"],
+  "arm_states": ["one arm braced", "fingers sunk into the fabric", "arms crossed under the chest", "hands idle at the hem", "forearms tense holding the rail"],
+  "hip_states": ["wide-set", "narrow boyish", "one hip cocked out", "hips leading the turn", "hips flush against the surface"],
+  "skin_states": ["glistening with sweat", "beaded with water", "flushed warm at the chest", "dusted with sand", "chill-bumped", "wet-look sheen"]
+ },
+ "muscle_law": {
+  "text": "ПРИКАЗ АВТОРА 2026-11-03: «Не надо рисовать мускулистых женщин. Не пиши это в негативе, просто напиши в правилах» — сильно мускулистое НАХУЙ С ПЛЯЖА. Сборка: тон тела soft/firm/toned-lite/athletic-sleek; ЗАПРЕЩЁННЫЕ слова в POS: muscular, ripped, six-pack, defined abs, bulging, bodybuilder, female muscle. NEG не трогаем (автор: «не пиши это в негативе») — рендерер сам не рисует бицепсы, если их не просить.",
+  "register_bridge": "student — лёгкая/стройная; young — женственно-мягкая; full — мягкая состоявшаяся (.policy регистры формой тела).Athletic — sleek, не рельеф.",
+  "note": "черные вещи ямочки/линии напряжения (колени, локти) разрешены — это натуральная анатомия, не мускулатура."
+ },
+ "niche_exemption": "NICHE тело не требует: в нише работа принадлежит чуду/расе/свидетелю — телесная деталь включается только если зона в кадре и несёт заявку. VOLT — тело ОБЯЗАНО работать (половина работы слота, вместе с камерой).",
+ "pos_pattern": "<грудь+состояние>, <руки-глагол>, <бёдра+линия>, <(попа, если видна)>, <ноги/опора>, <кожа-состояние> — тегами до прозы, прозой дублировать только КОНТАКТ (NATURAL v2).",
+ "receipt": "вердикт автора 2026-11-03 целиком в verdicts/T5-11-verdict-20261103-1817.md"
+}

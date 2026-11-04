@@ -1,0 +1,736 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.7.1)",
+ "batch": "batches/T5-11.md",
+ "sha256": "846feb811a86a640284ff48488300c9cb7dbeb69c96646a6906943571aa787b2",
+ "utc": "2026-11-02T18:38:22+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «eyes visible through veil»"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «eye shape visible through fabric»"
+  },
+  {
+   "slot": "P02",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «beam replaced by rope»"
+  },
+  {
+   "slot": "P02",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «mist above the beam»"
+  },
+  {
+   "slot": "P03",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «dress intact on shoulders»"
+  },
+  {
+   "slot": "P06",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «laundry on the line»"
+  },
+  {
+   "slot": "P07",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «tail curled around leg»"
+  },
+  {
+   "slot": "P09",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «steam column on figure»"
+  },
+  {
+   "slot": "P12",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «kimono intact both shoulders»"
+  },
+  {
+   "slot": "P14",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «shadows radial from lamp»"
+  },
+  {
+   "slot": "P18",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «full bee wings large»"
+  },
+  {
+   "slot": "P21",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «water in the drum»"
+  },
+  {
+   "slot": "P24",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «tarp on the ground»"
+  },
+  {
+   "slot": "P25",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «both hands on tee»"
+  },
+  {
+   "slot": "P25",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «[NEG-ANCHOR] chair sat on»"
+  },
+  {
+   "slot": "P26",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «both hands on tee»"
+  },
+  {
+   "slot": "P26",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «[NEG-ANCHOR] chair sat on»"
+  },
+  {
+   "slot": "P30",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «ramrod replaced by sword»"
+  },
+  {
+   "slot": "P31",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «big white wings spread»"
+  },
+  {
+   "slot": "P31",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «visible eyes through cloth»"
+  },
+  {
+   "slot": "P02+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «light holding her shoulder line bright»"
+  },
+  {
+   "slot": "P05+P09",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «free of her elbow into the»"
+  },
+  {
+   "slot": "P05+P09",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «of her elbow into the air»"
+  },
+  {
+   "slot": "P06+P21",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «linen white warm light through the»"
+  },
+  {
+   "slot": "P07+P15",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «from below looking at viewer crimson»"
+  },
+  {
+   "slot": "P11+P22",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «petite student build small neat breasts»"
+  },
+  {
+   "slot": "P11+P22",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «skin petite student build small neat»"
+  },
+  {
+   "slot": "P12+P16",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «light holding her horn line bright»"
+  },
+  {
+   "slot": "P17+P21",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «light holding her wrist line bright»"
+  },
+  {
+   "slot": "P20+P21",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «mouth the column light holding her»"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "22 общих 6-грамм с предыдущими партиями (T5-09.md, T5-10.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "ash-votive-harvest",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 182
+  },
+  {
+   "id": "P02",
+   "slug": "ila-ridge-crossing",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 54,
+   "posWords": 158
+  },
+  {
+   "id": "P03",
+   "slug": "lua-koi-moon-harvest",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 9,
+   "posWords": 179
+  },
+  {
+   "id": "P04",
+   "slug": "stairwell-leans-one-degree",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 164
+  },
+  {
+   "id": "P05",
+   "slug": "salamander-uprunning-bath",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 44,
+   "posWords": 177
+  },
+  {
+   "id": "P06",
+   "slug": "goatkin-laundry-orbit",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 173
+  },
+  {
+   "id": "P07",
+   "slug": "succubus-tail-loses-argument",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 166
+  },
+  {
+   "id": "P08",
+   "slug": "mushroom-spore-upstream",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 48,
+   "posWords": 177
+  },
+  {
+   "id": "P09",
+   "slug": "shower-water-leaves-upward",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 26,
+   "posWords": 168
+  },
+  {
+   "id": "P10",
+   "slug": "merfolk-tide-at-the-door",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 33,
+   "posWords": 168
+  },
+  {
+   "id": "P11",
+   "slug": "sleeper-rails-converge",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 159
+  },
+  {
+   "id": "P12",
+   "slug": "oni-cracks-come-to-supper",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 181
+  },
+  {
+   "id": "P13",
+   "slug": "slip-and-the-late-reflection",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 29,
+   "posWords": 157
+  },
+  {
+   "id": "P14",
+   "slug": "wolfkin-shadows-one-way",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 172
+  },
+  {
+   "id": "P15",
+   "slug": "batkin-hang-and-the-hair-falls-up",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 52,
+   "posWords": 153
+  },
+  {
+   "id": "P16",
+   "slug": "gargoyle-facade-faces-the-point",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 158
+  },
+  {
+   "id": "P17",
+   "slug": "serpentkin-violin-hold",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 172
+  },
+  {
+   "id": "P18",
+   "slug": "beekeeper-royal-figure-eight",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 43,
+   "posWords": 169
+  },
+  {
+   "id": "P19",
+   "slug": "mousekin-furniture-slid-east",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 51,
+   "posWords": 168
+  },
+  {
+   "id": "P20",
+   "slug": "phoenix-embers-ascend",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 44,
+   "posWords": 168
+  },
+  {
+   "id": "P21",
+   "slug": "washhouse-water-takes-the-ceiling",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 28,
+   "posWords": 156
+  },
+  {
+   "id": "P22",
+   "slug": "reading-room-one-wind",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 161
+  },
+  {
+   "id": "P23",
+   "slug": "elevator-lets-go-of-the-floor",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 34,
+   "posWords": 157
+  },
+  {
+   "id": "P24",
+   "slug": "sail-that-pulls-her-up",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 29,
+   "posWords": 181
+  },
+  {
+   "id": "P25",
+   "slug": "handbra-claim-early",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 26,
+   "posWords": 164
+  },
+  {
+   "id": "P26",
+   "slug": "handbra-claim-late",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 26,
+   "posWords": 180
+  },
+  {
+   "id": "P27",
+   "slug": "covered-nipples-weights-a",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 28,
+   "posWords": 163
+  },
+  {
+   "id": "P28",
+   "slug": "covered-nipples-weights-b",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 28,
+   "posWords": 159
+  },
+  {
+   "id": "P29",
+   "slug": "taida-pool-pressure",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 47,
+   "posWords": 167
+  },
+  {
+   "id": "P30",
+   "slug": "haira-hoard-standoff",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 47,
+   "posWords": 171
+  },
+  {
+   "id": "P31",
+   "slug": "aella-dawn-taping",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 155
+  },
+  {
+   "id": "P32",
+   "slug": "fanya-phase-laundry",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 179
+  },
+  {
+   "id": "P33",
+   "slug": "mako-coin-dawn",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 156
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "whole face except the bare mouth",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "face except the bare mouth snow",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "except the bare mouth snow pale",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "the bare mouth snow pale skin",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "bare mouth snow pale skin slender",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "mouth snow pale skin slender body",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "snow pale skin slender body modest",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "pale skin slender body modest neat",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "skin slender body modest neat breasts",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "spine's line ember freckles at the",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "line ember freckles at the jaw",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "eyes warm satin skin tall curvy",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P31"
+   ]
+  },
+  {
+   "gram": "light holding her horn line bright",
+   "slotsHere": [
+    "P12",
+    "P16"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P27"
+   ]
+  },
+  {
+   "gram": "tall ribbed bat ears small wing",
+   "slotsHere": [
+    "P15"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P26"
+   ]
+  },
+  {
+   "gram": "ribbed bat ears small wing membranes",
+   "slotsHere": [
+    "P15"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P26"
+   ]
+  },
+  {
+   "gram": "tall athletic build medium firm breasts",
+   "slotsHere": [
+    "P20"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "covered nipples two soft reliefs in",
+   "slotsHere": [
+    "P28"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P13"
+   ]
+  },
+  {
+   "gram": "nipples two soft reliefs in the",
+   "slotsHere": [
+    "P28"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P13"
+   ]
+  },
+  {
+   "gram": "small white wings folded tight at",
+   "slotsHere": [
+    "P31"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P19"
+   ]
+  },
+  {
+   "gram": "white wings folded tight at her",
+   "slotsHere": [
+    "P31"
+   ],
+   "sourceBatch": "T5-09.md",
+   "slotsThere": [
+    "P19"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "warm satin skin tall curvy build",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-09.md"
+  },
+  {
+   "gram": "satin skin tall curvy build heavy",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-09.md"
+  },
+  {
+   "gram": "skin tall curvy build heavy soft",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-09.md"
+  },
+  {
+   "gram": "tall curvy build heavy soft breasts",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-09.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [
+  "M01"
+ ],
+ "storyCards": true
+}

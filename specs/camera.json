@@ -1,0 +1,60 @@
+{
+ "id": "camera",
+ "name": "CAMERA-FIRST — камера как половина работы",
+ "version": "1.0.0",
+ "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
+ "law": "КАМЕРА ПЕРВАЯ. Порядок сборки VOLT: (1) кубик камеры: дистанция D + угол A; (2) поза PL выбирается ИЗ СЕМЕЙ, СОГЛАСНЫХ с D×A (не наоборот); (3) visibility law (body.json) пишет только то, что D×A видит; (4) в POS кадр пишется «viewed from ...» — токен «camera ...» запрещён (bans.json: рендерер рисует камеру предметом). Поза и камера вместе делают половину работы слота; заявка через ткань — не замена композиции.",
+ "distance_ladder": {
+  "D1": {"name": "макро-лицо", "pos": "extreme close-up on the face", "frame": "глаза/губы/ресницы; тело вне кадра", "poses": ["micropose_expression"], "visibility": ["eyes", "mouth", "lashes", "cheeks"]},
+  "D2": {"name": "портрет / личико", "pos": "portrait, head and shoulders, face filling the frame", "frame": "лицо + плечи; околопортрет", "poses": ["micropose_expression", "base"], "visibility": ["face", "neck", "collarbones", "shoulders"]},
+  "D3": {"name": "полу-корпус", "pos": "upper body shot, waist up", "frame": "грудь/руки/шея", "poses": ["base", "erotic_presentation", "micropose_expression"], "visibility": ["breast shape/state", "arms/hands", "collarbones", "neck"]},
+  "D4": {"name": "ковбой", "pos": "cowboy shot, mid-thigh up", "frame": "классика заявки: грудь+бёдра", "poses": ["erotic_presentation", "ecchi_classic", "base", "dynamic_v2"], "visibility": ["breast", "hips", "arms", "upper thighs", "hands"]},
+  "D5": {"name": "в полный рост", "pos": "full body shot, head to feet", "frame": "вся фигура", "poses": ["base", "erotic_presentation", "ecchi_classic", "dynamic_v2", "env_interaction", "threshold_limen"], "visibility": ["все зоны по углу A"]},
+  "D6": {"name": "широкий", "pos": "wide shot, figure prominent, environment speaking", "frame": "фигура + мир", "poses": ["env_interaction", "dynamic_v2", "threshold_limen", "performance_mirror"], "visibility": ["силуэтные зоны; детали тела не читаются — не писать"]},
+  "D7": {"name": "фигура-точка", "pos": "extreme wide shot, the girl small against the scale of the world", "frame": "масштаб", "poses": ["env_interaction", "threshold_limen"], "visibility": ["силуэт; только поза-смысл"]},
+  "D8": {"name": "макро-деталь", "pos": "extreme close-up on a single detail (hand, collarbone, hem, lips)", "frame": "одна деталь — мир в ней", "poses": ["micropose_expression"], "visibility": ["одна зона-деталь"]}
+ },
+ "angles": {
+  "A01": {"name": "глаз-уровень фронт", "pos": "viewed from the front at eye level", "note": "равный разговор, честный контакт глаз"},
+  "A02": {"name": "три четверти", "pos": "viewed from a three-quarter angle", "note": "дефолт-объём; глубина без драмы"},
+  "A03": {"name": "снизу", "pos": "viewed from slightly below", "note": "рост и власть; бёдра приближаются"},
+  "A04": {"name": "сверху", "pos": "viewed from above", "note": "хрупкость/забота; грудь разворачивается к камере"},
+  "A05": {"name": "топ-даун", "pos": "viewed straight from above, top-down", "note": "лежачие позы; звезда тела на полу"},
+  "A06": {"name": "профиль", "pos": "viewed in strict profile", "note": "линия — вся заявка в одной кривой"},
+  "A07": {"name": "со спины", "pos": "viewed from behind", "note": "спина/попа/затылок; лицо только намёком"},
+  "A08": {"name": "из-за плеча", "pos": "viewed over her shoulder", "note": "соучастие; взгляд в камеру через плечо"},
+  "A09": {"name": "голландский наклон", "pos": "dutch tilt, frame canted a few degrees", "note": "потеря равновесия; использовать ≤1/батч"},
+  "A10": {"name": "сквозь элемент", "pos": "viewed through a foreground element (doorway, curtain, rail)", "note": "подглядывание-рамка; элемент среды, не прибор"},
+  "A11": {"name": "зеркало", "pos": "mirror reflection shot", "note": "второй ракурс бесплатно; visibility ×2"},
+  "A12": {"name": "аэрал", "pos": "aerial view from high above", "note": "карта сцены; D6/D7 спутник"},
+  "A13": {"name": "уровень воды", "pos": "water-level camera", "note": "пляж/бассейн; полкадра — стихия"},
+  "A14": {"name": "ворота бедра", "pos": "hip-height gate framing, camera at the hip line", "note": "низкий проницательный регистр"},
+  "A15": {"name": "нижняя линия взгляда", "pos": "low sightline between the knees from below", "note": "R+/X только, риск высок, ≤1/батч"},
+  "A16": {"name": "рыбий глаз сиденья", "pos": "fisheye distortion from a near seat", "note": "искажение-событие, ≤1/батч"}
+ },
+ "pairing": {
+  "rule": "PL+CAM обязаны согласиться (§33 pair law остаётся): поза со спины не снимается фронтально; лежачая не снимается как стоячая. Вне предпочтений позы — FLAG в шапке слота с причиной.",
+  "reverse": "старый порядок «поза → камера» сохранён только у OC/NICHE; в VOLT — камера первая.",
+  "synergy_examples": [
+   "D4+A03 — ковбой снизу: бёдра и ноги растут, грудь на фоне света — самый мясной VOLT-кадр",
+   "D2+A01 — портрет в глаз: лицо как сцена; NATURAL пишет шею/ключицы, не тело",
+   "D5+A07 — в полный рост со спины: попа/лопатки/хвост кина — задняя заявка",
+   "D3+A08 — полукорпус из-за плеча: взгляд в камеру, грудь краем — соучастие",
+   "D1+A04 — макро-лицо сверху: ресницы, полу-улыбка, разбитый свет"
+  ]
+ },
+ "batch_caps": {
+  "distance_min_distinct": 5,
+  "face_class_D1_D2": "3–5 на батч (приказ: «хотелось бы и на личико... околопортретное»)",
+  "single_distance_max_pct": 40,
+  "A09_A15_A16_max_each": 1,
+  "note": "капы в headerContract не добавлены — WARN-счёт идёт в квитанции вручную до машинизации (гейт registry прогонит CAM-коды при записи Spine)."
+ },
+ "pos_language": {
+  "yes": "viewed from the front at eye level / viewed from above / portrait, head and shoulders / cowboy shot / extreme close-up on the face",
+  "no": "camera angle from below, camera pans, low-angle camera (bans.json: 'camera X' рисует камеру-объект)",
+  "line": "кадровая строка — ПОСЛЕДНЯЯ строка POS рядом с face-блоком (PROSE PLUS: кадр+лицо в финале)."
+ },
+ "volt_share": "VOLT: камера+поза = половина работы слота. Если заявка R+ не держится без через-ткани — сначала пересобрать D×A×PL, потом трогать канал.",
+ "supersedes_note": "позы.json cam_reference остаётся словарём углов; camera.json — рабочий стол сборки и капов. CAM-коды в Spine пишутся как раньше (CAM##), дистанция — новой литерой D#."
+}

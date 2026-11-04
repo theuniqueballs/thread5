@@ -1,0 +1,32 @@
+{
+ "id": "lights",
+ "name": "LIGHTS v2 — свет без предметов (откровенные типы)",
+ "version": "1.0.0",
+ "born": "2026-11-03, вердикт-директива автора на язык T5-11: «Можно поиграться с освещением и попробовать какие-то другие, более откровенные типы света и более конкретные, но опять же, без описания именно предметов типа фонарик, свеча и всё такое, потому что этого немножко не хватило мне»",
+ "law": "СВЕТ = ТИП, НЕ ПРЕДМЕТ. В POS свет описывается характером (жёсткий/косой/контровой/пятнистый/каустики), никогда прибором (фонарик/свеча/лампа — gates posFloors.deviceWords остаётся). reveal — насколько свет раздевает: чем выше, тем бережнее channel-логика. Кубик ULTIMATE DICE → sources.light. Один LT на слот; в строке света PROSE PLUS — verbatim pos_fragment.",
+ "types": [
+  {"id": "LT01", "name": "Hard Side Carve", "pos": "hard side light carving the torso, every curve a border of shadow", "reveal": 5, "note": "самый откровенный: лепит рельеф, никуда не прячет", "synergy": ["D3", "D4", "A02", "A06"]},
+  {"id": "LT02", "name": "Backlight Rim", "pos": "backlight rim tracing the silhouette, body edge burning bright against the dark", "reveal": 4, "note": "кайма по силуэту; ткань на просвет", "synergy": ["D5", "D6", "A07", "A06"]},
+  {"id": "LT03", "name": "Sheer-Through Glow", "pos": "strong light from behind shining through the fabric, the whole silhouette reading through the cloth", "reveal": 5, "note": "свет СКВОЗЬ ткань — откровеннейший тип; для wet-sheer/dry-sheer каналов", "synergy": ["D4", "D5", "A03", "A08"]},
+  {"id": "LT04", "name": "Single Pool in Darkness", "pos": "one pool of hard light in the surrounding darkness, the edges of the frame swallowed", "reveal": 3, "note": "пул света без имени прибора — среда сама решает, откуда", "synergy": ["D2", "D5", "A01", "A04"]},
+  {"id": "LT05", "name": "Golden-Hour Slant", "pos": "low slanted golden-hour light, long shadows, warm edge on the skin", "reveal": 3, "note": "тёплый косой — классика с характером", "synergy": ["D4", "D5", "A01", "A03"]},
+  {"id": "LT06", "name": "Moonlit Cool Wash", "pos": "cool moonlit wash over everything, silver on the curves, night-blue depth", "reveal": 3, "note": "холодная заливка; кожа светится сама", "synergy": ["D5", "D6", "A03", "A12"]},
+  {"id": "LT07", "name": "Dappled Leaf-Light", "pos": "dappled light through leaves, coins of light wandering over the shoulders and thighs", "reveal": 3, "note": "пятна света = естественная цензура и игра", "synergy": ["D4", "D5", "A02"]},
+  {"id": "LT08", "name": "Top-Down Noontide", "pos": "harsh top-down noon light, shadows driven deep under the brow and the bust", "reveal": 4, "note": "жёсткий верхний: глазницы и подгрудные тени честные", "synergy": ["D3", "D4", "A04", "A05"]},
+  {"id": "LT09", "name": "Half-Face Split", "pos": "light splitting the face in half, one cheek bright, one in shadow", "reveal": 2, "note": "драма лица; для портретов D1/D2", "synergy": ["D1", "D2", "A01", "A06"]},
+  {"id": "LT10", "name": "Caustic Water-Net", "pos": "caustic reflections of water crawling across the skin and walls in bright nets", "reveal": 4, "note": "каустики — свет живой и вездесущий", "synergy": ["D3", "D4", "D5", "A13"]},
+  {"id": "LT11", "name": "Underglow Warmth", "pos": "warm uplight rising from below (embers, heated stone, warm floor), chin lit from beneath", "reveal": 3, "note": "нижнее тёплое СРЕДЫ (угли/камень/пол) — источник в мире, не в руках", "synergy": ["D2", "D4", "A03"]},
+  {"id": "LT12", "name": "Storm-Silver Flat", "pos": "flat silver storm light, no shadows, everything honest and exposed", "reveal": 4, "note": "предгрозовая честность: без теней некуда прятать", "synergy": ["D5", "D6", "A02"]},
+  {"id": "LT13", "name": "Dawn-Cold Blush", "pos": "cold dawn light with the first pink degree, long faint shadows", "reveal": 2, "note": "нежный регистр; сонные сцены", "synergy": ["D2", "D5", "A01"]},
+  {"id": "LT14", "name": "Self-Lit Kin", "pos": "the only light coming from her (ember crest, inner glow, corona ring), the world lit by her body", "reveal": 4, "note": "раса-источник (R22/R34/R46/R48/R25) — закон света v2 native", "synergy": ["все D", "A07", "A02"]},
+  {"id": "LT15", "name": "Screen-Glow Cool", "pos": "cool underlight of a screen glowing on the face and chest, the room dark beyond", "reveal": 3, "note": "экран не назван прибором-реквизитом? свет — нижний холодный; если в слоте нет экрана — источник «неизвестный нижний холодный»", "synergy": ["D1", "D2", "D3", "A01"]},
+  {"id": "LT16", "name": "Silhouette Confession", "pos": "full backlight pressing the body into a silhouette, every curve confessed by the edge", "reveal": 5, "note": "чистый силуэт: фигура — чёрная, кромка говорит всё", "synergy": ["D5", "D6", "A06", "A07"]}
+ ],
+ "usage": [
+  "строка света в POS: pos_fragment verbatim + привязка к зоне заявки (закон №21: свет на зоне)",
+  "reveal ≥4 — проверка канала: чем откровеннее свет, тем конкретнее должен быть материал/состояние ткани",
+  "LT15: если экрана в сцене нет — пишется нижний холодный свет без слова screen",
+  "запрет остаётся: приборные слова (bulb/lamp/candle/lantern/torch/chandelier/brazier/flashlight/streetlight/spotlight) никогда в POS"
+ ],
+ "dice_hook": {"owner": "MERCURY", "record_format": "P##: LT01 (переброс: причина)", "batch_caps": {"light_min_distinct": 6, "single_light_max_pct": 35, "reveal5_max": 3}}
+}

@@ -1,7 +1,7 @@
 {
- "version": "2.3.0",
+ "version": "2.4.0",
  "born": "2026-09-19",
- "source": "3.2 POOLS_V8 race_pool R01-R15 + race_extension_v2 R16-R22 + Thread-4 extensions R23-R36 + author directives — инвентарь: 34 active · 2 gold (R17 jellyfish-kin, R20 harpy-kin) · 4 banned (BAN-01..04 dwarves/goblins/trolls/orcs) = 40 записей (2.1.1: source-строка догнала фактический состав) + R37-R41 (verdikt T4-33 2026-10-17: «понадобавляй ещё кинов, человекоподобные — суккубы и так далее») + R41 → Witch-kin (приказ автора 2026-10-17: «циклопы отстой» — v2.2.1, фонд 45 без изменений) + v2.3.0 (вердикт T5-07 2026-10-30): R30 Frog-kin → quarantine («фрог-кин вообще не получился», реабилитация только приказом автора); аудит T4-кинов закрыт — полный фонд T4 уже в реестре (R23–R36 = расширения Thread-4, R37–R41 = T4-33), стянуть нечего; освежение количества = каст 12–14/21 (policy v1.8)",
+ "source": "3.2 POOLS_V8 race_pool R01-R15 + race_extension_v2 R16-R22 + Thread-4 extensions R23-R36 + author directives — инвентарь: 34 active · 2 gold (R17 jellyfish-kin, R20 harpy-kin) · 4 banned (BAN-01..04 dwarves/goblins/trolls/orcs) = 40 записей (2.1.1: source-строка догнала фактический состав) + R37-R41 (verdikt T4-33 2026-10-17: «понадобавляй ещё кинов, человекоподобные — суккубы и так далее») + R41 → Witch-kin (приказ автора 2026-10-17: «циклопы отстой» — v2.2.1, фонд 45 без изменений) + v2.3.0 (вердикт T5-07 2026-10-30): R30 Frog-kin → quarantine («фрог-кин вообще не получился», реабилитация только приказом автора); аудит T4-кинов закрыт — полный фонд T4 уже в реестре (R23–R36 = расширения Thread-4, R37–R41 = T4-33), стянуть нечего; освежение количества = каст 12–14/21 (policy v1.8) + v2.4.0 (вердикт-директива автора 2026-11-03): долг T5-03 возвращён — 8 кинов каста T5-03, живших без реестра, зарегистрированы R42-R49 (moon-rabbit/dullahan/marionette/shadow/ink-slime/wind-spirit/eclipse-officiant/banshee) по языку слотов T5-03; R50 Nine-tails + R51 Crane + R52 Fortune-cat — приказ «добрать кинов а-ля девятихвостая лисица»; pos_tags добавлены всем активным (T5-07: «они хоть и кины, но выглядят простенько»); form_law + skin_law; R32 перестроен по form_law. Фонд: 51 запись = 51 active/gold (2 gold R17/R20) + 4 banned + R30 quarantine.",
  "races": [
   {
    "id": "R01",
@@ -21,7 +21,13 @@
     "E3 single-left-asymmetric"
    ],
    "status": "active",
-   "note": "skin: ['moonlit-pale', 'pale-gold']; wardrobe: higher armholes; nothing at the ear; light: the ear-tip catches the key first"
+   "note": "skin: ['moonlit-pale', 'pale-gold']; wardrobe: higher armholes; nothing at the ear; light: the ear-tip catches the key first",
+   "pos_tags": [
+    "long pointed elf ears swept back",
+    "moonlit-pale skin",
+    "pale-gold skin",
+    "nothing worn at the ear"
+   ]
   },
   {
    "id": "R03",
@@ -34,7 +40,14 @@
     "tail twin-tips"
    ],
    "status": "active",
-   "note": "skin: warm ivory; wardrobe: tail-hem: a hidden slit, or the tail over the cloth; collision: drooping fox ears + golden tail + silver-white hair = SOL (forbidden combo)"
+   "note": "skin: warm ivory; wardrobe: tail-hem: a hidden slit, or the tail over the cloth; collision: drooping fox ears + golden tail + silver-white hair = SOL (forbidden combo)",
+   "pos_tags": [
+    "fox ears perked small",
+    "smoke-grey fox tail",
+    "twin-tipped fox tail",
+    "warm ivory skin",
+    "pink-soft inner ear fur"
+   ]
   },
   {
    "id": "R04",
@@ -44,20 +57,38 @@
     "ears folded",
     "tail slender-tufted",
     "tail long-wrap",
-    "pupils vertical-slit"
+    "pupils vertical-slit",
+    "fur-trimmed cuffs",
+    "tail curled around the calf at rest"
    ],
    "status": "active",
-   "note": "wardrobe: ears above the collar; the tail chooses its own hem; light: the ear's inner fur transmits a pink glow in backlight"
+   "note": "wardrobe: ears above the collar; the tail chooses its own hem; light: the ear's inner fur transmits a pink glow in backlight",
+   "pos_tags": [
+    "cat ears small and fluffy",
+    "slender tufted cat tail",
+    "vertical slit pupils",
+    "fur-trimmed cuffs",
+    "tail wrapped around the calf"
+   ]
   },
   {
    "id": "R05",
    "name": "Wolf-kin",
    "features": [
     "ears pointed grey-furred",
-    "tail bushy"
+    "tail bushy",
+    "fur-cuffs at the wrists",
+    "canine fang peeking in the grin",
+    "tail thumping twice when pleased"
    ],
    "status": "active",
-   "note": "wardrobe: high collars forfeit — the ears win; light: fur rim before skin rim"
+   "note": "wardrobe: high collars forfeit — the ears win; light: fur rim before skin rim",
+   "pos_tags": [
+    "pointed grey-furred wolf ears",
+    "bushy grey wolf tail",
+    "fur-cuffed wrists",
+    "small fang in the grin"
+   ]
   },
   {
    "id": "R06",
@@ -69,7 +100,13 @@
     "tail thin-serpentine"
    ],
    "status": "active",
-   "note": "collision: full-curl ram horns + serpentine tail = LUA/VAE (pick ONE, never both)"
+   "note": "collision: full-curl ram horns + serpentine tail = LUA/VAE (pick ONE, never both)",
+   "pos_tags": [
+    "half-curl ram horns",
+    "single-spiral horn",
+    "small horn buds",
+    "thin serpentine demon tail"
+   ]
   },
   {
    "id": "R07",
@@ -81,7 +118,14 @@
     "tail thick-scaled"
    ],
    "status": "active",
-   "note": "light: the ridge-lines of horns hold shadow like canyon strata; pick: 1-2 codes max per girl (error budget §23)"
+   "note": "light: the ridge-lines of horns hold shadow like canyon strata; pick: 1-2 codes max per girl (error budget §23)",
+   "pos_tags": [
+    "ridged swept-back horns",
+    "forearm scale patches",
+    "thick scaled tail",
+    "wing-fragments at the shoulder blades",
+    "canyon-strata shadow on the horn ridges"
+   ]
   },
   {
    "id": "R08",
@@ -92,7 +136,13 @@
     "pupils vertical"
    ],
    "status": "active",
-   "note": "wardrobe: skirts wrap; the coil reads through knit"
+   "note": "wardrobe: skirts wrap; the coil reads through knit",
+   "pos_tags": [
+    "thick coiling serpent tail",
+    "hip scale patches",
+    "vertical pupils",
+    "reptile gloss at the nape"
+   ]
   },
   {
    "id": "R09",
@@ -102,17 +152,31 @@
     "ears long-drooping"
    ],
    "status": "active",
-   "note": "light: the horn's ribbing stripes the light"
+   "note": "light: the horn's ribbing stripes the light",
+   "pos_tags": [
+    "small ribbed curved goat horns",
+    "long drooping goat ears with pink inner",
+    "horizontal pupils",
+    "rib-stripes on the horn light"
+   ]
   },
   {
    "id": "R10",
    "name": "Deer-folk",
    "features": [
     "horns smooth-unbranched",
-    "tail small"
+    "tail small",
+    "fawn spots across the shoulder blades",
+    "ears quick-flick at sounds"
    ],
    "status": "active",
-   "note": "collision: lavender hair + purple cheek-scales = DOE (different colors required)"
+   "note": "collision: lavender hair + purple cheek-scales = DOE (different colors required)",
+   "pos_tags": [
+    "smooth unbranched deer horns",
+    "fawn spots across the shoulders",
+    "quick-flick deer ears",
+    "small deer tail"
+   ]
   },
   {
    "id": "R11",
@@ -122,17 +186,30 @@
     "wing-membranes small-back"
    ],
    "status": "active",
-   "note": "light: the membrane translucent-red in backlight"
+   "note": "light: the membrane translucent-red in backlight",
+   "pos_tags": [
+    "tall ribbed bat ears",
+    "small bat-wing membranes at the back",
+    "membranes translucent-red in backlight"
+   ]
   },
   {
    "id": "R12",
    "name": "Bunny-kin",
    "features": [
     "ears long-upright",
-    "tail round"
+    "tail round",
+    "inner-ear blush visible in backlight",
+    "front teeth peek on a grin"
    ],
    "status": "active",
-   "note": "motion: the ears telegraph emotion a beat before the face"
+   "note": "motion: the ears telegraph emotion a beat before the face",
+   "pos_tags": [
+    "long upright bunny ears",
+    "round puff tail",
+    "pink inner-ear blush in backlight",
+    "front teeth peeking in a grin"
+   ]
   },
   {
    "id": "R13",
@@ -142,7 +219,13 @@
     "tide-line-tan"
    ],
    "status": "active",
-   "note": "wardrobe: wet-look knits, nothing that minds water"
+   "note": "wardrobe: wet-look knits, nothing that minds water",
+   "pos_tags": [
+    "shin-and-hip scale patches",
+    "tide-line tan",
+    "wet-look knitwear",
+    "iridescent scale sheen when wet"
+   ]
   },
   {
    "id": "R14",
@@ -153,7 +236,13 @@
     "bark-patch at collarbone"
    ],
    "status": "active",
-   "note": "light: the bloom holds daylight a minute after the room dims"
+   "note": "light: the bloom holds daylight a minute after the room dims",
+   "pos_tags": [
+    "vine strands woven into the hair",
+    "seasonal bloom at the temple",
+    "bark patch at the collarbone",
+    "leaf-vein lines on the skin"
+   ]
   },
   {
    "id": "R15",
@@ -164,7 +253,13 @@
     "painted blush fixed"
    ],
    "status": "active",
-   "note": "light: matte scatter, no subsurface glow — the uncanny read; collision: doll + ivory-white hair + veil = ASH-adjacent (avoid); mat: bisque-porcelain"
+   "note": "light: matte scatter, no subsurface glow — the uncanny read; collision: doll + ivory-white hair + veil = ASH-adjacent (avoid); mat: bisque-porcelain",
+   "pos_tags": [
+    "bisque porcelain skin",
+    "seam lines at the joints",
+    "ball-joint elbows and knees",
+    "fixed painted blush"
+   ]
   },
   {
    "id": "R16",
@@ -175,7 +270,13 @@
     "wings small-dusted (cloak-fold)"
    ],
    "status": "active",
-   "note": "skin: powder-pale; wardrobe: nothing at the shoulder-blades' folds — capes negotiate; light: the antennae test the dark; the scales hold lamplight a beat late"
+   "note": "skin: powder-pale; wardrobe: nothing at the shoulder-blades' folds — capes negotiate; light: the antennae test the dark; the scales hold lamplight a beat late",
+   "pos_tags": [
+    "feathered curved antennae",
+    "small dusted moth wings folded at the back",
+    "powder-pale skin",
+    "scale-dust at the collarbone"
+   ]
   },
   {
    "id": "R17",
@@ -185,7 +286,13 @@
     "tendril-strands at the nape"
    ],
    "status": "gold",
-   "note": "AUTHOR-CONFIRMED GOLD for Thread 4. skin: glass-clear at the edges, milk at the core; wardrobe: hood-aware necklines; the tendrils choose the collar; light: the hood carries the room's whole palette through itself"
+   "note": "AUTHOR-CONFIRMED GOLD for Thread 4. skin: glass-clear at the edges, milk at the core; wardrobe: hood-aware necklines; the tendrils choose the collar; light: the hood carries the room's whole palette through itself",
+   "pos_tags": [
+    "translucent bell-hood at the crown",
+    "tendril strands at the nape",
+    "glass-clear skin edges over a milk core",
+    "the room's palette drifting through the hood"
+   ]
   },
   {
    "id": "R18",
@@ -195,7 +302,13 @@
     "stone patches at the forearm"
    ],
    "status": "active",
-   "note": "skin: granite-grey warm-veined; wardrobe: heavy weaves that agree with the stone; light: the patches eat light; the horns' rough holds a dry rim"
+   "note": "skin: granite-grey warm-veined; wardrobe: heavy weaves that agree with the stone; light: the patches eat light; the horns' rough holds a dry rim",
+   "pos_tags": [
+    "small rough stone horns",
+    "granite patches on the forearms",
+    "warm-veined grey skin",
+    "stone eating the key light"
+   ]
   },
   {
    "id": "R19",
@@ -205,7 +318,13 @@
     "mantle-cape at the back"
    ],
    "status": "active",
-   "note": "skin: reef-warm; wardrobe: the mantle replaces all outerwear — jewelry above it; light: the sucker-rings a texture of small shadows"
+   "note": "skin: reef-warm; wardrobe: the mantle replaces all outerwear — jewelry above it; light: the sucker-rings a texture of small shadows",
+   "pos_tags": [
+    "suckered smooth arms from the elbow",
+    "mantle-cape down the back",
+    "reef-warm skin",
+    "sucker-rings as small shadow rings"
+   ]
   },
   {
    "id": "R20",
@@ -215,7 +334,14 @@
     "flight-feathers at the shoulder-blades"
    ],
    "status": "gold",
-   "note": "AUTHOR-CONFIRMED GOLD for Thread 4. skin: wind-tan; wardrobe: backless by necessity; sleeves are fingerless vests; light: the barbs split the light into feather-combs"
+   "note": "AUTHOR-CONFIRMED GOLD for Thread 4. skin: wind-tan; wardrobe: backless by necessity; sleeves are fingerless vests; light: the barbs split the light into feather-combs",
+   "pos_tags": [
+    "feathered forearms to the wrist",
+    "flight feathers at the shoulder blades",
+    "wind-tan skin",
+    "backless wardrobe",
+    "feather-comb light on the arms"
+   ]
   },
   {
    "id": "R21",
@@ -225,7 +351,13 @@
     "spore-freckles glowing faint"
    ],
    "status": "active",
-   "note": "skin: damp-pale; wardrobe: moss-agreeing weaves; nothing that minds the damp; light: the spores a private constellation at close range"
+   "note": "skin: damp-pale; wardrobe: moss-agreeing weaves; nothing that minds the damp; light: the spores a private constellation at close range",
+   "pos_tags": [
+    "cap-frill at the crown",
+    "faintly glowing spore-freckles",
+    "damp-pale skin",
+    "moss-agreeing knits"
+   ]
   },
   {
    "id": "R22",
@@ -235,7 +367,13 @@
     "ember-freckles at the jaw"
    ],
    "status": "active",
-   "note": "skin: heat-dark; wardrobe: asbestos-adjacent silks; the crest burns holes in chairbacks (prose-true); light: the crest is never the key light — it's the refusal of it"
+   "note": "skin: heat-dark; wardrobe: asbestos-adjacent silks; the crest burns holes in chairbacks (prose-true); light: the crest is never the key light — it's the refusal of it",
+   "pos_tags": [
+    "low fire crest along the spine line",
+    "ember freckles at the jaw",
+    "heat-warmed skin tone",
+    "silk that shrugs off sparks"
+   ]
   },
   {
    "id": "BAN-01",
@@ -275,7 +413,14 @@
     "shark tail fin",
     "teeth flash in smile"
    ],
-   "note": "skin: slate-blue-grey accents on white base; wardrobe: swimwear with broken straps; light: gill-slits catch water"
+   "note": "skin: slate-blue-grey accents on white base; wardrobe: swimwear with broken straps; light: gill-slits catch water",
+   "pos_tags": [
+    "dorsal fin at the small of the back",
+    "gill-slits at the ribs",
+    "shark tail fin",
+    "slate-blue accents on white skin",
+    "teeth flash in the smile"
+   ]
   },
   {
    "id": "R24",
@@ -287,7 +432,14 @@
     "small tusks",
     "diamond-pattern accents"
    ],
-   "note": "wardrobe: kimono slipping off one shoulder; skin answers sake-warmth"
+   "note": "wardrobe: kimono slipping off one shoulder; skin answers sake-warmth",
+   "pos_tags": [
+    "one or two blunt horns",
+    "crimson or jade blush across the cheeks",
+    "small tusks",
+    "diamond-pattern accents",
+    "kimono slipped off one shoulder"
+   ]
   },
   {
    "id": "R25",
@@ -299,7 +451,13 @@
     "core-orb glowing inside",
     "body holds shape by will"
    ],
-   "note": "wardrobe: borrowed clothes dissolve at contact zones; light refracts through the gel"
+   "note": "wardrobe: borrowed clothes dissolve at contact zones; light refracts through the gel",
+   "pos_tags": [
+    "translucent gel body",
+    "semi-liquid hair dripping slow",
+    "glowing core-orb inside the chest",
+    "light refracting through the gel"
+   ]
   },
   {
    "id": "R26",
@@ -311,7 +469,14 @@
     "honeycomb-pattern accents",
     "small sting-tail"
    ],
-   "note": "skin: honey-gold; wardrobe: poofy collar and sleeves, striped; light: wings blur in sun"
+   "note": "skin: honey-gold; wardrobe: poofy collar and sleeves, striped; light: wings blur in sun",
+   "pos_tags": [
+    "chitin antennae",
+    "four translucent wings",
+    "honeycomb-pattern accents",
+    "small sting-tail",
+    "honey-gold skin"
+   ]
   },
   {
    "id": "R27",
@@ -324,7 +489,14 @@
     "tail with a tuft",
     "spot patches on skin"
    ],
-   "note": "wardrobe: overalls with the flap undone; the bell rings at every step"
+   "note": "wardrobe: overalls with the flap undone; the bell rings at every step",
+   "pos_tags": [
+    "small curved cow horns",
+    "sideways cow ears",
+    "gold bell on a collar",
+    "tufted tail",
+    "spot patches on the hips"
+   ]
   },
   {
    "id": "R28",
@@ -335,7 +507,13 @@
     "wool fleece at shoulders and hips",
     "droopy ears"
    ],
-   "note": "skin: warm cream; wardrobe: knit that sheds wool fluff; fleece peeks where the cloth ends"
+   "note": "skin: warm cream; wardrobe: knit that sheds wool fluff; fleece peeks where the cloth ends",
+   "pos_tags": [
+    "spiral curled horns",
+    "wool fleece at shoulders and hips",
+    "droopy sheep ears",
+    "warm cream skin"
+   ]
   },
   {
    "id": "R29",
@@ -346,7 +524,14 @@
     "thin long tail",
     "small front teeth"
    ],
-   "note": "skin: soft grey or cream; wardrobe: oversized hoodies slipping off; the tail curls around the thigh"
+   "note": "skin: soft grey or cream; wardrobe: oversized hoodies slipping off; the tail curls around the thigh",
+   "pos_tags": [
+    "round oversized mouse ears",
+    "thin long tail curling at the tip",
+    "small front teeth",
+    "soft grey or cream skin",
+    "oversized hoodie slipping off"
+   ]
   },
   {
    "id": "R30",
@@ -370,18 +555,29 @@
     "pollen glow dust",
     "leaf veins on skin"
    ],
-   "note": "wardrobe: petals fall off at movement; vines tighten where tied; scent counts as light"
+   "note": "wardrobe: petals fall off at movement; vines tighten where tied; scent counts as light",
+   "pos_tags": [
+    "petal crown or petal skirt",
+    "vines laced around the limbs",
+    "pollen glow dust",
+    "leaf veins on the skin"
+   ]
   },
   {
    "id": "R32",
    "name": "Golem-kin",
    "status": "active",
    "features": [
-    "glowing seam-cracks in smooth clay skin",
+    "glowing seam-cracks in smooth kiln-clay skin",
     "moss patches",
-    "heavy slow build"
+    "slender kiln-ceramic build"
    ],
-   "note": "wardrobe: cloth worn like blankets; the cracks warm the fabric from inside"
+   "note": "v2.4.0 (form_law, приказ автора 2026-11-03 «около-женские формы»): heavy slow build ИЗЪЯТА — теперь стройная керамическая девушка из печи; трещины-швы светятся, мох остался. wardrobe: cloth worn like scarves — ткань держится на тепле трещин; light: швы греют ткань изнутри",
+   "pos_tags": [
+    "glowing seam-cracks in smooth kiln-clay skin",
+    "moss patches at the shoulders",
+    "slender kiln-ceramic build"
+   ]
   },
   {
    "id": "R33",
@@ -393,7 +589,13 @@
     "tail-taper instead of legs",
     "passes through cloth"
    ],
-   "note": "wardrobe: fabric phases through her where she wills; the visible/invisible edge is the claim zone"
+   "note": "wardrobe: fabric phases through her where she wills; the visible/invisible edge is the claim zone",
+   "pos_tags": [
+    "semi-transparent lower body",
+    "cold blue glow",
+    "tail-taper instead of legs",
+    "fabric phasing through her at will"
+   ]
   },
   {
    "id": "R34",
@@ -404,7 +606,13 @@
     "ember eyes",
     "wings of fire that shed sparks"
    ],
-   "note": "wardrobe: cloth singes at the wing-roots; feathers regrow on touch; light: her own fire"
+   "note": "wardrobe: cloth singes at the wing-roots; feathers regrow on touch; light: her own fire",
+   "pos_tags": [
+    "flame-feather accents on the shoulders",
+    "ember eyes",
+    "wings of fire shedding sparks",
+    "cloth singed at the wing-roots"
+   ]
   },
   {
    "id": "R35",
@@ -416,7 +624,12 @@
     "extra subtle eye-glints",
     "silk thread from fingertips"
    ],
-   "note": "upper body human; silk as wardrobe; legs hold the pose like a chair — never horror register"
+   "note": "upper body human; silk as wardrobe; legs hold the pose like a chair — never horror register",
+   "pos_tags": [
+    "small chitin legs folded neat at the lower back",
+    "silk thread drawn from the fingertips",
+    "extra subtle eye-glints"
+   ]
   },
   {
    "id": "R36",
@@ -427,7 +640,13 @@
     "big striped fluffy tail",
     "raccoon-mask blush patch"
    ],
-   "note": "wardrobe: leaf-magic over classic apron; the tail is the extra guest under every hem"
+   "note": "wardrobe: leaf-magic over classic apron; the tail is the extra guest under every hem",
+   "pos_tags": [
+    "round soft tanuki ears",
+    "big striped fluffy tail",
+    "raccoon-mask blush patches",
+    "leaf-magic over a classic apron"
+   ]
   },
   {
    "id": "R37",
@@ -439,7 +658,14 @@
     "tiny bat-wing frags at the shoulder blades",
     "heart-shaped pupils on option"
    ],
-   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — лицо чисто аниме-человеческое, ножки стройные без чешуи; skin: warm satin, candle-lit; wardrobe: tail-slit MANDATORY (платье/юбка с продуманным выходом хвоста), wrap-closures instead of back zips; light: the wings catch rim-light only — never a full silhouette"
+   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — лицо чисто аниме-человеческое, ножки стройные без чешуи; skin: warm satin, candle-lit; wardrobe: tail-slit MANDATORY (платье/юбка с продуманным выходом хвоста), wrap-closures instead of back zips; light: the wings catch rim-light only — never a full silhouette",
+   "pos_tags": [
+    "small curved satin-black horns",
+    "slim spade-tail with a sway",
+    "tiny bat-wing fragments at the shoulder blades",
+    "warm satin skin",
+    "tail-slit dress"
+   ]
   },
   {
    "id": "R38",
@@ -450,7 +676,14 @@
     "red-iris eyes under lazy lids",
     "cold-pale skin with a living blush at the cheeks"
    ],
-   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — аристократичный регистр, не хоррор; skin: moon-pale with warm cheek-blush contrast; wardrobe: high collar, opera gloves, ribbon choker — шея и ключицы работают сквозь вырез; light: she avoids hard sun — dusk/interior registers"
+   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — аристократичный регистр, не хоррор; skin: moon-pale with warm cheek-blush contrast; wardrobe: high collar, opera gloves, ribbon choker — шея и ключицы работают сквозь вырез; light: she avoids hard sun — dusk/interior registers",
+   "pos_tags": [
+    "small smile fangs",
+    "red-iris eyes under lazy lids",
+    "cold-pale skin with a living cheek-blush",
+    "ribbon choker",
+    "high collar"
+   ]
   },
   {
    "id": "R39",
@@ -461,7 +694,14 @@
     "thin halo ring above the hair",
     "feather-tips at the earlobes as earrings"
    ],
-   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — трогательно, не величественно; skin: pearl-warm; wardrobe: back-open garments (wings rule the backline — лямки крест-накрест обходит крылья), halo holds a faint rim-glow; light: the halo answers the key light, никогда не основной источник"
+   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — трогательно, не величественно; skin: pearl-warm; wardrobe: back-open garments (wings rule the backline — лямки крест-накрест обходит крылья), halo holds a faint rim-glow; light: the halo answers the key light, никогда не основной источник",
+   "pos_tags": [
+    "small white wings folded tight at the back",
+    "thin halo ring above the hair",
+    "feather-tip earrings at the earlobes",
+    "pearl-warm skin",
+    "back-open garment"
+   ]
   },
   {
    "id": "R40",
@@ -472,7 +712,13 @@
     "scaled nape fading into human skin",
     "command-drop slit pupils"
    ],
-   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — змеи-локоны ведут себя как укладка: одна прядь-змея может указывать на объект в кадре; skin: human-warm, scales only at nape/wrists; wardrobe: high necklines tease the nape-scales; light: coils carry a reptile sheen — контраст-носитель без хоррора"
+   "note": "вердикт T4-33 (2026-10-17): «плюс-минус человекоподобные — красивое лицо, сладкие ножки» — змеи-локоны ведут себя как укладка: одна прядь-змея может указывать на объект в кадре; skin: human-warm, scales only at nape/wrists; wardrobe: high necklines tease the nape-scales; light: coils carry a reptile sheen — контраст-носитель без хоррора",
+   "pos_tags": [
+    "small glossy snake-hair coils",
+    "scaled nape fading into human skin",
+    "command-drop slit pupils",
+    "reptile sheen on the coils"
+   ]
   },
   {
    "id": "R41",
@@ -483,7 +729,226 @@
     "tiny constellation freckles across cheeks and nose",
     "small ember-wisp familiar circling the shoulder"
    ],
-   "note": "приказ автора 2026-10-17: «поменяй циклопов на что-нибудь другое, циклопы отстой» — слот R41 заняла Witch-kin (ID закреплён навсегда, Cyclops-kin живёт в летописи); вердикт T4-33 в силе (красивое лицо, сладкие ножки): чистое аниме-лицо, созвездие веснушек — метка вида; skin: candle-warm; wardrobe: brim hat riding low over one eye, star-clasp cape, thigh-high boots — ноги в кадре работают; ember-wisp = закон №3 (раса делает работу): тёплый источник света + проводник взгляда, освещает зону заявки, не particle-spam; light: ember отвечает key light"
+   "note": "приказ автора 2026-10-17: «поменяй циклопов на что-нибудь другое, циклопы отстой» — слот R41 заняла Witch-kin (ID закреплён навсегда, Cyclops-kin живёт в летописи); вердикт T4-33 в силе (красивое лицо, сладкие ножки): чистое аниме-лицо, созвездие веснушек — метка вида; skin: candle-warm; wardrobe: brim hat riding low over one eye, star-clasp cape, thigh-high boots — ноги в кадре работают; ember-wisp = закон №3 (раса делает работу): тёплый источник света + проводник взгляда, освещает зону заявки, не particle-spam; light: ember отвечает key light",
+   "pos_tags": [
+    "one silver birth-streak in the fringe",
+    "tiny constellation freckles across cheeks and nose",
+    "small ember-wisp circling the shoulder",
+    "brim hat riding low over one eye"
+   ]
+  },
+  {
+   "id": "R42",
+   "name": "Moon-rabbit-kin",
+   "status": "active",
+   "features": [
+    "rabbit ears long-hinged with pink inner",
+    "round puff tail",
+    "star-dust motes falling off the heels at the top of a leap",
+    "sickle-moon glint in the dark iris"
+   ],
+   "pos_tags": [
+    "rabbit ears",
+    "round rabbit tail",
+    "short white bob hair",
+    "dark red eyes",
+    "pale fair skin",
+    "petite slender body",
+    "star dust trailing her ankles"
+   ],
+   "note": "ДОЛГ T5-03 возвращён (каст T5-03, слот качелей P04: «rabbit ears, rabbit tail, short white bob, dark red eyes, petite» — реестра не было). свет: серп луны — её личный контровой; motion: уши отстают от прыжка на пол-удара; wardrobe: вырезы, не трогающие уши"
+  },
+  {
+   "id": "R43",
+   "name": "Dullahan-kin",
+   "status": "active",
+   "features": [
+    "head carried separately in the crook of her own arm",
+    "severed neckline wrapped in black lace ribbon",
+    "the carried head alive: smiles, winks, speaks",
+    "body navigates proud and blind-sure without the head"
+   ],
+   "pos_tags": [
+    "headless body walking",
+    "holding own head in the crook of the arm",
+    "the carried head smiling with a wink",
+    "severed neckline wrapped in black lace ribbon",
+    "spine straight, chin space empty and proud",
+    "Victorian high-collar gown"
+   ],
+   "note": "ДОЛГ T5-03 возвращён (P07: «headless body walking, holding own head presented in the crook of a tar-black arm, the carried head smiling with a wink, severed neckline wrapped in black lace ribbon» — язык слота). register: готика-элегантность, НЕ хоррор (урок Medusa/Witch); light: шея-линия читается горизонтом кадра, лента — единственный акцент; wardrobe: высокий ворот запрещён видом — шея работает"
+  },
+  {
+   "id": "R44",
+   "name": "Marionette-kin",
+   "status": "active",
+   "features": [
+    "doll ball-joints at shoulders, hips and wrists",
+    "porcelain-pale skin with satin sheen",
+    "tar-black strings descending from above-frame (опционально: отсутствуют — она на свободе)",
+    "hime-cut white hair",
+    "glass-blue eyes"
+   ],
+   "pos_tags": [
+    "doll-jointed slender body",
+    "visible ball joints at shoulders and hips",
+    "porcelain-pale skin",
+    "long hime-cut white hair",
+    "glass-blue eyes",
+    "marionette strings of tar-black rising from above"
+   ],
+   "note": "ДОЛГ T5-03 возвращён (P14 hair-whip turn: «doll-jointed slender body, visible ball joints, porcelain-pale skin, hime-cut white hair, glass-blue eyes»). collision: R15 фарфоровая кукла = швы+румяна без нитей; R44 = НИТИ + hime-cut; нити, которые держит чужая рука, — ход ниши, не дефолт вида"
+  },
+  {
+   "id": "R45",
+   "name": "Shadow-kin",
+   "status": "active",
+   "features": [
+    "living shadow detached from her feet, moving a half-beat ahead",
+    "the shadow sits, stretches and reaches on its own",
+    "her shadow reaching where she has not yet"
+   ],
+   "pos_tags": [
+    "living detached shadow",
+    "shadow moving a half-beat ahead of her",
+    "her shadow reaching where she has not",
+    "thermal-camera variant (palette-game P39)"
+   ],
+   "note": "ДОЛГ T5-03 возвращён (P16: «her shadow detached and rolling over first, the shadow's own heat signature pulsing» — инфракрасная подача была palette-игрой, вид остался). light: её тень не слушает источник — единственная вольная форма в кадре; register: уютная мистика, не хоррор"
+  },
+  {
+   "id": "R46",
+   "name": "Ink-slime-kin",
+   "status": "active",
+   "features": [
+    "semi-translucent ink-black gel body",
+    "cyan inner glow at the core",
+    "teal twin-tails of semi-liquid hair",
+    "glossy skin beading light"
+   ],
+   "pos_tags": [
+    "slime girl",
+    "semi-translucent ink-black body",
+    "glossy skin",
+    "cyan inner glow",
+    "teal twin-tails",
+    "glossy dark eyes"
+   ],
+   "note": "ДОЛГ T5-03 возвращён (P19 чернильный луг: «semi-translucent ink-black body, glossy skin, cyan inner glow, teal twin-tails»). отличие от R25: у R25 гель светлый и мутно-весёлый, R46 — чернильная глубина; light: внутреннее свечение вспыхивает на смехе; wardrobe: ткань растворяется в зоне контакта"
+  },
+  {
+   "id": "R47",
+   "name": "Wind-spirit-kin",
+   "status": "active",
+   "features": [
+    "lower legs translucent, dissolving into breeze below the knee",
+    "hair wind-tossed, always mid-gust",
+    "breath visible as a small curl of mist even in warmth",
+    "wind-tossed mint-green hair"
+   ],
+   "pos_tags": [
+    "wind spirit",
+    "translucent lower legs dissolving into breeze",
+    "wind-tossed mint-green hair",
+    "sky-grey eyes",
+    "breath curling as small mist"
+   ],
+   "note": "ДОЛГ T5-03 возвращён (P23 изгородь-штора: «wind spirit, translucent lower legs dissolving into breeze, wind-tossed mint-green hair, sky-grey eyes»). motion: юбка всегда на полвзмаха впереди тела; light: линия растворения ног — место, где свет проходит насквозь"
+  },
+  {
+   "id": "R48",
+   "name": "Eclipse-officiant-kin",
+   "status": "active",
+   "features": [
+    "halo as a white-hot corona ring held or hovering",
+    "black gauze veil over the hair, nape exposed",
+    "mourning robe of heavy black velvet",
+    "black eyes holding the corona's reflection"
+   ],
+   "pos_tags": [
+    "ring of white-hot corona light as a halo",
+    "black gauze veil over the hair",
+    "exposed nape where the veil lifts",
+    "mourning robe of heavy black velvet",
+    "velvet press-marks at the folds",
+    "black eyes"
+   ],
+   "note": "ДОЛГ T5-03 возвращён (P21 нимб-корона: «a ring of white-hot corona light held out to her, eclipse-ring-light the only light, mourning robe of heavy black velvet»). light: она — единственный источник в кадре через кольцо; свет СРЕДА её сана, не прибор (закон света v2 совместим); register: торжество, не хоррор"
+  },
+  {
+   "id": "R49",
+   "name": "Banshee-kin",
+   "status": "active",
+   "features": [
+    "keening wail made visible as silk ribbons of sound leaving the mouth",
+    "ash-silver hair floating against gravity while the wail holds",
+    "glassy tear beads on the lashes"
+   ],
+   "pos_tags": [
+    "sound ribbons of a keening wail",
+    "ash-silver hair floating against gravity",
+    "glassy tear beads on the lashes",
+    "pale skin",
+    "grief-soft posture"
+   ],
+   "note": "Имя жило в касте T5-03 без реестра; вид доработан 2026-11-03. register: горе, НЕ хоррор; light: ленты крика ловят свет как шёлк — единственное движение в тишине кадра"
+  },
+  {
+   "id": "R50",
+   "name": "Nine-tails-kin",
+   "status": "active",
+   "features": [
+    "nine tails fanned behind her like a folding screen",
+    "tail tips glowing ember-gold in the dark",
+    "fox ears large and silver-tipped",
+    "golden iris with a ring of deeper amber"
+   ],
+   "pos_tags": [
+    "nine tails fanned like a folding screen",
+    "nine fluffy tails with ember-gold tips",
+    "silver-tipped fox ears",
+    "golden eyes with an amber ring",
+    "warm ivory skin"
+   ],
+   "note": "ПРИКАЗ АВТОРА 2026-11-03: «добрать кинов а-ля девятихвостая лисица (кицуне в форме девушки)». collision: R03 Sol-лок (silver-white + amber slit + drooping ears + golden tail) не задет — R50 держит стоячие серебристые уши и веер из девяти; light: кончики хвостов — единственные тёплые точки в ночи; wardrobe: хвост-веер живёт за спиной задником, одежду не рвёт"
+  },
+  {
+   "id": "R51",
+   "name": "Crane-kin",
+   "status": "active",
+   "features": [
+    "wings folded at rest like a wrapped shawl over the forearms",
+    "black feather-cap from the crown down the nape",
+    "red crown-spot at the hairline",
+    "long pale legs"
+   ],
+   "pos_tags": [
+    "crane wings folded like a shawl",
+    "black feather cap on the crown",
+    "red crown spot at the hairline",
+    "long pale legs",
+    "elegant long neck-line"
+   ],
+   "note": "Приказ 2026-11-03 «добрать кинов» — журавль-девушка (цуру), экономный регистр жеста: раскрытие крыла — единственный взмах-взрыв кадра; skin: тёплый белый"
+  },
+  {
+   "id": "R52",
+   "name": "Fortune-cat-kin",
+   "status": "active",
+   "features": [
+    "calico patches in the hair: one ginger, one black",
+    "gold bell on a red cord at the collar",
+    "one paw-hand habitually raised at the chest",
+    "round amber eyes, always mid-blink content"
+   ],
+   "pos_tags": [
+    "calico hair patches",
+    "gold bell on red cord collar",
+    "one hand raised at the chest like a maneki paw",
+    "round amber eyes",
+    "cream skin"
+   ],
+   "note": "Приказ 2026-11-03 «добрать кинов» — maneki-девушка; motion: поднятая ладонь качается маятником, когда она ждёт; skin: cream"
   }
  ],
  "directives": {
@@ -493,7 +958,9 @@
   ],
   "banned": [
    "dwarves, goblins, trolls, orcs — author taste: 'ugly fantasy creature' register; banned outright"
-  ]
+  ],
+  "form_law": "v2.4.0, приказ автора 2026-11-03: «большинство девиц должны иметь ну. около-женскую форму тела» — girl-form по умолчанию у ВСЕХ кинов; надстройки над женским силуэтом (крылья/перья/чешуя/гель/хвосты) — да, гарпия-класс — да; монструозный корпус — нет (орки/гоблины/дворфы/тролли стоят в BAN-01..04; R32 Golem-kin перестроен: heavy build изъята).",
+  "skin_law": "v2.4.0, приказ автора 2026-11-03: «кожа тоже там плюс-минус в спектре приемлемой» — база человеческого спектра (pale/cream/fair/olive/warm-tan) + фэнтези-намёки ТОЧЕЧНО (oni-blush, slime-gel, glass-clear края, frost-pale, ember-warm, granite-патчи, slate-акценты, ink-gel); сплошные нечеловеческие заливки кожи (зелень/синева/серость всего тела) — нет."
  },
  "racial_usage": [
   "9-10 racial girls per 21 (V7 50/50 split kept: 9 racial + 10 non-racial + 2 exempt)",

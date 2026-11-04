@@ -116,6 +116,10 @@ decision. Sources: 3.2 SUCCESS_LOG (S001–S011, RF-001..003), the author's
 - **Repeat business: the author re-ordered ELDRITCH-CONTACT himself at
   higher intensity after seeing it rendered (S007)** — staging that reads
   as architecture, not tentacle-cliché; the tar as throne-arms.
+  — ОТЗЫВ 2026-11-04 (вердикт T5-12): сам режим ELDRITCH-CONTACT признан
+  автором «старой ошибкой, где меня неправильно поняли» и ИЗЪЯТ из канона
+  (canon v2.7.0); остаётся только presentation-only ELDRITCH (смола никогда
+  не касается её). История заказа — провенанс, не разрешение.
 - **ТЕХНИКА-КАРТА РЕЙТИНГА (таблица автора, 2026-09-21 — «PG-13 → R → R+ →
   X Cut»)** — автор сам передал полную таблицу приёмов (буру-стиль,
   Tsubaki 2 / PixAI): принцип «для идиота» — ЧЕТЫРЕ СЛОЯ (что видно /

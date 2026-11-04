@@ -1,0 +1,495 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.8.0)",
+ "batch": "batches/T5-12.md",
+ "sha256": "3b5688aaa00357e533e6323d5878f49d69a27551904d31b9e11f7b9a0f03b488",
+ "utc": "2026-11-04T19:52:23+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "11 общих 6-грамм с предыдущими партиями (T5-10.md, T5-11.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "tar-lake-stop-eldritch",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 173
+  },
+  {
+   "id": "P02",
+   "slug": "tape-cordon-of-unpaid-debts",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 188
+  },
+  {
+   "id": "P03",
+   "slug": "blushed-behind-the-camera",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 183
+  },
+  {
+   "id": "P04",
+   "slug": "fog-platform-out-of-nowhere",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 162
+  },
+  {
+   "id": "P05",
+   "slug": "straw-run-onto-the-step",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 156
+  },
+  {
+   "id": "P06",
+   "slug": "moth-kin-tail-lantern-orbit",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 144
+  },
+  {
+   "id": "P07",
+   "slug": "bunk-reach-catches-the-book",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 35,
+   "posWords": 161
+  },
+  {
+   "id": "P08",
+   "slug": "poppy-stop-skirt-hold",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 146
+  },
+  {
+   "id": "P09",
+   "slug": "flooded-car-doorway-lean",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 46,
+   "posWords": 159
+  },
+  {
+   "id": "P10",
+   "slug": "shadow-car-conductor",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 142
+  },
+  {
+   "id": "P11",
+   "slug": "dining-car-of-foreign-night",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 53,
+   "posWords": 151
+  },
+  {
+   "id": "P12",
+   "slug": "hay-wagon-noon-sprawl",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 155
+  },
+  {
+   "id": "P13",
+   "slug": "vestibule-between-two-climates",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 33,
+   "posWords": 152
+  },
+  {
+   "id": "P14",
+   "slug": "night-market-platform",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 160
+  },
+  {
+   "id": "P15",
+   "slug": "mail-car-sweat-and-pivot",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 152
+  },
+  {
+   "id": "P16",
+   "slug": "aquarium-car-leak",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 149
+  },
+  {
+   "id": "P17",
+   "slug": "sleeper-compartment-sheet-braid",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 42,
+   "posWords": 142
+  },
+  {
+   "id": "P18",
+   "slug": "tide-stop-flooded-bench",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 145
+  },
+  {
+   "id": "P19",
+   "slug": "mourning-car-veil-lift",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 152
+  },
+  {
+   "id": "P20",
+   "slug": "forest-builds-its-platform",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 140
+  },
+  {
+   "id": "P21",
+   "slug": "milk-bench-dawn-collapse",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 41,
+   "posWords": 160
+  },
+  {
+   "id": "P22",
+   "slug": "tail-platform-wind-stockings",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 38,
+   "posWords": 147
+  },
+  {
+   "id": "P23",
+   "slug": "mirror-station-dip",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 136
+  },
+  {
+   "id": "P24",
+   "slug": "tail-lantern-edge-of-the-map",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 27,
+   "posWords": 148
+  },
+  {
+   "id": "P25",
+   "slug": "test-D4A03-jacket-roll",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 41,
+   "posWords": 141
+  },
+  {
+   "id": "P26",
+   "slug": "test-D5A05-bunk-curl",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 30,
+   "posWords": 139
+  },
+  {
+   "id": "P27",
+   "slug": "test-D2A08-doorway-tilt",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 36,
+   "posWords": 137
+  },
+  {
+   "id": "P28",
+   "slug": "test-D3A04-undress-tape",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 34,
+   "posWords": 141
+  },
+  {
+   "id": "P29",
+   "slug": "test-D6A14-wariza-hipgate",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 33,
+   "posWords": 146
+  },
+  {
+   "id": "P30",
+   "slug": "theia-carried-head-tickets",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 160
+  },
+  {
+   "id": "P31",
+   "slug": "sylpha-draft-stowaway",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 169
+  },
+  {
+   "id": "P32",
+   "slug": "aki-nine-tails-dining",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 48,
+   "posWords": 161
+  },
+  {
+   "id": "P33",
+   "slug": "morva-strings-luggage-rack",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 42,
+   "posWords": 156
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "monster girl small curved satin black",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-11.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "girl small curved satin black horns",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-11.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "midnight indigo void with silver thread",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "indigo void with silver thread highlights",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "void with silver thread highlights distant",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "with silver thread highlights distant pale",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "silver thread highlights distant pale cyan",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "thread highlights distant pale cyan aurora",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "highlights distant pale cyan aurora glow",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "citrus wedge bright accent on the",
+   "slotsHere": [
+    "P14"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P13"
+   ]
+  },
+  {
+   "gram": "salt pearl foam edge at the",
+   "slotsHere": [
+    "P18"
+   ],
+   "sourceBatch": "T5-10.md",
+   "slotsThere": [
+    "P33"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "warm satin skin tall curvy build",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-11.md"
+  },
+  {
+   "gram": "satin skin tall curvy build heavy",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-11.md"
+  },
+  {
+   "gram": "skin tall curvy build heavy soft",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-11.md"
+  },
+  {
+   "gram": "tall curvy build heavy soft breasts",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-11.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [
+  "M01"
+ ],
+ "storyCards": true
+}
