@@ -55,6 +55,15 @@ clothes) без референса в POS — WARN. formatGate — POS ≥4 се
 строк (не башенка; строка ≤140 знаков), NEG ≤3 строк: пустые строки не
 считаются, WARN с applyFrom 12. Исторические партии не переписываются.
 
+v1.9.0 (вердикт T5-13, чат автора 2026-11-05: «верни в негатив тег loli»):
+negBase v3.1 — age-stack-кластер (young girl, immature body, oversized
+head, loli, shota) возвращён в NEG всегда (safety-пол; изъятый в v3
+класс удалён из removedClasses — WARN за его присутствие снят, absence
+в NEG ≥T5-12 теперь проверяется как всегда-юниты). formatGate —
+maxLineChars 140 → 200 (первая NEG-строка несёт safety-пол; закон
+«башенки» не отменён: POS ≥4 строк, NEG ≤3 строк). Данные-only,
+код не тронут — поведение меняют только gates.json.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \

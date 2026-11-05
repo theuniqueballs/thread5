@@ -118,8 +118,12 @@ masterpiece, best quality, anime artstyle.
 
 ### 2. Сборка NEG
 
-- Базовый NEG = hard-флоры LAWS §2 (genital lock, anti-loli floor,
-  leak guard, candle/lamp/bulb guard, milf-запрет...) + wash-блок
+- **SAFETY-пол — префикс NEG каждого слота**: `young girl, immature body,
+  oversized head, loli, shota,` затем база (gates v1.9.0, hardFloors
+  требуют пол в NEG; вердикт T5-13 2026-11-05: «верни в негатив тег loli»
+  — перегруз-реакция v3 не режет safety).
+- Базовый NEG = hard-флоры LAWS §2 (genital lock, leak guard,
+  candle/lamp/bulb guard, milf-запрет...) + wash-блок
   (`washed-out, faded colors, low contrast`) + мёртвые ткани.
 - Слоевые/канон-локи слота — из заметок MERCURY (подслой под sheer,
   покрытие, чужие фичи кина).
