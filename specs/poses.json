@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.2.0",
   "born": "2026-09-19",
   "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14)",
   "poses": [
@@ -3122,6 +3122,398 @@
         "CAM02_three_quarter",
         "CAM01_eye_level"
       ]
+    },
+    {
+      "id": "PL241",
+      "name": "Shirt-Lift Mid-Pull (A2-01)",
+      "sd": "both hands lifting the shirt hem past the ribs, elbows out, face half-covered by the rising fabric",
+      "category": "BENT",
+      "risk": "HIGH",
+      "family": "A2",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL242",
+      "name": "Mirror Shows The Back (A9-03)",
+      "sd": "facing the viewer in underwear, full-length mirror behind showing the back view",
+      "category": "VERTICAL",
+      "risk": "HIGH",
+      "family": "A9",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL243",
+      "name": "Hip-Cock Doorframe (A3-01)",
+      "sd": "leaning on a doorframe, weight on one leg, other knee soft, hip cocked, one shoulder on the frame",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A3",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL244",
+      "name": "Scarf Wind Wrestle (A2-12)",
+      "sd": "both hands catching a scarf-like cloth the wind is stealing, body leaning after it, one end still at the neck",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A2",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL245",
+      "name": "Back-To-Wall Slide-Breath (A7-02)",
+      "sd": "back flat to the wall, one foot up against the wall, exhaling slow",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A7",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL246",
+      "name": "Zipper Stuck (A2-03)",
+      "sd": "both hands at a stuck zipper, elbows in, slight frown of effort, body twisted",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A2",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL247",
+      "name": "Tree-Lean One-Foot (A7-08)",
+      "sd": "one foot planted on a trunk-like surface, back to the bark, looking up into the canopy",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A7",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL248",
+      "name": "Classic Handbra (D4-01)",
+      "sd": "open palms covering the breasts, fingers spread, elbows framing the ribs",
+      "category": "VERTICAL",
+      "risk": "HIGH",
+      "family": "A2",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL249",
+      "name": "Towel-Hair Flip (A4-09)",
+      "sd": "mid-flip of wet hair after the towel, face briefly hidden by the hair arc, arms up",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A4",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL250",
+      "name": "Tape-Adjust Fingers (A2-13)",
+      "sd": "fingertips pressing tape crosses flat on the chest, chin down, elbows close",
+      "category": "BENT",
+      "risk": "HIGH",
+      "family": "A2",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL251",
+      "name": "Window-Sill One-Knee (A3-03)",
+      "sd": "one knee on a windowsill, other foot on the floor, torso twisted toward the glass",
+      "category": "SEATED",
+      "risk": "MID",
+      "family": "A3",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL252",
+      "name": "Between-Knees Look-Down (A1-01)",
+      "sd": "sitting, knees together, leaning forward slightly, looking down between her own knees, hands resting on thighs",
+      "category": "SEATED",
+      "risk": "HIGH",
+      "family": "A1",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL253",
+      "name": "Sink-Lean Wash (A6-03)",
+      "sd": "leaning over a sink, forearms wet, hair falling forward, hip against the counter",
+      "category": "BENT",
+      "risk": "MID",
+      "family": "A6",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL254",
+      "name": "Forearm-Cover Cross (D4-02)",
+      "sd": "forearms crossed over the chest holding folded cloth, honest cover, shoulders squared",
+      "category": "VERTICAL",
+      "risk": "HIGH",
+      "family": "A2",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL255",
+      "name": "Belt-Loop Hook (A2-14)",
+      "sd": "thumbs hooked in belt loops, waistband sliding down on one side only, asymmetric",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A2",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL256",
+      "name": "Through-Glass At Viewer (A5-05)",
+      "sd": "behind glass, palm on the pane, eyes finding the viewer outside",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A5",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL257",
+      "name": "Over-Shoulder Back-Look (A5-01)",
+      "sd": "body facing away, head turned back over the shoulder toward the camera",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A5",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL258",
+      "name": "Up-At-Sky Open (A5-08)",
+      "sd": "chin up, looking at the sky, throat line open, arms loose",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A5",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL259",
+      "name": "Counter-Hop Seat (A3-06)",
+      "sd": "sitting on a counter edge, heels against the cabinet, leaning back on both hands",
+      "category": "SEATED",
+      "risk": "HIGH",
+      "family": "A3",
+      "source": "manual_card first-use T5-13 (pool: main)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL260",
+      "name": "Panties-Waistband Look-Down (A8-01, seed+)",
+      "sd": "standing, fingers lightly at the waistband of panties, looking down along her own body, not pulling down",
+      "category": "VERTICAL",
+      "risk": "HIGH",
+      "family": "A8",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL261",
+      "name": "Yoga-Transition Bridge (A8-07)",
+      "sd": "mid-transition into a back bridge, not held, strain on the arms",
+      "category": "BENT",
+      "risk": "HIGH",
+      "family": "A8",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL262",
+      "name": "Bag-Over-Head Peek (A1-09)",
+      "sd": "holding a bag open above the camera, looking down into it as if the viewer is inside",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A1",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL263",
+      "name": "Under-Table Sock-Toes (A8-03)",
+      "sd": "sitting at a table, toes curling below, knees together, hands visible on the table edge above",
+      "category": "SEATED",
+      "risk": "MID",
+      "family": "A8",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL264",
+      "name": "Sports-Bra Adjust After Run (A8-05)",
+      "sd": "post-run, both hands adjusting the sports bra band, breathing hard, one knee soft",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A8",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL265",
+      "name": "Line-Hang Sway (A8-10, niche kinetic)",
+      "sd": "swaying on a laundry line she clipped herself to, hem lifted by wind, arms hooked in the line",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A8",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL266",
+      "name": "Rope-Hand Key Insert (A8-06 detail)",
+      "sd": "extreme close-up on fingers clamped on a climbing rope, a brass key earring swinging into frame",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A8",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL267",
+      "name": "Rope-Climb Pause (A8-06, non-shibari)",
+      "sd": "paused on a climbing rope, thighs gripping, looking up, arms stretched",
+      "category": "VERTICAL",
+      "risk": "HIGH",
+      "family": "A8",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
+    },
+    {
+      "id": "PL268",
+      "name": "Crouch Peek (A1-03)",
+      "sd": "crouching, elbows on knees, chin in hands, looking down between knees",
+      "category": "KNEELING",
+      "risk": "HIGH",
+      "family": "A1",
+      "source": "manual_card first-use T5-13 (pool: exp)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM04_from_below",
+        "CAM01_eye_level"
+      ]
     }
   ],
   "family_counts": {
@@ -3166,5 +3558,1175 @@
     "6. THRESHOLD codes (PL229-240) belong to the LIMEN engine's world, open to any boundary-flavored frame.",
     "7. All families rotate per §33, per_code cap 2, category caps per C015.",
     "Known near-neighbors by design (source's own audit): PL188 vs PL84, PL194 vs PL147, PL195 vs PL76, PL232 vs PL29 — each pair differs on camera relationship or the body's key axis."
-  ]
+  ],
+  "manual_addendum": {
+    "born": "2026-11-05",
+    "source": "посылка Коула (Грок) «Composition Manual» Stage A, вербатим: docs/COMPOSITION-MANUAL.md; ингест tools/ingest-manual-2026-11-05.py",
+    "law": "Вердикт автора 2026-11-05 («Давай сразу возьмём, похуй. Он там пометил экспериментальные, их сунешь в эксп. Ну и сомнительные какие-нибудь»): карточки A1-01…A9-04 берутся в работу СРАЗУ, без серии пробных вердиктов. Поле pool: «main» — карточка входит в основную ротацию при первом использовании (писец выдаёт PL-код с PL241, окно/горят по общим правилам); «exp» — семья A8 «Экспериментальный VOLT», пометки *(seed+)* и сомнительные по риску (bag-rim съедает кадр, extra-legs) — ТОЛЬКО в EXP-слоты, окно не жгут. Тройка H-11 (вес+вещь+взгляд) и фаза H-12 обязательны для VOLT/EXP; семя автора (A1) только с камерой-коридором (R1/R3-класс), не с ковбоем-глаз-уровнем (D11).",
+    "corpus_note": "не дублировать живой корпус: маппинг A12 в t5_corpus_map (PL104 dance-break, T5-10 floor-slide/moon/bike/shadow, Nix reflection lag, M05 catch — уже живы)",
+    "family_quotas": [
+      {
+        "family": "A1 Семя автора",
+        "min": "1",
+        "max": "3",
+        "note": "только VOLT/EXP/R+"
+      },
+      {
+        "family": "A2 Вещь делает",
+        "min": "3",
+        "max": "6",
+        "note": "золото живости"
+      },
+      {
+        "family": "A3 Асимметрия",
+        "min": "4",
+        "max": "8",
+        "note": "лоша батча"
+      },
+      {
+        "family": "A4 Фаза",
+        "min": "3",
+        "max": "6",
+        "note": "анти-sterile"
+      },
+      {
+        "family": "A5 Взгляд",
+        "min": "3",
+        "max": "6",
+        "note": "дёшево и мощно"
+      },
+      {
+        "family": "A6 Быт",
+        "min": "2",
+        "max": "5",
+        "note": "тема-зависим"
+      },
+      {
+        "family": "A7 Опора",
+        "min": "2",
+        "max": "4",
+        "note": "NICHE-друж"
+      },
+      {
+        "family": "A8 EXP volt",
+        "min": "0",
+        "max": "5",
+        "note": "только EXP/тесты"
+      },
+      {
+        "family": "A9 Отражение",
+        "min": "0",
+        "max": "2",
+        "note": "NICHE/спец"
+      }
+    ],
+    "h11_checklist": [
+      "Вес несимметричен?",
+      "Вещь или среда что-то *делает*?",
+      "У взгляда есть вектор (не default at viewer без причины)?",
+      "Фаза mid или aftershock, не только «уже позирует»?",
+      "Тир-намёк согласован с каналом dresser (не надеяться, что поза одна поднимет R+)?",
+      "Риск X/анатомии записан и закрыт NEG/кадром?",
+      "Соседний слот не из той же клетки матрицы?"
+    ],
+    "t5_corpus_map": [
+      {
+        "in_corpus": "Shirt-lift + tape (T5-12 вердикт)",
+        "family": "A2-01"
+      },
+      {
+        "in_corpus": "PL104 Dance-Break Snap",
+        "family": "A8-08"
+      },
+      {
+        "in_corpus": "Floor-slide vacuum (T5-10)",
+        "family": "A8-09"
+      },
+      {
+        "in_corpus": "Moon on clothesline (T5-10)",
+        "family": "A8-10"
+      },
+      {
+        "in_corpus": "Bike-kickstand broom (T5-10)",
+        "family": "A3-07"
+      },
+      {
+        "in_corpus": "Shadow dishes (T5-10)",
+        "family": "A9-01"
+      },
+      {
+        "in_corpus": "Reflection lag Nix",
+        "family": "A9-02"
+      },
+      {
+        "in_corpus": "M05 midair catch",
+        "family": "A4-05"
+      }
+    ],
+    "cards": [
+      {
+        "code": "A1-01",
+        "name": "Between-Knees Look-Down",
+        "family": "A1",
+        "fields": {
+          "pose": "sitting, knees together, leaning forward slightly, looking down between her own knees, hands resting on thighs",
+          "вес": "вперёд на бёдра, спина круглая",
+          "вещь": "skirt hem pooled at thighs, fabric folds framing the gap",
+          "gaze": "looking down past the camera",
+          "фаза": "result (стабильный voyeur)",
+          "тир": "R → R+ (ракурс)",
+          "риск": "crotch-zoom; держать face в конце коридора, clothed",
+          "семья": "A1"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A1-02",
+        "name": "Standing Straddle-Over",
+        "family": "A1",
+        "fields": {
+          "pose": "standing with feet apart, weight on one leg, looking straight down, one hand on hip",
+          "вес": "одна нога",
+          "вещь": "shorts hem, fabric tension at the clothed seam",
+          "gaze": "looking down at the camera",
+          "фаза": "result",
+          "тир": "R+",
+          "риск": "broken legs / fish-eye; не extreme каждый батч",
+          "семья": "A1"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A1-03",
+        "name": "Crouch Peek",
+        "family": "A1",
+        "fields": {
+          "pose": "crouching, elbows on knees, chin in hands, looking down between knees",
+          "вес": "на носках/пятках, компактный силуэт",
+          "вещь": "skirt draped between thighs",
+          "gaze": "looking down through the gap",
+          "фаза": "result",
+          "тир": "R",
+          "риск": "childlike silhouette → усилить adult body tags + anti-loli NEG",
+          "семья": "A1"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A1-04",
+        "name": "Knee-Tent Corridor",
+        "family": "A1",
+        "fields": {
+          "pose": "lying on back, knees raised and together, looking down along her own body toward the camera",
+          "вес": "на спине, колени = арка",
+          "вещь": "oversized shirt riding up, panties only at frame edge",
+          "gaze": "looking down along the torso",
+          "фаза": "result",
+          "тир": "R+",
+          "риск": "модель разводит колени; в NEG legs spread wide если нужен tent",
+          "семья": "A1"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A1-05",
+        "name": "Step-Over Freeze",
+        "family": "A1",
+        "fields": {
+          "pose": "one foot raised mid-step as if stepping over the viewer, body slightly twisted, looking down",
+          "вес": "на опорной ноге, вторая в воздухе",
+          "вещь": "skirt swinging, one side lifted by motion",
+          "gaze": "looking down at where she will step",
+          "фаза": "mid",
+          "тир": "R+",
+          "риск": "extra legs; EXP + реролл",
+          "семья": "A1"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A1-06",
+        "name": "Ladder Axis Look-Down",
+        "family": "A1",
+        "fields": {
+          "pose": "climbing a ladder, paused mid-rung, looking down past her own shoulder",
+          "вес": "руки на перекладинах, одна нога выше",
+          "вещь": "hem above the camera, hands gripping rungs",
+          "gaze": "looking down the ladder",
+          "фаза": "mid",
+          "тир": "R",
+          "риск": "перспектива ломает руки; camera tag early",
+          "семья": "A1"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A1-07",
+        "name": "Mirror-Floor V-Sit",
+        "family": "A1",
+        "fields": {
+          "pose": "sitting on the floor, legs open in a V, leaning forward, looking down at a small mirror between her feet",
+          "вес": "вперёд, руки у зеркала",
+          "вещь": "panties and thighs in frame, face only in reflection",
+          "gaze": "looking into the mirror, not at viewer",
+          "фаза": "result",
+          "тир": "R+",
+          "риск": "face disappears; требовать reflection face",
+          "семья": "A1"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A1-08",
+        "name": "Bench Straddle Forward",
+        "family": "A1",
+        "fields": {
+          "pose": "straddling a bench, leaning far forward, forearms on the bench, looking down between her arms",
+          "вес": "на предплечьях, таз выше",
+          "вещь": "shirt hanging by gravity, spine line",
+          "gaze": "looking down at the bench boards",
+          "фаза": "result",
+          "тир": "R",
+          "риск": "face hidden; closer на hands+gap",
+          "семья": "A1"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A1-09",
+        "name": "Bag-Over-Head Peek",
+        "family": "A1",
+        "fields": {
+          "pose": "holding a shopping bag open above the camera, looking down into it as if the viewer is inside",
+          "вес": "руки вверх, лёгкий наклон",
+          "вещь": "bag rim frames the shot, chin and eyes over the edge",
+          "gaze": "looking down into the bag",
+          "фаза": "mid",
+          "тир": "PG-13 → R",
+          "риск": "bag eats the frame; face must clear rim",
+          "семья": "A1"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A1-10",
+        "name": "Towel-Drop Catch (clothed under)",
+        "family": "A1",
+        "fields": {
+          "pose": "towel slipping, both hands catching it at the chest, knees slightly inward, looking down at the towel",
+          "вес": "лёгкий step back",
+          "вещь": "towel mid-fall, hands not fully closed",
+          "gaze": "looking down at the towel edge",
+          "фаза": "mid",
+          "тир": "R+",
+          "риск": "full nude; POS must keep underwear/towel; NEG exposed",
+          "семья": "A1"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-01",
+        "name": "Shirt-Lift Mid-Pull",
+        "family": "A2",
+        "fields": {
+          "pose": "both hands lifting shirt hem past the ribs, elbows out, face half-covered by fabric",
+          "вес": "локти в стороны",
+          "вещь": "shirt mid-lift, tape crosses on chest, fabric still moving",
+          "gaze": "eyes just over the shirt hem",
+          "фаза": "mid",
+          "тир": "R+ (tape channel)",
+          "риск": "full topless; tape/covered explicit in POS",
+          "семья": "A2 · вердикт-золото T5-12"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-02",
+        "name": "Strap-Slip Catch",
+        "family": "A2",
+        "fields": {
+          "pose": "one strap fallen off the shoulder, hand halfway up to catch it, frozen mid-reach",
+          "вес": "наклон к падающей лямке",
+          "вещь": "strap in motion, fingers open",
+          "gaze": "looking at the falling strap",
+          "фаза": "mid",
+          "тир": "PG-13 → R",
+          "риск": "low; стабильный"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-03",
+        "name": "Zipper Stuck",
+        "family": "A2",
+        "fields": {
+          "pose": "both hands at a stuck zipper, elbows in, slight frown of effort, body twisted",
+          "вес": "скрутка корпуса",
+          "вещь": "zipper half-open, fabric gap",
+          "gaze": "looking down at the zipper",
+          "фаза": "mid",
+          "тир": "R",
+          "риск": "модель дорисует nude; claim channel control"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-04",
+        "name": "Hair-Tie In Teeth",
+        "family": "A2",
+        "fields": {
+          "pose": "both arms raised behind the head tying hair, hair-tie held in teeth",
+          "вес": "грудная клетка открыта поднятыми руками",
+          "вещь": "shirt rides up from raised arms, midriff",
+          "gaze": "eyes half-closed, concentrating",
+          "фаза": "mid",
+          "тир": "PG-13 → R",
+          "риск": "low"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-05",
+        "name": "Sock-Pull Wobble",
+        "family": "A2",
+        "fields": {
+          "pose": "standing on one leg, pulling a sock up the other calf, slight wobble",
+          "вес": "одна нога, баланс",
+          "вещь": "sock half-on, fingers stretching fabric",
+          "gaze": "looking down at the sock",
+          "фаза": "mid",
+          "тир": "PG-13",
+          "риск": "low; отличный PG-13 живой"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-06",
+        "name": "Coat One-Arm Hunt",
+        "family": "A2",
+        "fields": {
+          "pose": "coat half-on, one arm in sleeve, twisting to find the other sleeve",
+          "вес": "скрутка",
+          "вещь": "coat in motion, lining visible",
+          "gaze": "looking back over shoulder for the sleeve",
+          "фаза": "mid",
+          "тир": "PG-13",
+          "риск": "low"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-07",
+        "name": "Apron String Behind",
+        "family": "A2",
+        "fields": {
+          "pose": "both hands behind the back tying apron strings, chest forward by necessity",
+          "вес": "плечи назад, грудь вперёд (не поза «грудью», а биомеханика)",
+          "вещь": "apron strings, bow half-tied",
+          "gaze": "looking aside, not at viewer",
+          "фаза": "mid",
+          "тир": "PG-13 → R",
+          "риск": "over-chest emphasis; body_type discipline"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-08",
+        "name": "Umbrella Invert Fight",
+        "family": "A2",
+        "fields": {
+          "pose": "fighting an inverted umbrella in the wind, both hands on the shaft, hair horizontal",
+          "вес": "шаг против ветра",
+          "вещь": "umbrella inside-out, coat flaring",
+          "gaze": "squinting into the wind",
+          "фаза": "mid",
+          "тир": "PG-13",
+          "риск": "low; сильный environment push"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-09",
+        "name": "Bag-Strap In Teeth",
+        "family": "A2",
+        "fields": {
+          "pose": "heavy bag strap held in teeth, both hands digging inside the bag",
+          "вес": "плечо освобождено",
+          "вещь": "strap in mouth, bag open",
+          "gaze": "eyes down into the bag",
+          "фаза": "mid",
+          "тир": "PG-13",
+          "риск": "low"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-10",
+        "name": "Hem-Pinch Puddle Step",
+        "family": "A2",
+        "fields": {
+          "pose": "pinching skirt hem with one hand, stepping over a puddle on the balls of one foot",
+          "вес": "носок опорной, вторая переносит",
+          "вещь": "hem pinched, other hand free for balance",
+          "gaze": "looking down at the puddle",
+          "фаза": "mid",
+          "тир": "PG-13 → R",
+          "риск": "low"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-11",
+        "name": "Glove-Bite Pull",
+        "family": "A2",
+        "fields": {
+          "pose": "pulling off a glove with her teeth, other hand busy, elbow high",
+          "вес": "асимметрия рук",
+          "вещь": "glove between teeth, cuff stretched",
+          "gaze": "eyes on the glove",
+          "фаза": "mid",
+          "тир": "PG-13",
+          "риск": "low"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-12",
+        "name": "Scarf Wind Wrestle",
+        "family": "A2",
+        "fields": {
+          "pose": "both hands catching a scarf that the wind is stealing, body leaning after it",
+          "вес": "вперёд за вещью",
+          "вещь": "scarf mid-flight, one end still on the neck",
+          "gaze": "locked on the escaping end",
+          "фаза": "mid",
+          "тир": "PG-13",
+          "риск": "low"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-13",
+        "name": "Tape-Adjust Fingers",
+        "family": "A2",
+        "fields": {
+          "pose": "fingertips checking or pressing tape crosses on the chest, chin down",
+          "вес": "локти близко к корпусу",
+          "вещь": "tape as the subject, hands as mechanics",
+          "gaze": "looking down at the tape",
+          "фаза": "mid",
+          "тир": "R+",
+          "риск": "X if tape fails; POS covered/taped explicit"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-14",
+        "name": "Belt-Loop Hook",
+        "family": "A2",
+        "fields": {
+          "pose": "thumbs hooked in belt loops, pulling jeans/skirt slightly down on one side only, asymmetric",
+          "вес": "на одну сторону",
+          "вещь": "waistband sliding on one hip",
+          "gaze": "looking aside, casual",
+          "фаза": "mid",
+          "тир": "R → R+ (process)",
+          "риск": "overshoot to X; one-side only, stop at hip"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A2-15",
+        "name": "Book-Bite Stairs",
+        "family": "A2",
+        "fields": {
+          "pose": "stack of books in arms, one book held in teeth, climbing stairs, knee high",
+          "вес": "подъём",
+          "вещь": "book in teeth, arms full",
+          "gaze": "looking at the next step",
+          "фаза": "mid",
+          "тир": "PG-13",
+          "риск": "low"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-01",
+        "name": "Hip-Cock Doorframe",
+        "family": "A3",
+        "fields": {
+          "pose": "leaning on doorframe, weight on one leg, other knee soft, hip cocked, one shoulder on the frame",
+          "gaze": "looking back over shoulder или looking down the hall",
+          "фаза": "result",
+          "тир": "PG-13 → R",
+          "риск": "low · рабочая лошадка"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-02",
+        "name": "Chair Reverse Straddle",
+        "family": "A3",
+        "fields": {
+          "pose": "sitting astride a chair reversed, arms folded on chair back, chin on wrists",
+          "вещь": "chair back as barrier",
+          "gaze": "looking over the folded arms",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-03",
+        "name": "Window-Sill One-Knee",
+        "family": "A3",
+        "fields": {
+          "pose": "one knee on windowsill, other foot on the floor, torso twisted toward the glass",
+          "gaze": "looking outside",
+          "фаза": "mid/result",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-04",
+        "name": "Wall-Slide Sit",
+        "family": "A3",
+        "fields": {
+          "pose": "sliding down a wall into a sit, back to wall, knees up, one hand on the floor",
+          "фаза": "mid",
+          "gaze": "looking up or eyes closed",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-05",
+        "name": "Stair-Sit Sideways",
+        "family": "A3",
+        "fields": {
+          "pose": "sitting sideways on stairs, one leg stretched down, one pulled up, elbow on the upper knee",
+          "gaze": "looking down the stairwell",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-06",
+        "name": "Counter-Hop Seat",
+        "family": "A3",
+        "fields": {
+          "pose": "sitting on a kitchen counter, heels kicking the cabinet, leaning back on hands",
+          "gaze": "looking at ceiling or at someone off-frame",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-07",
+        "name": "Bike-Kickstand Lean",
+        "family": "A3",
+        "fields": {
+          "pose": "leaning on one side of a bike/broom as kickstand, one foot on the ground toe-first",
+          "вещь": "vehicle as third leg",
+          "тир": "PG-13 · уже в T5-10"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-08",
+        "name": "Sofa Arm-Drape",
+        "family": "A3",
+        "fields": {
+          "pose": "draped over a sofa arm, hips on the armrest, head toward the cushions, one leg dangling",
+          "фаза": "result / aftershock",
+          "тир": "R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-09",
+        "name": "Kneel-Sit Hybrid",
+        "family": "A3",
+        "fields": {
+          "pose": "one knee down, other foot planted, rising or settling, hands on the raised knee",
+          "фаза": "mid",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A3-10",
+        "name": "Cross-Leg Lean-Back",
+        "family": "A3",
+        "fields": {
+          "pose": "sitting cross-legged then leaning all the way back on both hands, chest open, face up",
+          "тир": "PG-13 → R",
+          "риск": "symmetry; break with head tilt"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-01",
+        "name": "About-To-Sit",
+        "family": "A4",
+        "fields": {
+          "pose": "hovering above a chair, knees bent, not yet seated, hands reaching for the armrests",
+          "фаза": "mid",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-02",
+        "name": "Just-Landed Crouch",
+        "family": "A4",
+        "fields": {
+          "pose": "just after landing from a jump, knees deeply bent, hands out for balance, hair still down",
+          "фаза": "aftershock",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-03",
+        "name": "Almost-Wave",
+        "family": "A4",
+        "fields": {
+          "pose": "hand raised halfway in a wave, fingers not fully open, frozen decision",
+          "фаза": "mid",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-04",
+        "name": "Turn-Away Start",
+        "family": "A4",
+        "fields": {
+          "pose": "beginning to turn away, shoulders already rotated, face still half toward camera",
+          "фаза": "mid",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-05",
+        "name": "Catch-Object",
+        "family": "A4",
+        "fields": {
+          "pose": "both hands open toward a falling object, eyes locked, body under the arc",
+          "вещь": "object mid-air (book, apple, key)",
+          "фаза": "mid · M05-класс",
+          "тир": "PG-13 → R+"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-06",
+        "name": "Missed-Catch After",
+        "family": "A4",
+        "fields": {
+          "pose": "just after missing the catch, hands still open, object on the floor, embarrassed smile",
+          "фаза": "aftershock",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-07",
+        "name": "Inhale-Before-Speak",
+        "family": "A4",
+        "fields": {
+          "pose": "shoulders slightly lifted mid-inhale, mouth open a fraction, about to say something",
+          "фаза": "mid (микро)",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-08",
+        "name": "Push-Door Shoulder",
+        "family": "A4",
+        "fields": {
+          "pose": "shoulder against a heavy door, one foot sliding back for force, cheek to the wood",
+          "фаза": "mid",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-09",
+        "name": "Towel-Hair Flip",
+        "family": "A4",
+        "fields": {
+          "pose": "mid-flip of hair after towel, face briefly hidden by wet hair arc, arms up",
+          "фаза": "mid",
+          "тир": "R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A4-10",
+        "name": "Sit-To-Stand Push",
+        "family": "A4",
+        "fields": {
+          "pose": "hands pushing on knees, rising from a sit, butt not yet clear of the seat",
+          "фаза": "mid",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-01",
+        "name": "Over-Shoulder Back-Look",
+        "family": "A5",
+        "fields": {
+          "pose": "body facing away, head turned back over the shoulder toward camera or past it",
+          "gaze": "looking back",
+          "тир": "PG-13 → R · стабильный хитер"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-02",
+        "name": "Off-Frame Stare",
+        "family": "A5",
+        "fields": {
+          "pose": "body toward camera, eyes locked on something outside the left/right edge",
+          "gaze": "looking off-frame",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-03",
+        "name": "Down-At-Hands Task",
+        "family": "A5",
+        "fields": {
+          "pose": "head bowed, eyes on her own hands doing a precise task (thread, phone, potion cork)",
+          "gaze": "task-lock",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-04",
+        "name": "Mirror Critique",
+        "family": "A5",
+        "fields": {
+          "pose": "facing a mirror, fingers at her own cheek or collar, evaluating",
+          "gaze": "at reflection",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-05",
+        "name": "Through-Glass At Viewer",
+        "family": "A5",
+        "fields": {
+          "pose": "behind rain-glass or bus glass, palm on the pane, eyes finding the viewer outside",
+          "gaze": "through glass at viewer",
+          "тир": "R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-06",
+        "name": "Eyes-Closed Rest",
+        "family": "A5",
+        "fields": {
+          "pose": "eyes closed, face tilted to sun/wind, body otherwise active or leaning",
+          "gaze": "none — sensory",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-07",
+        "name": "Side-Eye Suspicion",
+        "family": "A5",
+        "fields": {
+          "pose": "head forward, eyes slid to the side without turning the head",
+          "gaze": "side-eye",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A5-08",
+        "name": "Up-At-Sky Open",
+        "family": "A5",
+        "fields": {
+          "pose": "chin up, looking at sky/ceiling, throat line open, arms loose",
+          "gaze": "up",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-01",
+        "name": "Fridge Dive",
+        "family": "A6",
+        "fields": {
+          "pose": "bent into open fridge, weight on one leg, other heel up, one hand on the door",
+          "gaze": "scanning shelves",
+          "тир": "R (camera from inside = R+)"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-02",
+        "name": "Laundry Reach-High",
+        "family": "A6",
+        "fields": {
+          "pose": "both arms up pinning laundry, body stretched, one heel lifted",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-03",
+        "name": "Sink-Lean Wash",
+        "family": "A6",
+        "fields": {
+          "pose": "leaning over a sink, forearms wet, hair falling forward, hip against the counter",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-04",
+        "name": "Floor-Wipe Four-Point",
+        "family": "A6",
+        "fields": {
+          "pose": "on hands and knees wiping the floor, one hand on the cloth, spine long",
+          "тир": "R → R+ (camera choice)",
+          "риск": "porn-default; держать task + face angle"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-05",
+        "name": "Couch Remote Dig",
+        "family": "A6",
+        "fields": {
+          "pose": "hand between couch cushions searching, cheek squished into the backrest",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-06",
+        "name": "Stove-Stir Lean",
+        "family": "A6",
+        "fields": {
+          "pose": "stirring a pot, hip cocked, other hand on the counter, tasting spoon near lips",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-07",
+        "name": "Trash-Out One-Hand",
+        "family": "A6",
+        "fields": {
+          "pose": "holding a trash bag out from the body, other hand opening a door with the elbow",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-08",
+        "name": "Plant-Water Squat",
+        "family": "A6",
+        "fields": {
+          "pose": "squatting beside a plant with a watering can, one knee up, pouring carefully",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-09",
+        "name": "Mail-Slot Reach",
+        "family": "A6",
+        "fields": {
+          "pose": "crouching at a mail slot, fingers pushing a letter through, eye to the slot",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A6-10",
+        "name": "Bed-Make Corner Tug",
+        "family": "A6",
+        "fields": {
+          "pose": "tugging a bedsheet corner hard with both hands, lunging stance",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-01",
+        "name": "Forehead-On-Glass",
+        "family": "A7",
+        "fields": {
+          "pose": "forehead against cool window glass, palms flat, breath fog starting",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-02",
+        "name": "Back-To-Wall Slide-Breath",
+        "family": "A7",
+        "fields": {
+          "pose": "back flat to wall, one foot up against the wall, exhaling",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-03",
+        "name": "Chin-On-Rail",
+        "family": "A7",
+        "fields": {
+          "pose": "chin on balcony rail, arms dangling over the other side, heels up",
+          "тир": "PG-13 → R"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-04",
+        "name": "Cheek-On-Table",
+        "family": "A7",
+        "fields": {
+          "pose": "cheek on the cafe table, one arm stretched out, other under her head, bored or waiting",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-05",
+        "name": "Shoulder-Into-Crowd-Gap",
+        "family": "A7",
+        "fields": {
+          "pose": "squeezing sideways through a gap, one shoulder leading, bag clutched",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-06",
+        "name": "Rain-Wall Shelter",
+        "family": "A7",
+        "fields": {
+          "pose": "pressed under a narrow overhang, knees together, bag on head as shield",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-07",
+        "name": "Hot-Spring Edge Sit *(clothed / towel)*",
+        "family": "A7",
+        "fields": {
+          "pose": "sitting on the stone edge, feet in water, towel hugged, steam rising",
+          "тир": "R → R+",
+          "риск": "default nude; towel/clothes lock"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A7-08",
+        "name": "Tree-Lean One-Foot",
+        "family": "A7",
+        "fields": {
+          "pose": "one foot planted on a tree trunk, back to bark, looking up into leaves",
+          "тир": "PG-13"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A8-01",
+        "name": "Panties-Waistband Look-Down *(seed+)*",
+        "family": "A8",
+        "fields": {
+          "pose": "standing, fingers lightly at the waistband of panties, looking down along her own body, not pulling down",
+          "тир": "R+",
+          "риск": "X-drift; только EXP, stop motion, NEG pull-down"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-02",
+        "name": "Thigh-Phone Hide",
+        "family": "A8",
+        "fields": {
+          "pose": "sitting, phone held between closed thighs, leaning over the screen, hair curtain",
+          "тир": "R"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-03",
+        "name": "Under-Table Sock-Toes",
+        "family": "A8",
+        "fields": {
+          "pose": "sitting at a table, camera under the table: toes curling, knees together, hands visible on the table edge above",
+          "тир": "R",
+          "риск": "disconnected body; need continuous anatomy"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-04",
+        "name": "Jacket-Over-Shoulders Only",
+        "family": "A8",
+        "fields": {
+          "pose": "jacket on shoulders like a cape, arms free, walking, wind inside the jacket",
+          "тир": "R → R+"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-05",
+        "name": "Sports-Bra Adjust After Run",
+        "family": "A8",
+        "fields": {
+          "pose": "post-run, both hands adjusting sports bra band, breathing hard, one knee soft",
+          "тир": "R",
+          "риск": "over-sweat → sheer unplanned"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-06",
+        "name": "Rope-Climb Pause *(non-shibari)*",
+        "family": "A8",
+        "fields": {
+          "pose": "paused on a climbing rope, thighs gripping, looking up, arms stretched",
+          "тир": "R",
+          "риск": "shibari misread; context gym/cliff only"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-07",
+        "name": "Yoga-Transition Bridge",
+        "family": "A8",
+        "fields": {
+          "pose": "mid-transition into a back bridge, not held, strain on the arms",
+          "тир": "R",
+          "риск": "broken spine; athletic body tags"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-08",
+        "name": "Dance-Break Snap",
+        "family": "A8",
+        "fields": {
+          "pose": "mid-dance snap, one arm sharp, other loose, weight hard on one foot · T5 PL104-класс",
+          "тир": "R → R+"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-09",
+        "name": "Floor-Slide Vacuum War",
+        "family": "A8",
+        "fields": {
+          "pose": "sliding on knees across parquet in a tug-of-war with a cord, grin gritted · T5-10 P23-дух",
+          "тир": "R+"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A8-10",
+        "name": "Moon-Hang Laundry *(niche kinetic)*",
+        "family": "A8",
+        "fields": {
+          "pose": "on a ladder, tying a glowing moon to a clothesline, nightshirt hem lifted by wind · T5-10 P24-дух",
+          "тир": "R+ · NICHE"
+        },
+        "pool": "exp"
+      },
+      {
+        "code": "A9-01",
+        "name": "Shadow Does The Work",
+        "family": "A9",
+        "fields": {
+          "pose": "standing still with a cup; her shadow independently washing dishes · T5-10",
+          "тир": "PG-13 → R · NICHE"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A9-02",
+        "name": "Reflection Lag",
+        "family": "A9",
+        "fields": {
+          "pose": "raised hand; reflection in glass lags half a step · Nix-класс",
+          "тир": "R → R+"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A9-03",
+        "name": "Mirror Shows The Back",
+        "family": "A9",
+        "fields": {
+          "pose": "facing camera in underwear; full-length mirror behind shows the back view",
+          "тир": "R+",
+          "риск": "double anatomy errors"
+        },
+        "pool": "main"
+      },
+      {
+        "code": "A9-04",
+        "name": "Puddle Second Face",
+        "family": "A9",
+        "fields": {
+          "pose": "standing at a puddle edge; puddle reflects a different expression",
+          "тир": "PG-13 · NICHE"
+        },
+        "pool": "main"
+      }
+    ]
+  },
+  "first_use_ledger": {
+    "born": "2026-11-05",
+    "law": "PL241+ выданы писцом при первом использовании карточек мануала в батче T5-13 «IRA DOMINI» (addendum law, вердикт 2026-11-05).",
+    "issued": [
+      "PL241",
+      "PL242",
+      "PL243",
+      "PL244",
+      "PL245",
+      "PL246",
+      "PL247",
+      "PL248",
+      "PL249",
+      "PL250",
+      "PL251",
+      "PL252",
+      "PL253",
+      "PL254",
+      "PL255",
+      "PL256",
+      "PL257",
+      "PL258",
+      "PL259",
+      "PL260",
+      "PL261",
+      "PL262",
+      "PL263",
+      "PL264",
+      "PL265",
+      "PL266",
+      "PL267",
+      "PL268"
+    ]
+  }
 }

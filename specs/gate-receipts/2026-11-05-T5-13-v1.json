@@ -1,0 +1,556 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.8.0)",
+ "batch": "batches/T5-13.md",
+ "sha256": "d701c49701ab6778da43f0b3d51051f51d131c293e13a3fd59248006faa1e5d2",
+ "utc": "2026-11-04T22:09:56+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "46 общих 6-грамм с предыдущими партиями (T5-11.md, T5-12.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "ring-eyed-tape-confession",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 174
+  },
+  {
+   "id": "P02",
+   "slug": "neon-mirror-habit",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 58,
+   "posWords": 153
+  },
+  {
+   "id": "P03",
+   "slug": "vine-court-arrest",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 59,
+   "posWords": 183
+  },
+  {
+   "id": "P04",
+   "slug": "gate-of-the-hanging-bolt",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 170
+  },
+  {
+   "id": "P05",
+   "slug": "banner-wrestle-wall-walk",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 53,
+   "posWords": 145
+  },
+  {
+   "id": "P06",
+   "slug": "crane-scale-verdict",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 161
+  },
+  {
+   "id": "P07",
+   "slug": "garrison-rain-wall",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 155
+  },
+  {
+   "id": "P08",
+   "slug": "empty-formation-inhale",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 147
+  },
+  {
+   "id": "P09",
+   "slug": "verdict-zipper-stuck",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 152
+  },
+  {
+   "id": "P10",
+   "slug": "tilted-tribunal-stand",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 146
+  },
+  {
+   "id": "P11",
+   "slug": "dressing-among-guardians",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 35,
+   "posWords": 147
+  },
+  {
+   "id": "P12",
+   "slug": "verdict-tablet-archive",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 139
+  },
+  {
+   "id": "P13",
+   "slug": "oath-bath-caustics",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 163
+  },
+  {
+   "id": "P14",
+   "slug": "lighthouse-keeper-gaze",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 153
+  },
+  {
+   "id": "P15",
+   "slug": "tape-press-oath-shoulder",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 47,
+   "posWords": 134
+  },
+  {
+   "id": "P16",
+   "slug": "crane-feeding-sill",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 160
+  },
+  {
+   "id": "P17",
+   "slug": "throne-corridor-between-knees",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 152
+  },
+  {
+   "id": "P18",
+   "slug": "wrath-crack-cafe",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 142
+  },
+  {
+   "id": "P19",
+   "slug": "banner-laundry-forearms",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 44,
+   "posWords": 137
+  },
+  {
+   "id": "P20",
+   "slug": "bell-flock-census",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 138
+  },
+  {
+   "id": "P21",
+   "slug": "cuirass-lacing-side-curve",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 59,
+   "posWords": 156
+  },
+  {
+   "id": "P22",
+   "slug": "lightning-bottling-count",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 159
+  },
+  {
+   "id": "P23",
+   "slug": "keyhole-fitting-crack",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 47,
+   "posWords": 166
+  },
+  {
+   "id": "P24",
+   "slug": "wrath-made-weather",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 161
+  },
+  {
+   "id": "P25",
+   "slug": "iva-waistband-greenhouse",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 51,
+   "posWords": 160
+  },
+  {
+   "id": "P26",
+   "slug": "iva-bridge-potting-bench",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 46,
+   "posWords": 149
+  },
+  {
+   "id": "P27",
+   "slug": "iva-bag-rim-peek",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 147
+  },
+  {
+   "id": "P28",
+   "slug": "viva-sock-toes-diner",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 165
+  },
+  {
+   "id": "P29",
+   "slug": "viva-bra-adjust-track",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 53,
+   "posWords": 144
+  },
+  {
+   "id": "P30",
+   "slug": "viva-line-hang-sway",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 141
+  },
+  {
+   "id": "P31",
+   "slug": "liv-key-rope-insert",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 153
+  },
+  {
+   "id": "P32",
+   "slug": "liv-rope-pause-payoff",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 58,
+   "posWords": 153
+  },
+  {
+   "id": "P33",
+   "slug": "liv-crouch-peek-refused",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 49,
+   "posWords": 153
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "hooded wool cloak slipped off both",
+   "slotsHere": [
+    "P04"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P04"
+   ]
+  },
+  {
+   "gram": "wool cloak slipped off both shoulders",
+   "slotsHere": [
+    "P04"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P04"
+   ]
+  },
+  {
+   "gram": "copper hair lifted and split open",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P05"
+   ]
+  },
+  {
+   "gram": "hair lifted and split open by",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P05"
+   ]
+  },
+  {
+   "gram": "lifted and split open by the",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P05"
+   ]
+  },
+  {
+   "gram": "and split open by the wind",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P05"
+   ]
+  },
+  {
+   "gram": "hair in a high sleek ponytail",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "hair in a wet slick low",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "in a wet slick low bun",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "fair skin young soft build medium",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P13"
+   ]
+  },
+  {
+   "gram": "hair in a low braided chignon",
+   "slotsHere": [
+    "P08"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P18"
+   ]
+  },
+  {
+   "gram": "grey eyes sun warmed fair skin",
+   "slotsHere": [
+    "P08"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P22"
+   ]
+  },
+  {
+   "gram": "hair combed back and parted by",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P15"
+   ]
+  },
+  {
+   "gram": "full figured build wide hips heavy",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P21"
+   ]
+  },
+  {
+   "gram": "figured build wide hips heavy soft",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P21"
+   ]
+  },
+  {
+   "gram": "mouth the window light holding the",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-11.md",
+   "slotsThere": [
+    "P31"
+   ]
+  },
+  {
+   "gram": "hair pinned up with wooden hair",
+   "slotsHere": [
+    "P12"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P19"
+   ]
+  },
+  {
+   "gram": "pinned up with wooden hair sticks",
+   "slotsHere": [
+    "P12"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P19"
+   ]
+  },
+  {
+   "gram": "caustic light holding the chest line",
+   "slotsHere": [
+    "P13"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "blonde hair in a low loose",
+   "slotsHere": [
+    "P14"
+   ],
+   "sourceBatch": "T5-12.md",
+   "slotsThere": [
+    "P21"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [
+  "M01"
+ ],
+ "storyCards": true
+}

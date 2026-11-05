@@ -1,0 +1,2306 @@
+# COMPOSITION MANUAL — внешний пакет Cole/Grok (этапы A–E)
+
+> **Провенанс:** посылка автора от Коула (Грок), принята 2026-11-05
+> (исходник: upload/T5-COMPOSITION-MANUAL-STAGE, 105 КБ). Ниже — вербатим, писец не правит.
+> **Статус:** принят в систему. Атомы разложены по реестрам: Stage A →
+> poses.json v1.1.0 (manual_cards ×85, квоты семей A10, чеклист A11, мап корпуса A12);
+> Stage B → camera.json v1.1.0 (framing_ladder F1–F8, grok_presets S/L/R,
+> камера×жанр×тир, ковбой-кап ≤5, анти-эхо); Stage C → rating-techniques.json v1.2.0
+> (пакеты α–κ, анти-моно квоты, M-коды, I-движки). Stage D/E — молекулы и архив,
+> живут здесь вербатимом. Ингест: tools/ingest-manual-2026-11-05.py.
+> **Кодовая оговорка:** D/A/F/S/L/R/P13/M/I/Dx — словарь Коула; местный словарь —
+> D#/CAM## (расшифровка: camera.json → manual_map_note). Конфликт B9 (камера в первых
+> 10–20 токенах POS) против местного pos_language (кадровая строка последняя у
+> face-блока, рендер-проверено T5-11/12) — вопрос автору, CONSILIUM 2026-11-05.
+> **Право:** конфликт ручного ↔ LAWS.md → побеждают LAWS + вердикт автора (E8).
+
+---
+
+# THREAD 5 — COMPOSITION MANUAL
+## ЭТАП A: ПОЗЫ (анти-стерильность · живость · эччи без X)
+
+**Статус:** внешний пакет Cole/Grok · 2026-11-04  
+**Для:** писец, CONSILIUM, кандидаты в `poses/` / EXP-пул  
+**Границы (не обсуждаются):** XXX никогда · гениталии не рисуются · loli-floor · мускулистых нет · «низ в трусах/одежде» = X-cut границей кадра, не снятием  
+**Связь:** вердикт T5-12 · CONSILIUM H-10/H-11/H-12 · грязный аудит T4 #52 · пакет Grok 2026-11-04
+
+---
+
+### Как читать этот этап
+
+Каждая поза — не «красивая стойка», а **карточка события**:
+
+| Поле | Смысл |
+|---|---|
+| **ID** | стабильный код для ledger/EXP |
+| **Имя** | русское рабочее |
+| **pose** | англ. тег-ран / NL-фраза, danbooru-совместимо |
+| **вес** | где центр масс (анти-симметрия) |
+| **вещь** | что делает одежда/предмет (вещь-механика) |
+| **gaze** | вектор взгляда |
+| **фаза** | result / mid / aftershock |
+| **тир-намёк** | PG-13 / R / R+ потенциал *позы* (не гарантия) |
+| **риск** | что ломает рендер |
+| **семья** | кластер для ротации |
+
+**Закон тройки (H-11):** живая поза = **несимметричный вес + вещь-механика + взгляд-вектор**.  
+Если одного нет — поза склонна к «базису».
+
+**Закон фазы (H-12):** mid > aftershock > result.  
+«Уже сидит» стерильно; «садится / ловит / не дотянула» — дышит.
+
+---
+
+# A0. ПОЧЕМУ СТЕРИЛЬНО (шпаргалка перед каталогом)
+
+1. Симметрия веса → каталог  
+2. Вещь покоится → нет причины «сейчас»  
+3. Взгляд без вектора → default smile  
+4. Фаза = 0 (только результат)  
+5. Камера-дефолт (cowboy + eye-level + center) убивает даже сильную позу  
+
+**Лекарство в позе:** сломай хотя бы два пункта из пяти. Лучше — все пять через камеру+позу вместе (этапы B/G).
+
+---
+
+# A1. СЕМЬЯ «СЕМЯ АВТОРА»  
+### низ кадра · промеж · взгляд вниз · X-cut границей
+
+> Эталон вердикта T5-12: *«поза промеж ногами от трусов, где чувиха вниз смотрит»*.  
+> Эротика = запретная точка камеры + clothed claim + gaze вниз. Не оголение.
+
+### A1-01 · Between-Knees Look-Down
+- **pose:** `sitting, knees together, leaning forward slightly, looking down between her own knees, hands resting on thighs`
+- **вес:** вперёд на бёдра, спина круглая  
+- **вещь:** `skirt hem pooled at thighs, fabric folds framing the gap`  
+- **gaze:** `looking down past the camera`  
+- **фаза:** result (стабильный voyeur)  
+- **тир:** R → R+ (ракурс)  
+- **риск:** crotch-zoom; держать face в конце коридора, clothed  
+- **семья:** A1
+
+### A1-02 · Standing Straddle-Over
+- **pose:** `standing with feet apart, weight on one leg, looking straight down, one hand on hip`
+- **вес:** одна нога  
+- **вещь:** `shorts hem, fabric tension at the clothed seam`  
+- **gaze:** `looking down at the camera`  
+- **фаза:** result  
+- **тир:** R+  
+- **риск:** broken legs / fish-eye; не extreme каждый батч  
+- **семья:** A1
+
+### A1-03 · Crouch Peek
+- **pose:** `crouching, elbows on knees, chin in hands, looking down between knees`
+- **вес:** на носках/пятках, компактный силуэт  
+- **вещь:** `skirt draped between thighs`  
+- **gaze:** `looking down through the gap`  
+- **фаза:** result  
+- **тир:** R  
+- **риск:** childlike silhouette → усилить adult body tags + anti-loli NEG  
+- **семья:** A1
+
+### A1-04 · Knee-Tent Corridor
+- **pose:** `lying on back, knees raised and together, looking down along her own body toward the camera`
+- **вес:** на спине, колени = арка  
+- **вещь:** `oversized shirt riding up, panties only at frame edge`
+- **gaze:** `looking down along the torso`  
+- **фаза:** result  
+- **тир:** R+  
+- **риск:** модель разводит колени; в NEG `legs spread wide` если нужен tent  
+- **семья:** A1
+
+### A1-05 · Step-Over Freeze
+- **pose:** `one foot raised mid-step as if stepping over the viewer, body slightly twisted, looking down`
+- **вес:** на опорной ноге, вторая в воздухе  
+- **вещь:** `skirt swinging, one side lifted by motion`  
+- **gaze:** `looking down at where she will step`  
+- **фаза:** **mid**  
+- **тир:** R+  
+- **риск:** extra legs; EXP + реролл  
+- **семья:** A1
+
+### A1-06 · Ladder Axis Look-Down
+- **pose:** `climbing a ladder, paused mid-rung, looking down past her own shoulder`
+- **вес:** руки на перекладинах, одна нога выше  
+- **вещь:** `hem above the camera, hands gripping rungs`  
+- **gaze:** `looking down the ladder`  
+- **фаза:** mid  
+- **тир:** R  
+- **риск:** перспектива ломает руки; camera tag early  
+- **семья:** A1
+
+### A1-07 · Mirror-Floor V-Sit
+- **pose:** `sitting on the floor, legs open in a V, leaning forward, looking down at a small mirror between her feet`
+- **вес:** вперёд, руки у зеркала  
+- **вещь:** `panties and thighs in frame, face only in reflection`  
+- **gaze:** `looking into the mirror, not at viewer`  
+- **фаза:** result  
+- **тир:** R+  
+- **риск:** face disappears; требовать reflection face  
+- **семья:** A1
+
+### A1-08 · Bench Straddle Forward
+- **pose:** `straddling a bench, leaning far forward, forearms on the bench, looking down between her arms`
+- **вес:** на предплечьях, таз выше  
+- **вещь:** `shirt hanging by gravity, spine line`  
+- **gaze:** `looking down at the bench boards`  
+- **фаза:** result  
+- **тир:** R  
+- **риск:** face hidden; closer на hands+gap  
+- **семья:** A1
+
+### A1-09 · Bag-Over-Head Peek
+- **pose:** `holding a shopping bag open above the camera, looking down into it as if the viewer is inside`
+- **вес:** руки вверх, лёгкий наклон  
+- **вещь:** `bag rim frames the shot, chin and eyes over the edge`  
+- **gaze:** `looking down into the bag`  
+- **фаза:** mid  
+- **тир:** PG-13 → R  
+- **риск:** bag eats the frame; face must clear rim  
+- **семья:** A1
+
+### A1-10 · Towel-Drop Catch (clothed under)
+- **pose:** `towel slipping, both hands catching it at the chest, knees slightly inward, looking down at the towel`
+- **вес:** лёгкий step back  
+- **вещь:** `towel mid-fall, hands not fully closed`  
+- **gaze:** `looking down at the towel edge`  
+- **фаза:** **mid**  
+- **тир:** R+  
+- **риск:** full nude; POS must keep underwear/towel; NEG exposed  
+- **семья:** A1
+
+---
+
+# A2. СЕМЬЯ «ВЕЩЬ ДЕЛАЕТ»  
+### одежда/предмет совершает действие (эталон shirt-lift + tape)
+
+### A2-01 · Shirt-Lift Mid-Pull
+- **pose:** `both hands lifting shirt hem past the ribs, elbows out, face half-covered by fabric`
+- **вес:** локти в стороны  
+- **вещь:** `shirt mid-lift, tape crosses on chest, fabric still moving`  
+- **gaze:** `eyes just over the shirt hem`  
+- **фаза:** mid  
+- **тир:** R+ (tape channel)  
+- **риск:** full topless; tape/covered explicit in POS  
+- **семья:** A2 · **вердикт-золото T5-12**
+
+### A2-02 · Strap-Slip Catch
+- **pose:** `one strap fallen off the shoulder, hand halfway up to catch it, frozen mid-reach`
+- **вес:** наклон к падающей лямке  
+- **вещь:** `strap in motion, fingers open`  
+- **gaze:** `looking at the falling strap`  
+- **фаза:** mid  
+- **тир:** PG-13 → R  
+- **риск:** low; стабильный  
+
+### A2-03 · Zipper Stuck
+- **pose:** `both hands at a stuck zipper, elbows in, slight frown of effort, body twisted`
+- **вес:** скрутка корпуса  
+- **вещь:** `zipper half-open, fabric gap`  
+- **gaze:** `looking down at the zipper`  
+- **фаза:** mid  
+- **тир:** R  
+- **риск:** модель дорисует nude; claim channel control  
+
+### A2-04 · Hair-Tie In Teeth
+- **pose:** `both arms raised behind the head tying hair, hair-tie held in teeth`
+- **вес:** грудная клетка открыта поднятыми руками  
+- **вещь:** `shirt rides up from raised arms, midriff`  
+- **gaze:** `eyes half-closed, concentrating`  
+- **фаза:** mid  
+- **тир:** PG-13 → R  
+- **риск:** low  
+
+### A2-05 · Sock-Pull Wobble
+- **pose:** `standing on one leg, pulling a sock up the other calf, slight wobble`
+- **вес:** одна нога, баланс  
+- **вещь:** `sock half-on, fingers stretching fabric`  
+- **gaze:** `looking down at the sock`  
+- **фаза:** mid  
+- **тир:** PG-13  
+- **риск:** low; отличный PG-13 живой  
+
+### A2-06 · Coat One-Arm Hunt
+- **pose:** `coat half-on, one arm in sleeve, twisting to find the other sleeve`
+- **вес:** скрутка  
+- **вещь:** `coat in motion, lining visible`  
+- **gaze:** `looking back over shoulder for the sleeve`  
+- **фаза:** mid  
+- **тир:** PG-13  
+- **риск:** low  
+
+### A2-07 · Apron String Behind
+- **pose:** `both hands behind the back tying apron strings, chest forward by necessity`
+- **вес:** плечи назад, грудь вперёд (не поза «грудью», а биомеханика)  
+- **вещь:** `apron strings, bow half-tied`  
+- **gaze:** `looking aside, not at viewer`  
+- **фаза:** mid  
+- **тир:** PG-13 → R  
+- **риск:** over-chest emphasis; body_type discipline  
+
+### A2-08 · Umbrella Invert Fight
+- **pose:** `fighting an inverted umbrella in the wind, both hands on the shaft, hair horizontal`
+- **вес:** шаг против ветра  
+- **вещь:** `umbrella inside-out, coat flaring`  
+- **gaze:** `squinting into the wind`  
+- **фаза:** mid  
+- **тир:** PG-13  
+- **риск:** low; сильный environment push  
+
+### A2-09 · Bag-Strap In Teeth
+- **pose:** `heavy bag strap held in teeth, both hands digging inside the bag`
+- **вес:** плечо освобождено  
+- **вещь:** `strap in mouth, bag open`  
+- **gaze:** `eyes down into the bag`  
+- **фаза:** mid  
+- **тир:** PG-13  
+- **риск:** low  
+
+### A2-10 · Hem-Pinch Puddle Step
+- **pose:** `pinching skirt hem with one hand, stepping over a puddle on the balls of one foot`
+- **вес:** носок опорной, вторая переносит  
+- **вещь:** `hem pinched, other hand free for balance`  
+- **gaze:** `looking down at the puddle`  
+- **фаза:** mid  
+- **тир:** PG-13 → R  
+- **риск:** low  
+
+### A2-11 · Glove-Bite Pull
+- **pose:** `pulling off a glove with her teeth, other hand busy, elbow high`
+- **вес:** асимметрия рук  
+- **вещь:** `glove between teeth, cuff stretched`  
+- **gaze:** `eyes on the glove`  
+- **фаза:** mid  
+- **тир:** PG-13  
+- **риск:** low  
+
+### A2-12 · Scarf Wind Wrestle
+- **pose:** `both hands catching a scarf that the wind is stealing, body leaning after it`
+- **вес:** вперёд за вещью  
+- **вещь:** `scarf mid-flight, one end still on the neck`  
+- **gaze:** `locked on the escaping end`  
+- **фаза:** mid  
+- **тир:** PG-13  
+- **риск:** low  
+
+### A2-13 · Tape-Adjust Fingers
+- **pose:** `fingertips checking or pressing tape crosses on the chest, chin down`
+- **вес:** локти близко к корпусу  
+- **вещь:** `tape as the subject, hands as mechanics`  
+- **gaze:** `looking down at the tape`  
+- **фаза:** mid  
+- **тир:** R+  
+- **риск:** X if tape fails; POS covered/taped explicit  
+
+### A2-14 · Belt-Loop Hook
+- **pose:** `thumbs hooked in belt loops, pulling jeans/skirt slightly down on one side only, asymmetric`
+- **вес:** на одну сторону  
+- **вещь:** `waistband sliding on one hip`  
+- **gaze:** `looking aside, casual`  
+- **фаза:** mid  
+- **тир:** R → R+ (process)  
+- **риск:** overshoot to X; one-side only, stop at hip  
+
+### A2-15 · Book-Bite Stairs
+- **pose:** `stack of books in arms, one book held in teeth, climbing stairs, knee high`
+- **вес:** подъём  
+- **вещь:** `book in teeth, arms full`  
+- **gaze:** `looking at the next step`  
+- **фаза:** mid  
+- **тир:** PG-13  
+- **риск:** low  
+
+---
+
+# A3. СЕМЬЯ «АСИММЕТРИЯ ВЕСА»  
+### hip cock · one-leg · twist · без обязательного claim
+
+### A3-01 · Hip-Cock Doorframe
+- **pose:** `leaning on doorframe, weight on one leg, other knee soft, hip cocked, one shoulder on the frame`
+- **gaze:** `looking back over shoulder` или `looking down the hall`  
+- **фаза:** result  
+- **тир:** PG-13 → R  
+- **риск:** low · **рабочая лошадка**
+
+### A3-02 · Chair Reverse Straddle
+- **pose:** `sitting astride a chair reversed, arms folded on chair back, chin on wrists`
+- **вещь:** `chair back as barrier`  
+- **gaze:** `looking over the folded arms`  
+- **тир:** PG-13 → R  
+
+### A3-03 · Window-Sill One-Knee
+- **pose:** `one knee on windowsill, other foot on the floor, torso twisted toward the glass`
+- **gaze:** `looking outside`  
+- **фаза:** mid/result  
+- **тир:** PG-13  
+
+### A3-04 · Wall-Slide Sit
+- **pose:** `sliding down a wall into a sit, back to wall, knees up, one hand on the floor`
+- **фаза:** **mid**  
+- **gaze:** `looking up or eyes closed`  
+- **тир:** PG-13 → R  
+
+### A3-05 · Stair-Sit Sideways
+- **pose:** `sitting sideways on stairs, one leg stretched down, one pulled up, elbow on the upper knee`
+- **gaze:** `looking down the stairwell`  
+- **тир:** PG-13  
+
+### A3-06 · Counter-Hop Seat
+- **pose:** `sitting on a kitchen counter, heels kicking the cabinet, leaning back on hands`
+- **gaze:** `looking at ceiling or at someone off-frame`  
+- **тир:** PG-13 → R  
+
+### A3-07 · Bike-Kickstand Lean
+- **pose:** `leaning on one side of a bike/broom as kickstand, one foot on the ground toe-first`
+- **вещь:** `vehicle as third leg`  
+- **тир:** PG-13 · **уже в T5-10**
+
+### A3-08 · Sofa Arm-Drape
+- **pose:** `draped over a sofa arm, hips on the armrest, head toward the cushions, one leg dangling`
+- **фаза:** result / aftershock  
+- **тир:** R  
+
+### A3-09 · Kneel-Sit Hybrid
+- **pose:** `one knee down, other foot planted, rising or settling, hands on the raised knee`
+- **фаза:** **mid**  
+- **тир:** PG-13 → R  
+
+### A3-10 · Cross-Leg Lean-Back
+- **pose:** `sitting cross-legged then leaning all the way back on both hands, chest open, face up`
+- **тир:** PG-13 → R  
+- **риск:** symmetry; break with head tilt  
+
+---
+
+# A4. СЕМЬЯ «ФАЗА / ПОЛУТОН»  
+### mid-gesture · aftershock · about-to
+
+### A4-01 · About-To-Sit
+- **pose:** `hovering above a chair, knees bent, not yet seated, hands reaching for the armrests`
+- **фаза:** mid  
+- **тир:** PG-13  
+
+### A4-02 · Just-Landed Crouch
+- **pose:** `just after landing from a jump, knees deeply bent, hands out for balance, hair still down`
+- **фаза:** aftershock  
+- **тир:** PG-13 → R  
+
+### A4-03 · Almost-Wave
+- **pose:** `hand raised halfway in a wave, fingers not fully open, frozen decision`
+- **фаза:** mid  
+- **тир:** PG-13  
+
+### A4-04 · Turn-Away Start
+- **pose:** `beginning to turn away, shoulders already rotated, face still half toward camera`
+- **фаза:** mid  
+- **тир:** PG-13 → R  
+
+### A4-05 · Catch-Object
+- **pose:** `both hands open toward a falling object, eyes locked, body under the arc`
+- **вещь:** `object mid-air (book, apple, key)`  
+- **фаза:** mid · **M05-класс**  
+- **тир:** PG-13 → R+  
+
+### A4-06 · Missed-Catch After
+- **pose:** `just after missing the catch, hands still open, object on the floor, embarrassed smile`
+- **фаза:** aftershock  
+- **тир:** PG-13  
+
+### A4-07 · Inhale-Before-Speak
+- **pose:** `shoulders slightly lifted mid-inhale, mouth open a fraction, about to say something`
+- **фаза:** mid (микро)  
+- **тир:** PG-13  
+
+### A4-08 · Push-Door Shoulder
+- **pose:** `shoulder against a heavy door, one foot sliding back for force, cheek to the wood`
+- **фаза:** mid  
+- **тир:** PG-13  
+
+### A4-09 · Towel-Hair Flip
+- **pose:** `mid-flip of hair after towel, face briefly hidden by wet hair arc, arms up`
+- **фаза:** mid  
+- **тир:** R  
+
+### A4-10 · Sit-To-Stand Push
+- **pose:** `hands pushing on knees, rising from a sit, butt not yet clear of the seat`
+- **фаза:** mid  
+- **тир:** PG-13 → R  
+
+---
+
+# A5. СЕМЬЯ «ВЗГЛЯД-ВЕКТОР»  
+### gaze off · back-look · task-lock · mirror
+
+### A5-01 · Over-Shoulder Back-Look
+- **pose:** `body facing away, head turned back over the shoulder toward camera or past it`
+- **gaze:** `looking back`  
+- **тир:** PG-13 → R · **стабильный хитер**
+
+### A5-02 · Off-Frame Stare
+- **pose:** `body toward camera, eyes locked on something outside the left/right edge`
+- **gaze:** `looking off-frame`  
+- **тир:** PG-13  
+
+### A5-03 · Down-At-Hands Task
+- **pose:** `head bowed, eyes on her own hands doing a precise task (thread, phone, potion cork)`
+- **gaze:** `task-lock`  
+- **тир:** PG-13  
+
+### A5-04 · Mirror Critique
+- **pose:** `facing a mirror, fingers at her own cheek or collar, evaluating`
+- **gaze:** `at reflection`  
+- **тир:** PG-13 → R  
+
+### A5-05 · Through-Glass At Viewer
+- **pose:** `behind rain-glass or bus glass, palm on the pane, eyes finding the viewer outside`
+- **gaze:** `through glass at viewer`  
+- **тир:** R  
+
+### A5-06 · Eyes-Closed Rest
+- **pose:** `eyes closed, face tilted to sun/wind, body otherwise active or leaning`
+- **gaze:** `none — sensory`  
+- **тир:** PG-13  
+
+### A5-07 · Side-Eye Suspicion
+- **pose:** `head forward, eyes slid to the side without turning the head`
+- **gaze:** `side-eye`  
+- **тир:** PG-13  
+
+### A5-08 · Up-At-Sky Open
+- **pose:** `chin up, looking at sky/ceiling, throat line open, arms loose`
+- **gaze:** `up`  
+- **тир:** PG-13 → R  
+
+---
+
+# A6. СЕМЬЯ «БЫТ КАК ХОРЕОГРАФИЯ»  
+### task-first · domestic kinetic (T5-10 дух)
+
+### A6-01 · Fridge Dive
+- **pose:** `bent into open fridge, weight on one leg, other heel up, one hand on the door`
+- **gaze:** `scanning shelves`  
+- **тир:** R (camera from inside = R+)  
+
+### A6-02 · Laundry Reach-High
+- **pose:** `both arms up pinning laundry, body stretched, one heel lifted`
+- **тир:** PG-13 → R  
+
+### A6-03 · Sink-Lean Wash
+- **pose:** `leaning over a sink, forearms wet, hair falling forward, hip against the counter`
+- **тир:** PG-13 → R  
+
+### A6-04 · Floor-Wipe Four-Point
+- **pose:** `on hands and knees wiping the floor, one hand on the cloth, spine long`
+- **тир:** R → R+ (camera choice)  
+- **риск:** porn-default; держать task + face angle  
+
+### A6-05 · Couch Remote Dig
+- **pose:** `hand between couch cushions searching, cheek squished into the backrest`
+- **тир:** PG-13  
+
+### A6-06 · Stove-Stir Lean
+- **pose:** `stirring a pot, hip cocked, other hand on the counter, tasting spoon near lips`
+- **тир:** PG-13  
+
+### A6-07 · Trash-Out One-Hand
+- **pose:** `holding a trash bag out from the body, other hand opening a door with the elbow`
+- **тир:** PG-13  
+
+### A6-08 · Plant-Water Squat
+- **pose:** `squatting beside a plant with a watering can, one knee up, pouring carefully`
+- **тир:** PG-13  
+
+### A6-09 · Mail-Slot Reach
+- **pose:** `crouching at a mail slot, fingers pushing a letter through, eye to the slot`
+- **тир:** PG-13  
+
+### A6-10 · Bed-Make Corner Tug
+- **pose:** `tugging a bedsheet corner hard with both hands, lunging stance`
+- **тир:** PG-13 → R  
+
+---
+
+# A7. СЕМЬЯ «ОПОРА / КОНТАКТ СО СРЕДОЙ»  
+### contact point · environment as partner
+
+### A7-01 · Forehead-On-Glass
+- **pose:** `forehead against cool window glass, palms flat, breath fog starting`
+- **тир:** PG-13 → R  
+
+### A7-02 · Back-To-Wall Slide-Breath
+- **pose:** `back flat to wall, one foot up against the wall, exhaling`
+- **тир:** PG-13  
+
+### A7-03 · Chin-On-Rail
+- **pose:** `chin on balcony rail, arms dangling over the other side, heels up`
+- **тир:** PG-13 → R  
+
+### A7-04 · Cheek-On-Table
+- **pose:** `cheek on the cafe table, one arm stretched out, other under her head, bored or waiting`
+- **тир:** PG-13  
+
+### A7-05 · Shoulder-Into-Crowd-Gap
+- **pose:** `squeezing sideways through a gap, one shoulder leading, bag clutched`
+- **тир:** PG-13  
+
+### A7-06 · Rain-Wall Shelter
+- **pose:** `pressed under a narrow overhang, knees together, bag on head as shield`
+- **тир:** PG-13  
+
+### A7-07 · Hot-Spring Edge Sit *(clothed / towel)*
+- **pose:** `sitting on the stone edge, feet in water, towel hugged, steam rising`
+- **тир:** R → R+  
+- **риск:** default nude; towel/clothes lock  
+
+### A7-08 · Tree-Lean One-Foot
+- **pose:** `one foot planted on a tree trunk, back to bark, looking up into leaves`
+- **тир:** PG-13  
+
+---
+
+# A8. СЕМЬЯ «ЭКСПЕРИМЕНТАЛЬНЫЙ VOLT»  
+### для EXP · выше риск · выше награда
+
+### A8-01 · Panties-Waistband Look-Down *(seed+)*  
+- **pose:** `standing, fingers lightly at the waistband of panties, looking down along her own body, not pulling down`
+- **тир:** R+  
+- **риск:** X-drift; **только EXP**, stop motion, NEG pull-down  
+
+### A8-02 · Thigh-Phone Hide
+- **pose:** `sitting, phone held between closed thighs, leaning over the screen, hair curtain`
+- **тир:** R  
+
+### A8-03 · Under-Table Sock-Toes
+- **pose:** `sitting at a table, camera under the table: toes curling, knees together, hands visible on the table edge above`
+- **тир:** R  
+- **риск:** disconnected body; need continuous anatomy  
+
+### A8-04 · Jacket-Over-Shoulders Only
+- **pose:** `jacket on shoulders like a cape, arms free, walking, wind inside the jacket`
+- **тир:** R → R+  
+
+### A8-05 · Sports-Bra Adjust After Run
+- **pose:** `post-run, both hands adjusting sports bra band, breathing hard, one knee soft`
+- **тир:** R  
+- **риск:** over-sweat → sheer unplanned  
+
+### A8-06 · Rope-Climb Pause *(non-shibari)*  
+- **pose:** `paused on a climbing rope, thighs gripping, looking up, arms stretched`
+- **тир:** R  
+- **риск:** shibari misread; context gym/cliff only  
+
+### A8-07 · Yoga-Transition Bridge
+- **pose:** `mid-transition into a back bridge, not held, strain on the arms`
+- **тир:** R  
+- **риск:** broken spine; athletic body tags  
+
+### A8-08 · Dance-Break Snap
+- **pose:** `mid-dance snap, one arm sharp, other loose, weight hard on one foot` · **T5 PL104-класс**
+- **тир:** R → R+  
+
+### A8-09 · Floor-Slide Vacuum War
+- **pose:** `sliding on knees across parquet in a tug-of-war with a cord, grin gritted` · **T5-10 P23-дух**
+- **тир:** R+  
+
+### A8-10 · Moon-Hang Laundry *(niche kinetic)*  
+- **pose:** `on a ladder, tying a glowing moon to a clothesline, nightshirt hem lifted by wind` · **T5-10 P24-дух**
+- **тир:** R+ · NICHE  
+
+---
+
+# A9. СЕМЬЯ «ПАРНЫЕ / ОТРАЖЕНИЕ»  
+### не второй персонаж, а второй силуэт
+
+### A9-01 · Shadow Does The Work
+- **pose:** `standing still with a cup; her shadow independently washing dishes` · **T5-10**
+- **тир:** PG-13 → R · NICHE  
+
+### A9-02 · Reflection Lag
+- **pose:** `raised hand; reflection in glass lags half a step` · **Nix-класс**
+- **тир:** R → R+  
+
+### A9-03 · Mirror Shows The Back
+- **pose:** `facing camera in underwear; full-length mirror behind shows the back view`
+- **тир:** R+  
+- **риск:** double anatomy errors  
+
+### A9-04 · Puddle Second Face
+- **pose:** `standing at a puddle edge; puddle reflects a different expression`
+- **тир:** PG-13 · NICHE  
+
+---
+
+# A10. МАТРИЦА РОТАЦИИ (как не повториться)
+
+На батч 21–33 слота — **квоты семей**, не «все красивые»:
+
+| Семья | Мин на 21 мейн | Макс | Заметка |
+|---|---:|---:|---|
+| A1 Семя автора | 1 | 3 | только VOLT/EXP/R+ |
+| A2 Вещь делает | 3 | 6 | золото живости |
+| A3 Асимметрия | 4 | 8 | лоша батча |
+| A4 Фаза | 3 | 6 | анти-sterile |
+| A5 Взгляд | 3 | 6 | дёшево и мощно |
+| A6 Быт | 2 | 5 | тема-зависим |
+| A7 Опора | 2 | 4 | NICHE-друж |
+| A8 EXP volt | 0 | 5 | только EXP/тесты |
+| A9 Отражение | 0 | 2 | NICHE/спец |
+
+**Запрет эха:** два соседних слота ≠ одна семья + один вес + один gaze.
+
+---
+
+# A11. БЫСТРЫЙ ЧЕКЛИСТ ПИСЦА (перед записью позы в слот)
+
+- [ ] Вес несимметричен?  
+- [ ] Вещь или среда что-то *делает*?  
+- [ ] У взгляда есть вектор (не default at viewer без причины)?  
+- [ ] Фаза mid или aftershock, не только «уже позирует»?  
+- [ ] Тир-намёк согласован с каналом dresser (не надеяться, что поза одна поднимет R+)?  
+- [ ] Риск X/анатомии записан и закрыт NEG/кадром?  
+- [ ] Соседний слот не из той же клетки матрицы?  
+
+Если 4+ галочки — поза живая.  
+Если ≤2 — это базис; не класть в VOLT/EXP без крайней нужды.
+
+---
+
+# A12. СВЯЗЬ С УЖЕ ЖИВЫМ КОРПУСОМ T5
+
+| Уже в корпусе | Семья |
+|---|---|
+| Shirt-lift + tape (T5-12 вердикт) | A2-01 |
+| PL104 Dance-Break Snap | A8-08 |
+| Floor-slide vacuum (T5-10) | A8-09 |
+| Moon on clothesline (T5-10) | A8-10 |
+| Bike-kickstand broom (T5-10) | A3-07 |
+| Shadow dishes (T5-10) | A9-01 |
+| Reflection lag Nix | A9-02 |
+| M05 midair catch | A4-05 |
+
+Не дублировать id в poses.json без сверки window/burn.
+
+---
+
+# A13. ЧТО НЕ ВОШЛО В ЭТАП A (следующие этапы)
+
+| Этап | Содержание |
+|---|---|
+| **B** | Ракурсы / камера: D×A, зачем каждый угол, квоты, риски |
+| **C** | Рейтинги: PG-13 / R / R+ без моноканала «соски на ткани»; камера-R+; процесс; voyeur |
+| **D** | Комбинаторика: поза × ракурс × свет × тир — ебанутые, но рабочие связки |
+| **E** | Архив: грязный аудит #52, Grok-пакет, H-10/11/12, формат PROSE PLUS |
+
+---
+
+**Конец этапа A.**  
+Дальше по команде: этап B (ракурсы).
+
+— Cole / Grok · Composition Manual · Stage A  
+
+# THREAD 5 — COMPOSITION MANUAL
+## ЭТАП B: РАКУРСЫ И КАМЕРА (почему кадр живой или мёртвый)
+
+**Статус:** внешний пакет Cole/Grok · 2026-11-04  
+**Для:** писец, CONSILIUM, `specs/camera.json`, правило КАМЕРА-ПЕРВАЯ (D×A→PL)  
+**Границы:** те же, что этап A · камера не отменяет X-cut · voyeur ≠ genitals  
+**Связь:** вердикт T5-12 («страдает композиция») · T5.1 BETA (ковбой×21) · H-10/R+ камерой · Stage A
+
+---
+
+### Зачем отдельный этап
+
+Поза без камеры = актёр без точки съёмки.  
+Вердикт T5-12: *рейтинг вы уже умеете добивать; композиция — нет.*  
+Болезнь 5.0/5.1: **cowboy + eye-level + center × N**.
+
+**Закон этапа B:** ракурс — не украшение. Это **контракт со зрителем**: откуда ему разрешено смотреть и что он обязан дорисовать.
+
+---
+
+# B0. ТРИ ОСИ КАМЕРЫ (азбука)
+
+Любой кадр = произведение трёх выборов:
+
+| Ось | Код | Вопрос |
+|---|---|---|
+| **D — Distance** | D1…D7 | Как далеко? Сколько тела в кадре? |
+| **A — Angle** | A01…A12 | Откуда по высоте/наклону? |
+| **F — Framing** | F1…F8 | Где субъект в рамке? Что режет край? |
+
+**КАМЕРА-ПЕРВАЯ (T5 v1.8):** сначала D×A (и при желании F), **потом** PL/поза.  
+Если поза выбрана раньше камеры — снова ковбой по умолчанию.
+
+Теги камеры в POS — **в первой пятнадцатке токенов**, не в хвосте.
+
+---
+
+# B1. DISTANCE (D) — дистанция
+
+### D1 · Extreme Close-Up (ECU)
+- **tags:** `extreme close-up, face only, eyes focus` / `lips focus` / `hands only`
+- **что даёт:** текстура, эмоция, деталь claim (tape, sweat, fabric weave)
+- **тир-эффект:** сам по себе PG-13; +claim detail → R/R+
+- **стерильность:** высокий риск «портрет из паспорта», если нет асимметрии/взгляда
+- **квота:** 1–2 на 21 мейн
+- **риск:** потерять тело/позу; не ставить на NICHE, где важен силуэт мира
+
+### D2 · Close-Up (CU)
+- **tags:** `close-up, face focus, upper chest`
+- **что даёт:** лицо + намёк на плечи/ключицы
+- **квота:** 2–3
+- **риск:** все EXP уедут сюда «для красоты» — запрет
+
+### D3 · Portrait / Bust
+- **tags:** `portrait, upper body, bust shot`
+- **что даёт:** лицо + плечи + руки; жест рук читается
+- **квота:** 3–4 · **рабочая лошадка эмоции**
+
+### D4 · Cowboy (не враг — враг его монополия)
+- **tags:** `cowboy shot, thighs, upper body`
+- **что даёт:** классика; жест + бёдра
+- **квота:** **≤5 на 21** (жёсткий потолок после T5-12)
+- **риск:** default мозга модели; если D не указан — получите D4
+
+### D5 · Full Body
+- **tags:** `full body, head to toe, wide stance visible`
+- **что даёт:** силуэт, вес, контакт со средой, NICHE-мир
+- **квота:** 4–6 · **обязателен для NICHE**
+- **риск:** мелкая голова; env съедает героиню — lead-zone в POS
+
+### D6 · Wide / Establishing
+- **tags:** `wide shot, establishing shot, small figure in large space`
+- **что даёт:** мир как герой; одиночество; поезд/город/пустошь
+- **квота:** 1–2
+- **риск:** «пустой» кадр; фигура теряется — нужен контрастный силуэт
+
+### D7 · Insert / Detail
+- **tags:** `insert shot, detail shot, focus on hands, focus on feet, object focus`
+- **что даёт:** вещь-механика крупно (ремень, край простыни, ключ, прищепка)
+- **квота:** 0–2 · лучше как A/B-пара к полному кадру
+- **риск:** не читается как «тот же слот»
+
+---
+
+# B2. ANGLE (A) — угол
+
+### A01 · Eye-Level (нейтраль)
+- **tags:** `eye-level, straight on, level camera`
+- **эффект:** честный репортаж; мало эротики сам по себе
+- **когда:** быт, NICHE-документ, «не понтуемся»
+- **квота:** ≤40% батча · иначе стериль
+
+### A02 · Slightly Low (героизация мягкая)
+- **tags:** `from below, low angle, looking up`
+- **эффект:** фигура выше зрителя; ноги/бёдра важнее; власть
+- **тир:** тянет R без claim
+- **риск:** upskirt-default; clothed discipline + NEG
+
+### A03 · Extreme Low / Worm's-Eye
+- **tags:** `worm's-eye view, extreme low angle, from the ground looking up`
+- **эффект:** монумент / intimidation / «между ног»-коридор
+- **тир:** R+ потенциал **чисто камерой** (H-10)
+- **квота:** 1–3 · только VOLT/EXP
+- **риск:** ломаная анатомия, crotch-zoom, fish-eye каша
+
+### A04 · Slightly High
+- **tags:** `from above, high angle, looking down`
+- **эффект:** уязвимость, «запись», дневник; фигура меньше
+- **тир:** мягкий R через беззащитность
+- **риск:** «сжали» голову; не на всех full-figure
+
+### A05 · Top-Down / God's Eye
+- **tags:** `from above, top-down, bird's-eye view, overhead shot`
+- **эффект:** карта тела; паттерн позы; беспомощность или орнамент
+- **тир:** R / R+ если поза открытая **одеждой**, не кожей
+- **квота:** 1–2
+- **риск:** модель не умеет foreshortening — реролл
+
+### A06 · Profile
+- **tags:** `profile, side view, silhouette profile`
+- **эффект:** нос/грудь/спина линией; graphic; тихий кадр
+- **тир:** PG-13 → R
+- **риск:** «скучно» без сильного света/жеста
+
+### A07 · Three-Quarter Front (дефолт №2)
+- **tags:** `three-quarter view, slight turn`
+- **эффект:** объём лица и тела; самый «аниме-обложечный»
+- **квота:** ≤8 · не все слоты
+
+### A08 · Three-Quarter Back / Over-Shoulder
+- **tags:** `from behind, looking back, over the shoulder, back view`
+- **эффект:** тайна; nape; зритель = преследователь или свидетель
+- **тир:** R через voyeur-контракт
+- **квота:** 2–4
+- **риск:** лицо OC плохо читается — не на дебют канона глаз
+
+### A09 · Dutch / Tilted
+- **tags:** `dutch angle, tilted frame, canted angle`
+- **эффект:** тревога, frenzy, сдвиг мира
+- **когда:** tense register, Frenzy, cyber, storm
+- **квота:** 1–3 · на serene = «сломано»
+- **риск:** тошнота батча, если >3
+
+### A10 · POV (зритель = участник)
+- **tags:** `pov, first-person view, looking up at her, looking down at her`
+- **эффект:** максимальный voyeur/participant
+- **тир:** R+ без ткани, если поза A1-семейства
+- **риск:** PH путает с selfie; уточнять `viewer perspective, hands of viewer out of frame` или наоборот
+
+### A11 · Through-Object (фрейм вторым слоем)
+- **tags:** `through doorway, through window, through fence, between curtains, over railing`
+- **эффект:** второй прямоугольник; запретность; NICHE-проём (T5-12 поезд)
+- **тир:** R через «подглядывание»
+- **квота:** 2–4 · **тема-поезд/дверь = must**
+
+### A12 · Ground-Level Side Track
+- **tags:** `ground level, tracking low, side view near the floor`
+- **эффект:** бег, пыль, колени, скорость (P05 straw-run класс)
+- **тир:** PG-13 → R
+- **риск:** обрезанная голова — ok если motion-story
+
+---
+
+# B3. FRAMING (F) — нарезка рамки
+
+### F1 · Center Formal
+- субъект в центре, симметрия  
+- **когда:** икона, EXQUISITE, «обложка»  
+- **стерильность:** высокая, если поза тоже formal  
+- **квота:** ≤3
+
+### F2 · Rule-of-Thirds
+- лицо/торс на пересечении третей  
+- **рабочая лошадка**; воздух с одной стороны = направление взгляда
+
+### F3 · Edge-Cut Body
+- **tags:** `cropped, frame cuts at knees / at forehead / at elbow`  
+- **эффект:** «кадр не успел» / журнал / репортаж  
+- **тир:** R+ если обрезан claim-zone так, что мозг достраивает (R3 из пакета Grok)
+
+### F4 · Negative Space Dominates
+- **tags:** `lots of negative space, small figure, empty room`  
+- **эффект:** одиночество, мир T5-12 wide  
+- **NICHE-друг**
+
+### F5 · Frame-Within-Frame
+- дверь, окно, поручни, ноги как арка (A1 corridor)  
+- **сильнейший анти-sterile кадр**
+
+### F6 · Lead Room / Looking Room
+- воздух перед взглядом, не за затылком  
+- **если gaze off-frame — F6 обязателен**, иначе «смотрит в стену»
+
+### F7 · Dirty Frame
+- **tags:** `out of focus foreground, shoulder in foreground, blurry railing in front`  
+- **эффект:** свидетель стоит ближе нас; voyeur  
+- **риск:** модель засорит всё blur
+
+### F8 · Mirror / Reflection Split
+- половина — тело, половина — отражение под другим углом  
+- **R9-класс** · риск double body
+
+---
+
+# B4. ЗАЧЕМ КАЖДЫЙ УГОЛ (механика зрителя)
+
+| Ракурс | Что мозг делает | Эротический рычаг | Когда мёртв |
+|---|---|---|---|
+| Eye-level center | «Мне показывают» | почти нет | всегда, если нет жеста |
+| Low angle | «Она выше / ближе ногами» | власть + доступ к низу силуэта | без причины (просто «sexy») |
+| Worm's-eye between | «Я не должен здесь быть» | запрет точки | без одежды-discipline |
+| High / top-down | «Я записываю / она уязвима» | беззащитность | на пустой позе |
+| Over-shoulder | «Я иду за ней» | преследование, nape | OC-глаза важны — потеряете |
+| Through door | «Подглядываю» | voyeur-контракт | мир за дверью пуст |
+| Profile silhouette | «Линия, не лицо» | graphic body | нет света-ребра |
+| Dutch | «Мир сбит» | тревожный эччи | на уютном быте |
+| POV | «Это мои глаза» | participant | модель рисует selfie-руку |
+| Wide small figure | «Она в мире, не мир вокруг неё» | одиночество | фигура серая на сером |
+
+**Ключ:** градус растёт от **контракта**, не от площади кожи.
+
+---
+
+# B5. СВЯЗКИ D×A (готовые пресеты под T5)
+
+Формат: код · tags · зачем · тир-намёк · риск
+
+### Стабильные (читать будет часто)
+
+| Код | D×A | tags-ядро | зачем |
+|---|---|---|---|
+| **S1** | D4×A01 | `cowboy shot, eye-level` | дефолт; **квота** |
+| **S2** | D3×A07 | `upper body, three-quarter view` | диалог, жест |
+| **S3** | D5×A01 | `full body, eye-level, wide stance` | NICHE силуэт |
+| **S4** | D3×A08 | `upper body, looking back, from behind` | nape / back-look |
+| **S5** | D4×A02 | `cowboy shot, from below` | мягкий R |
+| **S6** | D2×A01 | `close-up, face focus` | эмоция OC |
+| **S7** | D5×A04 | `full body, from above` | уязвимость + env |
+| **S8** | D4×A06 | `cowboy shot, profile` | graphic line |
+
+### Живые / анти-sterile
+
+| Код | D×A | tags-ядро | зачем |
+|---|---|---|---|
+| **L1** | D4×A03 | `cowboy shot, worm's-eye view, from the ground` | власть |
+| **L2** | D3×A03 | `upper body, extreme low angle` | монумент лица/груди силуэтом |
+| **L3** | D5×A11 | `full body, through doorway` | проём-мир (поезд) |
+| **L4** | D3×A11 | `upper body, through window, rain on glass` | свидетель |
+| **L5** | D5×A09 | `full body, dutch angle` | frenzy / glitch |
+| **L6** | D1×A05 | `extreme close-up, top-down on hands/chest` | insert claim |
+| **L7** | D6×A05 | `wide shot, bird's-eye, small figure` | карта маршрута |
+| **L8** | D4×A12 | `cowboy shot, ground level, side` | бег / пыль |
+
+### Прорывные R+ камерой (без sheer)
+
+| Код | D×A | tags-ядро | механика |
+|---|---|---|---|
+| **R1** | D3×A03 + F5 | `from below between the knees, looking up the torso` | коридор A1 · H-10 |
+| **R2** | D2×A08 | `close-up nape, from behind` | интим без лица |
+| **R3** | D4×A10 | `pov looking up from the floor` | participant |
+| **R4** | D3×A11 + F7 | `through door crack, dirty frame` | keyhole |
+| **R5** | D5×A05 | `top-down, full body, on bed/floor` | карта позы |
+| **R6** | D7×A01 | `insert, focus on waistband fingers` | process claim |
+| **R7** | D3×A04 | `from above, leaning over the camera` | она над зрителем |
+
+---
+
+# B6. КВОТЫ НА БАТЧ (21 мейн + 3 OC + EXP)
+
+### Дистанция (сумма ≈ числу слотов)
+
+| D | 21 мейн | 33 total (с EXP) |
+|---|---:|---:|
+| D1 ECU | 1 | 1–2 |
+| D2 CU | 2 | 2–3 |
+| D3 Portrait | 3–4 | 4–5 |
+| D4 Cowboy | **≤5** | **≤7** |
+| D5 Full | 4–6 | 6–8 |
+| D6 Wide | 1–2 | 2–3 |
+| D7 Insert | 0–1 | 1–2 |
+
+### Угол
+
+| A | доля | заметка |
+|---|---|---|
+| A01 eye-level | ≤40% | иначе репортаж-стериль |
+| A02/A04 soft high-low | 25–35% | основной объём |
+| A03/A05 extreme | 5–15% | VOLT/EXP |
+| A08 back/OTS | 10–15% | |
+| A09 dutch | ≤10% | |
+| A11 through | 10–15% если тема проёмов | T5-12 must |
+
+### Закон анти-эха
+Соседние слоты **не** делят одну и ту же пару (D-класс + A-класс).  
+`D4×A01` → следующий не `D4×A01` и не `D4×A07`.
+
+---
+
+# B7. КАМЕРА × ЖАНР
+
+| Жанр | Камера-приоритет | Избегать |
+|---|---|---|
+| **NICHE** | D5/D6 + A11/A05 + F4/F5 | D1/D2 (мир не прочитается) |
+| **VOLT** | D3/D4 + A02/A03/A08 + F3/F5 | только A01 center |
+| **EXQUISITE** | любой, но один «иконический» F1 допустим | dutch без причины |
+| **OC** | D2/D3 + канон глаз читаем; A08 осторожно | worm's-eye на дебюте глаз |
+| **EXP camera-test** | R1–R7 пресеты | повторы S1 |
+
+---
+
+# B8. КАМЕРА × ТИР (без ткани)
+
+| Тир | Камерные усилители | Камерные убийцы |
+|---|---|---|
+| **PG-13** | D5, A01/A06, F2, soft light angle | extreme crotch corridor |
+| **R** | A02, A08, A11, F5, D4 | пустой wide без жеста |
+| **R+** | R1–R7 пресеты, F3 crop claim, A03, A10 | тот же R-кадр без контракта «запретной точки» |
+| **X** | — | не цель T5 |
+
+Помни: камера **тянет** тир, но не заменяет claim-канал на R+, если автор ждёт «видимый» сигнал.  
+Для моноканала «соски на ткани» — этап C даст альтернативы; камера — один из столбов.
+
+---
+
+# B9. ПРОМПТ-ПОРЯДОК (формат T5.1 PROSE PLUS)
+
+```
+[1] CAMERA CLUSTER     ← D + A + F tags, первые 10–20 токенов
+[2] IDENTITY / BODY
+[3] NL-CORE            ← mid-action + gaze vector + object
+[4] LIGHT BEHAVIOR
+[5] STYLE + FACE ANCHORS
+```
+
+**Плохо:** 40 тегов тела → в конце `from below` → модель уже собрала eye-level.  
+**Хорошо:** `worm's-eye view, from the ground, between the knees, looking up` → затем тело и NL.
+
+NL обязана **не противоречить** камере:
+- если A03 — в NL не «stands facing the camera at eye level»
+- если A08 — в NL есть `looking back` / `nape toward viewer`
+- если A11 — в NL есть проём как первое считывание
+
+---
+
+# B10. ТОП ОШИБОК КАМЕРЫ (T5- empirically + Grok)
+
+1. **Не указал D** → cowboy  
+2. **Камера в хвосте** → игнор  
+3. **A03 на каждом VOLT** → батч-тошнота + анатомия  
+4. **A08 на OC с уникальными глазами** → канон не доехал  
+5. **D6 без контраста** → серая каша  
+6. **Through-door, за дверью пусто** → рама без картины  
+7. **POV без дисциплины** → selfie-рука или broken torso  
+8. **Dutch на tea-scene** → «зачем»  
+9. **Все F1 center** → каталог  
+10. **Crop claim (F3) без NEG** → модель дорисует то, что обрезали, как X  
+
+---
+
+# B11. ЧЕКЛИСТ ПИСЦА (камера)
+
+- [ ] D выбран явно (не «по умолчанию»)?  
+- [ ] A выбран явно?  
+- [ ] Теги D+A в первой пятнадцатке POS?  
+- [ ] NL не спорит с A?  
+- [ ] Соседний слот ≠ та же клетка D×A?  
+- [ ] Если NICHE — D5/D6 или A11/F5 на месте?  
+- [ ] Если R+ «камерой» — какой пресет R1–R7? Что зритель дорисовывает?  
+- [ ] Квота cowboy не пробита?  
+
+---
+
+# B12. МИНИ-ТАБЛИЦА ТЕГОВ (copy-ready)
+
+```
+# Distance
+extreme close-up, close-up, face focus, upper body, portrait,
+cowboy shot, full body, wide shot, establishing shot, insert shot
+
+# Angle
+eye-level, from below, low angle, worm's-eye view, from the ground,
+from above, high angle, top-down, bird's-eye view, overhead,
+profile, side view, three-quarter view, from behind, looking back,
+over the shoulder, dutch angle, tilted frame, pov,
+through doorway, through window, between curtains, over railing
+
+# Framing helpers
+cropped, negative space, frame within frame, dirty frame,
+blurry foreground, reflection, mirror
+```
+
+---
+
+# B13. СВЯЗЬ С ЭТАПОМ A
+
+| Семья поз A | Камера, которая её раскрывает |
+|---|---|
+| A1 Семя автора | **R1**, A03, A10, F5 |
+| A2 Вещь делает | D3/D2, A01/A02, L6 insert |
+| A3 Асимметрия | D4/D5, A02/A07, F2 |
+| A4 Фаза | L8, A12, motion-side |
+| A5 Взгляд | A08, F6 lead room, A06 |
+| A6 Быт | D5, A01/A04, C4 fridge = A11/POV |
+| A7 Опора | A06 profile, D3 contact close |
+| A8 EXP | R1–R7, dutch дозировано |
+| A9 Отражение | F8, A11 glass |
+
+Поза A1 + камера S1 (cowboy eye-level) = **убить семя**.  
+Поза A1 + камера R1 = **закон H-10**.
+
+---
+
+# B14. ЧТО ДАЛЬШЕ
+
+| Этап | Содержание |
+|---|---|
+| **C** | Рейтинги и доставка тира **помимо** «соски на ткани»: процесс, voyeur, crop, silhouette, hands-busy, geometry… |
+| **D** | Комбинаторика: (поза A × камера B × тир C) — готовые комбо-карточки |
+| **E** | Архив аудитов и свод законов |
+
+---
+
+**Конец этапа B.**  
+По команде — этап C (рейтинги).
+
+— Cole / Grok · Composition Manual · Stage B  
+
+# THREAD 5 — COMPOSITION MANUAL
+## ЭТАП C: РЕЙТИНГИ И ДОСТАВКА ТИРА
+### (как поднять градус, когда «соски на ткани» — уже не единственный бог)
+
+**Статус:** внешний пакет Cole/Grok · 2026-11-04  
+**Для:** писец, dresser, delivery-stats, CONSILIUM H-10, rating-techniques  
+**Границы:** XXX never · genitals never · X изъят по умолчанию T5 · anti-loli floor · слово milf в POS запрещено  
+**Связь:** вердикт T5-12 («R+ только через едва видные соски / tape») · #31 Yodayo oracle · dresser channels · Stage A/B · dirty audit G15–G20
+
+---
+
+### Диагноз, от которого пляшем
+
+Автор (T5-12, вербатим):  
+> *Ты умеешь добивать рейтинг только через едва видные соски на ткани, это твой R+ и от этого зависит всё. Ну и да, заклееные соски тоже, да. Только эччи на этом не останавливается.*
+
+**Моноканал = хрупкость.**  
+Если классификатор/рендер смягчает sheer → весь R+ план падает в R.  
+Этап C = **библиотека путей**, где ткань-claim — один из, а не единственный.
+
+---
+
+# C0. ИЕРАРХИЯ ТИРОВ (рабочая, T5)
+
+| Тир | Сигнал зрителю | Не путать с |
+|---|---|---|
+| **PG-13** | sexy outfit / body line / flirt pose / cleavage hint / thighs | «просто милая» |
+| **R** | lingerie as subject / panties visible / upskirt clothed / erotic pose / strap / garter | «чуть секси PG» |
+| **R+** | hard claim *или* equivalent contract: tape / handbra / VPL / cameltoe clothed / process strip / voyeur forbidden camera / cropped intentional | X (nipples fully bare as goal — изъято) |
+| **X** | visible nipple/areola as planned fact | не план T5 |
+| **XXX** | sex acts | never |
+
+**Закон суммы слоёв** (наследие rating-techniques):  
+тир растёт, когда включены 2+ слоя из четырёх:
+
+1. **что видно** (кожа, бельё, claim)  
+2. **как показано** (камера, crop, поза)  
+3. **зачем показано** (gaze, mood, ecchi delivery)  
+4. **что дорисует модель/зритель** (sheer, wet, process, negative space)
+
+Моноканал «covered nipples through cloth» = только слой 1 (+ чуть 4).  
+Живой R+ = минимум два слоя.
+
+---
+
+# C1. КАРТА УЖЕ ЖИВЫХ КАНАЛОВ (не выбрасывать)
+
+Из dresser / T5 live (после T5-10…12):
+
+| Канал | Суть | Тир | Статус |
+|---|---|---|---|
+| **r-geometry** | геометрия ткани/позы несёт claim | R+ | live, часто |
+| **wet-sheer-delivery** | мокрое / see-through | R+ | live · **монориск** |
+| **contact-physics** | касание (рука, кот, спора, шнур) | R+ | live |
+| **handbra-open-palms** | ладони / предплечья как прикрытие | R+ | live, редко |
+| **tape-only** | кресты tape, covered | R+ | live · вердикт-золото |
+| **bumps / dark clothed** | dark fabric + covered nipples + cling (закон №28) | R+ | T4→T5 наследство |
+| **pantyline / VPL** | visible panty line | R / R+ | осторожно, 0–1 |
+| **on_skin** | tape / handbra без верхнего слоя | R+ | dresser |
+
+**Задача этапа C:** добавить пути, которые **не** зависят от sheer/wet/bumps.
+
+---
+
+# C2. СЛОЙ 1 — «ЧТО ВИДНО» (object claims)
+
+### C2-A · PG-13 object claims
+| ID | Claim | POS-ядро | Не делать |
+|---|---|---|---|
+| P13-01 | named garment state | `tied shirt, off-shoulder, rolled sleeves, unbuttoned collar` | generic `sexy clothes` |
+| P13-02 | thigh highway | `bare thighs, skirt hem high, shorts leg opening` | crotch focus |
+| P13-03 | backless / nape | `open back, deep nape line, spine dimples` | full rear nude |
+| P13-04 | wet hair only | `wet hair, water drops on collarbone` без wet clothes | drift to wet-sheer |
+| P13-05 | fit emphasis | `tight sweater, fabric stretch at chest` без nipples | bumps channel spill |
+
+### C2-B · R object claims
+| ID | Claim | POS-ядро | Заметка |
+|---|---|---|---|
+| R-01 | lingerie as subject | `lace bra, visible bra strap, garter belt, stockings` | noun, не imply |
+| R-02 | panties visible | `panties, boyshorts, underwear` в кадре осознанно | не «случайный upskirt» без позы |
+| R-03 | upskirt clothed | `upskirt, skirt lifted, panties in view` | камера A02/A03 + discipline |
+| R-04 | sideboob / underboob soft | `sideboob, underboob` without nipple | легко → R+; контролировать |
+| R-05 | towel unstable | `towel wrap, knot only, one hand holding` | process к R+ |
+| R-06 | open shirt no bra claim | `unbuttoned shirt, hands holding edges closed` | без nipple tokens |
+
+### C2-C · R+ object claims (классика + расширение)
+| ID | Claim | POS-ядро | Канал |
+|---|---|---|---|
+| R+-01 | covered nipples / clothed | `covered nipples, clothed nipples, fabric clinging` | bumps / geometry |
+| R+-02 | see-through | `see-through, wet clothes, translucent fabric` | wet-sheer · **монориск** |
+| R+-03 | tape | `taped nipples, tape crosses, covered` | tape-only |
+| R+-04 | handbra | `handbra, covering breasts with hands, open palms` | handbra |
+| R+-05 | VPL / cameltoe clothed | `visible pantyline, cameltoe through fabric` | geometry · осторожно |
+| R+-06 | process strip mid | `strap slipping, waistband sliding, shirt mid-lift` | **process** · Stage A2 |
+| R+-07 | underboob hard | `underboob, crop top lifted` | граница X |
+| R+-08 | nothing underneath + thin | `nothing underneath, thin fabric` | underlayer lock |
+
+**Правило one hard-claim (G20):** на R+ слот — **один** hard из таблицы, не сумма.  
+Сумма claim'ов ≠ сумма тира (эмпирика T4 «всё-сразу»).
+
+---
+
+# C3. СЛОЙ 2 — «КАК ПОКАЗАНО» (camera / crop / pose delivery)
+
+> Здесь R+ **без** nipple/sheer tokens. Зритель дорисовывает.
+
+### C3-01 · Forbidden Camera Contract (H-10)
+- **суть:** камера в точке, куда «не звали»  
+- **пресеты:** Stage B R1 (between knees), R3 (POV floor), R4 (door crack)  
+- **POS:** camera tags early + clothed + face at corridor end  
+- **тир:** R → R+  
+- **дорисовка:** близость / доступ  
+- **риск:** crotch-zoom → X-class moderation  
+
+### C3-02 · Cropped Claim
+- **суть:** hard edge режет там, где claim *был бы*  
+- **POS:** `cropped at the hem, frame cuts at the hips, implied below the frame`  
+- **тир:** R+  
+- **дорисовка:** то, чего нет на пикселях  
+- **риск:** модель «восстановит» genitals; жёсткий genital NEG  
+
+### C3-03 · Silhouette Backlight
+- **суть:** форма тела в rim/backlight, лицо/детали в тени  
+- **POS:** `backlighting, silhouette, rim light on hip and chest line, face in shadow`  
+- **тир:** R / R+  
+- **дорисовка:** объём в тени  
+- **риск:** «просто тёмный кадр» без линии  
+
+### C3-04 · Hands-Busy Block
+- **суть:** руки закрывают / правят / держат — claim = жест, не кожа  
+- **POS:** `hands covering chest, adjusting strap, holding towel closed`  
+- **тир:** R+ (handbra family)  
+- **дорисовка:** «что под руками»  
+- **связь:** A2, Stage B R8  
+
+### C3-05 · Motion Hem
+- **суть:** подол/поле в движении — только что открыло / закроет  
+- **POS:** `skirt lifted by motion, hem blurred, mid-spin`  
+- **тир:** R / R+  
+- **дорисовка:** фаза flash  
+
+### C3-06 · Mirror Split Disclosure
+- **суть:** основной вид скромный; отражение показывает больше  
+- **POS:** `mirror reflection shows the open back / lifted hem`  
+- **тир:** R+  
+- **риск:** double anatomy  
+
+### C3-07 · Scale Voyeur (small gap)
+- **суть:** смотрим через узкую щель — мало кожи, много запрета  
+- **POS:** `through blinds, through fence gap, eye-level with the gap`  
+- **тир:** R+  
+- **дорисовка:** целое тело  
+
+### C3-08 · Power Low / Submit High
+- **суть:** A03 власть или A05 уязвимость без claim-токенов  
+- **тир:** R (сам) → R+ в комбо с позой A1/A2  
+
+---
+
+# C4. СЛОЙ 3 — «ЗАЧЕМ ПОКАЗАНО» (delivery / mood / gaze)
+
+Без этого слоя даже hard claim читается как «медицинский».
+
+| ID | Приём | POS / NL | Эффект |
+|---|---|---|---|
+| M-01 | gaze down at own body | `looking down at her chest / at the strap` | она знает, что открыто |
+| M-02 | gaze at viewer from forbidden cam | `looking down at the camera` between knees | доминирование + стыд |
+| M-03 | averted shame | `looking away, blush, shoulders inward` | стыд как сигнал R+ |
+| M-04 | unbothered task | `expression calm, continuing the chore` | бытовой эччи (T5-10 дух) |
+| M-05 | caught mid-act | `surprised glance toward doorway` | narrative flash |
+| M-06 | invitation tilt | `head tilt, slight smile, eye contact` | PG-13/R pin-up |
+| M-07 | private face | `eyes closed, absorbed, not performing` | зритель лишний = сильнее |
+
+**Закон:** R+ с `default smile + looking at viewer + static` = часто **R на глаз автора**, даже если tokens hard.  
+Эччи = отношение, не только пиксель.
+
+---
+
+# C5. СЛОЙ 4 — «ЧТО ДОРИСУЮТ» (implication engines)
+
+| ID | Движок | Как включить | Тир |
+|---|---|---|---|
+| I-01 | Process not result | `sliding, slipping, mid-lift, about to fall` | R+ |
+| I-02 | Afterglow dress | `just after undressing, clothes on the floor beside` without nude body | R+ |
+| I-03 | Steam / fog erase | `steam hiding the chest line, towel edges only` | R |
+| I-04 | Shadow replace cloth | `cast shadow across the chest as if fabric` | R |
+| I-05 | Object stand-in | `book / bag / steam held against the chest` | R |
+| I-06 | Double meaning task | wringing wet cloth, washing, stretching — body reads secondary | R / R+ |
+| I-07 | Sound-of-frame | `finger to lips, shushing, door ajar` — secrecy | R |
+
+Process (I-01) + one object claim = самый стабильный **не-sheer** R+ после tape.
+
+---
+
+# C6. АЛЬТЕРНАТИВНЫЕ ПАКЕТЫ R+ (готовые маршруты)
+
+Каждый пакет = **1 primary path**. Не смешивать все сразу.
+
+### Пакет α · TAPE (уже золото)
+- claim: R+-03  
+- поза: A2-01 / A2-13  
+- камера: D3×A01 или D3×A02  
+- mood: M-01 или M-04  
+- **стабильность:** высокая  
+
+### Пакет β · HAND BRA / FOREARM
+- claim: R+-04  
+- поза: hands-busy, feather-cover (Vyuga-класс)  
+- камера: D3×A02  
+- **стабильность:** средняя (руки-мутанты)  
+
+### Пакет γ · FORBIDDEN CAMERA (без claim-токенов)
+- claim: —  
+- поза: A1-01…A1-05  
+- камера: B R1 / R3  
+- mood: M-02  
+- **стабильность:** средняя · **риск модерации**  
+- **ценность:** ломает моноканал  
+
+### Пакет δ · PROCESS STRIP
+- claim: R+-06  
+- поза: A2 strap/shirt/waistband mid  
+- камера: D3/D4 × A01/A02  
+- NL: present continuous only  
+- **стабильность:** хорошая  
+
+### Пакет ε · GEOMETRY / VPL
+- claim: R+-05 или r-geometry  
+- поза: wind-press, sit-compress, tight bend  
+- камера: D4×A02  
+- fabricTone: dark предпочтительно  
+- **стабильность:** средняя  
+
+### Пакет ζ · WET-SHEER (старый бог)
+- claim: R+-02  
+- **квота:** ≤25% R+ слотов батча (анти-моно)  
+- underlayer: nothing underneath POS + bra NEG  
+- **стабильность:** высокая *когда доезжает*; хрупкая к oracle  
+
+### Пакет η · CROP + IMPLICATION
+- claim: — / soft  
+- framing: F3  
+- I-01 или I-02  
+- **стабильность:** низкая–средняя · EXP  
+
+### Пакет θ · SILHOUETTE + BACKLIGHT
+- C3-03 + full body line  
+- **стабильность:** средняя · красиво, тир спорен на глаз  
+
+### Пакет ι · VOYEUR KEYHOLE
+- C3-01 + C3-07  
+- env: door, blinds, shelf gap  
+- **стабильность:** средняя · NICHE/VOLT  
+
+### Пакет κ · CONTACT
+- contact-physics live: familiar, cord, spore, hand on waist from env  
+- **стабильность:** хорошая в T5  
+
+---
+
+# C7. КВОТЫ ТИРА И КАНАЛОВ НА БАТЧ
+
+### Спред (ориентир, не догма)
+| | Консервативный | T5-12-like | Анти-моно эксперимент |
+|---|---|---|---|
+| PG-13 | 6 | 4–6 | 5 |
+| R | 8 | 8–10 | 8 |
+| R+ | 7 | 12–17 | 8–10 но **≥4 пакета** |
+
+### Анти-моно правило (предложение CONSILIUM)
+Из всех R+ слотов:
+- wet-sheer ≤ 25%  
+- bumps/geometry ≤ 30%  
+- tape + handbra ≥ 20%  
+- camera/process/voyeur (γ/δ/η/ι) ≥ 25%  
+
+Если γ/δ/η/ι = 0 → снова «только соски на ткани».
+
+---
+
+# C8. PG-13 НЕ РАВНО «ОТДЫХ»
+
+Слабый PG-13 = мёртвый слот в середине батча.  
+Сильный PG-13 = **outfit IS the claim** (G15) + поза A2/A3 + камера не-дефолт.
+
+| PG-13 сильный | PG-13 слабый |
+|---|---|
+| `off-shoulder sweater slipping, looking at the strap` | `cute dress, standing, smile` |
+| `thigh-high socks, cowboy from below, wind` | `1girl, dress, full body` |
+| `towel on hair, oversized shirt, fridge light` | `beautiful girl indoors` |
+
+HEAT-урок вкуса: *низкий тир любим, когда история держит.*
+
+---
+
+# C9. R КАК МОСТ, НЕ СВАЛКА
+
+R часто пишут «недо-R+». Плохо.  
+R = **бельё / жест / поза** как законченный тезис.
+
+Примеры законченного R:
+- lingerie named + portrait + gaze at viewer  
+- panties visible while doing laundry (task + claim)  
+- upskirt during ladder climb (cause + clothed)  
+- erotic pose token + asymmetric weight (H2 confirmed) без nipple tokens  
+
+Не оставлять R «пустым ожиданием sheer, который не написали».
+
+---
+
+# C10. NEG КАК ОРУЖИЕ ТИРА (не только floor)
+
+Hard floors (genital, loli, leak, candle, milf-word) — всегда.
+
+**Per-slot tier NEG:**
+
+| Цель слота | Добавить в NEG |
+|---|---|
+| PG-13 | `lingerie, panties, nipples, see-through, undressing` |
+| R | `nipples, nude, see-through` если не канальные |
+| R+ sheer | `bra, camisole, bandeau, opaque` (паразит-слой) |
+| R+ tape | `nude, nipples exposed, areola` |
+| R+ camera-only γ | `nude, nipples, see-through` + genital floor |
+| anti-default | `standing straight, arms at sides, looking at viewer, symmetrical` на живых слотах |
+
+**G08:** анти-дефолт per-slot, не один boilerplate на 33.
+
+---
+
+# C11. СВЯЗЬ С PH / ОРАКУЛОМ ПЛОЩАДКИ
+
+Наследие #31 и facts:
+- площадка ≈ глаз автора на длинной дистанции  
+- PH **переписывает**, не санитизирует честно  
+- claim в **ранних** токенах сильнее хвоста  
+- `nipple outline` / soft tokens часто дают PG-13–R, не R+  
+- hard named claim + underlayer discipline доезжает чаще  
+
+**Для γ-пакета (camera-only):**  
+PH может «не понять» тир и смягчить позу.  
+Лечение: явные camera tags + NL mid-action + не надеяться на implication-only без хотя бы soft object (strap, hem, waistband).
+
+---
+
+# C12. ЧЕКЛИСТ R+ СЛОТА (перед записью)
+
+- [ ] Какой **пакет** α…κ? (один)  
+- [ ] Какой **слой 1** claim — или сознательный zero + слой 2?  
+- [ ] Слой 2 (камера/crop) назначен?  
+- [ ] Слой 3 (gaze/mood) не default smile?  
+- [ ] Underlayer lock, если through/bumps?  
+- [ ] One hard-claim only?  
+- [ ] Claim-токены ≤ ~60 (закон T5)?  
+- [ ] NEG зеркалит анти-цель?  
+- [ ] Этот пакет уже не был в соседних 2 слотах?  
+
+---
+
+# C13. АНТИ-ПАТТЕРНЫ (тир)
+
+1. Три sheer подряд → моноканал, oracle-хрупкость  
+2. R+ без gaze/phase → «медицинский claim»  
+3. Сумма из 5 claim-тегов → силуэт без факта  
+4. PG-13 как свалка отказавших R+ идей  
+5. Camera-only γ на OC-дебюте глаз → канон потерян  
+6. Process в прошедшем времени NL (`she lifted`) → result, тир падает  
+7. Доверять `erotic pose` токену без веса/вещи/взгляда → H2 работает только как усилитель  
+
+---
+
+# C14. МИНИ-СЛОВАРЬ TOKEN → ТИР (практика)
+
+| Tokens | Ожидаемый тир | Примечание |
+|---|---|---|
+| `off-shoulder, bare thighs` | PG-13 | |
+| `lace bra, garter, looking at viewer` | R | |
+| `panties, skirt lift, from below` | R | |
+| `covered nipples, dark fabric clinging` | R+ | bumps |
+| `see-through, wet clothes, nothing underneath` | R+ | sheer |
+| `taped nipples, shirt lift` | R+ | tape |
+| `handbra, open palms` | R+ | |
+| `from below between knees, looking down, clothed` | R / R+ | γ |
+| `waistband sliding, mid-pull` | R+ | process |
+| `nipples, nude` | X | не план |
+
+---
+
+# C15. ЧТО ЭТОТ ЭТАП МЕНЯЕТ В СБОРКЕ
+
+Раньше:  
+`rating: R+` → писец ставит wet/covered nipples → надеется.
+
+Теперь:  
+`rating: R+` → писец выбирает **пакет α…κ** → стыкует позу A + камеру B + mood → один claim → квитанция в шапке слота (`Channel: …` уже есть; добавить `Package: δ` можно как мета).
+
+Цель не «запретить sheer».  
+Цель — **чтобы sheer был выбором, а не рефлексом.**
+
+---
+
+# C16. СВЯЗЬ A × B × C (мост на этап D)
+
+| Если поза из | и камера из | то тир-пакет |
+|---|---|---|
+| A1 | R1/R3 | **γ** Forbidden camera |
+| A2-01 | S2/L2 | **α** Tape или **δ** Process |
+| A2 strap | D3 eye-level | **δ** |
+| A3 hip-cock | S5 low cowboy | R object / soft R+ ε |
+| A6 fridge | POV inside | **ι** + soft R |
+| A8 EXP | R1–R7 | γ/η тест |
+| A4 mid-catch | L8 | R / process |
+
+Полная комбинаторика карточек — **этап D**.
+
+---
+
+# C17. ОГЛАВЛЕНИЕ РУЧНОГО
+
+| Этап | Файл | Статус |
+|---|---|---|
+| A Позы | `…STAGE-A-POSES.md` | done |
+| B Ракурсы | `…STAGE-B-CAMERA.md` | done |
+| **C Рейтинги** | этот файл | **done** |
+| D Комбо | next | |
+| E Архив аудитов | next | |
+
+---
+
+**Конец этапа C.**  
+По команде — этап D (комбинаторика поза × ракурс × тир).
+
+— Cole / Grok · Composition Manual · Stage C  
+
+# THREAD 5 — COMPOSITION MANUAL
+## ЭТАП D: КОМБИНАТОРИКА
+### Поза × Ракурс × Тир × Пакет — рабочие связки, не бесконечный шум
+
+**Статус:** внешний пакет Cole/Grok · 2026-11-05  
+**Входы:** Stage A (позы) · Stage B (камера) · Stage C (рейтинги/пакеты)  
+**Для:** писец при сборке слота · EXP-тесты · CONSILIUM  
+**Закон:** не все комбинации равны. Ниже — **отобранные** связки с ролью, риском и запретами.
+
+---
+
+### Как пользоваться этапом D
+
+1. Выбери **роль слота** (строка матрицы): NICHE / VOLT / OC / EXP / PG-bridge / R+test  
+2. Возьми **комбо-карточку** (ID `Dx-NN`)  
+3. Подставь concrete tags из A/B/C  
+4. Прогони чеклист в хвосте карточки  
+5. Не ставь две карточки одного **кластера** соседними слотами  
+
+**Формат карточки:**
+```
+ID · ИМЯ
+Роль | Тир-цель | Пакет C | Поза A | Камера B
+POS-скелет (порядок)
+NL-скелет
+NEG-добавки
+Почему работает | Риск | Анти-эхо (не ставить рядом с)
+```
+
+---
+
+# D0. ПОЛНАЯ МАТРИЦА «ИМЕЕТ СМЫСЛ / МУСОР»
+
+| Поза-семья ↓ \ Камера → | S cowboy eye | L low | R1 between | A08 back | A11 through | D5 full | D6 wide | Insert |
+|---|---|---|---|---|---|---|---|---|
+| **A1 Семя** | мусор | слабо | **ЗОЛОТО** | нет | ок | слабо | мусор | нет |
+| **A2 Вещь** | **сильно** | сильно | избыток | ок | ок | ок | слабо | **сильно** |
+| **A3 Вес** | сильно | **сильно** | избыток | сильно | ок | сильно | ок | нет |
+| **A4 Фаза** | ок | сильно | ок | ок | ок | сильно | ок | сильно |
+| **A5 Взгляд** | ок | ок | нет | **золото** | сильно | ок | ок | нет |
+| **A6 Быт** | ок | ок | спец | ок | **fridge POV** | **золото** | ок | ок |
+| **A7 Опора** | ок | ок | нет | сильно | сильно | сильно | ок | нет |
+| **A8 EXP** | тест | тест | **тест** | тест | тест | тест | нет | тест |
+| **A9 Reflect** | ок | ок | нет | ок | **золото** | ок | ок | нет |
+
+**Мусор** = убивает идею позы. Не комбинировать «чтобы разнообразить».
+
+---
+
+# D1. КЛАСТЕР γ — FORBIDDEN CAMERA (R+ без sheer)
+
+### D1-01 · BETWEEN-KNEES THRONE
+- **Роль:** VOLT / EXP · **Тир:** R+ · **Пакет:** γ  
+- **Поза:** A1-01 / A1-03 · **Камера:** R1 (D3×A03+F5)  
+- **POS-скелет:**  
+  `worm's-eye view, from below between the knees, looking up the torso,`  
+  `knees together, leaning forward, looking down past the camera,`  
+  `[body], [clothed garment hem framing the gap],`  
+  `stylized 2D anime face…`  
+- **NL:** `She looks down past the camera between her own knees, hem pooled at her thighs, the corridor of her legs leading to her face.`  
+- **NEG+:** `legs spread wide, nude, panties pulled aside, crotch focus`  
+- **Почему:** запретная точка + gaze вниз + clothed  
+- **Риск:** moderation / anatomy · **Анти-эхо:** D1-02, D1-03  
+
+### D1-02 · STEP-OVER VIEWER
+- **Роль:** EXP · **Тир:** R+ · **Пакет:** γ  
+- **Поза:** A1-05 · **Камера:** R3 POV floor  
+- **POS:** `pov from the floor, worm's-eye, one foot raised mid-step over the viewer, looking down, skirt swinging`  
+- **NL:** `She steps over the camera mid-stride, eyes on where her foot will land.`  
+- **Риск:** extra legs · только EXP  
+
+### D1-03 · LADDER AXIS
+- **Роль:** VOLT · **Тир:** R · **Пакет:** γ soft  
+- **Поза:** A1-06 · **Камера:** A03 along ladder  
+- **POS:** `from below on the ladder axis, climbing, looking down, hem above the camera, hands on rungs`  
+- **Почему:** причина (лестница) оправдывает ракурс  
+
+### D1-04 · KEYHOLE DOOR
+- **Роль:** VOLT / NICHE · **Тир:** R+ · **Пакет:** ι+γ  
+- **Поза:** A3-01 или A5-01 · **Камера:** R4 through crack + dirty frame  
+- **POS:** `through door crack, dirty frame, blurry door edge, she stands beyond adjusting a strap, partial body`  
+- **NL:** `Seen only through the gap: she fixes a fallen strap, unaware of the viewer.`  
+- **Риск:** «пустой» кадр — нужен читаемый жест  
+
+### D1-05 · BAG-RIM POV
+- **Роль:** EXP · **Тир:** R · **Пакет:** γ  
+- **Поза:** A1-09 · **Камера:** D2 inside bag rim  
+- **POS:** `view from inside an open bag, looking up over the rim at her face, hands on the bag edge`  
+
+---
+
+# D2. КЛАСТЕР α/δ — TAPE & PROCESS (стабильный R+)
+
+### D2-01 · SHIRT-LIFT TAPE (вердикт-золото)
+- **Роль:** VOLT / EXP · **Тир:** R+ · **Пакет:** α  
+- **Поза:** A2-01 · **Камера:** S2 или L2 (D3×A02)  
+- **POS:** `upper body, slight low angle, both hands lifting shirt hem past the ribs, taped nipples, tape crosses, fabric mid-lift, eyes over the hem`  
+- **NL:** `She is mid-pull on the shirt; tape crosses stay covered; eyes clear the hem.`  
+- **NEG+:** `nipples exposed, nude, areola`  
+- **Анти-эхо:** другой α в ±2 слотах  
+
+### D2-02 · STRAP CATCH
+- **Роль:** любой · **Тир:** R · **Пакет:** δ soft  
+- **Поза:** A2-02 · **Камера:** D3×A07  
+- **POS:** `upper body, three-quarter, strap slipping off shoulder, hand halfway to catch it, looking at the strap`  
+- **NL:** `The strap falls; her fingers are still open.`  
+
+### D2-03 · WAISTBAND ONE-SIDE
+- **Роль:** VOLT · **Тир:** R+ · **Пакет:** δ  
+- **Поза:** A2-14 · **Камера:** D4×A02  
+- **POS:** `cowboy shot, from below, thumbs in belt loops, waistband sliding on one hip only, looking aside`  
+- **NEG+:** `pants pulled down, nude`  
+
+### D2-04 · TOWEL MID-FALL
+- **Роль:** VOLT · **Тир:** R+ · **Пакет:** δ  
+- **Поза:** A1-10 · **Камера:** D3×A01  
+- **POS:** `towel slipping, both hands catching at chest, looking down at the towel edge, underwear still on`  
+
+### D2-05 · ZIPPER STUCK
+- **Роль:** VOLT · **Тир:** R · **Пакет:** δ  
+- **Поза:** A2-03 · **Камера:** D2 insert на руки + D3 follow  
+- **Лучше A/B:** insert руки → full upper body  
+
+### D2-06 · TAPE ADJUST FINGERS
+- **Роль:** EXP · **Тир:** R+ · **Пакет:** α  
+- **Поза:** A2-13 · **Камера:** L6 insert  
+- **POS:** `close-up on fingers pressing tape crosses, chin down, looking at the tape`  
+
+---
+
+# D3. КЛАСТЕР ε/ζ — GEOMETRY & SHEER (квотировать)
+
+### D3-01 · WIND-PRESS SUNDRESS
+- **Роль:** VOLT · **Тир:** R+ · **Пакет:** ζ или ε  
+- **Поза:** A4 run / A3 lean · **Камера:** L8 или S5  
+- **POS:** `cowboy shot, from below or side, dress pressed sheer by wind, covered nipples, nothing underneath, mid-stride`  
+- **Квота:** sheer-пакет ≤25% R+  
+
+### D3-02 · RAIN SHEET CAPE
+- **Роль:** VOLT · **Тир:** R+ · **Пакет:** ζ · **T5-10 P09-дух**  
+- **Поза:** standing clutch · **Камера:** D4×A01  
+- **POS:** `bedsheet as cape, rain-soaked see-through, fists pinning corners, covered nipples`  
+
+### D3-03 · DARK CLING GEOMETRY
+- **Роль:** VOLT · **Тир:** R+ · **Пакет:** ε / bumps  
+- **Поза:** A3 hip-cock · **Камера:** S5  
+- **POS:** `dark fabric clinging, covered nipples, fabricTone dark, from below cowboy`  
+- **Почему:** закон №28 · без wet  
+
+### D3-04 · SEATED COMPRESS
+- **Роль:** VOLT · **Тир:** R+ · **Пакет:** ε  
+- **Поза:** sit lean forward · **Камера:** D3×A02  
+- **POS:** `leaning forward seated, tight top compressed, clothed nipples soft relief`  
+
+---
+
+# D4. КЛАСТЕР β — HAND / COVER
+
+### D4-01 · CLASSIC HANDBRA
+- **Роль:** VOLT · **Тир:** R+ · **Пакет:** β  
+- **Поза:** hands covering · **Камера:** D3×A02  
+- **POS:** `handbra, open palms covering breasts, upper body, slight low angle, looking aside or at viewer`  
+- **Риск:** extra fingers · NEG bad hands  
+
+### D4-02 · FEATHER / FOREARM COVER
+- **Роль:** EXP kin · **Тир:** R+ · **Пакет:** β · **Vyuga-класс**  
+- **Поза:** winged arms cross · **Камера:** D3×A02  
+- **POS:** `feathered forearms crossed over chest, honest cover, coat flare lost to wind`  
+
+### D4-03 · TOWEL HUG EDGE
+- **Роль:** VOLT · **Тир:** R · **Пакет:** β soft  
+- **Поза:** A7-07 · **Камера:** D4×A01  
+- **POS:** `towel hugged closed at the chest, sitting on pool/bath edge, steam`  
+
+---
+
+# D5. КЛАСТЕР NICHE — МИР ПЕРВЫМ СИЛУЭТОМ
+
+### D5-01 · DOORWAY TWO-CLIMATES
+- **Роль:** NICHE · **Тир:** PG-13/R · **Пакет:** — · **T5-12 дух**  
+- **Поза:** A3 / A5 · **Камера:** L3 D5×A11  
+- **POS:** `full body, through doorway, two climates split by the frame, she stands on the threshold, looking into the other weather`  
+- **NL:** `Snow on one side of the door, summer on the other; she is the hinge.`  
+- **Закон:** мир читается до лица  
+
+### D5-02 · WIDE SMALL FIGURE
+- **Роль:** NICHE · **Тир:** PG-13 · **Камера:** D6×A05 или D6×A01  
+- **Поза:** A6 task tiny in frame  
+- **POS:** `wide shot, small figure in large space, [impossible env], negative space`  
+
+### D5-03 · OBJECT-SUBJECT FIRST
+- **Роль:** NICHE · **Тир:** PG-13/R · **T5-10 дух**  
+- **Поза:** A6 + idle body · **Камера:** D5×A01  
+- **POS:** `full body, [broom sweeping alone / sheets folding / kettle pouring], she receives the work with a cup`  
+- **NL:** предмет-глагол первым предложением  
+
+### D5-04 · SHADOW WORKER
+- **Роль:** NICHE · **Тир:** R · **Поза:** A9-01 · **Камера:** D5×A06 profile  
+- **POS:** `her shadow washing dishes independently, she stands drinking tea, semi-transparent lower body if ghost-kin`  
+
+### D5-05 · GLASS WITNESS
+- **Роль:** NICHE/VOLT · **Тир:** R · **Камера:** A11 through glass  
+- **Поза:** A7-01 forehead on glass  
+- **POS:** `through rain-glass, forehead against the pane, palm prints, face half soft focus`  
+
+---
+
+# D6. КЛАСТЕР OC — КАНОН НЕ УБИТЬ
+
+### D6-01 · OC PORTRAIT SAFE
+- **Роль:** OC · **Тир:** R/R+ · **Камера:** D2/D3 × A01/A07  
+- **Поза:** A2 или A3 с читаемым лицом  
+- **Правило:** канон волос/глаз VERBATIM в первых ~10; **не** A08/A03 extreme на дебюте глаз  
+- **Пакет R+:** α или δ предпочтительнее γ  
+
+### D6-02 · OC BACK-LOOK CARE
+- **Роль:** OC · **Тир:** R · **Камера:** A08 only if eyes already established in batch  
+- **Поза:** A5-01  
+- **POS:** `looking back over shoulder, nape, [canon hair color readable]`  
+
+### D6-03 · OC THEME-OFF
+- **Роль:** OC · **Правило T5:** фурнитура темы батча **не** входит в OC-слот  
+- Комбо: поза/камера из карточек VOLT, env — из темы OC-автора  
+
+---
+
+# D7. КЛАСТЕР PG-BRIDGE — СИЛЬНЫЙ НИЗКИЙ ТИР
+
+### D7-01 · SOCK-PULL BALANCE
+- **Роль:** bridge · **Тир:** PG-13 · **Поза:** A2-05 · **Камера:** D4×A06 profile or S2  
+- **POS:** `standing on one leg, pulling sock, looking down, slight wobble`  
+
+### D7-02 · COAT ONE-ARM
+- **Роль:** bridge · **Тир:** PG-13 · **Поза:** A2-06 · **Камера:** A08 three-quarter back  
+- **POS:** `coat half-on, twisting for the sleeve, looking back`  
+
+### D7-03 · MARKET HAT-TIP
+- **Роль:** bridge · **Тир:** PG-13 · **Поза:** A3 · **Камера:** A02 from stall low · **T5-10**  
+- **POS:** `from below at stall counter, hat tipped back, coin between fingers, basket floating`  
+
+### D7-04 · LAUNDRY HIGH REACH
+- **Роль:** bridge · **Тир:** PG-13/R · **Поза:** A6-02 · **Камера:** D5×A02  
+- **POS:** `full body, arms up pinning laundry, heel lifted, from below soft`  
+
+---
+
+# D8. КЛАСТЕР EXP-TEST — КАМЕРА И ПОЗА КАК ГИПОТЕЗА
+
+Каждый EXP-тест = **одна переменная**.
+
+| ID | Гипотеза | Фиксируем | Меняем | Вердикт смотрит |
+|---|---|---|---|---|
+| D8-01 | between-knees читается | clothed, face visible | only camera R1 | живость / ban |
+| D8-02 | process > result | same garment | mid-lift vs already lifted | тир / вкус |
+| D8-03 | dutch + serene = слом | same pose | A09 on/off | «зачем» |
+| D8-04 | insert→payoff A/B | same story | D7 then D3 | связность |
+| D8-05 | keyhole without claim | no sheer tokens | R4 only | тир на глаз |
+| D8-06 | top-down map body | full body open pose clothed | A05 | foreshortening |
+| D8-07 | reflection lag | glass, raised hand | lag vs sync | PH integrity |
+| D8-08 | shirt-lift tape vs sheer | same pose A2-01 | α vs ζ | стабильность R+ |
+
+---
+
+# D9. МЕГА-ТАБЛИЦА БЫСТРОГО ВЫБОРА
+
+«Мне нужно → бери карточку»
+
+| Нужно | Карточка |
+|---|---|
+| R+ без ткани | D1-01, D1-04, D2-03 |
+| R+ надёжный под вердикт | D2-01, D3-03, D4-01 |
+| Живость без эротики | D7-01, D7-02, D5-03 |
+| NICHE «мир первый» | D5-01, D5-02, D5-03 |
+| OC не сломать | D6-01 |
+| EXP прорыв | D1-02, D8-01, D8-05 |
+| Антикишечный ковбой | любая не-S1; L/R пресеты |
+| Бытовой VOLT | D2-02, D7-04, fridge D5-05-like |
+| Финал батча «икона» | D5-01 или A8-10 + D5 full low |
+| Сломать моно sheer | запрет D3-01/02 соседствовать; вставить D1/D2 |
+
+---
+
+# D10. ЦЕПОЧКИ ВНУТРИ БАТЧА (ритм, не рандом)
+
+### Ритм «дыхание»
+`D7 PG-bridge → D2 R+ process → D5 NICHE → D1 R+ camera → D7 → D3 sheer (квота) → D5 → D2 tape`
+
+### Ритм «окно темы» (поезд / дверь / проём)
+Каждый 3-й слот несёт A11/F5; между ними — VOLT без проёма, чтобы не зашуметь.
+
+### Ритм «анти-моно R+»
+R+ слоты чередуют пакеты: α → γ → ε → δ → β → ζ → α…  
+Никогда ζζζ.
+
+### Ритм «EXP-научный»
+P25–P29 = только D8-тесты с одной переменной; не мешать с кандидатами OC вперемешку без подписи в шапке.
+
+---
+
+# D11. ЗАПРЕЩЁННЫЕ КОМБО (явно)
+
+| Комбо | Почему смерть |
+|---|---|
+| A1 + S1 cowboy eye-level | убивает семя автора |
+| A1 + D6 wide | интимная точка теряется в ландшафте |
+| γ camera + OC first-eye debut | канон глаз не доедет |
+| ζ sheer + light fabricTone + bra in POS | паразит-слой / смягчение |
+| A09 dutch + serene tea + F1 center | «сломано» без смысла |
+| Три D1 подряд | батч-тошнота + moderation pattern |
+| Process NL в past tense | фаза → result, тир падает |
+| R+ пакет α без NEG exposed | oracle/рендер снимет tape |
+
+---
+
+# D12. СБОРОЧНЫЙ ШАБЛОН СЛОТА (копипаста писца)
+
+```
+SLOT: P__
+Role: NICHE|VOLT|OC|EXP
+Tier: PG-13|R|R+
+Combo: D__-__ (name)
+Package: αβγδεζηθικ|-
+Pose family: A__-__
+Camera: D_ × A__ × F_  (preset S/L/R__)
+Channel: (dresser live)
+Heat register: student|young|full / mood
+
+POS order:
+  [camera cluster]
+  [identity/body/canon]
+  [garment + claim one]
+  [pose/action tags]
+  [env]
+  [light behavior]
+  [face anchors]
+
+NL (2–4 sentences, mid-action, gaze vector):
+  ...
+
+NEG: floors + tier mirror + anti-default + combo risks
+```
+
+---
+
+# D13. ПРИМЕРЫ ПОЛНЫХ СЛОТОВ (3 штуки)
+
+### Пример 1 — VOLT R+ γ
+```
+Combo: D1-01 BETWEEN-KNEES THRONE
+POS:
+worm's-eye view, from below between the knees, looking up the torso,
+1girl, solo, [hair], [eyes], [body],
+knees together, leaning forward, looking down past the camera,
+skirt hem pooled at the thighs, fabric folds framing the gap,
+soft room light from behind her shoulders,
+stylized 2D anime face, anime eyes (…), small nose, small mouth, masterpiece, best quality, anime artstyle
+NL:
+She leans forward and looks down past the camera between her own knees.
+The hem pools at her thighs and frames the corridor up to her face.
+NEG:
+…floors…, legs spread wide, nude, crotch focus, standing straight, arms at sides
+```
+
+### Пример 2 — VOLT R+ α
+```
+Combo: D2-01 SHIRT-LIFT TAPE
+POS:
+upper body, from below, slight low angle,
+1girl, solo, [canon or body],
+both hands lifting the shirt hem past the ribs, taped nipples, tape crosses, shirt mid-lift,
+eyes just over the hem, elbows out,
+[palette light],
+stylized 2D anime face, anime eyes (…), small nose, small mouth, masterpiece, best quality, anime artstyle
+NL:
+She is mid-pull on the shirt. Tape crosses stay covered. Her eyes clear the rising hem.
+NEG:
+…floors…, nipples exposed, areola, nude, shirt off
+```
+
+### Пример 3 — NICHE PG-13
+```
+Combo: D5-01 DOORWAY TWO-CLIMATES
+POS:
+full body, through doorway, frame within frame,
+1girl, solo, [body],
+standing on the threshold, looking into the far weather,
+snow on the near floor, summer light beyond the door,
+[palette split],
+stylized 2D anime face, anime eyes (…), small nose, small mouth, masterpiece, best quality, anime artstyle
+NL:
+Snow on this side of the door, warm noon on the other. She stands in the hinge and looks into the wrong season.
+NEG:
+…floors…, standing straight centered only, no doorway, single weather
+```
+
+---
+
+# D14. МЕТРИКИ ДЛЯ ВЕРДИКТА (что просить у автора)
+
+После батча с комбо-разметкой:
+1. Какие **ID карточек** попали в «любимое»?  
+2. Какие — «стерильно» при живой карточке (сбой исполнения)?  
+3. γ (camera R+) — доехал как R+ или смягчился?  
+4. Были ли соседние эха одного кластера?  
+5. Cowboy count факт ≤ квоты?  
+
+Писец заносит в furnace-ledger / moves не «поза PL###», а **Combo ID**, когда стабилизируется.
+
+---
+
+# D15. СВЯЗЬ С ОСТАТНЫМ РУЧНЫМ
+
+| Этап | Роль |
+|---|---|
+| A | атомы поз |
+| B | атомы камеры |
+| C | атомы тира/пакетов |
+| **D** | **молекулы — этот файл** |
+| E | архив законов и аудитов (зачем всё это возникло) |
+
+---
+
+**Конец этапа D.**  
+По команде — этап E (архив: грязный аудит, consilium, T4→T5 наследство, свод).
+
+— Cole / Grok · Composition Manual · Stage D  
+
+# THREAD 5 — COMPOSITION MANUAL
+## ЭТАП E: АРХИВ, НАСЛЕДСТВО, СВОД
+### Откуда взялись законы A–D · что не повторять · как жить с ручным
+
+**Статус:** внешний пакет Cole/Grok · 2026-11-05  
+**Состав:** грязный аудит · consilium · T4→T5 · вердикты-якоря · индекс всего ручного  
+**Не является:** новым законом поверх LAWS.md автора. Это **внешняя память** для писца и CONSILIUM.
+
+---
+
+# E0. ЗАЧЕМ ЭТОТ ЭТАП
+
+Этапы A–D отвечают *что делать*.  
+Этап E отвечает *почему мы так решили* и *что уже сгорело*.
+
+Без архива цех через три батча:
+- снова ставит cowboy×21;
+- снова R+ = только sheer;
+- снова путает гейт PASS с качеством;
+- снова пишет поэзию в POS.
+
+---
+
+# E1. ХРОНОЛОГИЯ (сжатая)
+
+| Когда | Событие | Вывод, который жив |
+|---|---|---|
+| T4 эпоха | Авто-конвейер, роли, 5–20M токенов, «незавершённость» | Авто-писец ≠ качество |
+| T4-19 | Сигнатурная тема «нити» | Тема съела тела · R+ 2/14 |
+| T4-20 EXP SLIPPOINT | Физика без эротического центра | Физика без эротики = R |
+| #31 Yodayo audit | Oracle vs TOS | Площадка ≈ глаз автора; карта тиров |
+| #52 Dirty audit (Cole) | 40 рычагов против стерильности | Сходимость модели = враг |
+| T5 reboot | Чат=двигатель, файлы=память | Меньше ролей, больше вердикта |
+| T5-10 Witches | Предмет-субъект, быт заколдован | NICHE без каста жеста |
+| T5.1 BETA | PROSE PLUS, камера-первая | NL + tags; анти-ковбой |
+| T5-12 Last Train | 4/5 · тема ок · EXP позы стерильны | **Композиция > рейтинг-моно** |
+| CONSILIUM 11-04 | H-10/11/12 · пакет Grok | Событие, фаза, R+ камерой |
+| Manual A–D | Позы · камера · тир · комбо | Этот ручной |
+
+---
+
+# E2. ВЕРДИКТЫ-ЯКОРЯ (не пересказ — нормы)
+
+### E2.1 · T5-12 (2026-11-04) — главный триггер ручного
+Вербатим-нормы:
+1. Основная тема может быть «на четвёрку» при узком заказе — это успех раскрытия.  
+2. EXP-позы **базисные = провал**, даже если тир добит.  
+3. Эталон эксперимента: *поза промеж ног / взгляд вниз / clothed*.  
+4. R+ моноканал *едва видные соски на ткани + tape* — признан и **недостаточен**.  
+5. Страдает **композиция**, не умение добить рейтинг.  
+6. Нужны кадры *живее, приятней, прикольней* → CONSILIUM.
+
+### E2.2 · Уроки T5-10 (движок)
+- Магия как рутина > магия как каст.  
+- Предмет-субъект читается.  
+- OC-темы **не** наследуют фурнитуру батча.  
+- Prereg-гипотезы с фальсификацией — взрослый формат.
+
+### E2.3 · Уроки T4, которые T5 уже кодировал
+| T4 урок | Где в T5 |
+|---|---|
+| FRC ≠ качество | LAWS / furnace: гейт = квитанция |
+| Claim early | claim-exists ≤60 |
+| Паразит-лифчик | dresser underlayer |
+| Сумма claim ≠ тир | one hard-claim |
+| mature/milf-word skew | N30 ban в POS |
+| Сигнатурные батчи жрут сочность | theme-budget, M01 осторожно |
+
+---
+
+# E3. CONSILIUM — СЖАТЫЕ ЗАКОНЫ (H-10 / H-11 / H-12)
+
+### H-10 · Forbidden camera class
+Эротика точки съёмки. Зритель «не должен был» оказаться здесь.  
+Семя автора: between / under / look-down / clothed.  
+→ Stage A1, B R1–R4, C пакет γ, D1.
+
+### H-11 · Тройка анти-стерильности
+**Несимметричный вес + вещь-механика + взгляд-вектор.**  
+Нет двух из трёх → базис.  
+→ Stage A checklist, D0 matrix.
+
+### H-12 · Фаза, не результат
+Mid-gesture / aftershock > «уже позы».  
+NL present continuous.  
+→ Stage A4, C I-01 process, D2 δ.
+
+**Дополнительно из синтеза:**
+- R+ без ткани существует (дорисовка зрителя).  
+- Границы X не обсуждаются.  
+- Shirt-lift + tape = вещь делает = золото вкуса.
+
+---
+
+# E4. ГРЯЗНЫЙ АУДИТ T4 #52 — ЧТО ПЕРЕНЕСЕНО В A–D
+
+Полный аудит был про сходимость модели. Ниже — **маппинг в ручной**, без повтора 40 пунктов.
+
+| Блок аудита | Куда сел |
+|---|---|
+| G01–G05 камера | **Stage B** квоты D/A/F, cowboy cap |
+| G06–G10 порядок/веса | B9 порядок POS; C claim early |
+| G11–G14 тело/регистр | T5 body form thirds; не дублировать здесь |
+| G15–G20 ткань/claim | **Stage C** пакеты α–κ, one hard-claim |
+| G21–G25 поза/руки | **Stage A** семьи A2/A4 |
+| G26–G30 свет/mood | частично C4; свет — LAWS LIGHTS v2 |
+| G31–G35 анти-сходимость батча | **D10** ритмы, анти-эхо |
+| G36–G40 дыры архитектуры | T5.1 CLOSET/SALON/camera-first уже чинят часть |
+
+**Не перенесённое сознательно:**  
+Tour 4 variety engine поля контракта T4 — в T5 другая форма (ARS/сессии). Суть (negVariant, lengthClass, styleAnchor) жива как *практика писца*, не как JSON-поле.
+
+---
+
+# E5. ДИАГНОЗ СТЕРИЛЬНОСТИ (единая формулировка)
+
+Стерильность ≠ мало эротики.  
+Стерильность = **предсказуемый кадр**:
+
+1. Один порядок тегов  
+2. Один ракурс (cowboy / eye-level / center)  
+3. Безымянное «среднее» тело (если не задано)  
+4. Claim в хвосте → смягчение  
+5. Тема съедает budget внимания  
+6. Один NEG на всех  
+7. Kinetics как существительное, не глагол  
+8. Поза без события (нет H-11 тройки)  
+9. R+ только sheer/bumps  
+
+A–D бьют по пунктам 2, 4, 6, 7, 8, 9.  
+Пункты 1, 3, 5 — в ARS/SOL/LAWS/окне.
+
+---
+
+# E6. ЧТО СГОРЕЛО (ANTI-MOVES уровня цеха)
+
+Не путать с `docs/ANTI-MOVES.md` (трупы приёмов кадра). Здесь — **трупы процессов**:
+
+| Труп | Симптом | Не воскрешать |
+|---|---|---|
+| Авто-писец как качество | «прогон чистый — значит хорошо» | FRC ≠ вкус |
+| Тема-скелет батча | красивая метафора, мёртвые тела | M01 только шапка, не 21 слот |
+| Поэзия в POS | запахи, колосья, «душа» | PROSE PLUS: только видимое |
+| Ретро-гейты на сданное | пересуд старых батчей новыми правилами | no-retroactive-checks |
+| Инвентарь ради числа | 48 configs / 40 приёмов без квоты на батч | 8–12 рычагов за прогон |
+| X как плановая квота | фильтр 400/1301 | X изъят |
+| Сигнатурный батч до стабилизации R+ | T4-19 | сначала тела, потом фокус-тема |
+| Build/moral ban вместо техники | «это табу» | внешний аудитор режет поверхность |
+
+---
+
+# E7. СВОД ЗАКОНОВ РУЧНОГО (A–D на одной странице)
+
+### Поза (A)
+- Тройка H-11 обязательна для VOLT/EXP.  
+- Фаза mid/aftershock предпочтительнее result.  
+- Семя автора (A1) только с камерой R1/R3, не с cowboy.  
+- Квоты семей на батч — A10.
+
+### Камера (B)
+- D×A **до** позы в мышлении; tags в первой пятнадцатке POS.  
+- Cowboy ≤5 на 21 мейн.  
+- Eye-level ≤40%.  
+- Сосед ≠ та же клетка D×A.
+
+### Тир (C)
+- Тир = сумма слоёв, не один token.  
+- R+ → выбор пакета α…κ, один hard-claim.  
+- Wet-sheer ≤25% R+ слотов.  
+- Camera/process/voyeur ≥25% R+ (анти-моно).  
+- Сильный PG-13 = outfit claim + жест, не «отдых».
+
+### Комбо (D)
+- Сначала роль слота → карточка Dx-NN.  
+- Матрица D0: не комбинировать «мусор».  
+- Ритм анти-моно и анти-эхо.  
+- EXP = одна переменная.
+
+### Границы (всегда)
+- XXX never · genitals never · anti-loli · no milf-word в POS · no IP names · light without fixture spam · OC canon VERBATIM · OC off-theme furniture.
+
+---
+
+# E8. ИНДЕКС ФАЙЛОВ РУЧНОГО
+
+| Файл | Этап | Содержание |
+|---|---|---|
+| `T5-COMPOSITION-MANUAL-STAGE-A-POSES.md` | A | 9 семей поз, ~90 карточек, квоты, чеклист |
+| `T5-COMPOSITION-MANUAL-STAGE-B-CAMERA.md` | B | D/A/F оси, пресеты S/L/R, квоты, ошибки |
+| `T5-COMPOSITION-MANUAL-STAGE-C-RATINGS.md` | C | 4 слоя тира, пакеты α–κ, анти-моно |
+| `T5-COMPOSITION-MANUAL-STAGE-D-COMBOS.md` | D | комбо-карточки, ритмы, запреты, шаблон |
+| `T5-COMPOSITION-MANUAL-STAGE-E-ARCHIVE.md` | E | этот файл |
+
+**Репо-якоря (канон автора, сильнее ручного):**
+- `docs/LAWS.md`  
+- `docs/TASTE.md`  
+- `docs/CONSILIUM.md`  
+- `docs/ANTI-MOVES.md`  
+- `docs/NICHE.md`  
+- `docs/RENDERER_FACTS.md`  
+- `docs/T5-1-BETA.md`  
+- `specs/dresser.json`, `gates.json`, `moves-ledger.json`, `camera.json`, `closet.json`, `salon.json`  
+- `verdicts/*`  
+
+Конфликт ручной ↔ LAWS → **побеждает LAWS + вердикт автора**.
+
+---
+
+# E9. ПАКЕТ GROK В CONSILIUM — СТАТУС
+
+Ответ по 6 пунктам пакета (2026-11-04) разложен так:
+
+| Пункт пакета | Куда |
+|---|---|
+| 1 Диагноз стерильности | E5, A0, B0 |
+| 2 Двадцать поз | Stage A (расширен) |
+| 3 Рычаги живости | A4, A2, B4, C5 |
+| 4 R+ камерой без ткани | B5 R-пресеты, C3, C6 γ, D1 |
+| 5 ТОП стабильных / рискованных | B5 S/L/R, D8 |
+| 6 Формат промпта | B9, C11, D12 |
+
+Писец вносит в `CONSILIUM.md` вербатим по ритуалу возврата; ручной — рабочая выжимка, не замена стенограмме.
+
+---
+
+# E10. МИНИМАЛЬНЫЙ ПАКЕТ НА СЛЕДУЮЩИЙ БАТЧ
+
+Не внедрять A–D целиком. На один прогон:
+
+| # | Действие | Откуда |
+|---|---|---|
+| 1 | Cowboy cap ≤5; camera tags early | B6, B9 |
+| 2 | ≥3 позы с полной тройкой H-11 | A11 |
+| 3 | ≥2 слота фазы mid (A4) | A4 |
+| 4 | R+ пакеты: не более 25% ζ; ≥2 из {α,γ,δ,β} | C7 |
+| 5 | 1× D1-01 или D1-04 в EXP/VOLT | D1 |
+| 6 | 1× D2-01 tape, если тир-план просит надёжность | D2 |
+| 7 | NICHE: D5-01 или D5-03 если тема позволяет | D5 |
+| 8 | Разметка Combo ID в thesis/spine | D12 |
+| 9 | Вердикт спросить по E14-метрикам D | D14 |
+
+После вердикта — какие Combo ID в «любимое» / «стерильно» → furnace / moves.
+
+---
+
+# E11. ОТКРЫТЫЕ ВОПРОСЫ АВТОРУ (не решать писцу молча)
+
+1. Пакет γ (R+ только камерой): принимать ли как плановый R+, или только EXP до серии вердиктов?  
+2. Нужен ли hard-gate на cowboy count, или warn?  
+3. Вводить ли `Package:` / `Combo:` в machine-readable шапку слота?  
+4. Лимит dutch на батч — закон или вкус?  
+5. A/B insert→payoff (D8-04) — стоит ли квоты на батч?
+
+---
+
+# E12. ГЛОССАРИЙ РУЧНОГО
+
+| Термин | Смысл |
+|---|---|
+| **Стерильность** | предсказуемый кадр без события |
+| **Тройка H-11** | вес + вещь + взгляд |
+| **Фаза H-12** | mid/aftershock vs result |
+| **Семя автора** | between/under + look-down + clothed |
+| **Пакет α…κ** | маршрут доставки R+ (Stage C) |
+| **Пресет S/L/R** | стабильный / живой / R+ camera (Stage B) |
+| **Combo ID** | Dx-NN молекула (Stage D) |
+| **Анти-моно** | R+ не только sheer |
+| **Анти-эхо** | сосед ≠ та же клетка |
+| **FRC** | first run clean — не вкус |
+| **Oracle** | Yodayo/Tsubaki+глаз автора |
+| **PROSE PLUS** | NL видимого + tags + PH |
+| **Камера-первая** | D×A до PL |
+
+---
+
+# E13. ОДНОСТРАНИЧНЫЙ RITUAL ПИСЦА
+
+```
+1. Прочитай заказ + window + burn
+2. SOL: гипотеза + ожидания (фальсифицируемые)
+3. На каждый слот:
+   a. Роль (NICHE/VOLT/OC/EXP)
+   b. Тир + Package (C)
+   c. Combo ID (D) или осознанный custom
+   d. Pose family (A) + Camera D×A (B)
+   e. POS порядок: camera → identity → claim one → action → env → light → face
+   f. NL: mid-action + gaze vector
+   g. NEG: floors + tier mirror + combo risks
+4. Квоты: cowboy, sheer, eye-level, dutch, family echo
+5. gates.py → PASS/WARN
+6. Рендер → вердикт → квитанции в TASTE/LIVING/moves/CONSILIUM
+7. Combo ID из «любимое» → повысить вес; «стерильно» → анти-move или fix исполнения
+```
+
+---
+
+# E14. ФИНАЛЬНЫЙ ТЕЗИС
+
+THREAD 4 задохнулся в автоматизации.  
+THREAD 5 вернул вердикт автора в центр.  
+T5-12 показал: **рейтинг вы умеете, композиция — следующий потолок**.
+
+Ручной A–E — не новая конституция.  
+Это **внешний консилиум, упакованный так, чтобы писец мог взять карточку, а не читать роман**.
+
+Живость = событие в кадре.  
+R+ = выбор пути, не рефлекс ткани.  
+Камера = контракт со зрителем.  
+Поза = ответ на «что происходит **сейчас**».
+
+Дальше — только рендер и глаз автора.
+
+---
+
+**Конец этапа E. Ручной Composition Manual A–E закрыт по объёму.**
+
+Обновления — только после новых вердиктов (ритуал CONSILIUM), не от скуки.
+
+— Cole / Grok · Composition Manual · Stage E · 2026-11-05  

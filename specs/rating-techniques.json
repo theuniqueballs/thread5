@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.1",
   "born": "2026-09-21",
   "source": "таблица приёмов рейтинга автора (PG-13 → R → R+ → X Cut), доставлена 2026-09-21 — буру-стиль тегов для Tsubaki 2 / PixAI; перенесена дословно, efficacy ●/○ сохранена",
   "relation": "rating-recipes.json = ЗАКОН (что делает заявку тира правдой на рендере: рендер-доказанные заявки, носители, контр-NEG). rating-techniques.json = КАРТА (куда теги обычно попадают: ●/○ по тирам, принцип четырёх слоёв, закон суммы факторов, X Cut hold, факторы вне промпта). Рецепт навигирует по карте; где карта и рендер-вердикт расходятся (cameltoe), вердикт сильнее.",
@@ -2203,5 +2203,210 @@
       }
     ],
     "note": "в нашей системе adult woman в POS запрещён (N30: милф-скач всей пачки) — шпаргалка читается как карта сигналов, а не как дословный шаблон"
-  }
+  },
+  "grok_packages": {
+    "born": "2026-11-05",
+    "source": "Composition Manual Stage C6 (Cole/Grok); вербатим: docs/COMPOSITION-MANUAL.md",
+    "law": "R+ слот = ОДИН пакет + один hard-claim (G20); пакеты чередуются (ритм анти-моно D10), ζζζ никогда. Вердикт 2026-11-05 («Давай сразу возьмём, похуй»): пакет γ — ПЛАНОВЫЙ R+ без EXP-карантина; экспериментальные/сомнительные позы мануала (pool: exp) — только в EXP-слоты.",
+    "packages": [
+      {
+        "id": "α",
+        "name": "TAPE (уже золото)",
+        "fields": {
+          "claim": "R+-03",
+          "поза": "A2-01 / A2-13",
+          "камера": "D3×A01 или D3×A02",
+          "mood": "M-01 или M-04"
+        }
+      },
+      {
+        "id": "β",
+        "name": "HAND BRA / FOREARM",
+        "fields": {
+          "claim": "R+-04",
+          "поза": "hands-busy, feather-cover (Vyuga-класс)",
+          "камера": "D3×A02"
+        }
+      },
+      {
+        "id": "γ",
+        "name": "FORBIDDEN CAMERA (без claim-токенов)",
+        "fields": {
+          "claim": "—",
+          "поза": "A1-01…A1-05",
+          "камера": "B R1 / R3",
+          "mood": "M-02"
+        }
+      },
+      {
+        "id": "δ",
+        "name": "PROCESS STRIP",
+        "fields": {
+          "claim": "R+-06",
+          "поза": "A2 strap/shirt/waistband mid",
+          "камера": "D3/D4 × A01/A02",
+          "NL": "present continuous only"
+        }
+      },
+      {
+        "id": "ε",
+        "name": "GEOMETRY / VPL",
+        "fields": {
+          "claim": "R+-05 или r-geometry",
+          "поза": "wind-press, sit-compress, tight bend",
+          "камера": "D4×A02",
+          "fabricTone": "dark предпочтительно"
+        }
+      },
+      {
+        "id": "ζ",
+        "name": "WET-SHEER (старый бог)",
+        "fields": {
+          "claim": "R+-02",
+          "underlayer": "nothing underneath POS + bra NEG"
+        }
+      },
+      {
+        "id": "η",
+        "name": "CROP + IMPLICATION",
+        "fields": {
+          "claim": "— / soft",
+          "framing": "F3"
+        }
+      },
+      {
+        "id": "θ",
+        "name": "SILHOUETTE + BACKLIGHT",
+        "fields": {}
+      },
+      {
+        "id": "ι",
+        "name": "VOYEUR KEYHOLE",
+        "fields": {
+          "env": "door, blinds, shelf gap"
+        }
+      },
+      {
+        "id": "κ",
+        "name": "CONTACT",
+        "fields": {
+          "contact-physics live": "familiar, cord, spore, hand on waist from env"
+        }
+      }
+    ]
+  },
+  "anti_mono_quotas": {
+    "source": "Manual C7, предложение CONSILIUM (анти-моно вердикта T5-12)",
+    "note": "доли от всех R+ слотов батча; γ/δ/η/ι = 0 → снова моноканал «соски на ткани»",
+    "quotas": [
+      {
+        "channels": "wet-sheer",
+        "op": "≤",
+        "pct": 25
+      },
+      {
+        "channels": "bumps/geometry",
+        "op": "≤",
+        "pct": 30
+      },
+      {
+        "channels": "tape + handbra",
+        "op": "≥",
+        "pct": 20
+      },
+      {
+        "channels": "camera/process/voyeur (γ/δ/η/ι)",
+        "op": "≥",
+        "pct": 25
+      }
+    ]
+  },
+  "mood_codes": [
+    {
+      "id": "M-01",
+      "technique": "gaze down at own body",
+      "pos_nl": "looking down at her chest / at the strap",
+      "effect": "она знает, что открыто"
+    },
+    {
+      "id": "M-02",
+      "technique": "gaze at viewer from forbidden cam",
+      "pos_nl": "looking down at the camera between knees",
+      "effect": "доминирование + стыд"
+    },
+    {
+      "id": "M-03",
+      "technique": "averted shame",
+      "pos_nl": "looking away, blush, shoulders inward",
+      "effect": "стыд как сигнал R+"
+    },
+    {
+      "id": "M-04",
+      "technique": "unbothered task",
+      "pos_nl": "expression calm, continuing the chore",
+      "effect": "бытовой эччи (T5-10 дух)"
+    },
+    {
+      "id": "M-05",
+      "technique": "caught mid-act",
+      "pos_nl": "surprised glance toward doorway",
+      "effect": "narrative flash"
+    },
+    {
+      "id": "M-06",
+      "technique": "invitation tilt",
+      "pos_nl": "head tilt, slight smile, eye contact",
+      "effect": "PG-13/R pin-up"
+    },
+    {
+      "id": "M-07",
+      "technique": "private face",
+      "pos_nl": "eyes closed, absorbed, not performing",
+      "effect": "зритель лишний = сильнее"
+    }
+  ],
+  "implication_engines": [
+    {
+      "id": "I-01",
+      "engine": "Process not result",
+      "how": "sliding, slipping, mid-lift, about to fall",
+      "tier": "R+"
+    },
+    {
+      "id": "I-02",
+      "engine": "Afterglow dress",
+      "how": "just after undressing, clothes on the floor beside without nude body",
+      "tier": "R+"
+    },
+    {
+      "id": "I-03",
+      "engine": "Steam / fog erase",
+      "how": "steam hiding the chest line, towel edges only",
+      "tier": "R"
+    },
+    {
+      "id": "I-04",
+      "engine": "Shadow replace cloth",
+      "how": "cast shadow across the chest as if fabric",
+      "tier": "R"
+    },
+    {
+      "id": "I-05",
+      "engine": "Object stand-in",
+      "how": "book / bag / steam held against the chest",
+      "tier": "R"
+    },
+    {
+      "id": "I-06",
+      "engine": "Double meaning task",
+      "how": "wringing wet cloth, washing, stretching — body reads secondary",
+      "tier": "R / R+"
+    },
+    {
+      "id": "I-07",
+      "engine": "Sound-of-frame",
+      "how": "finger to lips, shushing, door ajar — secrecy",
+      "tier": "R"
+    }
+  ]
 }

@@ -1,36 +1,208 @@
 {
  "id": "camera",
  "name": "CAMERA-FIRST — камера как половина работы",
- "version": "1.0.0",
+ "version": "1.2.0",
  "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
- "law": "КАМЕРА ПЕРВАЯ. Порядок сборки VOLT: (1) кубик камеры: дистанция D + угол A; (2) поза PL выбирается ИЗ СЕМЕЙ, СОГЛАСНЫХ с D×A (не наоборот); (3) visibility law (body.json) пишет только то, что D×A видит; (4) в POS кадр пишется «viewed from ...» — токен «camera ...» запрещён (bans.json: рендерер рисует камеру предметом). Поза и камера вместе делают половину работы слота; заявка через ткань — не замена композиции.",
+ "law": "КАМЕРА-ПЕРВАЯ (вердикт 2026-11-03) + ревизия 2026-11-05 (вердикт автора чатом): «всё чё он говорит тру инфа, камера - одно из важных частей композиции. если посмотришь официальный гайд по тсубаки 2, там так и написано» → §13.0 LAWS: камерный кластер (D+A+F) — первые 10–20 токенов POS (Cole-B9 принят, кадровая строка у face-блока отменена); дисциплина дистанций D1–D8 «ближе/дальше» (ковбой — признанный доминант рендера, кап снят); dutch A09 ≤10%/батч — закон («закон!»); Combo:/Package: в теле слота с T5-13 («yes»); A/B insert→payoff 1–2 пары/батч («наверное да», пробно).",
  "distance_ladder": {
-  "D1": {"name": "макро-лицо", "pos": "extreme close-up on the face", "frame": "глаза/губы/ресницы; тело вне кадра", "poses": ["micropose_expression"], "visibility": ["eyes", "mouth", "lashes", "cheeks"]},
-  "D2": {"name": "портрет / личико", "pos": "portrait, head and shoulders, face filling the frame", "frame": "лицо + плечи; околопортрет", "poses": ["micropose_expression", "base"], "visibility": ["face", "neck", "collarbones", "shoulders"]},
-  "D3": {"name": "полу-корпус", "pos": "upper body shot, waist up", "frame": "грудь/руки/шея", "poses": ["base", "erotic_presentation", "micropose_expression"], "visibility": ["breast shape/state", "arms/hands", "collarbones", "neck"]},
-  "D4": {"name": "ковбой", "pos": "cowboy shot, mid-thigh up", "frame": "классика заявки: грудь+бёдра", "poses": ["erotic_presentation", "ecchi_classic", "base", "dynamic_v2"], "visibility": ["breast", "hips", "arms", "upper thighs", "hands"]},
-  "D5": {"name": "в полный рост", "pos": "full body shot, head to feet", "frame": "вся фигура", "poses": ["base", "erotic_presentation", "ecchi_classic", "dynamic_v2", "env_interaction", "threshold_limen"], "visibility": ["все зоны по углу A"]},
-  "D6": {"name": "широкий", "pos": "wide shot, figure prominent, environment speaking", "frame": "фигура + мир", "poses": ["env_interaction", "dynamic_v2", "threshold_limen", "performance_mirror"], "visibility": ["силуэтные зоны; детали тела не читаются — не писать"]},
-  "D7": {"name": "фигура-точка", "pos": "extreme wide shot, the girl small against the scale of the world", "frame": "масштаб", "poses": ["env_interaction", "threshold_limen"], "visibility": ["силуэт; только поза-смысл"]},
-  "D8": {"name": "макро-деталь", "pos": "extreme close-up on a single detail (hand, collarbone, hem, lips)", "frame": "одна деталь — мир в ней", "poses": ["micropose_expression"], "visibility": ["одна зона-деталь"]}
+  "D1": {
+   "name": "макро-лицо",
+   "pos": "extreme close-up on the face",
+   "frame": "глаза/губы/ресницы; тело вне кадра",
+   "poses": [
+    "micropose_expression"
+   ],
+   "visibility": [
+    "eyes",
+    "mouth",
+    "lashes",
+    "cheeks"
+   ]
+  },
+  "D2": {
+   "name": "портрет / личико",
+   "pos": "portrait, head and shoulders, face filling the frame",
+   "frame": "лицо + плечи; околопортрет",
+   "poses": [
+    "micropose_expression",
+    "base"
+   ],
+   "visibility": [
+    "face",
+    "neck",
+    "collarbones",
+    "shoulders"
+   ]
+  },
+  "D3": {
+   "name": "полу-корпус",
+   "pos": "upper body shot, waist up",
+   "frame": "грудь/руки/шея",
+   "poses": [
+    "base",
+    "erotic_presentation",
+    "micropose_expression"
+   ],
+   "visibility": [
+    "breast shape/state",
+    "arms/hands",
+    "collarbones",
+    "neck"
+   ]
+  },
+  "D4": {
+   "name": "ковбой",
+   "pos": "cowboy shot, mid-thigh up",
+   "frame": "классика заявки: грудь+бёдра",
+   "poses": [
+    "erotic_presentation",
+    "ecchi_classic",
+    "base",
+    "dynamic_v2"
+   ],
+   "visibility": [
+    "breast",
+    "hips",
+    "arms",
+    "upper thighs",
+    "hands"
+   ]
+  },
+  "D5": {
+   "name": "в полный рост",
+   "pos": "full body shot, head to feet",
+   "frame": "вся фигура",
+   "poses": [
+    "base",
+    "erotic_presentation",
+    "ecchi_classic",
+    "dynamic_v2",
+    "env_interaction",
+    "threshold_limen"
+   ],
+   "visibility": [
+    "все зоны по углу A"
+   ]
+  },
+  "D6": {
+   "name": "широкий",
+   "pos": "wide shot, figure prominent, environment speaking",
+   "frame": "фигура + мир",
+   "poses": [
+    "env_interaction",
+    "dynamic_v2",
+    "threshold_limen",
+    "performance_mirror"
+   ],
+   "visibility": [
+    "силуэтные зоны; детали тела не читаются — не писать"
+   ]
+  },
+  "D7": {
+   "name": "фигура-точка",
+   "pos": "extreme wide shot, the girl small against the scale of the world",
+   "frame": "масштаб",
+   "poses": [
+    "env_interaction",
+    "threshold_limen"
+   ],
+   "visibility": [
+    "силуэт; только поза-смысл"
+   ]
+  },
+  "D8": {
+   "name": "макро-деталь",
+   "pos": "extreme close-up on a single detail (hand, collarbone, hem, lips)",
+   "frame": "одна деталь — мир в ней",
+   "poses": [
+    "micropose_expression"
+   ],
+   "visibility": [
+    "одна зона-деталь"
+   ]
+  }
  },
  "angles": {
-  "A01": {"name": "глаз-уровень фронт", "pos": "viewed from the front at eye level", "note": "равный разговор, честный контакт глаз"},
-  "A02": {"name": "три четверти", "pos": "viewed from a three-quarter angle", "note": "дефолт-объём; глубина без драмы"},
-  "A03": {"name": "снизу", "pos": "viewed from slightly below", "note": "рост и власть; бёдра приближаются"},
-  "A04": {"name": "сверху", "pos": "viewed from above", "note": "хрупкость/забота; грудь разворачивается к камере"},
-  "A05": {"name": "топ-даун", "pos": "viewed straight from above, top-down", "note": "лежачие позы; звезда тела на полу"},
-  "A06": {"name": "профиль", "pos": "viewed in strict profile", "note": "линия — вся заявка в одной кривой"},
-  "A07": {"name": "со спины", "pos": "viewed from behind", "note": "спина/попа/затылок; лицо только намёком"},
-  "A08": {"name": "из-за плеча", "pos": "viewed over her shoulder", "note": "соучастие; взгляд в камеру через плечо"},
-  "A09": {"name": "голландский наклон", "pos": "dutch tilt, frame canted a few degrees", "note": "потеря равновесия; использовать ≤1/батч"},
-  "A10": {"name": "сквозь элемент", "pos": "viewed through a foreground element (doorway, curtain, rail)", "note": "подглядывание-рамка; элемент среды, не прибор"},
-  "A11": {"name": "зеркало", "pos": "mirror reflection shot", "note": "второй ракурс бесплатно; visibility ×2"},
-  "A12": {"name": "аэрал", "pos": "aerial view from high above", "note": "карта сцены; D6/D7 спутник"},
-  "A13": {"name": "уровень воды", "pos": "water-level camera", "note": "пляж/бассейн; полкадра — стихия"},
-  "A14": {"name": "ворота бедра", "pos": "hip-height gate framing, camera at the hip line", "note": "низкий проницательный регистр"},
-  "A15": {"name": "нижняя линия взгляда", "pos": "low sightline between the knees from below", "note": "R+/X только, риск высок, ≤1/батч"},
-  "A16": {"name": "рыбий глаз сиденья", "pos": "fisheye distortion from a near seat", "note": "искажение-событие, ≤1/батч"}
+  "A01": {
+   "name": "глаз-уровень фронт",
+   "pos": "viewed from the front at eye level",
+   "note": "равный разговор, честный контакт глаз"
+  },
+  "A02": {
+   "name": "три четверти",
+   "pos": "viewed from a three-quarter angle",
+   "note": "дефолт-объём; глубина без драмы"
+  },
+  "A03": {
+   "name": "снизу",
+   "pos": "viewed from slightly below",
+   "note": "рост и власть; бёдра приближаются"
+  },
+  "A04": {
+   "name": "сверху",
+   "pos": "viewed from above",
+   "note": "хрупкость/забота; грудь разворачивается к камере"
+  },
+  "A05": {
+   "name": "топ-даун",
+   "pos": "viewed straight from above, top-down",
+   "note": "лежачие позы; звезда тела на полу"
+  },
+  "A06": {
+   "name": "профиль",
+   "pos": "viewed in strict profile",
+   "note": "линия — вся заявка в одной кривой"
+  },
+  "A07": {
+   "name": "со спины",
+   "pos": "viewed from behind",
+   "note": "спина/попа/затылок; лицо только намёком"
+  },
+  "A08": {
+   "name": "из-за плеча",
+   "pos": "viewed over her shoulder",
+   "note": "соучастие; взгляд в камеру через плечо"
+  },
+  "A09": {
+   "name": "голландский наклон",
+   "pos": "dutch tilt, frame canted a few degrees",
+   "note": "потеря равновесия; использовать ≤1/батч"
+  },
+  "A10": {
+   "name": "сквозь элемент",
+   "pos": "viewed through a foreground element (doorway, curtain, rail)",
+   "note": "подглядывание-рамка; элемент среды, не прибор"
+  },
+  "A11": {
+   "name": "зеркало",
+   "pos": "mirror reflection shot",
+   "note": "второй ракурс бесплатно; visibility ×2"
+  },
+  "A12": {
+   "name": "аэрал",
+   "pos": "aerial view from high above",
+   "note": "карта сцены; D6/D7 спутник"
+  },
+  "A13": {
+   "name": "уровень воды",
+   "pos": "water-level camera",
+   "note": "пляж/бассейн; полкадра — стихия"
+  },
+  "A14": {
+   "name": "ворота бедра",
+   "pos": "hip-height gate framing, camera at the hip line",
+   "note": "низкий проницательный регистр"
+  },
+  "A15": {
+   "name": "нижняя линия взгляда",
+   "pos": "low sightline between the knees from below",
+   "note": "R+/X только, риск высок, ≤1/батч"
+  },
+  "A16": {
+   "name": "рыбий глаз сиденья",
+   "pos": "fisheye distortion from a near seat",
+   "note": "искажение-событие, ≤1/батч"
+  }
  },
  "pairing": {
   "rule": "PL+CAM обязаны согласиться (§33 pair law остаётся): поза со спины не снимается фронтально; лежачая не снимается как стоячая. Вне предпочтений позы — FLAG в шапке слота с причиной.",
@@ -48,13 +220,270 @@
   "face_class_D1_D2": "3–5 на батч (приказ: «хотелось бы и на личико... околопортретное»)",
   "single_distance_max_pct": 40,
   "A09_A15_A16_max_each": 1,
-  "note": "капы в headerContract не добавлены — WARN-счёт идёт в квитанции вручную до машинизации (гейт registry прогонит CAM-коды при записи Spine)."
+  "note": "капы в headerContract не добавлены — WARN-счёт идёт в квитанции вручную до машинизации (гейт registry прогонит CAM-коды при записи Spine).",
+  "cowboy_cap_D4": "СНЯТ вердиктом 2026-11-05 («большинство всё равно будет ковбой, надо просто понять ближе дальше»): ковбой — доминант рендера; дисциплина = D объявлен явно в каждом слоте + лестница D1–D8 ближних/дальних планов + F-фрейминг.",
+  "dutch_A09_law": "A09 dutch ≤10% слотов батча (≤3/33) — ЗАКОН (вердикт 2026-11-05 «закон!»; Manual B6).",
+  "slot_fields": "Combo:/Package: в теле слота под Channel:/ARCH, над THESIS (вердикт 2026-11-05 «yes»); разметка Combo ID — Manual D12, метрики вердикта — D14.",
+  "ab_pair_quota": "A/B insert→payoff (D8-04): 1–2 пары на батч, объявление в шапке «(P##, P##)» (вердикт «наверное да», пробный статус)."
  },
  "pos_language": {
   "yes": "viewed from the front at eye level / viewed from above / portrait, head and shoulders / cowboy shot / extreme close-up on the face",
   "no": "camera angle from below, camera pans, low-angle camera (bans.json: 'camera X' рисует камеру-объект)",
-  "line": "кадровая строка — ПОСЛЕДНЯЯ строка POS рядом с face-блоком (PROSE PLUS: кадр+лицо в финале)."
+  "line": "камерный кластер — ПЕРВАЯ смысловая строка POS, 3–7 тегов D+A+F (вердикт 2026-11-05: B9 принят; прежний «хвост у face-блока» T5-11/12 отменён)."
  },
  "volt_share": "VOLT: камера+поза = половина работы слота. Если заявка R+ не держится без через-ткани — сначала пересобрать D×A×PL, потом трогать канал.",
- "supersedes_note": "позы.json cam_reference остаётся словарём углов; camera.json — рабочий стол сборки и капов. CAM-коды в Spine пишутся как раньше (CAM##), дистанция — новой литерой D#."
+ "supersedes_note": "позы.json cam_reference остаётся словарём углов; camera.json — рабочий стол сборки и капов. CAM-коды в Spine пишутся как раньше (CAM##), дистанция — новой литерой D#.",
+ "framing_ladder": {
+  "F1": {
+   "name": "центр-формал",
+   "pos": "centered composition, symmetrical framing",
+   "note": "икона/EXQUISITE/обложка; стерильно при формальной позе; ≤3/батч"
+  },
+  "F2": {
+   "name": "трети",
+   "pos": "rule of thirds composition",
+   "note": "рабочая лошадка; воздух со стороны взгляда"
+  },
+  "F3": {
+   "name": "срез тела",
+   "pos": "cropped composition, frame cuts at the hips / at the forehead",
+   "note": "R+ если срез по claim-зоне — мозг достраивает; genital NEG обязателен"
+  },
+  "F4": {
+   "name": "негатив-простор",
+   "pos": "lots of negative space, small figure",
+   "note": "одиночество; NICHE-друг"
+  },
+  "F5": {
+   "name": "кадр-в-кадре",
+   "pos": "frame within frame (doorway, window, legs arch)",
+   "note": "сильнейший анти-стерильный фрейм"
+  },
+  "F6": {
+   "name": "воздух на взгляд",
+   "pos": "lead room, looking room",
+   "note": "обязателен при gaze off-frame, иначе «смотрит в стену»"
+  },
+  "F7": {
+   "name": "грязный кадр",
+   "pos": "out of focus foreground, blurry railing in front",
+   "note": "свидетель ближе нас; риск: модель замылит всё"
+  },
+  "F8": {
+   "name": "зеркальный сплит",
+   "pos": "mirror reflection showing a second angle",
+   "note": "R9-класс; риск двойной анатомии"
+  }
+ },
+ "grok_presets": {
+  "source": "Composition Manual Stage B5 (Cole/Grok, 2026-11-04); коды S/L/R — словарь Коула, теги-ядро переносимо",
+  "stable": [
+   {
+    "code": "S1",
+    "dxa": "D4×A01",
+    "tags_core": "cowboy shot, eye-level",
+    "why": "дефолт; квота"
+   },
+   {
+    "code": "S2",
+    "dxa": "D3×A07",
+    "tags_core": "upper body, three-quarter view",
+    "why": "диалог, жест"
+   },
+   {
+    "code": "S3",
+    "dxa": "D5×A01",
+    "tags_core": "full body, eye-level, wide stance",
+    "why": "NICHE силуэт"
+   },
+   {
+    "code": "S4",
+    "dxa": "D3×A08",
+    "tags_core": "upper body, looking back, from behind",
+    "why": "nape / back-look"
+   },
+   {
+    "code": "S5",
+    "dxa": "D4×A02",
+    "tags_core": "cowboy shot, from below",
+    "why": "мягкий R"
+   },
+   {
+    "code": "S6",
+    "dxa": "D2×A01",
+    "tags_core": "close-up, face focus",
+    "why": "эмоция OC"
+   },
+   {
+    "code": "S7",
+    "dxa": "D5×A04",
+    "tags_core": "full body, from above",
+    "why": "уязвимость + env"
+   },
+   {
+    "code": "S8",
+    "dxa": "D4×A06",
+    "tags_core": "cowboy shot, profile",
+    "why": "graphic line"
+   }
+  ],
+  "live": [
+   {
+    "code": "L1",
+    "dxa": "D4×A03",
+    "tags_core": "cowboy shot, worm's-eye view, from the ground",
+    "why": "власть"
+   },
+   {
+    "code": "L2",
+    "dxa": "D3×A03",
+    "tags_core": "upper body, extreme low angle",
+    "why": "монумент лица/груди силуэтом"
+   },
+   {
+    "code": "L3",
+    "dxa": "D5×A11",
+    "tags_core": "full body, through doorway",
+    "why": "проём-мир (поезд)"
+   },
+   {
+    "code": "L4",
+    "dxa": "D3×A11",
+    "tags_core": "upper body, through window, rain on glass",
+    "why": "свидетель"
+   },
+   {
+    "code": "L5",
+    "dxa": "D5×A09",
+    "tags_core": "full body, dutch angle",
+    "why": "frenzy / glitch"
+   },
+   {
+    "code": "L6",
+    "dxa": "D1×A05",
+    "tags_core": "extreme close-up, top-down on hands/chest",
+    "why": "insert claim"
+   },
+   {
+    "code": "L7",
+    "dxa": "D6×A05",
+    "tags_core": "wide shot, bird's-eye, small figure",
+    "why": "карта маршрута"
+   },
+   {
+    "code": "L8",
+    "dxa": "D4×A12",
+    "tags_core": "cowboy shot, ground level, side",
+    "why": "бег / пыль"
+   }
+  ],
+  "rcam": [
+   {
+    "code": "R1",
+    "dxa": "D3×A03 + F5",
+    "tags_core": "from below between the knees, looking up the torso",
+    "why": "коридор A1 · H-10"
+   },
+   {
+    "code": "R2",
+    "dxa": "D2×A08",
+    "tags_core": "close-up nape, from behind",
+    "why": "интим без лица"
+   },
+   {
+    "code": "R3",
+    "dxa": "D4×A10",
+    "tags_core": "pov looking up from the floor",
+    "why": "participant"
+   },
+   {
+    "code": "R4",
+    "dxa": "D3×A11 + F7",
+    "tags_core": "through door crack, dirty frame",
+    "why": "keyhole"
+   },
+   {
+    "code": "R5",
+    "dxa": "D5×A05",
+    "tags_core": "top-down, full body, on bed/floor",
+    "why": "карта позы"
+   },
+   {
+    "code": "R6",
+    "dxa": "D7×A01",
+    "tags_core": "insert, focus on waistband fingers",
+    "why": "process claim"
+   },
+   {
+    "code": "R7",
+    "dxa": "D3×A04",
+    "tags_core": "from above, leaning over the camera",
+    "why": "она над зрителем"
+   }
+  ],
+  "law": "R-пресеты = R+ камерой без claim-токенов (H-10): коридор A1 + R1, POV-пол R3, замочная скважина R4; A1-поза + ковбой-глаз-уровень = убить семя (D11)."
+ },
+ "genre_camera_map": [
+  {
+   "genre": "NICHE",
+   "priority": "D5/D6 + A11/A05 + F4/F5",
+   "avoid": "D1/D2 (мир не прочитается)"
+  },
+  {
+   "genre": "VOLT",
+   "priority": "D3/D4 + A02/A03/A08 + F3/F5",
+   "avoid": "только A01 center"
+  },
+  {
+   "genre": "EXQUISITE",
+   "priority": "любой, но один «иконический» F1 допустим",
+   "avoid": "dutch без причины"
+  },
+  {
+   "genre": "OC",
+   "priority": "D2/D3 + канон глаз читаем; A08 осторожно",
+   "avoid": "worm's-eye на дебюте глаз"
+  },
+  {
+   "genre": "EXP camera-test",
+   "priority": "R1–R7 пресеты",
+   "avoid": "повторы S1"
+  }
+ ],
+ "camera_tier_effects": [
+  {
+   "tier": "PG-13",
+   "boosters": "D5, A01/A06, F2, soft light angle",
+   "killers": "extreme crotch corridor"
+  },
+  {
+   "tier": "R",
+   "boosters": "A02, A08, A11, F5, D4",
+   "killers": "пустой wide без жеста"
+  },
+  {
+   "tier": "R+",
+   "boosters": "R1–R7 пресеты, F3 crop claim, A03, A10",
+   "killers": "тот же R-кадр без контракта «запретной точки»"
+  },
+  {
+   "tier": "X",
+   "boosters": "—",
+   "killers": "не цель T5"
+  }
+ ],
+ "camera_top_errors": [
+  "Не указал D → cowboy",
+  "Камера в хвосте → игнор",
+  "A03 на каждом VOLT → батч-тошнота + анатомия",
+  "A08 на OC с уникальными глазами → канон не доехал",
+  "D6 без контраста → серая каша",
+  "Through-door, за дверью пусто → рама без картины",
+  "POV без дисциплины → selfie-рука или broken torso",
+  "Dutch на tea-scene → «зачем»",
+  "Все F1 center → каталог",
+  "Crop claim (F3) без NEG → модель дорисует то, что обрезали, как X"
+ ],
+ "anti_echo_law": "соседние слоты не делят одну клетку D×A и не держат одну семью поз + один вес + один gaze (анти-эхо, Manual A10/B6).",
+ "manual_map_note": "словарь Коула ≠ местный: Cole-D1…D7 ≈ местные D1…D7 (у нас есть ещё D8-деталь); Cole-A01…A12 — своя нумерация углов, местные CAM-коды A01–A16 остаются рабочими (пример: Cole-A03 extreme-low ≈ местные A03-снизу/A15-нижняя-линия-взгляда; Cole-A08 back ≈ местный A07-со-спины). Ось F (фрейминг) — НОВАЯ, принята как F1–F8. Конфликт порядка: Cole-B9 требует камеру в первых 10–20 токенах POS, местный pos_language держит кадровую строку последней у face-блока (рендер-проверено T5-11/12) — не менять без вердикта автора (CONSILIUM 2026-11-05, вопрос №6)."
 }
