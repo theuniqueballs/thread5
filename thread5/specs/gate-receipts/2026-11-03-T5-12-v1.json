@@ -1,8 +1,8 @@
 {
  "tool": "tools/gates.py (specs/gates.json v1.8.0)",
  "batch": "batches/T5-12.md",
- "sha256": "3b5688aaa00357e533e6323d5878f49d69a27551904d31b9e11f7b9a0f03b488",
- "utc": "2026-11-04T19:52:23+00:00",
+ "sha256": "88a09d2fb3270de32bb2ed3d75c611e7385e3ab77cb9ffbf28eda740c9fee9cd",
+ "utc": "2026-11-03T17:08:53+00:00",
  "verdict": "PASS",
  "slots": 33,
  "fails": [],
