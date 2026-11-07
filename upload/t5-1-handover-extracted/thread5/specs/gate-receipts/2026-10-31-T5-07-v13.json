@@ -1,0 +1,605 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.3.0)",
+ "batch": "batches/T5-07.md",
+ "sha256": "6160ca73602701c65507e8b68cc82a48fcafde62d31189a4a344db20cbd23f1e",
+ "utc": "2026-10-31T11:07:52+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P08",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «straps on both shoulders»"
+  },
+  {
+   "slot": "P11",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «chest clear of shelf»"
+  },
+  {
+   "slot": "P11",
+   "gate": "claim-exists",
+   "msg": "R+ без лексемы заявки в POS — тир держится только THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; WARN-эра: эскалация с T5-09)"
+  },
+  {
+   "slot": "P17",
+   "gate": "claim-exists",
+   "msg": "R+ без лексемы заявки в POS — тир держится только THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; WARN-эра: эскалация с T5-09)"
+  },
+  {
+   "slot": "P32",
+   "gate": "claim-exists",
+   "msg": "R+ без лексемы заявки в POS — тир держится только THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; WARN-эра: эскалация с T5-09)"
+  },
+  {
+   "slot": "P26+P27",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «at the chest covered nipples two»"
+  },
+  {
+   "slot": "P02",
+   "gate": "channel",
+   "msg": "канал «swim_wet» не в реестре"
+  },
+  {
+   "slot": "P09",
+   "gate": "channel",
+   "msg": "канал «bumps» не в реестре"
+  },
+  {
+   "slot": "P19",
+   "gate": "channel",
+   "msg": "канал «bumps» не в реестре"
+  },
+  {
+   "slot": "P24",
+   "gate": "channel",
+   "msg": "канал «bumps» не в реестре"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "каст 11/21 вне вилки 12–14 (policy v1.8)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "81 общих 6-грамм с предыдущими партиями (T5-05R.md, T5-06.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "sue-plugsuit-gloss",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 147
+  },
+  {
+   "id": "P02",
+   "slug": "yui-swimsuit-super",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "swim_wet",
+   "channelStatus": "",
+   "claimToken": 25,
+   "posWords": 150
+  },
+  {
+   "id": "P03",
+   "slug": "ila-backrooms-yellow",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 52,
+   "posWords": 127
+  },
+  {
+   "id": "P04",
+   "slug": "light-column-laundry-cart",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 132
+  },
+  {
+   "id": "P05",
+   "slug": "first-floor-ledger",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 117
+  },
+  {
+   "id": "P06",
+   "slug": "falling-cage-commute",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 39,
+   "posWords": 108
+  },
+  {
+   "id": "P07",
+   "slug": "slime-laundry-basin",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 114
+  },
+  {
+   "id": "P08",
+   "slug": "greenhouse-reaches-back",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 104
+  },
+  {
+   "id": "P09",
+   "slug": "forge-ember-crest",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "bumps",
+   "channelStatus": "",
+   "claimToken": 47,
+   "posWords": 120
+  },
+  {
+   "id": "P10",
+   "slug": "warden-office-pantyline",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "pantyline-lower",
+   "channelStatus": "candidate",
+   "claimToken": 32,
+   "posWords": 106
+  },
+  {
+   "id": "P11",
+   "slug": "cartographer-shelf-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 111
+  },
+  {
+   "id": "P12",
+   "slug": "flooded-gallery-mermaid",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 36,
+   "posWords": 117
+  },
+  {
+   "id": "P13",
+   "slug": "trap-forge-golem",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 104
+  },
+  {
+   "id": "P14",
+   "slug": "pendulum-nap",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 22,
+   "posWords": 101
+  },
+  {
+   "id": "P15",
+   "slug": "moss-nursery-dew",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 107
+  },
+  {
+   "id": "P16",
+   "slug": "statue-gallery-rouge",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 103
+  },
+  {
+   "id": "P17",
+   "slug": "tavern-minus-two",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 116
+  },
+  {
+   "id": "P18",
+   "slug": "archive-through-shelf",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 109
+  },
+  {
+   "id": "P19",
+   "slug": "glacier-warmth-hunter",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "bumps",
+   "channelStatus": "",
+   "claimToken": 33,
+   "posWords": 108
+  },
+  {
+   "id": "P20",
+   "slug": "web-lift-handbra",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 43,
+   "posWords": 115
+  },
+  {
+   "id": "P21",
+   "slug": "drowned-library-cecaelia",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 117
+  },
+  {
+   "id": "P22",
+   "slug": "echo-well-bat",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 128
+  },
+  {
+   "id": "P23",
+   "slug": "treasury-mimic-chair",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 26,
+   "posWords": 107
+  },
+  {
+   "id": "P24",
+   "slug": "dungeon-heart-sleep",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "bumps",
+   "channelStatus": "",
+   "claimToken": 38,
+   "posWords": 111
+  },
+  {
+   "id": "P25",
+   "slug": "bee-kin-honey-fitting",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 41,
+   "posWords": 108
+  },
+  {
+   "id": "P26",
+   "slug": "shark-kin-wave-exit",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 39,
+   "posWords": 108
+  },
+  {
+   "id": "P27",
+   "slug": "phoenix-kin-bath-embers",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 35,
+   "posWords": 102
+  },
+  {
+   "id": "P28",
+   "slug": "succubus-kin-day-off",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 49,
+   "posWords": 102
+  },
+  {
+   "id": "P29",
+   "slug": "witch-kin-attic-gust",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 105
+  },
+  {
+   "id": "P30",
+   "slug": "nephilim-kin-first-arch",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 100
+  },
+  {
+   "id": "P31",
+   "slug": "oni-kin-storehouse-feast",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 98
+  },
+  {
+   "id": "P32",
+   "slug": "tanuki-kin-roof-ridge",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 103
+  },
+  {
+   "id": "P33",
+   "slug": "frog-kin-rain-accepted",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 94
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "narrow frame soft natural set breasts",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-06.md",
+   "slotsThere": [
+    "P05"
+   ]
+  },
+  {
+   "gram": "covered nipples two low reliefs under",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-06.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "nipples two low reliefs under the",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-06.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "soft feminine build medium full breasts",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "yellowish blonde hair with pink gradient",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "blonde hair with pink gradient at",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "hair with pink gradient at the",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "with pink gradient at the tips",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "pink gradient at the tips low",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "gradient at the tips low messy",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "at the tips low messy ponytail",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "the tips low messy ponytail large",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "tips low messy ponytail large elegant",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "low messy ponytail large elegant bow",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "golden eyes with lighter ring shaped",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "eyes with lighter ring shaped pupils",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "with lighter ring shaped pupils fair",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "sharp triangular anime fangs beauty mark",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "triangular anime fangs beauty mark under",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "anime fangs beauty mark under the",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P01"
+   ]
+  }
+ ]
+}

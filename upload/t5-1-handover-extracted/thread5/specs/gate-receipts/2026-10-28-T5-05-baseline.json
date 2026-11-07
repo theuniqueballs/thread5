@@ -1,0 +1,1104 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.0.0)",
+ "batch": "batches/T5-05.md",
+ "sha256": "49eefc6c9c1198637c0e274684d6287325238b5242e93dd20ae50ddf95d3273c",
+ "utc": "2026-10-28T15:24:23+00:00",
+ "verdict": "FAIL",
+ "slots": 27,
+ "fails": [
+  {
+   "slot": "P01",
+   "gate": "neg-no-class",
+   "msg": "«no bow» отрицает то, что заявлено в POS (→ bow)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-no-class",
+   "msg": "«no hairpins» отрицает то, что заявлено в POS (→ hairpins)"
+  },
+  {
+   "slot": "P01",
+   "gate": "salience",
+   "msg": "заявка «visible pantyline» на токене 138 > 60"
+  },
+  {
+   "slot": "P01",
+   "gate": "pos-budget",
+   "msg": "POS 222 слов > hard 150"
+  },
+  {
+   "slot": "P02",
+   "gate": "neg-no-class",
+   "msg": "«no pince-nez» отрицает то, что заявлено в POS (→ pince, nez)"
+  },
+  {
+   "slot": "P02",
+   "gate": "neg-no-class",
+   "msg": "«no scar» отрицает то, что заявлено в POS (→ scar)"
+  },
+  {
+   "slot": "P02",
+   "gate": "neg-no-class",
+   "msg": "«no balance» отрицает то, что заявлено в POS (→ balance)"
+  },
+  {
+   "slot": "P02",
+   "gate": "salience",
+   "msg": "заявка «visible pantyline» на токене 90 > 60"
+  },
+  {
+   "slot": "P02",
+   "gate": "pos-budget",
+   "msg": "POS 206 слов > hard 150"
+  },
+  {
+   "slot": "P03",
+   "gate": "neg-no-class",
+   "msg": "«no seams» отрицает то, что заявлено в POS (→ seams)"
+  },
+  {
+   "slot": "P03",
+   "gate": "neg-no-class",
+   "msg": "«no ball joints» отрицает то, что заявлено в POS (→ ball, joints)"
+  },
+  {
+   "slot": "P03",
+   "gate": "pos-budget",
+   "msg": "POS 213 слов > hard 150"
+  },
+  {
+   "slot": "P04",
+   "gate": "salience",
+   "msg": "заявка «visible pantyline» на токене 71 > 60"
+  },
+  {
+   "slot": "P04",
+   "gate": "pos-budget",
+   "msg": "POS 175 слов > hard 150"
+  },
+  {
+   "slot": "P06",
+   "gate": "neg-no-class",
+   "msg": "«no wings» отрицает то, что заявлено в POS (→ wings)"
+  },
+  {
+   "slot": "P06",
+   "gate": "neg-no-class",
+   "msg": "«missing wings» отрицает то, что заявлено в POS (→ wings)"
+  },
+  {
+   "slot": "P06",
+   "gate": "salience",
+   "msg": "заявка «tape cross» на токене 74 > 60"
+  },
+  {
+   "slot": "P06",
+   "gate": "pos-budget",
+   "msg": "POS 173 слов > hard 150"
+  },
+  {
+   "slot": "P06",
+   "gate": "burn",
+   "msg": "K149 в burn-реестре (сгорел, в оборот нельзя)"
+  },
+  {
+   "slot": "P07",
+   "gate": "neg-no-class",
+   "msg": "«no freckles» отрицает то, что заявлено в POS (→ freckles)"
+  },
+  {
+   "slot": "P07",
+   "gate": "neg-no-class",
+   "msg": "«no streak» отрицает то, что заявлено в POS (→ streak)"
+  },
+  {
+   "slot": "P07",
+   "gate": "pos-budget",
+   "msg": "POS 176 слов > hard 150"
+  },
+  {
+   "slot": "P08",
+   "gate": "neg-no-class",
+   "msg": "«no scales» отрицает то, что заявлено в POS (→ scales)"
+  },
+  {
+   "slot": "P08",
+   "gate": "pos-budget",
+   "msg": "POS 172 слов > hard 150"
+  },
+  {
+   "slot": "P09",
+   "gate": "neg-no-class",
+   "msg": "«no fangs» отрицает то, что заявлено в POS (→ fangs)"
+  },
+  {
+   "slot": "P09",
+   "gate": "salience",
+   "msg": "заявка «covered nipples» на токене 79 > 60"
+  },
+  {
+   "slot": "P09",
+   "gate": "pos-budget",
+   "msg": "POS 192 слов > hard 150"
+  },
+  {
+   "slot": "P09",
+   "gate": "burn",
+   "msg": "K149 в burn-реестре (сгорел, в оборот нельзя)"
+  },
+  {
+   "slot": "P10",
+   "gate": "neg-no-class",
+   "msg": "«no tail» отрицает то, что заявлено в POS (→ tail)"
+  },
+  {
+   "slot": "P10",
+   "gate": "pos-budget",
+   "msg": "POS 151 слов > hard 150"
+  },
+  {
+   "slot": "P11",
+   "gate": "pos-budget",
+   "msg": "POS 164 слов > hard 150"
+  },
+  {
+   "slot": "P12",
+   "gate": "neg-no-class",
+   "msg": "«no wings» отрицает то, что заявлено в POS (→ wings)"
+  },
+  {
+   "slot": "P12",
+   "gate": "neg-no-class",
+   "msg": "«missing wings» отрицает то, что заявлено в POS (→ wings)"
+  },
+  {
+   "slot": "P12",
+   "gate": "pos-budget",
+   "msg": "POS 158 слов > hard 150"
+  },
+  {
+   "slot": "P13",
+   "gate": "neg-no-class",
+   "msg": "«no glow» отрицает то, что заявлено в POS (→ glow)"
+  },
+  {
+   "slot": "P13",
+   "gate": "salience",
+   "msg": "заявка «visible pantyline» на токене 65 > 60"
+  },
+  {
+   "slot": "P13",
+   "gate": "pos-budget",
+   "msg": "POS 160 слов > hard 150"
+  },
+  {
+   "slot": "P14",
+   "gate": "neg-no-class",
+   "msg": "«no horns» отрицает то, что заявлено в POS (→ horns)"
+  },
+  {
+   "slot": "P14",
+   "gate": "neg-no-class",
+   "msg": "«no diamond pattern» отрицает то, что заявлено в POS (→ diamond, pattern)"
+  },
+  {
+   "slot": "P14",
+   "gate": "pos-budget",
+   "msg": "POS 164 слов > hard 150"
+  },
+  {
+   "slot": "P15",
+   "gate": "neg-no-class",
+   "msg": "«no snakes» отрицает то, что заявлено в POS (→ snakes)"
+  },
+  {
+   "slot": "P15",
+   "gate": "salience",
+   "msg": "заявка «visible pantyline» на токене 66 > 60"
+  },
+  {
+   "slot": "P15",
+   "gate": "pos-budget",
+   "msg": "POS 158 слов > hard 150"
+  },
+  {
+   "slot": "P16",
+   "gate": "neg-no-class",
+   "msg": "«no crest» отрицает то, что заявлено в POS (→ crest)"
+  },
+  {
+   "slot": "P17",
+   "gate": "neg-no-class",
+   "msg": "«no tail» отрицает то, что заявлено в POS (→ tail)"
+  },
+  {
+   "slot": "P17",
+   "gate": "salience",
+   "msg": "заявка «covered nipples» на токене 75 > 60"
+  },
+  {
+   "slot": "P17",
+   "gate": "pos-budget",
+   "msg": "POS 188 слов > hard 150"
+  },
+  {
+   "slot": "P19",
+   "gate": "neg-no-class",
+   "msg": "«no hood» отрицает то, что заявлено в POS (→ hood)"
+  },
+  {
+   "slot": "P19",
+   "gate": "salience",
+   "msg": "заявка «visible pantyline» на токене 85 > 60"
+  },
+  {
+   "slot": "P19",
+   "gate": "pos-budget",
+   "msg": "POS 170 слов > hard 150"
+  },
+  {
+   "slot": "P20",
+   "gate": "salience",
+   "msg": "заявка «visible pantyline» на токене 71 > 60"
+  },
+  {
+   "slot": "P20",
+   "gate": "pos-budget",
+   "msg": "POS 156 слов > hard 150"
+  },
+  {
+   "slot": "P21",
+   "gate": "salience",
+   "msg": "заявка «covered nipples» на токене 83 > 60"
+  },
+  {
+   "slot": "P21",
+   "gate": "pos-budget",
+   "msg": "POS 170 слов > hard 150"
+  },
+  {
+   "slot": "P22",
+   "gate": "pos-budget",
+   "msg": "POS 151 слов > hard 150"
+  },
+  {
+   "slot": "P22",
+   "gate": "burn",
+   "msg": "P116_AFTERGLOW_EMBERS в burn-реестре (сгорел, в оборот нельзя)"
+  },
+  {
+   "slot": "P23",
+   "gate": "pos-budget",
+   "msg": "POS 153 слов > hard 150"
+  },
+  {
+   "slot": "P23",
+   "gate": "burn",
+   "msg": "P40_VOID_MONOCHROME_RED в burn-реестре (сгорел, в оборот нельзя)"
+  },
+  {
+   "slot": "P24",
+   "gate": "neg-no-class",
+   "msg": "«no crown» отрицает то, что заявлено в POS (→ crown)"
+  },
+  {
+   "slot": "P24",
+   "gate": "salience",
+   "msg": "заявка «bare chest» на токене 77 > 60"
+  },
+  {
+   "slot": "P24",
+   "gate": "pos-budget",
+   "msg": "POS 179 слов > hard 150"
+  },
+  {
+   "slot": "P27",
+   "gate": "neg-no-class",
+   "msg": "«no loupe mark» отрицает то, что заявлено в POS (→ loupe, mark)"
+  },
+  {
+   "slot": "P27",
+   "gate": "neg-no-class",
+   "msg": "«no winding key» отрицает то, что заявлено в POS (→ winding, key)"
+  },
+  {
+   "slot": "P27",
+   "gate": "pos-budget",
+   "msg": "POS 166 слов > hard 150"
+  },
+  {
+   "slot": "P01,P04,P20",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «visible pantyline reading through the thin»"
+  },
+  {
+   "slot": "P02,P15,P19",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «visible pantyline reading through the stretched»"
+  },
+  {
+   "slot": "P04,P08,P20",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «eyes fair skin slender narrow body»"
+  },
+  {
+   "slot": "P09,P25,P26",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «dark garment dry and settled fabric»"
+  },
+  {
+   "slot": "P09,P25,P26",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «garment dry and settled fabric clinging»"
+  },
+  {
+   "slot": "P09,P17,P24,P25",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «fabric clinging along the ribs covered»"
+  },
+  {
+   "slot": "P09,P17,P24,P25",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «clinging along the ribs covered nipples»"
+  },
+  {
+   "slot": "P09,P17,P24",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «along the ribs covered nipples and»"
+  },
+  {
+   "slot": "P09,P17,P24",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «the ribs covered nipples and clothed»"
+  },
+  {
+   "slot": "P09,P17,P24",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «ribs covered nipples and clothed nipples»"
+  },
+  {
+   "slot": "P09,P17,P21,P24",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «covered nipples and clothed nipples reading»"
+  },
+  {
+   "slot": "P09,P17,P21,P24",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «nipples and clothed nipples reading as»"
+  },
+  {
+   "slot": "P09,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «and clothed nipples reading as two»"
+  },
+  {
+   "slot": "P09,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «clothed nipples reading as two low»"
+  },
+  {
+   "slot": "P09,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «nipples reading as two low ridges»"
+  },
+  {
+   "slot": "P09,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «reading as two low ridges through»"
+  },
+  {
+   "slot": "P09,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «as two low ridges through the»"
+  },
+  {
+   "slot": "P09,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «two low ridges through the dark»"
+  },
+  {
+   "slot": "P09,P17,P25,P26",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «arm sweat glistening faint at the»"
+  },
+  {
+   "slot": "P11,P25,P26",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «hair hazel eyes warm ivory skin»"
+  },
+  {
+   "slot": "P11,P25,P26",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «hazel eyes warm ivory skin soft»"
+  },
+  {
+   "slot": "P11,P21,P22,P24",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «skin soft mature figure wide hips»"
+  },
+  {
+   "slot": "P11,P21,P22,P24",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «soft mature figure wide hips full»"
+  },
+  {
+   "slot": "P11,P21,P22,P24",
+   "gate": "copypaste",
+   "msg": "4 слота делят n-грамму: «mature figure wide hips full soft»"
+  },
+  {
+   "slot": "P11,P14,P17,P21,P22,P24",
+   "gate": "copypaste",
+   "msg": "6 слота делят n-грамму: «figure wide hips full soft set»"
+  },
+  {
+   "slot": "P11,P14,P17,P21,P22,P24",
+   "gate": "copypaste",
+   "msg": "6 слота делят n-грамму: «wide hips full soft set bust»"
+  },
+  {
+   "slot": "P11,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «missing the chest line and holding»"
+  },
+  {
+   "slot": "P11,P17,P21",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «the chest line and holding the»"
+  },
+  {
+   "slot": "P21,P25,P26",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «the doorway light missing the chest»"
+  },
+  {
+   "slot": "P21,P25,P26",
+   "gate": "copypaste",
+   "msg": "3 слота делят n-грамму: «doorway light missing the chest line»"
+  },
+  {
+   "slot": "P01",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P02",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P03",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P04",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P06",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P08",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P09",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P11",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P13",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P15",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P17",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P18",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P19",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P20",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P21",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P22",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P24",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P25",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  },
+  {
+   "slot": "P26",
+   "gate": "ecchi-key",
+   "msg": "«ecchi anime style» в POS — ключ снят вердиктом T5-05 (2026-10-28): «ничего не делает, я проверял»"
+  }
+ ],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «chess pieces on the board»"
+  },
+  {
+   "slot": "P05",
+   "gate": "pos-budget",
+   "msg": "POS 145 слов > цель 110"
+  },
+  {
+   "slot": "P07",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «sweater on both shoulders»"
+  },
+  {
+   "slot": "P08",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «see-through forbidden by channel»"
+  },
+  {
+   "slot": "P16",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «spot lighting her face»"
+  },
+  {
+   "slot": "P16",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «spotlight circle on her body»"
+  },
+  {
+   "slot": "P16",
+   "gate": "pos-budget",
+   "msg": "POS 145 слов > цель 110"
+  },
+  {
+   "slot": "P17",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «upright large fox ears»"
+  },
+  {
+   "slot": "P18",
+   "gate": "pos-budget",
+   "msg": "POS 142 слов > цель 110"
+  },
+  {
+   "slot": "P21",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «piece on the board»"
+  },
+  {
+   "slot": "P24",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 6 слов: «pawn small on the last rank»"
+  },
+  {
+   "slot": "P25",
+   "gate": "pos-budget",
+   "msg": "POS 141 слов > цель 110"
+  },
+  {
+   "slot": "P26",
+   "gate": "pos-budget",
+   "msg": "POS 145 слов > цель 110"
+  },
+  {
+   "slot": "P27",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «clocks showing different times»"
+  },
+  {
+   "slot": "P01+P04",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «column of light landing exactly on»"
+  },
+  {
+   "slot": "P01+P04",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «pantyline reading through the thin white»"
+  },
+  {
+   "slot": "P01+P04",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «reading through the thin white skirt»"
+  },
+  {
+   "slot": "P01+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «and the skirt's hip line the»"
+  },
+  {
+   "slot": "P04+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «fair skin slender narrow body standing»"
+  },
+  {
+   "slot": "P04+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «skin slender narrow body standing on»"
+  },
+  {
+   "slot": "P04+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «slender narrow body standing on the»"
+  },
+  {
+   "slot": "P06+P09",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «ecchi black hair dark red eyes»"
+  },
+  {
+   "slot": "P09+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «dark silk breast clinging along the»"
+  },
+  {
+   "slot": "P09+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «low ridges through the dark silk»"
+  },
+  {
+   "slot": "P09+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «ridges through the dark silk breast»"
+  },
+  {
+   "slot": "P09+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the dark silk breast clinging along»"
+  },
+  {
+   "slot": "P09+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «through the dark silk breast clinging»"
+  },
+  {
+   "slot": "P09+P21",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «sweat glistening faint at the collarbones»"
+  },
+  {
+   "slot": "P09+P25",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «and settled fabric clinging along the»"
+  },
+  {
+   "slot": "P09+P25",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «dry and settled fabric clinging along»"
+  },
+  {
+   "slot": "P09+P25",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «settled fabric clinging along the ribs»"
+  },
+  {
+   "slot": "P11+P18",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «crossed over her bare chest in»"
+  },
+  {
+   "slot": "P11+P18",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «over her bare chest in a»"
+  },
+  {
+   "slot": "P11+P21",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «eyes warm ivory skin soft mature»"
+  },
+  {
+   "slot": "P01",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P02",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P03",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P04",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P06",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P08",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P09",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P11",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P13",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P15",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P17",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P18",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P19",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P20",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P21",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P22",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  },
+  {
+   "slot": "P24",
+   "gate": "channel",
+   "msg": "R+ слот без аннотации Channel:"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "yui-spot-on-flourish",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 138,
+   "posWords": 222
+  },
+  {
+   "id": "P02",
+   "slug": "una-devilish-manners-curtsy",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 90,
+   "posWords": 206
+  },
+  {
+   "id": "P03",
+   "slug": "mab-porcelain-theatre-act",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 213
+  },
+  {
+   "id": "P04",
+   "slug": "center-pawn-offer",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 71,
+   "posWords": 175
+  },
+  {
+   "id": "P05",
+   "slug": "first-light-curtsy-clock",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 145
+  },
+  {
+   "id": "P06",
+   "slug": "ceiling-position-membranes",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 74,
+   "posWords": 173
+  },
+  {
+   "id": "P07",
+   "slug": "wisp-makes-the-move",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 176
+  },
+  {
+   "id": "P08",
+   "slug": "pool-ladder-concession",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 45,
+   "posWords": 172
+  },
+  {
+   "id": "P09",
+   "slug": "sleeper-berth-dusk",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 79,
+   "posWords": 192
+  },
+  {
+   "id": "P10",
+   "slug": "captured-bowl-coil",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 151
+  },
+  {
+   "id": "P11",
+   "slug": "flagfall-handbra",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 45,
+   "posWords": 164
+  },
+  {
+   "id": "P12",
+   "slug": "thirty-boards-arbiter",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 158
+  },
+  {
+   "id": "P13",
+   "slug": "phase-through-partition",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 65,
+   "posWords": 160
+  },
+  {
+   "id": "P14",
+   "slug": "diamond-floor-climb",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 75,
+   "posWords": 164
+  },
+  {
+   "id": "P15",
+   "slug": "coil-tell-lean",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 66,
+   "posWords": 158
+  },
+  {
+   "id": "P16",
+   "slug": "refused-spotlight",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 145
+  },
+  {
+   "id": "P17",
+   "slug": "piece-sweep-ritual",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 75,
+   "posWords": 188
+  },
+  {
+   "id": "P18",
+   "slug": "king-tip-resignation",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 40,
+   "posWords": 142
+  },
+  {
+   "id": "P19",
+   "slug": "hood-carries-sunset",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 85,
+   "posWords": 170
+  },
+  {
+   "id": "P20",
+   "slug": "blinds-grid-square",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 71,
+   "posWords": 156
+  },
+  {
+   "id": "P21",
+   "slug": "held-piece-over-clock",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 83,
+   "posWords": 170
+  },
+  {
+   "id": "P22",
+   "slug": "post-mortem-demo-board",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 57,
+   "posWords": 151
+  },
+  {
+   "id": "P23",
+   "slug": "shadow-plays-her-side",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 40,
+   "posWords": 153
+  },
+  {
+   "id": "P24",
+   "slug": "promotion-last-rank",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 77,
+   "posWords": 179
+  },
+  {
+   "id": "P25",
+   "slug": "backroom-mirror-weights-control",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 51,
+   "posWords": 141
+  },
+  {
+   "id": "P26",
+   "slug": "backroom-mirror-weights-boost",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 53,
+   "posWords": 145
+  },
+  {
+   "id": "P27",
+   "slug": "clock-keeper-candidate",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 166
+  }
+ ]
+}

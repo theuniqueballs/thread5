@@ -1,0 +1,88 @@
+{
+  "id": "ultimate-dice",
+  "name": "ULTIMATE DICE",
+  "version": "1.0.0",
+  "born": "2026-10-28",
+  "owner": "MERCURY (docs/ars/02-MERCURY.md)",
+  "born_from": "директива автора (чат, 2026-10-28): выборка цветов, палитр, глаз и волос — кубиком; способ воспроизведения палитры (пастель, масло, флюоресцентная, контрастная, монохром) — кубиком, чтобы не хуярить наугад",
+  "law": "раздача не по вкусу писца, а броском; бросок записан в карточку слота (02-mercury.md); переброс легален ТОЛЬКО на коллизию — окно ротации, burn-реестр, collision_table, hard-флор, мёртвая ткань под тир — с записанной причиной",
+  "protocol": {
+    "record_format": "P##: d-axis = результат (переброс: причина)",
+    "sources": {
+      "palette": "specs/palettes.json",
+      "paint_method": "this.paint_methods",
+      "hair_eye": "specs/hair-eye-library.json (ОС — только канон VERBATIM)",
+      "kin": "specs/races.json (active/gold; banned никогда)",
+      "gar": "specs/pools.json#sections.gar"
+    },
+    "inheritance": "B-половинка A/B-пары (EXP) наследует палитру A",
+    "batch_caps": {
+      "palettes_min_distinct": 7,
+      "palette_max_reuse": 3,
+      "white_thin_garment_max": 3,
+      "gar_min_distinct": 10,
+      "gar_upper_half_min": 4
+    }
+  },
+  "paint_methods": [
+    {
+      "id": "pastel",
+      "label": "пастель",
+      "pos_fragment": "pastel color palette, soft colors",
+      "note": "свет мягкий рассеянный; VOLT-заявка требует контрастную опору, иначе смывается"
+    },
+    {
+      "id": "oil",
+      "label": "масло",
+      "pos_fragment": "impasto, thick paint texture, painterly",
+      "note": "следить за фотореализмом: face-блок обязателен; NEG фотореализма стоит на месте"
+    },
+    {
+      "id": "fluorescent",
+      "label": "флюоресцентная",
+      "pos_fragment": "fluorescent colors, glowing accents, blacklight palette",
+      "note": "свет = сам источник свечения; акцент accent1 берётся из палитры"
+    },
+    {
+      "id": "contrast",
+      "label": "контрастная",
+      "pos_fragment": "high contrast, complementary color scheme",
+      "note": "дефолт для VOLT R+ — заявка держится светом"
+    },
+    {
+      "id": "monochrome",
+      "label": "монохром",
+      "pos_fragment": "monochrome, greyscale",
+      "note": "единственный цвет допустим акцентом (accent1 именованным цветом); лицо читается тоном"
+    },
+    {
+      "id": "ink_single",
+      "label": "тушь с единственным цветом",
+      "status": "candidate",
+      "pos_fragment": "ink (medium), monochrome, single color accent",
+      "source": "roadmap T5-03 «Палитры-игра», оплаты вердиктом нет"
+    },
+    {
+      "id": "lacquer_single",
+      "label": "лак с единственным цветом",
+      "status": "candidate",
+      "pos_fragment": "glossy finish, limited palette, single color accent",
+      "source": "roadmap T5-03 «Палитры-игра», оплаты вердиктом нет"
+    },
+    {
+      "id": "prism_split",
+      "label": "призма-сплит на чёрном",
+      "status": "candidate",
+      "pos_fragment": "chromatic aberration, rainbow refraction, dark background",
+      "source": "roadmap T5-03 «Палитры-игра», оплаты вердиктом нет"
+    },
+    {
+      "id": "thermal",
+      "label": "инфракрасный тепловизор",
+      "status": "candidate",
+      "pos_fragment": "thermography, false color palette, heat map shading",
+      "source": "roadmap T5-03 «Палитры-игра», оплаты вердиктом нет"
+    }
+  ],
+  "note": "core 5 методов — прямая речь автора 2026-10-28; расширение 4 — кандидат из roadmap T5-03, стартуют только после оплаты вердиктом"
+}

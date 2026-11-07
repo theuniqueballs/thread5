@@ -1,0 +1,448 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.0.0)",
+ "batch": "batches/T5-07.md",
+ "sha256": "cda004931aabbe5e7b0ca60a39aa25d99b1bf755999c2ad8fc50f5edc0ce942f",
+ "utc": "2026-10-29T18:23:23+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "pos-budget",
+   "msg": "POS 147 слов > цель 110"
+  },
+  {
+   "slot": "P02",
+   "gate": "pos-budget",
+   "msg": "POS 150 слов > цель 110"
+  },
+  {
+   "slot": "P03",
+   "gate": "pos-budget",
+   "msg": "POS 127 слов > цель 110"
+  },
+  {
+   "slot": "P04",
+   "gate": "pos-budget",
+   "msg": "POS 132 слов > цель 110"
+  },
+  {
+   "slot": "P05",
+   "gate": "pos-budget",
+   "msg": "POS 117 слов > цель 110"
+  },
+  {
+   "slot": "P07",
+   "gate": "pos-budget",
+   "msg": "POS 114 слов > цель 110"
+  },
+  {
+   "slot": "P08",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «straps on both shoulders»"
+  },
+  {
+   "slot": "P09",
+   "gate": "pos-budget",
+   "msg": "POS 120 слов > цель 110"
+  },
+  {
+   "slot": "P11",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «chest clear of shelf»"
+  },
+  {
+   "slot": "P11",
+   "gate": "pos-budget",
+   "msg": "POS 111 слов > цель 110"
+  },
+  {
+   "slot": "P12",
+   "gate": "pos-budget",
+   "msg": "POS 117 слов > цель 110"
+  },
+  {
+   "slot": "P17",
+   "gate": "pos-budget",
+   "msg": "POS 116 слов > цель 110"
+  },
+  {
+   "slot": "P20",
+   "gate": "pos-budget",
+   "msg": "POS 115 слов > цель 110"
+  },
+  {
+   "slot": "P21",
+   "gate": "pos-budget",
+   "msg": "POS 117 слов > цель 110"
+  },
+  {
+   "slot": "P22",
+   "gate": "pos-budget",
+   "msg": "POS 128 слов > цель 110"
+  },
+  {
+   "slot": "P24",
+   "gate": "pos-budget",
+   "msg": "POS 111 слов > цель 110"
+  },
+  {
+   "slot": "P26+P27",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «at the chest covered nipples two»"
+  },
+  {
+   "slot": "P02",
+   "gate": "channel",
+   "msg": "канал «swim_wet» не в реестре"
+  },
+  {
+   "slot": "P09",
+   "gate": "channel",
+   "msg": "канал «bumps» не в реестре"
+  },
+  {
+   "slot": "P19",
+   "gate": "channel",
+   "msg": "канал «bumps» не в реестре"
+  },
+  {
+   "slot": "P24",
+   "gate": "channel",
+   "msg": "канал «bumps» не в реестре"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "sue-plugsuit-gloss",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 147
+  },
+  {
+   "id": "P02",
+   "slug": "yui-swimsuit-super",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "swim_wet",
+   "channelStatus": "",
+   "claimToken": 25,
+   "posWords": 150
+  },
+  {
+   "id": "P03",
+   "slug": "ila-backrooms-yellow",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 52,
+   "posWords": 127
+  },
+  {
+   "id": "P04",
+   "slug": "light-column-laundry-cart",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 132
+  },
+  {
+   "id": "P05",
+   "slug": "first-floor-ledger",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 117
+  },
+  {
+   "id": "P06",
+   "slug": "falling-cage-commute",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 39,
+   "posWords": 108
+  },
+  {
+   "id": "P07",
+   "slug": "slime-laundry-basin",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 114
+  },
+  {
+   "id": "P08",
+   "slug": "greenhouse-reaches-back",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 104
+  },
+  {
+   "id": "P09",
+   "slug": "forge-ember-crest",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "bumps",
+   "channelStatus": "",
+   "claimToken": 47,
+   "posWords": 120
+  },
+  {
+   "id": "P10",
+   "slug": "warden-office-pantyline",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "pantyline-lower",
+   "channelStatus": "candidate",
+   "claimToken": 32,
+   "posWords": 106
+  },
+  {
+   "id": "P11",
+   "slug": "cartographer-shelf-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 111
+  },
+  {
+   "id": "P12",
+   "slug": "flooded-gallery-mermaid",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 36,
+   "posWords": 117
+  },
+  {
+   "id": "P13",
+   "slug": "trap-forge-golem",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 104
+  },
+  {
+   "id": "P14",
+   "slug": "pendulum-nap",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 22,
+   "posWords": 101
+  },
+  {
+   "id": "P15",
+   "slug": "moss-nursery-dew",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 107
+  },
+  {
+   "id": "P16",
+   "slug": "statue-gallery-rouge",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 103
+  },
+  {
+   "id": "P17",
+   "slug": "tavern-minus-two",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 116
+  },
+  {
+   "id": "P18",
+   "slug": "archive-through-shelf",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 109
+  },
+  {
+   "id": "P19",
+   "slug": "glacier-warmth-hunter",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "bumps",
+   "channelStatus": "",
+   "claimToken": 33,
+   "posWords": 108
+  },
+  {
+   "id": "P20",
+   "slug": "web-lift-handbra",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 43,
+   "posWords": 115
+  },
+  {
+   "id": "P21",
+   "slug": "drowned-library-cecaelia",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 117
+  },
+  {
+   "id": "P22",
+   "slug": "echo-well-bat",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 128
+  },
+  {
+   "id": "P23",
+   "slug": "treasury-mimic-chair",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 26,
+   "posWords": 107
+  },
+  {
+   "id": "P24",
+   "slug": "dungeon-heart-sleep",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "bumps",
+   "channelStatus": "",
+   "claimToken": 38,
+   "posWords": 111
+  },
+  {
+   "id": "P25",
+   "slug": "bee-kin-honey-fitting",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 41,
+   "posWords": 108
+  },
+  {
+   "id": "P26",
+   "slug": "shark-kin-wave-exit",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 39,
+   "posWords": 108
+  },
+  {
+   "id": "P27",
+   "slug": "phoenix-kin-bath-embers",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 35,
+   "posWords": 102
+  },
+  {
+   "id": "P28",
+   "slug": "succubus-kin-day-off",
+   "genre": "EXP",
+   "rating": "",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 49,
+   "posWords": 102
+  },
+  {
+   "id": "P29",
+   "slug": "witch-kin-attic-gust",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 105
+  },
+  {
+   "id": "P30",
+   "slug": "nephilim-kin-first-arch",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 100
+  },
+  {
+   "id": "P31",
+   "slug": "oni-kin-storehouse-feast",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 98
+  },
+  {
+   "id": "P32",
+   "slug": "tanuki-kin-roof-ridge",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 103
+  },
+  {
+   "id": "P33",
+   "slug": "frog-kin-rain-accepted",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 94
+  }
+ ]
+}

@@ -1,0 +1,725 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.2.0)",
+ "batch": "batches/T5-06.md",
+ "sha256": "fc78128e3e89c0823387b33d9aa0b17a1a3650c17e39378723db1bc26604fd79",
+ "utc": "2026-10-30T20:27:14+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "pos-budget",
+   "msg": "POS 146 слов > цель 130"
+  },
+  {
+   "slot": "P02",
+   "gate": "pos-budget",
+   "msg": "POS 143 слов > цель 130"
+  },
+  {
+   "slot": "P03",
+   "gate": "pos-budget",
+   "msg": "POS 142 слов > цель 130"
+  },
+  {
+   "slot": "P04",
+   "gate": "pos-budget",
+   "msg": "POS 142 слов > цель 130"
+  },
+  {
+   "slot": "P05",
+   "gate": "pos-budget",
+   "msg": "POS 143 слов > цель 130"
+  },
+  {
+   "slot": "P06",
+   "gate": "pos-budget",
+   "msg": "POS 136 слов > цель 130"
+  },
+  {
+   "slot": "P07",
+   "gate": "pos-budget",
+   "msg": "POS 143 слов > цель 130"
+  },
+  {
+   "slot": "P08",
+   "gate": "pos-budget",
+   "msg": "POS 145 слов > цель 130"
+  },
+  {
+   "slot": "P09",
+   "gate": "pos-budget",
+   "msg": "POS 144 слов > цель 130"
+  },
+  {
+   "slot": "P12",
+   "gate": "pos-budget",
+   "msg": "POS 139 слов > цель 130"
+  },
+  {
+   "slot": "P13",
+   "gate": "pos-budget",
+   "msg": "POS 147 слов > цель 130"
+  },
+  {
+   "slot": "P14",
+   "gate": "pos-budget",
+   "msg": "POS 145 слов > цель 130"
+  },
+  {
+   "slot": "P15",
+   "gate": "pos-budget",
+   "msg": "POS 138 слов > цель 130"
+  },
+  {
+   "slot": "P16",
+   "gate": "pos-budget",
+   "msg": "POS 135 слов > цель 130"
+  },
+  {
+   "slot": "P17",
+   "gate": "pos-budget",
+   "msg": "POS 144 слов > цель 130"
+  },
+  {
+   "slot": "P18",
+   "gate": "pos-budget",
+   "msg": "POS 136 слов > цель 130"
+  },
+  {
+   "slot": "P19",
+   "gate": "pos-budget",
+   "msg": "POS 131 слов > цель 130"
+  },
+  {
+   "slot": "P20",
+   "gate": "pos-budget",
+   "msg": "POS 132 слов > цель 130"
+  },
+  {
+   "slot": "P21",
+   "gate": "pos-budget",
+   "msg": "POS 138 слов > цель 130"
+  },
+  {
+   "slot": "P23",
+   "gate": "pos-budget",
+   "msg": "POS 131 слов > цель 130"
+  },
+  {
+   "slot": "P24",
+   "gate": "pos-budget",
+   "msg": "POS 134 слов > цель 130"
+  },
+  {
+   "slot": "P25",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «sweater still covering her chest»"
+  },
+  {
+   "slot": "P32",
+   "gate": "claim-exists",
+   "msg": "R+ без лексемы заявки в POS — тир держится только THESIS, рендерер прозу не видит (аудит 2026-10-31, F1; эскалация: FAIL после двух вердиктов подряд с недоставленным тиром (по образцу канального гейта; аудит 2026-10-31, рек. 1))"
+  },
+  {
+   "slot": "P02+P08",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «wet clothes see through covered nipples»"
+  },
+  {
+   "slot": "P03+P15",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «covered nipples as two low ridges»"
+  },
+  {
+   "slot": "P05+P30",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «two ridge lines through the wet»"
+  },
+  {
+   "slot": "P14+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «black tape crosses on her bare»"
+  },
+  {
+   "slot": "P14+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «crosses on her bare chest a»"
+  },
+  {
+   "slot": "P14+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «small black tape crosses on her»"
+  },
+  {
+   "slot": "P14+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «tape crosses on her bare chest»"
+  },
+  {
+   "slot": "P14+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «two small black tape crosses on»"
+  },
+  {
+   "slot": "P15+P22",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «see through covered nipples as two»"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "шапка заявляет каст 10/21, по факту 0 (аудит 2026-10-31, F5)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "каст 0/21 вне вилки 12–14 (policy v1.8)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "46 общих 6-грамм с предыдущими партиями (T5-05.md, T5-05R.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "lucy-side-effect-lounge",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 146
+  },
+  {
+   "id": "P02",
+   "slug": "lua-megamare-brine",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 49,
+   "posWords": 143
+  },
+  {
+   "id": "P03",
+   "slug": "lyn-cuoium-tannery",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 59,
+   "posWords": 142
+  },
+  {
+   "id": "P04",
+   "slug": "spores-raise-breakfast",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 142
+  },
+  {
+   "id": "P05",
+   "slug": "winch-rope-lunge",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 143
+  },
+  {
+   "id": "P06",
+   "slug": "sailcloth-stitch-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 136
+  },
+  {
+   "id": "P07",
+   "slug": "antennae-read-the-dark",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 143
+  },
+  {
+   "id": "P08",
+   "slug": "steam-bath-broken-strap",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 59,
+   "posWords": 145
+  },
+  {
+   "id": "P09",
+   "slug": "hood-carries-the-fog",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 144
+  },
+  {
+   "id": "P10",
+   "slug": "threadbare-morning-crunch",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "threadbare-sheer",
+   "channelStatus": "candidate",
+   "claimToken": 53,
+   "posWords": 129
+  },
+  {
+   "id": "P11",
+   "slug": "gust-handbra-camp",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 37,
+   "posWords": 125
+  },
+  {
+   "id": "P12",
+   "slug": "shirt-dissolves-at-door",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 52,
+   "posWords": 139
+  },
+  {
+   "id": "P13",
+   "slug": "warm-cracks-nap",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 147
+  },
+  {
+   "id": "P14",
+   "slug": "silk-thread-barre",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 145
+  },
+  {
+   "id": "P15",
+   "slug": "rising-rain-half-wet",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 138
+  },
+  {
+   "id": "P16",
+   "slug": "bloom-holds-the-light",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 135
+  },
+  {
+   "id": "P17",
+   "slug": "towel-high-kettle",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 144
+  },
+  {
+   "id": "P18",
+   "slug": "sheet-phases-at-hip",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "underwear-as-outfit",
+   "channelStatus": "candidate",
+   "claimToken": 56,
+   "posWords": 136
+  },
+  {
+   "id": "P19",
+   "slug": "loft-hop-waistband",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 36,
+   "posWords": 131
+  },
+  {
+   "id": "P20",
+   "slug": "vein-map-and-tape",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 132
+  },
+  {
+   "id": "P21",
+   "slug": "reflection-half-beat-late",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 138
+  },
+  {
+   "id": "P22",
+   "slug": "salt-lines-drying",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 44,
+   "posWords": 127
+  },
+  {
+   "id": "P23",
+   "slug": "fish-school-writes-light",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 131
+  },
+  {
+   "id": "P24",
+   "slug": "nacre-bell-veil",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 42,
+   "posWords": 134
+  },
+  {
+   "id": "P25",
+   "slug": "semantic-neg-armed",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 39,
+   "posWords": 116
+  },
+  {
+   "id": "P26",
+   "slug": "semantic-neg-clean",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 39,
+   "posWords": 116
+  },
+  {
+   "id": "P27",
+   "slug": "beam-light-on-zone",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 41,
+   "posWords": 118
+  },
+  {
+   "id": "P28",
+   "slug": "caustic-light-on-zone",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 41,
+   "posWords": 126
+  },
+  {
+   "id": "P29",
+   "slug": "hem-wet-fence-two-worlds",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 130
+  },
+  {
+   "id": "P30",
+   "slug": "soaked-whole-fence",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 39,
+   "posWords": 125
+  },
+  {
+   "id": "P31",
+   "slug": "underlayer-named",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "named-underlayer-display",
+   "channelStatus": "candidate",
+   "claimToken": 51,
+   "posWords": 125
+  },
+  {
+   "id": "P32",
+   "slug": "underlayer-unnamed",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "named-underlayer-display",
+   "channelStatus": "candidate",
+   "claimToken": null,
+   "posWords": 117
+  },
+  {
+   "id": "P33",
+   "slug": "worn-knit-slipping",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "threadbare-sheer",
+   "channelStatus": "candidate",
+   "claimToken": 50,
+   "posWords": 128
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "half lidded small slack mouth the",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P25",
+    "P26"
+   ]
+  },
+  {
+   "gram": "teal hair sea glass eyes fair",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "hair sea glass eyes fair skin",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "scales scattered along her shins and",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "a pale tide line tan above",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "pale tide line tan above the",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "the light on the seam and",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-05.md",
+   "slotsThere": [
+    "P14"
+   ]
+  },
+  {
+   "gram": "one piece swimsuit soaked and clinging",
+   "slotsHere": [
+    "P08"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "piece swimsuit soaked and clinging wet",
+   "slotsHere": [
+    "P08"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "swimsuit soaked and clinging wet clothes",
+   "slotsHere": [
+    "P08"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "ripe full figure wide hips heavy",
+   "slotsHere": [
+    "P11"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P21"
+   ]
+  },
+  {
+   "gram": "full figure wide hips heavy soft",
+   "slotsHere": [
+    "P11"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P21"
+   ]
+  },
+  {
+   "gram": "two small black tape crosses on",
+   "slotsHere": [
+    "P14",
+    "P20"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P17"
+   ]
+  },
+  {
+   "gram": "small black tape crosses on her",
+   "slotsHere": [
+    "P14",
+    "P20"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P17"
+   ]
+  },
+  {
+   "gram": "black tape crosses on her bare",
+   "slotsHere": [
+    "P14",
+    "P20"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P17"
+   ]
+  },
+  {
+   "gram": "tape crosses on her bare chest",
+   "slotsHere": [
+    "P14",
+    "P20"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P17"
+   ]
+  },
+  {
+   "gram": "black lace panties named at the",
+   "slotsHere": [
+    "P18"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P14"
+   ]
+  },
+  {
+   "gram": "lace panties named at the hip",
+   "slotsHere": [
+    "P18"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P14"
+   ]
+  },
+  {
+   "gram": "panties named at the hip line",
+   "slotsHere": [
+    "P18"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P14"
+   ]
+  },
+  {
+   "gram": "named at the hip line where",
+   "slotsHere": [
+    "P18"
+   ],
+   "sourceBatch": "T5-05R.md",
+   "slotsThere": [
+    "P14"
+   ]
+  }
+ ]
+}
