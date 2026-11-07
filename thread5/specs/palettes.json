@@ -1,5 +1,5 @@
 {
- "version": "1.0.0",
+ "version": "1.1.0",
  "born": "2026-09-19",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -5109,6 +5109,36 @@
    "family": "ABYSS (T5-06 wave)",
    "legacy_3slot": false,
    "source": "PALETTE_EXTENSION_v6 (2026-10-28, заказ T5-06)"
+  },
+  {
+   "id": "P161_CHROMA_VEIL",
+   "name": "Chroma Veil",
+   "dominant": [
+    "dusk-violet-deep",
+    "plum-ink"
+   ],
+   "secondary": [
+    "pearl-rose-skinlight"
+   ],
+   "accent1": [
+    "dream-aqua-glow"
+   ],
+   "accent2": [
+    "ember-amber-warm"
+   ],
+   "shadow": "violet-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "fluorescent",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "colored-shadow wash — shadows fall violet and plum, never grey or black; skin glows pearlescent from inside; one aqua glow accent, one amber warm accent",
+   "sd_fragment": "colored-shadows-dreamlight",
+   "family": "exp_color_wave",
+   "source": "T5-16 LUCID DREAMS (приказ автора 2026-11-07: новая экспериментальная палитра и раскраска — одна на все 9 EXP-слотов; directed override C067)"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -5118,6 +5148,7 @@
   "C068_EXP (VOID mode): 21 distinct palettes for 21 prompts.",
   "C069: 6-slot structure honored in POS; accent1 must appear as a named color word.",
   "C070: forbidden colors must NOT appear in POS as named color words.",
-  "C071: prior batch's palettes blacklisted (cross-batch rotation)."
+  "C071: prior batch's palettes blacklisted (cross-batch rotation).",
+  "C067_EXP_ORDER (T5-16): одна экспериментальная палитра P161_CHROMA_VEIL живёт во всех 9 EXP-слотах батча по прямому приказу автора («не всё по разному») — directed override C067; мейн-пул соблюдает C066/C067 как обычно."
  ]
 }
