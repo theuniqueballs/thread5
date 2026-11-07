@@ -28,9 +28,14 @@ v1.8.0-ревизия (вердикт автора 2026-11-03 «Чистка н�
 1. **XXX — никогда.** X = соски; XXX = половой акт.
 2. **Genital lock (POS)**: `exposed genitals, vulva, pubic hair` — никогда
    в POS. В NEG НЕ пишется (negBase v3).
-3. **Anti-loli (POS)**: `child, children, childish, chibi, young girl,
-   immature body, oversized head, loli, shota` — никогда в POS; возраст —
-   формой тела (регистры §6). В NEG НЕ пишется (negBase v3).
+3. **Anti-loli**: `child, children, childish, chibi, young girl, immature
+   body, oversized head, loli, shota` — никогда в POS; возраст — формой тела
+   (регистры §6). SAFETY-пол `young girl, immature body, oversized head,
+   loli, shota` — обязательный префикс NEG каждого слота (вердикт T5-13
+   2026-11-05: «верни в негатив тег loli» — перегруз-реакция negBase v3
+   не имела права резать safety-пол; gates v1.9.0, hardFloors требуют пол
+   в NEG). Остаток класса (`child, children, childish, chibi`) и
+   milf/mature — вне NEG (покрыт полом с запасом / регистры тела).
 4. **OC canon locks**: внешность ровно по `specs/oc-canon.json`; канон-цвета
    волос/глаз — VERBATIM в первые ~10 токенов тег-рана. Имена OC никогда не
    входят в POS (триггерят реальных персонажей) — только дескрипторы.

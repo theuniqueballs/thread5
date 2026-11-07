@@ -2,7 +2,7 @@
  "version": "1.0.0",
  "born": "2026-09-19",
  "source": "3.2 OC_CANON.yaml (THREAD 3.0 format, canon v1.7.1)",
- "canon_version": "2.7.0",
+ "canon_version": "2.8.0",
  "usage_policy": "Tarot / element / zodiac fields below are REGISTRY DATA for the author's own\nseries (Rider-Waite-style card prompts, zodiac prompts). They are NOT batch\nmaterial. Without the author's explicit per-request direction, NO card, sign,\nor ability symbolism may appear in any batch prompt — not in POS, not in NEG,\nnot in theses, palettes, or prompt naming. Batch prompts use the OC's\nAPPEARANCE and origin-continuity motifs only. Card/zodiac assignments stay\nhere so the author can look them up for HIS series.",
  "selection_rule": "────────────────────────────────────────────────────\nPer session: author selects 3 of the 20 active OCs by vibe/theme fit.\nNo forced rotation schedule — author's call each time.\n(2026-10-11: 16 → 19 — счётчик застыл в сентябре, канон вырос до 19.)\n(2026-10-13: 19 → 20 — Lucy promoted from T4-29 P18.)\n(2026-10-16: canon v2.3.0 — FAM-семейство сисек прописано КАЖДОЙ ОС (A=6 / B=8 / C=6, вердикт T4-29 P01 «прописывать размер груди в канонах»). body_type теперь тег-формат: FAM-x (B-диапазон) + теги груди — писец вплетает VERBATIM, проза не попадает в POS. Исходная проза тел — в specs/oc-body-archive.json.)\n(2026-11-01: 20 → 21 — Hana promoted from T5-09 P31 «ledger-of-debts», кандидат «Вель», вердикт: «Дай ей имя Hana и выдай всё, что нужно выдать ОС. Таро и т.д.» — первая конверсия EXP-кандидата приказом. Таро V Hierophant / элемент VELVET / знак Capricorn — assistant-assigned, pending author veto.)\n(2026-11-01, вечер: канон Hana закреплён рендером автора — волосы long wavy pale ash-blonde (в POS их не было, урок F-016); директива «ВЕЗДЕ всё о персонаже» — гейт char-spec, gates v1.5.0, policy v1.11.0.)\n(2026-11-01, поздний вечер: автор закрыл вето — «по хана - закрыть вето, подходит»: V Hierophant / VELVET / Capricorn УТВЕРЖДЕНЫ, pending veto снят; canon v2.6.0.)",
  "ocs": {
@@ -412,25 +412,26 @@
   "Lucy": {
    "name": "Lucy",
    "tarot": "XX — Judgement (assistant-assigned 2026-10-13, pending author veto) — проснулась внутри сна и осталась; зеркало — её восстание",
-   "element": "NEON (assistant-assigned, pending author veto) — молоко, подсвеченное городом: цвет города живёт в её коже",
+   "element": "NEON (assistant-assigned, pending author veto) — молоко, подсвеченное городом: город даёт коже холодное свечение (зелёная кожа изъята вердиктом T5-13 2026-11-05)",
    "zodiac": "Cancer (assistant-assigned, pending author veto; SHARED w/ Rue — прилив сна)",
    "birth": "promoted from T4-29 P18 'mirror-chest-first-milf-shimmer' (VOLT, R+ delivered, регистр milf; вердикт T4-29 2026-10-13: «Очень милая девчуля, заберём наверное в канон. Пусть она будет - Lucy. Выдай ей всё что выдают всем ОС»)",
    "hair": "mint hair, loose mid-length with a wet-look wave (поле из плана контракта T4-29; рендер P18 — upper body, волосы не в кадре)",
-   "eyes": "pale-green eyes, half-closed — the drowsy neon gaze; зелёная в тон свечения кожи (рендер P18)",
-   "skin": "fluorescent-milk-green skin — матовое молоко, флуоресцирующее зелёным под городским светом (UNIQUE)",
+   "eyes": "pale-green eyes, half-closed — the drowsy neon gaze (рендер P18; зелень остаётся в глазах, не в коже)",
+   "skin": "matte milk-white skin glowing faintly cool under city light — матовое молоко с холодным городским свечением (UNIQUE = свечение; зелёная кожа ИЗЪЯТА вердиктом T5-13 2026-11-05: «чё я говорил - зелёная кожа хуйня»)",
    "body_type": "full-figured body, wide hips, soft waist, FAM-A (B5-B7): full chest, heavy breasts, deep cleavage curve",
    "signature_marks": [
-    "fluorescent-milk-green skin (городское молоко светится — unique)",
+    "matte milk-white skin with cool city-glow (городское молоко светится холодным — unique; зелень изъята 2026-11-05)",
     "half-closed green eyes — sleepy neon gaze",
     "the mirror habit: смотрит на себя, пока смотрят на неё"
    ],
    "emotional_register": "sleepy-luminous — полусонная внутри собственного свечения; неторопливая, тёплая, чуть насмешливая",
-   "anti_shield": "human skin tones (fair/warm/tan/dark), pale human skin, blue eyes, red eyes, wide-alert eyes, petite, slender, athletic",
-   "neg_additions": "realistic skin, natural skin tone, human skin tone",
+   "anti_shield": "warm/tan/dark skin tones, skin without the cool milk-glow, flat pale skin, blue eyes, red eyes, wide-alert eyes, petite, slender, athletic",
+   "neg_additions": "green skin, realistic skin, natural skin tone, human skin tone",
    "id": "lucy",
    "active": true,
    "render_receipts": [
-    "T4-29 P18 'mirror-chest-first-milf-shimmer' (VOLT · PL194 · P91_MIDNIGHT_BODEGA · R+ delivered; вердикт автора: «Очень милая девчуля» → канон)"
+    "T4-29 P18 'mirror-chest-first-milf-shimmer' (VOLT · PL194 · P91_MIDNIGHT_BODEGA · R+ delivered; вердикт автора: «Очень милая девчуля» → канон)",
+    "T5-13 P02 'neon-mirror-habit' (EXQUISITE · PL242 · P62_PLATINUM_VOID · R+; вердикт 2026-11-05: «мне понравилось пиздец», но «зелёная кожа хуйня» — skin-канон переписан: matte milk-white + cool glow; повтор жалобы автора — зелёную кожу он запрещал и раньше, писец держал канон-цвет)"
    ],
    "wardrobe_policy": "signature: светоловящие платья и слипы cool-static-семейства, citrus-wedge-акценты; ткань пропускает свечение кожи — wet/sheer её домашний канал под законом №27 (бугорок да — розовое нет)"
   },
@@ -515,7 +516,8 @@
   "2026-11-01 (T5-09 verdict processing): Hana canonized — первая конверсия EXP-кандидата в ОС прямым приказом («Дай ей имя Hana и выдай всё, что нужно выдать ОС. Таро и т.д.»). Кандидат «Вель», R37 Succubus-kin, T5-09 P31 «ledger-of-debts» R+ delivered. Пакет: V Hierophant (pending veto) / VELVET / Capricorn (shared w/ Nix); appearance-lock VERBATIM промпта (рога satin-black, хвост-спати со сколом кончика, крыло-фрагменты, зрачки-сердца option, вино-красные глаза, warm satin, FAM-A); волосы НЕ зафиксированы в POS — предложение deep-black/wine-red до вето. Канон = рендер (прецедент Ana/Lucy). Canon v2.3.0 → v2.4.0.",
   "2026-11-01 (закрепление рендера Hana + директива «ВЕЗДЕ ВСЁ»): автор прислал рендер «для закрепления» — канон = рендер, третий прецедент (Ana v1.8.0 → Lucy v2.2.0 → Hana v2.5.0). Волосы: long wavy pale ash-blonde — в POS T5-09 их не было, рендерер импровизировал под палитру P54_ART_DECO_PLATINUM (F-016, гейт char-spec в gates v1.5.0); писцово deep-black переиграно. Зрачки-сердца — из option в канон. Крылья-фрагменты — поясница (в промпте было shoulder line). anti_shield развёрнут: blonde hair ИЗЪЯТ из NEG (канон теперь блонд), вместо него black/dark hair. Таро/элемент/знак — по-прежнему pending veto (рендер вето не отменял). Canon v2.4.0 → v2.5.0.",
   "2026-11-01 (поздний вечер, вето закрыто): автор: «по хана - закрыть вето, подходит» — V Hierophant / VELVET / Capricorn УТВЕРЖДЕНЫ, pending veto снят во всех трёх полях и мастер-списках (таро/элемент/знак). Писцова поправка: карта III Empress ошибочно числилась свободной в поле tarot при промоции — она занята Ana; свободные карты: IV Emperor, XVI Tower, XXI World. Canon v2.5.0 → v2.6.0.",
-  "2026-11-04 (вердикт T5-12, чат): ELDRITCH-CONTACT ИЗЪЯТ из канона Vae — автор: «пометка на VAE, что она Eldrich-Contact - не совсем верна, это просто старая ошибка, где меня неправильно поняли. Хорошо бы убрать». Презентация ELDRITCH (смола-архитектура, «never touching her», вердикт-цитата: staging that reads as architecture) остаётся без изменений. Прецедентная оговорка: уже отрендеренное (T5-12 P01) не переписывается, автор основную тему одобрил целиком. Canon v2.6.0 → v2.7.0."
+  "2026-11-04 (вердикт T5-12, чат): ELDRITCH-CONTACT ИЗЪЯТ из канона Vae — автор: «пометка на VAE, что она Eldrich-Contact - не совсем верна, это просто старая ошибка, где меня неправильно поняли. Хорошо бы убрать». Презентация ELDRITCH (смола-архитектура, «never touching her», вердикт-цитата: staging that reads as architecture) остаётся без изменений. Прецедентная оговорка: уже отрендеренное (T5-12 P01) не переписывается, автор основную тему одобрил целиком. Canon v2.6.0 → v2.7.0.",
+  "2026-11-05 (вердикт T5-13, чат): Lucy — ЗЕЛЁНАЯ КОЖА ИЗЪЯТА из канона по вербатиму автора: «чё я говорил - зелёная кожа хуйня» (повтор — автор запрещал её и раньше; писец держал канон-цвет T4-29, авторский вето старше канона). Новый skin: matte milk-white skin glowing faintly cool under city light — молоко остаётся, свечение остаётся, зелень уходит; зелень сохраняется только в глазах (pale-green) и волосах (mint). anti_shield переписан (guard теперь на свечение, не на «не-зелень»). ВЕЗДЕ ВСЁ о персонаже: P02 T5-13 переписан в этом же цикле. Canon v2.7.0 → v2.8.0."
  ],
  "note_on_status": "ACTIVE: 19 (18 прежних + Hana с промоции 2026-11-01; Ama и Ila спят — active=null). 3 drawn per session by author vibe/theme fit, no forced rotation. Rae and Iya are INACTIVE RESERVE (added accidentally, never used, bios retained). SP-registry characters (Nicole, Puppet/Valentine, Ereshkigal/Tito_Lopes) live in download/SP_ORDERS.md, never in OC canon.",
  "fam_scale": {

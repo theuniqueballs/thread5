@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "born": "2026-09-19",
   "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14)",
   "poses": [
@@ -3514,6 +3514,440 @@
         "CAM04_from_below",
         "CAM01_eye_level"
       ]
+    },
+    {
+      "id": "PL269",
+      "name": "Eyes-Closed Rest (A5-06)",
+      "sd": "eyes closed, face tilted to sun/wind, body otherwise active or leaning",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A5",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL270",
+      "name": "Reflection Lag (A9-02)",
+      "sd": "raised hand; reflection in glass lags half a step",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A9",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL271",
+      "name": "Knee-Tent Corridor (A1-04)",
+      "sd": "lying on back, knees raised and together, looking down along her own body toward the camera",
+      "category": "HORIZONTAL",
+      "risk": "HIGH",
+      "family": "A1",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL272",
+      "name": "Push-Door Shoulder (A4-08)",
+      "sd": "shoulder against a heavy door, one foot sliding back for force, cheek to the wood",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A4",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL273",
+      "name": "Umbrella Invert Fight (A2-08)",
+      "sd": "fighting an inverted umbrella in the wind, both hands on the shaft, hair horizontal",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL274",
+      "name": "Puddle Second Face (A9-04)",
+      "sd": "standing at a puddle edge; puddle reflects a different expression",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A9",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL275",
+      "name": "Wall-Slide Sit (A3-04)",
+      "sd": "sliding down a wall into a sit, back to wall, knees up, one hand on the floor",
+      "category": "BENT",
+      "risk": "MID",
+      "family": "A3",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL276",
+      "name": "Catch-Object (A4-05)",
+      "sd": "both hands open toward a falling object, eyes locked, body under the arc",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A4",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL277",
+      "name": "Glove-Bite Pull (A2-11)",
+      "sd": "pulling off a glove with her teeth, other hand busy, elbow high",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL278",
+      "name": "Bag-Strap In Teeth (A2-09)",
+      "sd": "heavy bag strap held in teeth, both hands digging inside the bag",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL279",
+      "name": "Coat One-Arm Hunt (A2-06)",
+      "sd": "coat half-on, one arm in sleeve, twisting to find the other sleeve",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL280",
+      "name": "Book-Bite Stairs (A2-15)",
+      "sd": "stack of books in arms, one book held in teeth, climbing stairs, knee high",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL281",
+      "name": "Sofa Arm-Drape (A3-08)",
+      "sd": "draped over a sofa arm, hips on the armrest, head toward the cushions, one leg dangling",
+      "category": "SEATED",
+      "risk": "MID",
+      "family": "A3",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL282",
+      "name": "Inhale-Before-Speak (A4-07)",
+      "sd": "shoulders slightly lifted mid-inhale, mouth open a fraction, about to say something",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A4",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL283",
+      "name": "About-To-Sit (A4-01)",
+      "sd": "hovering above a chair, knees bent, not yet seated, hands reaching for the armrests",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A4",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL284",
+      "name": "Chair Reverse Straddle (A3-02)",
+      "sd": "sitting astride a chair reversed, arms folded on chair back, chin on wrists",
+      "category": "SEATED",
+      "risk": "MID",
+      "family": "A3",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL285",
+      "name": "Down-At-Hands Task (A5-03)",
+      "sd": "head bowed, eyes on her own hands doing a precise task",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A5",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL286",
+      "name": "Laundry Reach-High (A6-02)",
+      "sd": "both arms up pinning laundry, body stretched, one heel lifted",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A6",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL287",
+      "name": "Off-Frame Stare (A5-02)",
+      "sd": "body toward camera, eyes locked on something outside the edge",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A5",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL288",
+      "name": "Ladder Axis Look-Down (A1-06)",
+      "sd": "climbing a ladder, paused mid-rung, looking down past her own shoulder",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A1",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL289",
+      "name": "Chin-On-Rail (A7-03)",
+      "sd": "chin on balcony rail, arms dangling over the other side, heels up",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A7",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL290",
+      "name": "Turn-Away Start (A4-04)",
+      "sd": "beginning to turn away, shoulders already rotated, face still half toward camera",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A4",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL291",
+      "name": "Towel-Drop Catch (A1-10)",
+      "sd": "towel slipping, both hands catching it at the chest, knees slightly inward, looking down at the towel",
+      "category": "VERTICAL",
+      "risk": "MID",
+      "family": "A1",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL292",
+      "name": "Dance-Break Snap (A8-08)",
+      "sd": "mid-dance snap, one arm sharp, other loose, weight hard on one foot",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A8",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL293",
+      "name": "Hair-Tie In Teeth (A2-04)",
+      "sd": "both arms raised behind the head tying hair, hair-tie held in teeth",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL294",
+      "name": "Jacket-Over-Shoulders Only (A8-04 detail)",
+      "sd": "jacket on shoulders like a cape, arms free, wind inside the jacket — insert on collar and hands",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A8",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL295",
+      "name": "Jacket-Over-Shoulders Only (A8-04 payoff)",
+      "sd": "jacket on shoulders like a cape, arms free, walking, wind inside the jacket",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A8",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL296",
+      "name": "Strap-Slip Catch (A2-02)",
+      "sd": "one strap fallen off the shoulder, hand halfway up to catch it, frozen mid-reach",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL297",
+      "name": "Apron String Behind (A2-07)",
+      "sd": "both hands behind the back tying apron strings, chest forward by necessity",
+      "category": "VERTICAL",
+      "risk": "LOW",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL298",
+      "name": "Hem-Pinch Puddle Step (A2-10)",
+      "sd": "pinching skirt hem with one hand, stepping over a puddle on the balls of one foot",
+      "category": "DYNAMIC",
+      "risk": "MID",
+      "family": "A2",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
+    },
+    {
+      "id": "PL299",
+      "name": "Thigh-Phone Hide (A8-02)",
+      "sd": "sitting, phone held between closed thighs, leaning over the screen, hair curtain",
+      "category": "SEATED",
+      "risk": "MID",
+      "family": "A8",
+      "source": "manual_card first-use T5-14 (batch REGNUM STELLARUM)",
+      "preferred_cams": [
+        "CAM02_three_quarter",
+        "CAM01_eye_level",
+        "CAM03_low"
+      ]
     }
   ],
   "family_counts": {
@@ -4697,7 +5131,7 @@
   },
   "first_use_ledger": {
     "born": "2026-11-05",
-    "law": "PL241+ выданы писцом при первом использовании карточек мануала в батче T5-13 «IRA DOMINI» (addendum law, вердикт 2026-11-05).",
+    "law": "PL241–PL268 выданы писцом при первом использовании карточек мануала в батче T5-13 «IRA DOMINI» (addendum law, вердикт 2026-11-05). PL269–PL299 выданы при первом использовании карточек мануала в батче T5-14 «REGNUM STELLARUM» (2026-11-05, 31 first-use; PL259 остаётся выданным-неиспользованным).",
     "issued": [
       "PL241",
       "PL242",
@@ -4726,7 +5160,38 @@
       "PL265",
       "PL266",
       "PL267",
-      "PL268"
+      "PL268",
+      "PL269",
+      "PL270",
+      "PL271",
+      "PL272",
+      "PL273",
+      "PL274",
+      "PL275",
+      "PL276",
+      "PL277",
+      "PL278",
+      "PL279",
+      "PL280",
+      "PL281",
+      "PL282",
+      "PL283",
+      "PL284",
+      "PL285",
+      "PL286",
+      "PL287",
+      "PL288",
+      "PL289",
+      "PL290",
+      "PL291",
+      "PL292",
+      "PL293",
+      "PL294",
+      "PL295",
+      "PL296",
+      "PL297",
+      "PL298",
+      "PL299"
     ]
   }
 }
