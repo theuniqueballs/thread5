@@ -1119,10 +1119,13 @@ def check_cross_batch(batch_path, slots, warns, canon_grams=frozenset()):
 
 
 def main():
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
         print(__doc__)
-        sys.exit(2)
+        sys.exit(0 if len(sys.argv) >= 2 else 2)
     batch_path = Path(sys.argv[1])
+    if not batch_path.is_file():
+        print(f"gates: батч не найден: {batch_path}")
+        sys.exit(2)
     out_json = None
     if "--json" in sys.argv:
         out_json = Path(sys.argv[sys.argv.index("--json") + 1])
