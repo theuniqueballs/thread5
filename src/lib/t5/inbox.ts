@@ -2,10 +2,12 @@
  * THREAD 5 — ИНБОКС финальных рендеров. Серверная либа (node, SDK).
  *
  * Поток по приказу автора (вердикт T5-16, 2026-11-08):
- *   1) автор закидывает итоговые рендеры кучкой;
- *   2) КАЖДОЕ изображение проходит X-фильтр-триаж ДО всего остального
+ *   1) автор закидывает итоговые рендеры кучкой — POST только пишет на диск
+ *      (быстро, без vision-звонков: долгий запрос = HTML-таймаут шлюза = тухлый JSON);
+ *   2) КАЖДОЕ изображение проходит X-фильтр-триаж ОТДЕЛЬНЫМИ ПОРЦИЯМИ
  *      (label-only, без описаний контента; fail-closed: любая ошибка триажа
- *      = карантин — «если считаешь такую хуйню, вероятнее всего заглохнешь»);
+ *      = карантин — «если считаешь такую хуйню, вероятнее всего заглохнешь»;
+ *      fail-closed карантины от 429/сбоев можно перетриажнуть);
  *   3) некарантинные разбираются на артефакты/анатомию/камеру — писец ищет
  *      то, что автор не нашёл; журнал живёт на диске рядом с файлами.
  *
@@ -106,6 +108,30 @@ async function visionJson(args: VisionArgs): Promise<string | null> {
   return res.choices?.[0]?.message?.content ?? null;
 }
 
+/**
+ * visionJson с ретраем на 429 (SDK рейт-лимит на залпе файлов):
+ * пауза между попытками, чтобы пачка инбокса не рассыпалась в fail-closed карантин.
+ */
+function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+async function visionJsonRetry(args: VisionArgs): Promise<string | null> {
+  const waits = [0, 6000, 12000];
+  let lastErr: unknown = null;
+  for (const wait of waits) {
+    if (wait > 0) await sleep(wait);
+    try {
+      return await visionJson(args);
+    } catch (err) {
+      lastErr = err;
+      const msg = String(err instanceof Error ? err.message : err);
+      if (!/429|too many/iu.test(msg)) throw err;
+    }
+  }
+  throw lastErr instanceof Error ? lastErr : new Error(String(lastErr));
+}
+
 /* ── мета-журнал ───────────────────────────────────────────────────────── */
 
 export async function readMeta(): Promise<InboxItem[]> {
@@ -129,7 +155,7 @@ interface TriageOut { label: string; reason?: string }
 
 export async function triageImage(mime: string, buf: Buffer): Promise<{ label: TriageLabel; reason: string }> {
   try {
-    const raw = await visionJson({
+    const raw = await visionJsonRetry({
       messages: [{
         role: 'user',
         content: [
@@ -250,7 +276,7 @@ export async function analyzeItem(item: InboxItem): Promise<InboxItem> {
   return item;
 }
 
-/* ── сохранение пачки файлов + немедленный триаж ───────────────────────── */
+/* ── сохранение пачки файлов (БЕЗ триажа — он отдельной порцией) ───────── */
 
 export interface SaveOutcome {
   item: InboxItem | null;
@@ -263,21 +289,35 @@ function safeExt(name: string): string | null {
   return (ALLOWED_EXT as readonly string[]).includes(ext) ? ext : null;
 }
 
-export async function saveAndTriage(file: File, tag: string | null): Promise<SaveOutcome> {
+/** Магические байты: расширение может врать, содержимое — нет. */
+function sniffMime(buf: Buffer): string | null {
+  if (buf.length >= 8 && buf.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) return 'image/png';
+  if (buf.length >= 3 && buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff) return 'image/jpeg';
+  if (
+    buf.length >= 12 &&
+    buf.subarray(0, 4).toString('latin1') === 'RIFF' &&
+    buf.subarray(8, 12).toString('latin1') === 'WEBP'
+  )
+    return 'image/webp';
+  return null;
+}
+
+/** Быстрое сохранение: диск + мета со статусом queued. Никаких vision-звонков. */
+export async function saveFile(file: File, tag: string | null): Promise<SaveOutcome> {
   const ext = safeExt(file.name);
   if (!ext) return { item: null, error: 'не картинка (png/jpg/jpeg/webp)', origName: file.name };
   if (file.size > MAX_FILE_BYTES) return { item: null, error: 'больше 25 МБ', origName: file.name };
   const buf = Buffer.from(await file.arrayBuffer());
   if (buf.length === 0) return { item: null, error: 'пустой файл', origName: file.name };
+  const mime = sniffMime(buf);
+  if (!mime) return { item: null, error: 'содержимое не png/jpg/webp (по магическим байтам)', origName: file.name };
 
   const id = randomBytes(6).toString('hex');
   const stamp = new Date().toISOString().replace(/[-:TZ.]/gu, '').slice(0, 14);
-  const mime = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
-  const fname = `${stamp}-${id}.${ext}`;
+  const fname = `${stamp}-${id}.${(mime.split('/')[1] ?? ext).replace('jpeg', 'jpg')}`;
   await fs.mkdir(UPLOADS_DIR, { recursive: true });
   await fs.writeFile(path.join(UPLOADS_DIR, fname), buf);
 
-  const triage = await triageImage(mime, buf);
   const item: InboxItem = {
     id,
     file: fname,
@@ -286,12 +326,45 @@ export async function saveAndTriage(file: File, tag: string | null): Promise<Sav
     mime,
     uploadedAt: new Date().toISOString(),
     tag,
-    status: triage.label === 'x' ? 'x' : 'ok',
-    triage: { label: triage.label, reason: triage.reason, at: new Date().toISOString() },
+    status: 'queued',
+    triage: { label: 'unknown', reason: 'в очереди на X-триаж', at: new Date().toISOString() },
     analysis: null,
     authorOverride: null,
   };
   return { item, origName: file.name };
+}
+
+/* ── X-триаж отдельным проходом (порции по 2-3 файла, чтобы не таймаутить шлюз) ── */
+
+/**
+ * Кому нужен триаж: новые (queued/unknown) и fail-closed карантины
+ * (упавший/задушенный 429 триаж) — пока автор не вынес свой вердикт.
+ */
+export function needsTriage(item: InboxItem): boolean {
+  if (item.status === 'queued' || item.triage.label === 'unknown') return true;
+  return (
+    !item.authorOverride &&
+    item.triage.label === 'x' &&
+    /fail-closed|429|too many|карантин/iu.test(item.triage.reason)
+  );
+}
+
+/** Триаж одного элемента (читает файл с диска, обновляет item in-place). */
+export async function triageItem(item: InboxItem): Promise<InboxItem> {
+  try {
+    const buf = await fs.readFile(path.join(UPLOADS_DIR, item.file));
+    const triage = await triageImage(item.mime, buf);
+    item.triage = { label: triage.label, reason: triage.reason, at: new Date().toISOString() };
+    item.status = triage.label === 'x' ? 'x' : 'ok';
+  } catch (err) {
+    item.triage = {
+      label: 'x',
+      reason: `триаж не удался (${String(err instanceof Error ? err.message : err).slice(0, 60)}) — карантин (fail-closed)`,
+      at: new Date().toISOString(),
+    };
+    item.status = 'x';
+  }
+  return item;
 }
 
 /* ── служебное ─────────────────────────────────────────────────────────── */

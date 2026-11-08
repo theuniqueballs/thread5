@@ -5,6 +5,9 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
 
+/** Кап на запрос: клиент докручивает циклом по remaining (короткие запросы — без таймаутов). */
+const CAP_PER_REQUEST = 3;
+
 interface AnalyzeBody {
   action?: 'analyze' | 'override';
   ids?: string[];
@@ -50,17 +53,19 @@ export async function POST(req: Request) {
   );
 
   if (queue.length === 0) {
-    return NextResponse.json({ analyzed: 0, items });
+    return NextResponse.json({ analyzed: 0, remaining: 0, items });
   }
 
+  const batch = queue.slice(0, CAP_PER_REQUEST);
   // последовательно и бережно: SDK не любит залпы
-  for (const item of queue) {
+  for (const item of batch) {
     await analyzeItem(item);
   }
   await writeMeta(items);
 
   return NextResponse.json({
-    analyzed: queue.length,
+    analyzed: batch.length,
+    remaining: queue.length - batch.length,
     items,
   });
 }

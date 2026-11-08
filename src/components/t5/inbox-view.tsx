@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Check, FileWarning, Inbox as InboxIcon, Loader2, ScanSearch, ShieldAlert, Sparkles, Trash2, UploadCloud } from 'lucide-react';
+import { Check, FileWarning, Inbox as InboxIcon, Loader2, RefreshCcw, ScanSearch, ShieldAlert, Sparkles, Trash2, UploadCloud } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Chip } from '@/components/t5/bits';
 import { Input } from '@/components/ui/input';
@@ -10,11 +10,15 @@ import type { InboxItem } from '@/lib/t5/inbox';
 /**
  * ИНБОКС финальных рендеров (вердикт T5-16): автор закидывает итоги кучкой —
  * писец ищет артефакты/ошибки, которые автор не нашёл. X-фильтр-триаж стоит
- * ПЕРЕД всем: «x» уходит в карантин (fail-closed) и никогда не разбирается.
+ * ПЕРЕД разбором: «x» уходит в карантин (fail-closed) и никогда не разбирается.
+ *
+ * Архитектура против «Unexpected token '<'»: загрузка, триаж и разбор —
+ * короткие порционные запросы (шлюз не успевает уйти в HTML-таймаут),
+ * а readJson() ругается по-человечески, если всё же пришёл HTML.
  */
 
 const STATUS_META: Record<InboxItem['status'], { label: string; cls: string }> = {
-  queued: { label: 'триаж…', cls: 'border-zinc-500/30 bg-zinc-500/10 text-zinc-300' },
+  queued: { label: 'ждёт X-триаж', cls: 'border-zinc-500/30 bg-zinc-500/10 text-zinc-300' },
   ok: { label: 'чистое — ждёт разбора', cls: 'border-emerald-400/35 bg-emerald-400/10 text-emerald-300' },
   x: { label: 'X · КАРАНТИН', cls: 'border-red-400/40 bg-red-400/10 text-red-300' },
   analyzed: { label: 'разобрано', cls: 'border-[#ffc24b]/40 bg-[#ffc24b]/10 text-[#ffc24b]' },
@@ -23,9 +27,27 @@ const STATUS_META: Record<InboxItem['status'], { label: string; cls: string }> =
 
 const SEVERITY_LABEL: Record<string, string> = { clean: 'чисто', minor: 'мелочи', major: 'крупные дефекты' };
 
+const MAX_FILE_MB = 25;
+const ALLOWED_EXT = ['png', 'jpg', 'jpeg', 'webp'];
+const UPLOAD_CHUNK = 8; // файлов за один POST — короткие запросы, шлюз не злится
+
+/** JSON-парсер, который не давится HTML-страницей шлюза («Unexpected token '<'»). */
+async function readJson<T>(res: Response): Promise<T> {
+  const ctype = res.headers.get('content-type') ?? '';
+  if (!ctype.includes('application/json')) {
+    const head = (await res.text().catch(() => '')).replace(/\s+/gu, ' ').slice(0, 100);
+    throw new Error(
+      `сервер ответил ${res.status || '??'} не-JSON (${head || 'пустой ответ'}) — запрос упёрся в лимит/таймаут шлюза, пробуй меньшими пачками`,
+    );
+  }
+  return (await res.json()) as T;
+}
+
 function fmtSize(n: number): string {
   return n > 1024 * 1024 ? `${(n / 1024 / 1024).toFixed(1)} МБ` : `${Math.round(n / 1024)} КБ`;
 }
+
+const RETRIAGE_RE = /fail-closed|429|too many|карантин/iu;
 
 export function InboxView() {
   const [items, setItems] = useState<InboxItem[]>([]);
@@ -40,8 +62,10 @@ export function InboxView() {
   const load = useCallback(async () => {
     try {
       const res = await fetch('/api/t5/inbox');
-      const data = (await res.json()) as { items?: InboxItem[]; error?: string };
+      const data = await readJson<{ items?: InboxItem[]; error?: string }>(res);
       setItems(data.items ?? []);
+    } catch (err) {
+      setMessage(`Журнал не прочитался: ${String(err instanceof Error ? err.message : err)}`);
     } finally {
       setLoading(false);
     }
@@ -51,44 +75,157 @@ export function InboxView() {
     void load();
   }, [load]);
 
+  /* ── валидация файлов на клиенте: сразу видно, что отсеяно и почему ── */
+  const addFiles = useCallback((incoming: File[]) => {
+    const ok: File[] = [];
+    const bad: string[] = [];
+    for (const f of incoming) {
+      const ext = f.name.includes('.') ? (f.name.split('.').pop() ?? '').toLowerCase() : '';
+      if (!ALLOWED_EXT.includes(ext)) {
+        bad.push(`${f.name} — не png/jpg/webp`);
+        continue;
+      }
+      if (f.size > MAX_FILE_MB * 1024 * 1024) {
+        bad.push(`${f.name} — больше ${MAX_FILE_MB} МБ`);
+        continue;
+      }
+      ok.push(f);
+    }
+    setPicked((prev) => {
+      const seen = new Set(prev.map((f) => `${f.name}:${f.size}`));
+      return [...prev, ...ok.filter((f) => !seen.has(`${f.name}:${f.size}`))];
+    });
+    setMessage(
+      bad.length > 0
+        ? `Пропущено: ${bad.slice(0, 4).join('; ')}${bad.length > 4 ? ` …и ещё ${bad.length - 4}` : ''}`
+        : null,
+    );
+  }, []);
+
+  /* ── X-триаж порционным циклом (сервер капает по 2 файла на запрос) ── */
+  const runTriage = useCallback(async (ids?: string[], onProgress?: (done: number, remaining: number) => void) => {
+    let done = 0;
+    for (let guard = 0; guard < 80; guard++) {
+      const res = await fetch('/api/t5/inbox/triage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(ids && ids.length > 0 ? { ids } : {}),
+      });
+      const data = await readJson<{ triaged?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
+      if (!res.ok) throw new Error(data.error ?? 'триаж не удался');
+      setItems(data.items ?? []);
+      done += data.triaged ?? 0;
+      onProgress?.(done, data.remaining ?? 0);
+      if ((data.remaining ?? 0) === 0 || (data.triaged ?? 0) === 0) break;
+    }
+    return done;
+  }, []);
+
+  /* ── загрузка кучкой: чанки по 8 → быстрый POST → затем триаж-цикл ── */
   const upload = useCallback(async () => {
     if (picked.length === 0 || busy) return;
-    setBusy(`Заливаю ${picked.length} файл(ов) и гоню X-триаж…`);
     setMessage(null);
     try {
-      const fd = new FormData();
-      for (const f of picked) fd.append('files', f);
-      if (tag.trim()) fd.append('tag', tag.trim());
-      const res = await fetch('/api/t5/inbox', { method: 'POST', body: fd });
-      const data = (await res.json()) as { uploaded?: number; failed?: number; items?: InboxItem[]; error?: string };
-      if (!res.ok) throw new Error(data.error ?? 'загрузка не удалась');
-      setItems(data.items ?? []);
+      let uploaded = 0;
+      let failed = 0;
+      for (let i = 0; i < picked.length; i += UPLOAD_CHUNK) {
+        const chunk = picked.slice(i, i + UPLOAD_CHUNK);
+        setBusy(`Заливаю ${Math.min(i + chunk.length, picked.length)}/${picked.length}…`);
+        const fd = new FormData();
+        for (const f of chunk) fd.append('files', f);
+        if (tag.trim()) fd.append('tag', tag.trim());
+        const res = await fetch('/api/t5/inbox', { method: 'POST', body: fd });
+        const data = await readJson<{ uploaded?: number; failed?: number; items?: InboxItem[]; error?: string }>(res);
+        if (!res.ok) throw new Error(data.error ?? 'загрузка не удалась');
+        uploaded += data.uploaded ?? 0;
+        failed += data.failed ?? 0;
+        setItems(data.items ?? []);
+      }
       setPicked([]);
       if (fileRef.current) fileRef.current.value = '';
-      setMessage(`Залито: ${data.uploaded ?? 0} · отсеяно X-фильтром/ошибками: ${data.failed ?? 0}`);
+
+      let triaged = 0;
+      try {
+        setBusy('Залито. Гоню X-триаж порциями…');
+        triaged = await runTriage(undefined, (done, remaining) => {
+          setBusy(`X-триаж: обработано ${done}, осталось ${remaining}…`);
+        });
+      } catch (err) {
+        setMessage(
+          `Залито: ${uploaded}, но X-триаж прервался (${String(err instanceof Error ? err.message : err)}) — жми «Прогнать X-триаж» ниже, очередь не теряется`,
+        );
+        return;
+      }
+      setMessage(`Залито: ${uploaded} · отброшено при сохранении: ${failed} · X-триаж пройден: ${triaged}`);
     } catch (err) {
       setMessage(`Ошибка: ${String(err instanceof Error ? err.message : err)}`);
     } finally {
       setBusy(null);
     }
-  }, [picked, tag, busy]);
+  }, [picked, tag, busy, runTriage]);
 
-  const analyze = useCallback(async (ids?: string[]) => {
+  const triageQueue = useCallback(async () => {
     if (busy) return;
-    setBusy(ids ? 'Разбираю…' : 'Разбираю всё новое…');
     setMessage(null);
     try {
-      const res = await fetch('/api/t5/inbox/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(ids ? { ids } : { action: 'analyze' }),
+      setBusy('X-триаж очереди…');
+      const done = await runTriage(undefined, (d, remaining) => {
+        setBusy(`X-триаж: обработано ${d}, осталось ${remaining}…`);
       });
-      const data = (await res.json()) as { analyzed?: number; items?: InboxItem[]; error?: string };
-      if (!res.ok) throw new Error(data.error ?? 'разбор не удался');
-      setItems(data.items ?? []);
-      setMessage(`Разобрано: ${data.analyzed ?? 0}`);
+      setMessage(done > 0 ? `X-триаж пройден: ${done}` : 'Очередь триажа пуста');
     } catch (err) {
-      setMessage(`Ошибка: ${String(err instanceof Error ? err.message : err)}`);
+      setMessage(`Ошибка триажа: ${String(err instanceof Error ? err.message : err)} — очередь сохранена, можно жать снова`);
+    } finally {
+      setBusy(null);
+    }
+  }, [busy, runTriage]);
+
+  const retriageQuarantine = useCallback(async () => {
+    if (busy) return;
+    const ids = items
+      .filter((i) => !i.authorOverride && i.triage.label === 'x' && RETRIAGE_RE.test(i.triage.reason))
+      .map((i) => i.id);
+    if (ids.length === 0) return;
+    setMessage(null);
+    try {
+      setBusy(`Перетриаживаю карантин (${ids.length})…`);
+      const done = await runTriage(ids, (d, remaining) => {
+        setBusy(`Перетриаж карантина: обработано ${d}, осталось ${remaining}…`);
+      });
+      setMessage(`Перетриажено: ${done} — fail-closed карантины пересмотрены`);
+    } catch (err) {
+      setMessage(`Ошибка перетриажа: ${String(err instanceof Error ? err.message : err)}`);
+    } finally {
+      setBusy(null);
+    }
+  }, [busy, items, runTriage]);
+
+  /* ── разбор порционным циклом (сервер капает по 3 файла на запрос) ── */
+  const analyze = useCallback(async (ids?: string[]) => {
+    if (busy) return;
+    setMessage(null);
+    let total = 0;
+    try {
+      for (let guard = 0; guard < 40; guard++) {
+        setBusy(total === 0 ? 'Разбираю…' : `Разобрано ${total}, докручиваю…`);
+        const res = await fetch('/api/t5/inbox/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ids && ids.length > 0 ? { ids } : { action: 'analyze' }),
+        });
+        const data = await readJson<{ analyzed?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
+        if (!res.ok) throw new Error(data.error ?? 'разбор не удался');
+        setItems(data.items ?? []);
+        total += data.analyzed ?? 0;
+        if ((data.analyzed ?? 0) === 0 || (data.remaining ?? 0) === 0) break;
+      }
+      setMessage(total > 0 ? `Разобрано: ${total}` : 'Разбирать нечего — всё разобрано или в карантине');
+    } catch (err) {
+      setMessage(
+        total > 0
+          ? `Разобрано ${total}, дальше прервалось: ${String(err instanceof Error ? err.message : err)} — жми ещё раз, докрутит`
+          : `Ошибка: ${String(err instanceof Error ? err.message : err)}`,
+      );
     } finally {
       setBusy(null);
     }
@@ -103,7 +240,7 @@ export function InboxView() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'override', id, label }),
       });
-      const data = (await res.json()) as { item?: InboxItem; error?: string };
+      const data = await readJson<{ item?: InboxItem; error?: string }>(res);
       if (!res.ok) throw new Error(data.error ?? 'не вышло');
       setItems((list) => list.map((i) => (i.id === id && data.item ? data.item : i)));
     } catch (err) {
@@ -116,16 +253,19 @@ export function InboxView() {
   const onDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setDragOver(false);
-    const dropped = Array.from(e.dataTransfer.files ?? []).filter((f) => f.type.startsWith('image/'));
-    if (dropped.length > 0) setPicked((p) => [...p, ...dropped]);
-  }, []);
+    addFiles(Array.from(e.dataTransfer.files ?? []));
+  }, [addFiles]);
 
   const stats = {
     total: items.length,
     x: items.filter((i) => i.triage.label === 'x' && !i.authorOverride).length,
+    queued: items.filter((i) => i.status === 'queued' || i.triage.label === 'unknown').length,
     pending: items.filter((i) => i.status === 'ok').length,
     analyzed: items.filter((i) => i.status === 'analyzed').length,
   };
+  const retriageCount = items.filter(
+    (i) => !i.authorOverride && i.triage.label === 'x' && i.status === 'x' && RETRIAGE_RE.test(i.triage.reason),
+  ).length;
 
   return (
     <div className="space-y-6" aria-label="Инбокс финальных рендеров">
@@ -150,9 +290,9 @@ export function InboxView() {
               Сбрось итоговые рендеры кучкой
             </h2>
             <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-              Перетащи файлы сюда или выбери вручную — png/jpg/webp, до 25 МБ каждый, до 40 за раз.
-              Каждое изображение проходит X-фильтр: что отсечено — уходит в карантин и никогда не разбирается
-              (fail-closed: сбой триажа = карантин). Остальное я разбираю на артефакты, анатомию, камеру и палитру.
+              Перетащи файлы сюда или выбери вручную — png/jpg/webp, до 25 МБ каждый. Заливаю порциями по 8,
+              затем X-триаж идёт маленькими шагами (без таймаутов). Что отсечено — карантин и никогда не разбирается
+              (fail-closed); сбойный карантин можно перетриажнуть. Остальное я разбираю на артефакты, анатомию, камеру и палитру.
             </p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
@@ -161,7 +301,7 @@ export function InboxView() {
               type="file"
               multiple
               accept="image/png,image/jpeg,image/webp"
-              onChange={(e) => setPicked(Array.from(e.target.files ?? []))}
+              onChange={(e) => addFiles(Array.from(e.target.files ?? []))}
               aria-label="Выбрать файлы"
               className="h-9 w-56 cursor-pointer text-xs text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-white/[0.07] file:px-2 file:py-1 file:text-xs file:text-zinc-200"
             />
@@ -202,24 +342,45 @@ export function InboxView() {
           Инбокс — {stats.total}
         </h2>
         <Chip>карантин X: {stats.x}</Chip>
+        {stats.queued > 0 && <Chip>ждут X-триажа: {stats.queued}</Chip>}
         <Chip>ждут разбора: {stats.pending}</Chip>
         <Chip>разобрано: {stats.analyzed}</Chip>
-        <button
-          type="button"
-          onClick={() => void analyze()}
-          disabled={busy !== null || stats.pending === 0}
-          className="t5-btn ml-auto disabled:opacity-40"
-        >
-          {busy ? <Loader2 className="size-3.5 animate-spin" /> : <ScanSearch className="size-3.5" />}
-          Разобрать всё новое
-        </button>
+        <div className="ml-auto flex flex-wrap gap-2">
+          {retriageCount > 0 && (
+            <button
+              type="button"
+              onClick={() => void retriageQuarantine()}
+              disabled={busy !== null}
+              className="t5-btn disabled:opacity-40"
+              title="Карантин от сбоев/429 триажа — пересматриваю заново"
+            >
+              <RefreshCcw className="size-3.5" aria-hidden />
+              Перетриажнуть карантин ({retriageCount})
+            </button>
+          )}
+          {stats.queued > 0 && (
+            <button type="button" onClick={() => void triageQueue()} disabled={busy !== null} className="t5-btn disabled:opacity-40">
+              {busy ? <Loader2 className="size-3.5 animate-spin" /> : <ShieldAlert className="size-3.5" />}
+              Прогнать X-триаж ({stats.queued})
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => void analyze()}
+            disabled={busy !== null || stats.pending === 0}
+            className="t5-btn disabled:opacity-40"
+          >
+            {busy ? <Loader2 className="size-3.5 animate-spin" /> : <ScanSearch className="size-3.5" />}
+            Разобрать всё новое
+          </button>
+        </div>
       </section>
 
       {busy && (
         <div className="flex items-center gap-2.5 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-zinc-300">
           <Loader2 className="size-4 animate-spin text-emerald-300" aria-hidden />
           {busy}
-          <span className="text-xs text-zinc-500">триаж и разбор идут последовательно — не закрывай вкладку</span>
+          <span className="text-xs text-zinc-500">иду порциями — даже если оборвётся, очередь сохранится, просто жми кнопку снова</span>
         </div>
       )}
       {message && !busy && <p className="text-sm text-zinc-400">{message}</p>}
@@ -243,6 +404,7 @@ export function InboxView() {
           {items.map((item) => {
             const meta = STATUS_META[item.status];
             const quarantined = item.triage.label === 'x' && item.authorOverride?.label !== 'sfw';
+            const canAnalyze = !quarantined && item.status !== 'queued';
             return (
               <article
                 key={item.id}
@@ -306,7 +468,7 @@ export function InboxView() {
                   )}
 
                   <div className="mt-auto flex flex-wrap gap-1.5 pt-1">
-                    {!quarantined && (
+                    {canAnalyze && (
                       <button type="button" onClick={() => void analyze([item.id])} disabled={busy !== null} className="t5-btn !px-2 !py-1 !text-[11px] disabled:opacity-40">
                         <ScanSearch className="size-3" aria-hidden />
                         {item.analysis ? 'Переразобрать' : 'Разобрать'}

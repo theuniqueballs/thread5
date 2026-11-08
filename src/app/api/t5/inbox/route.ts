@@ -2,13 +2,13 @@ import { NextResponse } from 'next/server';
 import {
   MAX_BATCH_FILES,
   readMeta,
-  saveAndTriage,
+  saveFile,
   writeMeta,
-  type InboxItem,
 } from '@/lib/t5/inbox';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 /** GET /api/t5/inbox — журнал инбокса (без содержимого файлов). */
 export async function GET() {
@@ -20,7 +20,11 @@ export async function GET() {
   }
 }
 
-/** POST /api/t5/inbox — bulk-загрузка кучкой (FormData: files[], tag?) + X-триаж. */
+/**
+ * POST /api/t5/inbox — bulk-загрузка кучкой (FormData: files[], tag?).
+ * ТОЛЬКО диск + мета (status queued): vision-триаж вынесен в /triage,
+ * иначе долгий запрос ловит HTML-таймаут шлюза вместо JSON.
+ */
 export async function POST(req: Request) {
   let form: FormData;
   try {
@@ -40,10 +44,10 @@ export async function POST(req: Request) {
 
   const items = await readMeta();
   const results: { origName: string; id?: string; status?: string; error?: string }[] = [];
-  const saved: InboxItem[] = [];
+  const saved = [];
 
   for (const file of files) {
-    const out = await saveAndTriage(file, tag);
+    const out = await saveFile(file, tag);
     if (out.item) {
       saved.push(out.item);
       results.push({ origName: out.origName, id: out.item.id, status: out.item.status });
@@ -60,6 +64,7 @@ export async function POST(req: Request) {
   return NextResponse.json({
     uploaded: saved.length,
     failed: results.filter((r) => r.error).length,
+    queued: saved.length,
     results,
     items,
   });
