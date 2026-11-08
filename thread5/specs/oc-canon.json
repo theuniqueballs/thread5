@@ -2,7 +2,7 @@
  "version": "1.0.0",
  "born": "2026-09-19",
  "source": "3.2 OC_CANON.yaml (THREAD 3.0 format, canon v1.7.1)",
- "canon_version": "2.8.0",
+ "canon_version": "2.9.0",
  "usage_policy": "Tarot / element / zodiac fields below are REGISTRY DATA for the author's own\nseries (Rider-Waite-style card prompts, zodiac prompts). They are NOT batch\nmaterial. Without the author's explicit per-request direction, NO card, sign,\nor ability symbolism may appear in any batch prompt — not in POS, not in NEG,\nnot in theses, palettes, or prompt naming. Batch prompts use the OC's\nAPPEARANCE and origin-continuity motifs only. Card/zodiac assignments stay\nhere so the author can look them up for HIS series.",
  "selection_rule": "────────────────────────────────────────────────────\nPer session: author selects 3 of the 20 active OCs by vibe/theme fit.\nNo forced rotation schedule — author's call each time.\n(2026-10-11: 16 → 19 — счётчик застыл в сентябре, канон вырос до 19.)\n(2026-10-13: 19 → 20 — Lucy promoted from T4-29 P18.)\n(2026-10-16: canon v2.3.0 — FAM-семейство сисек прописано КАЖДОЙ ОС (A=6 / B=8 / C=6, вердикт T4-29 P01 «прописывать размер груди в канонах»). body_type теперь тег-формат: FAM-x (B-диапазон) + теги груди — писец вплетает VERBATIM, проза не попадает в POS. Исходная проза тел — в specs/oc-body-archive.json.)\n(2026-11-01: 20 → 21 — Hana promoted from T5-09 P31 «ledger-of-debts», кандидат «Вель», вердикт: «Дай ей имя Hana и выдай всё, что нужно выдать ОС. Таро и т.д.» — первая конверсия EXP-кандидата приказом. Таро V Hierophant / элемент VELVET / знак Capricorn — assistant-assigned, pending author veto.)\n(2026-11-01, вечер: канон Hana закреплён рендером автора — волосы long wavy pale ash-blonde (в POS их не было, урок F-016); директива «ВЕЗДЕ всё о персонаже» — гейт char-spec, gates v1.5.0, policy v1.11.0.)\n(2026-11-01, поздний вечер: автор закрыл вето — «по хана - закрыть вето, подходит»: V Hierophant / VELVET / Capricorn УТВЕРЖДЕНЫ, pending veto снят; canon v2.6.0.)",
  "ocs": {
@@ -463,6 +463,81 @@
     "2026-11-01 закрепление рендером (чат автора: «прилагаю рендер Hana для закрепления»): renders/2026-11-01-hana-ledger-of-debts.webp — long wavy pale ash-blonde hair (волосы внесены в канон, canon v2.5.0), зрачки-сердца, спати-кончик wine-red, рога satin-black, крылья-фрагменты на пояснице, белый сатиновый слип с выносом бедра, гроссбух на латунной застёжке, чёрное перо в руке, тёплый оконный свет"
    ],
    "wardrobe_policy": "signature: tail-slit MANDATORY (раса R37 — платье/юбка с продуманным выходом хвоста, wrap-closures вместо back-zip); деловой шик гроссбуха: tailored slit gown, латунная фурнитура"
+  },
+  "Meine": {
+   "id": "meine",
+   "tarot": "XVI Tower (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето)) — колосник театра: башня, с которой спускаются нити; карта постановочной строгости — каждая нить ведёт позу, и добрее уставшей ноги",
+   "element": "WEFT (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето)) — нить-уток: тонкая работа, которая держит вес; поднимает усталую ногу и извиняется клан-клоном",
+   "zodiac": "Virgo (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето); SHARED w/ Ash — помечено) — знак точной мелкой работы: люверс за люверсом, петля за петлёй",
+   "birth": "promoted from T5-16 P26 'marionette-thread-step' (EXP R · кандидат «Тэй» · R44 Marionette-kin · PL359 Step-Over Thread-Hold · P161_CHROMA_VEIL + X1-комбо «НАД-ЗРИТЕЛЕМ» delivered; вердикт автора 2026-11-08: «26 - охуенно, берём позу и забираем ОС, обзываем её Meine») — третья конверсия EXP-кандидата прямым приказом (после Hana T5-09)",
+   "race": "R44 Marionette-kin (races.json: doll ball-joints at shoulders, hips and wrists; porcelain-pale skin with satin sheen; tar-black strings от колосника — у Мейне нити СВОИ: из люверсов позвоночника, без кукловода)",
+   "appearance_lock": "ЛОК по канону VERBATIM промпта T5-16 P26 + закрепление рендером автора 2026-11-08 (прецедент Ana/Lucy: канон = рендер): gloss porcelain-jointed skin with seam-lines at the elbows and knees; metal grommets along the spine with thin threads rising out of them; joint-dot cheeks; hairline glaze-crack at the temple; violet-black hair in a screwed-high french twist; glass-blue eyes; slim grown build",
+   "hair": "violet-black, screwed-high french twist",
+   "eyes": "glass-blue",
+   "skin": "gloss porcelain-jointed, seam-lines at elbows/knees, hairline glaze-crack at the temple",
+   "body_type": "slim grown build",
+   "signature_marks": "люверс-петли (metal grommets) вдоль позвоночника — из них поднимаются её собственные нити; суставные точки-щёчки (joint-dot cheeks); волосяная глазурная трещина у виска",
+   "emotional_register": "thread-kind patience — «нить добрее уставшей ноги»: поднимает, держит, извиняется клан-клоном (регистр кандидата «Тэй»)",
+   "anti_shield": "no grommets, no seam-lines, human warm skin, brown hair, dark eyes, petite, child-like, strings from above (чужой кукловод)",
+   "neg_additions": "no grommets, seams gone, strings from above-frame, petite, whole porcelain (трещина ОБЯЗАТЕЛЬНА — изъять из NEG нельзя)",
+   "wardrobe_policy": "signature: corset-as-threads (шнуровка корсета = вторые нити, повторяет люверсы); сценический репетиционный износ: performance corset and shorts worn rehearsal-soft, striped knee socks — одна подтянута нитью",
+   "render_receipts": [
+    "T5-16 P26 'marionette-thread-step' (EXP R · PL359 · P161_CHROMA_VEIL · X1-комбо; вердикт автора 2026-11-08: «26 - охуенно, берём позу и забираем ОС»)",
+    "прокси-петля T5-16 (круг 2): ball-joint шарниры читаются, взрослые формы, violet — зрительная сверка писца; нити видимы (круг 3)",
+    "PixAI-прогон автора 2026-11-08 — канон = рендер"
+   ],
+   "active": true,
+   "name": "Meine"
+  },
+  "Luvv": {
+   "id": "luvv",
+   "tarot": "XXI World (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето)) — лунный цикл замкнулся: тесто взошло, счёт лепёшек сходится; карта полного круга — луна задаёт жар, уши задают срок",
+   "element": "MILK (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето)) — лунное молоко и мука: ночное мягкое свечение, которое кормит; жемчужное свечение кожи (chroma-veil) — её регистр",
+   "zodiac": "Taurus (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето); SHARED w/ Vae — помечено) — знак терпения у тёплого теста: молча считать лепёшки до третьей луны и не суетиться",
+   "birth": "promoted from T5-16 P28 'moonrabbit-pest-kneel' (EXP R+ · кандидат «Юнэ» · R42 Moon-rabbit-kin · PL361 Kneel-Over Pest-Set · P161_CHROMA_VEIL + X1-комбо «НАД-ЗРИТЕЛЕМ» delivered; вердикт автора 2026-11-08: «28 - очень милая, очень красивая и поза и ракурс - супер. Забираем, обзываем её Luvv»)",
+   "race": "R42 Moon-rabbit-kin (races.json: rabbit ears long-hinged with pink inner; round puff tail; star-dust motes at the heels; sickle-moon glint in the iris — у Лувв серп живёт КЛЕЙМОМ у ключицы и следом на муке)",
+   "appearance_lock": "ЛОК по канону VERBATIM промпта T5-16 P28 + закрепление рендером автора 2026-11-08: long moon-white rabbit ears with one turned back; powder-puff tail; silver crescent marking at the collarbone; ruby eyes; snow-white hair crowned in braids; flour dust on the forearms; plush grown build, soft-set breasts",
+   "hair": "snow-white, crowned in braids",
+   "eyes": "ruby (счётные: читаются как внимание, не испуг)",
+   "skin": "flour-pearl glow (chroma-veil), мука на предплечьях как пудра",
+   "body_type": "plush grown build, soft-set breasts",
+   "signature_marks": "уши-локатор — одно развёрнуто назад; хвост-помпон (powder-puff); серебряный серп-клеймо у ключицы; след-полумесяц на муке пола — место, где прошла её тень",
+   "emotional_register": "silent counting — молча считает лепёшки губами; тесто слушается луну (регистр кандидата «Юнэ»)",
+   "anti_shield": "ears drooping, petite, child-like, slender, long legs, dark hair, golden eyes",
+   "neg_additions": "ears drooping, petite",
+   "wardrobe_policy": "signature: пекарский трикотаж с честным каналом R+: knit tube top flour-dusted at the band (nipples a soft honest press through the knit, nothing underneath), suspender skirt with a flour hem",
+   "render_receipts": [
+    "T5-16 P28 'moonrabbit-pest-kneel' (EXP R+ · PL361 · P161_CHROMA_VEIL · X1-комбо; вердикт автора 2026-11-08: «очень милая, очень красивая и поза и ракурс - супер»)",
+    "прокси-петля T5-16 (круг 1→2): глаза уехали в янтарь → ruby-глаза + violet-окно; серп-мука/ступка живы; камера на kneel — лимит прокси (В10), управляющий код rcam D3·A03",
+    "PixAI-прогон автора 2026-11-08 — канон = рендер"
+   ],
+   "active": true,
+   "name": "Luvv"
+  },
+  "Liebe": {
+   "id": "liebe",
+   "tarot": "IV Emperor (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето)) — четыре щупальца держат стойку: власть как опора; порядок без суеты, очередь без крика",
+   "element": "INK (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето)) — чернила-сепия: латте-арт рисуется сам; рисунок знает заказ раньше бариста",
+   "zodiac": "Pisces (assistant-assigned 2026-11-08, вето автора открыто (прецедент Hana: ассистент назначил — автор закрыл вето); SHARED w/ Sue — помечено) — знак воды и смены: пирс на сваях, рассол-ветер, прилив по расписанию",
+   "birth": "promoted from T5-16 P29 'cecaelia-ink-fourfours' (EXP R · кандидат «Иво» · R19 Cecaelia (upper) · PL362 All-Fours Arm-Frame · P161_CHROMA_VEIL + X1-комбо «НАД-ЗРИТЕЛЕМ» delivered; вердикт автора 2026-11-08: «29 - тоже очень крутая и милая, забираем позу и девчонку - обзываем её Liebe»)",
+   "race": "R19 Cecaelia (upper) (races.json: suckered smooth arms from the elbow; mantle-cape at the back; skin reef-warm — у Либе низ переработан каноном слота: ЧЕТЫРЕ нижних щупальца-руки с кольцами присосок держат опору, мантия не ношена — фартук вместо неё)",
+   "appearance_lock": "ЛОК по канону VERBATIM промпта T5-16 P29 + закрепление рендером автора 2026-11-08: four lower tentacle-arms with sucker-rings; teal-shift skin with pearl-drop freckles; web-frilled ears; deep violet hair in paired drill curls; ink-dark eyes; curvy grown build",
+   "hair": "deep violet, paired drill curls",
+   "eyes": "ink-dark",
+   "skin": "teal-shift, pearl-drop freckles, web-frilled ears",
+   "body_type": "curvy grown build",
+   "signature_marks": "четыре нижних щупальца-руки с кольцами присосок (присоски-пуговицы дублированы на фартуке); перепончатые уши-оборки",
+   "emotional_register": "queue-gesture courtesy — щупальца показывают очередь жестами, две ладони скрещены под подбородком; «чернила знают заказ» (регистр кандидата «Иво»)",
+   "anti_shield": "two arms only, smooth arms without sucker-rings, petite, slender, blonde hair, warm human skin, round pupils",
+   "neg_additions": "human two arms, tentacles missing, petite",
+   "wardrobe_policy": "signature: barista uniform с честной анатомией: tie-collar blouse with barista-rolled sleeves; sucker-button apron hanging honest — фартук пристёгнут присосками, мантия-кейп не ношена (R19-канон уступает фартуку)",
+   "render_receipts": [
+    "T5-16 P29 'cecaelia-ink-fourfours' (EXP R · PL362 · P161_CHROMA_VEIL · X1-комбо; вердикт автора 2026-11-08: «тоже очень крутая и милая»)",
+    "прокси-петля T5-16: щупальца-опора вокруг точки держат кадр, зрительная сверка писца",
+    "PixAI-прогон автора 2026-11-08 — канон = рендер"
+   ],
+   "active": true,
+   "name": "Liebe"
   }
  },
  "inactive_reserve": {
@@ -492,9 +567,9 @@
   }
  },
  "registries": {
-  "tarot": "(finalized 2026-09-03; legacy ten fixed by author master\nlist; Zia + Rin added 2026-09-04 from N13 P15/P18; Una added 2026-09-05\nfrom N15 №11, pending author veto; Hana added 2026-11-01 from T5-09 P31,\nveto closed by author same day: «по хана - закрыть вето, подходит»):\nSue — IX Hermit · Miyu — I Magician · Yui — XIX Sun · Sol — II High Priestess ·\nNoa — VII Chariot · Doe — 0 Fool · Lua — XVIII Moon · Nix — VIII Strength ·\nVae — XV Devil · Ash — XIII Death · Lyn — X Wheel of Fortune ·\nRue — XII Hanged Man · Mab — XIV Temperance · Zia — VI Lovers · Rin — XVII Star ·\nUna — XI Justice · Ana — III Empress · Lucy — XX Judgement · Hana — V Hierophant\nFree cards for future OCs: IV Emperor, XVI Tower, XXI World.",
-  "element": "(legacy ten author-fixed; six assistant-assigned; Hana 2026-11-01 — veto closed same day):\nSue — VOID · Miyu — SPIRIT · Yui — LIGHT · Sol — FIRE · Noa — EARTH ·\nDoe — STORM · Lua — SHADOW · Nix — STEEL · Vae — EMBER · Ash — BONE ·\nLyn — DUSK · Rue — DUST · Mab — CLAY · Zia — GALE · Rin — HEARTH ·\nUna — SCALE · Ana — GOLD · Lucy — NEON · Hana — VELVET",
-  "zodiac": "(Sue/Miyu/Yui author-fixed; rest assistant-assigned pending veto;\nOCs over 12 signs — shared pairs flagged; Hana 2026-11-01 — вторая Capricorn, вето закрыто автором («подходит»)):\nSue — Pisces · Miyu — Gemini · Yui — Aries · Sol — Leo · Noa — Sagittarius ·\nDoe — Aquarius · Lua — Scorpio · Nix — Capricorn · Vae — Taurus · Ash — Virgo ·\nLyn — Libra · Rue — Cancer · Mab — Pisces (shared w/ Sue) ·\nZia — Gemini (shared w/ Miyu) · Rin — Aquarius (shared w/ Doe) ·\nUna — Libra (shared w/ Lyn) · Ana — Taurus (shared w/ Vae) ·\nLucy — Cancer (shared w/ Rue) · Hana — Capricorn (shared w/ Nix)"
+  "tarot": "(finalized 2026-09-03; legacy ten fixed by author master\nlist; Zia + Rin added 2026-09-04 from N13 P15/P18; Una added 2026-09-05\nfrom N15 №11, pending author veto; Hana added 2026-11-01 from T5-09 P31,\nveto closed by author same day: «по хана - закрыть вето, подходит»):\nSue — IX Hermit · Miyu — I Magician · Yui — XIX Sun · Sol — II High Priestess ·\nNoa — VII Chariot · Doe — 0 Fool · Lua — XVIII Moon · Nix — VIII Strength ·\nVae — XV Devil · Ash — XIII Death · Lyn — X Wheel of Fortune ·\nRue — XII Hanged Man · Mab — XIV Temperance · Zia — VI Lovers · Rin — XVII Star ·\nUna — XI Justice · Ana — III Empress · Lucy — XX Judgement · Hana — V Hierophant\nMeine — XVI Tower · Luvv — XXI World · Liebe — IV Emperor (все три assistant-assigned 2026-11-08 из T5-16 EXP, вето автора открыто).\nFree cards for future OCs: нет — все 22 карты заняты (2026-11-08, T5-16 вердикт).",
+  "element": "(legacy ten author-fixed; six assistant-assigned; Hana 2026-11-01 — veto closed same day):\nSue — VOID · Miyu — SPIRIT · Yui — LIGHT · Sol — FIRE · Noa — EARTH ·\nDoe — STORM · Lua — SHADOW · Nix — STEEL · Vae — EMBER · Ash — BONE ·\nLyn — DUSK · Rue — DUST · Mab — CLAY · Zia — GALE · Rin — HEARTH ·\nUna — SCALE · Ana — GOLD · Lucy — NEON · Hana — VELVET · Meine — WEFT · Luvv — MILK · Liebe — INK (assistant-assigned 2026-11-08, вето открыто)",
+  "zodiac": "(Sue/Miyu/Yui author-fixed; rest assistant-assigned pending veto;\nOCs over 12 signs — shared pairs flagged; Hana 2026-11-01 — вторая Capricorn, вето закрыто автором («подходит»)):\nSue — Pisces · Miyu — Gemini · Yui — Aries · Sol — Leo · Noa — Sagittarius ·\nDoe — Aquarius · Lua — Scorpio · Nix — Capricorn · Vae — Taurus · Ash — Virgo ·\nLyn — Libra · Rue — Cancer · Mab — Pisces (shared w/ Sue) ·\nZia — Gemini (shared w/ Miyu) · Rin — Aquarius (shared w/ Doe) ·\nUna — Libra (shared w/ Lyn) · Ana — Taurus (shared w/ Vae) ·\nLucy — Cancer (shared w/ Rue) · Hana — Capricorn (shared w/ Nix) · Meine — Virgo (shared w/ Ash) · Luvv — Taurus (shared w/ Vae) · Liebe — Pisces (shared w/ Sue) (assistant-assigned 2026-11-08, вето открыто)"
  },
  "notes": [
   "2026-09-03 v1.1.0 — TAROT/ELEMENT master list arrived from author (10 legacy",
@@ -517,7 +592,8 @@
   "2026-11-01 (закрепление рендера Hana + директива «ВЕЗДЕ ВСЁ»): автор прислал рендер «для закрепления» — канон = рендер, третий прецедент (Ana v1.8.0 → Lucy v2.2.0 → Hana v2.5.0). Волосы: long wavy pale ash-blonde — в POS T5-09 их не было, рендерер импровизировал под палитру P54_ART_DECO_PLATINUM (F-016, гейт char-spec в gates v1.5.0); писцово deep-black переиграно. Зрачки-сердца — из option в канон. Крылья-фрагменты — поясница (в промпте было shoulder line). anti_shield развёрнут: blonde hair ИЗЪЯТ из NEG (канон теперь блонд), вместо него black/dark hair. Таро/элемент/знак — по-прежнему pending veto (рендер вето не отменял). Canon v2.4.0 → v2.5.0.",
   "2026-11-01 (поздний вечер, вето закрыто): автор: «по хана - закрыть вето, подходит» — V Hierophant / VELVET / Capricorn УТВЕРЖДЕНЫ, pending veto снят во всех трёх полях и мастер-списках (таро/элемент/знак). Писцова поправка: карта III Empress ошибочно числилась свободной в поле tarot при промоции — она занята Ana; свободные карты: IV Emperor, XVI Tower, XXI World. Canon v2.5.0 → v2.6.0.",
   "2026-11-04 (вердикт T5-12, чат): ELDRITCH-CONTACT ИЗЪЯТ из канона Vae — автор: «пометка на VAE, что она Eldrich-Contact - не совсем верна, это просто старая ошибка, где меня неправильно поняли. Хорошо бы убрать». Презентация ELDRITCH (смола-архитектура, «never touching her», вердикт-цитата: staging that reads as architecture) остаётся без изменений. Прецедентная оговорка: уже отрендеренное (T5-12 P01) не переписывается, автор основную тему одобрил целиком. Canon v2.6.0 → v2.7.0.",
-  "2026-11-05 (вердикт T5-13, чат): Lucy — ЗЕЛЁНАЯ КОЖА ИЗЪЯТА из канона по вербатиму автора: «чё я говорил - зелёная кожа хуйня» (повтор — автор запрещал её и раньше; писец держал канон-цвет T4-29, авторский вето старше канона). Новый skin: matte milk-white skin glowing faintly cool under city light — молоко остаётся, свечение остаётся, зелень уходит; зелень сохраняется только в глазах (pale-green) и волосах (mint). anti_shield переписан (guard теперь на свечение, не на «не-зелень»). ВЕЗДЕ ВСЁ о персонаже: P02 T5-13 переписан в этом же цикле. Canon v2.7.0 → v2.8.0."
+  "2026-11-05 (вердикт T5-13, чат): Lucy — ЗЕЛЁНАЯ КОЖА ИЗЪЯТА из канона по вербатиму автора: «чё я говорил - зелёная кожа хуйня» (повтор — автор запрещал её и раньше; писец держал канон-цвет T4-29, авторский вето старше канона). Новый skin: matte milk-white skin glowing faintly cool under city light — молоко остаётся, свечение остаётся, зелень уходит; зелень сохраняется только в глазах (pale-green) и волосах (mint). anti_shield переписан (guard теперь на свечение, не на «не-зелень»). ВЕЗДЕ ВСЁ о персонаже: P02 T5-13 переписан в этом же цикле. Canon v2.7.0 → v2.8.0.",
+  "2026-11-08 v2.9.0 — TRIPLE PROMOTION по вердикту T5-16 «LUCID DREAMS» (4,7/5, автор: «EXP — большой прорыв, понравилось всё»): Meine (T5-16 P26, «Тэй», R44 Marionette-kin), Luvv (P28, «Юнэ», R42 Moon-rabbit-kin), Liebe (P29, «Иво», R19 Cecaelia upper) — три EXP-кандидата одного батча в ростер (прецедент: первый батч с тройной конверсией). Таро/элемент/знак — assistant-assigned, вето открыто. Одобренные позы: PL358/PL359/PL361/PL362 (author_picks в poses.json v1.6.0)."
  ],
  "note_on_status": "ACTIVE: 19 (18 прежних + Hana с промоции 2026-11-01; Ama и Ila спят — active=null). 3 drawn per session by author vibe/theme fit, no forced rotation. Rae and Iya are INACTIVE RESERVE (added accidentally, never used, bios retained). SP-registry characters (Nicole, Puppet/Valentine, Ereshkigal/Tito_Lopes) live in download/SP_ORDERS.md, never in OC canon.",
  "fam_scale": {

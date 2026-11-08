@@ -275,6 +275,25 @@ def main():
             except re.error as e:
                 fail(f"headerContract.{req.get('key')}: pattern не компилируется — {e}")
 
+    # ── 11. pose-references: PL-ссылки в батчах существуют в poses.json ──
+    # (находка T5-16: stories.md/00-brief ссылались на PL349–PL357 — кастом-карты,
+    #  а X1-семья живёт на PL358–PL366; сданный JSON был прав, карточки — нет.
+    #  Битая PL-ссылка молча уезжает в промпт-доки и ломает ротацию/учёт first-use.)
+    try:
+        import glob as _glob
+        _poses_path = SPEC / "poses.json"
+        if _poses_path.exists():
+            _pose_ids = {p.get("id") for p in json.loads(_poses_path.read_text(encoding="utf-8")).get("poses", [])}
+            _pl_re = re.compile(r"\bPL\d{2,4}\b")
+            for _md_s in sorted(_glob.glob(str(ROOT / "batches" / "**" / "*.md"), recursive=True)):
+                _md = Path(_md_s)
+                _text = _md.read_text(encoding="utf-8")
+                for _pl in sorted(set(_pl_re.findall(_text))):
+                    if _pl not in _pose_ids:
+                        fail(f"{_md.relative_to(ROOT)}: PL-ссылка «{_pl}» не существует в poses.json — битый ID (проверка №11)")
+    except FileNotFoundError:
+        pass  # poses.json отсутствует — поймано проверкой №1
+
     # ── вердикт ──────────────────────────────────────────────────────────
     if fails:
         print("ВАЛИДАТОР: FAIL")

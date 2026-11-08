@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { ArrowLeft, Check, ChevronRight, ClipboardList, Copy, Loader2, MessageSquareQuote, RotateCcw, Search, SearchX } from 'lucide-react';
 import { Chip, CopyButton, GenreBadge, RatingBadge, copyText } from '@/components/t5/bits';
+import { LoopRenders, type LoopManifest, type LoopSlotInfo } from '@/components/t5/loop-renders';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import type { T5BatchBody, T5Slot } from '@/lib/t5/parse';
@@ -32,7 +33,7 @@ function TagBlock({ title, text }: { title: string; text: string }) {
   );
 }
 
-function SlotCard({ slot }: { slot: T5Slot }) {
+function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) {
   const [openCanon, setOpenCanon] = useState(false);
   return (
     <article className="t5-panel p-5">
@@ -98,6 +99,9 @@ function SlotCard({ slot }: { slot: T5Slot }) {
         <TagBlock title="POS" text={slot.pos} />
         <TagBlock title="NEG" text={slot.neg} />
       </div>
+
+      {/* пре-рендеры прогон-петли (прокси писца) — вердикт T5-16 */}
+      <LoopRenders info={loop} />
     </article>
   );
 }
@@ -525,6 +529,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<'copy' | 'detail'>('copy');
   const [rawText, setRawText] = useState<string | null>(null);
+  const [loopMap, setLoopMap] = useState<Record<string, LoopSlotInfo> | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -547,6 +552,25 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
   useEffect(() => {
     void load();
   }, [load]);
+
+  /* пре-рендеры прогон-петли: лениво, только когда автор открыл «Разбор» */
+  useEffect(() => {
+    if (view !== 'detail' || loopMap) return;
+    let alive = true;
+    void (async () => {
+      try {
+        const res = await fetch(`/t5/loop/${encodeURIComponent(slug)}/loop.json`);
+        if (!res.ok) return;
+        const data = (await res.json()) as LoopManifest;
+        if (alive && data?.slots) setLoopMap(data.slots);
+      } catch {
+        /* нет петли для батча — просто не показываем */
+      }
+    })();
+    return () => {
+      alive = false;
+    };
+  }, [view, loopMap, slug]);
 
   const fetchRaw = useCallback(async (): Promise<string | null> => {
     if (rawText) return rawText;
@@ -669,7 +693,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
               </h3>
               <div className="space-y-4">
                 {act.slots.map((slot) => (
-                  <SlotCard key={slot.id} slot={slot} />
+                  <SlotCard key={slot.id} slot={slot} loop={loopMap?.[slot.id] ?? null} />
                 ))}
               </div>
             </section>
@@ -678,7 +702,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
       ) : (
         <div className="space-y-4">
           {batch.slots.map((slot) => (
-            <SlotCard key={slot.id} slot={slot} />
+            <SlotCard key={slot.id} slot={slot} loop={loopMap?.[slot.id] ?? null} />
           ))}
         </div>
       )}

@@ -58,3 +58,6 @@ tool-results/
 .zscripts/
 db/
 upload/
+
+# инбокс финальных рендеров (журнал+файлы автора, не для гита)
+thread5/inbox/

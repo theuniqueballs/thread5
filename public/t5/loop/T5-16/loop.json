@@ -1,0 +1,127 @@
+{
+ "batch": "T5-16",
+ "theme": "LUCID DREAMS",
+ "updated": "2026-11-08T08:40:00+03:00",
+ "note": "ПРОКСИ-РЕНДЕР — это НЕ PixAI и не PH: встроенный рендерер песочницы, которым писец прогоняет свои же промпты в авто-петле (директива автора: «делаем прогон, ищем уязвимости, исправляем — по нескольку кругов»). Это дымовой тест читаемости промпта: камера строится/нет, вид не подменяется/нет, палитра доезжает/нет. Финальный арбитр — прогон автора на PixAI. Известные потолки прокси: worm's-eye на kneel не строит (В10), самые абстрактные заявки (растворение кожи) глотает.",
+ "circles": {
+  "c1": {
+   "when": "2026-11-08 05:55–06:03",
+   "what": "круг 1 — 12 слотов (9 EXP + P03/P12/P17): базовая сверка; сорвано P25/P26/P27, системно X1-камера 0/9 и chroma-veil 9/9"
+  },
+  "c2": {
+   "when": "2026-11-08 06:16–06:19",
+   "what": "круг 2 — 5 фиксов (P25–P28, P32): видовая анатомия (Б8), violet-источники (В11), ruby-глаза"
+  },
+  "c3": {
+   "when": "2026-11-08 06:21–06:24",
+   "what": "круг 3 — дожим 4 (P25/P26/P28/P32): P25 исправлен, P26 нити видимы, P28/P32 — остаточные риски на PixAI (В10, абстракция)"
+  }
+ },
+ "slots": {
+  "P03": {
+   "name": "Vae · Blasphemy! · inverted-mass-throne (α)",
+   "note": "круг 1: витраж-двойник с её рогами — имба, эталон слота",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P03.webp"
+   },
+   "pos": "portrait, from below at altar height, 1girl, solo, very long black hair with a single white streak, striking red eyes, obsidian skin, tall curvy hourglass build, wide hips, large full breasts, curved ram horns, long serpentine tail. Ceremonial torn white robe slipping off one shoulder, X-shaped tape over each nipple holding the canon, hem burnt thin at the edges. She sits on the altar edge with one heel on the step and a wreath of thorn-wire crowned over her horns, wine drying dark at the corner of her mouth while the empty chalice leans against her thigh; behind her the tall stained glass holds a haloed figure with her own horns and tail, its colored light laying a second silhouette over her skin. Void-ember palette, ash-black depth, coal-glow underlight on the skin, one bone-white accent at the torn hem; her colors written over the saint's. stylized 2D anime face crowned and unbothered, anime eyes (red, satisfied), small nose, small wine-dark mouth, the glass light holding the horn line."
+  },
+  "P12": {
+   "name": "NICHE R · words-crawl-to-skin",
+   "note": "круг 1: жив (эталонный NICHE-кадр)",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P12.webp"
+   },
+   "pos": "portrait, three-quarter angle at eye level, 1girl, solo, warm terracotta skin with hairline kiln-cracks at the elbow and wrist seams, moss-tuft at the nape, deep-set calm amber eyes, dark brown hair in a collar-length blunt cut, grown sturdy build, soft mound in the tie-front fold. Tie-collar blouse with the sleeve pushed past the elbow, pencil skirt neat at the desk edge. She holds her forearm up to eye level reading letters embossed into the clay skin — the note on the desk torn off mid-word — while her other hand pins the last wandering letter flat before it reaches the wrist seam; a hairline crack at her elbow glows thin plum with the hour. Curfew-plum palette, plum-ink depth, terracotta warmth, one embossed-gold accent in the letters; her colors written into the skin. stylized 2D anime face close and reading, anime eyes (amber, following), small nose, small mouthing mouth, the late window glow holding the bang line."
+  },
+  "P17": {
+   "name": "VOLT R+ · tails-rope-ladder (κ) — CANNON ПУШКА #3",
+   "note": "круг 1: девять хвостов + лестница + подушки живы",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P17.webp"
+   },
+   "pos": "upper body, up from the floor at the hang, 1girl, solo, nine cream fox-tails with ink-black tips wrapped along a stair-spine, gold fox eyes with slit pupils, velvet fox ears, pale peach skin, long black hair in a single thick braid hanging, supple grown build. Jersey wrap dress ridden loose by the hang, one shoulder off, breast shape honest in the pulled jersey, slouched thighhighs bands slipped. She hangs off the sofa armrest that grew into a stair spine toward the clouds where the ceiling used to be — nine tails wrapped along it as ropes, her weight honest in the stretch — while two cushions fall past her slower than they should and the room floor waits far below. Marionette-tin palette, tin-blue depth, rope-cream fur lines, one lacquer-red accent at the wrap-knot; her colors strung and taut. stylized 2D anime face dropped back toward the floor, anime eyes (gold, thrilled), small nose, small laughing mouth, the spine light holding the ear line."
+  },
+  "P25": {
+   "name": "EXP R+ · Сора · moth-thread-sew",
+   "note": "круг 1: мотылёк → бабочка-фея (иглы нет, Б8); круг 3: ИСПРАВЛЕН — atlas-moth плотные крылья с лунной меткой, мохнатое плечо, golden глаза",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P25.webp",
+    "c2": "/t5/loop/T5-16/c2/P25.webp",
+    "c3": "/t5/loop/T5-16/c3/P25.webp"
+   },
+   "pos": "upper body, from below, her figure over the lens point, 1girl, solo, soft feathered moth wings spread behind her back, feathery antennae among the ash-blonde pinned-up hair, moth-dust shimmering on the shoulder blades, pale gold eyes, warm ivory skin, tall gentle build, soft natural-set breasts. Tie-front blouse with the sleeve rolled for the needle, nipples printed honest through the tie-front cotton, nothing underneath it. Slouched joggers dusted with pollen at the cuffs. She stands with her feet apart on both sides of the point below, weight on one leg, looking straight down — the needle steady in one hand while the thread runs out of a cocoon-spool on the floor — and the moon-mark at her nape keeps her wings turned so their dust golds every stitch, the wing-beat a patient tick at her mood. Chroma-veil palette: dusk-violet deep, plum shadows never grey, pearl light under the skin, one dream-aqua thread-glow accent; her colors stitched in colored shadow. stylized 2D anime face dipped down to the point below, anime eyes (pale gold, patient), small nose, small working mouth, the wing light holding the shoulder line."
+  },
+  "P26": {
+   "name": "EXP R · Тэй → ОС «Meine» · marionette-thread-step",
+   "note": "круг 1: фарфор/нити не читаются + child-дрейф; круг 2: шарниры читаются, взрослые формы, violet; круг 3: нити ВИДНЫ + стопа поднята",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P26.webp",
+    "c2": "/t5/loop/T5-16/c2/P26.webp",
+    "c3": "/t5/loop/T5-16/c3/P26.webp"
+   },
+   "pos": "upper body, looking up from the floor at her leaning frame, 1girl, solo, gloss porcelain-jointed skin with seam-lines at the elbows and knees, metal grommets along the spine with thin threads rising out of them, joint-dot cheeks, hairline glaze-crack at the temple, violet-black hair in a screwed-high french twist, glass-blue eyes, slim grown build. Performance corset and shorts worn rehearsal-soft, striped knee socks with one held up by a thread. She stands with one foot raised mid-step above the point below — thin stage threads holding the raised ankle from the grommets at her spine while her own hands stay loose at her sides — the porcelain seam at her temple catching a colored glint as she tilts her head down at the lens with a small apologetic bow already queued in her shoulders. Chroma-veil palette: violet-dusk depth, plum-only shadows with no grey, porcelain pearl glow, one thread-silver accent rising past the frame; her colors strung in colored shadow. stylized 2D anime face dipped down with a queued apology, anime eyes (glass-blue, rueful), small nose, small sorry-curved mouth, the thread light holding the grommet line."
+  },
+  "P27": {
+   "name": "EXP R · Мару · tanuki-leaf-straddle",
+   "note": "круг 1: лиса вместо тануки (Б8); круг 2: ИСПРАВЛЕН — ringed raccoon хвост+уши, монеты-листья, violet-лавка; вердикт автора: «в паре рендеров хвост выглядел как хуй» → патч В12",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P27.webp",
+    "c2": "/t5/loop/T5-16/c2/P27.webp"
+   },
+   "pos": "upper body, from beneath as her weight bridges over the frame, 1girl, solo, striped raccoon tail with drum-taut fur hanging down past the frame, round tanuki ears, maple-leaf mark over one eye, auburn hair in rag-rolled waves, amber eyes, warm tan skin, soft grown build, small chest. Athletic crop top with a loose shop apron knot, silk pajama shorts honest on the counter edge. She straddles the counter edge leaning far forward on her forearms — palms folded to hide the grin — looking straight down at the lens-side point while her tail keeps a drum-tap count against the till and the change-tray's coins already show green leaf-veins for tomorrow. Chroma-veil palette: plum-violet depth, colored shadows instead of grey, skin lit pearl from within, one leaf-green accent at the change-tray; her colors tallied in colored shadow. stylized 2D anime face bent low over the folded palms, anime eyes (amber, merry), small nose, small hidden-grin mouth, the tail light holding the counter line."
+  },
+  "P28": {
+   "name": "EXP R+ · Юнэ → ОС «Luvv» · moonrabbit-pest-kneel",
+   "note": "круг 1: глаза уехали в янтарь; круг 2: ruby-глаза + violet-окно; круг 3: камера упёрлась в лимит прокси — worm's-eye на kneel не берёт (В10), управляющий код rcam D3·A03 остаётся на PixAI",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P28.webp",
+    "c2": "/t5/loop/T5-16/c2/P28.webp",
+    "c3": "/t5/loop/T5-16/c3/P28.webp"
+   },
+   "pos": "upper body, up at her dropped face from the floor point, 1girl, solo, long moon-white rabbit ears with one turned back, powder-puff tail, silver crescent marking at the collarbone, ruby eyes, snow-white hair crowned in braids, flour dust on the forearms, plush grown build, soft-set breasts. Knit tube top flour-dusted at the band, nipples a soft honest press through the knit, nothing underneath it, suspender skirt with a flour hem. She kneels above the point below with the pestle set aside on the mortar rim — both palms flat on the boards on either side of the frame, head dropped to look down — while her lips keep silent count of the mochi rounds and the flour on the floor holds one clean crescent mark where her shadow passed. Chroma-veil palette: dusk-violet dark, plum tinted shadows, grey never, flour-pearl glow on the skin, one ember-amber accent at the oven seam; her colors kneaded in colored shadow. stylized 2D anime face dropped down into the frame, anime eyes (ruby, counting), small nose, small counting mouth, the oven light holding the ear line."
+  },
+  "P29": {
+   "name": "EXP R · Иво → ОС «Liebe» · cecaelia-ink-fourfours",
+   "note": "круг 1: поднос-ползание и щупальца-опора живы",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P29.webp"
+   },
+   "pos": "upper body, from under her hovered frame, 1girl, solo, four lower tentacle-arms with sucker-rings propped around the point below, teal-shift skin with pearl-drop freckles, web-frilled ears, deep violet hair in paired drill curls, ink-dark eyes, curvy grown build. Tie-collar blouse with barista-rolled sleeves, sucker-button apron hanging honest. She hovers propped on four tentacle-arms above the point below — two hand-arms crossed under her chin, head tilted down at the lens — while a cup on the counter draws its latte-art by itself in edible sepia ink and one tentacle holds the queue-gesture for the door behind her. Chroma-veil palette: violet-dusk dark, plum shadows with zero grey, teal-pearl underglow, one sepia-ink accent curling in the cup; her colors poured in colored shadow. stylized 2D anime face settled on crossed hands, anime eyes (ink-dark, amused), small nose, small service-smile mouth, the ink light holding the sucker line."
+  },
+  "P30": {
+   "name": "EXP R+ · Лис · vampire-balcony-stare",
+   "note": "круг 1: балконный перегиб и книга живы",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P30.webp"
+   },
+   "pos": "upper body, low angle up past the hanging hair, 1girl, solo, porcelain-pale skin, crimson iris with a thin ring, small fang-scope glinting on one canine, jet-black hair to the waist hanging down past the frame edge, tall cold-composed build, full soft breasts. Long black dress with the bodice fitted and breast shape honest through it, velvet choker at the throat. She bends over the balcony rail far enough that her hair hangs into the frame — the book held below her face, eyes down at the lens point — while one sigh turns a page on its own and her shadow on the wall already reads the next chapter, her real hand still pinning the old one. Chroma-veil palette: deep dusk-violet, plum shadow work without grey, pale pearl bodysheen, one blood-red accent at the iris ring; her colors read in colored shadow. stylized 2D anime face hung over the rail, anime eyes (crimson, absorbed), small nose, small fang-flashing mouth, the rail light holding the hair line."
+  },
+  "P31": {
+   "name": "EXP R · Нэя · ghost-crawl-approach",
+   "note": "круг 1: поднос-ползание по воздуху живо",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P31.webp"
+   },
+   "pos": "upper body, from the floor at her crawling frame, 1girl, solo, semi-translucent milk-glass skin with the lower body fading toward mist, hollow-soft window-glow eyes, long silver hair drifting weightless, gentle tall build, small chest. Hotel-issue oversized button-up semi-solid at the shoulders, sheer pantyhose fading out at the ankles, a key-ring belt with keys that make no sound. She crawls through mid-air a palm above the corridor floor — hands and knees resting on nothing, face dipped down toward the point below — while a tray of tea rides the strap on her back and the dawn light starts eating her outline from the knees up, the room unlit and unbothered. Chroma-veil palette: dusk-violet mist, plum-colored shadows never neutral, milk-glass inner glow, one dawn-rose accent eating the ankles; her colors passed through colored shadow. stylized 2D anime face dipped down and sorry, anime eyes (window-glow, apologetic), small nose, small excusing mouth, the tray light holding the strap line."
+  },
+  "P32": {
+   "name": "EXP R+ · Тэсса · wind-orbit-lean",
+   "note": "круг 1: кольцо ветра живо; круг 2: violet-небо, посылки/расписки; круг 3: волосы-флаги + расписки + violet держатся; растворение кожи — самая абстрактная заявка батча (остаток на PixAI)",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P32.webp",
+    "c2": "/t5/loop/T5-16/c2/P32.webp",
+    "c3": "/t5/loop/T5-16/c3/P32.webp"
+   },
+   "pos": "upper body, from beneath her banked orbit, 1girl, solo, silver wind-streamed hair and hem running in one constant direction, skin translucent at the edges where the breeze passes through her, air-trails at the fingertips, bright sky-grey eyes, lithe athletic build. Backless halter top with the hem streaming back, nipples a soft honest print through the halter knit, nothing underneath it, breezy maxi skirt caught mid-wave at the thigh. She banks inward around the point below inside a slow ring of wind — body tilted toward the center, parcels swinging on the orbit behind her — while a delivery slip signs itself in a curl of air and the leaf-ring around her holds one clean lane. Chroma-veil palette: violet depth of dusk, shadows tinted plum, never grey, wind-pearl sheen, one parcel-kraft accent swinging past the frame; her colors circled in colored shadow. stylized 2D anime face banked into the turn, anime eyes (sky-grey, laughing), small nose, small wind-open mouth, the orbit light holding the hair line."
+  },
+  "P33": {
+   "name": "EXP R · Нин · banshee-lean-in",
+   "note": "круг 1: жив; X1-камера на lean — остаточный риск (В10)",
+   "circles": {
+    "c1": "/t5/loop/T5-16/c1/P33.webp"
+   },
+   "pos": "upper body, up from the dish at her leaned-in face, 1girl, solo, frost-lashed lashes, long silver-white hair drifting like slow smoke past the frame, cool moonlit-grey skin, storm-pale eyes, tide-line braid at the temple, tall slender build, soft natural-set breasts. Oversized mohair sweater swallowing the hips, slouch socks on the balcony boards, a wet towel hung as the forecast. She bends deep over the dish set on the rail at the point below — palms braced on the sill, tear-pearls dropping straight down past the frame edge into the saucer — while her lips count the drops without sound and the city behind her waits three days early for rain. Chroma-veil palette: dusk-violet hush, plum-shadowed and never grey, frost-pearl light, one pearl-white accent falling down the frame; her colors counted in colored shadow. stylized 2D anime face leaned down over the dish, anime eyes (storm-pale, tender), small nose, small counting mouth, the dish light holding the lash line."
+  }
+ }
+}

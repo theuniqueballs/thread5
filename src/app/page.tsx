@@ -1,15 +1,16 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { BookOpenText, Gift, Layers, Loader2, RefreshCw, Sparkles } from 'lucide-react';
+import { BookOpenText, Gift, Inbox, Layers, Loader2, RefreshCw, Sparkles } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { Chip, T5Markdown } from '@/components/t5/bits';
 import { BatchView } from '@/components/t5/batch-view';
+import { InboxView } from '@/components/t5/inbox-view';
 import type { BatchListItem, T5DocMeta } from '@/lib/t5/types';
 import { T5_DOCS } from '@/lib/t5/types';
 
-type Tab = 'batches' | 'special' | 'docs';
+type Tab = 'batches' | 'special' | 'inbox' | 'docs';
 type View = { kind: 'list' } | { kind: 'batch'; slug: string } | { kind: 'special'; slug: string };
 
 const DEFAULT_DOC = 'LAWS';
@@ -18,6 +19,7 @@ const SLUG_HASH_RE = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u;
 const TAB_ACCENT: Record<Tab, string> = {
   batches: '#ff3d8a',
   special: '#2de2e6',
+  inbox: '#4ade80',
   docs: '#a78bfa',
 };
 
@@ -41,6 +43,7 @@ function parseHash(): HashState {
     return { tab: 'docs', view: { kind: 'list' }, doc: known ? known.name : DEFAULT_DOC };
   }
   if (raw === 'special') return { tab: 'special', view: { kind: 'list' }, doc: DEFAULT_DOC };
+  if (raw === 'inbox') return { tab: 'inbox', view: { kind: 'list' }, doc: DEFAULT_DOC };
   if (raw.startsWith('SO-') && SLUG_HASH_RE.test(raw)) {
     return { tab: 'special', view: { kind: 'special', slug: raw }, doc: DEFAULT_DOC };
   }
@@ -421,6 +424,7 @@ export default function Home() {
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
     { id: 'batches', label: 'Батчи', icon: <Layers className="size-4" /> },
     { id: 'special', label: 'Special', icon: <Gift className="size-4" /> },
+    { id: 'inbox', label: 'Инбокс', icon: <Inbox className="size-4" /> },
     { id: 'docs', label: 'Память', icon: <BookOpenText className="size-4" /> },
   ];
 
@@ -520,6 +524,7 @@ export default function Home() {
               <BatchList items={special} variant="special" refreshing={refreshing} onRefresh={() => void loadBatches(true)} onOpen={openSpecial} />
             </div>
           ))}
+        {tab === 'inbox' && <InboxView />}
         {tab === 'docs' && <DocsView active={doc} onActive={openDoc} />}
       </main>
 

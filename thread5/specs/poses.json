@@ -1,5 +1,5 @@
 {
- "version": "1.5.0",
+ "version": "1.6.0",
  "born": "2026-09-19",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14)",
  "poses": [
@@ -14,7 +14,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM04_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL02",
@@ -27,7 +28,8 @@
     "CAM05_over_shoulder",
     "CAM02_three_quarter",
     "CAM04_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL03",
@@ -40,7 +42,8 @@
     "CAM02_three_quarter",
     "CAM12_aerial",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL04",
@@ -53,7 +56,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL05",
@@ -66,7 +70,8 @@
     "CAM03_from_below",
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL06",
@@ -79,7 +84,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL07",
@@ -92,7 +98,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL08",
@@ -105,7 +112,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL09",
@@ -118,7 +126,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL10",
@@ -131,7 +140,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL11",
@@ -144,7 +154,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL12",
@@ -157,7 +168,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL13",
@@ -170,7 +182,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL14",
@@ -183,7 +196,8 @@
     "CAM12_aerial",
     "CAM05_over_shoulder",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL15",
@@ -196,7 +210,8 @@
     "CAM05_over_shoulder",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL16",
@@ -209,7 +224,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL17",
@@ -222,7 +238,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL18",
@@ -235,7 +252,8 @@
     "CAM12_aerial",
     "CAM06_side",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL19",
@@ -248,7 +266,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL20",
@@ -261,7 +280,8 @@
     "CAM08_back_to_camera",
     "CAM05_over_shoulder",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL21",
@@ -274,7 +294,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL22",
@@ -287,7 +308,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL23",
@@ -300,7 +322,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL24",
@@ -313,7 +336,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL25",
@@ -326,7 +350,8 @@
     "CAM06_side",
     "CAM03_from_below",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL26",
@@ -339,7 +364,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL27",
@@ -352,7 +378,8 @@
     "CAM02_three_quarter",
     "CAM03_from_below",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL28",
@@ -365,7 +392,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL29",
@@ -378,7 +406,8 @@
     "CAM11_mirror_reflection",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL30",
@@ -391,7 +420,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL31",
@@ -404,7 +434,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL32",
@@ -417,7 +448,8 @@
     "CAM03_from_below",
     "CAM12_aerial",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL33",
@@ -430,7 +462,8 @@
     "CAM12_aerial",
     "CAM06_side",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL34",
@@ -443,7 +476,8 @@
     "CAM08_back_to_camera",
     "CAM06_side",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL35",
@@ -456,7 +490,8 @@
     "CAM05_over_shoulder",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL36",
@@ -469,7 +504,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL37",
@@ -482,7 +518,8 @@
     "CAM01_eye_level",
     "CAM03_from_below",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL38",
@@ -495,7 +532,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL39",
@@ -508,7 +546,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL40",
@@ -521,7 +560,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL41",
@@ -534,7 +574,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL42",
@@ -547,7 +588,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL43",
@@ -560,7 +602,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL44",
@@ -573,7 +616,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL45",
@@ -586,7 +630,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL46",
@@ -599,7 +644,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL47",
@@ -612,7 +658,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL48",
@@ -625,7 +672,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL49",
@@ -638,7 +686,8 @@
     "CAM08_back_to_camera",
     "CAM16_hip_height_gate",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL50",
@@ -651,7 +700,8 @@
     "CAM14_top_down_shaft",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL51",
@@ -664,7 +714,8 @@
     "CAM08_back_to_camera",
     "CAM06_side",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL52",
@@ -677,7 +728,8 @@
     "CAM01_eye_level",
     "CAM03_from_below",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL53",
@@ -690,7 +742,8 @@
     "CAM17_between_legs_sightline",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL54",
@@ -703,7 +756,8 @@
     "CAM08_back_to_camera",
     "CAM05_over_shoulder",
     "CAM18_fisheye_seat"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL55",
@@ -716,7 +770,8 @@
     "CAM03_from_below",
     "CAM06_side",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL56",
@@ -729,7 +784,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM17_between_legs_sightline"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL57",
@@ -742,7 +798,8 @@
     "CAM08_back_to_camera",
     "CAM05_over_shoulder",
     "CAM13_crotch_lead"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL58",
@@ -755,7 +812,8 @@
     "CAM13_crotch_lead",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL59",
@@ -768,7 +826,8 @@
     "CAM16_hip_height_gate",
     "CAM06_side",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL60",
@@ -781,7 +840,8 @@
     "CAM14_top_down_shaft",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL61",
@@ -794,7 +854,8 @@
     "CAM02_three_quarter",
     "CAM08_back_to_camera",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL62",
@@ -807,7 +868,8 @@
     "CAM04_from_above",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL63",
@@ -820,7 +882,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL64",
@@ -833,7 +896,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL65",
@@ -846,7 +910,8 @@
     "CAM05_over_shoulder",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL66",
@@ -859,7 +924,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL67",
@@ -872,7 +938,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL68",
@@ -885,7 +952,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL69",
@@ -898,7 +966,8 @@
     "CAM08_back_to_camera",
     "CAM06_side",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL70",
@@ -911,7 +980,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL71",
@@ -924,7 +994,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL72",
@@ -937,7 +1008,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL73",
@@ -950,7 +1022,8 @@
     "CAM08_back_to_camera",
     "CAM05_over_shoulder",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL74",
@@ -963,7 +1036,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL75",
@@ -976,7 +1050,8 @@
     "CAM01_eye_level",
     "CAM05_over_shoulder",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL76",
@@ -989,7 +1064,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM04_from_above"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL77",
@@ -1002,7 +1078,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL78",
@@ -1015,7 +1092,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL79",
@@ -1028,7 +1106,8 @@
     "CAM02_three_quarter",
     "CAM12_aerial",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL80",
@@ -1041,7 +1120,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL81",
@@ -1054,7 +1134,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM14_top_down_shaft"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL82",
@@ -1067,7 +1148,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL83",
@@ -1080,7 +1162,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL84",
@@ -1093,7 +1176,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL85",
@@ -1106,7 +1190,8 @@
     "CAM02_three_quarter",
     "CAM03_from_below",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL86",
@@ -1119,7 +1204,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL87",
@@ -1132,7 +1218,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL88",
@@ -1145,7 +1232,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL89",
@@ -1158,7 +1246,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM09_dutch_tilt"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL90",
@@ -1171,7 +1260,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL91",
@@ -1184,7 +1274,8 @@
     "CAM02_three_quarter",
     "CAM12_aerial",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL92",
@@ -1197,7 +1288,8 @@
     "CAM06_side",
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL93",
@@ -1210,7 +1302,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL94",
@@ -1223,7 +1316,8 @@
     "CAM01_eye_level",
     "CAM03_from_below",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL95",
@@ -1236,7 +1330,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL96",
@@ -1249,7 +1344,8 @@
     "CAM03_from_below",
     "CAM06_side",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL97",
@@ -1262,7 +1358,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL98",
@@ -1275,7 +1372,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL99",
@@ -1288,7 +1386,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL100",
@@ -1301,7 +1400,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL101",
@@ -1314,7 +1414,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL102",
@@ -1327,7 +1428,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM09_dutch_tilt"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL103",
@@ -1340,7 +1442,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL104",
@@ -1353,7 +1456,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL105",
@@ -1366,7 +1470,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL106",
@@ -1379,7 +1484,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL107",
@@ -1392,7 +1498,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL108",
@@ -1405,7 +1512,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL109",
@@ -1418,7 +1526,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL110",
@@ -1431,7 +1540,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL111",
@@ -1444,7 +1554,8 @@
     "CAM02_three_quarter",
     "CAM12_aerial",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL112",
@@ -1457,7 +1568,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL113",
@@ -1470,7 +1582,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL114",
@@ -1483,7 +1596,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL115",
@@ -1496,7 +1610,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL116",
@@ -1509,7 +1624,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL117",
@@ -1522,7 +1638,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL118",
@@ -1535,7 +1652,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL119",
@@ -1548,7 +1666,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL120",
@@ -1561,7 +1680,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL121",
@@ -1574,7 +1694,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL122",
@@ -1587,7 +1708,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL123",
@@ -1600,7 +1722,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL124",
@@ -1613,7 +1736,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL125",
@@ -1626,7 +1750,8 @@
     "CAM01_eye_level",
     "CAM06_side",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL126",
@@ -1639,7 +1764,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL127",
@@ -1652,7 +1778,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL128",
@@ -1665,7 +1792,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL129",
@@ -1678,7 +1806,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL130",
@@ -1691,7 +1820,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL131",
@@ -1704,7 +1834,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL132",
@@ -1717,7 +1848,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL133",
@@ -1730,7 +1862,8 @@
     "CAM11_mirror_reflection",
     "CAM05_over_shoulder",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL134",
@@ -1743,7 +1876,8 @@
     "CAM02_three_quarter",
     "CAM11_mirror_reflection",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL135",
@@ -1756,7 +1890,8 @@
     "CAM06_side",
     "CAM11_mirror_reflection",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL136",
@@ -1769,7 +1904,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL137",
@@ -1782,7 +1918,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL138",
@@ -1795,7 +1932,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL139",
@@ -1808,7 +1946,8 @@
     "CAM06_side",
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL140",
@@ -1821,7 +1960,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL141",
@@ -1834,7 +1974,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL142",
@@ -1847,7 +1988,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL143",
@@ -1860,7 +2002,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL144",
@@ -1873,7 +2016,8 @@
     "CAM05_over_shoulder",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL145",
@@ -1886,7 +2030,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL146",
@@ -1899,7 +2044,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL147",
@@ -1912,7 +2058,8 @@
     "CAM11_mirror_reflection",
     "CAM01_eye_level",
     "CAM05_macro"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL148",
@@ -1925,7 +2072,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL149",
@@ -1938,7 +2086,8 @@
     "CAM02_three_quarter",
     "CAM07_wide_env",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL150",
@@ -1951,7 +2100,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL151",
@@ -1964,7 +2114,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL152",
@@ -1977,7 +2128,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL153",
@@ -1990,7 +2142,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL154",
@@ -2003,7 +2156,8 @@
     "CAM12_aerial",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL155",
@@ -2016,7 +2170,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL156",
@@ -2029,7 +2184,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL157",
@@ -2042,7 +2198,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL158",
@@ -2055,7 +2212,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL159",
@@ -2068,7 +2226,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL160",
@@ -2081,7 +2240,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL161",
@@ -2094,7 +2254,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL162",
@@ -2107,7 +2268,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL163",
@@ -2120,7 +2282,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL164",
@@ -2133,7 +2296,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL165",
@@ -2146,7 +2310,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL166",
@@ -2159,7 +2324,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL167",
@@ -2172,7 +2338,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL168",
@@ -2185,7 +2352,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL169",
@@ -2198,7 +2366,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL170",
@@ -2211,7 +2380,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL171",
@@ -2224,7 +2394,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL172",
@@ -2237,7 +2408,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL173",
@@ -2250,7 +2422,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL174",
@@ -2263,7 +2436,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL175",
@@ -2276,7 +2450,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL176",
@@ -2289,7 +2464,8 @@
     "CAM02_three_quarter",
     "CAM03_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL177",
@@ -2302,7 +2478,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL178",
@@ -2315,7 +2492,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL179",
@@ -2328,7 +2506,8 @@
     "CAM02_three_quarter",
     "CAM03_from_below",
     "CAM06_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL180",
@@ -2341,7 +2520,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL181",
@@ -2354,7 +2534,8 @@
     "CAM01_eye_level",
     "CAM03_from_below",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL182",
@@ -2367,7 +2548,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL183",
@@ -2380,7 +2562,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL184",
@@ -2393,7 +2576,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL185",
@@ -2406,7 +2590,8 @@
     "CAM03_from_below",
     "CAM06_side",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL186",
@@ -2419,7 +2604,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL187",
@@ -2432,7 +2618,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM14_top_down_shaft"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL188",
@@ -2445,7 +2632,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL189",
@@ -2458,7 +2646,8 @@
     "CAM01_eye_level",
     "CAM03_from_below",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL190",
@@ -2471,7 +2660,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL191",
@@ -2484,7 +2674,8 @@
     "CAM03_from_below",
     "CAM16_hip_height_gate",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL192",
@@ -2497,7 +2688,8 @@
     "CAM14_top_down_shaft",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL193",
@@ -2510,7 +2702,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL194",
@@ -2523,7 +2716,8 @@
     "CAM11_mirror_reflection",
     "CAM01_eye_level",
     "CAM05_macro"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL195",
@@ -2536,7 +2730,8 @@
     "CAM04_from_above",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL196",
@@ -2549,7 +2744,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL197",
@@ -2562,7 +2758,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL198",
@@ -2575,7 +2772,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL199",
@@ -2588,7 +2786,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL200",
@@ -2601,7 +2800,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL201",
@@ -2614,7 +2814,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL202",
@@ -2627,7 +2828,8 @@
     "CAM02_three_quarter",
     "CAM06_side",
     "CAM03_from_below"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL203",
@@ -2640,7 +2842,8 @@
     "CAM01_eye_level",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL204",
@@ -2653,7 +2856,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL205",
@@ -2666,7 +2870,8 @@
     "CAM05_macro",
     "CAM01_eye_level",
     "CAM11_mirror_reflection"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL206",
@@ -2679,7 +2884,8 @@
     "CAM04_from_above",
     "CAM05_macro",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL207",
@@ -2692,7 +2898,8 @@
     "CAM06_side",
     "CAM05_macro",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL208",
@@ -2705,7 +2912,8 @@
     "CAM01_eye_level",
     "CAM05_macro",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL209",
@@ -2718,7 +2926,8 @@
     "CAM05_macro",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL210",
@@ -2731,7 +2940,8 @@
     "CAM05_macro",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL211",
@@ -2744,7 +2954,8 @@
     "CAM01_eye_level",
     "CAM05_macro",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL212",
@@ -2757,7 +2968,8 @@
     "CAM03_from_below",
     "CAM05_macro",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL213",
@@ -2770,7 +2982,8 @@
     "CAM05_macro",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL214",
@@ -2783,7 +2996,8 @@
     "CAM11_mirror_reflection",
     "CAM05_macro",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL215",
@@ -2796,7 +3010,8 @@
     "CAM02_three_quarter",
     "CAM05_macro",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL216",
@@ -2809,7 +3024,8 @@
     "CAM05_macro",
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL217",
@@ -2822,7 +3038,8 @@
     "CAM01_eye_level",
     "CAM05_macro",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL218",
@@ -2835,7 +3052,8 @@
     "CAM05_macro",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL219",
@@ -2848,7 +3066,8 @@
     "CAM05_macro",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL220",
@@ -2861,7 +3080,8 @@
     "CAM02_three_quarter",
     "CAM05_macro",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL221",
@@ -2874,7 +3094,8 @@
     "CAM05_macro",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL222",
@@ -2887,7 +3108,8 @@
     "CAM05_macro",
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL223",
@@ -2900,7 +3122,8 @@
     "CAM06_side",
     "CAM05_macro",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL224",
@@ -2913,7 +3136,8 @@
     "CAM01_eye_level",
     "CAM05_macro",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL225",
@@ -2926,7 +3150,8 @@
     "CAM05_macro",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL226",
@@ -2939,7 +3164,8 @@
     "CAM05_macro",
     "CAM06_side",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL227",
@@ -2952,7 +3178,8 @@
     "CAM02_three_quarter",
     "CAM05_macro",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL228",
@@ -2965,7 +3192,8 @@
     "CAM01_eye_level",
     "CAM05_macro",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL229",
@@ -2978,7 +3206,8 @@
     "CAM06_side",
     "CAM16_hip_height_gate",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL230",
@@ -2991,7 +3220,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL231",
@@ -3004,7 +3234,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL232",
@@ -3017,7 +3248,8 @@
     "CAM11_mirror_reflection",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL233",
@@ -3030,7 +3262,8 @@
     "CAM07_wide_env",
     "CAM06_side",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL234",
@@ -3043,7 +3276,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL235",
@@ -3056,7 +3290,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL236",
@@ -3069,7 +3304,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL237",
@@ -3082,7 +3318,8 @@
     "CAM05_over_shoulder",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL238",
@@ -3095,7 +3332,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM12_aerial"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL239",
@@ -3108,7 +3346,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter",
     "CAM06_side"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL240",
@@ -3121,7 +3360,8 @@
     "CAM06_side",
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "N"
   },
   {
    "id": "PL241",
@@ -3135,7 +3375,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL242",
@@ -3149,7 +3390,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL243",
@@ -3163,7 +3405,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL244",
@@ -3177,7 +3420,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL245",
@@ -3191,7 +3435,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL246",
@@ -3205,7 +3450,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL247",
@@ -3219,7 +3465,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL248",
@@ -3233,7 +3480,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL249",
@@ -3247,7 +3495,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL250",
@@ -3261,7 +3510,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL251",
@@ -3275,7 +3525,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL252",
@@ -3289,7 +3540,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL253",
@@ -3303,7 +3555,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL254",
@@ -3317,7 +3570,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL255",
@@ -3331,7 +3585,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL256",
@@ -3345,7 +3600,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL257",
@@ -3359,7 +3615,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL258",
@@ -3373,7 +3630,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL259",
@@ -3387,7 +3645,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL260",
@@ -3401,7 +3660,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL261",
@@ -3415,7 +3675,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL262",
@@ -3429,7 +3690,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL263",
@@ -3443,7 +3705,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL264",
@@ -3457,7 +3720,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL265",
@@ -3471,7 +3735,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL266",
@@ -3485,7 +3750,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL267",
@@ -3499,7 +3765,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL268",
@@ -3513,7 +3780,8 @@
     "CAM02_three_quarter",
     "CAM04_from_below",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL269",
@@ -3527,7 +3795,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL270",
@@ -3541,7 +3810,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL271",
@@ -3555,7 +3825,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL272",
@@ -3569,7 +3840,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL273",
@@ -3583,7 +3855,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL274",
@@ -3597,7 +3870,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL275",
@@ -3611,7 +3885,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL276",
@@ -3625,7 +3900,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL277",
@@ -3639,7 +3915,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL278",
@@ -3653,7 +3930,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL279",
@@ -3667,7 +3945,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL280",
@@ -3681,7 +3960,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL281",
@@ -3695,7 +3975,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL282",
@@ -3709,7 +3990,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL283",
@@ -3723,7 +4005,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL284",
@@ -3737,7 +4020,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL285",
@@ -3751,7 +4035,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL286",
@@ -3765,7 +4050,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL287",
@@ -3779,7 +4065,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL288",
@@ -3793,7 +4080,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL289",
@@ -3807,7 +4095,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL290",
@@ -3821,7 +4110,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL291",
@@ -3835,7 +4125,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL292",
@@ -3849,7 +4140,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL293",
@@ -3863,7 +4155,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL294",
@@ -3877,7 +4170,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL295",
@@ -3891,7 +4185,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL296",
@@ -3905,7 +4200,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL297",
@@ -3919,7 +4215,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL298",
@@ -3933,7 +4230,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL299",
@@ -3947,7 +4245,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL300",
@@ -3961,7 +4260,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL301",
@@ -3975,7 +4275,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL302",
@@ -3989,7 +4290,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL303",
@@ -4003,7 +4305,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL304",
@@ -4017,7 +4320,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL305",
@@ -4031,7 +4335,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL306",
@@ -4045,7 +4350,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL307",
@@ -4059,7 +4365,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL308",
@@ -4073,7 +4380,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL309",
@@ -4087,7 +4395,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL310",
@@ -4101,7 +4410,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL311",
@@ -4115,7 +4425,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL312",
@@ -4129,7 +4440,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL313",
@@ -4143,7 +4455,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL314",
@@ -4157,7 +4470,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL315",
@@ -4171,7 +4485,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL316",
@@ -4185,7 +4500,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL317",
@@ -4199,7 +4515,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL318",
@@ -4213,7 +4530,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL319",
@@ -4227,7 +4545,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL320",
@@ -4241,7 +4560,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL321",
@@ -4255,7 +4575,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL322",
@@ -4269,7 +4590,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL323",
@@ -4283,7 +4605,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL324",
@@ -4297,7 +4620,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL325",
@@ -4311,7 +4635,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL326",
@@ -4325,7 +4650,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL327",
@@ -4339,7 +4665,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL328",
@@ -4353,7 +4680,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL329",
@@ -4367,7 +4695,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL330",
@@ -4381,7 +4710,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL331",
@@ -4395,7 +4725,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL332",
@@ -4409,7 +4740,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL333",
@@ -4423,7 +4755,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level",
     "CAM04_low_side"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL334",
@@ -4436,7 +4769,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL335",
@@ -4449,7 +4783,8 @@
    "preferred_cams": [
     "CAM01_eye_level",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL336",
@@ -4462,7 +4797,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL337",
@@ -4475,7 +4811,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL338",
@@ -4488,7 +4825,8 @@
    "preferred_cams": [
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL339",
@@ -4501,7 +4839,8 @@
    "preferred_cams": [
     "CAM03_low",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL340",
@@ -4514,7 +4853,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL341",
@@ -4527,7 +4867,8 @@
    "preferred_cams": [
     "CAM03_low",
     "CAM07_wide_env"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL342",
@@ -4540,7 +4881,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL343",
@@ -4553,7 +4895,8 @@
    "preferred_cams": [
     "CAM07_wide_env",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL344",
@@ -4566,7 +4909,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL345",
@@ -4579,7 +4923,8 @@
    "preferred_cams": [
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL346",
@@ -4592,7 +4937,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL347",
@@ -4605,7 +4951,8 @@
    "preferred_cams": [
     "CAM03_low",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL348",
@@ -4618,7 +4965,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL349",
@@ -4631,7 +4979,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL350",
@@ -4644,7 +4993,8 @@
    "preferred_cams": [
     "CAM03_low",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL351",
@@ -4657,7 +5007,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM03_low"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL352",
@@ -4670,7 +5021,8 @@
    "preferred_cams": [
     "CAM01_eye_level",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL353",
@@ -4683,7 +5035,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM04_from_above"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL354",
@@ -4696,7 +5049,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL355",
@@ -4709,7 +5063,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL356",
@@ -4722,7 +5077,8 @@
    "preferred_cams": [
     "CAM02_three_quarter",
     "CAM01_eye_level"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL357",
@@ -4735,7 +5091,8 @@
    "preferred_cams": [
     "CAM06_side",
     "CAM02_three_quarter"
-   ]
+   ],
+   "use": "NV"
   },
   {
    "id": "PL358",
@@ -4747,7 +5104,9 @@
    "source": "first-use T5-16 EXP-combo X1 (manual card A1-02 Standing Straddle-Over)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V",
+   "pick": "T5-16"
   },
   {
    "id": "PL359",
@@ -4759,7 +5118,9 @@
    "source": "first-use T5-16 EXP-combo X1 (manual card A1-05 Step-Over Freeze)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V",
+   "pick": "T5-16"
   },
   {
    "id": "PL360",
@@ -4771,7 +5132,8 @@
    "source": "first-use T5-16 EXP-combo X1 (manual card A1-08 Bench Straddle Forward)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL361",
@@ -4783,7 +5145,9 @@
    "source": "first-use T5-16 EXP-combo X1 (custom card)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V",
+   "pick": "T5-16"
   },
   {
    "id": "PL362",
@@ -4795,7 +5159,9 @@
    "source": "first-use T5-16 EXP-combo X1 (custom card)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V",
+   "pick": "T5-16"
   },
   {
    "id": "PL363",
@@ -4807,7 +5173,8 @@
    "source": "first-use T5-16 EXP-combo X1 (custom card)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL364",
@@ -4819,7 +5186,8 @@
    "source": "first-use T5-16 EXP-combo X1 (custom card)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL365",
@@ -4831,7 +5199,8 @@
    "source": "first-use T5-16 EXP-combo X1 (custom card)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   },
   {
    "id": "PL366",
@@ -4843,7 +5212,8 @@
    "source": "first-use T5-16 EXP-combo X1 (custom card)",
    "preferred_cams": [
     "CAM03_low"
-   ]
+   ],
+   "use": "V"
   }
  ],
  "family_counts": {
@@ -6158,6 +6528,41 @@
  },
  "changelog": [
   "1.4.1: +PL333 Hot-Spring Edge Sit (A7-07) — EXP-overlay rework T5-15 (9 candidates on 9 slots), replaces duplicate A8-04 payoff slot",
-  "1.5.0: +33 first-use PL334–PL366 for T5-16 LUCID DREAMS — 9 manual cards (A1-05, A1-08, A6-10, A6-04, A7-04, A6-07, A3-07, A3-09, A7-01) + 24 custom cards; EXP-combo X1 «over-viewer» family PL358–PL366 (9 cards, CAM03-only, pool: exp spirit). Free manual cards in reserve: A1-07, A4-06, A6-05, A8-09 (A1-02 core folded into X1 PL358)."
- ]
+  "1.5.0: +33 first-use PL334–PL366 for T5-16 LUCID DREAMS — 9 manual cards (A1-05, A1-08, A6-10, A6-04, A7-04, A6-07, A3-07, A3-09, A7-01) + 24 custom cards; EXP-combo X1 «over-viewer» family PL358–PL366 (9 cards, CAM03-only, pool: exp spirit). Free manual cards in reserve: A1-07, A4-06, A6-05, A8-09 (A1-02 core folded into X1 PL358).",
+  "1.6.0: use-делёж поз N/V/NV (приказ автора 2026-11-08 — ниша vs VOLT; V=X1+A8, N=presentation-семьи, NV=dynamic/env/partner+A1–A7/A9) + author_picks T5-16: PL358 (P25), PL359 (P26), PL361 (P28), PL362 (P29) — «берём позу»; поле pick на картах"
+ ],
+ "use_division": {
+  "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",
+  "law": "Каждая карта несёт use: N (ниша-красота — solo-поза = событие кадра), V (VOLT-обязательные — геометрия заточена под комбо Cam/Pos/POV/Pose, без клетки не раскрывается), NV (рабочие обоих контуров). Дележ по семьям: V = X1 + A8; N = base, erotic_presentation(+v2), ecchi_classic, micropose_expression, performance_mirror, threshold_limen; NV = dynamic_v2, env_interaction, partner_implied, мануальные A1–A7/A9. Авторские пики вердиктов (pick) стоят поверх дележа и в ротации имеют приоритет.",
+  "counts": {
+   "N": 168,
+   "NV": 174,
+   "V": 24
+  }
+ },
+ "author_picks": {
+  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP»",
+  "picks": [
+   {
+    "pose": "PL358",
+    "slot": "T5-16 P25 «Сора» (moth-thread-sew)",
+    "quote": "25 - комбо охуенное, берём позу"
+   },
+   {
+    "pose": "PL359",
+    "slot": "T5-16 P26 «Тэй» (marionette-thread-step)",
+    "quote": "26 - охуенно, берём позу и забираем ОС, обзываем её Meine"
+   },
+   {
+    "pose": "PL361",
+    "slot": "T5-16 P28 «Юнэ» (moonrabbit-pest-kneel)",
+    "quote": "28 - очень милая, очень красивая и поза и ракурс - супер. Забираем, обзываем её Luvv"
+   },
+   {
+    "pose": "PL362",
+    "slot": "T5-16 P29 «Иво» (cecaelia-ink-fourfours)",
+    "quote": "29 - тоже очень крутая и милая, забираем позу и девчонку - обзываем её Liebe"
+   }
+  ]
+ }
 }
