@@ -1,5 +1,5 @@
 {
- "version": "1.0.0",
+ "version": "1.1.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT)",
  "sections": {
@@ -654,6 +654,204 @@
     "name": "mid_anchor_hold",
     "sd": "her hand mid-holding the pendant flat to her sternum — the one weight she has decided the sky may not schedule (N25-OC Nix, the color-inversion order)",
     "source": "POOLS_V8"
+   },
+   {
+    "id": "K183",
+    "name": "mid_ledger_flip",
+    "sd": "the ledger page mid-flip under one fingertip — the deal half-turned, not yet read",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K184",
+    "name": "mid_rail_vault",
+    "sd": "the body mid-vault over a rooftop rail — one palm still on the metal, the city already catching her",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K185",
+    "name": "mid_star_lift",
+    "sd": "the pendant-star mid-lifting on both palms — light climbing the wrists, not yet at eye level",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K186",
+    "name": "mid_rope_bell",
+    "sd": "the top rope mid-swing under her weight — the whole ring breathing once",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K187",
+    "name": "mid_hook_line",
+    "sd": "the crane cable mid-tightening in the hook — one beat before the swing owns her",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K188",
+    "name": "mid_hawk_loose",
+    "sd": "the hawk mid-opening its wings off her fist — half bird, half sail",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K189",
+    "name": "mid_flame_shed",
+    "sd": "the flame mid-shedding off her hair onto the wall line — fire writing her path",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K190",
+    "name": "mid_ice_scrape",
+    "sd": "the blade mid-scrape stopping the glide — a white line still lengthening",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K191",
+    "name": "mid_tentacle_pull",
+    "sd": "the tentacle mid-pull bending the lamppost — the hat held, the body already flying",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K192",
+    "name": "mid_goo_pour",
+    "sd": "the body mid-pour between liquid and shoulders — one hand already solid out of the flow",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K193",
+    "name": "mid_knife_spin",
+    "sd": "the knife mid-spin flat on the fingertip — the street quiet around the balance",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K194",
+    "name": "mid_coat_billow",
+    "sd": "the coat mid-billow hard behind her in the storm wind — the orb of lightning steady on the other palm, one beat before the thunder answers",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K195",
+    "name": "mid_vein_press",
+    "sd": "the fingertip mid-press above the vein — the deal arriving under the skin",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K196",
+    "name": "mid_card_fan",
+    "sd": "the last card mid-caught at shoulder height — the fan still falling around her wrist",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K197",
+    "name": "mid_paint_drop",
+    "sd": "the paint mid-drop off the brush in her teeth — the street receiving one color",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K198",
+    "name": "mid_syringe_prime",
+    "sd": "the syringe-gun mid-priming at the shoulder seam — the head tipped back against the cabinet",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K199",
+    "name": "mid_wing_fold",
+    "sd": "the wings mid-folding down to the stone gargoyle's wings — stone settling onto stone",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K200",
+    "name": "mid_mist_bend",
+    "sd": "the mist mid-bending around the barrel — the shot already decided",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K201",
+    "name": "mid_fire_curtain",
+    "sd": "the flame mid-pushed aside like a curtain — one foot still in the street",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K202",
+    "name": "mid_tail_rein",
+    "sd": "the glowing rats mid-scatter at the tail-rein — the throne of crates holding its breath",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K203",
+    "name": "mid_steam_draw",
+    "sd": "the steam mid-drawing a figure over the teacup — glasses fogged at the lower rim",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K204",
+    "name": "mid_key_fish",
+    "sd": "the key mid-fished from under the shirt hem — smoke curling out of the placket",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K205",
+    "name": "mid_pounce_arc",
+    "sd": "the body mid-pounce above the fire-escape rail — tail long, knees already forward",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K206",
+    "name": "mid_blade_kiss",
+    "sd": "the blade mid-settling vertical beside the face — lips a breath from the steel",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K207",
+    "name": "mid_basket_turn",
+    "sd": "the herb basket mid-swing on the hip as the head turns back over the shoulder",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K208",
+    "name": "mid_board_carve",
+    "sd": "the longboard mid-carve under low weight — tail streaming, head already turned back",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K209",
+    "name": "mid_spear_spark",
+    "sd": "the spearhead mid-dragging sparks off the wall as the head turns back over the shoulder",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K210",
+    "name": "mid_lantern_swing",
+    "sd": "the lantern mid-swing in the far hand — coat following a beat later, face already back",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K211",
+    "name": "mid_cable_whip",
+    "sd": "the headphone cable mid-whipping off the back as the head turns back over the shoulder",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K212",
+    "name": "mid_can_tip",
+    "sd": "the watering can mid-tip pouring across the pot rows — face already turned back",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K213",
+    "name": "mid_feather_ruffle",
+    "sd": "the feathers mid-ruffling against the wind as the head turns back over the shoulder",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K214",
+    "name": "mid_towel_snap",
+    "sd": "the neck-towel mid-snapping with the open fist — face already turned back to the lens",
+    "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K215",
+    "name": "mid_jar_glow",
+    "sd": "the bell-jar light mid-rocking across the jaw — face already turned back to the lens",
+    "source": "T5-17 K-FF"
    }
   ],
   "fet": [

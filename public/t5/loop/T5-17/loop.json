@@ -1,0 +1,131 @@
+{
+ "batch": "T5-17",
+ "theme": "CITY NEVER SLEEPS",
+ "updated": "2026-11-08T13:44:49+00:00",
+ "note": "ПРОКСИ-РЕНДЕР — это НЕ PixAI и не PH: встроенный рендерер песочницы, дымовой тест читаемости промпта (директива автора: «делаем прогон, ищем уязвимости, исправляем — по нескольку кругов»). Петля T5-17: круг 1 — 12 слотов (9 EXP X2 + P04/P07/P24), круг 2 — 10 дожимов, круг 3 — 3 финальных. X2 «В-СЛЕД» (разворот лица через плечо) стабильно читается у 7/9 кандидатов; остаточные риски: редкая анатомия (перья-предплечья, купол-шляпка, клыки), моно-палитры. Финальный арбитр — прогон автора на PixAI.",
+ "circles": {
+  "c1": {
+   "when": "2026-11-08",
+   "what": "12 слотов: первичная читаемость"
+  },
+  "c2": {
+   "when": "2026-11-08",
+   "what": "10 дожимов: метки тела/палитры/фрейминг"
+  },
+  "c3": {
+   "when": "2026-11-08",
+   "what": "3 финальных: P26 разворот, P04 руки-лопаты, P32"
+  }
+ },
+ "slots": {
+  "P25": {
+   "name": "Ивка · R02 Elf · herb-rack-in-trail (X2)",
+   "note": "круг 1: разворот лица читается, уши-листья на месте; пробирки в кармане (не рейка) — мелочь",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P25.webp"
+   },
+   "pos": "Masterpiece, best quality, cowboy shot, viewed over her shoulder from a step behind, 1girl, solo, pale-green hair in a messy top-bun with escaping strands, moonlit-pale skin, young slight build, long pointed elf ears swept back, moss-gold wash with pistil-yellow accents, mid_basket_turn\nthin ribbed tank top under a work apron whose pocket-rack of tiny glass vials presses a faithful row of weight against her hip — the carried rack is the claim, honest and worn — pleated microskirt fanning hard lines with the stride\nshe moves a step ahead of the viewer down the herb aisle and swings her face back across the shoulder straight into the lens — raising one vial to taste a drop of tincture off her own wrist, lips counting — the viewer's position stays empty: only her reversal and its gaze; the bed-ledge creeps after the light along the shelf, leaf-veins faint on the forearm, the herb basket mid-swing on the hip lagging a half-beat behind the turn, the taut weave of the tank across the chest, the apron's weave thinning where the shift shows through\nMoss Gold palette, moss-green-deep, gold-light-warm dominant, pistil-yellow accent; her colors pale-green bun and gold eyes lit from inside the greenhouse glass\nstylized 2D anime face turned back into the frame, anime eyes (gold, bright with the count), small nose, small mouth mid-count of drops, the warm gold wash holding the jaw line"
+  },
+  "P26": {
+   "name": "Фара · R05 Wolf-kin · long-hill-coal-carve (X2)",
+   "note": "круг 1-2: лицо не разворачивалось → круг 3 дожим «chin at the shoulder line» — разворот читается, угли-палитра легла",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P26.webp",
+    "c2": "/t5/loop/T5-17/c2/P26.webp",
+    "c3": "/t5/loop/T5-17/c3/P26.webp"
+   },
+   "pos": "Masterpiece, best quality, three-quarter cowboy view from behind her shoulder, a pace back, 1girl, solo, silver hair in a low runner's ponytail, strands loose at the cheeks, wind-bitten fair skin, student build with long lines, pointed grey-furred wolf ears and bushy grey tail streaming behind, coal-ember wash with spark-gold accents, mid_board_carve\nopen linen shirt worn loose over a cropped sports band, gym leggings matte to the ankle, the collar holding its arc by fabric weight alone, thermos-bag strapped flat at the hip\nshe rolls a board-length before the lens down the long hill and swivels her face hard across her own shoulder, three-quarter to the lens, into view — patting the thermos-bag like a rudder while her nose already steers the next quarter, claws clicking the block count on the deck — nobody else is drawn into the frame: just her turn and its look; the draft billowing the open shirt against her side, the tail streaming as her stabilizer, the carve's weight transfer arriving one beat late through the hip\nCoal Ember palette, coal-black-deep, ember-orange dominant, spark-gold accent; her colors silver ponytail and amber eyes with the hill's glow in them\nstylized 2D anime face turned back into the frame, anime eyes (amber, narrowed by wind), small nose mid-scent, small mouth in a small fang grin, the ember-orange wash holding the jaw line"
+  },
+  "P27": {
+   "name": "Жара · R07 Dragon-kin · coin-scale-spear-spark (X2) — эталон круга 1",
+   "note": "круг 1: рога-чешуя-копьё-лак — всё читается с первого прогона; эталон X2-семьи",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P27.webp"
+   },
+   "pos": "Masterpiece, best quality, cowboy range over her shoulder, lens one step back, 1girl, solo, golden hair in a high french twist screwed tight, warm bronze skin, full soft build with wide-set frame, ridged swept-back horns and thick scaled tail, crimson-lacquer wash with porcelain-white accents, mid_spear_spark\nsatin gown with a thigh-high slit, the leg arriving before she does, one spear-strap crossing the chest and pressing its honest diagonal claim — the strap carries the scale-beam, not her hands\nshe climbs the vault stair a pace before the lens and wheels her head back across the far shoulder to meet the glass — the spear-scale level across her shoulder, sparks running off its head against the wall-rail, each exhaled spark counting a step — no companion enters the picture: only her about-face and glance; coin-bright scale flecks on the cheekbones, the tail a balance-beam behind, the silk following the bust's undercurve at each step, the chest's dome leading the profile at the quarter-turn, the slit past the stocking top at the stride\nCrimson Lacquer palette, lacquer-crimson-deep, garnet-red dominant, porcelain-white accent; her colors golden twist and dark-red eyes over coin-warm bronze\nstylized 2D anime face turned back into the frame, anime eyes (dark-red, appraising), small nose, small mouth level mid-count, the crimson lacquer wash holding the jaw line"
+  },
+  "P28": {
+   "name": "Кимвра · R08 Serpent-kin · gaslight-circle-tail-pedal (X2)",
+   "note": "круг 1: зрачки-щели прокси не рисует (мелкая деталь); круг 2: газлайт-лужа легла",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P28.webp",
+    "c2": "/t5/loop/T5-17/c2/P28.webp"
+   },
+   "pos": "Masterpiece, best quality, from-behind cowboy shot, her face swung back across the shoulder, half a pace behind, 1girl, solo, chestnut hair in a retro victory-roll set, cool porcelain skin with a reptile gloss at the nape, full hourglass build, thick coiling serpent tail and vertical pupils, warm-brass-gaslight wash with milk-glass-pale accents, mid_lantern_swing\nfrayed denim mini skirt with a whiskered fade at the hips, fishnet mesh top printing its grid of shadows on the skin, the skirt hanging in a suspended arc that refuses to settle while the hip keeps the beat\nshe drifts across the gaslight amber circle a pace before the lens and turns her face back across her own shoulder toward the eye behind — swinging the far-hand cage of warm glass whose glow rolls over the stones at her heel, the tail pressing the barrel-organ's pedal-lever on the downbeat, tongue-tip catching the held note — the lens rides her pivot alone: no listener is drawn; a scale trickle from temple to nape, the hip scale patch catching light at the curve, the tail cutting a wake through the amber circle, an amber gaslight pool spreading on the cobbles at her heel, soot-brown shadows falling warm at the walls\nGaslight Brass palette, gaslight-amber, brass-warm dominant, milk-glass-pale accent; her colors chestnut rolls and gold slit pupils under the warm brown shadow\nstylized 2D anime face turned back into the frame, anime eyes (gold, vertical slit pupils, mid-note), small nose, small mouth open catching the note, the warm brass-gaslight wash holding the jaw line"
+  },
+  "P29": {
+   "name": "Эхо · R11 Bat-kin · echo-check-cable-whip (X2)",
+   "note": "круг 1: рожки вместо ушей → круг 2: уши-локаторы + наушники на месте; моно-палитру прокси греет (остаточный риск)",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P29.webp",
+    "c2": "/t5/loop/T5-17/c2/P29.webp"
+   },
+   "pos": "Masterpiece, best quality, shoulder-line cowboy view, a half-step behind her wake, 1girl, solo, black hair with a long top over a shaved undercut, dusk-pale skin, student build, tall ribbed bat ears and small wing membranes at the back, ink-silver-mono wash with one-crimson-thread accent, mid_cable_whip\nelastic bandage wrapped as a top, spiral of shadows reading the torso between turns, compression bike shorts hip-to-hem one honest surface, the lycra gone shiny-stretched at the seat from the ladder climb\nshe works the tank catwalk just ahead of the glass and hooks her face back past her shoulder, half-lidded, into the open — the headphone band crossing the crown between the tall ribbed bat ears, one hand cupping the earcup while the other snaps one echo off the water tower to check the block, the cable mid-whipping off her back — her pivot is the only presence in the lens; the elbow sawing the air at the drop, the hip's flare past the waistband's cut, the finger already twitching toward the drop the face has not allowed\nInk Silver palette, ink-black-deep, silver-metallic dominant, one-crimson-thread accent; her colors black top-knot and silver eyes with the membranes' red held back to one thread\nstylized 2D anime face turned back into the frame, anime eyes (silver, half-lidded on the beat), small nose, small mouth pressed to the count, the metallic silver key holding the jaw line"
+  },
+  "P30": {
+   "name": "Туя · R14 Dryad · leaf-calendar-can-tip (X2)",
+   "note": "круг 2: разворот + лейка + морская пена ок; прожилки читаются как тату — прокси-деталь",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P30.webp",
+    "c2": "/t5/loop/T5-17/c2/P30.webp"
+   },
+   "pos": "Masterpiece, best quality, cowboy shot trailing her shoulder-line from a step back, 1girl, solo, sage curls in a loose cloud with vine strands woven in, leaf-vein lines on the skin, leaf-vein lines tracing both forearms, young slight build, seasonal bloom at the temple and bark patch at the collarbone, seafoam-glass wash with coral-pink-dim accents, mid_can_tip\nsilk camisole and shorts set with piping light at the seams, bark honest at the heels, the dark silk settling into one new fold after each row's turn\nshe paces the pot rows under the glass roof a stride before the lens and casts her face fully rearward across the shoulder, profile to the lens, to the eye — tipping the watering can mid-pour while the drops hold their leaf shapes between spout and soil — the frame holds only her: no other presence is drawn; the pots rotating after her like a slow audience, the leaf calendar one row behind her count, the roof-vent's gust flipping the shorts' hem, the water's pull dragging the stream down heavy\nSeafoam Glass palette, seafoam-pale, glass-white dominant, coral-pink-dim accent; her colors sage curls and sea-glass eyes under green-water shadow\nstylized 2D anime face turned back into the frame, anime eyes (sea-glass, drowsy-kind), small nose, small mouth mid-hum, the seafoam-glass wash holding the jaw line"
+  },
+  "P31": {
+   "name": "Стрижа · R20 Harpy-kin · air-mail-feather-ruffle (X2)",
+   "note": "круг 1-2: перьевые предплечья прокси нормализует в человеческие руки — остаточный риск, следить на PixAI; сумка и разворот ок",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P31.webp",
+    "c2": "/t5/loop/T5-17/c2/P31.webp"
+   },
+   "pos": "Masterpiece, best quality, over-the-shoulder cowboy frame, one stride back, 1girl, solo, ice-blue hair in a high sleek nape-tight ponytail, wind-tan skin, young wiry build, both forearms sleeve-deep in layered flight feathers to the wrist and flight feathers spread at the shoulder blades, glacier-steel wash with ink-navy-sharp accents, mid_feather_ruffle\nclear vinyl raincoat worn bare-backed over a plaid pleated skirt, the winged mail bag's wide strap crossing the chest and pressing its whole diagonal claim through the vinyl — the strap carries the shift's take, buckle cold as the altitude\nshe glides the eaves-line a boot off the ground, one stride before the glass, and swings her face round across the shoulder to find it — reading the address straight from the height while one talon flicks a letter's seal open off the bag — the lens keeps her alone: no chaser is drawn; feathers mid-ruffling against the wind, the barbs combing into feather-combs of light, the mist holding the raincoat's drape cool and heavy, the bare-thigh band between sock-top and hem, the lining flashing at the stride, the descent's inertia pressing her into the step\nGlacier Steel palette, glacier-cyan-pale, steel-blue-deep dominant, ink-navy-sharp accent; her colors ice-blue ponytail and pale-blue eyes at mailing height\nstylized 2D anime face turned back into the frame, anime eyes (pale-blue, wide on the address), small nose, small mouth mid-read, the glacier-steel wash holding the jaw line"
+  },
+  "P32": {
+   "name": "Тэсса · R24 Oni-kin · ring-bell-towel-snap (X2)",
+   "note": "круг 1-3: лицо дожато разворотом, но клыки/румянец прокси смягчает — остаточный риск",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P32.webp",
+    "c2": "/t5/loop/T5-17/c2/P32.webp",
+    "c3": "/t5/loop/T5-17/c3/P32.webp"
+   },
+   "pos": "Masterpiece, best quality, cowboy view from her trailing shoulder, a stride behind, 1girl, solo, white hair in double buns, sake-warmed bronze skin, jade-blush across the cheeks, full strong build with wide shoulders, one blunt ringed horn and small tusks, verdigris-patina wash with chalk-white-accnt accents, mid_towel_snap\nring-worn leather opera gloves molded to her hands by seasons of the rope, the bare upper arm a sudden interruption above the elbow, one glove peeled halfway off between rounds, knuckles wrapped, towel around the neck\nshe strides through the under-gallery a stride before the glass and whips her face round past the shoulder, dead into it — snapping the neck-towel with the open fist while one heel rings the gong's hum out of the floor, breath knocked into the closed fist — her turn is the whole crowd of the frame: nothing else is drawn; both small tusks in the grin, jade-blush bright on the cheeks, the ringed horn catching the wash, oxidized copper mirrors along the wall, the towel's hem still carrying one beat of the snap\nVerdigris Patina palette, verdigris-copper-green, oxidized-copper dominant, chalk-white-accnt accent; her colors white buns and red eyes over jade-blush bronze-green\nstylized 2D anime face turned back into the frame, anime eyes (red, ring-lit), small nose, small mouth wide with the chipped tusk, the copper patina wash holding the jaw line"
+  },
+  "P33": {
+   "name": "Аурелия · R17 Jellyfish-kin · warm-tank-jar-glow (X2) — прокси-стенка контент-фильтра, рендер tamed",
+   "note": "круг 1: контент-фильтр прокси на bikini-строку → tamed-рендер (батч не менялся); купол-шляпку прокси не рисует",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P33.webp",
+    "c2": "/t5/loop/T5-17/c2/P33.webp"
+   },
+   "pos": "Masterpiece, best quality, cowboy shot at her shoulder-line, following a step back, 1girl, solo, peach hair in a sectioned bubble ponytail with tendril strands at the nape, glass-clear skin edges over a milk core, student build, translucent bell-hood at the crown, honey-cognac wash with tabaco-leaf-green accents, mid_jar_glow\nstring bikini tied at the hips in small bows, the side-tie strings straining honest at the hips with every carried weight, water's beads on the upper chest from the tank ladder's exit\nshe floats the warm tank's rail just before the lens and carries her face back across the shoulder into the water-light — carrying the bell-jar at eye level, its firefly-medusa rocking honey-gold light across her jaw — the lens follows her turn alone: no follower is drawn; the translucent bell-hood pulsing slow with the jar's beat, honey-gold through the hood, a wet half-moon of footprints behind her on the floor, the jar swaying on two fingers in one slow arc, molasses-dark shadow at the tank's rim\nHoney Cognac palette, honey-gold-deep, cognac-brown dominant, tabaco-leaf-green accent; her colors peach bubble-tail and pearl-grey eyes lit from inside the jar\nstylized 2D anime face turned back into the frame, anime eyes (pearl-grey, aquarium-drowsy), small nose, small mouth mid-hum, the jar's honey-gold circle holding the jaw line"
+  },
+  "P04": {
+   "name": "Мертвец-боксёрша · NICHE PG-13 · underground-ring-deadweight",
+   "note": "круг 1-2: руки нормализовались → круг 3 «fists bigger than her own head» — руки-лопаты + швы читаются (фича N02 подтверждена)",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P04.webp",
+    "c2": "/t5/loop/T5-17/c2/P04.webp",
+    "c3": "/t5/loop/T5-17/c3/P04.webp"
+   },
+   "pos": "Masterpiece, best quality, close portrait from shoulders in, viewed straight on at eye height, 1girl, solo, towering undead boxer leaned into the ring rope, white hair single thick braid over shoulder, pale grey-ivory skin with stitched seams, colossal heavyset build with huge heavy hands, earth tones warm palette terracotta, mid_rope_bell\nathletic crop top with midriff bare fabric dry-fit matte, cutoff denim shorts frayed hems, knuckle wraps wound fresh over enormous fists, ring rope's work fraying the shoulder seam of the crop top to threads, the sideboob's curve past the armhole's edge, one heavy boot on the bottom rope, stitch-seam running the jaw\nthe subway gust arrives through the underpass grille and loses: her fists twice the size of her own head, the top rope bows to the floor under her stacked forearms, chalk-dust of old rounds still turning in the one warm shaft of the vault light\nher braid swings once and stops — everything in this cell obeys weight; the rat second rings the rope-bell against the post, the 3am shift declared by a dead chin lifting\nEarth warm palette, terracotta and umber, ivory accent; her colors are the clay of the vault itself given shoulders.\nstylized 2D anime face, refined lineart, anime eyes (silver, flat patient dead-calm), small nose, small mouth shut like a locked locker, the warm updraft-light holding the stitched jaw's line."
+  },
+  "P07": {
+   "name": "Огненная дева · VOLT R+ · fire-door-rain-stride (ζ)",
+   "note": "круг 1-2: wet-sheer и свет на зоне ок; гребень-пламя прокси ставит у головы, не по позвоночнику — остаточный риск",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P07.webp",
+    "c2": "/t5/loop/T5-17/c2/P07.webp"
+   },
+   "pos": "Masterpiece, best quality, cowboy range, upper thigh to crown, strict profile, 1girl, solo, nipples printed honest through wet cloth, crimson hair wolf cut choppy with a shag-tail flick, heat-warmed skin tone, young supple build, low fire crest along the spine line, ember freckles at the jaw, dusk-vermilion-deep blood-orange-warm palette with shadow-crimson-deep secondary, mid_flame_shed\nblouse tied in a knot at the sternum in thin pale cloth, rain-soaked and clinging, her nipples printed honest through the cold wet cloth, the knot above the navel leaving the midriff honest below it, long breezy maxi skirt hem caught mid-wave, the water's pull dragging the hem down heavy at every step, one palm trailing a line of fire along the wet brick\nthe crest's low flame riding her spine's line, its warm ember light lying flat on the wet cloth; neon-rain on shoulders hisses into steam where it lands: the wet cloth carries one clean lane of sheen where the water ran down, and the warm uplight of her own crest keeps her chin lit from beneath while the whole street darkens\nshe walks out of the fire door mid-stride, sheds a handful of sparks behind her hair, grate-steam of the midnight avenue rising around her like a crowd that knows her name\nDusk vermilion palette, dusk-vermilion-deep and blood-orange-warm, pale-gold-thread accent; her colors are the hour when fire clocks out and the rain clocks in.\nstylized 2D anime face, refined lineart, anime eyes (red, banked-coal warmth), small nose, small mouth half-laughing at the rain, the warm under-glow holding the wet blouse's line."
+  },
+  "P24": {
+   "name": "Художница рассвета · EXQUISITE R+ ФИНАЛ · paint-drop-brass-hour (κ)",
+   "note": "круг 2: берет + краска + рассвет на месте; кадр прокси режет до колен — фрейминг держать на PixAI",
+   "circles": {
+    "c1": "/t5/loop/T5-17/c1/P24.webp",
+    "c2": "/t5/loop/T5-17/c2/P24.webp"
+   },
+   "pos": "Masterpiece, best quality, full-length frame, crown to heels, from slightly below, 1girl, solo, nipples a soft press under vinyl, red beret tilted over the swept side, dark-blue hair swept to one side with a deep side part, fair skin smudged with paint, long-limbed build, rain-slate-deep rooftop-tar with storm-pearl-grey secondary, beacon-red-pulse accent, tarp-blue-grey edge, mid_paint_drop\npale-blue coat with a high white-piped collar worn over a wet-look vinyl top, sarong wrapped low on the hips in diagonal folds, nipples a soft press under the vinyl's mirror shine; crimson paint pressed flat into the collarbone's hollow and printed across the vinyl's mirror shine by contact, one wet handprint carried on the sarong's fold — the body wearing the night's palette, paint on skin, paint on clothes\nthe shift's last roof: rain just gone, the grates below still breathing their final steam, and she stands over the dropped paint can in a slow back-arch — raised arm high, brush held in the teeth, one drop hanging mid-air over the street that is receiving its color\nthe finale is contact: the first dawn climbs the roofs with her, ledge by ledge, gilding exactly where she has already touched; a clean lane of crimson sheen runs down the coat's hem where the paint ran, the spine's smooth valley draws one soft line through the arch, the raised arm opens the collarbone's whole vault to the east, drops and dust hang in the air like grain for one held breath — the city waking in her colors\nBeacon Red Rain palette, rain-slate-deep, rooftop-tar dominant, storm-pearl-grey secondary, beacon-red-pulse accent, tarp-blue-grey edge; her colors dark-blue sweep and the cheekbone's red smudge answering the first pink degree\nstylized 2D anime face from below, anime eyes (blue, sleepless-bright), small nose, small mouth holding the brush's stem, cold dawn light with the first pink degree holding the jaw line"
+  }
+ }
+}

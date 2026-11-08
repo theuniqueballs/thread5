@@ -1,6 +1,6 @@
 {
- "version": "1.1.0",
- "born": "2026-09-19",
+ "version": "1.2.0",
+ "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
   {
@@ -5139,6 +5139,286 @@
    "sd_fragment": "colored-shadows-dreamlight",
    "family": "exp_color_wave",
    "source": "T5-16 LUCID DREAMS (приказ автора 2026-11-07: новая экспериментальная палитра и раскраска — одна на все 9 EXP-слотов; directed override C067)"
+  },
+  {
+   "id": "P162_GASLIGHT_BRASS",
+   "name": "Gaslight Brass",
+   "dominant": [
+    "gaslight-amber",
+    "brass-warm"
+   ],
+   "secondary": [
+    "soot-brown"
+   ],
+   "accent1": [
+    [
+     "milk-glass-pale"
+    ]
+   ],
+   "accent2": "ember-red",
+   "shadow": "brass-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "cold-blue",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "warm brass-gaslight wash — lamplit amber and burnished brass, soot in the corners, shadows fall warm brown, never grey or cold",
+   "sd_fragment": "warm-brass-gaslight",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P163_VERDIGRIS_PATINA",
+   "name": "Verdigris Patina",
+   "dominant": [
+    "verdigris-copper-green",
+    "oxidized-copper"
+   ],
+   "secondary": [
+    "aged-bronze"
+   ],
+   "accent1": [
+    [
+     "chalk-white-accnt"
+    ]
+   ],
+   "accent2": "copper-rust",
+   "shadow": "patina-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "plum-dominant",
+    "pastel-dominant"
+   ],
+   "light_type": "copper patina wash — oxidized green-bronze surfaces, aged bronze trim, rust accents, shadows fall deep green-bronze, never grey",
+   "sd_fragment": "verdigris-patina",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P164_CRIMSON_LACQUER",
+   "name": "Crimson Lacquer",
+   "dominant": [
+    "lacquer-crimson-deep",
+    "garnet-red"
+   ],
+   "secondary": [
+    "gold-leaf-warm"
+   ],
+   "accent1": [
+    [
+     "porcelain-white"
+    ]
+   ],
+   "accent2": "oxblood-dark",
+   "shadow": "lacquer-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "washed-out"
+   ],
+   "light_type": "crimson lacquer wash — deep garnet red like polished lacquer, gold-leaf trim, porcelain accents, shadows fall oxblood, never grey",
+   "sd_fragment": "crimson-lacquer",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P165_COAL_EMBER",
+   "name": "Coal Ember",
+   "dominant": [
+    "coal-black-deep",
+    "ember-orange"
+   ],
+   "secondary": [
+    "iron-grey-warm"
+   ],
+   "accent1": [
+    [
+     "spark-gold"
+    ]
+   ],
+   "accent2": "ash-dark",
+   "shadow": "ember-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "cold-blue"
+   ],
+   "light_type": "coal-ember wash — coal-dark base with live ember-orange glow lines, spark-gold accents, shadows fall warm ash, never grey or cold",
+   "sd_fragment": "coal-ember",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P166_GLACIER_STEEL",
+   "name": "Glacier Steel",
+   "dominant": [
+    "glacier-cyan-pale",
+    "steel-blue-deep"
+   ],
+   "secondary": [
+    "frost-white"
+   ],
+   "accent1": [
+    [
+     "ink-navy-sharp"
+    ]
+   ],
+   "accent2": "ice-shadow-blue",
+   "shadow": "steel-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "warm-yellow-dominant",
+    "neon",
+    "plum-dominant",
+    "pastel-dominant"
+   ],
+   "light_type": "glacier-steel wash — pale cyan ice and deep steel blue, frost-white highlights, ink-navy accents, shadows fall blue-ice, never flat grey",
+   "sd_fragment": "glacier-steel",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P167_MOSS_GOLD",
+   "name": "Moss Gold",
+   "dominant": [
+    "moss-green-deep",
+    "gold-light-warm"
+   ],
+   "secondary": [
+    "bark-brown"
+   ],
+   "accent1": [
+    [
+     "pistil-yellow"
+    ]
+   ],
+   "accent2": "humus-dark",
+   "shadow": "moss-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "neon",
+    "violet-dominant",
+    "cold-blue",
+    "washed-out"
+   ],
+   "light_type": "moss-gold wash — deep moss green under warm gold light, bark-brown structure, pistil-yellow accents, shadows fall humus-dark green, never grey",
+   "sd_fragment": "moss-gold",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P168_INK_SILVER",
+   "name": "Ink Silver",
+   "dominant": [
+    "ink-black-deep",
+    "silver-metallic"
+   ],
+   "secondary": [
+    "paper-white"
+   ],
+   "accent1": [
+    [
+     "one-crimson-thread"
+    ]
+   ],
+   "accent2": "ink-shadow-black",
+   "shadow": "mono-shadow-never-grey",
+   "forbidden": [
+    "color-wash-dominant",
+    "neon",
+    "pastel-dominant",
+    "washed-out",
+    "brown-mud"
+   ],
+   "light_type": "ink-and-silver monochrome-plus-one — deep ink black and metallic silver, paper-white accents, a single crimson thread as the only color; shadows fall true black, never grey",
+   "sd_fragment": "ink-silver-mono",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P169_HONEY_COGNAC",
+   "name": "Honey Cognac",
+   "dominant": [
+    "honey-gold-deep",
+    "cognac-brown"
+   ],
+   "secondary": [
+    "cream-tan"
+   ],
+   "accent1": [
+    [
+     "tabaco-leaf-green"
+    ]
+   ],
+   "accent2": "molasses-dark",
+   "shadow": "honey-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "neon",
+    "cold-blue",
+    "violet-dominant",
+    "pastel-dominant"
+   ],
+   "light_type": "honey-cognac wash — warm honey gold over cognac brown, cream highlights, one tobacco-leaf green accent, shadows fall molasses-dark, never grey",
+   "sd_fragment": "honey-cognac",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P170_SEAFOAM_GLASS",
+   "name": "Seafoam Glass",
+   "dominant": [
+    "seafoam-pale",
+    "glass-white"
+   ],
+   "secondary": [
+    "kelp-green-deep"
+   ],
+   "accent1": [
+    [
+     "coral-pink-dim"
+    ]
+   ],
+   "accent2": "water-shadow-green",
+   "shadow": "seafoam-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "neon",
+    "violet-dominant",
+    "warm-orange-dominant",
+    "washed-out"
+   ],
+   "light_type": "seafoam-glass wash — pale seafoam and glassy white, kelp-green depth, one dim coral accent, shadows fall green-water, never grey",
+   "sd_fragment": "seafoam-glass",
+   "mood": "",
+   "family": "exp_color_wave_2",
+   "legacy_3slot": false,
+   "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",

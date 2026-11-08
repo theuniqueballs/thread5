@@ -1,6 +1,6 @@
 {
- "version": "1.6.0",
- "born": "2026-09-19",
+ "version": "1.7.0",
+ "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14)",
  "poses": [
   {
@@ -5214,6 +5214,459 @@
     "CAM03_low"
    ],
    "use": "V"
+  },
+  {
+   "id": "PL367",
+   "name": "Satin-Ledger Pause (OC)",
+   "sd": "seated half-turned on the edge of a brass-railed desk, ledger balanced on one thigh, tail curled around the desk leg, chin lifted in invitation",
+   "category": "erotic_presentation_v2",
+   "risk": "LOW",
+   "family": "OC_T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL368",
+   "name": "Neon-Rail Sprint-Cut (OC)",
+   "sd": "mid-stride vault off a rooftop rail, one palm flat on the rail, body folded forward in flight, face cut back toward the lens",
+   "category": "dynamic_v2",
+   "risk": "MEDIUM",
+   "family": "OC_T5-17",
+   "preferred_cams": [
+    "CAM06",
+    "CAM07"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL369",
+   "name": "Star-Hung Kneel (OC)",
+   "sd": "kneeling upright with a pendant-star held out on both open palms at eye level, back straight, head bowed just enough to kiss the light",
+   "category": "threshold_limen",
+   "risk": "LOW",
+   "family": "OC_T5-17",
+   "preferred_cams": [
+    "CAM02",
+    "CAM01"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL370",
+   "name": "Ring-Rope Lean-Heavy",
+   "sd": "leaning full weight into the ring rope from inside, forearms stacked on the top rope, torso tipped forward, one heavy boot on the bottom rope",
+   "category": "env_interaction",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM03"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL371",
+   "name": "Hook-Swing Suspension",
+   "sd": "hanging one-handed from a hooked crane cable high off the ground, body arced long, other arm extended with fingers open",
+   "category": "dynamic_v2",
+   "risk": "HIGH",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM03",
+    "CAM06"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL372",
+   "name": "Hawk-Drop Perch",
+   "sd": "crouched one-kneed on a high beam, bow drawn low across the body, a hawk half-spread on the other fist",
+   "category": "env_interaction",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM06",
+    "CAM02"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL373",
+   "name": "Ember-Trail Stride",
+   "sd": "walking out of a fire door mid-stride, hair full of live flame, one palm trailing a line of fire along the wall",
+   "category": "dynamic_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM07"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL374",
+   "name": "Rink-Edge Glide-Stop",
+   "sd": "stopped at the rink edge by a long glide, blades parallel, torso coiled into the turn, one hand skimming the ice",
+   "category": "dynamic_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM07",
+    "CAM01"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL375",
+   "name": "Tentacle-Whip Anchor",
+   "sd": "one spectral tentacle anchored on a lamppost above, body hung in the pull of it, other hand holding the hat to her head",
+   "category": "dynamic_v2",
+   "risk": "HIGH",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM03",
+    "CAM06"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL376",
+   "name": "Goo-Cascade Reform",
+   "sd": "half of the body still pouring down as liquid while the shoulders reform upward, one solid hand reaching out of the flow",
+   "category": "dynamic_v2",
+   "risk": "HIGH",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM05"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL377",
+   "name": "Knife-Lick Crouch",
+   "sd": "low street crouch between two dumpsters, one knife balanced flat on a fingertip, tongue near the flat of the blade",
+   "category": "erotic_presentation_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM05",
+    "CAM03"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL378",
+   "name": "Storm-Cell Coat-Billow",
+   "sd": "standing braced in the storm-cell wind with the long coat billowed hard behind, one hand holding the collar shut at the throat, an orb of gathered lightning resting on the other open palm",
+   "category": "dynamic_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM03"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL379",
+   "name": "Blood-Pact Wrist-Offer",
+   "sd": "one wrist offered up, two fingers of the other hand pressing the skin above the vein, eyes half closed",
+   "category": "erotic_presentation_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM05",
+    "CAM01"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL380",
+   "name": "Card-Fan Scatter-Catch",
+   "sd": "cards mid-air in a falling fan around the raised hand, body twisted to catch the last card at shoulder height",
+   "category": "dynamic_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM02",
+    "CAM01"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL381",
+   "name": "Paint-Drip Back-Arch",
+   "sd": "standing back-arch over a dropped paint can, drips running down the raised arm, brush held in the teeth",
+   "category": "erotic_presentation_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM03",
+    "CAM07"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL382",
+   "name": "Syringe-Prime Counter",
+   "sd": "one boot up on a cabinet, syringe-gun primed against her own shoulder seam, head tipped back against the cabinet",
+   "category": "erotic_presentation_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM03"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL383",
+   "name": "Gargoyle-Carriage Roost",
+   "sd": "perched flat on a stone gargoyle's back at building edge, wings folded to its wings, chin on her crossed arms",
+   "category": "env_interaction",
+   "risk": "LOW",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM06",
+    "CAM02"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL384",
+   "name": "Mist-Line Sniper-Breath",
+   "sd": "prone along a misted ledge, rifle stock seated, cheek just off the stock, breath held, mist bending around the barrel",
+   "category": "env_interaction",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM07",
+    "CAM06"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL385",
+   "name": "Flame-Door Re-Entry",
+   "sd": "stepping back through a doorway whose frame is all flame, one foot still in the street, palm pushing the fire aside like a curtain",
+   "category": "threshold_limen",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM07"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL386",
+   "name": "Rat-Rodeo Throne",
+   "sd": "seated sideways on a throne of stacked crates, one boot dangling, a glowing rat on each shoulder, reins of tail in one fist",
+   "category": "erotic_presentation_v2",
+   "risk": "LOW",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM02",
+    "CAM01"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL387",
+   "name": "Teacup-Brew Divination",
+   "sd": "leaning over a steaming teacup held in both hands at chin height, glasses fogged at the lower rim, steam drawing a figure in the air",
+   "category": "micropose_expression",
+   "risk": "LOW",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM05",
+    "CAM02"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL388",
+   "name": "Smoke-Key Pocket-Lift",
+   "sd": "one hand fishing a key from under the shirt hem against the collarbone, smoke curling from the open button placket",
+   "category": "erotic_presentation_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM05",
+    "CAM01"
+   ],
+   "use": "N",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL389",
+   "name": "Pounce-Mid-Air Catch",
+   "sd": "caught mid-pounce above a fire-escape rail, knees forward, one hand grabbing the rail to vault, tail long behind",
+   "category": "dynamic_v2",
+   "risk": "HIGH",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM03",
+    "CAM06"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL390",
+   "name": "Riposte-Blade Kiss",
+   "sd": "full lunge with the blade held vertical beside the face, lips almost at the flat of the steel, rear foot dragging",
+   "category": "dynamic_v2",
+   "risk": "MEDIUM",
+   "family": "T5-17",
+   "preferred_cams": [
+    "CAM01",
+    "CAM07"
+   ],
+   "use": "NV",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL391",
+   "name": "In-Trail Herb-Basket Turn (X2)",
+   "sd": "walking ahead with a herb basket on the hip, head turned back over the shoulder to the lens, front foot already lifting",
+   "category": "X2",
+   "risk": "LOW",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL392",
+   "name": "In-Trail Skate-Long Turn (X2)",
+   "sd": "rolling ahead on a longboard, weight low, head turned back over the shoulder to the lens, tail streaming behind",
+   "category": "X2",
+   "risk": "MEDIUM",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL393",
+   "name": "In-Trail Spear-Shoulder Turn (X2)",
+   "sd": "marching ahead with a spear across the far shoulder, head turned back over the other shoulder to the lens, sparks off the spearhead",
+   "category": "X2",
+   "risk": "MEDIUM",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL394",
+   "name": "In-Trail Lantern-Coat Turn (X2)",
+   "sd": "walking ahead through lamplight with a lantern in the far hand, head turned back over the shoulder to the lens, coat swinging",
+   "category": "X2",
+   "risk": "LOW",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL395",
+   "name": "In-Trail Headphone Turn (X2)",
+   "sd": "walking ahead with headphones on and a cable down the back, head turned back over the shoulder to the lens, one hand cupping the earcup",
+   "category": "X2",
+   "risk": "LOW",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL396",
+   "name": "In-Trail Watering-Can Turn (X2)",
+   "sd": "walking ahead along potted rows with a watering can tipped mid-pour, head turned back over the shoulder to the lens",
+   "category": "X2",
+   "risk": "LOW",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL397",
+   "name": "In-Trail Mail-Bag Turn (X2)",
+   "sd": "gliding ahead a boot off the ground with a mail bag at the hip, head turned back over the shoulder to the lens, feathers ruffled",
+   "category": "X2",
+   "risk": "MEDIUM",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL398",
+   "name": "In-Trail Towel-Ring Turn (X2)",
+   "sd": "walking ahead with a towel around the neck and knuckles wrapped, head turned back over the shoulder to the lens, one fist open",
+   "category": "X2",
+   "risk": "MEDIUM",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL399",
+   "name": "In-Trail Bell-Jar Turn (X2)",
+   "sd": "walking ahead carrying a small bell-jar lantern at eye level, head turned back over the shoulder to the lens, light through the jar onto the jaw",
+   "category": "X2",
+   "risk": "LOW",
+   "family": "X2",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
   }
  ],
  "family_counts": {
