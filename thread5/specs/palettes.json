@@ -1,5 +1,5 @@
 {
- "version": "1.2.0",
+ "version": "1.3.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -5419,6 +5419,295 @@
    "family": "exp_color_wave_2",
    "legacy_3slot": false,
    "source": "T5-17 CITY NEVER SLEEPS (приказ автора 2026-11-08: 9 новых экспериментальных палитр, ВСЕ разные — «а то в прошлый раз всё было сиреневое»; directed override C067, одна на слот)"
+  },
+  {
+   "id": "P171_CANDY_PISTOL",
+   "name": "Candy Pistol",
+   "dominant": [
+    "candy-pink-bright",
+    "sugar-white-hot"
+   ],
+   "secondary": [
+    "poppy-red-flash"
+   ],
+   "accent1": [
+    "cherry-bow-red"
+   ],
+   "accent2": [
+    "bubblegum-rose-deep"
+   ],
+   "shadow": "candy-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "fluorescent",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "sugar-shop bright — candy pink floods the light, one poppy-red strike like a shot through the sweetness; shadows stay rose and never grey",
+   "sd_fragment": "candy-pistol-bright",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P172_NETTLE_BRAMBLE",
+   "name": "Nettle Bramble",
+   "dominant": [
+    "nettle-silver-green",
+    "bramble-brown-dark"
+   ],
+   "secondary": [
+    "berryle-red-wine"
+   ],
+   "accent1": [
+    "sting-rose-bright"
+   ],
+   "accent2": [
+    "bark-umber-deep"
+   ],
+   "shadow": "bramble-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "cold nettle green with bramble shade; the sting is one bright berry-red strike through the dark leaves",
+   "sd_fragment": "nettle-bramble-cold",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P173_SNOW_TIGER_MARK",
+   "name": "Snow Tiger Mark",
+   "dominant": [
+    "snow-white-flat",
+    "charcoal-stripe-black"
+   ],
+   "secondary": [
+    "tundra-cream-warm"
+   ],
+   "accent1": [
+    "tiger-amber-eye"
+   ],
+   "accent2": [
+    "storm-slate-mid"
+   ],
+   "shadow": "tiger-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "flat snow-white world striped by charcoal bars; one amber mark burning like an eye in the white",
+   "sd_fragment": "snow-tiger-mark",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P174_ROSE_WINDOW",
+   "name": "Rose Window",
+   "dominant": [
+    "sapphire-glass-deep",
+    "ruby-garnet-glow"
+   ],
+   "secondary": [
+    "gold-leadline-warm"
+   ],
+   "accent1": [
+    "emerald-glass-bright"
+   ],
+   "accent2": [
+    "stone-shadow-cold"
+   ],
+   "shadow": "glass-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "cathedral glass at night: sapphire floods the nave, ruby burns at the center, gold leadlines draw where the light may walk",
+   "sd_fragment": "rose-window-glass",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P175_BELLFROST_NOEL",
+   "name": "Bellfrost Noel",
+   "dominant": [
+    "bell-bronze-green",
+    "frost-snow-blue-pale"
+   ],
+   "secondary": [
+    "ember-window-orange"
+   ],
+   "accent1": [
+    "midnight-mass-gold"
+   ],
+   "accent2": [
+    "bronze-patina-mid"
+   ],
+   "shadow": "bell-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "frosted bell-bronze night with one ember-warm window breathing light; snow keeps the shadows blue-pale and never grey",
+   "sd_fragment": "bellfrost-noel",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P176_INCENSE_AND_MYRRH",
+   "name": "Incense and Myrrh",
+   "dominant": [
+    "incense-smoke-warm-grey",
+    "myrrh-brown-deep"
+   ],
+   "secondary": [
+    "frankincense-cream-pale"
+   ],
+   "accent1": [
+    "nave-gold-dim"
+   ],
+   "accent2": [
+    "thurible-ember-soft"
+   ],
+   "shadow": "incense-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "smoke-warm grey air sweetened by myrrh; gold lives small and dim, like light through a thurible's holes",
+   "sd_fragment": "incense-myrrh-smoke",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P177_GUTTER_CHAMPAGNE",
+   "name": "Gutter Champagne",
+   "dominant": [
+    "cheap-champagne-gold",
+    "nicotine-amber"
+   ],
+   "secondary": [
+    "cardboard-tan-flat"
+   ],
+   "accent1": [
+    "red-lacquer-lip"
+   ],
+   "accent2": [
+    "alley-brick-dark"
+   ],
+   "shadow": "gutter-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "discount glam: champagne gold poured over nicotine amber, one hard red lacquer strike, shadows the color of brick dust",
+   "sd_fragment": "gutter-champagne",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P178_OILSLICK_CHROME",
+   "name": "Oilslick Chrome",
+   "dominant": [
+    "oil-black-iridescent",
+    "chrome-silver-hard"
+   ],
+   "secondary": [
+    "acid-green-flash"
+   ],
+   "accent1": [
+    "spark-arc-white"
+   ],
+   "accent2": [
+    "garage-iron-dark"
+   ],
+   "shadow": "oil-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "black oil under a hard chrome sheen; acid-green flashes ride the surface like leaks of color",
+   "sd_fragment": "oilslick-chrome",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P179_MUD_LEOPARD",
+   "name": "Mud Leopard",
+   "dominant": [
+    "mud-brown-warm",
+    "leopard-amber-spot"
+   ],
+   "secondary": [
+    "bone-print-cream"
+   ],
+   "accent1": [
+    "jet-rosette-black"
+   ],
+   "accent2": [
+    "swamp-moss-dark"
+   ],
+   "shadow": "mud-shadow-never-grey",
+   "forbidden": [
+    "grey shadow",
+    "black shadow",
+    "neon",
+    "violet-dominant",
+    "pastel-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "warm mud ground spotted with leopard amber and jet rosettes; the print works as a light-map, shadows stay moss-green",
+   "sd_fragment": "mud-leopard-print",
+   "mood": "",
+   "family": "exp_color_wave_3",
+   "legacy_3slot": false,
+   "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",

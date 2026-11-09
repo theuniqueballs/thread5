@@ -1,5 +1,5 @@
 {
- "version": "1.7.0",
+ "version": "1.8.0",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14)",
  "poses": [
@@ -5667,6 +5667,435 @@
    ],
    "use": "V",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+  },
+  {
+   "id": "PL400",
+   "name": "Upward-Pour Catch",
+   "sd": "standing with head tilted back, catching an upward-pouring stream from the teapot in a raised cup, sleeves fallen back along the forearms",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL401",
+   "name": "Mid-Air Stair Stride",
+   "sd": "mid-stride up invisible stairs above the broken staircase, laundry basket on the hip, hem mid-swing",
+   "category": "dynamic_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "NV",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL402",
+   "name": "Un-Rain Stand-Still",
+   "sd": "standing in rain rising from the ground to the sky, chin lifted, arms loose, thin shirt drying upward",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL403",
+   "name": "Backward-Alarm Reach",
+   "sd": "half-awake on one elbow, reaching to set the clock's alarm backward, the minute hand running under her fingertip",
+   "category": "micropose_expression",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM01"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL404",
+   "name": "Self-Dealing Fan",
+   "sd": "shuffling cards with one hand against her hip, the deck fanning and dealing itself across the checker floor, a card tucked at her collar",
+   "category": "performance_mirror",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL405",
+   "name": "Garden Prune Stand",
+   "sd": "standing among self-working shears, accepting a cup of tea from the rose bush, thorn-vine curled loose around her ankle",
+   "category": "env_interaction",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL406",
+   "name": "Outside-Key Door Pull",
+   "sd": "pulling a door that opens from the wrong side, hip braced against the jamb, the key turning itself above her hand",
+   "category": "env_interaction",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL407",
+   "name": "Delayed-Mirror Wait",
+   "sd": "standing at the mirror, arms crossed, watching her reflection catch up three seconds late",
+   "category": "base",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM11"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL408",
+   "name": "Ceiling-Sweep Balancer",
+   "sd": "balancing on a lifted broom handle above the floor, sweeping dust off the ceiling-floor, skirt falling toward the sky",
+   "category": "dynamic_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL409",
+   "name": "Self-Writing Letter Reader",
+   "sd": "seated on the desk edge, reading a letter as the ink crawls itself across the page toward the ending she already knows",
+   "category": "base",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL410",
+   "name": "Fold-Through Doorway",
+   "sd": "folding herself into quarters like a folding ruler to slip through the shrinking door, chin over stacked hands",
+   "category": "dynamic_v2",
+   "risk": "HIGH",
+   "family": "main",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL411",
+   "name": "Tide-Floor Wring",
+   "sd": "kneeling in knee-deep room-tide, wringing a rag over the water, hem floating a ring around her",
+   "category": "env_interaction",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "NV",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL412",
+   "name": "Crown-Verdict Kneel",
+   "sd": "kneeling on the checker floor with hands crown-shaped above her head, nightgown slipping off one shoulder, chess pieces tall around her",
+   "category": "threshold_limen",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL413",
+   "name": "Scent-Smoke Sip",
+   "sd": "standing in a coil of visible scent pulled backward into her nose, eyes half-closed, one hand fanning the smoke back",
+   "category": "micropose_expression",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL414",
+   "name": "Lie-Weigh Balance",
+   "sd": "standing on one pan of a room-scale, opposite pan holding yesterday's excuse, nightshirt hem lifted by the updraft of honest weight",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL415",
+   "name": "Dream-File Browse",
+   "sd": "standing at the dream-catalogue wall, pulling one file of somebody else's sleep, reading it like a letter",
+   "category": "base",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL416",
+   "name": "Tea-Rain Dry-Off",
+   "sd": "standing under the four-o'clock tea-rain with arms spread to dry herself with crest-heat, soaked chemise printing honest",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL417",
+   "name": "Snail-Post Signature",
+   "sd": "signing a snail's shell with one fingernail, letters curving with the spiral, other hand smoothing the wall",
+   "category": "micropose_expression",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL418",
+   "name": "Vitrail-Ladder Reach",
+   "sd": "perched high on a stepladder washing a cathedral window that grew overnight, reaching across the stained-glass panel",
+   "category": "env_interaction",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL419",
+   "name": "Smile-First Greeting",
+   "sd": "conversing with a floating grin while the rest of the cat assembles itself behind it, teacup steady in one hand",
+   "category": "micropose_expression",
+   "risk": "LOW",
+   "family": "main",
+   "preferred_cams": [
+    "CAM01"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL420",
+   "name": "Floor-to-Sky Line Thread",
+   "sd": "threading a laundry line stretched from floor to sky, on tiptoe, shift lifting in a slow wave with the reach, tails steadying the rope",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL421",
+   "name": "Read-Aloud Blush",
+   "sd": "standing among open books turned toward her, reading her biography aloud, nightgown dropped off one shoulder in protest",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL422",
+   "name": "Kettle-Sun Breakfast",
+   "sd": "leaning back against the counter away from the kettle's sunrise, thin chemise backlit through by the spout-light, breakfast tray on palm",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL423",
+   "name": "Sky-Doorstep First Step",
+   "sd": "one bare foot already set on the first cloud-step off the doorstep, morning mug still in hand, hem standing in the wind of the drop",
+   "category": "threshold_limen",
+   "risk": "MID",
+   "family": "main",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (custom card)"
+  },
+  {
+   "id": "PL424",
+   "name": "Whisper Seat-Knee (X3)",
+   "sd": "leaning in from the side a hand-span from the lens, one knee on the seat beside the viewer, weight on the planted palm, lips at the top frame edge mid-whisper, eyes straight into the lens",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL425",
+   "name": "Whisper Armrest (X3)",
+   "sd": "bending over the armrest to bring her face within a hand-span of the lens, weight sunk into the cushion, lips at the top frame edge mid-whisper, eyes locked on the lens",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL426",
+   "name": "Whisper Table-Lean (X3)",
+   "sd": "leaning across the table's corner into the lens zone, both palms flat on the wood, face turned fully to the lens, lips at the top frame edge mid-whisper",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL427",
+   "name": "Whisper Doorframe (X3)",
+   "sd": "framed in the doorway and leaning through it toward the lens, one hand on the jamb above, face fully toward the lens, lips at the frame's top edge mid-whisper",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL428",
+   "name": "Whisper Sill (X3)",
+   "sd": "bracing one knee on the windowsill to lean across into the lens, curtain brushing her jaw, lips at the top frame edge mid-whisper, eyes into the lens",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL429",
+   "name": "Whisper Ladder (X3)",
+   "sd": "halfway down a stepladder, stopping to lean in at the lens height, one hand gripping the rail, lips at the top frame edge mid-whisper, eyes on the lens",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL430",
+   "name": "Whisper Counter (X3)",
+   "sd": "leaning over the counter's edge into the lens, elbows planted, weight forward, face fully toward the lens, lips at the top frame edge mid-whisper",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL431",
+   "name": "Whisper Desk (X3)",
+   "sd": "sliding onto the desk edge beside the lens and leaning across its width, one hand flat among the papers, lips at the top frame edge mid-whisper, eyes into the lens",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL432",
+   "name": "Whisper Fence (X3)",
+   "sd": "hanging over the garden fence to reach the lens, forearms on the top rail, chin low, lips at the top frame edge mid-whisper, eyes straight into the lens",
+   "category": "X3",
+   "risk": "LOW",
+   "family": "X3",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
   }
  ],
  "family_counts": {
@@ -5679,7 +6108,8 @@
   "partner_implied": 24,
   "erotic_presentation_v2": 24,
   "micropose_expression": 24,
-  "threshold_limen": 12
+  "threshold_limen": 12,
+  "X3": 9
  },
  "pair_note": "§33 pose-camera pair law: every PL code has 3-5 preferred camera angles; outside the preferred set is allowed but FLAGGED. PL+CAM must agree — a back-to-camera PL with a front eye-level CAM is a logical impossibility (viewer inside the body), and was the v16 #1 failure (effective cowboy rate 67%). Camera values reference the ONTOLOGY camera axis — CAUTION: the pose file's CAM code table and ONTOLOGY's CAM01-CAM12 axis DISAGREE on 5 codes (see pools.json cam.numbering_conflict); the pose pairs' self-describing suffixes (CAM02_three_quarter) are authoritative.",
  "cam_reference": {
@@ -6977,12 +7407,83 @@
    "PL364",
    "PL365",
    "PL366"
+  ],
+  "T5-17": [
+   "PL367",
+   "PL368",
+   "PL369",
+   "PL370",
+   "PL371",
+   "PL372",
+   "PL373",
+   "PL374",
+   "PL375",
+   "PL376",
+   "PL377",
+   "PL378",
+   "PL379",
+   "PL380",
+   "PL381",
+   "PL382",
+   "PL383",
+   "PL384",
+   "PL385",
+   "PL386",
+   "PL387",
+   "PL388",
+   "PL389",
+   "PL390",
+   "PL391",
+   "PL392",
+   "PL393",
+   "PL394",
+   "PL395",
+   "PL396",
+   "PL397",
+   "PL398",
+   "PL399"
+  ],
+  "T5-18": [
+   "PL400",
+   "PL401",
+   "PL402",
+   "PL403",
+   "PL404",
+   "PL405",
+   "PL406",
+   "PL407",
+   "PL408",
+   "PL409",
+   "PL410",
+   "PL411",
+   "PL412",
+   "PL413",
+   "PL414",
+   "PL415",
+   "PL416",
+   "PL417",
+   "PL418",
+   "PL419",
+   "PL420",
+   "PL421",
+   "PL422",
+   "PL423",
+   "PL424",
+   "PL425",
+   "PL426",
+   "PL427",
+   "PL428",
+   "PL429",
+   "PL430",
+   "PL431",
+   "PL432"
   ]
  },
  "changelog": [
   "1.4.1: +PL333 Hot-Spring Edge Sit (A7-07) — EXP-overlay rework T5-15 (9 candidates on 9 slots), replaces duplicate A8-04 payoff slot",
   "1.5.0: +33 first-use PL334–PL366 for T5-16 LUCID DREAMS — 9 manual cards (A1-05, A1-08, A6-10, A6-04, A7-04, A6-07, A3-07, A3-09, A7-01) + 24 custom cards; EXP-combo X1 «over-viewer» family PL358–PL366 (9 cards, CAM03-only, pool: exp spirit). Free manual cards in reserve: A1-07, A4-06, A6-05, A8-09 (A1-02 core folded into X1 PL358).",
-  "1.6.0: use-делёж поз N/V/NV (приказ автора 2026-11-08 — ниша vs VOLT; V=X1+A8, N=presentation-семьи, NV=dynamic/env/partner+A1–A7/A9) + author_picks T5-16: PL358 (P25), PL359 (P26), PL361 (P28), PL362 (P29) — «берём позу»; поле pick на картах"
+  "1.6.0: use-делёж поз N/V/NV (приказ автора 2026-11-08 — ниша vs VOLT; V=X1+A8, N=presentation-семьи, NV=dynamic/env/partner+A1–A7/A9) + author_picks T5-16: PL358 (P25), PL359 (P26), PL361 (P28), PL362 (P29) — «берём позу»; поле pick на картах",
+  "1.8.0: T5-18 REVERSE WONDERLAND: +PL400–PL423 (24 мейна) + PL424–PL432 (EXP-семья X3 whisper-lean, 9 карт, use V) — X3 «В-ШЁПОТ» по приказу «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»; first_use_ledger догнал T5-17 (PL367–PL399)"
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",

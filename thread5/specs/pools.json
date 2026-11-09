@@ -1,5 +1,5 @@
 {
- "version": "1.1.0",
+ "version": "1.2.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT)",
  "sections": {
@@ -852,6 +852,204 @@
     "name": "mid_jar_glow",
     "sd": "the bell-jar light mid-rocking across the jaw — face already turned back to the lens",
     "source": "T5-17 K-FF"
+   },
+   {
+    "id": "K216",
+    "name": "mid_pour_up",
+    "sd": "the stream mid-rising from the spout to the cup held overhead — tea drinking upward",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K217",
+    "name": "mid_airstep",
+    "sd": "the invisible stair mid-step above the broken flight — the basket's weight swinging late",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K218",
+    "name": "mid_unrain",
+    "sd": "the raindrops mid-climb from the puddle to the sky — the shirt drying upward",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K219",
+    "name": "mid_backtick",
+    "sd": "the minute hand mid-run backward under her fingertip — the alarm set for yesterday",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K220",
+    "name": "mid_selfdeal",
+    "sd": "the cards mid-deal by themselves across the checker floor — her hands only fanning",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K221",
+    "name": "mid_pruneself",
+    "sd": "the shears mid-cut by themselves on the bush — the teacup already reaching her hand",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K222",
+    "name": "mid_outkey",
+    "sd": "the key mid-turn from the wrong side of the door — the lock answering her pull",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K223",
+    "name": "mid_delaymirror",
+    "sd": "the reflection mid-catch-up three seconds late — her arms crossed, waiting",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K224",
+    "name": "mid_upsweep",
+    "sd": "the fallen cups mid-fall toward the ceiling-floor — the broom bristles just landing",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K225",
+    "name": "mid_selfwrite",
+    "sd": "the ink mid-crawl into the next word — the page finishing its sentence without her",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K226",
+    "name": "mid_shrinkdoor",
+    "sd": "the door frame mid-shrink below her height — the fold already begun at the waist",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K227",
+    "name": "mid_tidefloor",
+    "sd": "the room-tide mid-flood over the threshold — the rag lifting from the water",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K228",
+    "name": "mid_verdict_crown",
+    "sd": "the pieces mid-vote around her kneel — the crown-shaped hands held level",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K229",
+    "name": "mid_smell_pull",
+    "sd": "the visible scent mid-drink back into her nose — the coil of air bent double",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K230",
+    "name": "mid_lie_weigh",
+    "sd": "the opposite pan mid-dip under the excuse's weight — her own pan rising",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K231",
+    "name": "mid_dreamfile",
+    "sd": "the dream-file mid-slide from the wall slot — somebody else's sleep in her hand",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K232",
+    "name": "mid_teapour_rain",
+    "sd": "the tea-rain mid-hour over her arms — the crest heat just flaring to dry",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K233",
+    "name": "mid_snailmail",
+    "sd": "the shell mid-signature under the fingernail — the spiral letter half-curled",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K234",
+    "name": "mid_aisle_grow",
+    "sd": "the cathedral window mid-wash on the grown ladder — the squeegee pausing at the leadline",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K235",
+    "name": "mid_smile_first",
+    "sd": "the grin mid-hang before the cat arrives — the teacup steady beneath it",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K236",
+    "name": "mid_line_hang",
+    "sd": "the laundry line mid-thread from floor to sky — the shift's hem lifting in the reach",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K237",
+    "name": "mid_readback",
+    "sd": "the open books mid-read of her biography — the page turning itself to the embarrassing year",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K238",
+    "name": "mid_sun_spout",
+    "sd": "the kettle's sunrise mid-spill across the ceiling — the tray level on her palm",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K239",
+    "name": "mid_doorstep_sky",
+    "sd": "the first cloud-step mid-take beneath her bare foot — the mug still level",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K240",
+    "name": "mid_whisper_ear",
+    "sd": "the whisper mid-syllable at the lens corner — the ears mid-betrayal upright",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K241",
+    "name": "mid_whisper_armrest",
+    "sd": "the whisper mid-word over the armrest — the tail mid-wrap on her own ankle",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K242",
+    "name": "mid_whisper_table",
+    "sd": "the whisper mid-sentence across the table corner — the spines mid-flatten along the forearm",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K243",
+    "name": "mid_whisper_frame",
+    "sd": "the whisper mid-breath through the doorway — the glass freckles mid-catch of window light",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K244",
+    "name": "mid_whisper_sill",
+    "sd": "the whisper mid-word at the sill — the hair-tips mid-dissolve into incense smoke",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K245",
+    "name": "mid_whisper_ladder",
+    "sd": "the whisper mid-phrase from the ladder step — the wing mid-fold closer as a cloak",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K246",
+    "name": "mid_whisper_counter",
+    "sd": "the whisper mid-syllable over the counter — the ringed tail mid-curl at the hip",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K247",
+    "name": "mid_whisper_desk",
+    "sd": "the whisper mid-word across the desk — the scent-haze mid-curl from her collar",
+    "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K248",
+    "name": "mid_whisper_fence",
+    "sd": "the whisper mid-breath over the fence rail — the quick hands mid-deal of a small stolen trinket",
+    "source": "T5-18 K-FF"
    }
   ],
   "fet": [
@@ -4971,7 +5169,7 @@
   }
  },
  "inventory": {
-  "kinetics_k": 107,
+  "kinetics_k": 173,
   "fet": 50,
   "h": 26,
   "gar": 40,

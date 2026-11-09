@@ -1,5 +1,5 @@
 {
- "version": "2.4.0",
+ "version": "2.5.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 race_pool R01-R15 + race_extension_v2 R16-R22 + Thread-4 extensions R23-R36 + author directives — инвентарь: 34 active · 2 gold (R17 jellyfish-kin, R20 harpy-kin) · 4 banned (BAN-01..04 dwarves/goblins/trolls/orcs) = 40 записей (2.1.1: source-строка догнала фактический состав) + R37-R41 (verdikt T4-33 2026-10-17: «понадобавляй ещё кинов, человекоподобные — суккубы и так далее») + R41 → Witch-kin (приказ автора 2026-10-17: «циклопы отстой» — v2.2.1, фонд 45 без изменений) + v2.3.0 (вердикт T5-07 2026-10-30): R30 Frog-kin → quarantine («фрог-кин вообще не получился», реабилитация только приказом автора); аудит T4-кинов закрыт — полный фонд T4 уже в реестре (R23–R36 = расширения Thread-4, R37–R41 = T4-33), стянуть нечего; освежение количества = каст 12–14/21 (policy v1.8) + v2.4.0 (вердикт-директива автора 2026-11-03): долг T5-03 возвращён — 8 кинов каста T5-03, живших без реестра, зарегистрированы R42-R49 (moon-rabbit/dullahan/marionette/shadow/ink-slime/wind-spirit/eclipse-officiant/banshee) по языку слотов T5-03; R50 Nine-tails + R51 Crane + R52 Fortune-cat — приказ «добрать кинов а-ля девятихвостая лисица»; pos_tags добавлены всем активным (T5-07: «они хоть и кины, но выглядят простенько»); form_law + skin_law; R32 перестроен по form_law. Фонд: 51 запись = 51 active/gold (2 gold R17/R20) + 4 banned + R30 quarantine.",
  "races": [
@@ -949,6 +949,166 @@
     "cream skin"
    ],
    "note": "Приказ 2026-11-03 «добрать кинов» — maneki-девушка; motion: поднятая ладонь качается маятником, когда она ждёт; skin: cream"
+  },
+  {
+   "id": "R53",
+   "name": "Rabbit-kin",
+   "status": "active",
+   "features": [
+    "long upright ears that betray her mood — flat back in denial, springing up when she softens",
+    "cream-white winter coat",
+    "powder-puff tail",
+    "rose-pink inner ears"
+   ],
+   "pos_tags": [
+    "long upright ears flat back in denial",
+    "cream-white winter coat",
+    "powder-puff tail",
+    "rose-pink inner ears"
+   ],
+   "note": "T5-18 кандидат-носитель tsundere-голоса #1: уши = детектор дэре (губы шепчут «нет», уши уже «да»); collision: R29 Mouse-kin не задет (уши зайца — длинные стоячие); light: уши ловят ключевой свет первыми"
+  },
+  {
+   "id": "R54",
+   "name": "Snow-leopard-kin",
+   "status": "active",
+   "features": [
+    "plush snow-leopard tail that wraps her own ankle when caught off-guard",
+    "snow-pale skin with faint rosettes at the shoulders only",
+    "small round snow-leopard ears",
+    "grey-green eyes"
+   ],
+   "pos_tags": [
+    "plush snow-leopard tail wrapped around her own ankle",
+    "snow-pale skin with faint shoulder rosettes",
+    "small round snow-leopard ears",
+    "grey-green eyes"
+   ],
+   "note": "T5-18 tsundere-голос #2: хвост-предатель (обвил щиколотку сам = дэре); rosettes только на плечах, не принт по всему телу; collision: R04 Cat-kin не задет"
+  },
+  {
+   "id": "R55",
+   "name": "Hedgehog-kin",
+   "status": "active",
+   "features": [
+    "brown spines along forearms and shoulder line that flatten when she relaxes",
+    "soft cream fur line at the collar and belly",
+    "small dark nose",
+    "dark round eyes"
+   ],
+   "pos_tags": [
+    "brown spines smoothed flat along the forearms",
+    "cream fur line at the collar",
+    "small dark nose",
+    "dark round eyes"
+   ],
+   "note": "T5-18 tsundere-голос #3: иглы-метафора (разгладились при зрителе = уже спокойно); спины не колют окружение в кадре, сидят плоско по руке"
+  },
+  {
+   "id": "R56",
+   "name": "Rose-glass-kin",
+   "status": "active",
+   "features": [
+    "skin freckles patterned like leaded stained-glass shards over nose and cheeks",
+    "small jewel-glass beads woven into the hair",
+    "a faint nave echo under the voice",
+    "pale skin warmed by glass light"
+   ],
+   "pos_tags": [
+    "stained-glass freckles over nose and cheeks",
+    "small jewel-glass beads in the hair",
+    "pale skin lit warm through glass"
+   ],
+   "note": "T5-18 notre-dame голос #1: фрекнелы-витраж — рождественское стекло рисует по лицу; jewel-бусин в волосах ≤3; echo — просодия, не звук в кадре"
+  },
+  {
+   "id": "R57",
+   "name": "Incense-wisp-kin",
+   "status": "active",
+   "features": [
+    "hair rising and thinning into pale incense smoke at the tips",
+    "ember glow at the fingertips",
+    "faint drifting scent drawn as curls in the air",
+    "warm dusk skin"
+   ],
+   "pos_tags": [
+    "hair tips dissolving into pale incense smoke",
+    "ember glow at the fingertips",
+    "drifting scent drawn as visible curls",
+    "warm dusk skin"
+   ],
+   "note": "T5-18 notre-dame #2: волосы-дым (урок В14: дым — существительное с позицией); ember на пальцах — не светильник: она сама тёплая точка, закон света v2 совместим"
+  },
+  {
+   "id": "R58",
+   "name": "Belfry-owl-kin",
+   "status": "active",
+   "features": [
+    "huge silent owl wings folded close like a cloak",
+    "moonlit grey-white plumage at the collar and cuffs",
+    "round amber eyes",
+    "near-silent head turns"
+   ],
+   "pos_tags": [
+    "huge owl wings folded close like a cloak",
+    "moonlit grey-white plumage at collar and cuffs",
+    "round amber eyes"
+   ],
+   "note": "T5-18 notre-dame #3: крылья-плащ (сложены, не раскрыты за спиной); её свет — луна через витраж; движение головы беззвучно"
+  },
+  {
+   "id": "R59",
+   "name": "Raccoon-kin",
+   "status": "active",
+   "features": [
+    "dark mask-ring around the eyes",
+    "ringed tail thick and fluffy, carried curled around the hip",
+    "clever small fingers",
+    "dusty-grey coat that shines after rain"
+   ],
+   "pos_tags": [
+    "dark mask-ring around the eyes",
+    "thick fluffy ringed tail curled around the hip",
+    "clever small fingers",
+    "dusty-grey coat shining after rain"
+   ],
+   "note": "T5-18 dirty голос #1: мусорная принцесса; хвост = толстый-пушистый-завитой у бедра — патч В12 вшит в теги сразу"
+  },
+  {
+   "id": "R60",
+   "name": "Skunk-kin",
+   "status": "active",
+   "features": [
+    "jet-black coat with a white crest stripe over the crown and down the spine",
+    "plume tail carried like a boa across the forearms",
+    "visible sweet scent-haze drawn as faint curls",
+    "dark amber-brown eyes"
+   ],
+   "pos_tags": [
+    "jet-black coat with a white crest stripe down the spine",
+    "plume tail draped across the forearms like a boa",
+    "sweet scent-haze drawn as faint curls",
+    "dark amber-brown eyes"
+   ],
+   "note": "T5-18 dirty #2: парфюм-передоз (запах видим — дымка-завитки); хвост-боа НА предплечьях, никогда не у таза вверх (В12)"
+  },
+  {
+   "id": "R61",
+   "name": "Weasel-kin",
+   "status": "active",
+   "features": [
+    "long slinky body line",
+    "honey-brown fur with a cream throat patch",
+    "restless quick hands always mid-scheme",
+    "bright near-black eyes"
+   ],
+   "pos_tags": [
+    "long slinky body line",
+    "honey-brown fur with a cream throat patch",
+    "restless quick hands mid-scheme",
+    "bright near-black eyes"
+   ],
+   "note": "T5-18 dirty #3: хорь-схемщица; тело — длинная линия, руки в постоянной середине трюка"
   }
  ],
  "directives": {

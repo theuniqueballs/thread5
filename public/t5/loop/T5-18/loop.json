@@ -1,0 +1,128 @@
+{
+ "batch": "T5-18",
+ "theme": "REVERSE WONDERLAND",
+ "updated": "2026-11-09T20:40:00+03:00",
+ "note": "ПРОКСИ-РЕНДЕР — это НЕ PixAI и не PH: встроенный рендерер песочницы, дымовой тест читаемости промпта (директива автора: «делаем прогон, ищем уязвимости, исправляем — по нескольку кругов»). Петля T5-18: круг 1 — 12 слотов (9 EXP X3 + P01/P11/P24): 2 прошли сразу (P27 — X3-эталон, P33); круг 2 — 11 дожимов (патчи: физические источники палитр В11, расовые приметы, X3-наклоны, анти-капшен); круг 3 — 9 финалов. Находки петли: 4 псевдотекста (кит-капшены от палитр-идиом и «honest» на реквизите → урок В17), свеча-прилипание на зимнем окне (В18), слепые зоны: восходящая жидкость (P01, 3 круга) и совиные крылья-плащ (P30) → В19; реализм-дрифт лица — стохастический (P25/P26/P28/P32). X3 «В-ШЁПОТ»: стабильное ядро «опора+вес+глаз-в-линзу+лицо целиком» у 6/9 с первого прогона; слабые места — губы-у-края-кадра и наклон читаются неровно (3/9). Финальный арбитр — прогон автора на PixAI.",
+ "circles": {
+  "c1": {
+   "when": "2026-11-09 19:10+03",
+   "what": "12 прогонов: 9 EXP X3 + P01/P11/P24; прошли сразу P27 (эталон) и P33"
+  },
+  "c2": {
+   "when": "2026-11-09 20:00+03",
+   "what": "11 дожимов после патчей POS (источники палитр, приметы рас, анти-свеча, анти-капшен)"
+  },
+  "c3": {
+   "when": "2026-11-09 20:30+03",
+   "what": "9 финалов после вторых патчей (анти-текст, уши, крылья-фурл, люнет)"
+  }
+ },
+ "slots": {
+  "P01": {
+   "name": "ведьма-хозяйка · R41 · teapot-sunrise-pour-up",
+   "note": "круг 1: струя слилась с ртом («пар у подбородка» прочитался буквально); круг 2: разлив инвертирован обратно (чайник в поднятой руке льёт вниз); круг 3: чистый кадр без инверсии — ВОСХОДЯЩАЯ ЖИДКОСТЬ = слепая зона прокси (3 круга), финал за PixAI автора",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P01.webp",
+    "c3": "/t5/loop/T5-18/c3/P01.webp"
+   },
+   "pos": "Masterpiece, best quality, profile from the ribs up, facing left, 1girl, solo, nipples a soft twin-print through the stretched buttonholes, honey-blonde hair in a loose sleeping braid, warm dusk-pale skin, young supple build, witch hat with a soft droop and star-charms at the brim, soy-amber-deep tarp-shadow-umber palette, mid_pour_up\nthe sleep shirt's collar slipped off one shoulder, the stretched buttonholes printing honest ovals where the backward arch pulls the weave taut — the placket's confession is the claim, worn and unposed\nthe teapot rests tipped on the table, its spout aimed at the ceiling, and a ribbon of tea climbs the air in an arc into the cup she steadies high overhead, the climbing column lighting her raised arms from below\nSoy amber palette, soy-amber-deep and tarp-shadow-umber, lacquer-seal-red accent at the pot's glaze; her colors are breakfast running the wrong way and not caring.\nstylized 2D anime face tilted back into the amber light, anime eyes (green, sleepy-pleased), small nose, small mouth mid-yawn into the steam, the stream's glow holding the jaw line."
+  },
+  "P11": {
+   "name": "змея · R08 · door-shrinks-she-folds",
+   "note": "круг 1: стоит в полный рост; круг 2: опустилась на колени у синей двери; круг 3: колени-объятие под дверью, хвост-линейка спрятана, ллинтель не прижал — складка частичная, остаточный риск",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P11.webp",
+    "c3": "/t5/loop/T5-18/c3/P11.webp"
+   },
+   "pos": "Masterpiece, best quality, wide corridor view at eye height, 1girl, solo, bottle-green hair sleek with a middle part to the hip, glass-pale skin, young limber build, fine scale-line at the temples, prussian-bottle-glass palette, mid_shrinkdoor\nribbed knit turtleneck dress striping every curve of the fold, one knee tucked under the hem, the deep lunge geometry written by the fold itself, the hem tucked under the kneeling knee — the fold is the claim, geometry over furniture\nthe doorway's lintel now at her head height: she kneels deep beneath it, folded under the blue frame — one knee up, chin over stacked hands — her snake tail flat behind her, the glass-blue light crowding her from above\nPrussian bottle palette, prussian-bottle-glass with bottle-green sea-glass, label-gold flake at the doorknob; her colors are a door deciding to be rude.\nstylized 2D anime face stacked over her hands mid-fold, anime eyes (gold, vertical pupils calm), small nose, small mouth exhaling the squeeze, the frame's cold blue holding the temple scales."
+  },
+  "P24": {
+   "name": "человек · doorstep-step-into-sky",
+   "note": "круг 1: ботинки на ногах, стою на пороге; круг 2: босая+коврик, но капшен 小精灵夏日 (палитра «Pixie summer» ушла в текст); круг 3: текст убит, ботинки на коврике буквально, облако-ступень частично — финал",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P24.webp",
+    "c3": "/t5/loop/T5-18/c3/P24.webp"
+   },
+   "pos": "Masterpiece, best quality, low view from below the doorstep, 1girl, solo, cotton panties' white waistband one honest beat, wheat-blonde hair breeze-split to mid-back with a trailing silk ribbon, sun-freckled warm skin, young sure-footed build, worn-denim-blue-faded shift-cotton-soft palette, mid_doorstep_sky\ncotton sundress with the hem standing in the wind of the drop, the hem arrested at the hip line neither falling nor flying, — the standing hem is the claim, altitude's own tailor\nher bare left foot already pressed down on the white cloud firm underfoot like a stair off the doorstep, the right shoe left on the doormat behind her, mug level in one hand, tea unspilled, the world strung far below her in farms and wire-threads, pollen-gold dust rising off the threshold\nSummer shift palette, worn-denim-blue-faded with shift-cotton-soft white, pollen-gold-heavy light and one glint-wing-green accent in the ribbon; her colors are the first step of a commute above the weather.\nstylized 2D anime face down at her own footing, anime eyes (sky-grey, one-breath brave), small nose, small mouth exhaling the step, the cloud's white light holding the ribbon."
+  },
+  "P25": {
+   "name": "Ая · R53 Rabbit-kin · whisper-seat-knee (X3)",
+   "note": "круг 1: X3 читается, но нет физического розового источника (В11); круг 2: стена candy-pink встала, уши потерялись; круг 3: уши вернулись, глаза ушли в карий — финал",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P25.webp",
+    "c3": "/t5/loop/T5-18/c3/P25.webp"
+   },
+   "pos": "Masterpiece, best quality, close bust framing, shoulder-up, from the seated eye-line a hand-span off, 1girl, solo, white rabbit ears folded flat back in denial with rose-pink inner sides, candy-pink-bright sugar-white-hot palette, white hair in high loose pigtails with face-framing strands, cream-white winter coat of fine fur over fair skin, young slight build, long upright ears flat back in denial, mid_whisper_ear\nunbuttoned knit cardigan over a thin cotton bralette whose honest seams print through, the buttonholes stretched into ovals by the lean, one strap tugged loose by her own thumb, nipples a soft press through the bralette's honest seams — the stretched buttonholes are the claim, lean-made\nshe leans in from the side until her face fills the frame's upper half and her lips graze the frame's upper rim, one knee up on the seat beside the viewer's place, weight planted on the palm, whispering her denial while both ears spring upright mid-word, gaze aimed down the lens\nCandy pistol palette, candy-pink-bright over sugar-white-hot, one poppy-red-flash accent at the choker's bow; the wall behind her painted solid candy-pink, the seat's cushion sugar-white — sweetness with the safety off.\nstylized 2D anime face a hand-span from the lens, lips grazing the frame's upper rim mid-whisper, anime eyes (pink, tsun-lidded over a dere gleam), small nose, small mouth mid-syllable, the pink flood holding the ear-tips."
+  },
+  "P26": {
+   "name": "Юки · R54 Snow-leopard-kin · whisper-armrest (X3)",
+   "note": "круг 1: вайб-лед есть, сидит прямо; круг 2: хвост на кресле, лицо уплыло в реализм; круг 3: рендер добавил шипы на свитер, наклон так и не собрался — остаточный риск",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P26.webp",
+    "c3": "/t5/loop/T5-18/c3/P26.webp"
+   },
+   "pos": "Masterpiece, best quality, bust-framed over the armrest's edge, from the seated viewer's eye height, 1girl, solo, nettle-silver-green bramble-brown-dark palette, frost-white hair wet slicked-back, snow-pale skin with faint shoulder rosettes, young tall build, small round snow-leopard ears, mid_whisper_armrest\noff-shoulder sweater ridden down one cold arm over a pencil skirt's back slit, her collarbone's edge reading where the weight sinks into the cushion, the fur cloak of her ruff sliding off mid-bend — the sunk weight is the confession the words refuse\nshe bends low over the armrest, shoulders sinking into the cushion, bringing her face within a hand-span of the viewer and across the frame's upper half, whispering frost at the lens while her plush snow-leopard tail wraps tight around her own ankle — the tail betraying the thaw before her lips do, grey-green eyes locked on the lens\nNettle bramble palette, nettle-silver-green over bramble-brown-dark, one sting-rose-bright accent at the sweater's seam; her colors are winter pretending not to thaw.\nstylized 2D anime face near the cushion, mouth at the frame's upper rim mid-frost, anime eyes (grey-green, arctic over ember), small nose, small mouth mid-frost, the nettle wash holding the wet-slick hairline."
+  },
+  "P27": {
+   "name": "Игла · R55 Hedgehog-kin · whisper-table-lean (X3)",
+   "note": "круг 1: X3-ЭТАЛОН петли — обе ладони на столе, взгляд в линзу, бандаж-спираль натянута; финал = круг 1, дожим не потребовался",
+   "circles": {
+    "c1": "/t5/loop/T5-18/c1/P27.webp",
+    "c2": "/t5/loop/T5-18/c2/P27.webp"
+   },
+   "pos": "Masterpiece, best quality, chest-up view across the table corner, at the seated eye-line, 1girl, solo, snow-white-flat charcoal-stripe-black palette, ash-brown hair in a tousled bixie cut, warm cream skin, young compact build, brown spines smoothed flat along the forearms, mid_whisper_table\nelastic bandage wrapped as a top with the wrap printing her breast shape honest through the spiral as the lean pulls it taut, the old tee washed to gauze-thin at the collar where the cream fur line shows — the taut spiral is the claim, lean-earned\nshe leans across the table's corner into the lens with both palms flat on the wood, whispering one sharp syllable stack while every spine lies smooth along her arms, dark round eyes fixed through the lens\nSnow tiger palette, snow-white-flat striped by charcoal bars, one tiger-amber-eye accent at the window's morning light; the wall behind her striped charcoal on snow-white — a warning label on soft skin.\nstylized 2D anime face fully toward the lens over the flat palms, lips entering the frame's top corner mid-hiss, anime eyes (black, prickly-soft), small dark nose, small mouth mid-spike, the flat snow light holding the bixie tips."
+  },
+  "P28": {
+   "name": "Витра · R56 Rose-glass-kin · whisper-doorframe (X3)",
+   "note": "круг 1: витраж идеален, но молитвенная поза фронтом; круг 2: косяк в кадре, вуаль-заявка встала, лёгкий реализм-дрифт — финал",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P28.webp"
+   },
+   "pos": "Masterpiece, best quality, framed in the doorway, bust height, from the seated eye-line inside, 1girl, solo, sapphire-glass-deep ruby-garnet-glow palette, ink-black hair braided into a crown half-up with three jewel-glass beads, glass-pale skin, young graceful build, stained-glass freckles over nose and cheeks, mid_whisper_frame\nceremonial dress of sheer veils in three decreasing layers, the shoulder seam giving one thread's worth where the doorframe squeeze takes her, the veil's top layer sliding so covered nipples sit one layer deep — the squeeze is the frame's own embrace\nframed by the dark door jamb filling both edges of the shot, she leans through the doorway toward the viewer, one hand pressed on the jamb above her head, her upper body crossing into the lens zone while she whispers a blessing under the lintel, the window glass behind answering in sapphire and ruby, the glass freckles catching the window's colors one by one, gaze level into the lens\nRose window palette, sapphire-glass-deep flooding the nave-dark, ruby-garnet-glow at the center, gold-leadline-warm drawing the blessing's path; her colors are midnight mass seen through leaded glass.\nstylized 2D anime face framed by the door jamb, whisper cresting the lintel's edge, anime eyes (dark-red, benedictory), small nose freckled in glass shards, small mouth mid-blessing, the window's glow holding the braided crown."
+  },
+  "P29": {
+   "name": "Мирра · R57 Incense-wisp-kin · whisper-sill (X3)",
+   "note": "круг 1: дым-завитки живы, свечи НЕТ; круг 2/3: свеча прилипла (зимнее окно + тёплый источник в ладонях = свеча сквозь NEG-candle) — финал = круг 1; свеча-прилипание → урок В18",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P29.webp",
+    "c3": "/t5/loop/T5-18/c3/P29.webp"
+   },
+   "pos": "Masterpiece, best quality, bust framing at the sill, from the seated eye-level close, 1girl, solo, bell-bronze-green frost-snow-blue-pale palette, myrrh-brown hair braided loose and low, dissolving into pale smoke at the tips, warm dusk skin, young slender build, ember glow at the fingertips, mid_whisper_sill\nlong duster cardigan open down the front, the sleeve gone sheer where the window frost wets it, a fine warm sheen at the collarbones the shiver cannot shake — the sheer sleeve is the frost's own signature on her\nshe braces one knee up on the windowsill and leans across it into the lens, curtain brushing her jaw, lips high near the top of the shot as she whispers her half-prayer, her hair's tips thinning into incense smoke, a coal-warm glow cupped in her bare palm — no flame, only warmth — while her gaze stays locked on the viewer, not the glow\nBellfrost noel palette, bell-bronze-green with frost-snow-blue-pale snow light, one ember-window-orange warmth breathing at the frame's edge; her colors are a vigil kept in smoke and bronze.\nstylized 2D anime face at the sill's edge, breath cresting the sill's line mid-psalm, anime eyes (brown, vigiled-soft), small nose, small mouth mid-psalm, the frost light holding the dissolving braid tips."
+  },
+  "P30": {
+   "name": "Нотта · R58 Belfry-owl-kin · whisper-ladder (X3)",
+   "note": "круг 1: эскалаторы ТЦ + капшен «phalm…»; круг 2: каменная колокольня + часы, капшен убит, крылья раскрыты; круг 3: деревянная лестница, крылья всё раскрыты (датасет-прайор) — остаточный риск",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P30.webp",
+    "c3": "/t5/loop/T5-18/c3/P30.webp"
+   },
+   "pos": "Masterpiece, best quality, chest-up view at the ladder's height, from the seated eye-line, 1girl, solo, incense-smoke-warm-grey myrrh-brown-deep palette, smoke-grey hair nape-tucked with hair-clips, moonlit-fair skin, young tall build, huge owl wings folded close like a cloak, mid_whisper_ladder\nhooded wool cloak over a floor-length black dress slit high at the thigh, the back seam twisted open by the half-turn on the ladder, the collarbone line holding a pearl of moonlight like salt dried pearl — the twisted seam is the silence's only sound\nshe pauses halfway down a wooden kitchen stepladder with flat steps under her left foot and leans off it toward the viewer at eye height, one hand gripping the ladder's wooden rail, the belfry's stone wall behind her, whispering the night's last psalm while her furled wings — wingtips tucked at her waist like a folded umbrella — draw closer with every word, round amber eyes level with the lens\nIncense and myrrh palette, incense-smoke-warm-grey over myrrh-brown-deep, nave-gold-dim accent where the bell-rope's shadow falls; her colors are a belfry keeping its hours in smoke.\nstylized 2D anime face level with the lens from the ladder step, lips near the top of the shot mid-psalm, anime eyes (amber, round and quiet), small nose, small mouth mid-psalm, the smoke-gold light holding the hair-clips."
+  },
+  "P31": {
+   "name": "Муська · R59 Raccoon-kin · whisper-counter (X3)",
+   "note": "круг 1: лицо чистое без маски; круг 2: маска+уши+хвост встали, но капшен 廉价香槟金 («cheap» из палитры уехал в текст); круг 3: текст убит, маска-смаз на человеческом лице — финал",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P31.webp",
+    "c3": "/t5/loop/T5-18/c3/P31.webp"
+   },
+   "pos": "Masterpiece, best quality, bust view over the counter's edge, from the seated eye height, 1girl, solo, dark bandit-mask smudged around her human eyes, small rounded raccoon ears on top of her head, champagne-gold nicotine-amber palette, dusty-grey hair in double dutch braids with tape-tied ends, rain-shined fair skin, young scrappy build, mid_whisper_counter\nathletic crop top with the midriff bare under rolled cargo pants, one overall strap unbuckled so the bib sags sideways off the bare chest's side-line at the lean, the counter's lip pressing the soft undercurve honest — the sagging bib is the claim, work-worn and shameless\nshe leans over the counter's edge into the lens with elbows planted, whispering tonight's heist plan syllable by syllable, whiskers twitching at each number, her thick fluffy grey-brown ringed raccoon tail curled visibly around her hip with the rings reading clearly, eyes boring down the lens\nGutter champagne palette, champagne-gold poured over nicotine-amber, one red-lacquer-lip strike; her colors are glam bought second-hand and worn like crown jewels.\nstylized 2D anime face fully toward the lens over the counter's edge, numbers at the frame's lip mid-count, anime eyes (black, mask-ringed and gleeful-sly), small nose with twitching whisker-dots, small mouth mid-number, the champagne glow holding the braids."
+  },
+  "P32": {
+   "name": "Фифа · R60 Skunk-kin · whisper-desk (X3)",
+   "note": "круг 1: палитра-эталон, стоит за партой; круг 2: села на парту, но слово «honest» НАПЕЧАТАНО на поясе (идиома рядом с реквизитом → текст); круг 3: текст убит, хвост-боа и янтарные глаза — финал",
+   "circles": {
+    "c2": "/t5/loop/T5-18/c2/P32.webp",
+    "c3": "/t5/loop/T5-18/c3/P32.webp"
+   },
+   "pos": "Masterpiece, best quality, bust-close across the desk, from the seated eye-line beside, 1girl, solo, oil-black-iridescent chrome-silver-hard palette, jet-black hair in a high sleek ponytail with the white crest stripe at the crown, glossy black-fur skin sheen, young lush build, plume tail draped across the forearms like a boa, mid_whisper_desk\npleated microskirt with a matte belt ridden by the desk-slide, the boyshorts' waistband riding bare above the low line at the spine's bend, the two low ridges reading through the dry dark top — the waistband line is the claim, slid into frame by her own hip\nshe slides her hips onto the desk edge beside the viewer and leans across its width, the boyshorts' waistband riding bare above the skirt's slide, one hand flat among the papers, whispering a compliment too filthy for chrome, the sweet scent-haze curling from her collar in visible curls, gaze steady into the lens\nOilslick chrome palette, oil-black-iridescent under chrome-silver-hard, one acid-green-flash riding the pleats; her colors are perfume with a police record.\nstylized 2D anime face leaning across the desk's width, innuendo at the frame's upper border, anime eyes (amber, insolent-lush), small nose, small mouth mid-innuendo, the chrome slip of light holding the crest stripe."
+  },
+  "P33": {
+   "name": "Хитра · R61 Weasel-kin · whisper-fence (X3)",
+   "note": "круг 1: готов — плетень, шнур-узел на рёбрах, мелочь-кольца в пальцах, леопардовый фон; финал = круг 1, дожим не потребовался",
+   "circles": {
+    "c1": "/t5/loop/T5-18/c1/P33.webp"
+   },
+   "pos": "Masterpiece, best quality, bust framing over the fence rail, seated eye-level near, 1girl, solo, mud-brown-warm leopard-amber-spot palette, honey-brown hair in a sectioned bubble ponytail, honey-tan skin with a cream throat patch, young slinky build, long slinky body line over the fence, mid_whisper_fence\nslim cotton tee knotted at the ribs with the hem gone, the front lacing of the shrug gone slack from the lean, the beam-press of the rail flattening honest across the chest's soft weight, breast shape reading through the thin cotton — the slack lacing is the claim, fence-earned\nshe hangs over the garden fence to reach the lens, forearms on the top rail, chin low, whispering a trade offer with the small stolen trinket already palmed and mid-deal in quick fingers, bright near-black eyes pinned to the lens\nMud leopard palette, mud-brown-warm spotted with leopard-amber rosettes, jet-rosette-black at the fence's shade line; her colors are a garden deal struck at golden hour.\nstylized 2D anime face hanging over the rail at the lens, offer riding the rail's top edge mid-trade, anime eyes (black, scheme-bright), small nose, small mouth mid-offer, the mud-warm light holding the bubble ponytail."
+  }
+ }
+}
