@@ -1,7 +1,7 @@
 {
- "version": "1.8.0",
+ "version": "1.8.1",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)",
- "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14)",
+ "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
   {
    "id": "PL01",
@@ -6096,6 +6096,47 @@
    ],
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+  },
+  {
+   "id": "PL433",
+   "name": "Not-For-You Glance-Back",
+   "sd": "walking away mid-step with a wrapped gift hugged to the chest, face snapped back over the shoulder into a pout, collar slipped wide off one shoulder, ribbon ends lifted by the turn",
+   "category": "threshold_limen",
+   "risk": "LOW",
+   "family": "OC_T5-18",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (canon-OS card, вето-пересборка)"
+  },
+  {
+   "id": "PL434",
+   "name": "Reliquary Box Vigil",
+   "sd": "standing at the altar rail, open reliquary box held chest-high with both hands, lid balanced on the fingers, veiled face tilted down to the box, bare mouth shaping a vow",
+   "category": "threshold_limen",
+   "risk": "LOW",
+   "family": "OC_T5-18",
+   "preferred_cams": [
+    "CAM02",
+    "CAM01"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (canon-OS card, вето-пересборка)"
+  },
+  {
+   "id": "PL435",
+   "name": "Chaise Honey Drape",
+   "sd": "sprawled along a velvet chaise, one arm over the backrest with wings fanned open behind it, other hand raised with a honey-string drawn to the lips, tail curled along the armrest",
+   "category": "erotic_presentation_v2",
+   "risk": "MID",
+   "family": "OC_T5-18",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-18 REVERSE WONDERLAND (canon-OS card, вето-пересборка)"
   }
  ],
  "family_counts": {

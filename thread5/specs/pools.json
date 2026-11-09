@@ -1,7 +1,7 @@
 {
- "version": "1.2.0",
+ "version": "1.2.1",
  "born": "2026-09-19",
- "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT)",
+ "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT) | 1.2.1: +K249–251 (canon-OS P01–P03, вето 2026-11-09); K216–218 остаются в ledger на срезанных мейнах",
  "sections": {
   "kinetics_k": [
    {
@@ -1050,6 +1050,24 @@
     "name": "mid_whisper_fence",
     "sd": "the whisper mid-breath over the fence rail — the quick hands mid-deal of a small stolen trinket",
     "source": "T5-18 K-FF"
+   },
+   {
+    "id": "K249",
+    "name": "mid_gift_glance",
+    "sd": "the ribbon-bow mid-settling as the hugged gift tightens on the turn-back — look arrives before the words",
+    "source": "T5-18 canon-OS K-FF"
+   },
+   {
+    "id": "K250",
+    "name": "mid_vow_openbox",
+    "sd": "the reliquary lid mid-hinging open over the veiled face — the vow already halfway out",
+    "source": "T5-18 canon-OS K-FF"
+   },
+   {
+    "id": "K251",
+    "name": "mid_honey_string",
+    "sd": "the honey-string mid-stretching from raised fingers to the bare mouth — gravity loses this one",
+    "source": "T5-18 canon-OS K-FF"
    }
   ],
   "fet": [
@@ -5169,7 +5187,7 @@
   }
  },
  "inventory": {
-  "kinetics_k": 173,
+  "kinetics_k": 176,
   "fet": 50,
   "h": 26,
   "gar": 40,
