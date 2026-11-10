@@ -1,7 +1,21 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Check, FileWarning, Inbox as InboxIcon, Loader2, RefreshCcw, ScanSearch, ShieldAlert, Sparkles, Trash2, UploadCloud } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Check,
+  Eraser,
+  FileWarning,
+  Inbox as InboxIcon,
+  ListOrdered,
+  Loader2,
+  RefreshCcw,
+  ScanSearch,
+  ShieldAlert,
+  Sparkles,
+  Trash2,
+  UploadCloud,
+  X,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Chip } from '@/components/t5/bits';
 import { Input } from '@/components/ui/input';
@@ -11,6 +25,11 @@ import type { InboxItem } from '@/lib/t5/inbox';
  * ИНБОКС финальных рендеров (вердикт T5-16): автор закидывает итоги кучкой —
  * писец ищет артефакты/ошибки, которые автор не нашёл. X-фильтр-триаж стоит
  * ПЕРЕД разбором: «x» уходит в карантин (fail-closed) и никогда не разбирается.
+ *
+ * Урок T5-17 («перепиздячились слотами»): слот проставляется ПОФАЙЛОВО —
+ * сам вытаскивается из имени (P07 / 07 - name.webp), правится руками и
+ * проставляется по порядку одной кнопкой. Файлы хранятся на диске до явной
+ * очистки — писец видит пачку между сессиями и читает её по слотам подряд.
  *
  * Архитектура против «Unexpected token '<'»: загрузка, триаж и разбор —
  * короткие порционные запросы (шлюз не успевает уйти в HTML-таймаут),
@@ -30,6 +49,7 @@ const SEVERITY_LABEL: Record<string, string> = { clean: 'чисто', minor: 'м
 const MAX_FILE_MB = 25;
 const ALLOWED_EXT = ['png', 'jpg', 'jpeg', 'webp'];
 const UPLOAD_CHUNK = 8; // файлов за один POST — короткие запросы, шлюз не злится
+const BATCH_STORAGE_KEY = 't5:inbox:batch';
 
 /** JSON-парсер, который не давится HTML-страницей шлюза («Unexpected token '<'»). */
 async function readJson<T>(res: Response): Promise<T> {
@@ -49,15 +69,48 @@ function fmtSize(n: number): string {
 
 const RETRIAGE_RE = /fail-closed|429|too many|карантин/iu;
 
+/** Слот из имени файла: «P07.webp», «t5-18 p7.png», «07 - name.webp» → «P07». */
+function parseSlotFromName(name: string): string {
+  const p = /(?:^|[^a-z0-9])P(\d{1,2})(?![a-z0-9])/iu.exec(name);
+  const lead = /^(\d{1,2})(?:[\s_.-]|$)/u.exec(name);
+  const m = p ?? lead;
+  if (!m) return '';
+  const n = Number.parseInt(m[1], 10);
+  if (!Number.isInteger(n) || n < 1 || n > 99) return '';
+  return `P${n < 10 ? `0${n}` : n}`;
+}
+
+function parseBatchFromName(name: string): string {
+  const m = /T5-(\d{1,3})/iu.exec(name);
+  return m ? `T5-${m[1]}` : '';
+}
+
+function normalizeSlotInput(v: string): string {
+  const t = v.trim().toUpperCase().replace(/[^P0-9]/gu, '');
+  const m = /^P?(\d{1,2})$/u.exec(t);
+  if (!m) return '';
+  const n = Number.parseInt(m[1], 10);
+  if (n < 1 || n > 99) return '';
+  return `P${n < 10 ? `0${n}` : n}`;
+}
+
+interface PickedFile {
+  key: string;
+  file: File;
+  slot: string;
+}
+
 export function InboxView() {
   const [items, setItems] = useState<InboxItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
-  const [tag, setTag] = useState('');
+  const [batch, setBatch] = useState('');
   const [dragOver, setDragOver] = useState(false);
-  const [picked, setPicked] = useState<File[]>([]);
+  const [picked, setPicked] = useState<PickedFile[]>([]);
+  const [wipeArmed, setWipeArmed] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const wipeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const load = useCallback(async () => {
     try {
@@ -73,34 +126,77 @@ export function InboxView() {
 
   useEffect(() => {
     void load();
+    try {
+      setBatch(localStorage.getItem(BATCH_STORAGE_KEY) ?? '');
+    } catch {
+      /* без localStorage — просто пустой батч */
+    }
+    return () => {
+      if (wipeTimer.current) clearTimeout(wipeTimer.current);
+    };
   }, [load]);
 
-  /* ── валидация файлов на клиенте: сразу видно, что отсеяно и почему ── */
-  const addFiles = useCallback((incoming: File[]) => {
-    const ok: File[] = [];
-    const bad: string[] = [];
-    for (const f of incoming) {
-      const ext = f.name.includes('.') ? (f.name.split('.').pop() ?? '').toLowerCase() : '';
-      if (!ALLOWED_EXT.includes(ext)) {
-        bad.push(`${f.name} — не png/jpg/webp`);
-        continue;
-      }
-      if (f.size > MAX_FILE_MB * 1024 * 1024) {
-        bad.push(`${f.name} — больше ${MAX_FILE_MB} МБ`);
-        continue;
-      }
-      ok.push(f);
+  const changeBatch = useCallback((v: string) => {
+    setBatch(v);
+    try {
+      localStorage.setItem(BATCH_STORAGE_KEY, v);
+    } catch {
+      /* окружение без localStorage */
     }
-    setPicked((prev) => {
-      const seen = new Set(prev.map((f) => `${f.name}:${f.size}`));
-      return [...prev, ...ok.filter((f) => !seen.has(`${f.name}:${f.size}`))];
-    });
-    setMessage(
-      bad.length > 0
-        ? `Пропущено: ${bad.slice(0, 4).join('; ')}${bad.length > 4 ? ` …и ещё ${bad.length - 4}` : ''}`
-        : null,
-    );
   }, []);
+
+  /* ── валидация файлов на клиенте: сразу видно, что отсеяно и почему ── */
+  const addFiles = useCallback(
+    (incoming: File[]) => {
+      const ok: PickedFile[] = [];
+      const bad: string[] = [];
+      let batchHint = '';
+      for (const f of incoming) {
+        const ext = f.name.includes('.') ? (f.name.split('.').pop() ?? '').toLowerCase() : '';
+        if (!ALLOWED_EXT.includes(ext)) {
+          bad.push(`${f.name} — не png/jpg/webp`);
+          continue;
+        }
+        if (f.size > MAX_FILE_MB * 1024 * 1024) {
+          bad.push(`${f.name} — больше ${MAX_FILE_MB} МБ`);
+          continue;
+        }
+        batchHint = batchHint || parseBatchFromName(f.name);
+        ok.push({ key: `${f.name}:${f.size}:${Math.random().toString(36).slice(2, 7)}`, file: f, slot: parseSlotFromName(f.name) });
+      }
+      setPicked((prev) => {
+        const seen = new Set(prev.map((p) => `${p.file.name}:${p.file.size}`));
+        return [...prev, ...ok.filter((p) => !seen.has(`${p.file.name}:${p.file.size}`))];
+      });
+      if (batchHint && !batch) changeBatch(batchHint);
+      setMessage(
+        bad.length > 0
+          ? `Пропущено: ${bad.slice(0, 4).join('; ')}${bad.length > 4 ? ` …и ещё ${bad.length - 4}` : ''}`
+          : null,
+      );
+    },
+    [batch, changeBatch],
+  );
+
+  const setPickedSlot = useCallback((key: string, slot: string) => {
+    setPicked((prev) => prev.map((p) => (p.key === key ? { ...p, slot: normalizeSlotInput(slot) } : p)));
+  }, []);
+
+  const dropPicked = useCallback((key: string) => {
+    setPicked((prev) => prev.filter((p) => p.key !== key));
+  }, []);
+
+  const clearPicked = useCallback(() => {
+    setPicked([]);
+    if (fileRef.current) fileRef.current.value = '';
+  }, []);
+
+  /** Проставить слоты по порядку списка: P01, P02, … — порядок = порядок закидки. */
+  const assignSlotsInOrder = useCallback(() => {
+    setPicked((prev) => prev.map((p, i) => ({ ...p, slot: `P${i + 1 < 10 ? `0${i + 1}` : i + 1}` })));
+  }, []);
+
+  const slotsFilled = picked.filter((p) => p.slot).length;
 
   /* ── X-триаж порционным циклом (сервер капает по 2 файла на запрос) ── */
   const runTriage = useCallback(async (ids?: string[], onProgress?: (done: number, remaining: number) => void) => {
@@ -121,7 +217,7 @@ export function InboxView() {
     return done;
   }, []);
 
-  /* ── загрузка кучкой: чанки по 8 → быстрый POST → затем триаж-цикл ── */
+  /* ── загрузка кучкой: чанки по 8, теги пофайлово → затем триаж-цикл ── */
   const upload = useCallback(async () => {
     if (picked.length === 0 || busy) return;
     setMessage(null);
@@ -132,8 +228,9 @@ export function InboxView() {
         const chunk = picked.slice(i, i + UPLOAD_CHUNK);
         setBusy(`Заливаю ${Math.min(i + chunk.length, picked.length)}/${picked.length}…`);
         const fd = new FormData();
-        for (const f of chunk) fd.append('files', f);
-        if (tag.trim()) fd.append('tag', tag.trim());
+        const tags = chunk.map((p) => [batch.trim(), p.slot].filter(Boolean).join(' '));
+        for (const p of chunk) fd.append('files', p.file);
+        fd.append('tags', JSON.stringify(tags));
         const res = await fetch('/api/t5/inbox', { method: 'POST', body: fd });
         const data = await readJson<{ uploaded?: number; failed?: number; items?: InboxItem[]; error?: string }>(res);
         if (!res.ok) throw new Error(data.error ?? 'загрузка не удалась');
@@ -141,8 +238,7 @@ export function InboxView() {
         failed += data.failed ?? 0;
         setItems(data.items ?? []);
       }
-      setPicked([]);
-      if (fileRef.current) fileRef.current.value = '';
+      clearPicked();
 
       let triaged = 0;
       try {
@@ -156,13 +252,15 @@ export function InboxView() {
         );
         return;
       }
-      setMessage(`Залито: ${uploaded} · отброшено при сохранении: ${failed} · X-триаж пройден: ${triaged}`);
+      setMessage(
+        `Залито: ${uploaded}${failed > 0 ? ` · отброшено: ${failed}` : ''} · X-триаж пройден: ${triaged}. Файлы лежат на диске до очистки.`,
+      );
     } catch (err) {
       setMessage(`Ошибка: ${String(err instanceof Error ? err.message : err)}`);
     } finally {
       setBusy(null);
     }
-  }, [picked, tag, busy, runTriage]);
+  }, [picked, batch, busy, runTriage, clearPicked]);
 
   const triageQueue = useCallback(async () => {
     if (busy) return;
@@ -250,19 +348,66 @@ export function InboxView() {
     }
   }, [busy]);
 
-  const onDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    addFiles(Array.from(e.dataTransfer.files ?? []));
-  }, [addFiles]);
+  /* ── очистка: после разбора пачку убираем, чтобы диск не пух ── */
+  const removeByQuery = useCallback(async (query: string, okText: string) => {
+    if (busy) return;
+    setMessage(null);
+    try {
+      setBusy('Убираю файлы…');
+      const res = await fetch(`/api/t5/inbox?${query}`, { method: 'DELETE' });
+      const data = await readJson<{ count?: number; bytes?: number; items?: InboxItem[]; error?: string }>(res);
+      if (!res.ok) throw new Error(data.error ?? 'не вышло');
+      setItems(data.items ?? []);
+      setMessage(`${okText}: ${data.count ?? 0}, освобождено ${fmtSize(data.bytes ?? 0)}`);
+    } catch (err) {
+      setMessage(`Ошибка очистки: ${String(err instanceof Error ? err.message : err)}`);
+    } finally {
+      setBusy(null);
+    }
+  }, [busy]);
 
-  const stats = {
-    total: items.length,
-    x: items.filter((i) => i.triage.label === 'x' && !i.authorOverride).length,
-    queued: items.filter((i) => i.status === 'queued' || i.triage.label === 'unknown').length,
-    pending: items.filter((i) => i.status === 'ok').length,
-    analyzed: items.filter((i) => i.status === 'analyzed').length,
-  };
+  const removeProcessed = useCallback(() => {
+    const ids = items.filter((i) => i.status === 'analyzed' || i.status === 'x' || i.status === 'error').map((i) => i.id);
+    if (ids.length === 0) return;
+    void removeByQuery(`ids=${ids.join(',')}`, 'Убрано обработанных');
+  }, [items, removeByQuery]);
+
+  const wipeAll = useCallback(() => {
+    if (!wipeArmed) {
+      setWipeArmed(true);
+      if (wipeTimer.current) clearTimeout(wipeTimer.current);
+      wipeTimer.current = setTimeout(() => setWipeArmed(false), 5000);
+      return;
+    }
+    setWipeArmed(false);
+    if (wipeTimer.current) clearTimeout(wipeTimer.current);
+    void removeByQuery('all=1', 'Инбокс снесён');
+  }, [wipeArmed, removeByQuery]);
+
+  const removeOne = useCallback((id: string) => {
+    void removeByQuery(`ids=${id}`, 'Убран файл');
+  }, [removeByQuery]);
+
+  const onDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setDragOver(false);
+      addFiles(Array.from(e.dataTransfer.files ?? []));
+    },
+    [addFiles],
+  );
+
+  const stats = useMemo(
+    () => ({
+      total: items.length,
+      x: items.filter((i) => i.triage.label === 'x' && !i.authorOverride).length,
+      queued: items.filter((i) => i.status === 'queued' || i.triage.label === 'unknown').length,
+      pending: items.filter((i) => i.status === 'ok').length,
+      analyzed: items.filter((i) => i.status === 'analyzed').length,
+      processed: items.filter((i) => i.status === 'analyzed' || i.status === 'x' || i.status === 'error').length,
+    }),
+    [items],
+  );
   const retriageCount = items.filter(
     (i) => !i.authorOverride && i.triage.label === 'x' && i.status === 'x' && RETRIAGE_RE.test(i.triage.reason),
   ).length;
@@ -290,9 +435,10 @@ export function InboxView() {
               Сбрось итоговые рендеры кучкой
             </h2>
             <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-              Перетащи файлы сюда или выбери вручную — png/jpg/webp, до 25 МБ каждый. Заливаю порциями по 8,
-              затем X-триаж идёт маленькими шагами (без таймаутов). Что отсечено — карантин и никогда не разбирается
-              (fail-closed); сбойный карантин можно перетриажнуть. Остальное я разбираю на артефакты, анатомию, камеру и палитру.
+              Перетащи файлы сюда или выбери вручную — png/jpg/webp, до 25 МБ каждый, хоть все 33 разом. Заливаю
+              порциями по 8, затем X-триаж идёт маленькими шагами (без таймаутов). Слот ставится пофайлово —
+              сама вытаскивается из имени («P07.webp», «07 - name»), правится в списке ниже или проставляется
+              по порядку одной кнопкой. Файлы лежат на диске до явной очистки — после разбора жми «Убрать обработанные».
             </p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
@@ -316,23 +462,81 @@ export function InboxView() {
             </button>
           </div>
         </div>
+
         <div className="mt-4 flex flex-wrap items-center gap-2.5">
-          <label htmlFor="inbox-tag" className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">
-            Метка слота (необязательно)
+          <label htmlFor="inbox-batch" className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">
+            Батч
           </label>
           <input
-            id="inbox-tag"
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
-            placeholder="T5-16 P28 — сверю рендер с промптом слота"
-            className="h-8 w-64 rounded-lg border border-white/[0.09] bg-black/25 px-2.5 font-mono text-xs text-zinc-200 placeholder:text-zinc-600 focus-visible:border-emerald-400/50 focus-visible:outline-none"
+            id="inbox-batch"
+            value={batch}
+            onChange={(e) => changeBatch(e.target.value)}
+            placeholder="T5-18"
+            className="h-8 w-24 rounded-lg border border-white/[0.09] bg-black/25 px-2.5 font-mono text-xs text-zinc-200 placeholder:text-zinc-600 focus-visible:border-emerald-400/50 focus-visible:outline-none"
           />
           {picked.length > 0 && (
-            <Chip>
-              {picked.length} файл(ов) выбрано · {fmtSize(picked.reduce((a, f) => a + f.size, 0))}
-            </Chip>
+            <>
+              <Chip>
+                {picked.length} файл(ов) · {fmtSize(picked.reduce((a, p) => a + p.file.size, 0))} · слотов проставлено:{' '}
+                {slotsFilled}/{picked.length}
+              </Chip>
+              <button
+                type="button"
+                onClick={assignSlotsInOrder}
+                disabled={busy !== null}
+                className="t5-btn !px-2 !py-1 !text-[11px] disabled:opacity-40"
+                title="Порядок списка = порядок закидки: P01, P02, … — как в галерее рендера"
+              >
+                <ListOrdered className="size-3" aria-hidden />
+                Проставить по порядку
+              </button>
+              <button
+                type="button"
+                onClick={clearPicked}
+                disabled={busy !== null}
+                className="t5-btn !px-2 !py-1 !text-[11px] disabled:opacity-40"
+              >
+                <X className="size-3" aria-hidden />
+                Сбросить список
+              </button>
+            </>
           )}
         </div>
+
+        {/* список выбранных: пофайловые слоты — пачка больше не путается */}
+        {picked.length > 0 && (
+          <div className="t5-scroll mt-3 max-h-64 space-y-1.5 overflow-y-auto rounded-xl border border-white/[0.07] bg-black/25 p-2.5">
+            {picked.map((p, i) => (
+              <div key={p.key} className="flex items-center gap-2 rounded-lg px-1.5 py-1 hover:bg-white/[0.04]">
+                <span className="w-6 shrink-0 text-right font-mono text-[11px] text-zinc-600">{i + 1}</span>
+                <span className="min-w-0 flex-1 truncate font-mono text-xs text-zinc-300" title={p.file.name}>
+                  {p.file.name}
+                </span>
+                <span className="shrink-0 font-mono text-[11px] text-zinc-600">{fmtSize(p.file.size)}</span>
+                <input
+                  value={p.slot}
+                  onChange={(e) => setPickedSlot(p.key, e.target.value)}
+                  placeholder="—"
+                  aria-label={`Слот для ${p.file.name}`}
+                  className={cn(
+                    'h-7 w-14 shrink-0 rounded-md border bg-black/40 px-1.5 text-center font-mono text-xs uppercase focus-visible:outline-none',
+                    p.slot
+                      ? 'border-emerald-400/40 text-emerald-300'
+                      : 'border-white/[0.12] text-zinc-500 placeholder:text-zinc-700',
+                  )}
+                />
+                <button
+                  type="button"
+                  onClick={() => dropPicked(p.key)}
+                  aria-label={`Убрать ${p.file.name} из списка`}
+                  className="shrink-0 rounded-md p-1 text-zinc-600 transition-colors hover:bg-white/[0.06] hover:text-zinc-300"
+                >
+                  <X className="size-3.5" aria-hidden />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* статус-панель */}
@@ -346,6 +550,30 @@ export function InboxView() {
         <Chip>ждут разбора: {stats.pending}</Chip>
         <Chip>разобрано: {stats.analyzed}</Chip>
         <div className="ml-auto flex flex-wrap gap-2">
+          {stats.processed > 0 && (
+            <button
+              type="button"
+              onClick={removeProcessed}
+              disabled={busy !== null}
+              className="t5-btn disabled:opacity-40"
+              title="Разобранные, карантин и ошибки: файлы с диска и записи журнала"
+            >
+              <Eraser className="size-3.5" aria-hidden />
+              Убрать обработанные ({stats.processed})
+            </button>
+          )}
+          {items.length > 0 && (
+            <button
+              type="button"
+              onClick={wipeAll}
+              disabled={busy !== null}
+              className={cn('t5-btn disabled:opacity-40', wipeArmed && '!border-red-400/60 !text-red-300')}
+              title="Снести весь инбокс: файлы, превью и журнал"
+            >
+              <Trash2 className="size-3.5" aria-hidden />
+              {wipeArmed ? 'Точно снести всё?' : 'Очистить инбокс'}
+            </button>
+          )}
           {retriageCount > 0 && (
             <button
               type="button"
@@ -415,7 +643,7 @@ export function InboxView() {
               >
                 <div className="relative bg-black/40">
                   <img
-                    src={`/api/t5/inbox/file?id=${item.id}`}
+                    src={`/api/t5/inbox/file?id=${item.id}&preview=1`}
                     alt={quarantined ? 'Карантированное изображение (размыто)' : `Загруженный рендер ${item.origName}`}
                     className={cn('h-44 w-full object-cover', quarantined && 'blur-2xl scale-110 grayscale')}
                     loading="lazy"
@@ -482,10 +710,21 @@ export function InboxView() {
                     )}
                     {!quarantined && item.triage.label !== 'x' && (
                       <button type="button" onClick={() => void override(item.id, 'x')} disabled={busy !== null} className="t5-btn !px-2 !py-1 !text-[11px] disabled:opacity-40" aria-label="Убрать в карантин вручную">
-                        <Trash2 className="size-3" aria-hidden />
+                        <ShieldAlert className="size-3" aria-hidden />
                         В карантин
                       </button>
                     )}
+                    <button
+                      type="button"
+                      onClick={() => removeOne(item.id)}
+                      disabled={busy !== null}
+                      className="t5-btn !px-2 !py-1 !text-[11px] disabled:opacity-40"
+                      aria-label={`Убрать ${item.origName} с диска`}
+                      title="Убрать этот файл с диска и из журнала"
+                    >
+                      <Trash2 className="size-3" aria-hidden />
+                      Убрать
+                    </button>
                   </div>
                 </div>
               </article>

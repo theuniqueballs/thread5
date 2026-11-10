@@ -11,7 +11,17 @@
  *   3) некарантинные разбираются на артефакты/анатомию/камеру — писец ищет
  *      то, что автор не нашёл; журнал живёт на диске рядом с файлами.
  *
- * Хранение: thread5/inbox/ (gitignored) — meta.json + uploads/*.
+ * Хранение: thread5/inbox/ (gitignored) — meta.json + uploads/* + previews/*.
+ * Файлы хранятся ДО явной очистки (DELETE ?all=1 / ?ids=) — писец видит их
+ * между сессиями; после разбора пачка убирается кнопками, чтобы не копилась.
+ *
+ * Слот-маппинг (урок T5-17: пачка перепуталась слотами при закидке):
+ *   - канонический тег «T5-18 P07» парсится из имени файла и/или задаётся
+ *     пофайлово в UI;
+ *   - файл на диске зовётся «T5-18__P07__<штамп>-<id>.webp» — папка читается
+ *     по слотам подряд, без контент-матчинга;
+ *   - meta.json хранится отсортированным (батч ↓, слот ↑).
+ *
  * SDK: z-ai-web-dev-sdk ТОЛЬКО здесь (backend).
  */
 import { promises as fs } from 'node:fs';
@@ -21,6 +31,7 @@ import { parseBatch } from '@/lib/t5/parse';
 
 const INBOX_DIR = path.join(process.cwd(), 'thread5', 'inbox');
 const UPLOADS_DIR = path.join(INBOX_DIR, 'uploads');
+const PREVIEWS_DIR = path.join(INBOX_DIR, 'previews');
 const META_PATH = path.join(INBOX_DIR, 'meta.json');
 
 export type TriageLabel = 'sfw' | 'borderline' | 'x' | 'unknown';
@@ -39,7 +50,10 @@ export interface InboxItem {
   size: number;
   mime: string;
   uploadedAt: string;
-  tag: string | null; // метка автора, напр. «T5-16 P28»
+  tag: string | null; // каноническая метка автора, напр. «T5-16 P28»
+  batch: string | null; // «T5-16» — вытащено из тега
+  slot: string | null; // «P28» — вытащено из тега
+  preview: string | null; // имя файла внутри previews/ (для тяжёлых оригиналов)
   status: InboxStatus;
   triage: { label: TriageLabel; reason: string; at: string };
   analysis: {
@@ -54,6 +68,80 @@ export interface InboxItem {
 export const ALLOWED_EXT = ['png', 'jpg', 'jpeg', 'webp'] as const;
 export const MAX_FILE_BYTES = 25 * 1024 * 1024;
 export const MAX_BATCH_FILES = 40;
+
+/* ── слот-маппинг: из имени файла и свободного текста в канонический тег ── */
+
+/** «P07», «p4», «..._P07.webp» → номер слота 1..99. */
+const SLOT_P_RE = /(?:^|[^a-z0-9])P(\d{1,2})(?![a-z0-9])/iu;
+/** «07 - name.webp», «04_name.png» → номер слота. */
+const LEADING_NUM_RE = /^(\d{1,2})(?:[\s_.-]|$)/u;
+/** «T5-18», «t5-07» → код батча. */
+const BATCH_CODE_RE = /T5-(\d{1,3})/iu;
+
+function pad2(n: number): string {
+  return n < 10 ? `0${n}` : String(n);
+}
+
+/** Слот из имени файла: «P07.webp», «t5-18 p7.png», «07 - name.webp» → «P07». */
+export function parseSlotFromName(name: string): string | null {
+  const m = SLOT_P_RE.exec(name) ?? LEADING_NUM_RE.exec(name);
+  if (!m) return null;
+  const n = Number.parseInt(m[1], 10);
+  if (!Number.isInteger(n) || n < 1 || n > 99) return null;
+  return `P${pad2(n)}`;
+}
+
+/** Батч из имени файла: «T5-18_07.webp» → «T5-18». */
+export function parseBatchFromName(name: string): string | null {
+  const m = BATCH_CODE_RE.exec(name);
+  if (!m) return null;
+  return `T5-${m[1]}`;
+}
+
+export interface CanonicalTag {
+  tag: string | null; // канонический вид: «T5-18 P07» / «P07» / «T5-18» / свободный текст
+  batch: string | null;
+  slot: string | null;
+}
+
+/** Свободный текст тега → канонический { tag, batch, slot }. */
+export function normalizeTag(raw: string | null | undefined): CanonicalTag {
+  const text = (raw ?? '').trim().slice(0, 40);
+  if (!text) return { tag: null, batch: null, slot: null };
+  const batchM = BATCH_CODE_RE.exec(text.toUpperCase());
+  const batch = batchM ? `T5-${batchM[1]}` : null;
+  const slotM = SLOT_P_RE.exec(text.toUpperCase());
+  let slot: string | null = null;
+  if (slotM) {
+    const n = Number.parseInt(slotM[1], 10);
+    if (Number.isInteger(n) && n >= 1 && n <= 99) slot = `P${pad2(n)}`;
+  } else if (/^(?:СЛОТ\s*)?\d{1,2}$/iu.test(text)) {
+    const n = Number.parseInt(text.replace(/\D+/gu, ''), 10);
+    if (Number.isInteger(n) && n >= 1 && n <= 99) slot = `P${pad2(n)}`;
+  }
+  if (batch || slot) {
+    return { tag: [batch, slot].filter(Boolean).join(' '), batch, slot };
+  }
+  return { tag: text, batch: null, slot: null }; // свободная метка без слота
+}
+
+/** Порядок карточек: батч ↓, слот ↑, внутри — новее выше. */
+function slotNum(item: Pick<InboxItem, 'slot'>): number {
+  const m = /P(\d{1,3})/iu.exec(item.slot ?? '');
+  return m ? Number.parseInt(m[1], 10) : 999;
+}
+
+export function sortItems(items: InboxItem[]): InboxItem[] {
+  return [...items].sort((a, b) => {
+    const ba = a.batch ?? '';
+    const bb = b.batch ?? '';
+    if (ba !== bb) return ba < bb ? 1 : -1; // T5-18 выше T5-17
+    const sa = slotNum(a);
+    const sb = slotNum(b);
+    if (sa !== sb) return sa - sb;
+    return (b.uploadedAt ?? '').localeCompare(a.uploadedAt ?? '');
+  });
+}
 
 /* ── SDK: минимальная типизация createVision (без any) ─────────────────── */
 
@@ -132,7 +220,7 @@ async function visionJsonRetry(args: VisionArgs): Promise<string | null> {
   throw lastErr instanceof Error ? lastErr : new Error(String(lastErr));
 }
 
-/* ── мета-журнал ───────────────────────────────────────────────────────── */
+/* ── мета-журнал (атомарная запись: tmp → rename) ──────────────────────── */
 
 export async function readMeta(): Promise<InboxItem[]> {
   try {
@@ -146,7 +234,9 @@ export async function readMeta(): Promise<InboxItem[]> {
 
 export async function writeMeta(items: InboxItem[]): Promise<void> {
   await fs.mkdir(INBOX_DIR, { recursive: true });
-  await fs.writeFile(META_PATH, JSON.stringify(items, null, 1), 'utf8');
+  const tmp = `${META_PATH}.tmp`;
+  await fs.writeFile(tmp, JSON.stringify(sortItems(items), null, 1), 'utf8');
+  await fs.rename(tmp, META_PATH);
 }
 
 /* ── X-фильтр-триаж: label-only, fail-closed ───────────────────────────── */
@@ -207,20 +297,18 @@ const ANALYSIS_SYSTEM =
   '"findings":[{"kind":"анатомия|руки|глаза|вид|камера|палитра|артефакт|композиция","where":"где на картинке","what":"что сломано"}],"note":"итог одной фразой"}. ' +
   'Без находок: severity "clean", findings []. Не выдумывай дефекты, если их нет.';
 
-/** POS/NEG контекст слота, если автор пометил файл как «T5-16 P28». */
-async function slotContext(tag: string | null): Promise<string> {
-  if (!tag) return '';
-  const m = tag.match(/^(T5-\d+)\s*[-— ]?\s*(P\d{1,3})$/iu);
-  if (!m) return '';
+/** POS/NEG контекст слота, если файл помечен каноническим тегом «T5-16 P28». */
+async function slotContext(batch: string | null, slot: string | null): Promise<string> {
+  if (!batch || !slot) return '';
   try {
-    const raw = await fs.readFile(path.join(process.cwd(), 'thread5', 'batches', `${m[1]}.md`), 'utf8');
-    const batch = parseBatch(raw);
-    const slot = batch.slots.find((s) => s.id.toLowerCase() === m[2].toLowerCase());
-    if (!slot) return '';
+    const raw = await fs.readFile(path.join(process.cwd(), 'thread5', 'batches', `${batch}.md`), 'utf8');
+    const parsed = parseBatch(raw);
+    const s = parsed.slots.find((x) => x.id.toLowerCase() === slot.toLowerCase());
+    if (!s) return '';
     return [
-      `Слот ${slot.id} (${slot.slug}) батча ${m[1]}; жанр ${slot.genre ?? '—'}, рейтинг ${slot.rating ?? '—'}.`,
-      `POS: ${slot.pos.slice(0, 1200)}`,
-      slot.neg ? `NEG: ${slot.neg.slice(0, 500)}` : '',
+      `Слот ${s.id} (${s.slug}) батча ${batch}; жанр ${s.genre ?? '—'}, рейтинг ${s.rating ?? '—'}.`,
+      `POS: ${s.pos.slice(0, 1200)}`,
+      s.neg ? `NEG: ${s.neg.slice(0, 500)}` : '',
       'Сверяй картинку с этим промптом: несоблюдение заявленной камеры/вида/палитры — находка kind «камера»/«палитра».',
     ].filter(Boolean).join('\n');
   } catch {
@@ -229,7 +317,9 @@ async function slotContext(tag: string | null): Promise<string> {
 }
 
 export async function analyzeItem(item: InboxItem): Promise<InboxItem> {
-  const context = await slotContext(item.tag);
+  const batch = item.batch ?? normalizeTag(item.tag).batch;
+  const slot = item.slot ?? normalizeTag(item.tag).slot;
+  const context = await slotContext(batch, slot);
   try {
     const buf = await fs.readFile(path.join(UPLOADS_DIR, item.file));
     const raw = await visionJson({
@@ -302,6 +392,31 @@ function sniffMime(buf: Buffer): string | null {
   return null;
 }
 
+const PREVIEW_THRESHOLD = 512 * 1024; // тяжелее — делаем облегчённое превью
+const PREVIEW_MAX_DIM = 1152;
+
+/**
+ * Превью через sharp: тяжёлые оригиналы (1–25 МБ webp/png) читаются нестабильно,
+ * облегчённая копия 1152px q76 — стабильно и быстро. Падение превью не валит загрузку.
+ */
+async function makePreview(stem: string, mime: string, buf: Buffer): Promise<string | null> {
+  if (buf.length <= PREVIEW_THRESHOLD) return null;
+  try {
+    const sharp = (await import('sharp')).default;
+    const out = await sharp(buf, { failOn: 'none' })
+      .rotate()
+      .resize({ width: PREVIEW_MAX_DIM, height: PREVIEW_MAX_DIM, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: 76 })
+      .toBuffer();
+    await fs.mkdir(PREVIEWS_DIR, { recursive: true });
+    const name = `${stem}.webp`;
+    await fs.writeFile(path.join(PREVIEWS_DIR, name), out);
+    return name;
+  } catch {
+    return null;
+  }
+}
+
 /** Быстрое сохранение: диск + мета со статусом queued. Никаких vision-звонков. */
 export async function saveFile(file: File, tag: string | null): Promise<SaveOutcome> {
   const ext = safeExt(file.name);
@@ -312,11 +427,23 @@ export async function saveFile(file: File, tag: string | null): Promise<SaveOutc
   const mime = sniffMime(buf);
   if (!mime) return { item: null, error: 'содержимое не png/jpg/webp (по магическим байтам)', origName: file.name };
 
+  // канонический тег: явный из UI → иначе авто-парс из имени файла
+  const explicit = normalizeTag(tag);
+  const resolved = explicit.tag
+    ? explicit
+    : normalizeTag(
+      [parseBatchFromName(file.name), parseSlotFromName(file.name)].filter(Boolean).join(' ') || null,
+    );
+
   const id = randomBytes(6).toString('hex');
   const stamp = new Date().toISOString().replace(/[-:TZ.]/gu, '').slice(0, 14);
-  const fname = `${stamp}-${id}.${(mime.split('/')[1] ?? ext).replace('jpeg', 'jpg')}`;
+  const stem = `${stamp}-${id}`;
+  // слот-имя файла: «T5-18__P07__20261109…-a1b2c3.webp» — папка читается по слотам
+  const prefix = (resolved.tag ?? '').replace(/[^A-Za-z0-9-]+/gu, '_').replace(/^_+|_+$/gu, '');
+  const fname = prefix ? `${prefix}__${stem}.${(mime.split('/')[1] ?? ext).replace('jpeg', 'jpg')}` : `${stem}.${(mime.split('/')[1] ?? ext).replace('jpeg', 'jpg')}`;
   await fs.mkdir(UPLOADS_DIR, { recursive: true });
   await fs.writeFile(path.join(UPLOADS_DIR, fname), buf);
+  const preview = await makePreview(stem, mime, buf);
 
   const item: InboxItem = {
     id,
@@ -325,7 +452,10 @@ export async function saveFile(file: File, tag: string | null): Promise<SaveOutc
     size: buf.length,
     mime,
     uploadedAt: new Date().toISOString(),
-    tag,
+    tag: resolved.tag,
+    batch: resolved.batch,
+    slot: resolved.slot,
+    preview,
     status: 'queued',
     triage: { label: 'unknown', reason: 'в очереди на X-триаж', at: new Date().toISOString() },
     analysis: null,
@@ -367,11 +497,72 @@ export async function triageItem(item: InboxItem): Promise<InboxItem> {
   return item;
 }
 
+/* ── очистка: после разбора пачку убираем, чтобы диск не пух ───────────── */
+
+export interface DeleteReport {
+  count: number;
+  bytes: number;
+  missing: number;
+}
+
+async function unlinkQuiet(dir: string, file: string | null | undefined): Promise<number> {
+  if (!file) return 0;
+  try {
+    const st = await fs.stat(path.join(dir, file));
+    await fs.unlink(path.join(dir, file));
+    return st.size;
+  } catch {
+    return 0;
+  }
+}
+
+/** Удалить конкретные id (файл + превью + запись журнала). */
+export async function deleteItems(ids: string[]): Promise<DeleteReport> {
+  const items = await readMeta();
+  const wanted = new Set(ids);
+  const victims = items.filter((i) => wanted.has(i.id));
+  let bytes = 0;
+  let missing = 0;
+  for (const item of victims) {
+    bytes += await unlinkQuiet(UPLOADS_DIR, item.file);
+    const pBytes = await unlinkQuiet(PREVIEWS_DIR, item.preview);
+    if (!item.preview && item.size > PREVIEW_THRESHOLD) missing += 1;
+    bytes += pBytes;
+  }
+  const rest = items.filter((i) => !wanted.has(i.id));
+  await writeMeta(rest);
+  return { count: victims.length, bytes, missing };
+}
+
+/** Полная очистка инбокса (файлы + превью + журнал). */
+export async function deleteAll(): Promise<DeleteReport> {
+  const items = await readMeta();
+  let bytes = 0;
+  for (const item of items) {
+    bytes += await unlinkQuiet(UPLOADS_DIR, item.file);
+    bytes += await unlinkQuiet(PREVIEWS_DIR, item.preview);
+  }
+  // хвосты без журнала (ручные чистки и т.п.) тоже подметаем
+  try {
+    for (const f of await fs.readdir(UPLOADS_DIR)) bytes += await unlinkQuiet(UPLOADS_DIR, f);
+    for (const f of await fs.readdir(PREVIEWS_DIR).catch(() => [] as string[])) bytes += await unlinkQuiet(PREVIEWS_DIR, f);
+  } catch {
+    /* нет папок — чистить нечего */
+  }
+  await writeMeta([]);
+  return { count: items.length, bytes, missing: 0 };
+}
+
 /* ── служебное ─────────────────────────────────────────────────────────── */
 
 export function resolveUploadPath(file: string): string | null {
   if (!/^[\w.-]+$/u.test(file)) return null; // только имена внутри uploads/
   return path.join(UPLOADS_DIR, file);
+}
+
+export function resolvePreviewPath(file: string): string | null {
+  if (!/^[\w.-]+\.webp$/u.test(file)) return null;
+  return path.join(PREVIEWS_DIR, file);
 }
 
 export function effectiveLabel(item: InboxItem): TriageLabel {
