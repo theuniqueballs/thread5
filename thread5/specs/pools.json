@@ -1,5 +1,5 @@
 {
- "version": "1.2.1",
+ "version": "1.3.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT) | 1.2.1: +K249–251 (canon-OS P01–P03, вето 2026-11-09); K216–218 остаются в ledger на срезанных мейнах",
  "sections": {
@@ -1068,6 +1068,204 @@
     "name": "mid_honey_string",
     "sd": "the honey-string mid-stretching from raised fingers to the bare mouth — gravity loses this one",
     "source": "T5-18 canon-OS K-FF"
+   },
+   {
+    "id": "K252",
+    "name": "mid_coin_bite",
+    "sd": "the fresh coin still trembling from the bite as the fingers close around it — the mouth pays first",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K253",
+    "name": "mid_key_lift",
+    "sd": "the key mid-lift off its ring while the door behind her locks itself for good",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K254",
+    "name": "mid_slot_swallow",
+    "sd": "the coin mid-drop into the slot's mouth, the rim already swallowing the shine",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K255",
+    "name": "mid_moss_count",
+    "sd": "the fingertip mid-count across the moss rings, new growth arriving under the nail",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K256",
+    "name": "mid_scale_tip",
+    "sd": "the pan sinking under her heel while the far pan climbs empty and defeated",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K257",
+    "name": "mid_vault_step",
+    "sd": "the vault's door mid-fold around her ankle as the room follows her in",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K258",
+    "name": "mid_gold_seal",
+    "sd": "the gold mid-writing the seal by itself, the ink still arguing with it",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K259",
+    "name": "mid_hoard_settle",
+    "sd": "the coin-hoard mid-settling to cradle her hip, the clink still travelling",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K260",
+    "name": "mid_ledger_flip",
+    "sd": "the ledger's page mid-flip toward zero-owed, the debts running backward",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K261",
+    "name": "mid_thread_reel",
+    "sd": "the gold thread mid-spooling onto her wrist in tight even rows",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K262",
+    "name": "mid_drawer_feed",
+    "sd": "the drawer mid-swallow of the offered thing, the wood parting around it",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K263",
+    "name": "mid_purse_carry",
+    "sd": "the purse mid-swing heavy enough to carry her shoulder along",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K264",
+    "name": "mid_dice_stack",
+    "sd": "the dice mid-settling into a stacked six, the cup already lifted away",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K265",
+    "name": "mid_mirror_pay",
+    "sd": "the coin mid-emerging from the mirror's silver edge, wet with reflection",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K266",
+    "name": "mid_debt_gulp",
+    "sd": "the IOU mid-vanish into the mouth-pit, the paper's corner still visible",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K267",
+    "name": "mid_rings_count",
+    "sd": "the tenth ring mid-slide over the knuckle, the count closing",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K268",
+    "name": "mid_wardrobe_feed",
+    "sd": "the hanger mid-slide into the wardrobe's maw, the maw receiving",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K269",
+    "name": "mid_pave_stride",
+    "sd": "the promissory note mid-pressing itself flat to marble under her heel",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K270",
+    "name": "mid_crown_fit",
+    "sd": "the crown mid-settling onto the verdict of her hands, the weight agreeing",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K271",
+    "name": "mid_pit_count",
+    "sd": "the cherry pit mid-drop into her palm's tally",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K272",
+    "name": "mid_sunset_fold",
+    "sd": "the folded sunset mid-tuck under her arm, the light folding like cloth",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K273",
+    "name": "mid_cage_headboard",
+    "sd": "the headboard's rails mid-taking both braced palms, the weight arriving forward between them",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K274",
+    "name": "mid_cage_shelf",
+    "sd": "the shelf-boards mid-accepting the two flat palms, the books leaning away from the press",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K275",
+    "name": "mid_cage_couch",
+    "sd": "the couch-back mid-sinking under her braced forearms, the cushion's give already hers",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K276",
+    "name": "mid_cage_glass",
+    "sd": "the pane mid-fogging where her breath lands, the two palms holding their lines",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K277",
+    "name": "mid_cage_jamb",
+    "sd": "the door-jamb mid-carrying both palms, the wood grain lifting under the press",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K278",
+    "name": "mid_cage_poolside",
+    "sd": "the pool's stone lip mid-taking both wrists, the waterline swaying with her weight",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K279",
+    "name": "mid_cage_furwall",
+    "sd": "the hanging coats mid-parting under her forearms, the hangers rolling aside",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K280",
+    "name": "mid_cage_counter",
+    "sd": "the counter's lip mid-taking the spread fingers, the till's drawer half-open",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K281",
+    "name": "mid_cage_larder",
+    "sd": "the larder's brick mid-catching the two flat palms, the jars keeping their cool",
+    "source": "T5-19 K-FF"
+   },
+   {
+    "id": "K282",
+    "name": "mid_organ_column",
+    "sd": "the palm mid-settling on the single pipe, the metal remembering the warmth",
+    "source": "T5-19 canon-OS K-FF"
+   },
+   {
+    "id": "K283",
+    "name": "mid_stake_strike",
+    "sd": "the flat palm mid-strike driving the stake's head a hair deeper",
+    "source": "T5-19 canon-OS K-FF"
+   },
+   {
+    "id": "K284",
+    "name": "mid_stud_catch",
+    "sd": "the studded collar mid-catching the street's shine, stud by stud",
+    "source": "T5-19 canon-OS K-FF"
    }
   ],
   "fet": [

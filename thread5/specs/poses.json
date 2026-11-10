@@ -1,6 +1,6 @@
 {
- "version": "1.8.1",
- "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)",
+ "version": "1.9.0",
+ "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
   {
@@ -6137,6 +6137,480 @@
    ],
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (canon-OS card, вето-пересборка)"
+  },
+  {
+   "id": "PL436",
+   "name": "Coin-Bite Reach",
+   "sd": "fingers closing around the fresh coin still trembling from her bite, teeth-marks set in the metal, the mouth paying first",
+   "category": "greed_toll",
+   "risk": "MID",
+   "family": "greed_toll",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL437",
+   "name": "Key-Harvest Loop",
+   "sd": "both hands lifting keys off door-rings in a walking line, each ring already swinging lighter",
+   "category": "greed_toll",
+   "risk": "MID",
+   "family": "greed_toll",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL438",
+   "name": "Slot-Swallow Tilt",
+   "sd": "tilting the piggy-bank over her open palm while its mouth swallows the nearest shine first",
+   "category": "greed_toll",
+   "risk": "MID",
+   "family": "greed_toll",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL439",
+   "name": "Moss-Ledger Press",
+   "sd": "palm pressed flat on the moss-grown wall, fingers counting the growth rings as they arrive",
+   "category": "greed_toll",
+   "risk": "MID",
+   "family": "greed_toll",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL440",
+   "name": "Scale-Tip Stand",
+   "sd": "standing on the low pan as it sinks her side down, the far pan climbing empty",
+   "category": "greed_toll",
+   "risk": "MID",
+   "family": "greed_toll",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL441",
+   "name": "Vault-Swallow Step",
+   "sd": "stepping into the vault's mouth as the door folds the room in after her",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL442",
+   "name": "Contract-Seal Lean",
+   "sd": "leaning over the contract while gold writes the seal by itself across the page",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL443",
+   "name": "Hoard-Nest Settle",
+   "sd": "settling into the coin-hoard that shifts itself to cradle her hip",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL444",
+   "name": "Ledger-Debt Flip",
+   "sd": "flipping the ledger's pages backward toward zero-owed, debts running in reverse",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL445",
+   "name": "Thread-Spool Reel",
+   "sd": "reeling the self-spooling gold thread onto her own wrist in tight even rows",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL446",
+   "name": "Drawer-Feed Crouch",
+   "sd": "crouched at the open drawer, feeding the swallowing wood one more possession",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL447",
+   "name": "Purse-Weight Carry",
+   "sd": "carrying the purse that outweighs her, the strap winning the shoulder's argument",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL448",
+   "name": "Dice-Cup Verdict",
+   "sd": "shaking the dice cup over her own palm, dice already settling stacked in her favor",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL449",
+   "name": "Mirror-Pay Collect",
+   "sd": "collecting coins from the mirror's silver edge where the reflection pays out",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL450",
+   "name": "Debt-Swallow Lean",
+   "sd": "leaning over the mouth-pit as it swallows the stack of IOUs whole",
+   "category": "greed_engine",
+   "risk": "MID",
+   "family": "greed_engine",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL451",
+   "name": "Ten-Rings Spread",
+   "sd": "spreading both hands flat, one ring per finger, the count closing at ten",
+   "category": "greed_crown",
+   "risk": "MID",
+   "family": "greed_crown",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL452",
+   "name": "Wardrobe-Feed Open",
+   "sd": "holding the wardrobe's maw wide as the hangers feed themselves into it",
+   "category": "greed_crown",
+   "risk": "MID",
+   "family": "greed_crown",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL453",
+   "name": "Promise-Paving Stride",
+   "sd": "striding the floor as promissory notes press themselves flat to marble underfoot",
+   "category": "greed_crown",
+   "risk": "MID",
+   "family": "greed_crown",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL454",
+   "name": "Crown-Take Fit",
+   "sd": "fitting the crown on with both hands, taking it like a wage owed and paid",
+   "category": "greed_crown",
+   "risk": "MID",
+   "family": "greed_crown",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL455",
+   "name": "Pit-Count Crouch",
+   "sd": "crouched over her palm's tally of cherry pits, one more dropping in",
+   "category": "greed_crown",
+   "risk": "MID",
+   "family": "greed_crown",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL456",
+   "name": "Sunset-Pocket Walk",
+   "sd": "walking off with the folded sunset tucked under her arm like a bolt of cloth",
+   "category": "greed_crown",
+   "risk": "MID",
+   "family": "greed_crown",
+   "preferred_cams": [
+    "CAM01",
+    "CAM02",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (мейн)"
+  },
+  {
+   "id": "PL457",
+   "name": "Cage-Lean Headboard",
+   "sd": "braced over the viewer's headboard, both palms on the rails behind the lens, weight forward on the arms, the chest the closest claim after the face",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL458",
+   "name": "Cage-Lean Bookcase",
+   "sd": "braced into the bookcase behind the viewer, palms flat on the shelf-boards either side of the frame",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL459",
+   "name": "Cage-Lean Couch-Back",
+   "sd": "braced over the couch's backrest behind the viewer, forearms sunk into the cushion's give",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL460",
+   "name": "Cage-Lean Glass",
+   "sd": "braced on the glass partition behind the viewer, both palms flat on the pane, breath fogging a small circle",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL461",
+   "name": "Cage-Lean Door-Jamb",
+   "sd": "braced across the door-jamb behind the viewer, palms set on both posts",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL462",
+   "name": "Cage-Lean Poolside",
+   "sd": "braced on the pool's stone lip behind the viewer, wrists riding the wet edge",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL463",
+   "name": "Cage-Lean Fur-Wall",
+   "sd": "braced into the wall of hanging coats behind the viewer, forearms parting the fur",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL464",
+   "name": "Cage-Lean Counter",
+   "sd": "braced across the counter behind the viewer, spread fingers on the till's lip",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL465",
+   "name": "Cage-Lean Larder",
+   "sd": "braced against the larder's brick behind the viewer, palms flat on the cool mortar joints",
+   "category": "X4",
+   "risk": "MID",
+   "family": "X4",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+  },
+  {
+   "id": "PL466",
+   "name": "Organ-Column One",
+   "sd": "standing at the single organ pipe taller than her, one palm settling on the metal like on a column",
+   "category": "threshold_limen",
+   "risk": "MID",
+   "family": "OC_T5-19",
+   "preferred_cams": [
+    "CAM01",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (canon-OS card)"
+  },
+  {
+   "id": "PL467",
+   "name": "Stake-Claim Strike",
+   "sd": "driving the boundary stake deeper with flat palm-strikes, the hammer resting unused in the grass",
+   "category": "threshold_limen",
+   "risk": "MID",
+   "family": "OC_T5-19",
+   "preferred_cams": [
+    "CAM01",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (canon-OS card)"
+  },
+  {
+   "id": "PL468",
+   "name": "Stud-Collar Strut",
+   "sd": "mid-stride through the travertine street, the studded collar catching the night's shine stud by stud",
+   "category": "threshold_limen",
+   "risk": "MID",
+   "family": "OC_T5-19",
+   "preferred_cams": [
+    "CAM01",
+    "CAM06"
+   ],
+   "use": "N",
+   "source": "first-use T5-19 DEVIL'S GREED (canon-OS card)"
   }
  ],
  "family_counts": {
@@ -6150,7 +6624,12 @@
   "erotic_presentation_v2": 24,
   "micropose_expression": 24,
   "threshold_limen": 12,
-  "X3": 9
+  "X3": 9,
+  "greed_toll": 5,
+  "greed_engine": 11,
+  "greed_crown": 5,
+  "X4": 9,
+  "OC_T5-19": 3
  },
  "pair_note": "§33 pose-camera pair law: every PL code has 3-5 preferred camera angles; outside the preferred set is allowed but FLAGGED. PL+CAM must agree — a back-to-camera PL with a front eye-level CAM is a logical impossibility (viewer inside the body), and was the v16 #1 failure (effective cowboy rate 67%). Camera values reference the ONTOLOGY camera axis — CAUTION: the pose file's CAM code table and ONTOLOGY's CAM01-CAM12 axis DISAGREE on 5 codes (see pools.json cam.numbering_conflict); the pose pairs' self-describing suffixes (CAM02_three_quarter) are authoritative.",
  "cam_reference": {
@@ -7518,13 +7997,49 @@
    "PL430",
    "PL431",
    "PL432"
+  ],
+  "T5-19": [
+   "PL436",
+   "PL437",
+   "PL438",
+   "PL439",
+   "PL440",
+   "PL441",
+   "PL442",
+   "PL443",
+   "PL444",
+   "PL445",
+   "PL446",
+   "PL447",
+   "PL448",
+   "PL449",
+   "PL450",
+   "PL451",
+   "PL452",
+   "PL453",
+   "PL454",
+   "PL455",
+   "PL456",
+   "PL457",
+   "PL458",
+   "PL459",
+   "PL460",
+   "PL461",
+   "PL462",
+   "PL463",
+   "PL464",
+   "PL465",
+   "PL466",
+   "PL467",
+   "PL468"
   ]
  },
  "changelog": [
   "1.4.1: +PL333 Hot-Spring Edge Sit (A7-07) — EXP-overlay rework T5-15 (9 candidates on 9 slots), replaces duplicate A8-04 payoff slot",
   "1.5.0: +33 first-use PL334–PL366 for T5-16 LUCID DREAMS — 9 manual cards (A1-05, A1-08, A6-10, A6-04, A7-04, A6-07, A3-07, A3-09, A7-01) + 24 custom cards; EXP-combo X1 «over-viewer» family PL358–PL366 (9 cards, CAM03-only, pool: exp spirit). Free manual cards in reserve: A1-07, A4-06, A6-05, A8-09 (A1-02 core folded into X1 PL358).",
   "1.6.0: use-делёж поз N/V/NV (приказ автора 2026-11-08 — ниша vs VOLT; V=X1+A8, N=presentation-семьи, NV=dynamic/env/partner+A1–A7/A9) + author_picks T5-16: PL358 (P25), PL359 (P26), PL361 (P28), PL362 (P29) — «берём позу»; поле pick на картах",
-  "1.8.0: T5-18 REVERSE WONDERLAND: +PL400–PL423 (24 мейна) + PL424–PL432 (EXP-семья X3 whisper-lean, 9 карт, use V) — X3 «В-ШЁПОТ» по приказу «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»; first_use_ledger догнал T5-17 (PL367–PL399)"
+  "1.8.0: T5-18 REVERSE WONDERLAND: +PL400–PL423 (24 мейна) + PL424–PL432 (EXP-семья X3 whisper-lean, 9 карт, use V) — X3 «В-ШЁПОТ» по приказу «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»; first_use_ledger догнал T5-17 (PL367–PL399)",
+  "1.9.0: T5-19 DEVIL'S GREED: +PL436–PL456 (21 мейн, families greed_toll/greed_engine/greed_crown) + PL457–PL465 (EXP-семья X4 cage-lean, 9 карт, use V) + PL466–PL468 (canon-OS P01–P03, family OC_T5-19) — X4 «В-КЛЕТКУ» по приказу автора «с жёстким упором в R++»; темы ОС → канон-ОС слоты сразу (прецедент вето T5-18)"
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",

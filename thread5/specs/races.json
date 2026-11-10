@@ -1,5 +1,5 @@
 {
- "version": "2.5.0",
+ "version": "2.6.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 race_pool R01-R15 + race_extension_v2 R16-R22 + Thread-4 extensions R23-R36 + author directives — инвентарь: 34 active · 2 gold (R17 jellyfish-kin, R20 harpy-kin) · 4 banned (BAN-01..04 dwarves/goblins/trolls/orcs) = 40 записей (2.1.1: source-строка догнала фактический состав) + R37-R41 (verdikt T4-33 2026-10-17: «понадобавляй ещё кинов, человекоподобные — суккубы и так далее») + R41 → Witch-kin (приказ автора 2026-10-17: «циклопы отстой» — v2.2.1, фонд 45 без изменений) + v2.3.0 (вердикт T5-07 2026-10-30): R30 Frog-kin → quarantine («фрог-кин вообще не получился», реабилитация только приказом автора); аудит T4-кинов закрыт — полный фонд T4 уже в реестре (R23–R36 = расширения Thread-4, R37–R41 = T4-33), стянуть нечего; освежение количества = каст 12–14/21 (policy v1.8) + v2.4.0 (вердикт-директива автора 2026-11-03): долг T5-03 возвращён — 8 кинов каста T5-03, живших без реестра, зарегистрированы R42-R49 (moon-rabbit/dullahan/marionette/shadow/ink-slime/wind-spirit/eclipse-officiant/banshee) по языку слотов T5-03; R50 Nine-tails + R51 Crane + R52 Fortune-cat — приказ «добрать кинов а-ля девятихвостая лисица»; pos_tags добавлены всем активным (T5-07: «они хоть и кины, но выглядят простенько»); form_law + skin_law; R32 перестроен по form_law. Фонд: 51 запись = 51 active/gold (2 gold R17/R20) + 4 banned + R30 quarantine.",
  "races": [
@@ -1109,6 +1109,168 @@
     "bright near-black eyes"
    ],
    "note": "T5-18 dirty #3: хорь-схемщица; тело — длинная линия, руки в постоянной середине трюка"
+  },
+  {
+   "id": "R62",
+   "name": "Fennec-kin",
+   "status": "active",
+   "features": [
+    "oversized fennec ears that swivel toward whatever interests her before the head turns",
+    "cream-sand fur pale as dry grass",
+    "black-tipped tail with a soft brush",
+    "large amber-dark eyes with a night-vision shine"
+   ],
+   "pos_tags": [
+    "oversized fennec ears swiveled toward the lens",
+    "cream-sand fur pale as dry grass",
+    "black-tipped tail brush",
+    "amber-dark eyes with a night shine"
+   ],
+   "note": "T5-19 кандидат X4 «В-КЛЕТКУ» #1: уши-локаторы разворачиваются на зрителя раньше головы — клетку её рук читают уши первыми; collision: R04 Cat-kin / R03 Kitsune не задеты (треугольник ушей с тёмной кромкой); light: кромки ушей ловят ключ первыми; кандидат-коднейм «Тыша» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R63",
+   "name": "Magpie-kin",
+   "status": "active",
+   "features": [
+    "long magpie tail with an oil-sheen green-blue cast",
+    "black-and-white plumage mapping the shoulders with a white belly panel",
+    "quick clever fingers",
+    "one wing-fold line along the arm"
+   ],
+   "pos_tags": [
+    "long magpie tail with an oil-sheen green-blue cast",
+    "black-and-white plumage with a white belly panel",
+    "quick clever fingers",
+    "wing-fold line along the arm"
+   ],
+   "note": "кандидат #2: хвост-балансир рисует геометрию кадра, пальцы всегда заняты блеском; light: хвост несёт масляный отлив в контровом; кандидат-коднейм «Крада» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R64",
+   "name": "Lynx-kin",
+   "status": "active",
+   "features": [
+    "lynx ear-tufts standing like antennae",
+    "spot-pattered winter fur on shoulders and forearms",
+    "wide quiet paws with a silent step",
+    "short tail with a black tip"
+   ],
+   "pos_tags": [
+    "lynx ear-tufts standing like antennae",
+    "spot-pattered winter fur on the shoulders",
+    "wide quiet paws",
+    "short black-tipped tail"
+   ],
+   "note": "кандидат #3: кисточки — антенны настроения (морда ровная, кисточки дрожат); collision: R54 Snow-leopard-kin не задет (пятна-точки, не розетки); light: кисточки режут контровой свет; кандидат-коднейм «Кисть» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R65",
+   "name": "Mantis-kin",
+   "status": "active",
+   "features": [
+    "forearms folded in a praying-triangle of smooth chitin",
+    "leaf-green skin with a pale vein-map",
+    "triangular face tilting with uncanny patience",
+    "delicate wing-shelves folded along the spine"
+   ],
+   "pos_tags": [
+    "forearms folded in a praying triangle",
+    "leaf-green skin with a pale vein-map",
+    "triangular face tilted patient",
+    "wing-shelves folded along the spine"
+   ],
+   "note": "кандидат #4: серпы сложены аккуратно — молитва, которая не режет кадр; light: хитин ловит холодный глянец; кандидат-коднейм «Серп» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R66",
+   "name": "Pangolin-kin",
+   "status": "active",
+   "features": [
+    "scale-mantle draping shoulder to hip like a settled cloak",
+    "each scale edged in a warm horn-line",
+    "soft pale under-skin at the wrists and throat",
+    "tail curled into a half-question mark"
+   ],
+   "pos_tags": [
+    "scale-mantle draped shoulder to hip",
+    "horn-edged scales",
+    "soft pale under-skin at wrists and throat",
+    "tail curled half-question"
+   ],
+   "note": "кандидат #5: черепица чешуи лежит ровно, приподнимаясь только краем на вдохе; light: чешуя даёт ступенчатый блик; кандидат-коднейм «Чешка» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R67",
+   "name": "Axolotl-kin",
+   "status": "active",
+   "features": [
+    "three frilled gill-plumes at each side of the head, blush-pink, moving with mood",
+    "smooth water-pale skin with a faint pearl cast",
+    "wide gentle mouth reading as a settled smile",
+    "feathered tail-fin low behind"
+   ],
+   "pos_tags": [
+    "three blush-pink gill-plumes each side of the head",
+    "water-pale skin with a pearl cast",
+    "wide gentle settled smile",
+    "feathered tail-fin"
+   ],
+   "note": "кандидат #6: лицо спокойно — настроение читают перья жабр; collision: R17 Jellyfish-kin / R13 Merfolk не задеты (жабры-пёрышки, не купол и не рыбий хвост); light: перья подсвечиваются контражуром; кандидат-коднейм «Мила» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R68",
+   "name": "Chinchilla-kin",
+   "status": "active",
+   "features": [
+    "plush grey-blue fur lifting a halo under back light",
+    "wide thin ears that flush pink when she warms",
+    "powder-soft tail",
+    "small rounded muzzle"
+   ],
+   "pos_tags": [
+    "plush grey-blue fur lifting a halo in back light",
+    "wide thin ears flushing pink",
+    "powder-soft tail",
+    "small rounded muzzle"
+   ],
+   "note": "кандидат #7: пух ловит контровой ореолом; фыркнула — вскинулся весь пух; light: ореол пуха держит свет за контуром; кандидат-коднейм «Плюша» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R69",
+   "name": "Ermine-kin",
+   "status": "active",
+   "features": [
+    "winter-white ermine pelt with the black tail-tip writing its own flourish",
+    "sleek collar-to-cuff fur line",
+    "dark quick eyes with a bead-bright gleam",
+    "small pointed face"
+   ],
+   "pos_tags": [
+    "winter-white pelt with a black tail-tip",
+    "sleek fur line collar to cuff",
+    "dark bead-bright eyes",
+    "small pointed face"
+   ],
+   "note": "кандидат #8: кисточка-хвост ставит росчерк в композиции; light: белая шубка держит снежный блик; кандидат-коднейм «Тайка» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
+  },
+  {
+   "id": "R70",
+   "name": "Mole-kin",
+   "status": "active",
+   "features": [
+    "star-tipped pink nose reading the air in small quick twitches",
+    "velvet dark-mauve fur, matte, light-eating",
+    "eyes as soft slits, half-shut against daylight",
+    "wide flat digging hands with pale palms"
+   ],
+   "pos_tags": [
+    "star-tipped pink nose mid-read of the air",
+    "velvet dark-mauve fur matte",
+    "eyes as soft half-shut slits",
+    "wide digging hands with pale palms"
+   ],
+   "note": "кандидат #9: смотрит носом — линия «взгляда» идёт от звезды-носа в линзу, глаза-щёлки всё равно в кадре; light: бархат шубки гасит блик, свет держат нос и ладони; кандидат-коднейм «Копка» — временный, имя при канонизации за автором (прецедент Meine/Luvv/Liebe/Hana)"
   }
  ],
  "directives": {

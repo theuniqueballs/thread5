@@ -463,6 +463,8 @@ export default function Home() {
                   type="button"
                   onClick={() => openTab(t.id)}
                   aria-current={active ? 'page' : undefined}
+                  aria-label={t.label}
+                  title={t.label}
                   className={cn(
                     'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[13px] font-semibold transition-all duration-150',
                     active ? 'bg-[#1d1c29] text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.06)]' : 'text-zinc-500 hover:text-zinc-200'
@@ -471,8 +473,8 @@ export default function Home() {
                   <span style={{ color: active ? TAB_ACCENT[t.id] : undefined }} className={cn(!active && 'text-zinc-600')}>
                     {t.icon}
                   </span>
-                  {t.label}
-                  {t.id === 'special' && <span className="hidden sm:inline">Orders</span>}
+                  <span className="hidden sm:inline">{t.label}</span>
+                  {t.id === 'special' && <span className="hidden xl:inline">Orders</span>}
                 </button>
               );
             })}

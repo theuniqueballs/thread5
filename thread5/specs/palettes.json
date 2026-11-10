@@ -1,5 +1,5 @@
 {
- "version": "1.3.0",
+ "version": "1.4.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -5708,6 +5708,258 @@
    "family": "exp_color_wave_3",
    "legacy_3slot": false,
    "source": "T5-18 REVERSE WONDERLAND (приказ автора 2026-11-09: 9 новых экспериментальных палитр, ВСЕ разные — одна на кандидата, «следи чтобы и палитры были разные»; directed override C067)"
+  },
+  {
+   "id": "P180_COPPER_TONGUE",
+   "name": "Copper Tongue",
+   "dominant": [
+    "copper-hot",
+    "burnished-gold"
+   ],
+   "secondary": [
+    "forge-amber"
+   ],
+   "accent1": [
+    "oxid-green-flash"
+   ],
+   "accent2": null,
+   "shadow": "copper-shadow-ember",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "forge-hot — copper floods the frame, one oxid-green strike where the metal has been licked; shadows stay warm and never grey",
+   "sd_fragment": "copper-tongue-hot",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the coin still warm from the mouth; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P181_MINT_BOUNTY",
+   "name": "Mint Bounty",
+   "dominant": [
+    "mint-emerald-deep",
+    "coin-silver"
+   ],
+   "secondary": [
+    "foam-white"
+   ],
+   "accent1": [
+    "black-leaf-line"
+   ],
+   "accent2": null,
+   "shadow": "mint-shadow-cool",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "mint-house cold — emerald fills the frame like stacked banknotes, silver strikes where light lands; shadows stay green-cold",
+   "sd_fragment": "mint-bounty-deep",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the harvest counted in cold silver; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P182_CHERRY_LACQUER",
+   "name": "Cherry Lacquer",
+   "dominant": [
+    "cherry-lacquer-deep",
+    "stem-green"
+   ],
+   "secondary": [
+    "pit-black"
+   ],
+   "accent1": [
+    "cream-flesh-pale"
+   ],
+   "accent2": null,
+   "shadow": "lacquer-shadow-brown",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "lacquer-box deep — cherry red poured over green stems, cream strikes where skin opens; shadows lacquer-dark",
+   "sd_fragment": "cherry-lacquer-deep",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the fruit taken pit and all; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P183_VAULT_INK",
+   "name": "Vault Ink",
+   "dominant": [
+    "vault-ink-black",
+    "dial-brass"
+   ],
+   "secondary": [
+    "ledger-ivory"
+   ],
+   "accent1": [
+    "seal-wax-red"
+   ],
+   "accent2": null,
+   "shadow": "vault-shadow-iron",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "vault-dark — ink-black air, brass dials striking thin lines, ivory paper glow; shadows are iron and deeper",
+   "sd_fragment": "vault-ink-black",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the door that opens only inward; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P184_PEACH_RANSOM",
+   "name": "Peach Ransom",
+   "dominant": [
+    "peach-amber-deep",
+    "blush-cream"
+   ],
+   "secondary": [
+    "skin-warm-gold"
+   ],
+   "accent1": [
+    "bruise-plum-soft"
+   ],
+   "accent2": null,
+   "shadow": "peach-shadow-fuzz",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "peach-flesh warm — amber-fruit light over cream skin, one soft plum bruise where the hand pressed; shadows stay fuzzy-warm",
+   "sd_fragment": "peach-ransom-warm",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the soft thing kept, not given; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P185_SALT_GLASS",
+   "name": "Salt Glass",
+   "dominant": [
+    "glass-pale-blue",
+    "salt-white-shine"
+   ],
+   "secondary": [
+    "waterline-teal"
+   ],
+   "accent1": [
+    "brine-dark"
+   ],
+   "accent2": null,
+   "shadow": "salt-shadow-cold",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "salt-pan bright — glass-blue light, white salt strikes drying at the edges, one teal waterline; shadows cold and clean",
+   "sd_fragment": "salt-glass-pale",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the cup filled past its use; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P186_EMERALD_TOLL",
+   "name": "Emerald Toll",
+   "dominant": [
+    "emerald-deep",
+    "toll-gold"
+   ],
+   "secondary": [
+    "booth-wood-warm"
+   ],
+   "accent1": [
+    "feather-green-dark"
+   ],
+   "accent2": null,
+   "shadow": "emerald-shadow-moss",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "toll-booth dark — emerald depth, gold coin-strikes at the gate's slot, warm wood at the frame; shadows moss-green",
+   "sd_fragment": "emerald-toll-deep",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the gate that charges both ways; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P187_BONE_PORCELAIN",
+   "name": "Bone Porcelain",
+   "dominant": [
+    "bone-pale",
+    "porcelain-warm"
+   ],
+   "secondary": [
+    "dust-rose-soft"
+   ],
+   "accent1": [
+    "crack-gold-thin"
+   ],
+   "accent2": null,
+   "shadow": "porcelain-shadow-grey-warm",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "relic-case calm — bone-pale fields, warm porcelain skin-light, one thin gold crack-line; shadows soft and warm-grey",
+   "sd_fragment": "bone-porcelain-pale",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the relic kept behind its glass; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P188_ASH_ROSE",
+   "name": "Ash Rose",
+   "dominant": [
+    "ash-rose-deep",
+    "ember-blush"
+   ],
+   "secondary": [
+    "charcoal-warm"
+   ],
+   "accent1": [
+    "smoke-thread-pale"
+   ],
+   "accent2": null,
+   "shadow": "ash-shadow-warm",
+   "forbidden": [
+    "grey shadow",
+    "violet-dominant",
+    "plum-dominant",
+    "muddy-brown"
+   ],
+   "light_type": "banked-fire dusk — ash-rose over charcoal warmth, one pale smoke-thread where breath crosses; shadows stay ember-warm",
+   "sd_fragment": "ash-rose-deep",
+   "mood": "",
+   "family": "exp_color_wave_4",
+   "legacy_3slot": false,
+   "source": "T5-19 DEVIL'S GREED (greed register: the fire kept banked, never shared; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
