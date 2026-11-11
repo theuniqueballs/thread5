@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-import { ArrowLeft, Check, ChevronRight, ClipboardList, Copy, Loader2, MessageSquareQuote, RotateCcw, Search, SearchX } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { ArrowLeft, Check, ChevronRight, ClipboardList, Copy, CornerDownRight, Loader2, MessageSquareQuote, RotateCcw, Search, SearchX } from 'lucide-react';
 import { Chip, CopyButton, GenreBadge, RatingBadge, copyText } from '@/components/t5/bits';
 import { LoopRenders, type LoopManifest, type LoopSlotInfo } from '@/components/t5/loop-renders';
 import { Input } from '@/components/ui/input';
@@ -350,7 +350,7 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
           className="h-1 w-full overflow-hidden rounded-full bg-white/[0.06]"
         >
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[#ff3d8a] to-[#d946ef] shadow-[0_0_10px_rgb(255_61_138/0.45)] transition-[width] duration-300"
+            className="t5-shimmer h-full rounded-full bg-gradient-to-r from-[#ff3d8a] to-[#d946ef] shadow-[0_0_10px_rgb(255_61_138/0.45)] transition-[width] duration-300"
             style={{ width: `${progressPct}%` }}
           />
         </div>
@@ -414,14 +414,12 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
 }
 
 function ViewToggle({ view, onChange }: { view: 'copy' | 'detail'; onChange: (v: 'copy' | 'detail') => void }) {
-  const base =
-    'rounded-lg px-3 py-1.5 text-[13px] font-semibold transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pink-400';
   return (
-    <div className="flex rounded-xl border border-white/[0.07] bg-white/[0.03] p-1" role="tablist" aria-label="Вид батча">
-      <button type="button" role="tab" aria-selected={view === 'copy'} onClick={() => onChange('copy')} className={cn(base, view === 'copy' ? 'bg-[#1d1c29] text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.06)]' : 'text-zinc-500 hover:text-zinc-200')}>
+    <div className="t5-seg" role="tablist" aria-label="Вид батча">
+      <button type="button" role="tab" aria-selected={view === 'copy'} onClick={() => onChange('copy')} className="t5-seg-item" data-active={view === 'copy'}>
         Копировалка
       </button>
-      <button type="button" role="tab" aria-selected={view === 'detail'} onClick={() => onChange('detail')} className={cn(base, view === 'detail' ? 'bg-[#1d1c29] text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.06)]' : 'text-zinc-500 hover:text-zinc-200')}>
+      <button type="button" role="tab" aria-selected={view === 'detail'} onClick={() => onChange('detail')} className="t5-seg-item" data-active={view === 'detail'}>
         Разбор
       </button>
     </div>
@@ -454,10 +452,32 @@ function LazyCopyButton({ getText, label }: { getText: () => Promise<string | nu
   );
 }
 
-function VerdictBox({ slug, onSaved }: { slug: string; onSaved: () => void }) {
+function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[]; onSaved: () => void }) {
   const [text, setText] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const taRef = useRef<HTMLTextAreaElement | null>(null);
+
+  /* быстрый слот: вставляет «P07 — » в позицию курсора — вердикт по слотам
+     набирается без ручного перепечатывания идентификаторов (урок T5-19) */
+  const insertSlot = useCallback((id: string) => {
+    const ta = taRef.current;
+    const token = `${id} — `;
+    if (!ta) {
+      setText((t) => (t && !t.endsWith(' ') && !t.endsWith('\n') ? `${t} ${token}` : t + token));
+      return;
+    }
+    const start = ta.selectionStart ?? text.length;
+    const end = ta.selectionEnd ?? start;
+    const before = text.slice(0, start);
+    const spacer = before && !before.endsWith('\n') && !before.endsWith(' ') ? ' ' : '';
+    setText(before + spacer + token + text.slice(end));
+    requestAnimationFrame(() => {
+      ta.focus();
+      const pos = before.length + spacer.length + token.length;
+      ta.setSelectionRange(pos, pos);
+    });
+  }, [text]);
 
   const save = useCallback(async () => {
     if (text.trim().length < 2) {
@@ -484,7 +504,7 @@ function VerdictBox({ slug, onSaved }: { slug: string; onSaved: () => void }) {
   }, [slug, text, onSaved]);
 
   return (
-    <section aria-label="Вердикт" className="overflow-hidden rounded-xl border border-[#ffc24b]/25 bg-[#16120a]/70">
+    <section aria-label="Вердикт" className="relative overflow-hidden rounded-xl border border-[#ffc24b]/25 bg-gradient-to-b from-[#1c1608]/85 to-[#120f08]/85 shadow-[inset_0_1px_0_rgb(255_194_75/0.08),0_12px_36px_rgb(3_2_8/0.4)]">
       {/* hazard-полоса: голос автора — единственный золотой блок интерфейса */}
       <div className="t5-hazard h-1 w-full opacity-60" aria-hidden />
       <div className="p-5">
@@ -495,13 +515,32 @@ function VerdictBox({ slug, onSaved }: { slug: string; onSaved: () => void }) {
           Что сработало / что умерло, по слотам или в целом. Писец разберёт вердикт в чате и разложит квитанции в память.
         </p>
         <textarea
+          ref={taRef}
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={5}
           placeholder={'P09 — сумма слоёв доезжает, свет на зоне — огонь.\nP14 — поза HIGH, заявку съел дрейф…'}
-          className="w-full rounded-lg border border-white/[0.09] bg-black/30 p-3.5 text-sm leading-relaxed text-zinc-200 shadow-[inset_0_1px_3px_rgb(0_0_0/0.35)] placeholder:text-zinc-600 focus:border-[#ffc24b]/50 focus:outline-none focus:ring-1 focus:ring-[#ffc24b]/30"
+          className="w-full rounded-lg border border-white/[0.09] bg-black/35 p-3.5 text-sm leading-relaxed text-zinc-200 shadow-[inset_0_1px_3px_rgb(0_0_0/0.35)] placeholder:text-zinc-600 focus:border-[#ffc24b]/50 focus:outline-none focus:ring-1 focus:ring-[#ffc24b]/30"
         />
         {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
+        {slotIds.length > 0 && (
+          <div className="mt-3 flex flex-wrap items-center gap-1.5">
+            <span className="t5-label flex items-center gap-1.5 !text-[10px] text-zinc-500">
+              <CornerDownRight className="size-3" aria-hidden /> вставить слот
+            </span>
+            {slotIds.map((id) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => insertSlot(id)}
+                className="rounded-md border border-white/[0.09] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] font-bold text-zinc-400 transition-colors hover:border-[#ffc24b]/45 hover:bg-[#ffc24b]/[0.08] hover:text-[#ffc24b] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ffc24b]/60"
+                aria-label={`Вставить ${id} в вердикт`}
+              >
+                {id}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <span className="t5-glow inline-flex">
             <button type="button" onClick={save} disabled={saving} className="t5-btn-primary t5-clip">
@@ -708,7 +747,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
       )}
 
       {/* вердикты */}
-      <VerdictBox slug={slug} onSaved={load} />
+      <VerdictBox slug={slug} slotIds={batch.slots.map((s) => s.id)} onSaved={load} />
       {verdicts.length > 0 && (
         <section aria-label="Сохранённые вердикты" className="t5-panel p-5">
           <h3 className="t5-label mb-3.5 text-zinc-400">Сохранённые вердикты — {verdicts.length}</h3>

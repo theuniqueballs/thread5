@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Aperture, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -83,7 +84,7 @@ export function LoopRenders({ info }: { info?: LoopSlotInfo | null }) {
         </p>
       )}
 
-      {zoom && (
+      {zoom && createPortal(
         <div
           role="dialog"
           aria-modal="true"
@@ -112,7 +113,8 @@ export function LoopRenders({ info }: { info?: LoopSlotInfo | null }) {
               {zoom.label} · прокси-рендер писца (не финальный)
             </figcaption>
           </figure>
-        </div>
+        </div>,
+        document.body,
       )}
     </section>
   );

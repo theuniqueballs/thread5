@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { BookOpenText, Gift, Inbox, Layers, Loader2, RefreshCw, Sparkles } from 'lucide-react';
+import { ArrowUpRight, BookOpenText, Gift, Inbox, Layers, Loader2, RefreshCw, Sparkles } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { Chip, T5Markdown } from '@/components/t5/bits';
@@ -19,7 +19,7 @@ const SLUG_HASH_RE = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u;
 const TAB_ACCENT: Record<Tab, string> = {
   batches: '#ff3d8a',
   special: '#2de2e6',
-  inbox: '#4ade80',
+  inbox: '#3ddc97',
   docs: '#a78bfa',
 };
 
@@ -83,7 +83,10 @@ function Hero({
   stats: { value: string; label: string }[];
 }) {
   return (
-    <section className="t5-frame relative overflow-hidden rounded-2xl border border-white/[0.07]" aria-label={overline}>
+    <section
+      className="t5-frame relative overflow-hidden rounded-2xl border border-white/[0.08]"
+      aria-label={overline}
+    >
       {/* дуотон-город: арт-панель как в лучших референсах */}
       <img
         src="/t5/hero-city.jpg"
@@ -91,30 +94,43 @@ function Hero({
         aria-hidden
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_78%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#08070d] via-[#08070d]/60 to-[#08070d]/20" aria-hidden />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#08070d]/90 via-[#08070d]/35 to-transparent" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0812] via-[#0a0812]/55 to-[#0a0812]/10" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0812]/95 via-[#0a0812]/40 to-transparent" aria-hidden />
+      {/* полярное сияние поверх города: тихая цветная дышащая масса */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 -top-32 h-80 w-80 rounded-full opacity-50 blur-3xl"
+        style={{ background: `radial-gradient(circle, ${accent}26, transparent 70%)` }}
+      />
 
-      <div className="relative flex flex-col gap-6 p-6 sm:p-8 lg:p-10">
+      <div className="relative flex flex-col gap-7 p-6 sm:p-9 lg:p-11">
         <div className="max-w-2xl">
-          <p className="t5-label mb-3 flex items-center gap-2.5" style={{ color: accent }}>
-            <span className="inline-block h-px w-7" style={{ background: accent }} aria-hidden />
+          <p className="t5-label mb-4 flex items-center gap-2.5" style={{ color: accent }}>
+            <span className="inline-block h-px w-8" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} aria-hidden />
             {overline}
           </p>
-          <h1 className="font-display text-2xl font-black uppercase leading-tight text-white sm:text-3xl lg:text-4xl">
-            {title}
+          <h1 className="font-display text-[26px] font-black uppercase leading-[1.08] tracking-tight sm:text-3xl lg:text-[40px]">
+            <span className="t5-gradient-text">{title}</span>
           </h1>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-400">{sub}</p>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-[15px]">{sub}</p>
         </div>
 
-        <dl className="flex flex-wrap gap-x-10 gap-y-4">
+        {/* статистика: стеклянные медальоны на одном поручне */}
+        <dl className="flex flex-wrap items-stretch gap-3">
           {stats.map((s) => (
-            <div key={s.label}>
-              <dt className="t5-label mb-1">{s.label}</dt>
-              <dd className="font-display text-xl font-bold text-white tabular-nums sm:text-2xl">{s.value}</dd>
+            <div
+              key={s.label}
+              className="rounded-xl border border-white/[0.09] bg-white/[0.045] px-4 py-2.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.07),0_6px_20px_rgb(3_2_8/0.35)] backdrop-blur-md"
+            >
+              <dt className="t5-label mb-0.5">{s.label}</dt>
+              <dd className="font-display text-lg font-bold tabular-nums text-white sm:text-xl">{s.value}</dd>
             </div>
           ))}
         </dl>
       </div>
+
+      {/* переливающаяся кромка низа: единственная анимация героя */}
+      <div className="t5-shimmer h-px w-full bg-gradient-to-r from-transparent via-white/25 to-transparent" aria-hidden />
     </section>
   );
 }
@@ -133,11 +149,16 @@ function BatchList({
   refreshing: boolean;
 }) {
   const isSpecial = variant === 'special';
+  const accent = isSpecial ? '#2de2e6' : '#ff3d8a';
   return (
     <section aria-label={isSpecial ? 'Полка заказов' : 'Прилавок батчей'} className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="t5-label flex items-center gap-2.5 text-zinc-300">
-          <span className="inline-block h-3 w-[3px] rounded-full" style={{ background: isSpecial ? '#2de2e6' : '#ff3d8a' }} aria-hidden />
+        <h2 className="t5-label flex items-center gap-2.5 !text-[11px] text-zinc-300">
+          <span
+            className="inline-block h-3.5 w-[3px] rounded-full"
+            style={{ background: `linear-gradient(180deg, ${accent}, ${accent}44)` }}
+            aria-hidden
+          />
           {isSpecial ? `Special Orders — ${items.length}` : `Батчи — ${items.length}`}
         </h2>
         <button type="button" onClick={onRefresh} className="t5-btn">
@@ -146,9 +167,9 @@ function BatchList({
       </div>
 
       {items.length === 0 ? (
-        <div className="t5-panel p-10 text-center">
-          <Sparkles className="mx-auto mb-3 size-5 text-zinc-600" aria-hidden />
-          <p className="mb-2 text-lg font-bold text-zinc-200">{isSpecial ? 'Полка заказов пуста' : 'Батчей пока нет'}</p>
+        <div className="t5-panel p-12 text-center">
+          <Sparkles className="mx-auto mb-4 size-5 text-zinc-600" aria-hidden />
+          <p className="t5-gradient-text mb-2 font-display text-lg font-bold uppercase">{isSpecial ? 'Полка заказов пуста' : 'Батчей пока нет'}</p>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-zinc-400">
             {isSpecial ? (
               <>
@@ -167,26 +188,34 @@ function BatchList({
           </p>
         </div>
       ) : (
-        <div className="grid gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {items.map((b) => (
             <button
               key={b.slug}
               type="button"
               onClick={() => onOpen(b.slug)}
               aria-label={`Открыть ${b.slug}`}
-              className="t5-frame group relative flex flex-col overflow-hidden rounded-xl border border-white/[0.07] bg-[#12111a] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-white/[0.16] hover:bg-[#17161f] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pink-400/70"
+              className="t5-frame group relative flex flex-col overflow-hidden p-5 text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pink-400/70"
             >
+              <span className="t5-card absolute inset-0" aria-hidden />
               {/* цветовая рельса батча */}
               <span
                 aria-hidden
-                className="absolute inset-y-0 left-0 w-[3px] opacity-70 transition-opacity group-hover:opacity-100"
-                style={{ background: isSpecial ? 'linear-gradient(180deg,#2de2e6,rgba(45,226,230,0.15))' : 'linear-gradient(180deg,#ff3d8a,rgba(255,61,138,0.15))' }}
+                className="absolute inset-y-0 left-0 z-10 w-[3px] opacity-80 transition-opacity group-hover:opacity-100"
+                style={{ background: `linear-gradient(180deg, ${accent}, ${accent}14)` }}
               />
-              <div className="mb-1 flex items-baseline gap-2.5 pl-1.5">
+              {/* стрелка-приглашение: выезжает на ховере */}
+              <ArrowUpRight
+                aria-hidden
+                className="absolute right-4 top-4 z-10 size-4 text-zinc-600 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                style={{ color: accent }}
+              />
+
+              <div className="relative z-10 mb-1.5 flex items-baseline gap-2.5 pl-2">
                 <span
                   className={cn(
                     'font-mono text-[17px] font-bold tracking-tight transition-colors',
-                    isSpecial ? 'text-cyan-100 group-hover:text-cyan-300' : 'text-pink-100 group-hover:text-pink-300'
+                    isSpecial ? 'text-cyan-100 group-hover:text-cyan-300' : 'text-pink-100 group-hover:text-pink-300',
                   )}
                 >
                   {b.slug}
@@ -198,8 +227,8 @@ function BatchList({
                 )}
                 <MtimeLabel mtime={b.mtime} />
               </div>
-              <p className="mb-4 line-clamp-1 pl-1.5 text-sm font-semibold text-zinc-200">{b.theme ?? b.title}</p>
-              <div className="mt-auto flex flex-wrap gap-1.5 pl-1.5">
+              <p className="relative z-10 mb-5 line-clamp-1 pl-2 text-sm font-semibold text-zinc-200">{b.theme ?? b.title}</p>
+              <div className="relative z-10 mt-auto flex flex-wrap gap-1.5 pl-2">
                 <Chip>{b.slotCount} слотов</Chip>
                 {b.ocCount > 0 && <Chip>OC {b.ocCount}</Chip>}
                 {b.expCount > 0 && <Chip>EXP {b.expCount}</Chip>}
@@ -222,11 +251,11 @@ function DocButton({ doc, active, onSelect }: { doc: T5DocMeta; active: boolean;
       className={cn(
         'relative w-full rounded-lg border px-3.5 py-2.5 text-left transition-all duration-150',
         active
-          ? 'border-white/[0.14] bg-white/[0.06]'
-          : 'border-transparent hover:border-white/[0.08] hover:bg-white/[0.03]'
+          ? 'border-white/[0.15] bg-white/[0.07] shadow-[inset_0_1px_0_rgb(255_255_255/0.06)]'
+          : 'border-transparent hover:border-white/[0.09] hover:bg-white/[0.035]',
       )}
     >
-      {active && <span className="absolute inset-y-2 left-0 w-[2.5px] rounded-full bg-violet-400" aria-hidden />}
+      {active && <span className="absolute inset-y-2 left-0 w-[2.5px] rounded-full bg-violet-400 shadow-[0_0_8px_rgb(167_139_250/0.7)]" aria-hidden />}
       <span className={cn('block text-[13px] font-bold tracking-wide', active ? 'text-white' : 'text-zinc-300')}>
         {doc.title}
       </span>
@@ -267,7 +296,7 @@ function DocsView({ active, onActive }: { active: string; onActive: (name: strin
     <div className="grid items-start gap-5 lg:grid-cols-[270px_1fr]">
       <nav
         aria-label="Документы памяти"
-        className="t5-scroll space-y-1 lg:sticky lg:top-[76px] lg:max-h-[calc(100vh-100px)] lg:overflow-y-auto lg:pr-1"
+        className="t5-scroll space-y-1 lg:sticky lg:top-[80px] lg:max-h-[calc(100vh-110px)] lg:overflow-y-auto lg:pr-1"
       >
         <p className="t5-label px-3.5 pb-1.5">Память</p>
         {memoryDocs.map((d) => (
@@ -280,7 +309,7 @@ function DocsView({ active, onActive }: { active: string; onActive: (name: strin
           <DocButton key={d.name} doc={d} active={active === d.name} onSelect={() => onActive(d.name)} />
         ))}
       </nav>
-      <div className="t5-panel t5-scroll min-h-[420px] overflow-y-auto rounded-xl p-6 lg:sticky lg:top-[76px] lg:max-h-[calc(100vh-100px)] lg:p-7">
+      <div className="t5-panel t5-scroll min-h-[420px] overflow-y-auto rounded-xl p-6 lg:sticky lg:top-[80px] lg:max-h-[calc(100vh-110px)] lg:p-8">
         {loading && (
           <div className="flex items-center gap-2.5 py-16 text-sm text-zinc-500">
             <Loader2 className="size-4 animate-spin text-violet-400" /> Читаю память…
@@ -430,7 +459,8 @@ export default function Home() {
 
   return (
     <div className="t5-bg relative flex min-h-screen flex-col text-zinc-100">
-      {/* зерно + катакана-рельса: фактура вместо сканлайнов */}
+      {/* глубина: сияния + виньетка + зерно */}
+      <div className="t5-vignette" aria-hidden />
       <div className="t5-noise" aria-hidden />
       <div className="pointer-events-none fixed right-5 top-1/2 z-0 hidden -translate-y-1/2 xl:block" aria-hidden>
         <p className="t5-vertical font-mono text-[10px] tracking-[0.5em] text-white/[0.12]">
@@ -438,52 +468,56 @@ export default function Home() {
         </p>
       </div>
 
-      {/* командная шапка */}
-      <header className="sticky top-0 z-20 border-b border-white/[0.06] bg-[#08070d]/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
-          <button type="button" onClick={() => openTab('batches')} className="flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pink-400" aria-label="Thread 5 — на главную">
-            <span className="t5-glow inline-flex">
-              <span className="t5-clip grid size-9 shrink-0 place-items-center bg-gradient-to-br from-pink-500 to-fuchsia-600 font-display text-sm font-black text-white">5</span>
-            </span>
-            <span className="leading-none">
-              <span className="block font-display text-[13px] font-bold tracking-wider text-white">THREAD·5</span>
-              <span className="mt-1 block font-mono text-[10px] tracking-[0.28em] text-zinc-500">прилавок писца</span>
-            </span>
-            <span className="ml-2 hidden font-mono text-[10px] tracking-[0.3em] text-white/[0.18] lg:inline" aria-hidden>
-              スレッド・ファイブ
-            </span>
-          </button>
+      {/* командная шапка: стекло + градиентная кромка */}
+      <header className="sticky top-0 z-20">
+        <div className="border-b border-white/[0.06] bg-[#0a0812]/78 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
+            <button type="button" onClick={() => openTab('batches')} className="flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pink-400" aria-label="Thread 5 — на главную">
+              <span className="t5-glow inline-flex">
+                <span className="t5-clip grid size-9 shrink-0 place-items-center bg-gradient-to-br from-pink-500 via-fuchsia-500 to-violet-600 font-display text-sm font-black text-white">
+                  5
+                </span>
+              </span>
+              <span className="leading-none">
+                <span className="block font-display text-[13px] font-bold tracking-wider text-white">THREAD·5</span>
+                <span className="mt-1 block font-mono text-[10px] tracking-[0.28em] text-zinc-500">прилавок писца</span>
+              </span>
+              <span className="ml-2 hidden font-mono text-[10px] tracking-[0.3em] text-white/[0.18] lg:inline" aria-hidden>
+                スレッド・ファイブ
+              </span>
+            </button>
 
-          <nav aria-label="Разделы" className="ml-auto flex items-center gap-1 rounded-xl border border-white/[0.07] bg-white/[0.03] p-1">
-            {tabs.map((t) => {
-              const active = tab === t.id;
-              return (
-                <button
-                  key={t.id}
-                  type="button"
-                  onClick={() => openTab(t.id)}
-                  aria-current={active ? 'page' : undefined}
-                  aria-label={t.label}
-                  title={t.label}
-                  className={cn(
-                    'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[13px] font-semibold transition-all duration-150',
-                    active ? 'bg-[#1d1c29] text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.06)]' : 'text-zinc-500 hover:text-zinc-200'
-                  )}
-                >
-                  <span style={{ color: active ? TAB_ACCENT[t.id] : undefined }} className={cn(!active && 'text-zinc-600')}>
-                    {t.icon}
-                  </span>
-                  <span className="hidden sm:inline">{t.label}</span>
-                  {t.id === 'special' && <span className="hidden xl:inline">Orders</span>}
-                </button>
-              );
-            })}
-          </nav>
+            <nav aria-label="Разделы" className="t5-seg ml-auto">
+              {tabs.map((t) => {
+                const active = tab === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => openTab(t.id)}
+                    aria-current={active ? 'page' : undefined}
+                    aria-label={t.label}
+                    title={t.label}
+                    data-active={active}
+                    className={cn('t5-seg-item inline-flex items-center gap-1.5', !active && 'hover:!text-zinc-200')}
+                  >
+                    <span style={{ color: active ? TAB_ACCENT[t.id] : undefined }} className={cn(!active && 'text-zinc-600')}>
+                      {t.icon}
+                    </span>
+                    <span className="hidden sm:inline">{t.label}</span>
+                    {t.id === 'special' && <span className="hidden xl:inline">Orders</span>}
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
         </div>
+        {/* градиентная кромка шапки: роза → фиолет → циан */}
+        <div className="h-px w-full bg-gradient-to-r from-pink-500/40 via-violet-500/25 to-cyan-400/40" aria-hidden />
       </header>
 
       {/* содержимое */}
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
+      <main className="relative z-10 mx-auto w-full max-w-6xl flex-1 px-4 py-7 sm:px-6 sm:py-9">
         {tab === 'batches' &&
           (view.kind === 'batch' ? (
             <BatchView slug={view.slug} onBack={backToList} />
@@ -494,7 +528,7 @@ export default function Home() {
           ) : error ? (
             <div className="t5-panel p-10 text-center text-sm text-red-400">{error}</div>
           ) : (
-            <div className="space-y-8">
+            <div className="space-y-9">
               <Hero
                 accent="#ff3d8a"
                 overline="Прилавок · конвейер"
@@ -515,7 +549,7 @@ export default function Home() {
           ) : error ? (
             <div className="t5-panel p-10 text-center text-sm text-red-400">{error}</div>
           ) : (
-            <div className="space-y-8">
+            <div className="space-y-9">
               <Hero
                 accent="#2de2e6"
                 overline="Прилавок · витрина"
@@ -531,17 +565,20 @@ export default function Home() {
       </main>
 
       {/* подвал — прилипает к низу */}
-      <footer className="mt-auto border-t border-white/[0.06] pb-[env(safe-area-inset-bottom)]">
-        <div className="mx-auto max-w-6xl px-4 py-5 text-xs leading-relaxed text-zinc-500 sm:px-6">
-          <p className="flex flex-wrap items-center gap-x-1 font-mono">
-            <span className="text-zinc-500">тема</span> <span className="text-pink-500/70">→</span>
-            <span className="text-zinc-500">контракт</span> <span className="text-zinc-600">→</span>
-            <span className="text-zinc-500">батч</span> <span className="text-zinc-600">→</span>
-            <span className="text-zinc-500">рендер</span> <span className="text-pink-500/70">→</span>
-            <span className="text-zinc-500">вердикт</span> <span className="text-cyan-500/70">→</span>
-            <span className="text-zinc-500">вкус</span>
-          </p>
-          <p className="mt-1.5">Thread 5 · наследие Thread 4 (45 батчей, 28 законов вкуса) · чат — двигатель, файлы — память</p>
+      <footer className="relative z-10 mt-auto border-t border-white/[0.06] pb-[env(safe-area-inset-bottom)]">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-x-8 gap-y-3 px-4 py-5 text-xs leading-relaxed text-zinc-500 sm:px-6">
+          <div>
+            <p className="flex flex-wrap items-center gap-x-1 font-mono">
+              <span className="text-zinc-500">тема</span> <span className="text-pink-500/70">→</span>
+              <span className="text-zinc-500">контракт</span> <span className="text-zinc-600">→</span>
+              <span className="text-zinc-500">батч</span> <span className="text-zinc-600">→</span>
+              <span className="text-zinc-500">рендер</span> <span className="text-pink-500/70">→</span>
+              <span className="text-zinc-500">вердикт</span> <span className="text-cyan-500/70">→</span>
+              <span className="text-zinc-500">вкус</span>
+            </p>
+            <p className="mt-1.5">Thread 5 · наследие Thread 4 (45 батчей, 28 законов вкуса) · чат — двигатель, файлы — память</p>
+          </div>
+          <p className="t5-label !tracking-[0.3em] text-white/[0.16]">五番目の糸 · thread five</p>
         </div>
       </footer>
     </div>

@@ -197,15 +197,17 @@ async function visionJson(args: VisionArgs): Promise<string | null> {
 }
 
 /**
- * visionJson с ретраем на 429 (SDK рейт-лимит на залпе файлов):
- * пауза между попытками, чтобы пачка инбокса не рассыпалась в fail-closed карантин.
+ * visionJson с ретраем на 429 И 401/токен-сбои (урок T5-19: «missing X-Token
+ * header» приходил пачкой, пока конфиг SDK чинился на уровне окружения —
+ * такие карантины потом приходилось перетриаживать руками). Пауза между
+ * попытками, чтобы пачка инбокса не рассыпалась в fail-closed карантин.
  */
 function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
 async function visionJsonRetry(args: VisionArgs): Promise<string | null> {
-  const waits = [0, 6000, 12000];
+  const waits = [0, 6000, 12000, 20000];
   let lastErr: unknown = null;
   for (const wait of waits) {
     if (wait > 0) await sleep(wait);
@@ -214,7 +216,8 @@ async function visionJsonRetry(args: VisionArgs): Promise<string | null> {
     } catch (err) {
       lastErr = err;
       const msg = String(err instanceof Error ? err.message : err);
-      if (!/429|too many/iu.test(msg)) throw err;
+      // 429 — рейт-лимит; 401/403/token — временные сбои конфига шлюза
+      if (!/429|401|403|too many|token|unauthorized/iu.test(msg)) throw err;
     }
   }
   throw lastErr instanceof Error ? lastErr : new Error(String(lastErr));
