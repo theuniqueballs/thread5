@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, Check, ChevronRight, ClipboardList, Copy, CornerDownRight, Loader2, MessageSquareQuote, RotateCcw, Search, SearchX } from 'lucide-react';
 import { Chip, CopyButton, GenreBadge, RatingBadge, copyText } from '@/components/t5/bits';
 import { LoopRenders, type LoopManifest, type LoopSlotInfo } from '@/components/t5/loop-renders';
@@ -565,6 +565,152 @@ function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[
   );
 }
 
+/* ── шапка батча: markdown-lite рендер зоны до слотов ─────────────────────
+ * Новые батчи (PROSE PLUS, с T5-19/20) держат в зоне шапки ##-секции (SPINE,
+ * ГИПОТЕЗА, ХОДЫ, КАНАЛ-ЗАКОН…). Раньше вся зона валилась одним курсивным
+ * абзацем с сырыми «##» и «**» — теперь: вступление (заказ) — цитатой, секции
+ * — сворачиваемыми блоками, переносы-обёртки склеиваются, записи-строки — нет.
+ */
+
+interface ArcSection {
+  title: string;
+  lines: string[];
+}
+
+function parseArc(arc: string): { intro: string[]; sections: ArcSection[] } {
+  const intro: string[] = [];
+  const sections: ArcSection[] = [];
+  let current: ArcSection | null = null;
+  for (const line of arc.split(/\r?\n/u)) {
+    const h = line.match(/^#{2,4}\s+(.+)$/u);
+    if (h) {
+      current = { title: h[1].trim(), lines: [] };
+      sections.push(current);
+      continue;
+    }
+    if (current) current.lines.push(line);
+    else intro.push(line);
+  }
+  return { intro, sections };
+}
+
+/** Строка-запись (не обёртка): маркер/ход/подпись — с неё начинается абзац. */
+function isArcEntry(line: string): boolean {
+  const t = line.trimStart();
+  return (
+    /^[-*•]\s/u.test(t) ||
+    /^M\d{2}\s/u.test(t) ||
+    /^\*\*/u.test(t) ||
+    /^\(\d+\)\s/u.test(t) ||
+    /^[A-ZА-ЯЁ0-9][A-ZА-ЯЁ0-9-]*:/u.test(t) ||
+    /^(OC|NICHE|VOLT|EXQUISITE|EXP)\s*[—–:-]/u.test(t)
+  );
+}
+
+/** Абзацы секции: обёртки-переносы склеиваем пробелом, записи — с новой строки. */
+function arcParagraphs(lines: string[]): string[] {
+  const out: string[] = [];
+  let buf = '';
+  const flush = () => {
+    const t = buf.trim();
+    if (t) out.push(t);
+    buf = '';
+  };
+  for (const line of lines) {
+    if (!line.trim()) {
+      flush();
+      continue;
+    }
+    if (/^\s{2,}\S/u.test(line) && buf) {
+      buf += ` ${line.trim()}`; // обёртка длинной строки
+      continue;
+    }
+    if (!buf || isArcEntry(line)) {
+      flush();
+      buf = line.trim();
+      continue;
+    }
+    buf += ` ${line.trim()}`;
+  }
+  flush();
+  return out;
+}
+
+/** Инлайн: **жирный** и `код` — остальное как есть. */
+function ArcInline({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/gu).filter(Boolean);
+  return (
+    <>
+      {parts.map((p, i) => {
+        if (p.startsWith('**') && p.endsWith('**')) {
+          return (
+            <strong key={i} className="font-semibold text-zinc-200">
+              {p.slice(2, -2)}
+            </strong>
+          );
+        }
+        if (p.startsWith('`') && p.endsWith('`')) {
+          return (
+            <code key={i} className="rounded bg-black/40 px-1 py-0.5 font-mono text-[0.85em] text-t5-accent-bright">
+              {p.slice(1, -1)}
+            </code>
+          );
+        }
+        return <span key={i}>{p}</span>;
+      })}
+    </>
+  );
+}
+
+function BatchArc({ arc }: { arc: string }) {
+  const { intro, sections } = useMemo(() => parseArc(arc), [arc]);
+  const introParas = useMemo(() => arcParagraphs(intro), [intro]);
+  if (sections.length === 0) {
+    // старый формат: чистая проза арки — как раньше, но по абзацам
+    return (
+      <div className="mb-4 max-w-4xl pl-2.5 text-sm italic leading-relaxed text-zinc-500">
+        {introParas.map((p, i) => (
+          <p key={i} className="mb-2 last:mb-0">
+            <ArcInline text={p} />
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="mb-4 max-w-4xl pl-2.5">
+      {introParas.length > 0 && (
+        <div className="mb-3 border-l-2 border-t5-accent/40 pl-3">
+          {introParas.map((p, i) => (
+            <p key={i} className="mb-2 text-sm italic leading-relaxed text-zinc-400 last:mb-0">
+              <ArcInline text={p} />
+            </p>
+          ))}
+        </div>
+      )}
+      {sections.map((s, i) => {
+        const paras = arcParagraphs(s.lines);
+        const openByDefault = i === 0;
+        return (
+          <details key={s.title} className="group mb-2 rounded-lg border border-white/[0.06] bg-black/20" open={openByDefault}>
+            <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 transition-colors hover:text-white [&::-webkit-details-marker]:hidden">
+              <ChevronRight className="size-3.5 shrink-0 text-t5-accent/70 transition-transform group-open:rotate-90" aria-hidden />
+              <span className="t5-label text-zinc-300">{s.title}</span>
+            </summary>
+            <div className="space-y-2 border-t border-white/[0.05] px-3 py-2.5">
+              {paras.map((p, j) => (
+                <p key={j} className="text-[13px] leading-relaxed text-zinc-400">
+                  <ArcInline text={p} />
+                </p>
+              ))}
+            </div>
+          </details>
+        );
+      })}
+    </div>
+  );
+}
+
 /* чип акта: «ACT I — ВЕРХНИЙ ЯРУС (световод, …)» → «ACT I — ВЕРХНИЙ ЯРУС» */
 function shortActTitle(title: string): string {
   const base = title.split(' (')[0].trim();
@@ -707,7 +853,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
           {batch.slots.some((s) => s.genre === 'EXP') && <Chip>EXP {batch.slots.filter((s) => s.genre === 'EXP').length}</Chip>}
           <Chip>вердиктов: {verdictSlots}</Chip>
         </div>
-        {batch.arc && <p className="mb-4 max-w-4xl pl-2.5 text-sm italic leading-relaxed text-zinc-500">{batch.arc}</p>}
+        {batch.arc && <BatchArc arc={batch.arc} />}
         <dl className="grid gap-2 pl-2.5 text-[13px] text-zinc-400">
           {batch.movement && (
             <div>
