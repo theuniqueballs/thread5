@@ -1,5 +1,5 @@
 {
- "version": "1.3.0",
+ "version": "1.4.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT) | 1.2.1: +K249–251 (canon-OS P01–P03, вето 2026-11-09); K216–218 остаются в ledger на срезанных мейнах",
  "sections": {
@@ -1266,6 +1266,204 @@
     "name": "mid_stud_catch",
     "sd": "the studded collar mid-catching the street's shine, stud by stud",
     "source": "T5-19 canon-OS K-FF"
+   },
+   {
+    "id": "K285",
+    "name": "mid_perfume_wrist",
+    "sd": "the perfume drop already on the inner wrist, the mirror's second angle waiting",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K286",
+    "name": "mid_hand_host",
+    "sd": "the host of conjured palms holding the chest, the newest palm still trembling",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K287",
+    "name": "mid_gloss_second_skin",
+    "sd": "the gloss line level at the collarbone, the tail's tip swaying above the surface",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K288",
+    "name": "mid_moth_empty_bracket",
+    "sd": "the antennae testing the dark where the light used to live",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K289",
+    "name": "mid_letter_wind",
+    "sd": "the page bending toward the stone like it wants to be heard there",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K290",
+    "name": "mid_pedestal_step",
+    "sd": "the hollow of her feet still printed in the pedestal stone behind",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K291",
+    "name": "mid_flooded_rim",
+    "sd": "the waterline riding her ribs while the dome's broken light moves",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K292",
+    "name": "mid_two_cups",
+    "sd": "the second cup already full and going cold, ears lowered first",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K293",
+    "name": "mid_mound_lounge",
+    "sd": "the grass keeping her warmth in the shape of her rest",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K294",
+    "name": "mid_shadow_lead",
+    "sd": "the shadow kneeling at the stone half a beat before her",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K295",
+    "name": "mid_silk_frame",
+    "sd": "the silk line drawn from the fingertips in one even count",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K296",
+    "name": "mid_coffin_desk",
+    "sd": "sunrise walking the lid's grain like a ruler under the letter",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K297",
+    "name": "mid_bell_skip",
+    "sd": "the collar bell swinging its own service step by step",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K298",
+    "name": "mid_coat_shrug",
+    "sd": "the sleeve remembering a bigger shoulder as the lapel slides",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K299",
+    "name": "mid_bell_jar_meadow",
+    "sd": "the condensation bead hanging over her heart under the dome",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K300",
+    "name": "mid_name_whisper",
+    "sd": "the finger holding the ink-blot where the hand had hurried",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K301",
+    "name": "mid_mirror_lock",
+    "sd": "the reflected strap fallen where the real one holds",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K302",
+    "name": "mid_case_swagger",
+    "sd": "the case's strap riding the apex at every step's bounce",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K303",
+    "name": "mid_path_walk",
+    "sd": "the soft pool of light moving with her over the gravel",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K304",
+    "name": "mid_cliff_perch",
+    "sd": "the horn-ribs striping the falling light down the slope",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K305",
+    "name": "mid_veil_rite",
+    "sd": "the corona ring holding the only light of the rite",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K306",
+    "name": "mid_stone_slide",
+    "sd": "the dew stripe walking her tank as she takes the wall's cold",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K307",
+    "name": "mid_slab_display",
+    "sd": "the halo keeping its line above the hair on the slab",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K308",
+    "name": "mid_shroud_run",
+    "sd": "the shroud roll's chest strap counting the stride",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K309",
+    "name": "mid_saddle_armchair",
+    "sd": "the pinafore caught and dragged up between the thighs by the settle",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K310",
+    "name": "mid_saddle_office",
+    "sd": "the chair giving a slow half-turn under the weight",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K311",
+    "name": "mid_saddle_couch",
+    "sd": "the cushion swallowing the weight in one slow give",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K312",
+    "name": "mid_saddle_bench",
+    "sd": "the waistband dragged honest along the settle's line",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K313",
+    "name": "mid_saddle_stool",
+    "sd": "the toes short of the floor's rung, the weight bare at the waist",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K314",
+    "name": "mid_saddle_cushion",
+    "sd": "the raised paw swinging its patient pendulum",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K315",
+    "name": "mid_saddle_bed",
+    "sd": "the carried head raised to lens height in the arm's crook",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K316",
+    "name": "mid_saddle_desk",
+    "sd": "the black halo spreading under the unseen seat",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K317",
+    "name": "mid_saddle_sill",
+    "sd": "the willow branches resting their weight on the frame",
+    "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
    }
   ],
   "fet": [

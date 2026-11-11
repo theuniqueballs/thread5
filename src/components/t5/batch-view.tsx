@@ -19,12 +19,22 @@ function TagBlock({ title, text }: { title: string; text: string }) {
   const isPos = title === 'POS';
   return (
     <div className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-white/[0.07] bg-black/25">
-      <div className="flex items-center justify-between border-b border-white/[0.06] px-3 py-2">
-        <span className="flex items-center gap-2 font-mono text-[11px] font-bold tracking-[0.2em] text-zinc-300">
-          <span className={cn('size-1.5 rounded-full', isPos ? 'bg-cyan-400' : 'bg-pink-500')} aria-hidden />
+      <div className="flex items-center justify-between gap-2 border-b border-white/[0.06] px-3 py-2">
+        <span className="flex items-center gap-2 font-mono text-[11px] font-bold tracking-[0.2em] text-zinc-200">
+          <span className={cn('size-1.5 rounded-full', isPos ? 'bg-t5-accent' : 'bg-t5-rose')} aria-hidden />
           {title}
         </span>
-        <CopyButton text={text} label={title} className="!px-2 !py-1 !text-[11px]" />
+        {/* копировалка юнита: заметная, в цвет блока, отвечает «Скопировано» */}
+        <CopyButton
+          text={text}
+          label={title}
+          className={cn(
+            '!border-white/[0.09] !bg-white/[0.04]',
+            isPos
+              ? '!text-t5-accent-bright hover:!border-t5-accent/50'
+              : '!text-t5-rose-bright hover:!border-t5-rose/50',
+          )}
+        />
       </div>
       <pre className="t5-scroll max-h-80 overflow-y-auto whitespace-pre-wrap break-words p-3 font-mono text-xs leading-relaxed text-zinc-300">
         {text}
@@ -53,7 +63,7 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
           {slot.pose && <Chip>{slot.pose}</Chip>}
           {slot.palette && <Chip>{slot.palette}</Chip>}
           {slot.experimental && (
-            <span title="экспериментальный слот" className="inline-flex items-center rounded-md border border-cyan-400/40 bg-cyan-400/[0.08] px-1.5 py-0.5 font-mono text-[10px] font-bold text-cyan-300">
+            <span title="экспериментальный слот" className="t5-badge t5-badge--gold">
               ⚗ EXP
             </span>
           )}
@@ -66,8 +76,8 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
       </header>
 
       {slot.thesis && (
-        <p className="mb-2.5 border-l-2 border-pink-500/70 pl-3 text-sm italic leading-relaxed text-zinc-300">
-          <span className="mr-1.5 font-sans text-[11px] font-bold not-italic uppercase tracking-widest text-pink-400">thesis</span>
+        <p className="mb-2.5 border-l-2 border-t5-accent/70 pl-3 text-sm italic leading-relaxed text-zinc-300">
+          <span className="mr-1.5 font-sans text-[11px] font-bold not-italic uppercase tracking-widest text-t5-accent-bright">thesis</span>
           {slot.thesis}
         </p>
       )}
@@ -87,7 +97,7 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
             type="button"
             onClick={() => setOpenCanon((v) => !v)}
             aria-expanded={openCanon}
-            className="text-xs font-semibold text-cyan-300/80 underline decoration-dotted underline-offset-2 transition-colors hover:text-cyan-200"
+            className="text-xs font-semibold text-t5-accent-bright/80 underline decoration-dotted underline-offset-2 transition-colors hover:text-t5-accent-bright"
           >
             Canon {openCanon ? '▲' : '▼'}
           </button>
@@ -132,9 +142,9 @@ function PartButton({ text, label, copied, onCopied, ariaLabel }: { text: string
       aria-label={ariaLabel ?? `Скопировать ${label} слота`}
       aria-pressed={copied}
       className={cn(
-        'inline-flex min-h-8 items-center gap-1 rounded-md border px-2.5 py-1 font-mono text-[11px] font-bold tracking-wider transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500',
+        'inline-flex min-h-8 items-center gap-1 rounded-md border px-2.5 py-1 font-mono text-[11px] font-bold tracking-wider transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-t5-mint',
         lit
-          ? 'border-emerald-500/50 bg-emerald-500/[0.12] text-emerald-300'
+          ? 'border-t5-mint/50 bg-t5-mint/[0.12] text-t5-mint-bright'
           : 'border-white/[0.09] bg-white/[0.04] text-zinc-400 hover:border-white/25 hover:bg-white/[0.07] hover:text-white'
       )}
     >
@@ -152,7 +162,7 @@ function CopyRow({ slot, marks, onMark }: { slot: T5Slot; marks: SlotMarks; onMa
       className={cn(
         'relative flex flex-wrap items-center gap-x-2.5 gap-y-1.5 px-3 py-2 transition-colors sm:flex-nowrap sm:px-4',
         full
-          ? 'bg-emerald-500/[0.05]'
+          ? 'bg-t5-mint/[0.05]'
           : part
             ? 'bg-white/[0.015]'
             : 'hover:bg-white/[0.025]'
@@ -163,13 +173,13 @@ function CopyRow({ slot, marks, onMark }: { slot: T5Slot; marks: SlotMarks; onMa
         aria-hidden
         className={cn(
           'absolute inset-y-0 left-0 w-[2.5px] transition-colors',
-          full ? 'bg-emerald-400' : part ? 'bg-emerald-400/35' : 'bg-transparent'
+          full ? 'bg-t5-mint' : part ? 'bg-t5-mint/40' : 'bg-transparent'
         )}
       />
       <span
         className={cn(
           'ml-1 flex w-10 shrink-0 items-center gap-0.5 font-mono text-[13px] font-bold',
-          full ? 'text-emerald-300' : 'text-zinc-200'
+          full ? 'text-t5-mint-bright' : 'text-zinc-200'
         )}
       >
         {slot.id}
@@ -212,9 +222,9 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        'inline-flex min-h-8 items-center rounded-md border px-2.5 py-1 font-mono text-[11px] font-bold tracking-wider transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pink-400',
+        'inline-flex min-h-8 items-center rounded-md border px-2.5 py-1 font-mono text-[11px] font-bold tracking-wider transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-t5-accent',
         active
-          ? 'border-pink-500/50 bg-pink-500/[0.12] text-pink-200'
+          ? 'border-t5-accent/50 bg-t5-accent/[0.12] text-t5-accent-bright'
           : 'border-white/[0.08] bg-white/[0.03] text-zinc-500 hover:border-white/20 hover:text-zinc-300'
       )}
     >
@@ -231,7 +241,7 @@ function StatusToggle({ value, active, onClick }: { value: StatusFilter; active:
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        'rounded-lg px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-pink-400',
+        'rounded-lg px-2.5 py-1.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-t5-accent',
         active ? 'bg-white/[0.08] text-white' : 'text-zinc-500 hover:text-zinc-300'
       )}
     >
@@ -325,7 +335,7 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
     <section aria-label="Копировалка" className="t5-panel overflow-hidden">
       <div className="flex flex-wrap items-center gap-2 border-b border-white/[0.06] px-4 py-3">
         <h3 className="t5-label mr-auto flex items-center gap-2.5 !text-[11px] text-zinc-300">
-          <ClipboardList className="size-4 text-cyan-300" /> Копировалка · {total}
+          <ClipboardList className="size-4 text-t5-accent" /> Копировалка · {total}
         </h3>
         <Chip>
           готово {doneCount}/{total}
@@ -350,7 +360,7 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
           className="h-1 w-full overflow-hidden rounded-full bg-white/[0.06]"
         >
           <div
-            className="t5-shimmer h-full rounded-full bg-gradient-to-r from-[#ff3d8a] to-[#d946ef] shadow-[0_0_10px_rgb(255_61_138/0.45)] transition-[width] duration-300"
+            className="t5-shimmer h-full rounded-full bg-gradient-to-r from-t5-accent to-t5-rose shadow-[0_0_10px_color-mix(in_srgb,var(--t5-accent)_45%,transparent)] transition-[width] duration-300"
             style={{ width: `${progressPct}%` }}
           />
         </div>
@@ -387,7 +397,7 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Поиск: P01, slug…"
               aria-label="Поиск слота по ID или слагу"
-              className="h-8 rounded-lg border-white/[0.09] bg-black/25 pl-8 text-xs text-zinc-200 shadow-none placeholder:text-zinc-600 focus-visible:border-pink-500/50 focus-visible:ring-pink-500/25"
+              className="h-8 rounded-lg border-white/[0.09] bg-black/25 pl-8 text-xs text-zinc-200 shadow-none placeholder:text-zinc-600 focus-visible:border-t5-accent/50 focus-visible:ring-t5-accent/25"
             />
           </div>
         </div>
@@ -446,7 +456,7 @@ function LazyCopyButton({ getText, label }: { getText: () => Promise<string | nu
   }, [busy, getText]);
   return (
     <button type="button" onClick={onClick} disabled={busy} aria-label={label} className="t5-btn">
-      {busy ? <Loader2 className="size-3.5 animate-spin" /> : done ? <Check className="size-3.5 text-emerald-400" /> : <Copy className="size-3.5" />}
+      {busy ? <Loader2 className="size-3.5 animate-spin" /> : done ? <Check className="size-3.5 text-t5-mint" /> : <Copy className="size-3.5" />}
       {busy ? 'Читаю…' : done ? 'Скопировано' : label}
     </button>
   );
@@ -504,11 +514,11 @@ function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[
   }, [slug, text, onSaved]);
 
   return (
-    <section aria-label="Вердикт" className="relative overflow-hidden rounded-xl border border-[#ffc24b]/25 bg-gradient-to-b from-[#1c1608]/85 to-[#120f08]/85 shadow-[inset_0_1px_0_rgb(255_194_75/0.08),0_12px_36px_rgb(3_2_8/0.4)]">
+    <section aria-label="Вердикт" className="relative overflow-hidden rounded-xl border border-t5-accent/25 bg-gradient-to-b from-[#1c1608]/85 to-[#120f08]/85 shadow-[inset_0_1px_0_color-mix(in_srgb,var(--t5-accent)_10%,transparent),0_12px_36px_rgb(3_2_8/0.4)]">
       {/* hazard-полоса: голос автора — единственный золотой блок интерфейса */}
       <div className="t5-hazard h-1 w-full opacity-60" aria-hidden />
       <div className="p-5">
-        <h3 className="mb-1.5 flex items-center gap-2.5 font-display text-[13px] font-bold tracking-wider text-[#ffc24b]">
+        <h3 className="mb-1.5 flex items-center gap-2.5 font-display text-[13px] font-bold tracking-wider text-t5-accent-bright">
           <MessageSquareQuote className="size-4" /> ВЕРДИКТ АВТОРА — {slug}
         </h3>
         <p className="mb-3.5 text-xs leading-relaxed text-zinc-400">
@@ -520,7 +530,7 @@ function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[
           onChange={(e) => setText(e.target.value)}
           rows={5}
           placeholder={'P09 — сумма слоёв доезжает, свет на зоне — огонь.\nP14 — поза HIGH, заявку съел дрейф…'}
-          className="w-full rounded-lg border border-white/[0.09] bg-black/35 p-3.5 text-sm leading-relaxed text-zinc-200 shadow-[inset_0_1px_3px_rgb(0_0_0/0.35)] placeholder:text-zinc-600 focus:border-[#ffc24b]/50 focus:outline-none focus:ring-1 focus:ring-[#ffc24b]/30"
+          className="w-full rounded-lg border border-white/[0.09] bg-black/35 p-3.5 text-sm leading-relaxed text-zinc-200 shadow-[inset_0_1px_3px_rgb(0_0_0/0.35)] placeholder:text-zinc-600 focus:border-t5-accent/50 focus:outline-none focus:ring-1 focus:ring-t5-accent/30"
         />
         {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
         {slotIds.length > 0 && (
@@ -533,7 +543,7 @@ function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[
                 key={id}
                 type="button"
                 onClick={() => insertSlot(id)}
-                className="rounded-md border border-white/[0.09] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] font-bold text-zinc-400 transition-colors hover:border-[#ffc24b]/45 hover:bg-[#ffc24b]/[0.08] hover:text-[#ffc24b] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ffc24b]/60"
+                className="rounded-md border border-white/[0.09] bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] font-bold text-zinc-400 transition-colors hover:border-t5-accent/45 hover:bg-t5-accent/[0.08] hover:text-t5-accent-bright focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-t5-accent/60"
                 aria-label={`Вставить ${id} в вердикт`}
               >
                 {id}
@@ -626,8 +636,28 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-28 text-sm text-zinc-500">
-        <Loader2 className="mr-2.5 size-5 animate-spin text-pink-400" /> Читаю материал…
+      <div className="space-y-6" aria-busy="true">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="t5-skel h-9 w-24 rounded-lg" />
+          <div className="t5-skel h-9 w-44 rounded-lg" />
+          <div className="t5-skel ml-auto h-9 w-32 rounded-lg" />
+        </div>
+        <div className="t5-panel p-6">
+          <div className="t5-skel mb-4 h-5 w-2/3" />
+          <div className="t5-skel mb-6 h-3.5 w-1/3" />
+          <div className="t5-skel h-3 w-1/2" />
+        </div>
+        <div className="t5-panel overflow-hidden">
+          {Array.from({ length: 6 }, (_, i) => (
+            <div key={i} className="flex items-center gap-3 border-b border-white/[0.05] px-4 py-4 last:border-0">
+              <div className="t5-skel h-4 w-10 shrink-0" />
+              <div className="t5-skel h-4 w-20 shrink-0" />
+              <div className="t5-skel h-3.5 min-w-0 flex-1" style={{ maxWidth: `${38 + ((i * 17) % 32)}%` }} />
+              <div className="t5-skel h-7 w-14 shrink-0 rounded-md" />
+              <div className="t5-skel h-7 w-14 shrink-0 rounded-md" />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -662,7 +692,12 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
         <span
           aria-hidden
           className="absolute inset-y-0 left-0 w-[3px]"
-          style={{ background: source === 'special' ? 'linear-gradient(180deg,#2de2e6,rgba(45,226,230,0.1))' : 'linear-gradient(180deg,#ff3d8a,rgba(255,61,138,0.1))' }}
+          style={{
+            background:
+              source === 'special'
+                ? 'linear-gradient(180deg, var(--t5-rose), color-mix(in srgb, var(--t5-rose) 8%, transparent))'
+                : 'linear-gradient(180deg, var(--t5-accent), color-mix(in srgb, var(--t5-accent) 8%, transparent))',
+          }}
         />
         <h2 className="mb-1.5 pl-2.5 font-display text-lg font-bold leading-snug text-white sm:text-xl">{batch.title}</h2>
         {batch.theme && <p className="mb-3.5 pl-2.5 text-sm text-zinc-400">Тема: <span className="text-zinc-200">«{batch.theme}»</span></p>}
@@ -756,7 +791,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
               <details key={v.file} className="group rounded-lg border border-white/[0.07] bg-black/25">
                 <summary className="cursor-pointer list-none px-3.5 py-2.5 text-xs text-zinc-500 transition-colors hover:text-zinc-200">
                   <ChevronRight className="mr-1.5 inline size-3 rotate-0 transition-transform group-open:rotate-90" aria-hidden />
-                  <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#ffc24b]/70 align-middle" aria-hidden />
+                  <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-t5-accent/70 align-middle" aria-hidden />
                   <span className="font-mono text-zinc-300">{v.file}</span> · {v.createdAt || '—'}
                 </summary>
                 <pre className="t5-scroll max-h-96 overflow-y-auto whitespace-pre-wrap break-words border-t border-white/[0.06] p-3.5 font-mono text-xs leading-relaxed text-zinc-300">

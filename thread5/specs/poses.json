@@ -1,5 +1,5 @@
 {
- "version": "1.9.0",
+ "version": "1.11.0",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -687,7 +687,8 @@
     "CAM16_hip_height_gate",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL50",
@@ -701,7 +702,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL51",
@@ -715,7 +717,8 @@
     "CAM06_side",
     "CAM05_over_shoulder"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL52",
@@ -729,7 +732,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL53",
@@ -743,7 +747,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL54",
@@ -757,7 +762,8 @@
     "CAM05_over_shoulder",
     "CAM18_fisheye_seat"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL55",
@@ -771,7 +777,8 @@
     "CAM06_side",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL56",
@@ -785,7 +792,8 @@
     "CAM01_eye_level",
     "CAM17_between_legs_sightline"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL57",
@@ -799,7 +807,8 @@
     "CAM05_over_shoulder",
     "CAM13_crotch_lead"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL58",
@@ -813,7 +822,8 @@
     "CAM02_three_quarter",
     "CAM03_from_below"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL59",
@@ -827,7 +837,8 @@
     "CAM06_side",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL60",
@@ -841,7 +852,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL61",
@@ -2535,7 +2547,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL182",
@@ -2549,7 +2562,8 @@
     "CAM02_three_quarter",
     "CAM12_aerial"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL183",
@@ -2563,7 +2577,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL184",
@@ -2577,7 +2592,8 @@
     "CAM05_over_shoulder",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL185",
@@ -2591,7 +2607,8 @@
     "CAM06_side",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL186",
@@ -2605,7 +2622,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL187",
@@ -2619,7 +2637,8 @@
     "CAM01_eye_level",
     "CAM14_top_down_shaft"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL188",
@@ -2633,7 +2652,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL189",
@@ -2647,7 +2667,8 @@
     "CAM03_from_below",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL190",
@@ -2661,7 +2682,8 @@
     "CAM02_three_quarter",
     "CAM03_from_below"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL191",
@@ -2675,7 +2697,8 @@
     "CAM16_hip_height_gate",
     "CAM02_three_quarter"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL192",
@@ -2689,7 +2712,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL193",
@@ -2703,7 +2727,8 @@
     "CAM05_over_shoulder",
     "CAM03_from_below"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL194",
@@ -2717,7 +2742,8 @@
     "CAM01_eye_level",
     "CAM05_macro"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL195",
@@ -2731,7 +2757,8 @@
     "CAM02_three_quarter",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL196",
@@ -2745,7 +2772,8 @@
     "CAM06_side",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL197",
@@ -2759,7 +2787,8 @@
     "CAM02_three_quarter",
     "CAM06_side"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL198",
@@ -2773,7 +2802,8 @@
     "CAM01_eye_level",
     "CAM05_over_shoulder"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL199",
@@ -2787,7 +2817,8 @@
     "CAM02_three_quarter",
     "CAM06_side"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL200",
@@ -2801,7 +2832,8 @@
     "CAM05_over_shoulder",
     "CAM01_eye_level"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL201",
@@ -2815,7 +2847,8 @@
     "CAM02_three_quarter",
     "CAM12_aerial"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL202",
@@ -2829,7 +2862,8 @@
     "CAM06_side",
     "CAM03_from_below"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL203",
@@ -2843,7 +2877,8 @@
     "CAM02_three_quarter",
     "CAM12_aerial"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL204",
@@ -2857,7 +2892,8 @@
     "CAM02_three_quarter",
     "CAM05_over_shoulder"
    ],
-   "use": "N"
+   "use": "N",
+   "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии"
   },
   {
    "id": "PL205",
@@ -5106,7 +5142,8 @@
     "CAM03_low"
    ],
    "use": "V",
-   "pick": "T5-16"
+   "pick": "T5-16",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL359",
@@ -5120,7 +5157,8 @@
     "CAM03_low"
    ],
    "use": "V",
-   "pick": "T5-16"
+   "pick": "T5-16",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL360",
@@ -5133,7 +5171,8 @@
    "preferred_cams": [
     "CAM03_low"
    ],
-   "use": "V"
+   "use": "V",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL361",
@@ -5147,7 +5186,8 @@
     "CAM03_low"
    ],
    "use": "V",
-   "pick": "T5-16"
+   "pick": "T5-16",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL362",
@@ -5161,7 +5201,8 @@
     "CAM03_low"
    ],
    "use": "V",
-   "pick": "T5-16"
+   "pick": "T5-16",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL363",
@@ -5174,7 +5215,8 @@
    "preferred_cams": [
     "CAM03_low"
    ],
-   "use": "V"
+   "use": "V",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL364",
@@ -5187,7 +5229,8 @@
    "preferred_cams": [
     "CAM03_low"
    ],
-   "use": "V"
+   "use": "V",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL365",
@@ -5200,7 +5243,8 @@
    "preferred_cams": [
     "CAM03_low"
    ],
-   "use": "V"
+   "use": "V",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL366",
@@ -5213,7 +5257,8 @@
    "preferred_cams": [
     "CAM03_low"
    ],
-   "use": "V"
+   "use": "V",
+   "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации"
   },
   {
    "id": "PL367",
@@ -5234,7 +5279,7 @@
    "name": "Neon-Rail Sprint-Cut (OC)",
    "sd": "mid-stride vault off a rooftop rail, one palm flat on the rail, body folded forward in flight, face cut back toward the lens",
    "category": "dynamic_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "OC_T5-17",
    "preferred_cams": [
     "CAM06",
@@ -5262,7 +5307,7 @@
    "name": "Ring-Rope Lean-Heavy",
    "sd": "leaning full weight into the ring rope from inside, forearms stacked on the top rope, torso tipped forward, one heavy boot on the bottom rope",
    "category": "env_interaction",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM01",
@@ -5290,7 +5335,7 @@
    "name": "Hawk-Drop Perch",
    "sd": "crouched one-kneed on a high beam, bow drawn low across the body, a hawk half-spread on the other fist",
    "category": "env_interaction",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM06",
@@ -5304,7 +5349,7 @@
    "name": "Ember-Trail Stride",
    "sd": "walking out of a fire door mid-stride, hair full of live flame, one palm trailing a line of fire along the wall",
    "category": "dynamic_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM01",
@@ -5318,7 +5363,7 @@
    "name": "Rink-Edge Glide-Stop",
    "sd": "stopped at the rink edge by a long glide, blades parallel, torso coiled into the turn, one hand skimming the ice",
    "category": "dynamic_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM07",
@@ -5360,7 +5405,7 @@
    "name": "Knife-Lick Crouch",
    "sd": "low street crouch between two dumpsters, one knife balanced flat on a fingertip, tongue near the flat of the blade",
    "category": "erotic_presentation_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM05",
@@ -5374,7 +5419,7 @@
    "name": "Storm-Cell Coat-Billow",
    "sd": "standing braced in the storm-cell wind with the long coat billowed hard behind, one hand holding the collar shut at the throat, an orb of gathered lightning resting on the other open palm",
    "category": "dynamic_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM01",
@@ -5388,7 +5433,7 @@
    "name": "Blood-Pact Wrist-Offer",
    "sd": "one wrist offered up, two fingers of the other hand pressing the skin above the vein, eyes half closed",
    "category": "erotic_presentation_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM05",
@@ -5402,7 +5447,7 @@
    "name": "Card-Fan Scatter-Catch",
    "sd": "cards mid-air in a falling fan around the raised hand, body twisted to catch the last card at shoulder height",
    "category": "dynamic_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM02",
@@ -5416,7 +5461,7 @@
    "name": "Paint-Drip Back-Arch",
    "sd": "standing back-arch over a dropped paint can, drips running down the raised arm, brush held in the teeth",
    "category": "erotic_presentation_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM03",
@@ -5430,7 +5475,7 @@
    "name": "Syringe-Prime Counter",
    "sd": "one boot up on a cabinet, syringe-gun primed against her own shoulder seam, head tipped back against the cabinet",
    "category": "erotic_presentation_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM01",
@@ -5458,7 +5503,7 @@
    "name": "Mist-Line Sniper-Breath",
    "sd": "prone along a misted ledge, rifle stock seated, cheek just off the stock, breath held, mist bending around the barrel",
    "category": "env_interaction",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM07",
@@ -5472,7 +5517,7 @@
    "name": "Flame-Door Re-Entry",
    "sd": "stepping back through a doorway whose frame is all flame, one foot still in the street, palm pushing the fire aside like a curtain",
    "category": "threshold_limen",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM01",
@@ -5514,7 +5559,7 @@
    "name": "Smoke-Key Pocket-Lift",
    "sd": "one hand fishing a key from under the shirt hem against the collarbone, smoke curling from the open button placket",
    "category": "erotic_presentation_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM05",
@@ -5542,7 +5587,7 @@
    "name": "Riposte-Blade Kiss",
    "sd": "full lunge with the blade held vertical beside the face, lips almost at the flat of the steel, rear foot dragging",
    "category": "dynamic_v2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "T5-17",
    "preferred_cams": [
     "CAM01",
@@ -5562,33 +5607,36 @@
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL392",
    "name": "In-Trail Skate-Long Turn (X2)",
    "sd": "rolling ahead on a longboard, weight low, head turned back over the shoulder to the lens, tail streaming behind",
    "category": "X2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "X2",
    "preferred_cams": [
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL393",
    "name": "In-Trail Spear-Shoulder Turn (X2)",
    "sd": "marching ahead with a spear across the far shoulder, head turned back over the other shoulder to the lens, sparks off the spearhead",
    "category": "X2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "X2",
    "preferred_cams": [
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL394",
@@ -5601,7 +5649,8 @@
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL395",
@@ -5614,7 +5663,8 @@
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL396",
@@ -5627,33 +5677,36 @@
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL397",
    "name": "In-Trail Mail-Bag Turn (X2)",
    "sd": "gliding ahead a boot off the ground with a mail bag at the hip, head turned back over the shoulder to the lens, feathers ruffled",
    "category": "X2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "X2",
    "preferred_cams": [
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL398",
    "name": "In-Trail Towel-Ring Turn (X2)",
    "sd": "walking ahead with a towel around the neck and knuckles wrapped, head turned back over the shoulder to the lens, one fist open",
    "category": "X2",
-   "risk": "MEDIUM",
+   "risk": "MID",
    "family": "X2",
    "preferred_cams": [
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL399",
@@ -5666,7 +5719,8 @@
     "CAM04"
    ],
    "use": "V",
-   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)"
+   "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
+   "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо"
   },
   {
    "id": "PL400",
@@ -5991,7 +6045,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL425",
@@ -6004,7 +6059,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL426",
@@ -6017,7 +6073,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL427",
@@ -6030,7 +6087,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL428",
@@ -6043,7 +6101,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL429",
@@ -6056,7 +6115,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL430",
@@ -6069,7 +6129,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL431",
@@ -6082,7 +6143,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL432",
@@ -6095,7 +6157,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)"
+   "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
+   "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)"
   },
   {
    "id": "PL433",
@@ -6464,7 +6527,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL458",
@@ -6477,7 +6541,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL459",
@@ -6490,7 +6555,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL460",
@@ -6503,7 +6569,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL461",
@@ -6516,7 +6583,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL462",
@@ -6529,7 +6597,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL463",
@@ -6542,7 +6611,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL464",
@@ -6555,7 +6625,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL465",
@@ -6568,7 +6639,8 @@
     "CAM02"
    ],
    "use": "V",
-   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)"
+   "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
+   "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)"
   },
   {
    "id": "PL466",
@@ -6611,6 +6683,402 @@
    ],
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (canon-OS card)"
+  },
+  {
+   "id": "PL469",
+   "name": "Saddle-Settle Armchair (X5)",
+   "sd": "settling astride the seated point's knees on the armchair facing the lens, knees sinking past the bottom frame corners, weight dropping through the thighs into the unseen seat, hands flat on her own thighs",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL470",
+   "name": "Saddle-Settle Office-Chair (X5)",
+   "sd": "settling astride the seated point's knees on the swivel office chair, the chair giving a slow half-turn under the weight, knees past the bottom corners, hands on her own thighs",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL471",
+   "name": "Saddle-Settle Couch-Cushion (X5)",
+   "sd": "settling astride the seated point's knees over the couch cushion, the cushion swallowing the weight in one slow give, knees past the bottom corners, palms on her own thighs",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL472",
+   "name": "Saddle-Settle Bench (X5)",
+   "sd": "settling astride the seated point's knees on the bench edge facing the lens, knees sinking past the bottom frame corners, weight dropping straight down through the thighs",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL473",
+   "name": "Saddle-Settle Bar-Stool (X5)",
+   "sd": "settling astride the seated point's knees on the tall bar stool, toes short of the floor's rung, the whole weight reading in the bare waist, hands on her own thighs",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL474",
+   "name": "Saddle-Settle Floor-Cushion (X5)",
+   "sd": "settling astride the seated point's knees on the floor cushion facing the lens, knees past the bottom frame corners, one hand raised at the chest, weight sinking through the cushion's give",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL475",
+   "name": "Saddle-Settle Bed-Edge (X5)",
+   "sd": "settling astride the seated point's knees at the bed's edge facing the lens, the mattress taking the weight with a slow dip, knees past the bottom corners, one arm's crook raised to lens height",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL476",
+   "name": "Saddle-Settle Desk-Chair (X5)",
+   "sd": "settling astride the seated point's knees at the desk chair facing the lens, weight dropping into the chair's creak, knees past the bottom corners, hands on her own thighs",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL477",
+   "name": "Saddle-Settle Sill (X5)",
+   "sd": "settling astride the seated point's knees at the deep windowsill facing the lens, knees sinking past the bottom frame corners, weight dropping through the thighs onto the unseen seat",
+   "category": "X5",
+   "risk": "MID",
+   "family": "X5",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL478",
+   "name": "Empty-Bracket Perch",
+   "sd": "curling on the night windowsill beneath the empty lamp bracket, wings folded tight, antennae testing the dark",
+   "category": "niche_watch",
+   "risk": "LOW",
+   "family": "niche_watch",
+   "preferred_cams": [
+    "CAM01"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL479",
+   "name": "Letter-Wind Read",
+   "sd": "reading the letter aloud over the grave's stone, one finger holding the line, the wind dragging the page toward the marker",
+   "category": "letter_read",
+   "risk": "MID",
+   "family": "letter_read",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL480",
+   "name": "Pedestal Step-Down",
+   "sd": "stepping down off her own pedestal at night, the hollow of her feet printed in the stone behind, moss shoulders taking the air",
+   "category": "marker_rise",
+   "risk": "MID",
+   "family": "marker_rise",
+   "preferred_cams": [
+    "CAM04"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL481",
+   "name": "Flooded-Rim Drape",
+   "sd": "hanging in the flooded chapel's stone rim, both arms draped over the edge, chin stacked on crossed wrists, waterline riding the ribs",
+   "category": "flood_rim",
+   "risk": "MID",
+   "family": "flood_rim",
+   "preferred_cams": [
+    "CAM05"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL482",
+   "name": "Two-Cups Seiza",
+   "sd": "kneeling seiza at the low table pouring for two, the second cup full and going cold, ears lowered a beat before the face",
+   "category": "cups_seiza",
+   "risk": "LOW",
+   "family": "cups_seiza",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL483",
+   "name": "Mound Side-Lounge",
+   "sd": "lying along the grave mound like a hill of her own, one knee bent, a wrist thrown over the eyes against the first light",
+   "category": "mound_lounge",
+   "risk": "MID",
+   "family": "mound_lounge",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL484",
+   "name": "Mid-Turn Shadow-Lead",
+   "sd": "caught mid-turn: her detached shadow already kneels at the stone with hands folded while she arrives a half-step behind",
+   "category": "shadow_lead",
+   "risk": "MID",
+   "family": "shadow_lead",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL485",
+   "name": "Frame-Silk Weave",
+   "sd": "leaning chest-first over the empty coffin-lid used as a frame, drawing the shroud's silk line from her fingertips",
+   "category": "silk_frame",
+   "risk": "MID",
+   "family": "silk_frame",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL486",
+   "name": "Coffin-Desk Drape",
+   "sd": "draped across the coffin's lid used as a desk, elbows claiming its polished curve, writing while sunrise walks the grain",
+   "category": "coffin_drape",
+   "risk": "MID",
+   "family": "coffin_drape",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL487",
+   "name": "Stair-Skip Bell-Ring",
+   "sd": "skipping down the bell-tower stairs backward-facing, the collar's bell swinging its own service at every step",
+   "category": "bell_skip",
+   "risk": "LOW",
+   "family": "bell_skip",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL488",
+   "name": "Coat Shrug-Off Window",
+   "sd": "shrugging the heirloom coat off one shoulder at the rainy window, one arm still in the sleeve that remembers a bigger shoulder",
+   "category": "coat_shrug",
+   "risk": "MID",
+   "family": "coat_shrug",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL489",
+   "name": "Bell-Jar Meadow",
+   "sd": "lying spread in the grave-garden under the glass bell jar, eyes up to the condensation bead, stems bending around her",
+   "category": "bell_jar_meadow",
+   "risk": "MID",
+   "family": "bell_jar_meadow",
+   "preferred_cams": [
+    "CAM05"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL490",
+   "name": "Whisper-Name Lean",
+   "sd": "leaning in to read the name off the list to the lens, one finger holding the ink-blot line, dusk glow standing in for the lamp",
+   "category": "name_whisper",
+   "risk": "MID",
+   "family": "name_whisper",
+   "preferred_cams": [
+    "CAM01"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL491",
+   "name": "Brow-to-Glass Eye-Lock",
+   "sd": "leaning brow-to-glass with her own reflection, gaze locked, the empty chair reflected behind her shoulder",
+   "category": "mirror_lock",
+   "risk": "LOW",
+   "family": "mirror_lock",
+   "preferred_cams": [
+    "CAM07"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL492",
+   "name": "Curtain-Case Swagger",
+   "sd": "shouldering through the velvet curtain with the locked case, the lock warm from carrying, weight hanging a half-beat in the stride",
+   "category": "case_swagger",
+   "risk": "MID",
+   "family": "case_swagger",
+   "preferred_cams": [
+    "CAM03"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL493",
+   "name": "Umbrella Path-Walk",
+   "sd": "walking the graveyard path under a closed umbrella never opened, a soft pool of warm light moving with her over the gravel",
+   "category": "path_walk",
+   "risk": "LOW",
+   "family": "path_walk",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL494",
+   "name": "Rail-Perch Cliff-Count",
+   "sd": "perching on the lookout rail above the cliffside rows of graves, the rail printing its line, horn-ribs striping the falling light",
+   "category": "cliff_perch",
+   "risk": "MID",
+   "family": "cliff_perch",
+   "preferred_cams": [
+    "CAM08"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL495",
+   "name": "Veil Half-Lift Rite",
+   "sd": "lifting the gauze veil halfway to find the viewer through the gap, the corona ring holding the only light",
+   "category": "veil_rite",
+   "risk": "MID",
+   "family": "veil_rite",
+   "preferred_cams": [
+    "CAM01"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL496",
+   "name": "Stone-Wall Slide-Down",
+   "sd": "sliding down the memorial wall beside the two cut names, palms flat on the stone beside her hips, taking the wall's cold",
+   "category": "stone_slide",
+   "risk": "MID",
+   "family": "stone_slide",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL497",
+   "name": "Crypt-Slab Display",
+   "sd": "lying on the crypt slab as its own exhibit, one knee bent, the halo ring keeping its line above her hair",
+   "category": "slab_display",
+   "risk": "LOW",
+   "family": "slab_display",
+   "preferred_cams": [
+    "CAM05"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL498",
+   "name": "Run-Look-Back Shroud",
+   "sd": "running the linen-line path with the folded shroud on the shoulder and the look-back over it",
+   "category": "shroud_run",
+   "risk": "MID",
+   "family": "shroud_run",
+   "preferred_cams": [
+    "CAM06"
+   ],
+   "use": "V"
+  },
+  {
+   "id": "PL499",
+   "name": "Lace-Edge Recline",
+   "sd": "reclining along the chaise edge toward the mirror, one wrist raised to the collarbone with a single drop of perfume, the neckline living by gravity",
+   "category": "OC_T5-20",
+   "risk": "MID",
+   "family": "OC_T5-20",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL500",
+   "name": "Puppet-Bodice Levitation",
+   "sd": "standing centered with arms held away from her sides by floating conjured palms, one knee bent, chin up, the performer's stillness while the host holds the chest",
+   "category": "OC_T5-20",
+   "risk": "MID",
+   "family": "OC_T5-20",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N"
+  },
+  {
+   "id": "PL501",
+   "name": "Gloss-Slip Stand",
+   "sd": "standing in the shallow black gloss pool that holds her upright, one hand slicking the line along the sternum, the tail lifted clear above the surface",
+   "category": "OC_T5-20",
+   "risk": "MID",
+   "family": "OC_T5-20",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N"
   }
  ],
  "family_counts": {
@@ -6629,7 +7097,11 @@
   "greed_engine": 11,
   "greed_crown": 5,
   "X4": 9,
-  "OC_T5-19": 3
+  "OC_T5-19": 3,
+  "X5": 9,
+  "unburied_watch": 8,
+  "unburied_duty": 13,
+  "OC_T5-20": 3
  },
  "pair_note": "§33 pose-camera pair law: every PL code has 3-5 preferred camera angles; outside the preferred set is allowed but FLAGGED. PL+CAM must agree — a back-to-camera PL with a front eye-level CAM is a logical impossibility (viewer inside the body), and was the v16 #1 failure (effective cowboy rate 67%). Camera values reference the ONTOLOGY camera axis — CAUTION: the pose file's CAM code table and ONTOLOGY's CAM01-CAM12 axis DISAGREE on 5 codes (see pools.json cam.numbering_conflict); the pose pairs' self-describing suffixes (CAM02_three_quarter) are authoritative.",
  "cam_reference": {
@@ -8032,9 +8504,46 @@
    "PL466",
    "PL467",
    "PL468"
+  ],
+  "T5-20": [
+   "PL469",
+   "PL470",
+   "PL471",
+   "PL472",
+   "PL473",
+   "PL474",
+   "PL475",
+   "PL476",
+   "PL477",
+   "PL478",
+   "PL479",
+   "PL480",
+   "PL481",
+   "PL482",
+   "PL483",
+   "PL484",
+   "PL485",
+   "PL486",
+   "PL487",
+   "PL488",
+   "PL489",
+   "PL490",
+   "PL491",
+   "PL492",
+   "PL493",
+   "PL494",
+   "PL495",
+   "PL496",
+   "PL497",
+   "PL498",
+   "PL499",
+   "PL500",
+   "PL501"
   ]
  },
  "changelog": [
+  "2026-11-13 — 1.11.0 T5-20: +PL469–PL477 (X5 saddle-settle, 9), +PL478–PL498 (мейки unburied_watch/unburied_duty, 21), +PL499–PL501 (OC_T5-20: Vae/Meine/Hana карты, 3)",
+  "2026-11-13 — 1.10.0 razbor: enum-гигиена (MEDIUM→MID ×19); статус-пометки семьям X1 (живая) / X2 (архив, T5-17) / X3 (ядро 6/9 → NV) / X4 (архив, T5-19); R+ движку (PL49–60, PL181–204) прописан потолок §4.9 и канал-зависимость; use_division.audit. Полный разбор — docs/POSE-RAZBOR-2026-11-13.md",
   "1.4.1: +PL333 Hot-Spring Edge Sit (A7-07) — EXP-overlay rework T5-15 (9 candidates on 9 slots), replaces duplicate A8-04 payoff slot",
   "1.5.0: +33 first-use PL334–PL366 for T5-16 LUCID DREAMS — 9 manual cards (A1-05, A1-08, A6-10, A6-04, A7-04, A6-07, A3-07, A3-09, A7-01) + 24 custom cards; EXP-combo X1 «over-viewer» family PL358–PL366 (9 cards, CAM03-only, pool: exp spirit). Free manual cards in reserve: A1-07, A4-06, A6-05, A8-09 (A1-02 core folded into X1 PL358).",
   "1.6.0: use-делёж поз N/V/NV (приказ автора 2026-11-08 — ниша vs VOLT; V=X1+A8, N=presentation-семьи, NV=dynamic/env/partner+A1–A7/A9) + author_picks T5-16: PL358 (P25), PL359 (P26), PL361 (P28), PL362 (P29) — «берём позу»; поле pick на картах",
@@ -8045,10 +8554,11 @@
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",
   "law": "Каждая карта несёт use: N (ниша-красота — solo-поза = событие кадра), V (VOLT-обязательные — геометрия заточена под комбо Cam/Pos/POV/Pose, без клетки не раскрывается), NV (рабочие обоих контуров). Дележ по семьям: V = X1 + A8; N = base, erotic_presentation(+v2), ecchi_classic, micropose_expression, performance_mirror, threshold_limen; NV = dynamic_v2, env_interaction, partner_implied, мануальные A1–A7/A9. Авторские пики вердиктов (pick) стоят поверх дележа и в ротации имеют приоритет.",
   "counts": {
-   "N": 168,
-   "NV": 174,
-   "V": 24
-  }
+   "N": 213,
+   "NV": 191,
+   "V": 64
+  },
+  "audit": "2026-11-13 (razbor, приказ автора «сунься туда где у нас позы и разбери»): делёж перечитан по всем 468 картам. Исправлено: enum MEDIUM→MID (19), статус-пометки X1–X4 (вердикты T5-16/17/18/19), R+ движку (erotic_presentation 12+24) прописан потолок: геометрия HIGH = R и ниже, R+ достраивает дрессер. Главное правило разбора: use=V/N — первичный контур, НЕ эксклюзив; полная таблица — docs/POSE-RAZBOR-2026-11-13.md. Поле use остаётся V для X2/X4 как память семьи (архивность несёт use_note)."
  },
  "author_picks": {
   "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP»",

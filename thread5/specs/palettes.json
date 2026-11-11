@@ -1,5 +1,5 @@
 {
- "version": "1.4.0",
+ "version": "1.5.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -5960,6 +5960,195 @@
    "family": "exp_color_wave_4",
    "legacy_3slot": false,
    "source": "T5-19 DEVIL'S GREED (greed register: the fire kept banked, never shared; приказ автора 2026-11-10: новЫЕ экспериментальнЫЕ палитры и раскраски, «с жёстким упором в R++»; девять РАЗНЫХ семей — одна на кандидата)"
+  },
+  {
+   "id": "P189_PORCELAIN_CRACK",
+   "name": "Porcelain Crack",
+   "dominant": [
+    "bisque-porcelain pale with kintsugi-gold crack lines, seal-red painted accent, hairline-silver seams"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "bisque-porcelain pale with kintsugi-gold crack lines, seal-red painted accent, hairline-silver seams",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P190_POND_GLASS",
+   "name": "Pond Glass",
+   "dominant": [
+    "aqua-emerald translucent"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "aqua-emerald translucent over deep-water base, cyan core-glow, refraction rings",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P191_EMBER_PILLOW",
+   "name": "Ember Pillow",
+   "dominant": [
+    "ash-warm grey"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "ash-warm grey over coal-orange, ember-glow accents, heat-shimmer edge",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P192_BRONZE_COIL",
+   "name": "Bronze Coil",
+   "dominant": [
+    "burnished bronze"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "burnished bronze over olive-green, patina-sheen, gold scale accents",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P193_CHESTNUT_TAP",
+   "name": "Chestnut Tap",
+   "dominant": [
+    "chestnut-brown warm"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "chestnut-brown warm over drum-leather, cream stripe accents, maple-syrup glow",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P194_CALICO_COIN",
+   "name": "Calico Coin",
+   "dominant": [
+    "calico-white warm"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "calico-white warm over coin-gold, red-cord accent, amber-glow",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P195_HEARSE_GLASS",
+   "name": "Hearse Glass",
+   "dominant": [
+    "night-green glass"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "night-green glass over silver-sheen, lace-ribbon black accent, moonlit-pale edge",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P196_INK_LETHE",
+   "name": "Ink Lethe",
+   "dominant": [
+    "ink-black gloss"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "ink-black gloss over paper-white, cyan inner-glow accent, teal rim",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P197_WILLOW_MORN",
+   "name": "Willow Morn",
+   "dominant": [
+    "willow-green"
+   ],
+   "secondary": [],
+   "accent1": [],
+   "accent2": null,
+   "shadow": null,
+   "forbidden": [
+    "washed-out",
+    "muddy-grey"
+   ],
+   "light_type": "batch-declared",
+   "sd_fragment": "willow-green over morning-cream, silver-dew accents, pollen-gold",
+   "mood": "EXP candidate register",
+   "family": "exp_color_wave_5",
+   "legacy_3slot": false,
+   "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",

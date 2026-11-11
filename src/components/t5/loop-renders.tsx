@@ -51,10 +51,10 @@ export function LoopRenders({ info }: { info?: LoopSlotInfo | null }) {
   return (
     <section
       aria-label="Прокси-рендеры прогон-петли"
-      className="mt-3 rounded-lg border border-[#ffc24b]/25 bg-[#ffc24b]/[0.045] p-3"
+      className="mt-3 rounded-lg border border-t5-accent/25 bg-t5-accent/[0.045] p-3"
     >
       <div className="mb-2.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-        <span className="flex items-center gap-1.5 font-mono text-[10px] font-bold tracking-[0.18em] text-[#ffc24b]">
+        <span className="flex items-center gap-1.5 font-mono text-[10px] font-bold tracking-[0.18em] text-t5-accent-bright">
           <Aperture className="size-3.5" aria-hidden />
           ПРОГОН-ПЕТЛЯ · ПРОКСИ-РЕНДЕР ПИСЦА
         </span>
@@ -68,10 +68,10 @@ export function LoopRenders({ info }: { info?: LoopSlotInfo | null }) {
             type="button"
             onClick={() => setZoom({ url, label: CIRCLE_LABEL[c] ?? c })}
             aria-label={`Открыть прокси-рендер, ${CIRCLE_LABEL[c] ?? c}`}
-            className="group relative overflow-hidden rounded-md border border-white/[0.09] transition-all duration-150 hover:border-[#ffc24b]/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ffc24b]"
+            className="group relative overflow-hidden rounded-md border border-white/[0.09] transition-all duration-150 hover:border-t5-accent/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-t5-accent"
           >
             <img src={url} alt={`Прокси-рендер ${info.name}, ${CIRCLE_LABEL[c] ?? c}`} className="h-32 w-auto object-cover transition-transform duration-200 group-hover:scale-[1.02]" loading="lazy" />
-            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-1.5 pb-0.5 pt-3 font-mono text-[10px] font-bold text-[#ffc24b]">
+            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-1.5 pb-0.5 pt-3 font-mono text-[10px] font-bold text-t5-accent-bright">
               {CIRCLE_LABEL[c] ?? c}
             </span>
           </button>
@@ -79,7 +79,7 @@ export function LoopRenders({ info }: { info?: LoopSlotInfo | null }) {
       </div>
 
       {info.note && (
-        <p className="mt-2.5 border-l-2 border-[#ffc24b]/40 pl-2.5 text-xs leading-relaxed text-zinc-400">
+        <p className="mt-2.5 border-l-2 border-t5-accent/40 pl-2.5 text-xs leading-relaxed text-zinc-400">
           {info.note}
         </p>
       )}

@@ -42,6 +42,17 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  /* семантика THREAD 5 как темы-цвета: text-t5-accent, border-t5-rose/40… */
+  --color-t5-accent: var(--t5-accent);
+  --color-t5-accent-bright: var(--t5-accent-bright);
+  --color-t5-rose: var(--t5-rose);
+  --color-t5-rose-bright: var(--t5-rose-bright);
+  --color-t5-mint: var(--t5-mint);
+  --color-t5-mint-bright: var(--t5-mint-bright);
+  --color-t5-violet: var(--t5-violet);
+  --color-t5-violet-bright: var(--t5-violet-bright);
+  --color-t5-red: var(--t5-red);
+  --color-t5-orange: var(--t5-orange);
 }
 
 :root {
@@ -52,8 +63,8 @@
   --card-foreground: #f4f2fa;
   --popover: #181525;
   --popover-foreground: #f4f2fa;
-  --primary: #ff3d8a;
-  --primary-foreground: #ffffff;
+  --primary: #e6b455;
+  --primary-foreground: #241703;
   --secondary: #1e1b2e;
   --secondary-foreground: #f4f2fa;
   --muted: #1e1b2e;
@@ -63,20 +74,39 @@
   --destructive: #ff5d5d;
   --border: rgb(255 255 255 / 0.08);
   --input: rgb(255 255 255 / 0.1);
-  --ring: #ff3d8a;
-  --chart-1: #ff3d8a;
-  --chart-2: #2de2e6;
-  --chart-3: #ffc24b;
-  --chart-4: #a78bfa;
-  --chart-5: #3ddc97;
+  --ring: #e6b455;
+  --chart-1: #e6b455;
+  --chart-2: #e05a86;
+  --chart-3: #a78bfa;
+  --chart-4: #4ad6b0;
+  --chart-5: #ffab5e;
   --sidebar: #0d0b16;
   --sidebar-foreground: #f4f2fa;
-  --sidebar-primary: #ff3d8a;
-  --sidebar-primary-foreground: #ffffff;
+  --sidebar-primary: #e6b455;
+  --sidebar-primary-foreground: #241703;
   --sidebar-accent: #1e1b2e;
   --sidebar-accent-foreground: #f4f2fa;
   --sidebar-border: rgb(255 255 255 / 0.08);
-  --sidebar-ring: #ff3d8a;
+  --sidebar-ring: #e6b455;
+
+  /* ══ THREAD 5 · цветовая система «ЗОЛОТАЯ НИТЬ» ══════════════════════
+     Каждый цвет несёт одну смысловую роль и живёт только здесь:
+     accent  — тёплое золото: бренд, CTA, активные состояния, кромки ховера;
+     rose    — приглушённая малина: рейтинги R+/R, NEG-блоки, Special;
+     mint    — холодная мята ТОЛЬКО для статусов триажа и успеха (скопировано);
+     violet  — тихий фиолет: память/доки;
+     red/orange — карантин и ошибки разбора. Синего в системе нет.        */
+  --t5-bg: #0a0812;
+  --t5-accent: #e6b455;
+  --t5-accent-bright: #f3cd7f;
+  --t5-rose: #e05a86;
+  --t5-rose-bright: #ef8aa9;
+  --t5-mint: #4ad6b0;
+  --t5-mint-bright: #8ce9d0;
+  --t5-violet: #a78bfa;
+  --t5-violet-bright: #c4b1fd;
+  --t5-red: #ff7373;
+  --t5-orange: #ffab5e;
 }
 
 @layer base {
@@ -87,30 +117,59 @@
     @apply bg-background text-foreground;
   }
   ::selection {
-    background: rgb(255 61 138 / 0.34);
+    background: color-mix(in srgb, var(--t5-accent) 30%, transparent);
     color: #fff;
+  }
+  /* тёмный скроллбар всей страницы */
+  html {
+    color-scheme: dark;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.16) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255 255 255 / 0.14);
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255 255 255 / 0.26);
+    background-clip: content-box;
+  }
+  /* доступный фокус по умолчанию: тонкое золотое кольцо.
+     Низкая специфичность — компонентные focus-visible правила его перекрывают */
+  :where(a, button, summary, [role='button'], input, select, textarea):focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--t5-accent) 70%, transparent);
+    outline-offset: 2px;
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   THREAD 5 · NEON SHRINE — v3 «MIDNIGHT AURORA»
-   Правила (референсы: CP2077 HUD, Neon Crypto Dashboard, NEONexus):
-   1. один доминирующий акцент (роза #ff3d8a), циан — информационный,
-      фиолет — память, золото — только голос автора (вердикты);
-   2. фон — полуночный фиолет с тихими полярными сияниями; панели — стекло
-      с верхней подсветкой; цвет несёт смысл, а не декор;
+   THREAD 5 · v4 «GOLDEN THREAD» — premium dark, а не neon-игрушка
+   Правила:
+   1. фон — почти чёрный тёплый; панели — стекло с верхней подсветкой;
+   2. один доминирующий акцент — золото; роза и мята несут семантику
+      (рейтинги / триаж), а не декор; фиолет — память;
    3. свечение — только на живых точках: лого, активная вкладка, CTA,
-      прогресс, живые статусы;
-   4. дисплейная типографика (Unbounded) держит иерархию, а не неон.
+      прогресс, живые статусы; ховер карточки — подъём + золотая кромка;
+   4. дисплейная типографика (Unbounded) держит иерархию, моно (JB Mono) —
+      все коды/слаги/меты.
    ═══════════════════════════════════════════════════════════════════════ */
 
-/* фон прилавка: полуночный фиолет + три полярных сияния + сетка */
+/* фон прилавка: тёплое золото + малина + фиолет, без неона */
 .t5-bg {
-  background-color: #0a0812;
+  background-color: var(--t5-bg);
   background-image:
-    radial-gradient(ellipse 62% 46% at 10% -10%, rgb(255 61 138 / 0.1), transparent 60%),
-    radial-gradient(ellipse 54% 42% at 92% 106%, rgb(45 226 230 / 0.07), transparent 62%),
-    radial-gradient(ellipse 74% 56% at 50% 44%, rgb(139 92 246 / 0.055), transparent 72%),
+    radial-gradient(ellipse 62% 46% at 10% -10%, color-mix(in srgb, var(--t5-accent) 8%, transparent), transparent 60%),
+    radial-gradient(ellipse 54% 42% at 92% 106%, color-mix(in srgb, var(--t5-rose) 6%, transparent), transparent 62%),
+    radial-gradient(ellipse 74% 56% at 50% 44%, color-mix(in srgb, var(--t5-violet) 5%, transparent), transparent 72%),
     linear-gradient(rgb(255 255 255 / 0.018) 1px, transparent 1px),
     linear-gradient(90deg, rgb(255 255 255 / 0.018) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 100% 100%, 52px 52px, 52px 52px;
@@ -142,7 +201,7 @@
   text-orientation: mixed;
 }
 
-/* уголки-кронштейны на ховере карточек (жест CP2077 HUD) */
+/* уголки-кронштейны на ховере карточек: золото + малина — пара бренда */
 .t5-frame {
   position: relative;
 }
@@ -155,19 +214,20 @@
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
   pointer-events: none;
+  z-index: 20;
 }
 .t5-frame::before {
   top: 5px;
   left: 5px;
-  border-top: 1.5px solid rgb(255 61 138 / 0.9);
-  border-left: 1.5px solid rgb(255 61 138 / 0.9);
+  border-top: 1.5px solid color-mix(in srgb, var(--t5-accent) 80%, white 20%);
+  border-left: 1.5px solid color-mix(in srgb, var(--t5-accent) 80%, white 20%);
   transform: translate(3px, 3px);
 }
 .t5-frame::after {
   bottom: 5px;
   right: 5px;
-  border-bottom: 1.5px solid rgb(45 226 230 / 0.9);
-  border-right: 1.5px solid rgb(45 226 230 / 0.9);
+  border-bottom: 1.5px solid color-mix(in srgb, var(--t5-rose) 75%, white 25%);
+  border-right: 1.5px solid color-mix(in srgb, var(--t5-rose) 75%, white 25%);
   transform: translate(-3px, -3px);
 }
 .t5-frame:hover::before,
@@ -184,7 +244,7 @@
 /* свечение для срезанных элементов: clip-path режет box-shadow целиком,
    поэтому glow живёт на родителе — drop-shadow повторяет силуэт среза */
 .t5-glow {
-  filter: drop-shadow(0 0 16px rgb(255 61 138 / 0.42));
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--t5-accent) 40%, transparent));
 }
 
 /* ── стекло: панели-карточки с верхней подсветкой и глубиной ── */
@@ -200,7 +260,7 @@
   backdrop-filter: blur(12px);
 }
 
-/* кликабельная карточка: стекло + ховер-подъём + розовое свечение */
+/* кликабельная карточка: стекло + ховер-подъём + золотая кромка */
 .t5-card {
   border-radius: 0.875rem;
   border: 1px solid rgb(255 255 255 / 0.08);
@@ -213,17 +273,17 @@
   transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.2s ease, background 0.2s ease;
 }
 .t5-card:hover {
-  border-color: rgb(255 61 138 / 0.32);
+  border-color: color-mix(in srgb, var(--t5-accent) 34%, transparent);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.08),
-    0 0 0 1px rgb(255 61 138 / 0.14),
-    0 16px 44px rgb(255 61 138 / 0.09),
+    0 0 0 1px color-mix(in srgb, var(--t5-accent) 14%, transparent),
+    0 14px 40px color-mix(in srgb, var(--t5-accent) 10%, transparent),
     0 12px 36px rgb(3 2 8 / 0.45);
 }
 
-/* градиентная градиент-подпись: заголовки героя и пустых состояний */
+/* градиент-подпись: заголовки героя и пустых состояний — шампань → золото */
 .t5-gradient-text {
-  background: linear-gradient(94deg, #ffffff 12%, #ffc3dd 48%, #ff3d8a 96%);
+  background: linear-gradient(96deg, #ffffff 8%, #f6dfae 55%, var(--t5-accent) 110%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -232,13 +292,13 @@
 /* живой статус: точка с пульс-кольцом (очередь, прогресс, лайв) */
 @keyframes t5-ping {
   0% {
-    box-shadow: 0 0 0 0 rgb(61 220 151 / 0.55);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--t5-mint) 55%, transparent);
   }
   70% {
-    box-shadow: 0 0 0 6px rgb(61 220 151 / 0);
+    box-shadow: 0 0 0 6px transparent;
   }
   100% {
-    box-shadow: 0 0 0 0 rgb(61 220 151 / 0);
+    box-shadow: 0 0 0 0 transparent;
   }
 }
 .t5-dot {
@@ -257,7 +317,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, transparent 32%, rgb(255 255 255 / 0.5) 50%, transparent 68%);
+  background: linear-gradient(105deg, transparent 32%, rgb(255 255 255 / 0.45) 50%, transparent 68%);
   background-size: 220% 100%;
   animation: t5-shimmer-move 2.6s linear infinite;
 }
@@ -270,10 +330,27 @@
   }
 }
 
+/* скелетон: мягкое перетекание вместо пульса — дороже на тёмном */
+.t5-skel {
+  border-radius: 0.75rem;
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.045) 25%, rgb(255 255 255 / 0.095) 37%, rgb(255 255 255 / 0.045) 63%);
+  background-size: 400% 100%;
+  animation: t5-skel-move 1.5s ease infinite;
+}
+@keyframes t5-skel-move {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 /* призрачная кнопка: нейтральное стекло */
 .t5-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.375rem;
   border-radius: 0.625rem;
   border: 1px solid rgb(255 255 255 / 0.1);
@@ -293,36 +370,49 @@
 }
 .t5-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 1px rgb(255 61 138 / 0.7);
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--t5-accent) 70%, transparent);
 }
 .t5-btn:disabled {
   opacity: 0.55;
   cursor: default;
 }
 
-/* примари-CTA: единственная точка, где можно гореть */
+/* маленькая кнопка карточек/тулбара: тач-таргет ≥36px, на мобиле выше */
+.t5-btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6875rem;
+  border-radius: 0.5rem;
+  min-height: 2.25rem;
+}
+@media (min-width: 768px) {
+  .t5-btn-sm {
+    min-height: 2rem;
+  }
+}
+
+/* примари-CTA: латунь — тёмный текст на золоте, единственная горячая точка */
 .t5-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   border-radius: 0.625rem;
-  background: linear-gradient(135deg, #ff3d8a 0%, #d946ef 100%);
+  background: linear-gradient(135deg, #f2c86f 0%, #d6973c 100%);
   padding: 0.625rem 1.25rem;
   font-size: 0.8125rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  color: #241703;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.2),
-    0 6px 24px rgb(255 61 138 / 0.3);
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 6px 24px color-mix(in srgb, var(--t5-accent) 26%, transparent);
   transition: filter 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 .t5-btn-primary:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.07);
   transform: translateY(-1px);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.2),
-    0 8px 30px rgb(255 61 138 / 0.42);
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 8px 30px color-mix(in srgb, var(--t5-accent) 38%, transparent);
 }
 .t5-btn-primary:active {
   transform: translateY(0);
@@ -330,7 +420,7 @@
 .t5-btn-primary:focus-visible {
   outline: none;
   /* inset-кольцо: внешняя тень всё равно срезается clip-path */
-  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.9), inset 0 1px 0 rgb(255 255 255 / 0.18);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.85), inset 0 1px 0 rgb(255 255 255 / 0.3);
 }
 .t5-btn-primary:disabled {
   opacity: 0.55;
@@ -356,10 +446,28 @@
   font-size: 0.8125rem;
   font-weight: 600;
   color: #918ca3;
+  min-height: 2.25rem;
   transition: color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+/* тач-таргет ≥44px на телефонах, компакт на десктопе */
+@media (max-width: 767px) {
+  .t5-seg-item {
+    min-height: 2.75rem;
+  }
+}
+/* на узких телефонах табы-иконки ужимаются, чтобы шапка не заворачивалась */
+@media (max-width: 639px) {
+  .t5-seg-item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }
 .t5-seg-item:hover {
   color: #e4e1ee;
+}
+.t5-seg-item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--t5-accent) 70%, transparent);
 }
 .t5-seg-item[aria-pressed="true"],
 .t5-seg-item[aria-selected="true"],
@@ -371,7 +479,7 @@
     0 2px 8px rgb(0 0 0 / 0.35);
 }
 
-/* микролейбл: wide-tracked uppercase, как в HUD */
+/* микролейбл: wide-tracked uppercase mono — все меты и надзаголовки */
 .t5-label {
   font-family: var(--font-jbmono), monospace;
   font-size: 0.625rem;
@@ -381,11 +489,106 @@
   color: #918ca3;
 }
 
-/* hazard-полоса: только голос автора (вердикт-блок) */
+/* ── бейджи единой системы: mono-чипы с семантическими красками ───── */
+.t5-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(255 255 255 / 0.04);
+  padding: 0.125rem 0.375rem;
+  font-family: var(--font-jbmono), monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.1rem;
+  white-space: nowrap;
+}
+.t5-badge--gold {
+  --badge-c: var(--t5-accent-bright);
+  border-color: color-mix(in srgb, var(--t5-accent) 42%, transparent);
+  background: color-mix(in srgb, var(--t5-accent) 9%, transparent);
+  color: var(--t5-accent-bright);
+}
+.t5-badge--rose {
+  --badge-c: var(--t5-rose-bright);
+  border-color: color-mix(in srgb, var(--t5-rose) 42%, transparent);
+  background: color-mix(in srgb, var(--t5-rose) 9%, transparent);
+  color: var(--t5-rose-bright);
+}
+.t5-badge--rose-dim {
+  --badge-c: var(--t5-rose-bright);
+  border-color: color-mix(in srgb, var(--t5-rose) 26%, transparent);
+  background: color-mix(in srgb, var(--t5-rose) 5%, transparent);
+  color: color-mix(in srgb, var(--t5-rose-bright) 78%, transparent);
+}
+.t5-badge--mint {
+  --badge-c: var(--t5-mint-bright);
+  border-color: color-mix(in srgb, var(--t5-mint) 38%, transparent);
+  background: color-mix(in srgb, var(--t5-mint) 8%, transparent);
+  color: var(--t5-mint-bright);
+}
+.t5-badge--violet {
+  --badge-c: var(--t5-violet-bright);
+  border-color: color-mix(in srgb, var(--t5-violet) 38%, transparent);
+  background: color-mix(in srgb, var(--t5-violet) 8%, transparent);
+  color: var(--t5-violet-bright);
+}
+.t5-badge--red {
+  --badge-c: var(--t5-red);
+  border-color: color-mix(in srgb, var(--t5-red) 42%, transparent);
+  background: color-mix(in srgb, var(--t5-red) 9%, transparent);
+  color: var(--t5-red);
+}
+.t5-badge--red-strong {
+  --badge-c: var(--t5-red);
+  border-color: color-mix(in srgb, var(--t5-red) 62%, transparent);
+  background: color-mix(in srgb, var(--t5-red) 16%, transparent);
+  color: var(--t5-red);
+}
+.t5-badge--orange {
+  --badge-c: var(--t5-orange);
+  border-color: color-mix(in srgb, var(--t5-orange) 42%, transparent);
+  background: color-mix(in srgb, var(--t5-orange) 9%, transparent);
+  color: var(--t5-orange);
+}
+.t5-badge--neutral {
+  --badge-c: #d4d0e2;
+  border-color: rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 0.05);
+  color: #d4d0e2;
+}
+
+/* ── инфо-боксы (разбор/вердикт): рамка + фон от варианта, текст внутри
+       красится через --note-c, не таща хвост классов в JSX ───────────── */
+.t5-note {
+  border-radius: 0.625rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background: rgb(255 255 255 / 0.03);
+  --note-c: #cfcbdd;
+}
+.t5-note--mint {
+  --note-c: var(--t5-mint-bright);
+  border-color: color-mix(in srgb, var(--t5-mint) 30%, transparent);
+  background: color-mix(in srgb, var(--t5-mint) 5%, transparent);
+}
+.t5-note--gold {
+  --note-c: var(--t5-accent-bright);
+  border-color: color-mix(in srgb, var(--t5-accent) 30%, transparent);
+  background: color-mix(in srgb, var(--t5-accent) 5%, transparent);
+}
+.t5-note--red {
+  --note-c: var(--t5-red);
+  border-color: color-mix(in srgb, var(--t5-red) 34%, transparent);
+  background: color-mix(in srgb, var(--t5-red) 6%, transparent);
+}
+
+/* hazard-полоса: голос автора — латунные диагонали */
 .t5-hazard {
   background: repeating-linear-gradient(
     -45deg,
-    rgb(255 194 75 / 0.75) 0 7px,
+    color-mix(in srgb, var(--t5-accent) 70%, transparent) 0 7px,
     transparent 7px 14px
   );
 }
@@ -423,7 +626,8 @@
     transition: none;
   }
   .t5-dot,
-  .t5-shimmer::after {
+  .t5-shimmer::after,
+  .t5-skel {
     animation: none;
   }
 }
