@@ -64,6 +64,16 @@ maxLineChars 140 → 200 (первая NEG-строка несёт safety-пол
 «башенки» не отменён: POS ≥4 строк, NEG ≤3 строк). Данные-only,
 код не тронут — поведение меняют только gates.json.
 
+v1.10.0 (rating-repair 2026-11-13, применён аплоад автора
+«T5-YODAYO-RATING-REPAIR-MERGED», Cole/Grok §1/§4/§12, + razbor
+2026-11-13 урок В24): corridorAudit — fact ≠ label. R+ бейдж легален
+только при коридоре A|B|A+B, объявленном полем «Corridor:» в теле слота;
+R+ без поля или с «Corridor: —» = ложный бейдж → WARN (закон 8.6:
+новый аудит стартует в WARN; FAIL — по решению вердикта). Счётчик
+fact_R+ (коридор A|B|A+B) идёт в квитанцию рядом с label_R+. applyFrom
+20; R/PG-13 слоты поле могут не нести. Парсер слота читает Corridor:
+аналогично Channel:.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -113,6 +123,7 @@ class Slot:
         self.carriers = []
         self.channel = None
         self.channel_mark = ""
+        self.corridor = None  # v1.10.0 corridorAudit: A|B|A+B|— (fact ≠ label)
         self.mark = "☠" if "☠" in header_line else ("⚗" if "⚗" in header_line else "")
         self.thesis = ""
         self.pos = ""
@@ -186,6 +197,11 @@ def parse_batch(path):
             val = sm.group(1).strip()
             cur.channel = val.split()[0] if val else None
             cur.channel_mark = "☠" if "☠" in val else ""
+            continue
+        sm = re.match(r"^Corridor:\s*([A+B]+|—|—)\s*$", ln)  # v1.10.0
+        if sm:
+            flush_mode()
+            cur.corridor = sm.group(1)
             continue
         if re.match(r"^POS:\s*$", ln):
             flush_mode()
@@ -609,6 +625,32 @@ def check_channels(slots, channels, fails, warns):
             ("BATCH", "pantyline-quota",
              f"pantyline {len(panty_used)}× ({','.join(panty_used)}) > 2 — WARN волны 2")
         )
+
+
+def check_corridor(slots, warns, batch_no=-1):
+    """v1.10.0 corridorAudit (закон 8.6: WARN-старт). fact ≠ label:
+    R+ бейдж легален только при коридоре A|B|A+B (Corridor: в теле слота).
+    R+ без поля / с «—» = ложный бейдж — хуже честного R. Счётчик fact_R+
+    возвращается для квитанции. applyFrom/mode — specs/gates.json."""
+    cfg = GATES.get("corridorAudit")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return 0
+    legal = set(cfg.get("corridors_legal", ["A", "B", "A+B"]))
+    downgrade = cfg.get("corridor_downgrade", "—")
+    fact = 0
+    for s in slots:
+        if s.rating not in ("R+", "X"):
+            continue
+        if s.corridor in legal:
+            fact += 1
+            continue
+        why = "нет поля Corridor:" if s.corridor is None else f"Corridor: {downgrade}"
+        warns.append(
+            (s.sid, "corridor",
+             f"R+ без коридора A|B ({why}) — ложный бейдж хуже честного R: "
+             f"вшить объект у груди (A) / камеру-интим (B) или писать R")
+        )
+    return fact
 
 
 def check_header(text, header, slots, fails, warns, oc_names=()):
@@ -1172,10 +1214,12 @@ def main():
         slot_rows.append({
             "id": s.sid, "slug": s.slug, "genre": s.genre, "rating": s.rating,
             "channel": s.channel or "", "channelStatus": ch_status,
+            "corridor": s.corridor or "",
             "claimToken": idx, "posWords": n,
         })
     cp_canon_exempt = check_copypaste(slots, ab_pairs, fails, warns, canon_grams)
     check_channels(slots, channels, fails, warns)
+    fact_rplus = check_corridor(slots, warns, batch_no)  # v1.10.0 corridorAudit
     check_header(text, header, slots, fails, warns, oc_names)
     check_header_contract(header, warns, batch_no)
     moves_declared = check_moves_gate(header, warns, batch_no)
@@ -1208,10 +1252,20 @@ def main():
         "copypasteCanonExempt": cp_canon_exempt,
         "movesDeclared": moves_declared,
         "storyCards": story_cards_ok,
+        "fact_label": {  # v1.10.0 corridorAudit: fact ≠ label
+            "label_R+": sum(1 for s in slots if s.rating == "R+"),
+            "fact_R+": fact_rplus,
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
     print(f"ВЕРДИКТ: {verdict} · FAIL: {len(fails)} · WARN: {len(warns)}")
+    if GATES.get("corridorAudit") and (batch_no >= int(GATES["corridorAudit"].get("applyFrom", 10 ** 9))):
+        fl = receipt["fact_label"]
+        print(
+            f"fact/label: fact_R+ {fl['fact_R+']} · label_R+ {fl['label_R+']}"
+            f" · ложные бейджи {fl['label_R+'] - fl['fact_R+']}"
+        )
     for a, b, c in fails:
         print(f"  FAIL [{a}] {b}: {c}")
     for a, b, c in warns:
