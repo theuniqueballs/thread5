@@ -1,5 +1,5 @@
 {
- "version": "1.4.0",
+ "version": "1.5.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT) | 1.2.1: +K249–251 (canon-OS P01–P03, вето 2026-11-09); K216–218 остаются в ledger на срезанных мейнах",
  "sections": {
@@ -1464,6 +1464,204 @@
     "name": "mid_saddle_sill",
     "sd": "the willow branches resting their weight on the frame",
     "source": "T5-20 K-FF wave (мейки K288–K308, EXP K309–K317, ОС K285–K287)"
+   },
+   {
+    "id": "K318",
+    "name": "mid_towel_press",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P01)"
+   },
+   {
+    "id": "K319",
+    "name": "mid_beam_straddle",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P02)"
+   },
+   {
+    "id": "K320",
+    "name": "mid_decanter_press",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P03)"
+   },
+   {
+    "id": "K321",
+    "name": "mid_timetable_rain",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P04)"
+   },
+   {
+    "id": "K322",
+    "name": "mid_jacket_roll",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P05)"
+   },
+   {
+    "id": "K323",
+    "name": "mid_curtain_half",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P06)"
+   },
+   {
+    "id": "K324",
+    "name": "mid_counter_lean",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P07)"
+   },
+   {
+    "id": "K325",
+    "name": "mid_corner_curl",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P08)"
+   },
+   {
+    "id": "K326",
+    "name": "mid_berth_slide",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P09)"
+   },
+   {
+    "id": "K327",
+    "name": "mid_rain_press",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P10)"
+   },
+   {
+    "id": "K328",
+    "name": "mid_puddle_crouch",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P11)"
+   },
+   {
+    "id": "K329",
+    "name": "mid_blanket_clamp",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P12)"
+   },
+   {
+    "id": "K330",
+    "name": "mid_nape_gather",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P13)"
+   },
+   {
+    "id": "K331",
+    "name": "mid_walkway_cross",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P14)"
+   },
+   {
+    "id": "K332",
+    "name": "mid_mirror_critique",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P15)"
+   },
+   {
+    "id": "K333",
+    "name": "mid_scarf_pull",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P16)"
+   },
+   {
+    "id": "K334",
+    "name": "mid_bag_peek",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P17)"
+   },
+   {
+    "id": "K335",
+    "name": "mid_berth_situp",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P18)"
+   },
+   {
+    "id": "K336",
+    "name": "mid_garter_reclip",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P19)"
+   },
+   {
+    "id": "K337",
+    "name": "mid_mirror_fog",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P20)"
+   },
+   {
+    "id": "K338",
+    "name": "mid_draft_collar",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P21)"
+   },
+   {
+    "id": "K339",
+    "name": "mid_stool_straddle",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P22)"
+   },
+   {
+    "id": "K340",
+    "name": "mid_net_clip",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P23)"
+   },
+   {
+    "id": "K341",
+    "name": "mid_arrival_lookback",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P24)"
+   },
+   {
+    "id": "K342",
+    "name": "mid_over_tambour",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P25)"
+   },
+   {
+    "id": "K343",
+    "name": "mid_over_berth",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P26)"
+   },
+   {
+    "id": "K344",
+    "name": "mid_over_table",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P27)"
+   },
+   {
+    "id": "K345",
+    "name": "mid_saddle_berth",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P28)"
+   },
+   {
+    "id": "K346",
+    "name": "mid_saddle_bench",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P29)"
+   },
+   {
+    "id": "K347",
+    "name": "mid_saddle_stool",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P30)"
+   },
+   {
+    "id": "K348",
+    "name": "mid_palm_cover",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P31)"
+   },
+   {
+    "id": "K349",
+    "name": "mid_hem_gather",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P32)"
+   },
+   {
+    "id": "K350",
+    "name": "mid_lookdown",
+    "light": "mid-action steady",
+    "source": "T5-21 «THE MIDNIGHT LINE» (P33)"
    }
   ],
   "fet": [
@@ -5583,7 +5781,7 @@
   }
  },
  "inventory": {
-  "kinetics_k": 176,
+  "kinetics_k": 275,
   "fet": 50,
   "h": 26,
   "gar": 40,

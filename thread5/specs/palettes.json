@@ -1,5 +1,5 @@
 {
- "version": "1.5.0",
+ "version": "1.6.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -6149,6 +6149,215 @@
    "family": "exp_color_wave_5",
    "legacy_3slot": false,
    "source": "T5-20 EXP-оверлей (exp_color_wave_5, 9 разных семей)"
+  },
+  {
+   "id": "P198_RAIL_STEAM",
+   "name": "Rail Steam",
+   "dominant": [
+    "steam-grey-warm",
+    "iron-blue"
+   ],
+   "secondary": [
+    "tambour-steel"
+   ],
+   "accent1": [
+    "button-brass"
+   ],
+   "accent2": [
+    "draught-pale"
+   ],
+   "shadow": "steel-shadow-cool",
+   "forbidden": [
+    "muddy brown",
+    "neon",
+    "pure white dominant"
+   ],
+   "light_type": "steam-warm grey — тёплый пар тамбура над холодным железом; тени стальные"
+  },
+  {
+   "id": "P199_RAINGLASS_BLUE",
+   "name": "Rainglass Blue",
+   "dominant": [
+    "rain-glass-cyan",
+    "compartment-navy"
+   ],
+   "secondary": [
+    "wet-steel"
+   ],
+   "accent1": [
+    "fog-pearl"
+   ],
+   "accent2": [
+    "station-ember"
+   ],
+   "shadow": "water-shadow-blue",
+   "forbidden": [
+    "sepia",
+    "dusty rose",
+    "green dominant"
+   ],
+   "light_type": "rain-glass cyan — дождь на стекле режет тёплое купе; тени мокрые"
+  },
+  {
+   "id": "P200_DINING_BRASS",
+   "name": "Dining Brass",
+   "dominant": [
+    "brass-warm",
+    "night-navy"
+   ],
+   "secondary": [
+    "wood-honey"
+   ],
+   "accent1": [
+    "pad-pad-shadow"
+   ],
+   "accent2": [
+    "cutlery-silver"
+   ],
+   "shadow": "honey-shadow-deep",
+   "forbidden": [
+    "cold cyan dominant",
+    "grey wash"
+   ],
+   "light_type": "brass-lamp warm — латунь вагона-ресторана против ночного окна"
+  },
+  {
+   "id": "P201_BERTH_PLUM",
+   "name": "Berth Plum",
+   "dominant": [
+    "plush-plum",
+    "drawer-shadow"
+   ],
+   "secondary": [
+    "berth-cream"
+   ],
+   "accent1": [
+    "silk-sheen"
+   ],
+   "accent2": [
+    "rail-brass"
+   ],
+   "shadow": "plum-shadow-warm",
+   "forbidden": [
+    "acid green",
+    "pure black dominant"
+   ],
+   "light_type": "plush-plum dusk — плюш полки держит тепло приглушённого купе"
+  },
+  {
+   "id": "P202_WAYCAR_OXBLOOD",
+   "name": "Waycar Oxblood",
+   "dominant": [
+    "oxblood-bench",
+    "bronze-warm"
+   ],
+   "secondary": [
+    "scale-ivory"
+   ],
+   "accent1": [
+    "tail-shadow"
+   ],
+   "accent2": [
+    "window-slate"
+   ],
+   "shadow": "oxblood-shadow-deep",
+   "forbidden": [
+    "pastel dominant",
+    "cold blue"
+   ],
+   "light_type": "oxblood warm — тёмно-багровая скамья держит бронзовый прогрев ламп"
+  },
+  {
+   "id": "P203_LAMPROOM_GREEN",
+   "name": "Lamproom Green",
+   "dominant": [
+    "lamproom-glass-green",
+    "pearl-water"
+   ],
+   "secondary": [
+    "dining-wood"
+   ],
+   "accent1": [
+    "gill-rose"
+   ],
+   "accent2": [
+    "stool-brass"
+   ],
+   "shadow": "green-shadow-cool",
+   "forbidden": [
+    "magenta",
+    "warm orange dominant"
+   ],
+   "light_type": "green-glass cool — зелёное стекло лампового ящика против перламутра"
+  },
+  {
+   "id": "P204_TICKET_RED_STUB",
+   "name": "Ticket Red Stub",
+   "dominant": [
+    "stub-red",
+    "grey-pearl"
+   ],
+   "secondary": [
+    "robe-lining"
+   ],
+   "accent1": [
+    "palm-shadow"
+   ],
+   "accent2": [
+    "fur-cream"
+   ],
+   "shadow": "red-shadow-warm",
+   "forbidden": [
+    "cyan dominant",
+    "olive"
+   ],
+   "light_type": "stub-red warm — красный корешок билета держит тепло купе"
+  },
+  {
+   "id": "P205_TERMINAL_DAWN",
+   "name": "Terminal Dawn",
+   "dominant": [
+    "dawn-peach",
+    "ribbed-cream"
+   ],
+   "secondary": [
+    "platform-slate"
+   ],
+   "accent1": [
+    "gather-line-silver"
+   ],
+   "accent2": [
+    "black-tip"
+   ],
+   "shadow": "peach-shadow-soft",
+   "forbidden": [
+    "deep night dominant",
+    "neon"
+   ],
+   "light_type": "dawn-peach first light — первый рассвет терминала против кремовой вязки"
+  },
+  {
+   "id": "P206_TUNNEL_MOSS",
+   "name": "Tunnel Moss",
+   "dominant": [
+    "tunnel-moss-deep",
+    "dusk-warm-skin"
+   ],
+   "secondary": [
+    "half-light-silver"
+   ],
+   "accent1": [
+    "rail-rust"
+   ],
+   "accent2": [
+    "velvet-dark"
+   ],
+   "shadow": "moss-shadow-deep",
+   "forbidden": [
+    "bright pink",
+    "pure white dominant"
+   ],
+   "light_type": "tunnel-moss deep — туннельная зелень держит пол-света у края полки"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -6160,5 +6369,23 @@
   "C070: forbidden colors must NOT appear in POS as named color words.",
   "C071: prior batch's palettes blacklisted (cross-batch rotation).",
   "C067_EXP_ORDER (T5-16): одна экспериментальная палитра P161_CHROMA_VEIL живёт во всех 9 EXP-слотах батча по прямому приказу автора («не всё по разному») — directed override C067; мейн-пул соблюдает C066/C067 как обычно."
+ ],
+ "exp_color_waves": [
+  {
+   "wave": "exp_color_wave_6",
+   "born": "2026-11-13, T5-21 «THE MIDNIGHT LINE»",
+   "palettes": [
+    "P198_RAIL_STEAM",
+    "P199_RAINGLASS_BLUE",
+    "P200_DINING_BRASS",
+    "P201_BERTH_PLUM",
+    "P202_WAYCAR_OXBLOOD",
+    "P203_LAMPROOM_GREEN",
+    "P204_TICKET_RED_STUB",
+    "P205_TERMINAL_DAWN",
+    "P206_TUNNEL_MOSS"
+   ],
+   "note": "9 РАЗНЫХ семей поездной линии: steam / rainglass / dining-brass / berth-plum / waycar-oxblood / lamproom-green / ticket-stub / terminal-dawn / tunnel-moss"
+  }
  ]
 }
