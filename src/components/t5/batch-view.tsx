@@ -3,8 +3,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, Check, ChevronRight, ClipboardList, Copy, CornerDownRight, Loader2, MessageSquareQuote, RotateCcw, Search, SearchX } from 'lucide-react';
 import { Chip, CopyButton, GenreBadge, RatingBadge, copyText } from '@/components/t5/bits';
+import { LongPressable, fartAt, randomFartLine } from '@/components/t5/juice';
 import { LoopRenders, type LoopManifest, type LoopSlotInfo } from '@/components/t5/loop-renders';
 import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import type { T5BatchBody, T5Slot } from '@/lib/t5/parse';
 
@@ -45,10 +47,20 @@ function TagBlock({ title, text }: { title: string; text: string }) {
 
 function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) {
   const [openCanon, setOpenCanon] = useState(false);
+  const { toast } = useToast();
   return (
     <article className="t5-panel p-5">
       <header className="mb-3 flex flex-wrap items-center gap-2">
-        <span className="font-mono text-sm font-bold text-white">{slot.id}</span>
+        {/* пасхалка: долгий тап на номер слота — слот «выпускает пар» */}
+        <LongPressable
+          ariaLabel={`${slot.id}: долгий тап — сюрприз слота`}
+          onLongPress={(el) => {
+            fartAt(el);
+            toast({ title: `${slot.id} выпустил пар`, description: randomFartLine() });
+          }}
+        >
+          <span className="cursor-pointer font-mono text-sm font-bold text-white">{slot.id}</span>
+        </LongPressable>
         <span className="font-mono text-[13px] text-zinc-400">— {slot.slug}</span>
         <span className="ml-auto flex flex-wrap items-center gap-1.5">
           {/* каждая строка — один юнит: POS/NEG из парсера уже плоские,
@@ -155,6 +167,7 @@ function PartButton({ text, label, copied, onCopied, ariaLabel }: { text: string
 }
 
 function CopyRow({ slot, marks, onMark }: { slot: T5Slot; marks: SlotMarks; onMark: (kind: MarkKind) => void }) {
+  const { toast } = useToast();
   const full = marks.pos && marks.neg;
   const part = !full && (marks.pos || marks.neg);
   return (
@@ -176,15 +189,25 @@ function CopyRow({ slot, marks, onMark }: { slot: T5Slot; marks: SlotMarks; onMa
           full ? 'bg-t5-mint' : part ? 'bg-t5-mint/40' : 'bg-transparent'
         )}
       />
-      <span
-        className={cn(
-          'ml-1 flex w-10 shrink-0 items-center gap-0.5 font-mono text-[13px] font-bold',
-          full ? 'text-t5-mint-bright' : 'text-zinc-200'
-        )}
+      {/* номер слота: долгий тап — слот аукнется; обычный клик ничего не копирует */}
+      <LongPressable
+        className="ml-1 shrink-0"
+        ariaLabel={`${slot.id}: долгий тап — сюрприз слота`}
+        onLongPress={(el) => {
+          fartAt(el);
+          toast({ title: `${slot.id} выпустил пар`, description: randomFartLine() });
+        }}
       >
-        {slot.id}
-        {full && <Check className="size-3" aria-hidden />}
-      </span>
+        <span
+          className={cn(
+            'flex w-10 cursor-pointer items-center gap-0.5 font-mono text-[13px] font-bold',
+            full ? 'text-t5-mint-bright' : 'text-zinc-200'
+          )}
+        >
+          {slot.id}
+          {full && <Check className="size-3" aria-hidden />}
+        </span>
+      </LongPressable>
       <GenreBadge genre={slot.genre} />
       <RatingBadge rating={slot.rating} />
       <span className="min-w-0 flex-1 truncate font-mono text-xs text-zinc-500" title={slot.slug}>
@@ -528,6 +551,12 @@ function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[
           ref={taRef}
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+              e.preventDefault();
+              if (!saving) save();
+            }
+          }}
           rows={5}
           placeholder={'P09 — сумма слоёв доезжает, свет на зоне — огонь.\nP14 — поза HIGH, заявку съел дрейф…'}
           className="w-full rounded-lg border border-white/[0.09] bg-black/35 p-3.5 text-sm leading-relaxed text-zinc-200 shadow-[inset_0_1px_3px_rgb(0_0_0/0.35)] placeholder:text-zinc-600 focus:border-t5-accent/50 focus:outline-none focus:ring-1 focus:ring-t5-accent/30"
@@ -558,7 +587,7 @@ function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[
               Сохранить вердикт
             </button>
           </span>
-          <span className="text-xs text-zinc-600">вербатим в verdicts/ — писец заберёт из чата</span>
+          <span className="text-xs text-zinc-600">Ctrl+Enter — сохранить · вербатим в verdicts/ — писец заберёт из чата</span>
         </div>
       </div>
     </section>
@@ -865,8 +894,8 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
             <div>
               <dt className="t5-label mr-2 inline">Тема-слова</dt>
               <dd className="inline-flex flex-wrap gap-1 align-middle">
-                {batch.themeWords.map((w) => (
-                  <Chip key={w}>{w}</Chip>
+                {batch.themeWords.map((w, wi) => (
+                  <Chip key={`${w}-${wi}`}>{w}</Chip>
                 ))}
               </dd>
             </div>

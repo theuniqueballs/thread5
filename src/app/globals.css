@@ -631,3 +631,62 @@
     animation: none;
   }
 }
+
+/* ── JUICE: пшик-облако и дискотека золотой нити (Konami) ─────────────── */
+
+@keyframes t5-puff {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  25% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx, 0px), var(--dy, -40px)) scale(1.5);
+  }
+}
+
+/* дискотека: hue-rotate только на декоративных слоях и блоках —
+   не на контейнерах с fixed/sticky-детьми, чтобы не ломать компоновку */
+.t5-disco header {
+  animation: t5-disco-hue 2.4s linear infinite;
+}
+.t5-disco .t5-vignette,
+.t5-disco .t5-noise {
+  animation: t5-disco-hue 2.4s linear infinite;
+}
+.t5-disco main .t5-panel,
+.t5-disco main .t5-frame {
+  animation: t5-disco-hue 2.4s linear infinite, t5-disco-glow 0.8s ease-in-out infinite alternate;
+}
+@keyframes t5-disco-hue {
+  0% {
+    filter: hue-rotate(0deg) saturate(1);
+  }
+  50% {
+    filter: hue-rotate(170deg) saturate(1.3);
+  }
+  100% {
+    filter: hue-rotate(360deg) saturate(1);
+  }
+}
+@keyframes t5-disco-glow {
+  from {
+    box-shadow: 0 0 16px color-mix(in srgb, var(--t5-accent) 22%, transparent);
+  }
+  to {
+    box-shadow: 0 0 30px color-mix(in srgb, var(--t5-rose) 40%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t5-disco header,
+  .t5-disco .t5-vignette,
+  .t5-disco .t5-noise,
+  .t5-disco main .t5-panel,
+  .t5-disco main .t5-frame {
+    animation: none;
+  }
+}

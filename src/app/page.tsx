@@ -1,12 +1,16 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ArrowUpRight, BookOpenText, Gift, Inbox, Layers, RefreshCw, Sparkles } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowUpRight, BookOpenText, Gift, Inbox, Layers, RefreshCw, Search, Sparkles } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
+import { Input } from '@/components/ui/input';
 import { T5Markdown } from '@/components/t5/bits';
 import { BatchView } from '@/components/t5/batch-view';
+import { CommandPalette } from '@/components/t5/command-palette';
 import { InboxView } from '@/components/t5/inbox-view';
+import { FartBadge, GoldenThread, LongPressable, SoundToggle, burstConfetti, fartAt, startDisco, useKonami } from '@/components/t5/juice';
 import type { BatchListItem, T5DocMeta } from '@/lib/t5/types';
 import { T5_DOCS } from '@/lib/t5/types';
 
@@ -215,9 +219,15 @@ function BatchList({
 }) {
   const isSpecial = variant === 'special';
   const accent = isSpecial ? 'var(--t5-rose)' : 'var(--t5-accent)';
+  /* поиск по прилавку: слаг или тема — для полки из 21+ батчей быстрее, чем глаз */
+  const [query, setQuery] = useState('');
+  const q = query.trim().toLowerCase();
+  const visible = q
+    ? items.filter((b) => `${b.slug} ${b.theme ?? ''} ${b.title}`.toLowerCase().includes(q))
+    : items;
   return (
     <section aria-label={isSpecial ? 'Полка заказов' : 'Прилавок батчей'} className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="t5-label flex items-center gap-2.5 !text-[11px] text-zinc-300">
           <span
             className="inline-block h-3.5 w-[3px] rounded-full"
@@ -226,9 +236,22 @@ function BatchList({
           />
           {isSpecial ? `Special Orders — ${items.length}` : `Батчи — ${items.length}`}
         </h2>
-        <button type="button" onClick={onRefresh} className="t5-btn">
-          <RefreshCw className={cn('size-3.5', refreshing && 'animate-spin')} /> Обновить
-        </button>
+        <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
+          <div className="relative w-full max-w-56">
+            <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-zinc-600" aria-hidden />
+            <Input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Поиск: T5-07, тема…"
+              aria-label="Поиск по слагу или теме"
+              className="h-8 rounded-lg border-white/[0.09] bg-black/25 pl-8 text-xs text-zinc-200 shadow-none placeholder:text-zinc-600 focus-visible:border-t5-accent/50 focus-visible:ring-t5-accent/25"
+            />
+          </div>
+          <button type="button" onClick={onRefresh} className="t5-btn">
+            <RefreshCw className={cn('size-3.5', refreshing && 'animate-spin')} /> Обновить
+          </button>
+        </div>
       </div>
 
       {items.length === 0 ? (
@@ -252,9 +275,11 @@ function BatchList({
             )}
           </p>
         </div>
+      ) : visible.length === 0 ? (
+        <div className="t5-panel p-10 text-center text-sm text-zinc-500">По запросу «{query}» на прилавке пусто</div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {items.map((b) => (
+          {visible.map((b) => (
             <button
               key={b.slug}
               type="button"
@@ -404,6 +429,10 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const { toast } = useToast();
+  /* куда возвращаться при «Список»: позиция скролла прилавка на момент ухода */
+  const scrollMemo = useRef<number | null>(null);
 
   const syncHash = useCallback((next: string) => {
     try {
@@ -478,12 +507,14 @@ export default function Home() {
   };
 
   const openBatch = (slug: string) => {
+    if (view.kind === 'list') scrollMemo.current = window.scrollY;
     setTab('batches');
     setView({ kind: 'batch', slug });
     syncHash(slug);
   };
 
   const openSpecial = (slug: string) => {
+    if (view.kind === 'list') scrollMemo.current = window.scrollY;
     setTab('special');
     setView({ kind: 'special', slug });
     syncHash(slug);
@@ -491,15 +522,63 @@ export default function Home() {
 
   const backToList = () => {
     const t: Tab = view.kind === 'special' ? 'special' : 'batches';
+    const memo = scrollMemo.current;
     setTab(t);
     setView({ kind: 'list' });
     syncHash(t);
+    /* возвращаем читателя на ту же высоту прилавка, с которой он ушёл в батч */
+    requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        if (memo !== null) window.scrollTo(0, memo);
+      }, 40);
+    });
   };
 
   const openDoc = (name: string) => {
     setDoc(name);
     syncHash(`memory/${name}`);
   };
+
+  /* entering detail — с чистой шапки: страница прыгает наверх, не в середину */
+  useEffect(() => {
+    if (view.kind !== 'list') window.scrollTo(0, 0);
+  }, [view]);
+
+  /* горячие клавиши: 1–4 разделы · Esc список · [ ] соседний батч.
+     Палитра слушает ⌘K сама; в полях ввода и при модификаторах — тишина */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === 'Escape') {
+        if (view.kind !== 'list') backToList();
+        return;
+      }
+      if (e.key >= '1' && e.key <= '4') {
+        const order: Tab[] = ['batches', 'special', 'inbox', 'docs'];
+        openTab(order[Number(e.key) - 1]);
+        return;
+      }
+      if ((e.key === '[' || e.key === ']') && view.kind === 'batch') {
+        const idx = batches.findIndex((b) => b.slug === view.slug);
+        if (idx >= 0) {
+          const target = batches[e.key === ']' ? idx + 1 : idx - 1];
+          if (target) openBatch(target.slug);
+        }
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+
+  /* Konami → дискотека золотой нити */
+  const onKonami = useCallback(() => {
+    startDisco();
+    burstConfetti();
+    toast({ title: 'ЗОЛОТАЯ НИТЬ: ДИСКО', description: 'Konami принят. Нить переливается 9 секунд — успевай рассматривать.' });
+  }, [toast]);
+  useKonami(onKonami);
 
   /* статистика прилавка для героя — считается из живых списков */
   const stats = useMemo(() => {
@@ -533,6 +612,7 @@ export default function Home() {
   return (
     <div className="t5-bg relative flex min-h-screen flex-col text-zinc-100">
       {/* глубина: сияния + виньетка + зерно */}
+      <GoldenThread />
       <div className="t5-vignette" aria-hidden />
       <div className="t5-noise" aria-hidden />
       <div className="pointer-events-none fixed right-5 top-1/2 z-0 hidden -translate-y-1/2 xl:block" aria-hidden>
@@ -546,11 +626,21 @@ export default function Home() {
         <div className="border-b border-white/[0.06] bg-background/80 backdrop-blur-xl">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 sm:gap-x-6 sm:px-6">
             <button type="button" onClick={() => openTab('batches')} className="flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-t5-accent" aria-label="Thread 5 — на главную">
-              <span className="t5-glow inline-flex">
-                <span className="t5-clip grid size-9 shrink-0 place-items-center bg-gradient-to-br from-[#f2c86f] via-[#d6973c] to-[#8a5a1e] font-display text-sm font-black text-[#241703]">
-                  5
+              <LongPressable
+                interactive={false}
+                ariaLabel="Пятёрка: долгий тап — конвейерный сюрприз"
+                onLongPress={(el) => {
+                  fartAt(el, { mega: true });
+                  burstConfetti();
+                  toast({ title: 'КОНВЕЙЕР ПРЁТСЯ', description: 'Пятёрка аукнулась на весь цех. Газов учтено.' });
+                }}
+              >
+                <span className="t5-glow inline-flex">
+                  <span className="t5-clip grid size-9 shrink-0 place-items-center bg-gradient-to-br from-[#f2c86f] via-[#d6973c] to-[#8a5a1e] font-display text-sm font-black text-[#241703]">
+                    5
+                  </span>
                 </span>
-              </span>
+              </LongPressable>
               <span className="leading-none">
                 <span className="block font-display text-[13px] font-bold tracking-wider text-white">THREAD·5</span>
                 <span className="mt-1 block font-mono text-[10px] tracking-[0.28em] text-zinc-500">прилавок писца</span>
@@ -560,7 +650,20 @@ export default function Home() {
               </span>
             </button>
 
-            <nav aria-label="Разделы" className="t5-seg ml-auto">
+            <div className="ml-auto flex items-center gap-2 sm:gap-3">
+              {/* палитра: прыжок к любому батчу/заказу/доку за две клавиши */}
+              <button
+                type="button"
+                onClick={() => setPaletteOpen(true)}
+                className="t5-btn !px-2.5 font-mono"
+                aria-label="Командная палитра (Ctrl+K)"
+                title="Командная палитра — ⌘K / Ctrl+K"
+              >
+                <Search className="size-4" />
+                <span className="hidden text-[10px] tracking-wider text-zinc-500 md:inline">⌘K</span>
+              </button>
+              <SoundToggle />
+              <nav aria-label="Разделы" className="t5-seg">
               {tabs.map((t) => {
                 const active = tab === t.id;
                 return (
@@ -582,7 +685,8 @@ export default function Home() {
                   </button>
                 );
               })}
-            </nav>
+              </nav>
+            </div>
           </div>
         </div>
         {/* градиентная кромка шапки: золото → малина → мята */}
@@ -650,10 +754,30 @@ export default function Home() {
               <span className="text-zinc-500">вкус</span>
             </p>
             <p className="mt-1.5">Thread 5 · наследие Thread 4 (45 батчей, 28 законов вкуса) · чат — двигатель, файлы — память</p>
+            <p className="mt-1.5 font-mono text-[10px] tracking-wide text-zinc-600">
+              клавиши: 1–4 разделы · ⌘K палитра · [ ] соседний батч · Esc список · секрет: долгий тап на «5» или номер слота
+            </p>
           </div>
-          <p className="t5-label !tracking-[0.3em] text-white/[0.16]">五番目の糸 · thread five</p>
+          <div className="flex flex-col items-end gap-2">
+            <FartBadge />
+            <p className="t5-label !tracking-[0.3em] text-white/[0.16]">五番目の糸 · thread five</p>
+          </div>
         </div>
       </footer>
+
+      <CommandPalette
+        open={paletteOpen}
+        onOpenChange={setPaletteOpen}
+        batches={batches}
+        special={special}
+        onTab={(t) => openTab(t)}
+        onBatch={openBatch}
+        onSpecial={openSpecial}
+        onDoc={(name) => {
+          openDoc(name);
+          setTab('docs');
+        }}
+      />
     </div>
   );
 }
