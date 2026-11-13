@@ -1,5 +1,5 @@
 {
- "version": "1.13.0",
+ "version": "1.13.1",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -9799,7 +9799,7 @@
   "audit": "2026-11-13 (razbor, приказ автора «сунься туда где у нас позы и разбери»): делёж перечитан по всем 468 картам. Исправлено: enum MEDIUM→MID (19), статус-пометки X1–X4 (вердикты T5-16/17/18/19), R+ движку (erotic_presentation 12+24) прописан потолок: геометрия HIGH = R и ниже, R+ достраивает дрессер. Главное правило разбора: use=V/N — первичный контур, НЕ эксклюзив; полная таблица — docs/POSE-RAZBOR-2026-11-13.md. Поле use остаётся V для X2/X4 как память семьи (архивность несёт use_note)."
  },
  "author_picks": {
-  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP»",
+  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP» · 2026-11-13: +7 пиков T5-20 по рендер-вердикту (PL490/491/494/500/471/472/474) — X5-пики приоритетны при реюзах вне окна (razbor §4.5)",
   "picks": [
    {
     "pose": "PL358",
@@ -9820,6 +9820,41 @@
     "pose": "PL362",
     "slot": "T5-16 P29 «Иво» (cecaelia-ink-fourfours)",
     "quote": "29 - тоже очень крутая и милая, забираем позу и девчонку - обзываем её Liebe"
+   },
+   {
+    "pose": "PL490",
+    "slot": "T5-20 P16 «list-of-names-aloud» (Whisper-Name Lean, VOLT R+)",
+    "quote": "16 (клёвая поза)"
+   },
+   {
+    "pose": "PL491",
+    "slot": "T5-20 P17 «mirror-keeps-empty-side» (Brow-to-Glass, честный R)",
+    "quote": "17 (прикольно)"
+   },
+   {
+    "pose": "PL494",
+    "slot": "T5-20 P20 «cliffside-graves» (Rail-Perch Cliff-Count, NICHE R)",
+    "quote": "20 (сиськи)"
+   },
+   {
+    "pose": "PL500",
+    "slot": "T5-20 P02 «bodice-of-conjured-hands» (Puppet-Bodice, ОС Meine R+)",
+    "quote": "Клёвое в ОС: 2"
+   },
+   {
+    "pose": "PL471",
+    "slot": "T5-20 P27 «saddle-couch-phoenix» (X5 «В-СЕДЛО», EXP R+)",
+    "quote": "27 (поза)"
+   },
+   {
+    "pose": "PL472",
+    "slot": "T5-20 P28 «saddle-bench-medusa» (X5 «В-СЕДЛО», EXP R+)",
+    "quote": "28 (поза)"
+   },
+   {
+    "pose": "PL474",
+    "slot": "T5-20 P30 «saddle-cushion-fortune-cat» (X5 «В-СЕДЛО», EXP R+ → Ruuj)",
+    "quote": "30 (поза, персонаж). Забираем 30 в ос канон, даём имя - Ruuj"
    }
   ]
  },
