@@ -1,5 +1,5 @@
 {
- "version": "1.6.0",
+ "version": "1.7.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -6358,6 +6358,222 @@
     "pure white dominant"
    ],
    "light_type": "tunnel-moss deep — туннельная зелень держит пол-света у края полки"
+  },
+  {
+   "id": "P207_PASTEL_CHALK",
+   "name": "Pastel Chalk",
+   "dominant": [
+    "chalk-pastel-pink",
+    "pastel-mint"
+   ],
+   "secondary": [
+    "sugar-white"
+   ],
+   "accent1": [
+    "pastel-blue-outline"
+   ],
+   "accent2": [
+    "cream-paper-warm"
+   ],
+   "shadow": "pastel-shadow-grey-violet",
+   "forbidden": [
+    "neon",
+    "saturated primary",
+    "muddy dark"
+   ],
+   "light_type": "мел-пастель: рассеянный мягкий свет, теней почти нет, контур мягкий"
+  },
+  {
+   "id": "P208_PALE_WATERCOLOR",
+   "name": "Pale Watercolor",
+   "dominant": [
+    "watercolor-pale-rose",
+    "wash-blue-thin"
+   ],
+   "secondary": [
+    "paper-grain-cream"
+   ],
+   "accent1": [
+    "bleed-edge-darker"
+   ],
+   "accent2": [
+    "unpainted-white-margin"
+   ],
+   "shadow": "water-stain-cool",
+   "forbidden": [
+    "oil gloss",
+    "hard black",
+    "digital flat"
+   ],
+   "light_type": "бледная акварель: влажное пятно света, кромка подтёка темнее, зерно бумаги"
+  },
+  {
+   "id": "P209_GRAPHITE_MONO",
+   "name": "Graphite Monochrome",
+   "dominant": [
+    "graphite-grey-mid",
+    "graphite-dark-core"
+   ],
+   "secondary": [
+    "paper-white-tooth"
+   ],
+   "accent1": [
+    "erased-highlight-warm"
+   ],
+   "accent2": [
+    "smudge-silver"
+   ],
+   "shadow": "graphite-soft-rim",
+   "forbidden": [
+    "any hue",
+    "color accent",
+    "glossy"
+   ],
+   "light_type": "карандашный монохром: тональный свет, растушёвка, зерно бумаги"
+  },
+  {
+   "id": "P210_SEPIA_CARD",
+   "name": "Sepia Card",
+   "dominant": [
+    "sepia-brown-deep",
+    "cream-card"
+   ],
+   "secondary": [
+    "foxing-spot-amber"
+   ],
+   "accent1": [
+    "ink-black-hand"
+   ],
+   "accent2": [
+    "album-corner-gold"
+   ],
+   "shadow": "vignetted-brown",
+   "forbidden": [
+    "modern colors",
+    "pure white",
+    "cyan"
+   ],
+   "light_type": "сепия фотокарты: мягкая виньетка студийного света, лисьи пятна по углам"
+  },
+  {
+   "id": "P211_RISO_DUOTONE",
+   "name": "Risograph Duotone",
+   "dominant": [
+    "fluoro-pink-ink",
+    "policy-blue-ink"
+   ],
+   "secondary": [
+    "paper-off-white"
+   ],
+   "accent1": [
+    "misregister-halo"
+   ],
+   "accent2": [
+    "halftone-dot-cream"
+   ],
+   "shadow": "blue-shadow-ink",
+   "forbidden": [
+    "smooth gradient",
+    "photo texture",
+    "third color"
+   ],
+   "light_type": "ризограф: плоское пятно краски без растяжек, сдвиг-ореол двух красок"
+  },
+  {
+   "id": "P212_GRAY_ONE_RED",
+   "name": "Grayscale One Red",
+   "dominant": [
+    "film-grey-mid",
+    "charcoal-black"
+   ],
+   "secondary": [
+    "grey-scale-fog"
+   ],
+   "accent1": [
+    "single-red-accent"
+   ],
+   "accent2": [
+    "paper-grey-light"
+   ],
+   "shadow": "black-ink-shadow",
+   "forbidden": [
+    "rainbow",
+    "pastel",
+    "warm brown wash"
+   ],
+   "light_type": "серость + один красный: жёсткий кино-контраст, один цвет дышит"
+  },
+  {
+   "id": "P213_UV_BLACKLIGHT",
+   "name": "UV Blacklight",
+   "dominant": [
+    "uv-black-deep",
+    "fluoro-violet-glow"
+   ],
+   "secondary": [
+    "blacklight-magenta-edge"
+   ],
+   "accent1": [
+    "fluoro-cyan-lines"
+   ],
+   "accent2": [
+    "glow-ghost-green"
+   ],
+   "shadow": "void-uv-black",
+   "forbidden": [
+    "daylight",
+    "flat white light",
+    "brown wash"
+   ],
+   "light_type": "чёрный свет: светятся только флуоровые волокна, фон уходит в уф-черноту"
+  },
+  {
+   "id": "P214_HOLO_FOIL",
+   "name": "Holographic Foil",
+   "dominant": [
+    "holo-silver-rainbow",
+    "foil-prism-edge"
+   ],
+   "secondary": [
+    "pearlescent-white"
+   ],
+   "accent1": [
+    "oil-slick-glint"
+   ],
+   "accent2": [
+    "laser-foil-mint"
+   ],
+   "shadow": "foil-shadow-cool",
+   "forbidden": [
+    "matte flat",
+    "earth tones",
+    "heavy black"
+   ],
+   "light_type": "фольга-призма: блики меняют цвет по наклону, перламутровая база"
+  },
+  {
+   "id": "P215_CYANOTYPE_BLUE",
+   "name": "Cyanotype Blueprint",
+   "dominant": [
+    "cyanotype-prussian",
+    "prussian-blue-deep"
+   ],
+   "secondary": [
+    "blueprint-white-line"
+   ],
+   "accent1": [
+    "sun-print-vignette"
+   ],
+   "accent2": [
+    "iron-salt-bronze-faint"
+   ],
+   "shadow": "blue-shadow-full",
+   "forbidden": [
+    "red dominance",
+    "yellow dominance",
+    "photo color"
+   ],
+   "light_type": "цианотипия: белый свет листа, всё живёт в прусской сини, виньетка оттиска"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -6386,6 +6602,22 @@
     "P206_TUNNEL_MOSS"
    ],
    "note": "9 РАЗНЫХ семей поездной линии: steam / rainglass / dining-brass / berth-plum / waycar-oxblood / lamproom-green / ticket-stub / terminal-dawn / tunnel-moss"
+  },
+  {
+   "wave": "exp_color_wave_7",
+   "born": "2026-11-14, T5-22 «COLD STOCK» — эксперименты раскраски по приказу автора",
+   "palettes": [
+    "P207_PASTEL_CHALK",
+    "P208_PALE_WATERCOLOR",
+    "P209_GRAPHITE_MONO",
+    "P210_SEPIA_CARD",
+    "P211_RISO_DUOTONE",
+    "P212_GRAY_ONE_RED",
+    "P213_UV_BLACKLIGHT",
+    "P214_HOLO_FOIL",
+    "P215_CYANOTYPE_BLUE"
+   ],
+   "note": "9 ТИПОВ раскраски: pastel-chalk / pale-watercolor / graphite-mono / sepia-card / riso-duotone / gray-one-red / uv-blacklight / holo-foil / cyanotype; NEG-замена anti-wash юнитов — слотово в своих слотах"
   }
  ]
 }

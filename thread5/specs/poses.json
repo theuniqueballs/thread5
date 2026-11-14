@@ -1,5 +1,5 @@
 {
- "version": "1.13.1",
+ "version": "1.14.0",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -8276,6 +8276,218 @@
    "corridor": "B",
    "rating_trust": "PENDING",
    "born": "T5-21 «THE MIDNIGHT LINE» (P33, 2026-11-13)"
+  },
+  {
+   "id": "PL515",
+   "name": "Knot-Surrender Reach (OC_T5-22)",
+   "sd": "catching the defeated knot's slipped edge with one flat palm at the chest as the gust takes the wrap top's tie, three-quarter to the wind line",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "OC_T5-22",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "use": "N",
+   "corridor": "A",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P01, 2026-11-14)"
+  },
+  {
+   "id": "PL516",
+   "name": "Tar-Load Stand (OC_T5-22)",
+   "sd": "standing under the tar's black glossy load, the sheet holding her chest line where it took her shape, weight pooling honest at the elbows, low camera to the drip line",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "OC_T5-22",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "use": "N",
+   "corridor": "A",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P02, 2026-11-14)"
+  },
+  {
+   "id": "PL517",
+   "name": "Ribbon-Cross Offer (OC_T5-22)",
+   "sd": "bare underneath a single silk ribbon crossing her chest in a bow, one end offered forward into the frame, bell-charms holding their quiet count",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "OC_T5-22",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "use": "N",
+   "corridor": "A",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P03, 2026-11-14)"
+  },
+  {
+   "id": "PL518",
+   "name": "Shelf-Sleeper Row (cold_stock)",
+   "sd": "lying sealed in a clear vacuum bag on the stock shelf among sleeping neighbors, one eye open under the film, condensation drawing its bead-line to the price tag",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "cold_stock",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "use": "N",
+   "corridor": "NICHE",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P04, 2026-11-14)"
+  },
+  {
+   "id": "PL519",
+   "name": "Bag-Peel Rise (cold_stock)",
+   "sd": "rising from the opened bag on the low camera's line, clear film peeling off the chest with a last suction print, the wrist tag swinging its empty price",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "cold_stock",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "use": "V",
+   "corridor": "B",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P05, 2026-11-14)"
+  },
+  {
+   "id": "PL520",
+   "name": "Jelly-Bell Mid-Lift (y_card_build)",
+   "sd": "gathering a tulle petticoat's mid-lift with both hands at the chest line, slight low angle under the rise, tendril strands sliding against the fabric",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low"
+   ],
+   "use": "V",
+   "corridor": "A+B",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P25, 2026-11-14)"
+  },
+  {
+   "id": "PL521",
+   "name": "Spore-Palm Cover (y_card_build)",
+   "sd": "cupping both palms flat over the chest under a sprayed organza blouse, slight low angle, spore-freckles blooming where damp lingers",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low"
+   ],
+   "use": "V",
+   "corridor": "A",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P26, 2026-11-14)"
+  },
+  {
+   "id": "PL522",
+   "name": "Spine-Flat Between-Knees (y_card_build)",
+   "sd": "sitting the shelf edge above a camera placed low between the knees, looking straight down into the lens, skirt hem framing the torso's fall",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "use": "V",
+   "corridor": "B",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P27, 2026-11-14)"
+  },
+  {
+   "id": "PL523",
+   "name": "Catch-Cloth Mid-Air (y_card_build)",
+   "sd": "catching an open silk robe's fall with both hands at the chest line, upper body close, the loose sleeve still swinging its arc",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "use": "V",
+   "corridor": "A",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P28, 2026-11-14)"
+  },
+  {
+   "id": "PL524",
+   "name": "Oni-Settle Hem-Pull (y_card_build)",
+   "sd": "folding astride the seated viewer's knees at the market bench, the wrap dress pulled taut between the thighs by the settle, knees past the frame's lower corners",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "use": "V",
+   "corridor": "B",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P29, 2026-11-14)"
+  },
+  {
+   "id": "PL525",
+   "name": "Sound-Ribbon Waistband (y_card_build)",
+   "sd": "refastening tailored slacks' waistband at the issue counter, cowboy line from below, the red drawstring the only color in the grey frame",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "use": "V",
+   "corridor": "B",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P30, 2026-11-14)"
+  },
+  {
+   "id": "PL526",
+   "name": "Breeze-Door Strap-Adjust (y_card_build)",
+   "sd": "standing in the storage door's gap seen through the frame, catching a slipping halter strap back with her fingers, lower legs dissolving into the draft's glow",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "use": "V",
+   "corridor": "B",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P31, 2026-11-14)"
+  },
+  {
+   "id": "PL527",
+   "name": "Paw-Cover Insert (y_card_build)",
+   "sd": "pressing a paw-sleeve palm flat over the neckline's dip, close insert on the cover gesture, foil rainbow sliding over the winter coat's nap",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "use": "V",
+   "corridor": "A",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P32, 2026-11-14)"
+  },
+  {
+   "id": "PL528",
+   "name": "Strap-Slip Insert (y_card_build)",
+   "sd": "letting a tie-front blouse's strap slip its button at the collarbone, close insert at eye level, the sun-print vignette holding the frame",
+   "category": "VERTICAL",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "use": "V",
+   "corridor": "A",
+   "rating_trust": "PENDING",
+   "born": "T5-22 «COLD STOCK» (P33, 2026-11-14)"
   }
  ],
  "family_counts": {
@@ -8336,7 +8548,9 @@
   "OC_T5-21": 3,
   "midnight_watch": 1,
   "midnight_duty": 3,
-  "y_card_build": 3
+  "y_card_build": 12,
+  "OC_T5-22": 3,
+  "cold_stock": 2
  },
  "pair_note": "§33 pose-camera pair law: every PL code has 3-5 preferred camera angles; outside the preferred set is allowed but FLAGGED. PL+CAM must agree — a back-to-camera PL with a front eye-level CAM is a logical impossibility (viewer inside the body), and was the v16 #1 failure (effective cowboy rate 67%). Camera values reference the ONTOLOGY camera axis — CAUTION: the pose file's CAM code table and ONTOLOGY's CAM01-CAM12 axis DISAGREE on 5 codes (see pools.json cam.numbering_conflict); the pose pairs' self-describing suffixes (CAM02_three_quarter) are authoritative.",
  "cam_reference": {
@@ -9787,7 +10001,8 @@
   "1.9.0: T5-19 DEVIL'S GREED: +PL436–PL456 (21 мейн, families greed_toll/greed_engine/greed_crown) + PL457–PL465 (EXP-семья X4 cage-lean, 9 карт, use V) + PL466–PL468 (canon-OS P01–P03, family OC_T5-19) — X4 «В-КЛЕТКУ» по приказу автора «с жёстким упором в R++»; темы ОС → канон-ОС слоты сразу (прецедент вето T5-18)",
   "1.12.0: 2026-11-13 — rating-repair (аплоад Cole/Grok merged): на все 501 карт добавлены corridor/rating_trust (keyword-классификатор + family-оверрайды, audit-блок в rating_repair.counts); enum не тронут, окна/burn не тронуты. Источник: аплоад автора «T5-YODAYO-RATING-REPAIR-MERGED» (Cole/Grok, 2026-11-12) + docs/POSE-RAZBOR-2026-11-13.md + уроки В16/В22/В24 (вердикты T5-17/T5-19).",
   "1.13.0 (2026-11-13, T5-21 «THE MIDNIGHT LINE»): +13 first-use карт PL502–PL514 (OC_T5-21 ×3 · X5 saddle-settle поездные ×3 · y_card_build ×3 · midnight_watch/duty ×4); corridor/rating_trust PENDING на новых; X1-реюз PL358/359/361 — вне окна (razbor §4.5).",
-  "1.13.2 (2026-11-14): рекаттрибуция рендер-вердику (вердикт был по T5-21, не T5-20 — указание автора): author_picks переписаны (−7 T5-20: PL490/491/494/500/471/472/474; +6 T5-21: PL160/PL262/PL194/PL503/PL505/PL507; PL361 — двойной пик T5-16/T5-21), rating_trust PENDING→HIGH на PL503/PL505/PL507, пики PL160/PL262/PL194 → HIGH."
+  "1.13.2 (2026-11-14): рекаттрибуция рендер-вердику (вердикт был по T5-21, не T5-20 — указание автора): author_picks переписаны (−7 T5-20: PL490/491/494/500/471/472/474; +6 T5-21: PL160/PL262/PL194/PL503/PL505/PL507; PL361 — двойной пик T5-16/T5-21), rating_trust PENDING→HIGH на PL503/PL505/PL507, пики PL160/PL262/PL194 → HIGH.",
+  "1.14.0 (2026-11-14, T5-22 «COLD STOCK»): +14 first-use карт PL515–PL528 (OC_T5-22 ×3 · cold_stock склад ×2 · y_card_build ×9 — Y1–Y8 + Y9-продолжение); corridor/rating_trust PENDING на новых; В27-правило учтено — look-back/run/over-shoulder спайнов в батче нет."
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",

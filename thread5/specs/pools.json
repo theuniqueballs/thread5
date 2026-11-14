@@ -1,5 +1,5 @@
 {
- "version": "1.5.0",
+ "version": "1.6.0",
  "born": "2026-09-19",
  "source": "3.2 POOLS_V8 v9.4.0/v10.0.0 + ONTOLOGY v2.0.0 (V15 de-numbered ENV/OAS/MAT) | 1.2.1: +K249–251 (canon-OS P01–P03, вето 2026-11-09); K216–218 остаются в ledger на срезанных мейнах",
  "sections": {
@@ -1662,6 +1662,204 @@
     "name": "mid_lookdown",
     "light": "mid-action steady",
     "source": "T5-21 «THE MIDNIGHT LINE» (P33)"
+   },
+   {
+    "id": "K351",
+    "name": "mid_knot_surrender",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P01)"
+   },
+   {
+    "id": "K352",
+    "name": "mid_tar_load",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P02)"
+   },
+   {
+    "id": "K353",
+    "name": "mid_ribbon_offer",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P03)"
+   },
+   {
+    "id": "K354",
+    "name": "mid_shelf_row",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P04)"
+   },
+   {
+    "id": "K355",
+    "name": "mid_bag_peel",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P05)"
+   },
+   {
+    "id": "K356",
+    "name": "mid_registry_faceoff",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P06)"
+   },
+   {
+    "id": "K357",
+    "name": "mid_price_lean",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P07)"
+   },
+   {
+    "id": "K358",
+    "name": "mid_invoice_curl",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P08)"
+   },
+   {
+    "id": "K359",
+    "name": "mid_chrome_cup",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P09)"
+   },
+   {
+    "id": "K360",
+    "name": "mid_fog_veil",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P10)"
+   },
+   {
+    "id": "K361",
+    "name": "mid_patina_ledger",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P11)"
+   },
+   {
+    "id": "K362",
+    "name": "mid_scan_band",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P12)"
+   },
+   {
+    "id": "K363",
+    "name": "mid_ink_receipt",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P13)"
+   },
+   {
+    "id": "K364",
+    "name": "mid_prism_lock",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P14)"
+   },
+   {
+    "id": "K365",
+    "name": "mid_tidepool_drape",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P15)"
+   },
+   {
+    "id": "K366",
+    "name": "mid_candy_turn",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P16)"
+   },
+   {
+    "id": "K367",
+    "name": "mid_tin_hang",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P17)"
+   },
+   {
+    "id": "K368",
+    "name": "mid_bag_press",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P18)"
+   },
+   {
+    "id": "K369",
+    "name": "mid_blueprint_plant",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P19)"
+   },
+   {
+    "id": "K370",
+    "name": "mid_seam_step",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P20)"
+   },
+   {
+    "id": "K371",
+    "name": "mid_charging_rest",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P21)"
+   },
+   {
+    "id": "K372",
+    "name": "mid_cart_sidesaddle",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P22)"
+   },
+   {
+    "id": "K373",
+    "name": "mid_abyss_drift",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P23)"
+   },
+   {
+    "id": "K374",
+    "name": "mid_towel_flip",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P24)"
+   },
+   {
+    "id": "K375",
+    "name": "mid_jelly_midlift",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P25)"
+   },
+   {
+    "id": "K376",
+    "name": "mid_spore_cover",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P26)"
+   },
+   {
+    "id": "K377",
+    "name": "mid_spine_flat",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P27)"
+   },
+   {
+    "id": "K378",
+    "name": "mid_catch_cloth",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P28)"
+   },
+   {
+    "id": "K379",
+    "name": "mid_oni_settle",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P29)"
+   },
+   {
+    "id": "K380",
+    "name": "mid_ribbon_band",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P30)"
+   },
+   {
+    "id": "K381",
+    "name": "mid_breeze_strap",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P31)"
+   },
+   {
+    "id": "K382",
+    "name": "mid_paw_insert",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P32)"
+   },
+   {
+    "id": "K383",
+    "name": "mid_strap_insert",
+    "light": "mid-action steady",
+    "source": "T5-22 «COLD STOCK» (P33)"
    }
   ],
   "fet": [
@@ -5781,7 +5979,7 @@
   }
  },
  "inventory": {
-  "kinetics_k": 275,
+  "kinetics_k": 308,
   "fet": 50,
   "h": 26,
   "gar": 40,

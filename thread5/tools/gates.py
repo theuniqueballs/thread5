@@ -65,6 +65,7 @@ maxLineChars 140 → 200 (первая NEG-строка несёт safety-пол
 код не тронут — поведение меняют только gates.json.
 
 v1.10.0 (rating-repair 2026-11-13, применён аплоад автора
+v1.10.1 (T5-22 «COLD STOCK», 2026-11-14): IP-флор темы расширен (altered carbon / cortical stack / dhf / needlecast) — тема живёт правилами кадра; перегрев R+ с T5-22 = FAIL (8.6-эра).
 «T5-YODAYO-RATING-REPAIR-MERGED», Cole/Grok §1/§4/§12, + razbor
 2026-11-13 урок В24): corridorAudit — fact ≠ label. R+ бейдж легален
 только при коридоре A|B|A+B, объявленном полем «Corridor:» в теле слота;
