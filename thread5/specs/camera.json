@@ -1,7 +1,7 @@
 {
  "id": "camera",
  "name": "CAMERA-FIRST — камера как половина работы",
- "version": "1.9.0",
+ "version": "1.10.0",
  "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
  "law": "КАМЕРА-ПЕРВАЯ (вердикт 2026-11-03) + ревизия 2026-11-05 (вердикт автора чатом): «всё чё он говорит тру инфа, камера - одно из важных частей композиции. если посмотришь официальный гайд по тсубаки 2, там так и написано» → §13.0 LAWS: камерный кластер (D+A+F) — первые 10–20 токенов POS (Cole-B9 принят, кадровая строка у face-блока отменена); дисциплина дистанций D1–D8 «ближе/дальше» (ковбой — признанный доминант рендера, кап снят); dutch A09 ≤10%/батч — закон («закон!»); Combo:/Package: в теле слота с T5-13 («yes»); A/B insert→payoff 1–2 пары/батч («наверное да», пробно).",
  "distance_ladder": {
@@ -548,64 +548,79 @@
     "id": "Y1",
     "pattern": "mid-lift garment + cover at chest + upper body + slight low angle",
     "corridor": "A+B",
-    "trust": "HIGH"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y2",
     "pattern": "hands as cover + upper body + slight low angle",
     "corridor": "A",
-    "trust": "HIGH"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y3",
     "pattern": "low camera between knees + look down + hem frames torso",
     "corridor": "B",
-    "trust": "MID"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y4",
     "pattern": "cloth/towel mid-catch at chest",
     "corridor": "A",
-    "trust": "MID"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y5",
     "pattern": "straddle/settle + hem pulled by pose + claim token",
     "corridor": "B",
-    "trust": "HIGH"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y6",
     "pattern": "waistband process + cowboy from below",
     "corridor": "B",
-    "trust": "MID"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y7",
     "pattern": "through door gap + adjusting cover/strap",
     "corridor": "B",
-    "trust": "MID"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y8",
     "pattern": "close insert on cover gesture → optional payoff shot",
     "corridor": "A",
-    "trust": "MID"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    },
    {
     "id": "Y9",
     "pattern": "strap losing its post + collarbone focus + eye-level close insert",
     "corridor": "A",
-    "trust": "MID"
+    "trust": "REWORK",
+    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK"
    }
   ],
   "avoid_as_fake_high_tier": [
    "sheer + eye-level cowboy + smile",
    "lingerie name + formal sit",
    "rating word with no geometry"
-  ]
+  ],
+  "verdict_receipt": {
+   "at": "2026-11-14",
+   "verdict": "T5-22 EXP — «позы не впечатляющие (я знаю что ты юзал комбо Y, но тут они не получились. совсем. нужно очень сильно реинфорснуть и передумать этот момент»",
+   "ruling": "ПРОВАЛ: все 9 Y-сборок не зачтены. y_cards → режим REWORK: до пересборки Y-карты в EXP не выходят; trust паттернов снимается. «Реинфорснуть» = паттерн переписывается с физическими якорями (опора/вес/направление тканевого события — урок В27), не повтором строк; «передумать» = пересобрать набор паттернов (KEEP/KILL) и показать автору на вердикт. Кандидаты механизма провала: паттерны собирались перечислением слоёв без физики ткани; insert/gap-формулировки тянут рамки (В29); R+ заявка в EXP легла на print-канал (В26-эскалация P25)."
+  }
  },
  "changelog": [
-  "1.9.0 (2026-11-14, T5-22): +Y9 «strap losing its post + collarbone focus + eye-level close insert» (A, MID) — девятое комбо EXP-ростера по приказу автора («9 новых комбо (Y1-Y8, продолжение)»); первый прогон всех девяти Y-карт по слоту на батч."
+  "1.9.0 (2026-11-14, T5-22): +Y9 «strap losing its post + collarbone focus + eye-level close insert» (A, MID) — девятое комбо EXP-ростера по приказу автора («9 новых комбо (Y1-Y8, продолжение)»); первый прогон всех девяти Y-карт по слоту на батч.",
+  "1.10.0 (2026-11-14, вердикт T5-22): Y-СБОРКА провалена вердиктом («позы не впечатляющие… совсем»); y_cards Y1–Y9 → REWORK (trust снят, в EXP не выходят до пересборки с физическими якорями В27); пересмотр набора паттернов KEEP/KILL — на вердикт автора."
  ]
 }

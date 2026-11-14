@@ -1,5 +1,5 @@
 {
- "version": "1.7.0",
+ "version": "1.8.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -6617,7 +6617,9 @@
     "P214_HOLO_FOIL",
     "P215_CYANOTYPE_BLUE"
    ],
-   "note": "9 ТИПОВ раскраски: pastel-chalk / pale-watercolor / graphite-mono / sepia-card / riso-duotone / gray-one-red / uv-blacklight / holo-foil / cyanotype; NEG-замена anti-wash юнитов — слотово в своих слотах"
+   "note": "9 ТИПОВ раскраски: pastel-chalk / pale-watercolor / graphite-mono / sepia-card / riso-duotone / gray-one-red / uv-blacklight / holo-foil / cyanotype; NEG-замена anti-wash юнитов — слотово в своих слотах. ПРОМОЦИЯ вердиктом T5-22: полный зачёт — первый эксперимент раскраски, ушедший в основной пул целиком.",
+   "status": "main_pool (promoted by verdict T5-22 2026-11-14)",
+   "promoted": "2026-11-14, вердикт T5-22: «цветовка хорошо себя показала - забираем в основной пул» — все 9 выходят из trial-статуса в основную ротацию (C066/C067/C071 применяются как обычным палитрам); NEG-замена anti-wash юнитов слотово себя оправдала"
   }
  ]
 }

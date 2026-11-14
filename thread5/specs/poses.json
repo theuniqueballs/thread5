@@ -1,5 +1,5 @@
 {
- "version": "1.14.0",
+ "version": "1.14.1",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -8289,7 +8289,7 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "PENDING",
+   "rating_trust": "HIGH",
    "born": "T5-22 «COLD STOCK» (P01, 2026-11-14)"
   },
   {
@@ -8304,7 +8304,7 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "PENDING",
+   "rating_trust": "HIGH",
    "born": "T5-22 «COLD STOCK» (P02, 2026-11-14)"
   },
   {
@@ -8319,7 +8319,7 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "PENDING",
+   "rating_trust": "HIGH",
    "born": "T5-22 «COLD STOCK» (P03, 2026-11-14)"
   },
   {
@@ -8349,7 +8349,7 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING",
+   "rating_trust": "HIGH",
    "born": "T5-22 «COLD STOCK» (P05, 2026-11-14)"
   },
   {
@@ -10002,7 +10002,8 @@
   "1.12.0: 2026-11-13 — rating-repair (аплоад Cole/Grok merged): на все 501 карт добавлены corridor/rating_trust (keyword-классификатор + family-оверрайды, audit-блок в rating_repair.counts); enum не тронут, окна/burn не тронуты. Источник: аплоад автора «T5-YODAYO-RATING-REPAIR-MERGED» (Cole/Grok, 2026-11-12) + docs/POSE-RAZBOR-2026-11-13.md + уроки В16/В22/В24 (вердикты T5-17/T5-19).",
   "1.13.0 (2026-11-13, T5-21 «THE MIDNIGHT LINE»): +13 first-use карт PL502–PL514 (OC_T5-21 ×3 · X5 saddle-settle поездные ×3 · y_card_build ×3 · midnight_watch/duty ×4); corridor/rating_trust PENDING на новых; X1-реюз PL358/359/361 — вне окна (razbor §4.5).",
   "1.13.2 (2026-11-14): рекаттрибуция рендер-вердику (вердикт был по T5-21, не T5-20 — указание автора): author_picks переписаны (−7 T5-20: PL490/491/494/500/471/472/474; +6 T5-21: PL160/PL262/PL194/PL503/PL505/PL507; PL361 — двойной пик T5-16/T5-21), rating_trust PENDING→HIGH на PL503/PL505/PL507, пики PL160/PL262/PL194 → HIGH.",
-  "1.14.0 (2026-11-14, T5-22 «COLD STOCK»): +14 first-use карт PL515–PL528 (OC_T5-22 ×3 · cold_stock склад ×2 · y_card_build ×9 — Y1–Y8 + Y9-продолжение); corridor/rating_trust PENDING на новых; В27-правило учтено — look-back/run/over-shoulder спайнов в батче нет."
+  "1.14.0 (2026-11-14, T5-22 «COLD STOCK»): +14 first-use карт PL515–PL528 (OC_T5-22 ×3 · cold_stock склад ×2 · y_card_build ×9 — Y1–Y8 + Y9-продолжение); corridor/rating_trust PENDING на новых; В27-правило учтено — look-back/run/over-shoulder спайнов в батче нет.",
+  "1.14.1 (2026-11-14, вердикт T5-22): author_picks +8 (PL515/516/517/519/256/203/353/127); trust PENDING→HIGH на PL515/516/517/519; PL520–528 (y_card_build) остаются PENDING до REWORK y_cards (camera 1.10.0)."
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",
@@ -10015,7 +10016,7 @@
   "audit": "2026-11-13 (razbor, приказ автора «сунься туда где у нас позы и разбери»): делёж перечитан по всем 468 картам. Исправлено: enum MEDIUM→MID (19), статус-пометки X1–X4 (вердикты T5-16/17/18/19), R+ движку (erotic_presentation 12+24) прописан потолок: геометрия HIGH = R и ниже, R+ достраивает дрессер. Главное правило разбора: use=V/N — первичный контур, НЕ эксклюзив; полная таблица — docs/POSE-RAZBOR-2026-11-13.md. Поле use остаётся V для X2/X4 как память семьи (архивность несёт use_note)."
  },
  "author_picks": {
-  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP» · 2026-11-13: +6 пиков T5-21 по рендер-вердику (PL160/PL262/PL194/PL503/PL505/PL507), PL361 подтверждён повторно (P27) — X5-пики приоритетны при реюзах вне окна (razbor §4.5) · 2026-11-14: рекаттрибуция — вердикт был по T5-21; ошибочная семёрка T5-20 (PL490/491/494/500/471/472/474) снята с пиков, карты остаются в библиотеке",
+  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP» · 2026-11-13: +6 пиков T5-21 по рендер-вердику (PL160/PL262/PL194/PL503/PL505/PL507), PL361 подтверждён повторно (P27) — X5-пики приоритетны при реюзах вне окна (razbor §4.5) · 2026-11-14: рекаттрибуция — вердикт был по T5-21; ошибочная семёрка T5-20 (PL490/491/494/500/471/472/474) снята с пиков, карты остаются в библиотеке · 2026-11-14: +8 пиков T5-22 по рендер-вердику (PL515/516/517 ОС-тройка «все слоты хорошие» · PL519/PL256/PL203/PL353/PL127 мейны «что зашло по основной теме»); PL203 подтверждён повторно (T5-16-пик, дебют Dove); Y-карты (PL520–528) на пики НЕ идут — вердикт T5-22: «позы не впечатляющие… совсем» (REWORK).",
   "picks": [
    {
     "pose": "PL358",
@@ -10066,6 +10067,46 @@
     "pose": "PL507",
     "slot": "T5-21 P30 «saddle-stool-axolotl» (Saddle-Settle Dining-Stool, EXP X5 → Ruuj)",
     "quote": "30 (поза, персонаж). Забираем 30 в ос канон, даём имя - Ruuj"
+   },
+   {
+    "pose": "PL515",
+    "slot": "T5-22 P01 «tendencies-untying» (Knot-Surrender Reach, ОС Zia)",
+    "quote": "Что зашло в ОС: 1, 2, 3 - все слоты хорошие."
+   },
+   {
+    "pose": "PL516",
+    "slot": "T5-22 P02 «tar-load-stand» (Tar-Load Stand, ОС Lua)",
+    "quote": "Что зашло в ОС: 1, 2, 3 - все слоты хорошие."
+   },
+   {
+    "pose": "PL517",
+    "slot": "T5-22 P03 «ribbon-hearth-gift» (Ribbon-Cross Offer, ОС Rin)",
+    "quote": "Что зашло в ОС: 1, 2, 3 - все слоты хорошие."
+   },
+   {
+    "pose": "PL519",
+    "slot": "T5-22 P05 «bag-peel-first-claim» (Bag-Peel Rise)",
+    "quote": "Что зашло по основной теме: 5"
+   },
+   {
+    "pose": "PL256",
+    "slot": "T5-22 P12 «scan-band-heatprint» (Through-Glass At Viewer)",
+    "quote": "Что зашло по основной теме: …12"
+   },
+   {
+    "pose": "PL203",
+    "slot": "T5-22 P16 «candy-vinyl-showroom» (Cross-Leg Floor Lean-Back → Dove)",
+    "quote": "16 (клёвая девчонка, заберём её в канон. Имя будет - Dove. Выдашь ей комплект ОС канона)"
+   },
+   {
+    "pose": "PL353",
+    "slot": "T5-22 P19 «blueprint-calibration-arctic» (Blueprint-Crouch Plant)",
+    "quote": "Что зашло по основной теме: …19"
+   },
+   {
+    "pose": "PL127",
+    "slot": "T5-22 P22 «cart-sidesaddle-dust» (Sidesaddle Bike-Sit, честный R)",
+    "quote": "Что зашло по основной теме: …22"
    }
   ]
  },
