@@ -2573,7 +2573,7 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "HIGH"
   },
   {
    "id": "PL161",
@@ -3131,7 +3131,7 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "HIGH"
   },
   {
    "id": "PL195",
@@ -4251,7 +4251,7 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "HIGH"
   },
   {
    "id": "PL263",
@@ -8109,7 +8109,7 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "PENDING",
+   "rating_trust": "HIGH",
    "born": "T5-21 «THE MIDNIGHT LINE» (P02, 2026-11-13)"
   },
   {
@@ -8199,7 +8199,7 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING",
+   "rating_trust": "HIGH",
    "born": "T5-21 «THE MIDNIGHT LINE» (P28, 2026-11-13)"
   },
   {
@@ -8229,7 +8229,7 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING",
+   "rating_trust": "HIGH",
    "born": "T5-21 «THE MIDNIGHT LINE» (P30, 2026-11-13)"
   },
   {
@@ -9786,7 +9786,8 @@
   "1.8.0: T5-18 REVERSE WONDERLAND: +PL400–PL423 (24 мейна) + PL424–PL432 (EXP-семья X3 whisper-lean, 9 карт, use V) — X3 «В-ШЁПОТ» по приказу «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»; first_use_ledger догнал T5-17 (PL367–PL399)",
   "1.9.0: T5-19 DEVIL'S GREED: +PL436–PL456 (21 мейн, families greed_toll/greed_engine/greed_crown) + PL457–PL465 (EXP-семья X4 cage-lean, 9 карт, use V) + PL466–PL468 (canon-OS P01–P03, family OC_T5-19) — X4 «В-КЛЕТКУ» по приказу автора «с жёстким упором в R++»; темы ОС → канон-ОС слоты сразу (прецедент вето T5-18)",
   "1.12.0: 2026-11-13 — rating-repair (аплоад Cole/Grok merged): на все 501 карт добавлены corridor/rating_trust (keyword-классификатор + family-оверрайды, audit-блок в rating_repair.counts); enum не тронут, окна/burn не тронуты. Источник: аплоад автора «T5-YODAYO-RATING-REPAIR-MERGED» (Cole/Grok, 2026-11-12) + docs/POSE-RAZBOR-2026-11-13.md + уроки В16/В22/В24 (вердикты T5-17/T5-19).",
-  "1.13.0 (2026-11-13, T5-21 «THE MIDNIGHT LINE»): +13 first-use карт PL502–PL514 (OC_T5-21 ×3 · X5 saddle-settle поездные ×3 · y_card_build ×3 · midnight_watch/duty ×4); corridor/rating_trust PENDING на новых; X1-реюз PL358/359/361 — вне окна (razbor §4.5)."
+  "1.13.0 (2026-11-13, T5-21 «THE MIDNIGHT LINE»): +13 first-use карт PL502–PL514 (OC_T5-21 ×3 · X5 saddle-settle поездные ×3 · y_card_build ×3 · midnight_watch/duty ×4); corridor/rating_trust PENDING на новых; X1-реюз PL358/359/361 — вне окна (razbor §4.5).",
+  "1.13.2 (2026-11-14): рекаттрибуция рендер-вердику (вердикт был по T5-21, не T5-20 — указание автора): author_picks переписаны (−7 T5-20: PL490/491/494/500/471/472/474; +6 T5-21: PL160/PL262/PL194/PL503/PL505/PL507; PL361 — двойной пик T5-16/T5-21), rating_trust PENDING→HIGH на PL503/PL505/PL507, пики PL160/PL262/PL194 → HIGH."
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",
@@ -9799,7 +9800,7 @@
   "audit": "2026-11-13 (razbor, приказ автора «сунься туда где у нас позы и разбери»): делёж перечитан по всем 468 картам. Исправлено: enum MEDIUM→MID (19), статус-пометки X1–X4 (вердикты T5-16/17/18/19), R+ движку (erotic_presentation 12+24) прописан потолок: геометрия HIGH = R и ниже, R+ достраивает дрессер. Главное правило разбора: use=V/N — первичный контур, НЕ эксклюзив; полная таблица — docs/POSE-RAZBOR-2026-11-13.md. Поле use остаётся V для X2/X4 как память семьи (архивность несёт use_note)."
  },
  "author_picks": {
-  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP» · 2026-11-13: +7 пиков T5-20 по рендер-вердикту (PL490/491/494/500/471/472/474) — X5-пики приоритетны при реюзах вне окна (razbor §4.5)",
+  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP» · 2026-11-13: +6 пиков T5-21 по рендер-вердику (PL160/PL262/PL194/PL503/PL505/PL507), PL361 подтверждён повторно (P27) — X5-пики приоритетны при реюзах вне окна (razbor §4.5) · 2026-11-14: рекаттрибуция — вердикт был по T5-21; ошибочная семёрка T5-20 (PL490/491/494/500/471/472/474) снята с пиков, карты остаются в библиотеке",
   "picks": [
    {
     "pose": "PL358",
@@ -9812,48 +9813,43 @@
     "quote": "26 - охуенно, берём позу и забираем ОС, обзываем её Meine"
    },
    {
-    "pose": "PL361",
-    "slot": "T5-16 P28 «Юнэ» (moonrabbit-pest-kneel)",
-    "quote": "28 - очень милая, очень красивая и поза и ракурс - супер. Забираем, обзываем её Luvv"
-   },
-   {
     "pose": "PL362",
     "slot": "T5-16 P29 «Иво» (cecaelia-ink-fourfours)",
     "quote": "29 - тоже очень крутая и милая, забираем позу и девчонку - обзываем её Liebe"
    },
    {
-    "pose": "PL490",
-    "slot": "T5-20 P16 «list-of-names-aloud» (Whisper-Name Lean, VOLT R+)",
+    "pose": "PL361",
+    "slot": "T5-16 P28 «Юнэ» (moonrabbit-pest-kneel) · подтверждён повторно T5-21 P27 «over-table-lynx» (EXP X1)",
+    "quote": "28 - очень милая… супер / 27 (поза)"
+   },
+   {
+    "pose": "PL160",
+    "slot": "T5-21 P16 «scarf-pull-platform» (Scarf-Pull From Off-Frame, VOLT R+ ⚗fabric-tension)",
     "quote": "16 (клёвая поза)"
    },
    {
-    "pose": "PL491",
-    "slot": "T5-20 P17 «mirror-keeps-empty-side» (Brow-to-Glass, честный R)",
+    "pose": "PL262",
+    "slot": "T5-21 P17 «bag-peek-luggage-rack» (Bag-Over-Head Peek, NICHE R)",
     "quote": "17 (прикольно)"
    },
    {
-    "pose": "PL494",
-    "slot": "T5-20 P20 «cliffside-graves» (Rail-Perch Cliff-Count, NICHE R)",
+    "pose": "PL194",
+    "slot": "T5-21 P20 «mirror-chest-first-fog» (Mirror Chest-First, EXQUISITE R)",
     "quote": "20 (сиськи)"
    },
    {
-    "pose": "PL500",
-    "slot": "T5-20 P02 «bodice-of-conjured-hands» (Puppet-Bodice, ОС Meine R+)",
+    "pose": "PL503",
+    "slot": "T5-21 P02 «beam-of-her-threads» (Rigging-Beam Straddle, ОС Meine R+)",
     "quote": "Клёвое в ОС: 2"
    },
    {
-    "pose": "PL471",
-    "slot": "T5-20 P27 «saddle-couch-phoenix» (X5 «В-СЕДЛО», EXP R+)",
-    "quote": "27 (поза)"
-   },
-   {
-    "pose": "PL472",
-    "slot": "T5-20 P28 «saddle-bench-medusa» (X5 «В-СЕДЛО», EXP R+)",
+    "pose": "PL505",
+    "slot": "T5-21 P28 «saddle-berth-mantis» (Saddle-Settle Berth-Edge, EXP X5)",
     "quote": "28 (поза)"
    },
    {
-    "pose": "PL474",
-    "slot": "T5-20 P30 «saddle-cushion-fortune-cat» (X5 «В-СЕДЛО», EXP R+ → Ruuj)",
+    "pose": "PL507",
+    "slot": "T5-21 P30 «saddle-stool-axolotl» (Saddle-Settle Dining-Stool, EXP X5 → Ruuj)",
     "quote": "30 (поза, персонаж). Забираем 30 в ос канон, даём имя - Ruuj"
    }
   ]
