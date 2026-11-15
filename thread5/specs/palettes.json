@@ -1,5 +1,5 @@
 {
- "version": "1.8.0",
+ "version": "1.10.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -6574,6 +6574,222 @@
     "photo color"
    ],
    "light_type": "цианотипия: белый свет листа, всё живёт в прусской сини, виньетка оттиска"
+  },
+  {
+   "id": "P216_DAMASCENE_GOLD",
+   "name": "Damascene Gold Inlay",
+   "dominant": [
+    "damascene-gold-inlay",
+    "forge-steel-grey"
+   ],
+   "secondary": [
+    "hammered-iron-blue-grey"
+   ],
+   "accent1": [
+    "dark-hilt-bronze"
+   ],
+   "accent2": [
+    "cord-wrap-crimson-faint"
+   ],
+   "shadow": "steel-shadow-deep",
+   "forbidden": [
+    "plastic sheen",
+    "chrome mirror",
+    "warm gold dominance"
+   ],
+   "light_type": "насечка: золото живёт в желобах стали, свет приписан материалу, не прибору; клинок — тёмная база, линии золота читаются тонко"
+  },
+  {
+   "id": "P217_URUSHI_LACQUER",
+   "name": "Urushi Lacquer Red-Black",
+   "dominant": [
+    "urushi-lacquer-red",
+    "lacquer-black-deep"
+   ],
+   "secondary": [
+    "wet-resin-highlight"
+   ],
+   "accent1": [
+    "shell-gold-dust"
+   ],
+   "accent2": [
+    "apron-canvas-warm"
+   ],
+   "shadow": "lacquer-shadow-brown-black",
+   "forbidden": [
+    "pastel colors",
+    "chrome mirror",
+    "neon"
+   ],
+   "light_type": "уруш: красно-чёрный лак держит один влажный блик на изгибе; свет — resin highlight, не прибор"
+  },
+  {
+   "id": "P218_NIELLO_BLACK",
+   "name": "Niello Engraved Silver",
+   "dominant": [
+    "niello-black",
+    "engraved-silver-line"
+   ],
+   "secondary": [
+    "old-mirror-grey"
+   ],
+   "accent1": [
+    "silversmith-cool"
+   ],
+   "accent2": [
+    "ember-ember-faint"
+   ],
+   "shadow": "silver-shadow-slate",
+   "forbidden": [
+    "warm gold dominance",
+    "pastel colors",
+    "photo color"
+   ],
+   "light_type": "чернь: гравированные серебряные линии по чёрному полю; свет — металл умный, не источник"
+  },
+  {
+   "id": "P219_CLOISONNE_EMERALD",
+   "name": "Cloisonne Emerald Enamel",
+   "dominant": [
+    "cloisonne-emerald",
+    "enamel-cream-cell"
+   ],
+   "secondary": [
+    "gilt-wire-gold"
+   ],
+   "accent1": [
+    "sky-enamel-blue-faint"
+   ],
+   "accent2": [
+    "lacquer-brown-edge"
+   ],
+   "shadow": "enamel-shadow-teal-deep",
+   "forbidden": [
+    "washed-out",
+    "pastel colors",
+    "chrome mirror"
+   ],
+   "light_type": "клуазоне: эмалевые ячейки между золотых перегородок; свет заливает глазурь, не горит"
+  },
+  {
+   "id": "P220_JADE_CARVE",
+   "name": "Jade Stone Carve",
+   "dominant": [
+    "jade-green-stone",
+    "celadon-pale-mist"
+   ],
+   "secondary": [
+    "moss-silk-green"
+   ],
+   "accent1": [
+    "bone-white-carve"
+   ],
+   "accent2": [
+    "iron-oxide-ochre-faint"
+   ],
+   "shadow": "stone-shadow-green-grey",
+   "forbidden": [
+    "hot pink",
+    "neon",
+    "photo color"
+   ],
+   "light_type": "нефрит: резьба по камню, полоса целадона вместо блика; свет — камень глубокий, не светящийся"
+  },
+  {
+   "id": "P221_ABALONE_NACRE",
+   "name": "Abalone Nacre Sheen",
+   "dominant": [
+    "abalone-nacre",
+    "oil-sheen-green-pink"
+   ],
+   "secondary": [
+    "mother-of-pearl-pale"
+   ],
+   "accent1": [
+    "shell-rim-cobalt-faint"
+   ],
+   "accent2": [
+    "sand-cream-base"
+   ],
+   "shadow": "nacre-shadow-pearl-grey",
+   "forbidden": [
+    "saturated yellow",
+    "neon",
+    "flat gray"
+   ],
+   "light_type": "абалон: перламутр меняет оттенок с угла наклона; свет — материал ирадесцентный, не прибор"
+  },
+  {
+   "id": "P222_ETCHED_COPPER",
+   "name": "Etched Copper Verdigris",
+   "dominant": [
+    "etched-copper",
+    "verdigris-green-deep"
+   ],
+   "secondary": [
+    "patina-teal-crystalline"
+   ],
+   "accent1": [
+    "copper-orange-warm"
+   ],
+   "accent2": [
+    "ink-etch-black"
+   ],
+   "shadow": "copper-shadow-umber",
+   "forbidden": [
+    "pastel colors",
+    "chrome mirror",
+    "washed-out"
+   ],
+   "light_type": "травлённая медь: тёплый металл с зелёной патиной в углублениях; свет — оксид, не огонь"
+  },
+  {
+   "id": "P223_BONE_INLAY_PALE",
+   "name": "Bone Inlay Over Ebony",
+   "dominant": [
+    "bone-inlay-pale",
+    "ebony-black-deep"
+   ],
+   "secondary": [
+    "ivory-cream-line"
+   ],
+   "accent1": [
+    "charcoal-silver-faint"
+   ],
+   "accent2": [
+    "blood-coral-datum-faint"
+   ],
+   "shadow": "ebony-shadow-charcoal",
+   "forbidden": [
+    "warm yellow dominance",
+    "pastel colors",
+    "neon"
+   ],
+   "light_type": "костяная инкрустация: геометрия светлой кости по чёрному дереву; свет — гладкость кости, не источник"
+  },
+  {
+   "id": "P224_TOOLING_LEATHER",
+   "name": "Tooled Leather Saddle",
+   "dominant": [
+    "tooled-leather-amber-brown",
+    "saddle-stitch-cream-thread"
+   ],
+   "secondary": [
+    "wax-brown-deep"
+   ],
+   "accent1": [
+    "brass-buckle-dim"
+   ],
+   "accent2": [
+    "dye-dark-ridge"
+   ],
+   "shadow": "leather-shadow-chestnut",
+   "forbidden": [
+    "pastel colors",
+    "chrome mirror",
+    "photo color"
+   ],
+   "light_type": "тиснёная кожа: тёплый воск в узоре седла, кремовая нить шва; свет — жир кожи, не лампа"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -6617,9 +6833,27 @@
     "P214_HOLO_FOIL",
     "P215_CYANOTYPE_BLUE"
    ],
-   "note": "9 ТИПОВ раскраски: pastel-chalk / pale-watercolor / graphite-mono / sepia-card / riso-duotone / gray-one-red / uv-blacklight / holo-foil / cyanotype; NEG-замена anti-wash юнитов — слотово в своих слотах. ПРОМОЦИЯ вердиктом T5-22: полный зачёт — первый эксперимент раскраски, ушедший в основной пул целиком.",
+   "note": "9 ТИПОВ раскраски: pastel-chalk / pale-watercolor / graphite-mono / sepia-card / riso-duotone / gray-one-red / uv-blacklight / holo-foil / cyanotype; NEG-замена anti-wash юнитов — слотово в своих слотах. ПРОМОЦИЯ вердиктом T5-22: полный зачёт — первый эксперимент раскраски, ушедший в основной пул целиком.. НЕПРЕРЫВНОСТЬ (вердикт T5-23, 2026-11-15): волна 7 НЕ была использована в T5-23 — автор это заметил («забыл про цветовки которые были в прошлом EXP»); впредь одобренные волны обязательны к ротации наравне с новыми.",
    "status": "main_pool (promoted by verdict T5-22 2026-11-14)",
    "promoted": "2026-11-14, вердикт T5-22: «цветовка хорошо себя показала - забираем в основной пул» — все 9 выходят из trial-статуса в основную ротацию (C066/C067/C071 применяются как обычным палитрам); NEG-замена anti-wash юнитов слотово себя оправдала"
+  },
+  {
+   "wave": "exp_color_wave_8",
+   "born": "2026-11-15, T5-23 «VENATOR» — продолжение EXP-формулы автора («в одном слоте — одно комбо, один кандидат, одна новая пробная палитра»)",
+   "palettes": [
+    "P216_DAMASCENE_GOLD",
+    "P217_URUSHI_LACQUER",
+    "P218_NIELLO_BLACK",
+    "P219_CLOISONNE_EMERALD",
+    "P220_JADE_CARVE",
+    "P221_ABALONE_NACRE",
+    "P222_ETCHED_COPPER",
+    "P223_BONE_INLAY_PALE",
+    "P224_TOOLING_LEATHER"
+   ],
+   "note": "9 РАЗНЫХ семей материалов отделки: damascene-gold / urushi-lacquer / niello / cloisonne / jade-carve / abalone-nacre / etched-copper / bone-inlay / tooling-leather — материал несёт свет (закон света v2), ни одного прибора. ПРОМОЦИЯ вердиктом T5-23: полный зачёт — «материал несёт свет» сработал; ПРАВИЛО НЕПРЕРЫВНОСТИ (урок того же вердикта: «ты забыл про цветовки, которые были в прошлом EXP — мы пробовали раскраски и я их одобрил»): одобренные волны (7 и 8) — обязательная ротация будущих батчей, новая волна НЕ заменяет старые, а живёт рядом.",
+   "status": "main_pool (promoted by verdict T5-23 2026-11-15)",
+   "promoted": "2026-11-15, вердикт T5-23: «Очень понравилась цветовка и то, как ты попытался хорошо проработать девчонок» + EXP «понравилось всё до мельчайшей детали» — все 9 материалов отделки (damascene/urushi/niello/cloisonne/jade/abalone/etched-copper/bone-inlay/tooling-leather) выходят из trial в основную ротацию; материал несёт свет."
   }
  ]
 }

@@ -75,6 +75,12 @@ fact_R+ (коридор A|B|A+B) идёт в квитанцию рядом с la
 20; R/PG-13 слоты поле могут не нести. Парсер слота читает Corridor:
 аналогично Channel:.
 
+v1.11.0 (вердикт T5-23, постмортем рейтинга): claimPhysics — коридор =
+физика в POS, не поле. R+ с Corridor A/B обязан нести в POS токены
+объекта-прикрытия (A), геометрии позы/камеры (B) и класс раскрытия;
+нарушение = WARN «бейдж само-сертифицирован» (В31). applyFrom 24.
+Словари токенов — specs/gates.json claimPhysics.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -654,6 +660,43 @@ def check_corridor(slots, warns, batch_no=-1):
     return fact
 
 
+def check_claimphysics(slots, warns, batch_no=-1):
+    """v1.11.0 claimPhysics (В31; вердикт T5-23 + docs/RATING-POSTMORTEM-T5-23.md).
+    Коридор = физика в POS, не поле. Поле «Corridor:» писал тот же писец, что и
+    POS — самосертификация не считается (T5-23: 18 бейджей R+, триаж рендеров
+    29 sfw / 4 borderline). R+ обязан нести в POS токены: (A) объект-прикрытие,
+    (B) геометрия позы/камеры, плюс класс раскрытия. Нарушение → WARN
+    «бейдж само-сертифицирован» (закон 8.6: WARN-старт, FAIL — по вердикту)."""
+    cfg = GATES.get("claimPhysics")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return 0
+    cover = [t.lower() for t in cfg.get("cover_a", [])]
+    geom = [t.lower() for t in cfg.get("geometry_b", [])]
+    expo = [t.lower() for t in cfg.get("exposure", [])]
+    caught = 0
+    for s in slots:
+        if s.rating not in ("R+", "X") or not s.corridor or s.corridor == "—":
+            continue
+        pos = (s.pos or "").lower()
+        corr = s.corridor.upper()
+        miss = []
+        if "A" in corr and not any(t in pos for t in cover):
+            miss.append("нет объекта-прикрытия (коридор A)")
+        if "B" in corr and not any(t in pos for t in geom):
+            miss.append("нет геометрии позы/камеры (коридор B)")
+        if not any(t in pos for t in expo):
+            miss.append("нет класса раскрытия")
+        if miss:
+            caught += 1
+            warns.append(
+                (s.sid, "claim-physics",
+                 f"R+ бейдж само-сертифицирован ({'; '.join(miss)}) — поле Corridor "
+                 f"не равно физике: вшить токен-объект/геометрию/раскрытие или "
+                 f"писать честный R (В31, постмортем рейтинга T5-23)")
+            )
+    return caught
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -1221,6 +1264,7 @@ def main():
     cp_canon_exempt = check_copypaste(slots, ab_pairs, fails, warns, canon_grams)
     check_channels(slots, channels, fails, warns)
     fact_rplus = check_corridor(slots, warns, batch_no)  # v1.10.0 corridorAudit
+    physics_caught = check_claimphysics(slots, warns, batch_no)  # v1.11.0 В31
     check_header(text, header, slots, fails, warns, oc_names)
     check_header_contract(header, warns, batch_no)
     moves_declared = check_moves_gate(header, warns, batch_no)
@@ -1256,6 +1300,9 @@ def main():
         "fact_label": {  # v1.10.0 corridorAudit: fact ≠ label
             "label_R+": sum(1 for s in slots if s.rating == "R+"),
             "fact_R+": fact_rplus,
+        },
+        "claim_physics": {  # v1.11.0 В31: самосертификация коридора
+            "self_certified_Rplus": physics_caught,
         },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")

@@ -1,5 +1,5 @@
 {
- "version": "1.14.1",
+ "version": "1.15.0",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -8488,6 +8488,321 @@
    "corridor": "A",
    "rating_trust": "PENDING",
    "born": "T5-22 «COLD STOCK» (P33, 2026-11-14)"
+  },
+  {
+   "id": "PL529",
+   "name": "Doll-Case Turn",
+   "sd": "showcase half-turn rising off the display lean, one palm opening toward the viewer, weight flowing from the back heel onto the presented side, drill curls still mid-swing",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "OC_T5-23",
+   "use": "NV",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL530",
+   "name": "Fox-Bow Greet",
+   "sd": "a small honest bow at the doorstep, hands folded low in front of the apron, the head dipping while the tail counterweight lifts",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "OC_T5-23",
+   "use": "NV",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL531",
+   "name": "Tide-Curtsey",
+   "sd": "shallow water curtsey at the tide line, one heel drawn back, skirt pressed flat by the current, gill-plumes flared wide by the wind",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "OC_T5-23",
+   "use": "NV",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL532",
+   "name": "Track-Crouch Read",
+   "sd": "hunting crouch beside a broken twig, one fingertip reading the ground, weight rolled onto the toes, the longbow slung diagonal across the back",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "NV",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL533",
+   "name": "Lure-Off Wind",
+   "sd": "standing into the headwind, spear held vertical as the anchor, the lure ribbon snapping its length along the shaft, chin turned into the gust",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL534",
+   "name": "Blade-Fan Release",
+   "sd": "mid-release of a thrown knife, wrist held in the follow-through, the second blade reversed in the other hand at the hip line",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL535",
+   "name": "Harpoon-Brace",
+   "sd": "harpoon braced against the hip bone, rear foot hooked over the pier edge, the line coiled twice around the forearm",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL536",
+   "name": "Ember-Stride Stalk",
+   "sd": "low stalking stride on the balls of the feet, one palm trailing the ember line that runs her spine crest, weight leaning into the next step",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL537",
+   "name": "Wake-Harpoon Roll",
+   "sd": "hip-roll through shallow water, harpoon run low along the thigh, the wake opening in a fan behind the push",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL538",
+   "name": "Arsenal-Fit Hug",
+   "sd": "trophied breastplate hugged to the chest in both arms, chin resting just over its rim, the fitting mirror holding her half-face",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "NV",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL539",
+   "name": "Shirt-Only Resettle",
+   "sd": "standing after the fight, the only shirt settling onto one shoulder, knuckles still wrapped, hem caught by the belt jaw",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL540",
+   "name": "Empty-Net Carry",
+   "sd": "walking home with the empty net rolled in one fist over the shoulder, the other palm held carefully level before the chest as if carrying a weight that weighs nothing",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "venator",
+   "use": "N",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL541",
+   "name": "Head-Cradle Lean",
+   "sd": "the head cradled in her own elbow-crook at shoulder height, the neck seam one clean line of soft light, the free hand settling a strap honest",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL542",
+   "name": "Fan-Tail Settle",
+   "sd": "kneeling back onto her heels mid-settle, the nine tails fanned and pressed flat under the shin weight, the hem pinned beneath it all",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL543",
+   "name": "Halo-Tilt Slide",
+   "sd": "jacket sliding off one shoulder in a slow tilt, sleeve caught at the elbow fold, the halo ring held steady above the whole event",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL544",
+   "name": "Shadow-Turn Wrap",
+   "sd": "apron wrap caught mid-turn, the corner taken by the elbow bend, the hem arc still traveling, the living shadow finishing the turn a half-beat ahead",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL545",
+   "name": "Wing-Tuck Lean-Back",
+   "sd": "leaning back onto both palms, small white wings folded tight under the shoulder blades weight, the collar opening by the lean itself",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL546",
+   "name": "Cloak-Perch Cinch",
+   "sd": "perched on a wide beam, belt cinched mid-pull against the perch lean, the owl-cloak wings shivering once through the settle",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL547",
+   "name": "Silk-Spin Bridge",
+   "sd": "shirt hem tucked by the raised arm, the fabric bridging taut across the ribs, small chitin legs holding the twist counterweight at the back",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL548",
+   "name": "Ghost-Step Hem-Lift",
+   "sd": "the hem lifting where no hand holds it, the body passing halfway through its own fold, feet already a step into the next room",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL549",
+   "name": "Smoke-Taper Peel",
+   "sd": "glove peeled to mid-grip, the wrist guard raising the hem line where it passes, hair tips thinning into smoke that leans with the pull",
+   "category": "DYNAMIC",
+   "risk": "MEDIUM",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+"
   }
  ],
  "family_counts": {
@@ -9989,6 +10304,35 @@
    "PL499",
    "PL500",
    "PL501"
+  ],
+  "entries": [
+   {
+    "born": "2026-11-15, батч T5-23 «VENATOR»",
+    "law": "PL529–PL549 выданы писцом при сборке T5-23 (21 first-use: ОС 3 (OC_T5-23), мейны 9 (venator), EXP 9 (y_card_build, Y10–Y18)",
+    "cards": [
+     "PL529",
+     "PL530",
+     "PL531",
+     "PL532",
+     "PL533",
+     "PL534",
+     "PL535",
+     "PL536",
+     "PL537",
+     "PL538",
+     "PL539",
+     "PL540",
+     "PL541",
+     "PL542",
+     "PL543",
+     "PL544",
+     "PL545",
+     "PL546",
+     "PL547",
+     "PL548",
+     "PL549"
+    ]
+   }
   ]
  },
  "changelog": [
@@ -10003,7 +10347,9 @@
   "1.13.0 (2026-11-13, T5-21 «THE MIDNIGHT LINE»): +13 first-use карт PL502–PL514 (OC_T5-21 ×3 · X5 saddle-settle поездные ×3 · y_card_build ×3 · midnight_watch/duty ×4); corridor/rating_trust PENDING на новых; X1-реюз PL358/359/361 — вне окна (razbor §4.5).",
   "1.13.2 (2026-11-14): рекаттрибуция рендер-вердику (вердикт был по T5-21, не T5-20 — указание автора): author_picks переписаны (−7 T5-20: PL490/491/494/500/471/472/474; +6 T5-21: PL160/PL262/PL194/PL503/PL505/PL507; PL361 — двойной пик T5-16/T5-21), rating_trust PENDING→HIGH на PL503/PL505/PL507, пики PL160/PL262/PL194 → HIGH.",
   "1.14.0 (2026-11-14, T5-22 «COLD STOCK»): +14 first-use карт PL515–PL528 (OC_T5-22 ×3 · cold_stock склад ×2 · y_card_build ×9 — Y1–Y8 + Y9-продолжение); corridor/rating_trust PENDING на новых; В27-правило учтено — look-back/run/over-shoulder спайнов в батче нет.",
-  "1.14.1 (2026-11-14, вердикт T5-22): author_picks +8 (PL515/516/517/519/256/203/353/127); trust PENDING→HIGH на PL515/516/517/519; PL520–528 (y_card_build) остаются PENDING до REWORK y_cards (camera 1.10.0)."
+  "1.14.1 (2026-11-14, вердикт T5-22): author_picks +8 (PL515/516/517/519/256/203/353/127); trust PENDING→HIGH на PL515/516/517/519; PL520–528 (y_card_build) остаются PENDING до REWORK y_cards (camera 1.10.0).",
+  "1.15.0 (2026-11-15, T5-23 «VENATOR»): +PL529–PL549 (21 first-use: OC 3 + мейны 9 + EXP 9); реюзы вне окна: PL150/PL151 (en-garde/full draw — охотничье ядро), PL56/PL81/PL106/PL111/PL115/PL123/PL124/PL125/PL129/PL145/PL97.",
+  "1.15.0 (2026-11-15, вердикт T5-23): author_picks +14; trust PENDING→HIGH на Y-позах PL541–549 (первый прогон Y10–Y18 — полный зачёт вердиктом)."
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",
@@ -10016,7 +10362,7 @@
   "audit": "2026-11-13 (razbor, приказ автора «сунься туда где у нас позы и разбери»): делёж перечитан по всем 468 картам. Исправлено: enum MEDIUM→MID (19), статус-пометки X1–X4 (вердикты T5-16/17/18/19), R+ движку (erotic_presentation 12+24) прописан потолок: геометрия HIGH = R и ниже, R+ достраивает дрессер. Главное правило разбора: use=V/N — первичный контур, НЕ эксклюзив; полная таблица — docs/POSE-RAZBOR-2026-11-13.md. Поле use остаётся V для X2/X4 как память семьи (архивность несёт use_note)."
  },
  "author_picks": {
-  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP» · 2026-11-13: +6 пиков T5-21 по рендер-вердику (PL160/PL262/PL194/PL503/PL505/PL507), PL361 подтверждён повторно (P27) — X5-пики приоритетны при реюзах вне окна (razbor §4.5) · 2026-11-14: рекаттрибуция — вердикт был по T5-21; ошибочная семёрка T5-20 (PL490/491/494/500/471/472/474) снята с пиков, карты остаются в библиотеке · 2026-11-14: +8 пиков T5-22 по рендер-вердику (PL515/516/517 ОС-тройка «все слоты хорошие» · PL519/PL256/PL203/PL353/PL127 мейны «что зашло по основной теме»); PL203 подтверждён повторно (T5-16-пик, дебют Dove); Y-карты (PL520–528) на пики НЕ идут — вердикт T5-22: «позы не впечатляющие… совсем» (REWORK).",
+  "born": "2026-11-08, вердикт T5-16: «Комбо Cam/Pos/POV/Pose решают всё, как показал слот EXP» · 2026-11-13: +6 пиков T5-21 по рендер-вердику (PL160/PL262/PL194/PL503/PL505/PL507), PL361 подтверждён повторно (P27) — X5-пики приоритетны при реюзах вне окна (razbor §4.5) · 2026-11-14: рекаттрибуция — вердикт был по T5-21; ошибочная семёрка T5-20 (PL490/491/494/500/471/472/474) снята с пиков, карты остаются в библиотеке · 2026-11-14: +8 пиков T5-22 по рендер-вердику (PL515/516/517 ОС-тройка «все слоты хорошие» · PL519/PL256/PL203/PL353/PL127 мейны «что зашло по основной теме»); PL203 подтверждён повторно (T5-16-пик, дебют Dove); Y-карты (PL520–528) на пики НЕ идут — вердикт T5-22: «позы не впечатляющие… совсем» (REWORK). · 2026-11-15: +14 пиков T5-23 (PL115/PL534/PL123/PL536/PL145 — кайф-мейны 5/8/11/15/18; PL541–PL549 — EXP-девятка полного зачёта, PL542 «имба лютая» — дебют Nier, PL543 — дебют Noir).",
   "picks": [
    {
     "pose": "PL358",
@@ -10107,6 +10453,76 @@
     "pose": "PL127",
     "slot": "T5-22 P22 «cart-sidesaddle-dust» (Sidesaddle Bike-Sit, честный R)",
     "quote": "Что зашло по основной теме: …22"
+   },
+   {
+    "pose": "PL115",
+    "slot": "T5-23 P05 «elf-fork-scan» (Tree-Fork Scan, Elf)",
+    "quote": "Что кайф в основной теме: 5 (охуенный фон)"
+   },
+   {
+    "pose": "PL534",
+    "slot": "T5-23 P08 «blade-fan-release» (Blade-Fan Release)",
+    "quote": "Что кайф в основной теме: 8 (клёво, клинки и поза)"
+   },
+   {
+    "pose": "PL123",
+    "slot": "T5-23 P11 «ridge-watch-halberd» (Ridge-Watch Lean)",
+    "quote": "Что кайф в основной теме: 11 (неожиданно, понравился персонаж и такой цвет кожи)"
+   },
+   {
+    "pose": "PL536",
+    "slot": "T5-23 P15 «ember-stride-stalk» (Ember-Stride Stalk)",
+    "quote": "Что кайф в основной теме: 15 (поза, персонаж, всё супер!)"
+   },
+   {
+    "pose": "PL145",
+    "slot": "T5-23 P18 «cloak-pivot-marsh» (Cloak-Pivot)",
+    "quote": "Что кайф в основной теме: 18 (тут поженилось всё: цвет, персонаж, задний фон — класс)"
+   },
+   {
+    "pose": "PL541",
+    "slot": "T5-23 P25 «head-cradle-damascene» (Y10)",
+    "quote": "Что кайф в EXP: понравилось всё до мельчайшей детали"
+   },
+   {
+    "pose": "PL542",
+    "slot": "T5-23 P26 «fan-tail-urushi» (Y11, дебют Nier)",
+    "quote": "Особенно 26 слот, имба лютая"
+   },
+   {
+    "pose": "PL543",
+    "slot": "T5-23 P27 «halo-tilt-niello» (Y12, дебют Noir)",
+    "quote": "Забираем 27 слот, имя - Noir"
+   },
+   {
+    "pose": "PL544",
+    "slot": "T5-23 P28 «shadow-turn-cloisonne» (Y13)",
+    "quote": "Что кайф в EXP: понравилось всё до мельчайшей детали"
+   },
+   {
+    "pose": "PL545",
+    "slot": "T5-23 P29 «wing-tuck-jade» (Y14)",
+    "quote": "Что кайф в EXP: понравилось всё до мельчайшей детали"
+   },
+   {
+    "pose": "PL546",
+    "slot": "T5-23 P30 «cloak-perch-abalone» (Y15)",
+    "quote": "Что кайф в EXP: понравилось всё до мельчайшей детали"
+   },
+   {
+    "pose": "PL547",
+    "slot": "T5-23 P31 «silk-bridge-copper» (Y16)",
+    "quote": "Что кайф в EXP: понравилось всё до мельчайшей детали"
+   },
+   {
+    "pose": "PL548",
+    "slot": "T5-23 P32 «ghost-hem-bone-inlay» (Y17)",
+    "quote": "Что кайф в EXP: понравилось всё до мельчайшей детали"
+   },
+   {
+    "pose": "PL549",
+    "slot": "T5-23 P33 «smoke-taper-tooling» (Y18, честный R)",
+    "quote": "Что кайф в EXP: понравилось всё до мельчайшей детали"
    }
   ]
  },
