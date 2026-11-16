@@ -40,12 +40,12 @@ Batch-Prompt Conveyer Belt
   обработанные аудиты, челлендж-эксперимент «Чистый лист» (+чемоданы)
 - `specs/` — данные-активы (позы ×528 — poses 1.15.0, author_picks 18;
   палитры ×224 — palettes 1.10.0, волны 7+8 в основном пуле с правилом
-  непрерывности; носители ×280; OC-канон ×27 — canon 2.13.0 (Nier+Noir);
-  **Y-множество ×18 — camera.json 1.13.0, Y-first** (карты-комбо
+  непрерывности + волна 9 (P225–P233, trial T5-24); носители ×486; OC-канон ×27 — canon 2.13.0 (Nier+Noir);
+  **Y-множество ×36 — camera.json 1.14.0, Y-first** (карты-комбо
   экспозиция+поза+POV+камера+профайлинг, y_assembly);
   `gates.json` 1.12.0 (yCardGate, claimPhysics+exposure_r, conceptFlag,
   negDressGuards, detailsGate); `raw-plus.json` 2.0.0 (PROSE PLUS);
-  `delivery-stats.json` 0.9.0 (каналы T5-23 кандидатами);
+  `delivery-stats.json` 1.0.0 (каналы T5-23/24 кандидатами, 10 новых ☠ T5-24);
   `ultimate-dice.json`, `furnace-ledger.json`,
   `moves-ledger.json` (реестр ходов: износ/отставка/триггеры), …)
 - `verdicts/` — вербатим-вердикты автора по батчам
@@ -69,7 +69,7 @@ Batch-Prompt Conveyer Belt
 - Формат: **PROSE PLUS** (raw-plus.json 2.0.0: Danbooru-скелет в OPENER +
   NL-ядро заявки строкой «— the X is the claim, Y-made»; без метафор),
   24 слота = 3 OC + 21 мейн + EXP-оверлей
-- **Y-first**: слот с заявкой собирается ОТ Y-карты (camera.json 1.13.0,
+- **Y-first**: слот с заявкой собирается ОТ Y-карты (camera.json 1.14.0,
   y_assembly) — комбо экспозиция+поза+POV+камера+профайлинг; PL-каталог —
   слой поддержки; В31: коридор = физика в POS, не поле; R-спред несёт
   класс раскрытия; В32: ≥2 фишечки-ФОРМЫ на мейн/EXP

@@ -2364,3 +2364,36 @@ negDressGuards/detailsGate стартуют WARN-ом с T5-24 и перевод
 вето-пакеты Nier/Noir (таро/элемент/знак) и хвосты Ruuj/Dove — за автором;
 ретро-WARNы T5-23 (спред-декларация R+×10·R×12 vs факт R+×7·R×12, каст
 12/13, copypaste-пары) — история, не переписывается (урок F2).
+
+---
+
+## Поручения автора 2026-11-17 (батч T5-24 «SEDUCTION»)
+
+- **Заказ** (вербатим): «Собери на завтра батч: Основная тема: SEDUCTION.
+  Темы для ОС: Almost dead, but not / Caught changing / Super Sexy Swimsuit
+  + Drunk on the beach. Для чего использовать EXP: 9 слотов. В каждом слоте:
+  один новый кандидат в ОС (крутой), одна новая Y для R+, одна новая,
+  совершенно экспериментальная палитра».
+- **Исполнено**: batches/T5-24.md — 33 слота (3 ОС-дебюта Noir/Nier/Hana по
+  темам автора · 21 мейн SEDUCTION в трёх актах · 9 EXP). Y-first на всей
+  R+ линии: 19 НОВЫХ карт Y19–Y36 (camera.json 1.13.0 → **1.14.0**;
+  В27-физика в каждом паттерне; Y1–Y18 в окне — не повторены).
+  poses.json 1.15.0 → **1.16.0** (PL550–PL568, OC_T5-24 ×3 + y_card_build
+  ×16). palettes.json 1.10.0 → **1.11.0** — волна 9 «аромат и вкус как
+  материал» (P225–P233: rouge-pomade / absinthe-sugar / rose-champagne /
+  oiled-silk / sugar-pearl-melt / perfume-smoke / bitten-peach / brulee /
+  salt-skin). delivery-stats.json 0.9.0 → **1.0.0** — 10 новых каналов-
+  кандидатов с ☠ и честными счётчиками (still-breath-vigil, wrap-swap-catch,
+  drunk-lean-tide, strap-fall, zipper-half, surf-press, cape-pool,
+  ice-melt-line, wind-give, corset-half-lace). EXP-кандидаты — девять рас,
+  НИ РАЗУ не выходивших EXP-кандидатами: R04/R06/R08/R09/R10/R21/R29/R32/R51
+  (урок В21 соблюдён — новых рас нет).
+- **Гейты**: PASS · FAIL 0 · WARN 2 (channel-quota 10× — режим волны 2,
+  копипаст-базлайн 16 грамм); fact_R+ 18 = label_R+ 18, ложных бейджей 0;
+  Y-first: 19 карт, R+ без карты 0, паттерн не доехал 0, дублей 0.
+  claimPhysics: 18/18 R+ несут токены физики в POS (В31); R-спред 13/13 несёт
+  exposure_r; conceptFlag 0; negDressGuards 0; detailsGate — все мейны/EXP
+  ≥2 фишек-ФОРМ (В32). tools/validate.py — PASS 33/33.
+- **Долги сеанса**: волна 9 — trial до вердикта; 10 каналов — поточечный
+  D14; Y19–Y36 и Y1–Y9 REBUILT — оплата вердиктом T5-24; вето-пакеты
+  Nier/Noir + FAM — за автором; волны 7/8 в окне — непрерывность с T5-25.

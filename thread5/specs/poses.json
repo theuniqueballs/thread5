@@ -1,5 +1,5 @@
 {
- "version": "1.15.0",
+ "version": "1.16.0",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -8803,6 +8803,299 @@
     "CAM04_from_below"
    ],
    "rating_trust": "R/R+"
+  },
+  {
+   "id": "PL550",
+   "name": "Still-Breath Vigil",
+   "sd": "lying back on the stone bier, both hands crossed over the chest holding the funeral sprig, the breath lifting the crossed hands once per beat",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "OC_T5-24",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level",
+    "CAM02_three_quarter"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL551",
+   "name": "Wrap-Swap Catch",
+   "sd": "wrap sliding off one shoulder mid-swap, crooked arm holding the old wrap at the chest, fresh sash caught half-tied",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "OC_T5-24",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level",
+    "CAM02_three_quarter"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL552",
+   "name": "Drunk-Tide Lean",
+   "sd": "drunk lean-back on both palms in the warm sand, one bikini strap slipping off the sunburned shoulder, the last wave sheeting down the ribs",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "OC_T5-24",
+   "use": "V",
+   "preferred_cams": [
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A+B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL553",
+   "name": "Hem-Gather Stretch",
+   "sd": "hem gathered into the crooked arm, skirt weight hanging off the gathered fold, upper body slight low angle",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL554",
+   "name": "Shawl-Drag Cold",
+   "sd": "shawl hauled taut across the chest by both fists, goosebumps honest along the collarbones, eye-level close",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level",
+    "CAM02_three_quarter"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL555",
+   "name": "Slip-Settle Spin",
+   "sd": "silk slip settling after the spin, hem still traveling around the knees, three-quarter from below",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL556",
+   "name": "Towel-Mid-Dry",
+   "sd": "towel caught mid-dry at the shoulder line, wet hair counting drops down the spine, close insert",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL557",
+   "name": "Collar-Mid-Lean",
+   "sd": "collar opening mid-lean against the rail, the fall of the collar held by one finger, slight low angle",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter",
+    "CAM03_low"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL558",
+   "name": "Hood-Wind Pull",
+   "sd": "hoodie half-rolled at the waistband by the wind pull, fabric stretched taut across the chest map, upper body",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL559",
+   "name": "Belt-Half Feed",
+   "sd": "waistband fed halfway with the belt, thumb holding the buckle half-decision, cowboy shot from below",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL560",
+   "name": "Shawl-Slip Spore",
+   "sd": "shawl slipping off both shoulders, straps caught at the elbow folds, eye-level close",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL561",
+   "name": "Glove-Finger Peel",
+   "sd": "glove peeled off finger by finger at the wrist bend, cuff still holding the palm, close insert",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level"
+   ],
+   "rating_trust": "R",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL562",
+   "name": "Strap-Mid-Turn",
+   "sd": "sundress strap slipped off the shoulder at the mid-turn, hand not yet catching it, doorway backlight, three-quarter from below",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM03_low",
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL563",
+   "name": "Zipper-Half Spine",
+   "sd": "dress zipper caught half-down at the spine, palm pressed flat holding the dress front, glance back over the shoulder",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02_three_quarter"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL564",
+   "name": "Surf-Press Ebb",
+   "sd": "surf run-up sheeting the knit into wet clothes flat against the ribs, ebb hauling the hem mid-lift, water-line from below",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM04_from_below"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL565",
+   "name": "Cape-Pool Bow",
+   "sd": "cape clasp undone mid-bow, silk sliding off both shoulders pooling in the elbow folds, eye-level close",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL566",
+   "name": "Ice-Melt Trail",
+   "sd": "ice cube melting a slow line from the collarbone between the ribs, halter pulled aside where the melt passes, slight low angle",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL567",
+   "name": "Wind-Give Button",
+   "sd": "wind dome pressing the shirt flat against her breast shape, top button thread giving up mid-gust, slight low angle",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "B",
+   "first_use": "T5-24"
+  },
+  {
+   "id": "PL568",
+   "name": "Corset-Half Lace",
+   "sd": "corset laced to the last pair of grommets with no knot, ribbon hauled taut through the lacing, palms pressed flat over the laced gap",
+   "category": "DYNAMIC",
+   "risk": "LOW",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01_eye_level"
+   ],
+   "rating_trust": "R/R+",
+   "corridor": "A",
+   "first_use": "T5-24"
   }
  ],
  "family_counts": {
@@ -8863,9 +9156,10 @@
   "OC_T5-21": 3,
   "midnight_watch": 1,
   "midnight_duty": 3,
-  "y_card_build": 12,
+  "y_card_build": 28,
   "OC_T5-22": 3,
-  "cold_stock": 2
+  "cold_stock": 2,
+  "OC_T5-24": 3
  },
  "pair_note": "§33 pose-camera pair law: every PL code has 3-5 preferred camera angles; outside the preferred set is allowed but FLAGGED. PL+CAM must agree — a back-to-camera PL with a front eye-level CAM is a logical impossibility (viewer inside the body), and was the v16 #1 failure (effective cowboy rate 67%). Camera values reference the ONTOLOGY camera axis — CAUTION: the pose file's CAM code table and ONTOLOGY's CAM01-CAM12 axis DISAGREE on 5 codes (see pools.json cam.numbering_conflict); the pose pairs' self-describing suffixes (CAM02_three_quarter) are authoritative.",
  "cam_reference": {
@@ -10349,7 +10643,8 @@
   "1.14.0 (2026-11-14, T5-22 «COLD STOCK»): +14 first-use карт PL515–PL528 (OC_T5-22 ×3 · cold_stock склад ×2 · y_card_build ×9 — Y1–Y8 + Y9-продолжение); corridor/rating_trust PENDING на новых; В27-правило учтено — look-back/run/over-shoulder спайнов в батче нет.",
   "1.14.1 (2026-11-14, вердикт T5-22): author_picks +8 (PL515/516/517/519/256/203/353/127); trust PENDING→HIGH на PL515/516/517/519; PL520–528 (y_card_build) остаются PENDING до REWORK y_cards (camera 1.10.0).",
   "1.15.0 (2026-11-15, T5-23 «VENATOR»): +PL529–PL549 (21 first-use: OC 3 + мейны 9 + EXP 9); реюзы вне окна: PL150/PL151 (en-garde/full draw — охотничье ядро), PL56/PL81/PL106/PL111/PL115/PL123/PL124/PL125/PL129/PL145/PL97.",
-  "1.15.0 (2026-11-15, вердикт T5-23): author_picks +14; trust PENDING→HIGH на Y-позах PL541–549 (первый прогон Y10–Y18 — полный зачёт вердиктом)."
+  "1.15.0 (2026-11-15, вердикт T5-23): author_picks +14; trust PENDING→HIGH на Y-позах PL541–549 (первый прогон Y10–Y18 — полный зачёт вердиктом).",
+  "1.16.0 (2026-11-18, батч T5-24 «SEDUCTION»): PL550–PL568 — 19 поз Y-сборки (OC_T5-24 ×3 + y_card_build ×16) под новые Y-карты Y35–Y37 (ОС) и Y19–Y34 (EXP+мейны); все с В27-физикой и first_use T5-24."
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",

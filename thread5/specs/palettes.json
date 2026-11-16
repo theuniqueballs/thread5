@@ -1,5 +1,5 @@
 {
- "version": "1.10.0",
+ "version": "1.11.0",
  "born": "2026-09-19\n2026-11-08 — T5-17 CITY NEVER SLEEPS: +P162–P170 exp_color_wave_2 (9 разных семей)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -6790,6 +6790,249 @@
     "photo color"
    ],
    "light_type": "тиснёная кожа: тёплый воск в узоре седла, кремовая нить шва; свет — жир кожи, не лампа"
+  },
+  {
+   "id": "P225_ROUGE_POMADE",
+   "name": "Rouge Pomade Cream",
+   "dominant": [
+    "rouge-cream-red",
+    "case-ivory-pale"
+   ],
+   "secondary": [
+    "powder-rose-warm"
+   ],
+   "accent1": [
+    "kiss-glint-wet"
+   ],
+   "accent2": [
+    "lid-shadow-plum"
+   ],
+   "shadow": "pomade-shadow-wine",
+   "forbidden": [
+    "neon",
+    "chrome mirror",
+    "cold-blue"
+   ],
+   "light_type": "помада: один мокрый блик поцелованной плёнки; крем тёплый в тиснении футляра; свет — жир крема, не лампа",
+   "mood": "sensual_makeup_intimate",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P226_ABSINTHE_SUGAR",
+   "name": "Absinthe Sugar Frost",
+   "dominant": [
+    "absinthe-glass-green",
+    "sugar-frost-pale"
+   ],
+   "secondary": [
+    "louche-cloud-milk"
+   ],
+   "accent1": [
+    "wormwood-shadow-olive"
+   ],
+   "accent2": [
+    "crystal-facet-cyan"
+   ],
+   "shadow": "absinthe-shadow-bottle-deep",
+   "forbidden": [
+    "neon",
+    "hot-pink",
+    "muddy brown"
+   ],
+   "light_type": "абсент: луше-облако в мутном стекле; сахарная корочка ловит кромку света; свет — сквозь грань стакана",
+   "mood": "poison_haze_tease",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P227_ROSE_CHAMPAGNE",
+   "name": "Rose Champagne Foam",
+   "dominant": [
+    "champagne-rose-gold",
+    "foam-pearl-pale"
+   ],
+   "secondary": [
+    "berry-bubble-ruby"
+   ],
+   "accent1": [
+    "flute-glass-green-faint"
+   ],
+   "accent2": [
+    "cork-gold-warm"
+   ],
+   "shadow": "champagne-shadow-blush",
+   "forbidden": [
+    "neon",
+    "pure-black",
+    "photo color"
+   ],
+   "light_type": "шампань: жемчужная пена по кромке, пузырь ягодного акцента поднимается столбом; свет — карбон читается иглой",
+   "mood": "celebration_flirt",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P228_OILED_SILK",
+   "name": "Oiled Silk Sheen",
+   "dominant": [
+    "oiled-silk-champagne",
+    "thread-umber-deep"
+   ],
+   "secondary": [
+    "sheen-slide-warm-gold"
+   ],
+   "accent1": [
+    "seam-shadow-olive-faint"
+   ],
+   "accent2": [
+    "skin-glow-honey"
+   ],
+   "shadow": "silk-shadow-bronze",
+   "forbidden": [
+    "pastel colors",
+    "neon",
+    "gray palette"
+   ],
+   "light_type": "промасленный шёлк: блеск скользит по складке волной; нить-умбра держит глубину; свет — скольжение, не источник",
+   "mood": "slow_gloss_hunger",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P229_SUGAR_PEARL_MELT",
+   "name": "Sugar Pearl Melt",
+   "dominant": [
+    "sugar-pearl-white",
+    "melt-glass-clear"
+   ],
+   "secondary": [
+    "syrup-thread-gold"
+   ],
+   "accent1": [
+    "crumb-shadow-oat"
+   ],
+   "accent2": [
+    "breath-steam-pearl"
+   ],
+   "shadow": "melt-shadow-vanilla-warm",
+   "forbidden": [
+    "neon",
+    "saturated green",
+    "black hair shadow"
+   ],
+   "light_type": "тающий сахар: жемчужная корочка лопается кромкой, сироповая нить тянется; свет — хрупкость, одна трещина",
+   "mood": "sweet_surrender",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P230_PERFUME_SMOKE_NIGHT",
+   "name": "Night Perfume Smoke",
+   "dominant": [
+    "perfume-smoke-violet",
+    "night-black-deep"
+   ],
+   "secondary": [
+    "gold-fleck-mist"
+   ],
+   "accent1": [
+    "atomizer-glass-rose"
+   ],
+   "accent2": [
+    "wrist-warm-ember"
+   ],
+   "shadow": "smoke-shadow-ink-violet",
+   "forbidden": [
+    "daylight white",
+    "neon",
+    "pastel colors"
+   ],
+   "light_type": "дым парфюма: виолет-дымка поднимается с запястья столбом, золото пыльцы в ней; свет — след духа в темноте",
+   "mood": "night_veil_lure",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P231_BITTEN_PEACH_JUICE",
+   "name": "Bit-ten Peach Juice",
+   "dominant": [
+    "peach-juice-gold",
+    "stone-blush-rose"
+   ],
+   "secondary": [
+    "skin-warm-peach-cream"
+   ],
+   "accent1": [
+    "bite-pearl-wet"
+   ],
+   "accent2": [
+    "pit-shadow-umber"
+   ],
+   "shadow": "juice-shadow-honey",
+   "forbidden": [
+    "neon",
+    "pure-white",
+    "gray palette"
+   ],
+   "light_type": "персик: сок блестит на месте укуса, косточка-умбра в тени; свет — сладость читается каплей на губе",
+   "mood": "ripe_dare",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P232_BURNT_CREAM_BRULEE",
+   "name": "Burnt Cream Brulee",
+   "dominant": [
+    "burnt-cream-caramel",
+    "ramekin-ivory-warm"
+   ],
+   "secondary": [
+    "crack-glass-amber"
+   ],
+   "accent1": [
+    "spoon-silver-faint"
+   ],
+   "accent2": [
+    "flame-kiss-ember-faint"
+   ],
+   "shadow": "brulee-shadow-toffee",
+   "forbidden": [
+    "neon",
+    "cold-blue",
+    "chrome mirror"
+   ],
+   "light_type": "крем-брюле: янтарная корка трещиной стекла, крем тёплый под ней; свет — карамельный жар, трещина держит блик",
+   "mood": "forbidden_dessert",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
+  },
+  {
+   "id": "P233_SALT_SKIN_SUN",
+   "name": "Salt Skin Sun",
+   "dominant": [
+    "sun-warmed-skin-gold",
+    "salt-crystal-white"
+   ],
+   "secondary": [
+    "sunburn-line-rose"
+   ],
+   "accent1": [
+    "tide-pool-turquoise-faint"
+   ],
+   "accent2": [
+    "shadow-cool-blue-soft"
+   ],
+   "shadow": "salt-shadow-terracotta",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "соль на коже: кристаллы ловят закат иглами, линия загара розовая рамка; свет — жар дня, отдающий тепло после",
+   "mood": "after_sun_drowse",
+   "family": "exp_color_wave_9",
+   "source": "T5-24 «SEDUCTION» заказ автора 2026-11-17: «одна новая, совершенно экспериментальная палитра» в каждом EXP-слоте — волна «аромат и вкус как материал»"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -6854,6 +7097,23 @@
    "note": "9 РАЗНЫХ семей материалов отделки: damascene-gold / urushi-lacquer / niello / cloisonne / jade-carve / abalone-nacre / etched-copper / bone-inlay / tooling-leather — материал несёт свет (закон света v2), ни одного прибора. ПРОМОЦИЯ вердиктом T5-23: полный зачёт — «материал несёт свет» сработал; ПРАВИЛО НЕПРЕРЫВНОСТИ (урок того же вердикта: «ты забыл про цветовки, которые были в прошлом EXP — мы пробовали раскраски и я их одобрил»): одобренные волны (7 и 8) — обязательная ротация будущих батчей, новая волна НЕ заменяет старые, а живёт рядом.",
    "status": "main_pool (promoted by verdict T5-23 2026-11-15)",
    "promoted": "2026-11-15, вердикт T5-23: «Очень понравилась цветовка и то, как ты попытался хорошо проработать девчонок» + EXP «понравилось всё до мельчайшей детали» — все 9 материалов отделки (damascene/urushi/niello/cloisonne/jade/abalone/etched-copper/bone-inlay/tooling-leather) выходят из trial в основную ротацию; материал несёт свет."
+  },
+  {
+   "wave": "exp_color_wave_9",
+   "born": "2026-11-17, T5-24 «SEDUCTION» — заказ автора: «одна новая, совершенно экспериментальная палитра» в каждом из 9 EXP-слотов; волна «аромат и вкус как материал» (помада / абсент / шампань / промасленный шёлк / тающий сахар / дым парфюма / персик-укус / крем-брюле / соль-кожа)",
+   "palettes": [
+    "P225_ROUGE_POMADE",
+    "P226_ABSINTHE_SUGAR",
+    "P227_ROSE_CHAMPAGNE",
+    "P228_OILED_SILK",
+    "P229_SUGAR_PEARL_MELT",
+    "P230_PERFUME_SMOKE_NIGHT",
+    "P231_BITTEN_PEACH_JUICE",
+    "P232_BURNT_CREAM_BRULEE",
+    "P233_SALT_SKIN_SUN"
+   ],
+   "note": "9 СЕМЕЙСТВ «аромат-вкус-кожа»: rouge-pomade / absinthe-sugar / rose-champagne / oiled-silk / sugar-pearl-melt / perfume-smoke / bitten-peach / brulee-crack / salt-skin. Тема SEDUCTION живёт материалом: запах и вкус как свет.",
+   "status": "trial (T5-24, оплата вердиктом T5-24)"
   }
  ]
 }
