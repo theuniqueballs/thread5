@@ -177,7 +177,7 @@ function dataUrl(mime: string, buf: Buffer): string {
 }
 
 /** Вытащить JSON-объект из ответа модели (терпит ```-заборы и мусор вокруг). */
-function extractJson<T>(raw: string | undefined): T | null {
+function extractJson<T>(raw: string | null | undefined): T | null {
   if (!raw) return null;
   const cleaned = raw.replace(/```(?:json)?/giu, '').trim();
   const start = cleaned.indexOf('{');

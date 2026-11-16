@@ -1,696 +1,911 @@
 {
- "id": "camera",
- "name": "CAMERA-FIRST — камера как половина работы",
- "version": "1.12.0",
- "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
- "law": "КАМЕРА-ПЕРВАЯ (вердикт 2026-11-03) + ревизия 2026-11-05 (вердикт автора чатом): «всё чё он говорит тру инфа, камера - одно из важных частей композиции. если посмотришь официальный гайд по тсубаки 2, там так и написано» → §13.0 LAWS: камерный кластер (D+A+F) — первые 10–20 токенов POS (Cole-B9 принят, кадровая строка у face-блока отменена); дисциплина дистанций D1–D8 «ближе/дальше» (ковбой — признанный доминант рендера, кап снят); dutch A09 ≤10%/батч — закон («закон!»); Combo:/Package: в теле слота с T5-13 («yes»); A/B insert→payoff 1–2 пары/батч («наверное да», пробно).",
- "distance_ladder": {
-  "D1": {
-   "name": "макро-лицо",
-   "pos": "extreme close-up on the face",
-   "frame": "глаза/губы/ресницы; тело вне кадра",
-   "poses": [
-    "micropose_expression"
-   ],
-   "visibility": [
-    "eyes",
-    "mouth",
-    "lashes",
-    "cheeks"
-   ]
+  "id": "camera",
+  "name": "CAMERA-FIRST — камера как половина работы",
+  "version": "1.13.0",
+  "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
+  "law": "КАМЕРА-ПЕРВАЯ (вердикт 2026-11-03) + ревизия 2026-11-05 (вердикт автора чатом): «всё чё он говорит тру инфа, камера - одно из важных частей композиции. если посмотришь официальный гайд по тсубаки 2, там так и написано» → §13.0 LAWS: камерный кластер (D+A+F) — первые 10–20 токенов POS (Cole-B9 принят, кадровая строка у face-блока отменена); дисциплина дистанций D1–D8 «ближе/дальше» (ковбой — признанный доминант рендера, кап снят); dutch A09 ≤10%/батч — закон («закон!»); Combo:/Package: в теле слота с T5-13 («yes»); A/B insert→payoff 1–2 пары/батч («наверное да», пробно).",
+  "distance_ladder": {
+    "D1": {
+      "name": "макро-лицо",
+      "pos": "extreme close-up on the face",
+      "frame": "глаза/губы/ресницы; тело вне кадра",
+      "poses": [
+        "micropose_expression"
+      ],
+      "visibility": [
+        "eyes",
+        "mouth",
+        "lashes",
+        "cheeks"
+      ]
+    },
+    "D2": {
+      "name": "портрет / личико",
+      "pos": "portrait, head and shoulders, face filling the frame",
+      "frame": "лицо + плечи; околопортрет",
+      "poses": [
+        "micropose_expression",
+        "base"
+      ],
+      "visibility": [
+        "face",
+        "neck",
+        "collarbones",
+        "shoulders"
+      ]
+    },
+    "D3": {
+      "name": "полу-корпус",
+      "pos": "upper body shot, waist up",
+      "frame": "грудь/руки/шея",
+      "poses": [
+        "base",
+        "erotic_presentation",
+        "micropose_expression"
+      ],
+      "visibility": [
+        "breast shape/state",
+        "arms/hands",
+        "collarbones",
+        "neck"
+      ]
+    },
+    "D4": {
+      "name": "ковбой",
+      "pos": "cowboy shot, mid-thigh up",
+      "frame": "классика заявки: грудь+бёдра",
+      "poses": [
+        "erotic_presentation",
+        "ecchi_classic",
+        "base",
+        "dynamic_v2"
+      ],
+      "visibility": [
+        "breast",
+        "hips",
+        "arms",
+        "upper thighs",
+        "hands"
+      ]
+    },
+    "D5": {
+      "name": "в полный рост",
+      "pos": "full body shot, head to feet",
+      "frame": "вся фигура",
+      "poses": [
+        "base",
+        "erotic_presentation",
+        "ecchi_classic",
+        "dynamic_v2",
+        "env_interaction",
+        "threshold_limen"
+      ],
+      "visibility": [
+        "все зоны по углу A"
+      ]
+    },
+    "D6": {
+      "name": "широкий",
+      "pos": "wide shot, figure prominent, environment speaking",
+      "frame": "фигура + мир",
+      "poses": [
+        "env_interaction",
+        "dynamic_v2",
+        "threshold_limen",
+        "performance_mirror"
+      ],
+      "visibility": [
+        "силуэтные зоны; детали тела не читаются — не писать"
+      ]
+    },
+    "D7": {
+      "name": "фигура-точка",
+      "pos": "extreme wide shot, the girl small against the scale of the world",
+      "frame": "масштаб",
+      "poses": [
+        "env_interaction",
+        "threshold_limen"
+      ],
+      "visibility": [
+        "силуэт; только поза-смысл"
+      ]
+    },
+    "D8": {
+      "name": "макро-деталь",
+      "pos": "extreme close-up on a single detail (hand, collarbone, hem, lips)",
+      "frame": "одна деталь — мир в ней",
+      "poses": [
+        "micropose_expression"
+      ],
+      "visibility": [
+        "одна зона-деталь"
+      ]
+    }
   },
-  "D2": {
-   "name": "портрет / личико",
-   "pos": "portrait, head and shoulders, face filling the frame",
-   "frame": "лицо + плечи; околопортрет",
-   "poses": [
-    "micropose_expression",
-    "base"
-   ],
-   "visibility": [
-    "face",
-    "neck",
-    "collarbones",
-    "shoulders"
-   ]
+  "angles": {
+    "A01": {
+      "name": "глаз-уровень фронт",
+      "pos": "viewed from the front at eye level",
+      "note": "равный разговор, честный контакт глаз"
+    },
+    "A02": {
+      "name": "три четверти",
+      "pos": "viewed from a three-quarter angle",
+      "note": "дефолт-объём; глубина без драмы"
+    },
+    "A03": {
+      "name": "снизу",
+      "pos": "viewed from slightly below",
+      "note": "рост и власть; бёдра приближаются"
+    },
+    "A04": {
+      "name": "сверху",
+      "pos": "viewed from above",
+      "note": "хрупкость/забота; грудь разворачивается к камере"
+    },
+    "A05": {
+      "name": "топ-даун",
+      "pos": "viewed straight from above, top-down",
+      "note": "лежачие позы; звезда тела на полу"
+    },
+    "A06": {
+      "name": "профиль",
+      "pos": "viewed in strict profile",
+      "note": "линия — вся заявка в одной кривой"
+    },
+    "A07": {
+      "name": "со спины",
+      "pos": "viewed from behind",
+      "note": "спина/попа/затылок; лицо только намёком"
+    },
+    "A08": {
+      "name": "из-за плеча",
+      "pos": "viewed over her shoulder",
+      "note": "соучастие; взгляд в камеру через плечо"
+    },
+    "A09": {
+      "name": "голландский наклон",
+      "pos": "dutch tilt, frame canted a few degrees",
+      "note": "потеря равновесия; использовать ≤1/батч"
+    },
+    "A10": {
+      "name": "сквозь элемент",
+      "pos": "viewed through a foreground element (doorway, curtain, rail)",
+      "note": "подглядывание-рамка; элемент среды, не прибор"
+    },
+    "A11": {
+      "name": "зеркало",
+      "pos": "mirror reflection shot",
+      "note": "второй ракурс бесплатно; visibility ×2"
+    },
+    "A12": {
+      "name": "аэрал",
+      "pos": "aerial view from high above",
+      "note": "карта сцены; D6/D7 спутник"
+    },
+    "A13": {
+      "name": "уровень воды",
+      "pos": "water-level camera",
+      "note": "пляж/бассейн; полкадра — стихия"
+    },
+    "A14": {
+      "name": "ворота бедра",
+      "pos": "hip-height gate framing, camera at the hip line",
+      "note": "низкий проницательный регистр"
+    },
+    "A15": {
+      "name": "нижняя линия взгляда",
+      "pos": "low sightline between the knees from below",
+      "note": "R+/X только, риск высок, ≤1/батч"
+    },
+    "A16": {
+      "name": "рыбий глаз сиденья",
+      "pos": "fisheye distortion from a near seat",
+      "note": "искажение-событие, ≤1/батч"
+    }
   },
-  "D3": {
-   "name": "полу-корпус",
-   "pos": "upper body shot, waist up",
-   "frame": "грудь/руки/шея",
-   "poses": [
-    "base",
-    "erotic_presentation",
-    "micropose_expression"
-   ],
-   "visibility": [
-    "breast shape/state",
-    "arms/hands",
-    "collarbones",
-    "neck"
-   ]
+  "pairing": {
+    "rule": "PL+CAM обязаны согласиться (§33 pair law остаётся): поза со спины не снимается фронтально; лежачая не снимается как стоячая. Вне предпочтений позы — FLAG в шапке слота с причиной.",
+    "reverse": "старый порядок «поза → камера» сохранён только у OC/NICHE; в VOLT — камера первая.",
+    "synergy_examples": [
+      "D4+A03 — ковбой снизу: бёдра и ноги растут, грудь на фоне света — самый мясной VOLT-кадр",
+      "D2+A01 — портрет в глаз: лицо как сцена; NATURAL пишет шею/ключицы, не тело",
+      "D5+A07 — в полный рост со спины: попа/лопатки/хвост кина — задняя заявка",
+      "D3+A08 — полукорпус из-за плеча: взгляд в камеру, грудь краем — соучастие",
+      "D1+A04 — макро-лицо сверху: ресницы, полу-улыбка, разбитый свет"
+    ]
   },
-  "D4": {
-   "name": "ковбой",
-   "pos": "cowboy shot, mid-thigh up",
-   "frame": "классика заявки: грудь+бёдра",
-   "poses": [
-    "erotic_presentation",
-    "ecchi_classic",
-    "base",
-    "dynamic_v2"
-   ],
-   "visibility": [
-    "breast",
-    "hips",
-    "arms",
-    "upper thighs",
-    "hands"
-   ]
+  "batch_caps": {
+    "distance_min_distinct": 5,
+    "face_class_D1_D2": "3–5 на батч (приказ: «хотелось бы и на личико... околопортретное»)",
+    "single_distance_max_pct": 40,
+    "A09_A15_A16_max_each": 1,
+    "note": "капы в headerContract не добавлены — WARN-счёт идёт в квитанции вручную до машинизации (гейт registry прогонит CAM-коды при записи Spine).",
+    "cowboy_cap_D4": "СНЯТ вердиктом 2026-11-05 («большинство всё равно будет ковбой, надо просто понять ближе дальше»): ковбой — доминант рендера; дисциплина = D объявлен явно в каждом слоте + лестница D1–D8 ближних/дальних планов + F-фрейминг.",
+    "dutch_A09_law": "A09 dutch ≤10% слотов батча (≤3/33) — ЗАКОН (вердикт 2026-11-05 «закон!»; Manual B6).",
+    "slot_fields": "Combo:/Package: в теле слота под Channel:/ARCH, над THESIS (вердикт 2026-11-05 «yes»); разметка Combo ID — Manual D12, метрики вердикта — D14.",
+    "ab_pair_quota": "A/B insert→payoff (D8-04): 1–2 пары на батч, объявление в шапке «(P##, P##)» (вердикт «наверное да», пробный статус)."
   },
-  "D5": {
-   "name": "в полный рост",
-   "pos": "full body shot, head to feet",
-   "frame": "вся фигура",
-   "poses": [
-    "base",
-    "erotic_presentation",
-    "ecchi_classic",
-    "dynamic_v2",
-    "env_interaction",
-    "threshold_limen"
-   ],
-   "visibility": [
-    "все зоны по углу A"
-   ]
+  "pos_language": {
+    "yes": "viewed from the front at eye level / viewed from above / portrait, head and shoulders / cowboy shot / extreme close-up on the face",
+    "no": "camera angle from below, camera pans, low-angle camera (bans.json: 'camera X' рисует камеру-объект)",
+    "line": "камерный кластер — ПЕРВАЯ смысловая строка POS, 3–7 тегов D+A+F (вердикт 2026-11-05: B9 принят; прежний «хвост у face-блока» T5-11/12 отменён)."
   },
-  "D6": {
-   "name": "широкий",
-   "pos": "wide shot, figure prominent, environment speaking",
-   "frame": "фигура + мир",
-   "poses": [
-    "env_interaction",
-    "dynamic_v2",
-    "threshold_limen",
-    "performance_mirror"
-   ],
-   "visibility": [
-    "силуэтные зоны; детали тела не читаются — не писать"
-   ]
+  "volt_share": "VOLT: камера+поза = половина работы слота. Если заявка R+ не держится без через-ткани — сначала пересобрать D×A×PL, потом трогать канал.",
+  "supersedes_note": "позы.json cam_reference остаётся словарём углов; camera.json — рабочий стол сборки и капов. CAM-коды в Spine пишутся как раньше (CAM##), дистанция — новой литерой D#. | 1.13.0 (2026-11-16, поручение автора): Y-first — y_assembly, 5-компонентные карты (экспозиция/поза/POV/камера/профайлинг), окно Y-карт.",
+  "framing_ladder": {
+    "F1": {
+      "name": "центр-формал",
+      "pos": "centered composition, symmetrical framing",
+      "note": "икона/EXQUISITE/обложка; стерильно при формальной позе; ≤3/батч"
+    },
+    "F2": {
+      "name": "трети",
+      "pos": "rule of thirds composition",
+      "note": "рабочая лошадка; воздух со стороны взгляда"
+    },
+    "F3": {
+      "name": "срез тела",
+      "pos": "cropped composition, frame cuts at the hips / at the forehead",
+      "note": "R+ если срез по claim-зоне — мозг достраивает; genital NEG обязателен"
+    },
+    "F4": {
+      "name": "негатив-простор",
+      "pos": "lots of negative space, small figure",
+      "note": "одиночество; NICHE-друг"
+    },
+    "F5": {
+      "name": "кадр-в-кадре",
+      "pos": "frame within frame (doorway, window, legs arch)",
+      "note": "сильнейший анти-стерильный фрейм"
+    },
+    "F6": {
+      "name": "воздух на взгляд",
+      "pos": "lead room, looking room",
+      "note": "обязателен при gaze off-frame, иначе «смотрит в стену»"
+    },
+    "F7": {
+      "name": "грязный кадр",
+      "pos": "out of focus foreground, blurry railing in front",
+      "note": "свидетель ближе нас; риск: модель замылит всё"
+    },
+    "F8": {
+      "name": "зеркальный сплит",
+      "pos": "mirror reflection showing a second angle",
+      "note": "R9-класс; риск двойной анатомии"
+    }
   },
-  "D7": {
-   "name": "фигура-точка",
-   "pos": "extreme wide shot, the girl small against the scale of the world",
-   "frame": "масштаб",
-   "poses": [
-    "env_interaction",
-    "threshold_limen"
-   ],
-   "visibility": [
-    "силуэт; только поза-смысл"
-   ]
+  "grok_presets": {
+    "source": "Composition Manual Stage B5 (Cole/Grok, 2026-11-04); коды S/L/R — словарь Коула, теги-ядро переносимо",
+    "stable": [
+      {
+        "code": "S1",
+        "dxa": "D4×A01",
+        "tags_core": "cowboy shot, eye-level",
+        "why": "дефолт; квота"
+      },
+      {
+        "code": "S2",
+        "dxa": "D3×A07",
+        "tags_core": "upper body, three-quarter view",
+        "why": "диалог, жест"
+      },
+      {
+        "code": "S3",
+        "dxa": "D5×A01",
+        "tags_core": "full body, eye-level, wide stance",
+        "why": "NICHE силуэт"
+      },
+      {
+        "code": "S4",
+        "dxa": "D3×A08",
+        "tags_core": "upper body, looking back, from behind",
+        "why": "nape / back-look"
+      },
+      {
+        "code": "S5",
+        "dxa": "D4×A02",
+        "tags_core": "cowboy shot, from below",
+        "why": "мягкий R"
+      },
+      {
+        "code": "S6",
+        "dxa": "D2×A01",
+        "tags_core": "close-up, face focus",
+        "why": "эмоция OC"
+      },
+      {
+        "code": "S7",
+        "dxa": "D5×A04",
+        "tags_core": "full body, from above",
+        "why": "уязвимость + env"
+      },
+      {
+        "code": "S8",
+        "dxa": "D4×A06",
+        "tags_core": "cowboy shot, profile",
+        "why": "graphic line"
+      }
+    ],
+    "live": [
+      {
+        "code": "L1",
+        "dxa": "D4×A03",
+        "tags_core": "cowboy shot, worm's-eye view, from the ground",
+        "why": "власть"
+      },
+      {
+        "code": "L2",
+        "dxa": "D3×A03",
+        "tags_core": "upper body, extreme low angle",
+        "why": "монумент лица/груди силуэтом"
+      },
+      {
+        "code": "L3",
+        "dxa": "D5×A11",
+        "tags_core": "full body, through doorway",
+        "why": "проём-мир (поезд)"
+      },
+      {
+        "code": "L4",
+        "dxa": "D3×A11",
+        "tags_core": "upper body, through window, rain on glass",
+        "why": "свидетель"
+      },
+      {
+        "code": "L5",
+        "dxa": "D5×A09",
+        "tags_core": "full body, dutch angle",
+        "why": "frenzy / glitch"
+      },
+      {
+        "code": "L6",
+        "dxa": "D1×A05",
+        "tags_core": "extreme close-up, top-down on hands/chest",
+        "why": "insert claim"
+      },
+      {
+        "code": "L7",
+        "dxa": "D6×A05",
+        "tags_core": "wide shot, bird's-eye, small figure",
+        "why": "карта маршрута"
+      },
+      {
+        "code": "L8",
+        "dxa": "D4×A12",
+        "tags_core": "cowboy shot, ground level, side",
+        "why": "бег / пыль"
+      }
+    ],
+    "rcam": [
+      {
+        "code": "R1",
+        "dxa": "D3×A03 + F5",
+        "tags_core": "from below between the knees, looking up the torso",
+        "why": "коридор A1 · H-10"
+      },
+      {
+        "code": "R2",
+        "dxa": "D2×A08",
+        "tags_core": "close-up nape, from behind",
+        "why": "интим без лица"
+      },
+      {
+        "code": "R3",
+        "dxa": "D4×A10",
+        "tags_core": "pov looking up from the floor",
+        "why": "participant"
+      },
+      {
+        "code": "R4",
+        "dxa": "D3×A11 + F7",
+        "tags_core": "through door crack, dirty frame",
+        "why": "keyhole"
+      },
+      {
+        "code": "R5",
+        "dxa": "D5×A05",
+        "tags_core": "top-down, full body, on bed/floor",
+        "why": "карта позы"
+      },
+      {
+        "code": "R6",
+        "dxa": "D7×A01",
+        "tags_core": "insert, focus on waistband fingers",
+        "why": "process claim"
+      },
+      {
+        "code": "R7",
+        "dxa": "D3×A04",
+        "tags_core": "from above, leaning over the camera",
+        "why": "она над зрителем"
+      }
+    ],
+    "law": "R-пресеты = R+ камерой без claim-токенов (H-10): коридор A1 + R1, POV-пол R3, замочная скважина R4; A1-поза + ковбой-глаз-уровень = убить семя (D11)."
   },
-  "D8": {
-   "name": "макро-деталь",
-   "pos": "extreme close-up on a single detail (hand, collarbone, hem, lips)",
-   "frame": "одна деталь — мир в ней",
-   "poses": [
-    "micropose_expression"
-   ],
-   "visibility": [
-    "одна зона-деталь"
-   ]
-  }
- },
- "angles": {
-  "A01": {
-   "name": "глаз-уровень фронт",
-   "pos": "viewed from the front at eye level",
-   "note": "равный разговор, честный контакт глаз"
+  "genre_camera_map": [
+    {
+      "genre": "NICHE",
+      "priority": "D5/D6 + A11/A05 + F4/F5",
+      "avoid": "D1/D2 (мир не прочитается)"
+    },
+    {
+      "genre": "VOLT",
+      "priority": "D3/D4 + A02/A03/A08 + F3/F5",
+      "avoid": "только A01 center"
+    },
+    {
+      "genre": "EXQUISITE",
+      "priority": "любой, но один «иконический» F1 допустим",
+      "avoid": "dutch без причины"
+    },
+    {
+      "genre": "OC",
+      "priority": "D2/D3 + канон глаз читаем; A08 осторожно",
+      "avoid": "worm's-eye на дебюте глаз"
+    },
+    {
+      "genre": "EXP camera-test",
+      "priority": "R1–R7 пресеты",
+      "avoid": "повторы S1"
+    }
+  ],
+  "camera_tier_effects": [
+    {
+      "tier": "PG-13",
+      "boosters": "D5, A01/A06, F2, soft light angle",
+      "killers": "extreme crotch corridor"
+    },
+    {
+      "tier": "R",
+      "boosters": "A02, A08, A11, F5, D4",
+      "killers": "пустой wide без жеста"
+    },
+    {
+      "tier": "R+",
+      "boosters": "R1–R7 пресеты, F3 crop claim, A03, A10",
+      "killers": "тот же R-кадр без контракта «запретной точки»"
+    },
+    {
+      "tier": "X",
+      "boosters": "—",
+      "killers": "не цель T5"
+    }
+  ],
+  "camera_top_errors": [
+    "Не указал D → cowboy",
+    "Камера в хвосте → игнор",
+    "A03 на каждом VOLT → батч-тошнота + анатомия",
+    "A08 на OC с уникальными глазами → канон не доехал",
+    "D6 без контраста → серая каша",
+    "Through-door, за дверью пусто → рама без картины",
+    "POV без дисциплины → selfie-рука или broken torso",
+    "Dutch на tea-scene → «зачем»",
+    "Все F1 center → каталог",
+    "Crop claim (F3) без NEG → модель дорисует то, что обрезали, как X"
+  ],
+  "anti_echo_law": "соседние слоты не делят одну клетку D×A и не держат одну семью поз + один вес + один gaze (анти-эхо, Manual A10/B6).",
+  "manual_map_note": "словарь Коула ≠ местный: Cole-D1…D7 ≈ местные D1…D7 (у нас есть ещё D8-деталь); Cole-A01…A12 — своя нумерация углов, местные CAM-коды A01–A16 остаются рабочими (пример: Cole-A03 extreme-low ≈ местные A03-снизу/A15-нижняя-линия-взгляда; Cole-A08 back ≈ местный A07-со-спины). Ось F (фрейминг) — НОВАЯ, принята как F1–F8. Конфликт порядка: Cole-B9 требует камеру в первых 10–20 токенах POS, местный pos_language держит кадровую строку последней у face-блока (рендер-проверено T5-11/12) — не менять без вердикта автора (CONSILIUM 2026-11-05, вопрос №6).",
+  "exp_combos": {
+    "X1": {
+      "name": "НАД-ЗРИТЕЛЕМ (over-viewer)",
+      "born": "2026-11-07, T5-16 — приказ автора: «новое экспериментальное комбо для VOLT (Комбо Cam/Pos/POV/Pose)… не всё по разному»",
+      "cam": "D3×A03 (полу-корпус снизу, CAM03_low)",
+      "pos": "вес вперёд, нависание над точкой зрителя (опора выше камеры: ладони/колени/перила/щупальца)",
+      "pov": "зритель-участник снизу — lens = глаза лежащего/сидящего на полу; второй человек НЕ рисуется (solo); POV-дисциплина: без selfie-рук, лицо в кадре (урок P28), теги «viewed from below», токен «camera» — 0",
+      "pose": "first-use карты семьи over-viewer PL358–PL366, по одной на слот",
+      "status": "⚗ эксперимент: 9 EXP-слотов T5-16, вердикт решает судьбу комбо",
+      "neg_guard": "second figure, two girls, extra person"
+    },
+    "X2": {
+      "name": "В-СЛЕД (in-trail)",
+      "born": "2026-11-08, T5-17 — приказ автора: новое экспериментальное комбо для VOLT (Cam/Pos/POV/Pose), наследник одобренного X1; палитры при этом ВСЕ разные («а то в прошлый раз всё было сиреневое»)",
+      "cam": "D4×A08 (cowboy-shot из-за плеча, over-shoulder) — зритель на шаг позади",
+      "pos": "шаг вперёд с оборотом головы назад через плечо — вес на передней стопе, плечо к зрителю, лицо развёрнуто в камеру поверх плеча",
+      "pov": "зритель-следом — lens = глаза идущего на шаг позади; второй человек НЕ рисуется (solo); POV-дисциплина X1: без selfie-рук, лицо В кадре через оборот, теги «viewed over her shoulder», токен «camera» — 0",
+      "pose": "first-use карты семьи in-trail look-back PL391–PL399, по одной на слот; лицо читается через поворот (тест-риск сознательный, урок P28)",
+      "status": "вердикт T5-17 (2026-11-09): «вышло слабовато» — В РОТАЦИЮ НЕ ПРИНЯТА; семья PL391–PL399 остаётся архивом эксперимента; диагноз: полуповорот 3/4 теряет лицо, шаг статичен, участие зрителя нулевое — против четырёх столпов живого X1 (участие / вес / глаз-в-линзу / лицо целиком); X3 заказан приказом «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»",
+      "neg_guard": "second figure, two girls, extra person, face hidden, back of head only"
+    },
+    "X3": {
+      "name": "В-ШЁПОТ (whisper-close)",
+      "born": "2026-11-09, T5-18 — приказ автора: «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»; вердикт T5-17 по X2 «вышло слабовато» — X3 спроектирован по четырём столпам принятого X1: POV-участие зрителя, вес тела вперёд, глаз-в-линзу, лицо целиком в кадре",
+      "cam": "D2×A02 (ближний план, три четверти) — губы у верхнего края кадра, глаз-линия целиком в кадре, лицо никогда не в полуповороте (урок X2)",
+      "pos": "она входит вплотную СБОКУ: колено на опоре рядом со зрителем (сиденье/подлокотник/стол/рама/подоконник/стремянка/стойка/парта/плетень), вес на опорной ладони или колене — корпус пересекает линзу; руки — ТОЛЬКО на твёрдой опоре, никогда у лица (урок рук)",
+      "pov": "lens = глаза сидящего зрителя; второй человек НЕ рисуется (solo) — присутствие зрителя несут опоры у края кадра; POV-дисциплина: без selfie-рук, лицо В кадре целиком, глаза прямо в линзу, токен «camera» — 0; шёпот-контент = голос кандидата (тест характера встроен в камеру: цундере шепчет отречение, собор — благословение, дрянь — грязь)",
+      "pose": "first-use карты семьи whisper-lean PL424–PL432, по одной на слот; опора у каждой своя; K-FF миды K240–K248",
+      "status": "клетка РАСФОРМИРОВАНА (вердикт автора 2026-11-10 по фаворитам T5-18: ядро 6/9 принято с первого прогона) — карты PL424–PL432 и приёмы живут в обычной ротации как NV; EXP-константа клетки снята; преемник — X4 (T5-19)",
+      "neg_guard": "second figure, two girls, extra person, hand over the lens, face hidden, profile view only"
+    },
+    "X4": {
+      "name": "В-КЛЕТКУ (cage-close)",
+      "born": "2026-11-10, T5-19 — приказ автора: «новое экспериментальное комбо для VOLT (Комбо Cam/Pos/POV/Pose), в этот раз с жёстким упором в R++»",
+      "cam": "D2×A02 (ближний план, три четверти) — лицо целиком в верхних двух третях кадра, глаз-линия в кадре; каймы кадра читаются её предплечьями-стойками",
+      "pos": "она наваливается СВЕРХУ-ВПЕРЕДИ: ладони упираются в опору ЗА спиной зрителя (изголовье/стеллаж/спинка/стекло/косяк/бортик/шкаф/прилавок/кладовая), предплечья-стойки по обе стороны кадра, вес вперёд на руки, грудь — самый близкий к линзе элемент после лица; ткань честно съезжает и натягивается под весом; руки НИКОГДА не тянутся к линзе",
+      "pov": "lens = глаза зрителя, прижатого спиной к опоре; второй человек НЕ рисуется (solo) — присутствие зрителя несут её предплечья-стойки у краёв кадра; POV-дисциплина X1/X3: без selfie-рук, лицо В кадре целиком, глаза прямо в линзу, токен «camera» — 0; R++-контент = вес и ткань: съехавшая лямка, натянутый шов, честный отпечаток — заявка-вещь стоит первой (В16/M07)",
+      "pose": "first-use карты семьи cage-lean PL457–PL465, по одной на слот; K-FF миды K273–K281",
+      "status": "❌ НЕ принято в ротацию (вердикт T5-19, 2026-11-11: «Комбо поз/камер - не особо, разве что в 25, потому что хотя бы имеет намёк на что-то около-эротическое»; причина: зрелище-клетка съела заявку — тот же механизм, что В16). В архив эксперимента; в EXP-ротацию не ставить без прямого приказа. P25 — единственный зачёт, референс для следующего комбо: навал + намёк на около-эротику.",
+      "neg_guard": "second figure, two girls, extra person, arms toward lens, selfie arm, face hidden, profile view only"
+    },
+    "X5": {
+      "name": "В-СЕДЛО (saddle-settle)",
+      "born": "2026-11-13, T5-20 — приказ автора: «EXP: Комбо из кандидатов в ОС + Супер R+ позы/камера/поз и др., тут прям дай волю воображению - это важно». Спроектировано по вердикту T5-19: X4 НЕ принят («комбо поз/камер - не особо»), единственный зачёт P25 — референс «навал + намёк на около-эротику»; урок В24: рейтинг был, токенов таблицы тиров не было ни в одном из 9 слотов — просел дрессер, не позы",
+      "diagnosis": "X4 держал «вес + ткань», но ткань была PG-фактурой (швы/ворс/тень) — рендерер не рисует заявку из фактуры. X5 делает навал P25 буквальным (вес оседает В зрителя) и вешает супер R+ на КОСНОЕ: зажатая ткань + съехавшая лямка + честный вес — токеном таблицы тиров, не фактурой",
+      "cam": "D3×A03 (полу-корпус снизу) — lens = глаза сидящего зрителя; лицо целиком в верхней трети кадра, глаз-в-линзу; её колени уходят за нижние углы кадра — сиденье читается весом, а не рисуется",
+      "pos": "она оседает ВЕРХОМ на колени сидящего зрителя лицом к линзе — вес сквозь бёдра уходит вниз в незримое сиденье (косной контакт там, где X4 был воздух над опорой); ткань зажата между бёдер и утаена вверх / лямка съезжает под весом; руки — на СВОИХ коленях, подлокотниках или бёдрах, НИКОГДА к линзе; спина держит равновесие сама",
+      "pov": "зритель-сиденье: lens = глаза того, на кого осели; второй человек НЕ рисуется (solo) — присутствие несут бёдра за нижними углами кадра и зажатая ткань; POV-дисциплина X1/X3/X4: без selfie-рук, лицо в кадре целиком, глаза прямо в линзу, токен «camera» — 0",
+      "pose": "first-use карты семьи saddle-settle PL469–PL477, по одной на слот (9 разных сидений); K-FF миды K285–K293",
+      "channel_law": "КАНАЛ-ЗАКОН (В24, новое): каждый слот X5 несёт токен таблицы тиров (LAWS §3) из канала дрессера с ротацией pantyline → bumps → on_skin → pantyline…; канал объявлен в шапке слота; фактура (ворс/соль/статика) — вторым слоем ПОВЕРХ токена, никогда вместо",
+      "status": "⚗ эксперимент: 9 EXP-слотов T5-20, вердикт решает судьбу комбо",
+      "neg_guard": "second figure, two girls, extra person, arms toward lens, selfie arm, face hidden, profile view only, side view"
+    }
   },
-  "A02": {
-   "name": "три четверти",
-   "pos": "viewed from a three-quarter angle",
-   "note": "дефолт-объём; глубина без драмы"
+  "y_cards": {
+    "born": "2026-11-13, применён аплоад автора «T5-YODAYO-RATING-REPAIR-MERGED» (Cole/Grok §2.4)",
+    "law": "Y-карты — ПАТТЕРНЫ сборки высокотирного слота (копировать паттерн, не эссе): экспозиция × поза × POV × положение камеры × профайлинг. Отличие от клеток X: X — константы комбо-тестов (⚗, вердикт решает), Y — рабочие шаблоны мейнов/VOLT/ОС. Exposure-классы: COVER | PROCESS | LINGERIE | CLOTHED-TIGHT | SHEER; SHEER сам по себе слаб на площадке. Коридор обязателен: без A/B слот собирается как честный R. (1.9.0: Y9 — продолжение серии по приказу автора «Y1-Y8, продолжение»; процесс-паттерн, честный R-совместим — без тир-токена заявка читается процессом.) (1.11.0: Y10–Y18 — продолжение серии по повторному приказу автора; физические якоря В27 вшиты в паттерн после провала Y1–Y9 на T5-22.) (1.12.0, вердикт T5-23: Y1–Y9 REBUILT по В27, Y10–Y18 HIGH, Y-комбо легальны в мейнах и ОС-темах.) (1.13.0, поручение автора 2026-11-16 «Y-позы вместо поз и положений камеры»): Y-СБОРКА (Y-first) — слот собирается ОТ КАРТЫ, см. y_assembly.",
+    "cards": [
+      {
+        "id": "Y1",
+        "pattern": "shirt hem stopped mid-lift under crossed forearms + the lifted hem's weight hanging off both elbows + upper body + slight low angle",
+        "corridor": "A+B",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "crossed forearms (коридор A)",
+            "read": "подол пойман на середине подъёма — процесс не завершён и не отменён"
+          },
+          "pose": "shirt hem stopped mid-lift under crossed forearms + the lifted hem's weight hanging off both elbows",
+          "pov": "зритель стоит чуть ниже линии глаз — видит, что вес подъёма честно висит на локтях",
+          "camera": "upper body + slight low angle",
+          "profiling": "VOLT/EXQUISITE R+ (A+B); универсальный opener процесса; не для полностью одетых NICHE"
+        }
+      },
+      {
+        "id": "Y2",
+        "pattern": "both palms flat as cover at the chest + the hair's spill caught between collarbone and wrist + upper body + slight low angle",
+        "corridor": "A",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "COVER",
+            "cover_object": "both palms flat at the chest (коридор A — прикрытие и есть заявка)",
+            "read": "ладони прижаты плоско — прикрытая грудь читается формой прикрытия"
+          },
+          "pose": "both palms flat as cover at the chest + the hair's spill caught between collarbone and wrist",
+          "pov": "слегка снизу, upper body — ладони и прядь в одном плане, лицо не съедено",
+          "camera": "upper body + slight low angle",
+          "profiling": "VOLT R+ (A); handbra-семейство (live-канал); честное R, если убрать класс раскрытия"
+        }
+      },
+      {
+        "id": "Y3",
+        "pattern": "knees past the bench's edge into the low camera + gaze down through her own arms + the hem's straight line framing the torso from below",
+        "corridor": "B",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "— (геометрия несёт заявка; коридор B)",
+            "read": "камера ниже скамьи: линия подола рамит торс снизу, колени прошли кромку"
+          },
+          "pose": "knees past the bench's edge into the low camera + gaze down through her own arms + the hem's straight line framing the torso",
+          "pov": "зритель сидит у пола перед скамьёй — взгляд идёт снизу вдоль подола",
+          "camera": "low angle from the floor + upper body in hem-frame",
+          "profiling": "VOLT R+ (B); сцены с лавкой/скамьёй/перилами; NICHE-совместимо при невозможном мире"
+        }
+      },
+      {
+        "id": "Y4",
+        "pattern": "towel caught mid-slide + both fists hauling it back flat against the chest + the wet hem's drag still pulling down",
+        "corridor": "A",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "COVER",
+            "cover_object": "towel hauled flat against the chest (коридор A)",
+            "read": "полотенце поймано на середине соскальзывания — тяга вверх против падения"
+          },
+          "pose": "towel caught mid-slide + both fists hauling it back flat against the chest + the wet hem's drag still pulling down",
+          "pov": "фронтально-чуть-снизу: борьба рук и веса видна целиком",
+          "camera": "upper body + eye-level/slight low",
+          "profiling": "VOLT/EXQUISITE R+ (A); банно-мокрые темы; wet-канал живёт в состоянии ткани, не в наготе"
+        }
+      },
+      {
+        "id": "Y5",
+        "pattern": "straddle-settle over the saddle's pommel + the hem hauled taut across both thighs by the knee spread + three-quarter from below",
+        "corridor": "B",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "— (ткань натянута телом; коридор B)",
+            "read": "подол натянут в тугую мостину разведёнными коленями"
+          },
+          "pose": "straddle-settle over the saddle's pommel + the hem hauled taut across both thighs by the knee spread",
+          "pov": "три четверти снизу — посадка читается вместе с натягом ткани",
+          "camera": "three-quarter from below + cowboy shot",
+          "profiling": "VOLT R+ (B); седла/перила/сиденья; посадка = скелет позы"
+        }
+      },
+      {
+        "id": "Y6",
+        "pattern": "waistband half-rolled under both thumbs + the roll's tension pinning the fabric low on the hips + cowboy shot from below",
+        "corridor": "B",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "— (коридор B; процесс качает заявку)",
+            "read": "пояс свернут наполовину большими пальцами — натяг фиксирует ткань низко на бёдрах"
+          },
+          "pose": "waistband half-rolled under both thumbs + the roll's tension pinning the fabric low on the hips",
+          "pov": "ковбой-кадр снизу: процесс свёртки виден в руках",
+          "camera": "cowboy shot from below",
+          "profiling": "VOLT R+ (B); нижняя заявка (waistband-семейство); не для топлесс"
+        }
+      },
+      {
+        "id": "Y7",
+        "pattern": "shoulder braced on the open door's frame + one hand re-hooking the strap at the shoulder + three-quarter low",
+        "corridor": "B",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "door frame as lean (опора, не прикрытие; коридор B)",
+            "read": "лямка ловится в момент пере-застёгивания — плечо открыто на пол-такта"
+          },
+          "pose": "shoulder braced on the open door's frame + one hand re-hooking the strap at the shoulder",
+          "pov": "три четверти ниже глаз — рама двери держит вертикаль, плечо в свету",
+          "camera": "three-quarter low + cowboy shot",
+          "profiling": "VOLT R+ (B); дверные проёмы/рамки/арки; опора несёт вес позы (В27/В30)"
+        }
+      },
+      {
+        "id": "Y8",
+        "pattern": "close on the hands' cover grip + the fabric gathering between the fingers + eye level",
+        "corridor": "A",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "COVER",
+            "cover_object": "the hands' cover grip (коридор A — крупный план прикрытия)",
+            "read": "ткань собирается между пальцами — прикрытие видно фактурой хвата"
+          },
+          "pose": "close on the hands' cover grip + the fabric gathering between the fingers",
+          "pov": "глаз-уровень, крупный план рук и ткани — тело за кадром читается хватом",
+          "camera": "close-up (hands) + eye level",
+          "profiling": "VOLT R+ (A); insert-кадры; не ронять лицо: второй кадр батча с лицом"
+        }
+      },
+      {
+        "id": "Y9",
+        "pattern": "strap slipped off the shoulder's slope + the collarbone taking the strap's old line + eye-level close",
+        "corridor": "A",
+        "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
+        "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "slipped strap itself (коридор A — съехавшая лямка и есть объект)",
+            "read": "лямка сошла со склона плеча — ключица приняла её прежнюю линию"
+          },
+          "pose": "strap slipped off the shoulder's slope + the collarbone taking the strap's old line",
+          "pov": "глаз-уровень, близко: линия ключицы читается как след лямки",
+          "camera": "eye-level close + upper body",
+          "profiling": "VOLT/OC-интро R+ (A); тихие регистры; лицо не съедать (FACE CLEAR)"
+        }
+      },
+      {
+        "id": "Y10",
+        "pattern": "weapon-weight strap torque + cover by the crooked arm + upper body + slight low angle",
+        "corridor": "A",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "COVER",
+            "cover_object": "crooked arm (коридор A; вес оружия крутит лямку)",
+            "read": "лямка скручена весом оружия — изгиб руки закрывает грудь"
+          },
+          "pose": "weapon-weight strap torque + cover by the crooked arm",
+          "pov": "слегка снизу, upper body — крутка лямки и прикрытие в одном плане",
+          "camera": "upper body + slight low angle",
+          "profiling": "VOLT R+ (A); оружейные темы (В30: оружие несёт вес); HIGH (T5-23)"
+        }
+      },
+      {
+        "id": "Y11",
+        "pattern": "kneel-back settle + hem pinned under shin weight + tails fan frames the torso",
+        "corridor": "B",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "— (коридор B; вес голеней прижимает подол)",
+            "read": "подол прижат честно под вес голеней при обратном оседании на пятки"
+          },
+          "pose": "kneel-back settle + hem pinned under shin weight + tails fan frames the torso",
+          "pov": "низкая камера спереди: оседание и прижатый подол читаются снизу",
+          "camera": "slight low angle + upper body (веер-рама)",
+          "profiling": "VOLT/EXQUISITE R+ (B); кины с веером/хвостами/широкой формой; HIGH (T5-23, Nier-дебют)"
+        }
+      },
+      {
+        "id": "Y12",
+        "pattern": "jacket sliding off one shoulder + sleeve caught at the elbow fold + eye-level close",
+        "corridor": "A",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "jacket caught at the elbow fold (коридор A)",
+            "read": "жакет сползает с одного плеча — рукав пойман локтевым сгибом"
+          },
+          "pose": "jacket sliding off one shoulder + sleeve caught at the elbow fold",
+          "pov": "глаз-уровень близко: сползание видно по изгибу рукава",
+          "camera": "eye-level close + upper body",
+          "profiling": "VOLT/OC-интро R+ (A); верхняя одежда; HIGH (T5-23, Noir-дебют)"
+        }
+      },
+      {
+        "id": "Y13",
+        "pattern": "apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling",
+        "corridor": "B",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "— (коридор B; угол фартука ловится локтем)",
+            "read": "обёртка фартука на середине поворота — угол пойман локтем, подол в дуге"
+          },
+          "pose": "apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling",
+          "pov": "слегка сбоку-снизу: поворот и дуга подола в одном такте",
+          "camera": "three-quarter low + cowboy shot",
+          "profiling": "VOLT R+ (B); бытовые регистры с процессом; HIGH (T5-23)"
+        }
+      },
+      {
+        "id": "Y14",
+        "pattern": "lean back on both palms + collar opens by the lean + fabric bridges taut across the ribs",
+        "corridor": "A+B",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "COVER",
+            "cover_object": "both palms as lean+cover (коридор A)",
+            "read": "отворот открывается наклоном назад — ткань мостится туго по рёбрам"
+          },
+          "pose": "lean back on both palms + collar opens by the lean + fabric bridges taut across the ribs",
+          "pov": "чуть сбоку ниже глаз: наклон открывает линию отворота зрителю",
+          "camera": "upper body + slight low angle",
+          "profiling": "VOLT/EXQUISITE R+ (A+B); сиденья/кровати/настилы; HIGH (T5-23)"
+        }
+      },
+      {
+        "id": "Y15",
+        "pattern": "belt cinch mid-pull against the perch's lean + weight honest on the seat edge + from below",
+        "corridor": "B",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "— (коридор B; затяжка пояса против наклона шеста)",
+            "read": "пояс затягивается на середине тяги — вес честно на кромке сиденья"
+          },
+          "pose": "belt cinch mid-pull against the perch's lean + weight honest on the seat edge",
+          "pov": "снизу: затяжка пояса и посадка на кромке читаются от пола",
+          "camera": "from below + cowboy shot",
+          "profiling": "VOLT R+ (B); насесты/пруты/тумбы; HIGH (T5-23)"
+        }
+      },
+      {
+        "id": "Y16",
+        "pattern": "shirt hem tucked by the raised arm + fabric bridge across the ribs holds the line + upper body",
+        "corridor": "A",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "COVER",
+            "cover_object": "raised arm tucking the hem (коридор A)",
+            "read": "подол заправлен поднятой рукой — ткань мостом держит линию рёбер"
+          },
+          "pose": "shirt hem tucked by the raised arm + fabric bridge across the ribs holds the line",
+          "pov": "upper body, слегка снизу: подъём руки и мост ткани в одном плане",
+          "camera": "upper body + slight low angle",
+          "profiling": "VOLT R+ (A); shirt-only/рубашечные темы; HIGH (T5-23)"
+        }
+      },
+      {
+        "id": "Y17",
+        "pattern": "hem lifted where no hand holds it + lower body passing through its own fold + eye-level",
+        "corridor": "B",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "— (коридор B; подол поднят без руки)",
+            "read": "подол поднят самим движением — низ тела проходит сквозь собственную складку"
+          },
+          "pose": "hem lifted where no hand holds it + lower body passing through its own fold",
+          "pov": "глаз-уровень: поднимающийся подол без руки — честный процесс",
+          "camera": "eye-level + full/lower body",
+          "profiling": "VOLT R+ (B); шаг/поворот/ветер; HIGH (T5-23)"
+        }
+      },
+      {
+        "id": "Y18",
+        "pattern": "glove peel mid-grip + wrist-guard raising the hem line + close insert at eye level",
+        "corridor": "A",
+        "trust": "HIGH (вердикт T5-23, 2026-11-15)",
+        "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "wrist-guard raises the hem (коридор A)",
+            "read": "перчатка снимается на середине хвата — напульсник тянет линию подола"
+          },
+          "pose": "glove peel mid-grip + wrist-guard raising the hem line",
+          "pov": "глаз-уровень, близко-вставка: снятие перчатки и тяга подола в одном кадре",
+          "camera": "close insert + eye level",
+          "profiling": "VOLT R+ (A); перчатки/хват/реквизит; HIGH (T5-23)"
+        }
+      }
+    ],
+    "avoid_as_fake_high_tier": [
+      "sheer + eye-level cowboy + smile",
+      "lingerie name + formal sit",
+      "rating word with no geometry"
+    ],
+    "verdict_receipt": {
+      "at": "2026-11-14",
+      "verdict": "T5-22 EXP — «позы не впечатляющие (я знаю что ты юзал комбо Y, но тут они не получились. совсем. нужно очень сильно реинфорснуть и передумать этот момент»",
+      "ruling": "ПРОВАЛ: все 9 Y-сборок не зачтены. y_cards → режим REWORK: до пересборки Y-карты в EXP не выходят; trust паттернов снимается. «Реинфорснуть» = паттерн переписывается с физическими якорями (опора/вес/направление тканевого события — урок В27), не повтором строк; «передумать» = пересобрать набор паттернов (KEEP/KILL) и показать автору на вердикт. Кандидаты механизма провала: паттерны собирались перечислением слоёв без физики ткани; insert/gap-формулировки тянут рамки (В29); R+ заявка в EXP легла на print-канал (В26-эскалация P25)."
+    },
+    "verdict_receipt_t523": {
+      "at": "2026-11-15",
+      "verdict": "T5-23 EXP — «мне 9 слотов EXP понравились сильно больше, чем весь остальной батч. Без рофлов… комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая»",
+      "ruling": "ПОЛНЫЙ ЗАЧЁТ Y10–Y18: физика в паттерне (вес/тяга/зацеп) рендерится и читается. Y10–Y18 → HIGH. Y1–Y9 пересобраны той же дисциплиной (В27) — REBUILT, выход с T5-24 на вердикт. МЕЖДУ ПРОЧИМ: по прямому приказу автора («обязательно нужно составить множество Y комбинаций, потому что это просто охуенно и именно то, чего иногда не хватает нашим картинкам») Y-комбо легализованы НЕ только для EXP: мейны и ОС-темы могут собираться по Y-картам наравне с D-картами."
+    },
+    "y_assembly": {
+      "born": "2026-11-16, поручение автора (чат): «Вместо поз и положений камеры будут использоваться Y позы — они уже есть, это комбо из экспозиции + позы + пов + положение камеры + профайлинг»; база — вердикт T5-23 («Y-комбо легализованы для мейнов и ОС-тем», «это просто охуенно и именно то, чего иногда не хватает нашим картинкам»)",
+      "law": "Y-FIRST: слот с заявкой собирается ОТ Y-КАРТЫ, а не «поза из poses.json + камера из лестницы D/A отдельно». Карта = пять компонентов разом: (1) экспозиция (класс + объект-прикрытие), (2) поза (физика В27: вес/тяга/зацеп), (3) POV (чей взгляд и откуда), (4) положение камеры (кадр+угол → камерный кластер B9, первые 10–20 токенов POS), (5) профайлинг (жанры/тир/регистр — куда карта стреляет). PL-каталог poses.json остаётся: реестр поз (спайн-код, окно, author_picks) и слой поддержки для слотов без заявки (PG-13/NICHE-выдох), где физика подъёма не нужна. Собранный по карте слот регистрирует позу в poses.json (группа y_card_build) — окно поз и окно Y-карт считаются отдельно.",
+      "order": "порядок Y-сборки: (0) тир и коридор заявки из истории SOL → (1) класс экспозиции (из решения Дрессера: что прикрыто/чем — COVER|PROCESS|LINGERIE|CLOTHED-TIGHT|SHEER) → (2) Y-карта под класс+коридор из множества Y1–Y18 → (3) поза карты — скелет, тема слота даёт предмет-опору (В30) → (4) POV+камера карты — камерный кластер B9 → (5) профайлинг — сверка жанра/регистра → (6) паттерн карты копируется в POS целиком (копипаст-юнит), токены паттерна проверяет yCardGate.",
+      "window": "окно ротации (LAWS §7) следит и за Y-картами: карты последних 3 сданных батчей не повторяются (квитанция станции окна, tools/window.py); неизбежный повтор — ⚗ + объявление в чате.",
+      "anti_fake_high_tier": [
+        "sheer + eye-level cowboy + smile",
+        "lingerie name + formal sit",
+        "rating word with no geometry"
+      ],
+      "pl_catalog_note": "poses.json не умирает: спайн-код PL остаётся в шапке слота; Y-сборка регистрирует новую позу в группе y_card_build (прецедент PL541–549, poses 1.15.0)."
+    }
   },
-  "A03": {
-   "name": "снизу",
-   "pos": "viewed from slightly below",
-   "note": "рост и власть; бёдра приближаются"
-  },
-  "A04": {
-   "name": "сверху",
-   "pos": "viewed from above",
-   "note": "хрупкость/забота; грудь разворачивается к камере"
-  },
-  "A05": {
-   "name": "топ-даун",
-   "pos": "viewed straight from above, top-down",
-   "note": "лежачие позы; звезда тела на полу"
-  },
-  "A06": {
-   "name": "профиль",
-   "pos": "viewed in strict profile",
-   "note": "линия — вся заявка в одной кривой"
-  },
-  "A07": {
-   "name": "со спины",
-   "pos": "viewed from behind",
-   "note": "спина/попа/затылок; лицо только намёком"
-  },
-  "A08": {
-   "name": "из-за плеча",
-   "pos": "viewed over her shoulder",
-   "note": "соучастие; взгляд в камеру через плечо"
-  },
-  "A09": {
-   "name": "голландский наклон",
-   "pos": "dutch tilt, frame canted a few degrees",
-   "note": "потеря равновесия; использовать ≤1/батч"
-  },
-  "A10": {
-   "name": "сквозь элемент",
-   "pos": "viewed through a foreground element (doorway, curtain, rail)",
-   "note": "подглядывание-рамка; элемент среды, не прибор"
-  },
-  "A11": {
-   "name": "зеркало",
-   "pos": "mirror reflection shot",
-   "note": "второй ракурс бесплатно; visibility ×2"
-  },
-  "A12": {
-   "name": "аэрал",
-   "pos": "aerial view from high above",
-   "note": "карта сцены; D6/D7 спутник"
-  },
-  "A13": {
-   "name": "уровень воды",
-   "pos": "water-level camera",
-   "note": "пляж/бассейн; полкадра — стихия"
-  },
-  "A14": {
-   "name": "ворота бедра",
-   "pos": "hip-height gate framing, camera at the hip line",
-   "note": "низкий проницательный регистр"
-  },
-  "A15": {
-   "name": "нижняя линия взгляда",
-   "pos": "low sightline between the knees from below",
-   "note": "R+/X только, риск высок, ≤1/батч"
-  },
-  "A16": {
-   "name": "рыбий глаз сиденья",
-   "pos": "fisheye distortion from a near seat",
-   "note": "искажение-событие, ≤1/батч"
-  }
- },
- "pairing": {
-  "rule": "PL+CAM обязаны согласиться (§33 pair law остаётся): поза со спины не снимается фронтально; лежачая не снимается как стоячая. Вне предпочтений позы — FLAG в шапке слота с причиной.",
-  "reverse": "старый порядок «поза → камера» сохранён только у OC/NICHE; в VOLT — камера первая.",
-  "synergy_examples": [
-   "D4+A03 — ковбой снизу: бёдра и ноги растут, грудь на фоне света — самый мясной VOLT-кадр",
-   "D2+A01 — портрет в глаз: лицо как сцена; NATURAL пишет шею/ключицы, не тело",
-   "D5+A07 — в полный рост со спины: попа/лопатки/хвост кина — задняя заявка",
-   "D3+A08 — полукорпус из-за плеча: взгляд в камеру, грудь краем — соучастие",
-   "D1+A04 — макро-лицо сверху: ресницы, полу-улыбка, разбитый свет"
+  "changelog": [
+    {
+      "version": "1.13.0",
+      "date": "2026-11-16",
+      "what": "Y-first: каждая карта Y1–Y18 разложена на пять компонентов (экспозиция, поза, POV, камера, профайлинг); добавлен протокол y_assembly (сборка слота от карты); окно Y-карт в квитанции станции; yCardGate в гейтах (WARN с T5-24). Поручение автора «Y-позы вместо поз и положений камеры»; база — вердикт T5-23 (Y-комбо легальны в мейнах/ОС, «имба лютая»)."
+    },
+    "1.9.0 (2026-11-14, T5-22): +Y9 «strap losing its post + collarbone focus + eye-level close insert» (A, MID) — девятое комбо EXP-ростера по приказу автора («9 новых комбо (Y1-Y8, продолжение)»); первый прогон всех девяти Y-карт по слоту на батч.",
+    "1.10.0 (2026-11-14, вердикт T5-22): Y-СБОРКА провалена вердиктом («позы не впечатляющие… совсем»); y_cards Y1–Y9 → REWORK (trust снят, в EXP не выходят до пересборки с физическими якорями В27); пересмотр набора паттернов KEEP/KILL — на вердикт автора.",
+    "1.11.0 (2026-11-15, T5-23 «VENATOR»): +Y10–Y18 (девять новых карт по повторному приказу «Y1-Y8, продолжение»; каждая несёт В27-физику: вес/тяга/зацеп — урок REWORK Y1–Y9; trust untested, вердикт T5-23 решает)",
+    "1.12.0 (2026-11-15, вердикт T5-23): Y10–Y18 — полный зачёт («имба лютая») → HIGH; Y1–Y9 пересобраны с В27-физикой (вес/тяга/зацеп) по приказу «составить множество Y комбинаций» → REBUILT, выход с T5-24; Y-комбо легализованы для мейнов и ОС-тем."
   ]
- },
- "batch_caps": {
-  "distance_min_distinct": 5,
-  "face_class_D1_D2": "3–5 на батч (приказ: «хотелось бы и на личико... околопортретное»)",
-  "single_distance_max_pct": 40,
-  "A09_A15_A16_max_each": 1,
-  "note": "капы в headerContract не добавлены — WARN-счёт идёт в квитанции вручную до машинизации (гейт registry прогонит CAM-коды при записи Spine).",
-  "cowboy_cap_D4": "СНЯТ вердиктом 2026-11-05 («большинство всё равно будет ковбой, надо просто понять ближе дальше»): ковбой — доминант рендера; дисциплина = D объявлен явно в каждом слоте + лестница D1–D8 ближних/дальних планов + F-фрейминг.",
-  "dutch_A09_law": "A09 dutch ≤10% слотов батча (≤3/33) — ЗАКОН (вердикт 2026-11-05 «закон!»; Manual B6).",
-  "slot_fields": "Combo:/Package: в теле слота под Channel:/ARCH, над THESIS (вердикт 2026-11-05 «yes»); разметка Combo ID — Manual D12, метрики вердикта — D14.",
-  "ab_pair_quota": "A/B insert→payoff (D8-04): 1–2 пары на батч, объявление в шапке «(P##, P##)» (вердикт «наверное да», пробный статус)."
- },
- "pos_language": {
-  "yes": "viewed from the front at eye level / viewed from above / portrait, head and shoulders / cowboy shot / extreme close-up on the face",
-  "no": "camera angle from below, camera pans, low-angle camera (bans.json: 'camera X' рисует камеру-объект)",
-  "line": "камерный кластер — ПЕРВАЯ смысловая строка POS, 3–7 тегов D+A+F (вердикт 2026-11-05: B9 принят; прежний «хвост у face-блока» T5-11/12 отменён)."
- },
- "volt_share": "VOLT: камера+поза = половина работы слота. Если заявка R+ не держится без через-ткани — сначала пересобрать D×A×PL, потом трогать канал.",
- "supersedes_note": "позы.json cam_reference остаётся словарём углов; camera.json — рабочий стол сборки и капов. CAM-коды в Spine пишутся как раньше (CAM##), дистанция — новой литерой D#.",
- "framing_ladder": {
-  "F1": {
-   "name": "центр-формал",
-   "pos": "centered composition, symmetrical framing",
-   "note": "икона/EXQUISITE/обложка; стерильно при формальной позе; ≤3/батч"
-  },
-  "F2": {
-   "name": "трети",
-   "pos": "rule of thirds composition",
-   "note": "рабочая лошадка; воздух со стороны взгляда"
-  },
-  "F3": {
-   "name": "срез тела",
-   "pos": "cropped composition, frame cuts at the hips / at the forehead",
-   "note": "R+ если срез по claim-зоне — мозг достраивает; genital NEG обязателен"
-  },
-  "F4": {
-   "name": "негатив-простор",
-   "pos": "lots of negative space, small figure",
-   "note": "одиночество; NICHE-друг"
-  },
-  "F5": {
-   "name": "кадр-в-кадре",
-   "pos": "frame within frame (doorway, window, legs arch)",
-   "note": "сильнейший анти-стерильный фрейм"
-  },
-  "F6": {
-   "name": "воздух на взгляд",
-   "pos": "lead room, looking room",
-   "note": "обязателен при gaze off-frame, иначе «смотрит в стену»"
-  },
-  "F7": {
-   "name": "грязный кадр",
-   "pos": "out of focus foreground, blurry railing in front",
-   "note": "свидетель ближе нас; риск: модель замылит всё"
-  },
-  "F8": {
-   "name": "зеркальный сплит",
-   "pos": "mirror reflection showing a second angle",
-   "note": "R9-класс; риск двойной анатомии"
-  }
- },
- "grok_presets": {
-  "source": "Composition Manual Stage B5 (Cole/Grok, 2026-11-04); коды S/L/R — словарь Коула, теги-ядро переносимо",
-  "stable": [
-   {
-    "code": "S1",
-    "dxa": "D4×A01",
-    "tags_core": "cowboy shot, eye-level",
-    "why": "дефолт; квота"
-   },
-   {
-    "code": "S2",
-    "dxa": "D3×A07",
-    "tags_core": "upper body, three-quarter view",
-    "why": "диалог, жест"
-   },
-   {
-    "code": "S3",
-    "dxa": "D5×A01",
-    "tags_core": "full body, eye-level, wide stance",
-    "why": "NICHE силуэт"
-   },
-   {
-    "code": "S4",
-    "dxa": "D3×A08",
-    "tags_core": "upper body, looking back, from behind",
-    "why": "nape / back-look"
-   },
-   {
-    "code": "S5",
-    "dxa": "D4×A02",
-    "tags_core": "cowboy shot, from below",
-    "why": "мягкий R"
-   },
-   {
-    "code": "S6",
-    "dxa": "D2×A01",
-    "tags_core": "close-up, face focus",
-    "why": "эмоция OC"
-   },
-   {
-    "code": "S7",
-    "dxa": "D5×A04",
-    "tags_core": "full body, from above",
-    "why": "уязвимость + env"
-   },
-   {
-    "code": "S8",
-    "dxa": "D4×A06",
-    "tags_core": "cowboy shot, profile",
-    "why": "graphic line"
-   }
-  ],
-  "live": [
-   {
-    "code": "L1",
-    "dxa": "D4×A03",
-    "tags_core": "cowboy shot, worm's-eye view, from the ground",
-    "why": "власть"
-   },
-   {
-    "code": "L2",
-    "dxa": "D3×A03",
-    "tags_core": "upper body, extreme low angle",
-    "why": "монумент лица/груди силуэтом"
-   },
-   {
-    "code": "L3",
-    "dxa": "D5×A11",
-    "tags_core": "full body, through doorway",
-    "why": "проём-мир (поезд)"
-   },
-   {
-    "code": "L4",
-    "dxa": "D3×A11",
-    "tags_core": "upper body, through window, rain on glass",
-    "why": "свидетель"
-   },
-   {
-    "code": "L5",
-    "dxa": "D5×A09",
-    "tags_core": "full body, dutch angle",
-    "why": "frenzy / glitch"
-   },
-   {
-    "code": "L6",
-    "dxa": "D1×A05",
-    "tags_core": "extreme close-up, top-down on hands/chest",
-    "why": "insert claim"
-   },
-   {
-    "code": "L7",
-    "dxa": "D6×A05",
-    "tags_core": "wide shot, bird's-eye, small figure",
-    "why": "карта маршрута"
-   },
-   {
-    "code": "L8",
-    "dxa": "D4×A12",
-    "tags_core": "cowboy shot, ground level, side",
-    "why": "бег / пыль"
-   }
-  ],
-  "rcam": [
-   {
-    "code": "R1",
-    "dxa": "D3×A03 + F5",
-    "tags_core": "from below between the knees, looking up the torso",
-    "why": "коридор A1 · H-10"
-   },
-   {
-    "code": "R2",
-    "dxa": "D2×A08",
-    "tags_core": "close-up nape, from behind",
-    "why": "интим без лица"
-   },
-   {
-    "code": "R3",
-    "dxa": "D4×A10",
-    "tags_core": "pov looking up from the floor",
-    "why": "participant"
-   },
-   {
-    "code": "R4",
-    "dxa": "D3×A11 + F7",
-    "tags_core": "through door crack, dirty frame",
-    "why": "keyhole"
-   },
-   {
-    "code": "R5",
-    "dxa": "D5×A05",
-    "tags_core": "top-down, full body, on bed/floor",
-    "why": "карта позы"
-   },
-   {
-    "code": "R6",
-    "dxa": "D7×A01",
-    "tags_core": "insert, focus on waistband fingers",
-    "why": "process claim"
-   },
-   {
-    "code": "R7",
-    "dxa": "D3×A04",
-    "tags_core": "from above, leaning over the camera",
-    "why": "она над зрителем"
-   }
-  ],
-  "law": "R-пресеты = R+ камерой без claim-токенов (H-10): коридор A1 + R1, POV-пол R3, замочная скважина R4; A1-поза + ковбой-глаз-уровень = убить семя (D11)."
- },
- "genre_camera_map": [
-  {
-   "genre": "NICHE",
-   "priority": "D5/D6 + A11/A05 + F4/F5",
-   "avoid": "D1/D2 (мир не прочитается)"
-  },
-  {
-   "genre": "VOLT",
-   "priority": "D3/D4 + A02/A03/A08 + F3/F5",
-   "avoid": "только A01 center"
-  },
-  {
-   "genre": "EXQUISITE",
-   "priority": "любой, но один «иконический» F1 допустим",
-   "avoid": "dutch без причины"
-  },
-  {
-   "genre": "OC",
-   "priority": "D2/D3 + канон глаз читаем; A08 осторожно",
-   "avoid": "worm's-eye на дебюте глаз"
-  },
-  {
-   "genre": "EXP camera-test",
-   "priority": "R1–R7 пресеты",
-   "avoid": "повторы S1"
-  }
- ],
- "camera_tier_effects": [
-  {
-   "tier": "PG-13",
-   "boosters": "D5, A01/A06, F2, soft light angle",
-   "killers": "extreme crotch corridor"
-  },
-  {
-   "tier": "R",
-   "boosters": "A02, A08, A11, F5, D4",
-   "killers": "пустой wide без жеста"
-  },
-  {
-   "tier": "R+",
-   "boosters": "R1–R7 пресеты, F3 crop claim, A03, A10",
-   "killers": "тот же R-кадр без контракта «запретной точки»"
-  },
-  {
-   "tier": "X",
-   "boosters": "—",
-   "killers": "не цель T5"
-  }
- ],
- "camera_top_errors": [
-  "Не указал D → cowboy",
-  "Камера в хвосте → игнор",
-  "A03 на каждом VOLT → батч-тошнота + анатомия",
-  "A08 на OC с уникальными глазами → канон не доехал",
-  "D6 без контраста → серая каша",
-  "Through-door, за дверью пусто → рама без картины",
-  "POV без дисциплины → selfie-рука или broken torso",
-  "Dutch на tea-scene → «зачем»",
-  "Все F1 center → каталог",
-  "Crop claim (F3) без NEG → модель дорисует то, что обрезали, как X"
- ],
- "anti_echo_law": "соседние слоты не делят одну клетку D×A и не держат одну семью поз + один вес + один gaze (анти-эхо, Manual A10/B6).",
- "manual_map_note": "словарь Коула ≠ местный: Cole-D1…D7 ≈ местные D1…D7 (у нас есть ещё D8-деталь); Cole-A01…A12 — своя нумерация углов, местные CAM-коды A01–A16 остаются рабочими (пример: Cole-A03 extreme-low ≈ местные A03-снизу/A15-нижняя-линия-взгляда; Cole-A08 back ≈ местный A07-со-спины). Ось F (фрейминг) — НОВАЯ, принята как F1–F8. Конфликт порядка: Cole-B9 требует камеру в первых 10–20 токенах POS, местный pos_language держит кадровую строку последней у face-блока (рендер-проверено T5-11/12) — не менять без вердикта автора (CONSILIUM 2026-11-05, вопрос №6).",
- "exp_combos": {
-  "X1": {
-   "name": "НАД-ЗРИТЕЛЕМ (over-viewer)",
-   "born": "2026-11-07, T5-16 — приказ автора: «новое экспериментальное комбо для VOLT (Комбо Cam/Pos/POV/Pose)… не всё по разному»",
-   "cam": "D3×A03 (полу-корпус снизу, CAM03_low)",
-   "pos": "вес вперёд, нависание над точкой зрителя (опора выше камеры: ладони/колени/перила/щупальца)",
-   "pov": "зритель-участник снизу — lens = глаза лежащего/сидящего на полу; второй человек НЕ рисуется (solo); POV-дисциплина: без selfie-рук, лицо в кадре (урок P28), теги «viewed from below», токен «camera» — 0",
-   "pose": "first-use карты семьи over-viewer PL358–PL366, по одной на слот",
-   "status": "⚗ эксперимент: 9 EXP-слотов T5-16, вердикт решает судьбу комбо",
-   "neg_guard": "second figure, two girls, extra person"
-  },
-  "X2": {
-   "name": "В-СЛЕД (in-trail)",
-   "born": "2026-11-08, T5-17 — приказ автора: новое экспериментальное комбо для VOLT (Cam/Pos/POV/Pose), наследник одобренного X1; палитры при этом ВСЕ разные («а то в прошлый раз всё было сиреневое»)",
-   "cam": "D4×A08 (cowboy-shot из-за плеча, over-shoulder) — зритель на шаг позади",
-   "pos": "шаг вперёд с оборотом головы назад через плечо — вес на передней стопе, плечо к зрителю, лицо развёрнуто в камеру поверх плеча",
-   "pov": "зритель-следом — lens = глаза идущего на шаг позади; второй человек НЕ рисуется (solo); POV-дисциплина X1: без selfie-рук, лицо В кадре через оборот, теги «viewed over her shoulder», токен «camera» — 0",
-   "pose": "first-use карты семьи in-trail look-back PL391–PL399, по одной на слот; лицо читается через поворот (тест-риск сознательный, урок P28)",
-   "status": "вердикт T5-17 (2026-11-09): «вышло слабовато» — В РОТАЦИЮ НЕ ПРИНЯТА; семья PL391–PL399 остаётся архивом эксперимента; диагноз: полуповорот 3/4 теряет лицо, шаг статичен, участие зрителя нулевое — против четырёх столпов живого X1 (участие / вес / глаз-в-линзу / лицо целиком); X3 заказан приказом «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»",
-   "neg_guard": "second figure, two girls, extra person, face hidden, back of head only"
-  },
-  "X3": {
-   "name": "В-ШЁПОТ (whisper-close)",
-   "born": "2026-11-09, T5-18 — приказ автора: «над комбо поработай очень хорошо. ОЧЕНЬ хорошо»; вердикт T5-17 по X2 «вышло слабовато» — X3 спроектирован по четырём столпам принятого X1: POV-участие зрителя, вес тела вперёд, глаз-в-линзу, лицо целиком в кадре",
-   "cam": "D2×A02 (ближний план, три четверти) — губы у верхнего края кадра, глаз-линия целиком в кадре, лицо никогда не в полуповороте (урок X2)",
-   "pos": "она входит вплотную СБОКУ: колено на опоре рядом со зрителем (сиденье/подлокотник/стол/рама/подоконник/стремянка/стойка/парта/плетень), вес на опорной ладони или колене — корпус пересекает линзу; руки — ТОЛЬКО на твёрдой опоре, никогда у лица (урок рук)",
-   "pov": "lens = глаза сидящего зрителя; второй человек НЕ рисуется (solo) — присутствие зрителя несут опоры у края кадра; POV-дисциплина: без selfie-рук, лицо В кадре целиком, глаза прямо в линзу, токен «camera» — 0; шёпот-контент = голос кандидата (тест характера встроен в камеру: цундере шепчет отречение, собор — благословение, дрянь — грязь)",
-   "pose": "first-use карты семьи whisper-lean PL424–PL432, по одной на слот; опора у каждой своя; K-FF миды K240–K248",
-   "status": "клетка РАСФОРМИРОВАНА (вердикт автора 2026-11-10 по фаворитам T5-18: ядро 6/9 принято с первого прогона) — карты PL424–PL432 и приёмы живут в обычной ротации как NV; EXP-константа клетки снята; преемник — X4 (T5-19)",
-   "neg_guard": "second figure, two girls, extra person, hand over the lens, face hidden, profile view only"
-  },
-  "X4": {
-   "name": "В-КЛЕТКУ (cage-close)",
-   "born": "2026-11-10, T5-19 — приказ автора: «новое экспериментальное комбо для VOLT (Комбо Cam/Pos/POV/Pose), в этот раз с жёстким упором в R++»",
-   "cam": "D2×A02 (ближний план, три четверти) — лицо целиком в верхних двух третях кадра, глаз-линия в кадре; каймы кадра читаются её предплечьями-стойками",
-   "pos": "она наваливается СВЕРХУ-ВПЕРЕДИ: ладони упираются в опору ЗА спиной зрителя (изголовье/стеллаж/спинка/стекло/косяк/бортик/шкаф/прилавок/кладовая), предплечья-стойки по обе стороны кадра, вес вперёд на руки, грудь — самый близкий к линзе элемент после лица; ткань честно съезжает и натягивается под весом; руки НИКОГДА не тянутся к линзе",
-   "pov": "lens = глаза зрителя, прижатого спиной к опоре; второй человек НЕ рисуется (solo) — присутствие зрителя несут её предплечья-стойки у краёв кадра; POV-дисциплина X1/X3: без selfie-рук, лицо В кадре целиком, глаза прямо в линзу, токен «camera» — 0; R++-контент = вес и ткань: съехавшая лямка, натянутый шов, честный отпечаток — заявка-вещь стоит первой (В16/M07)",
-   "pose": "first-use карты семьи cage-lean PL457–PL465, по одной на слот; K-FF миды K273–K281",
-   "status": "❌ НЕ принято в ротацию (вердикт T5-19, 2026-11-11: «Комбо поз/камер - не особо, разве что в 25, потому что хотя бы имеет намёк на что-то около-эротическое»; причина: зрелище-клетка съела заявку — тот же механизм, что В16). В архив эксперимента; в EXP-ротацию не ставить без прямого приказа. P25 — единственный зачёт, референс для следующего комбо: навал + намёк на около-эротику.",
-   "neg_guard": "second figure, two girls, extra person, arms toward lens, selfie arm, face hidden, profile view only"
-  },
-  "X5": {
-   "name": "В-СЕДЛО (saddle-settle)",
-   "born": "2026-11-13, T5-20 — приказ автора: «EXP: Комбо из кандидатов в ОС + Супер R+ позы/камера/поз и др., тут прям дай волю воображению - это важно». Спроектировано по вердикту T5-19: X4 НЕ принят («комбо поз/камер - не особо»), единственный зачёт P25 — референс «навал + намёк на около-эротику»; урок В24: рейтинг был, токенов таблицы тиров не было ни в одном из 9 слотов — просел дрессер, не позы",
-   "diagnosis": "X4 держал «вес + ткань», но ткань была PG-фактурой (швы/ворс/тень) — рендерер не рисует заявку из фактуры. X5 делает навал P25 буквальным (вес оседает В зрителя) и вешает супер R+ на КОСНОЕ: зажатая ткань + съехавшая лямка + честный вес — токеном таблицы тиров, не фактурой",
-   "cam": "D3×A03 (полу-корпус снизу) — lens = глаза сидящего зрителя; лицо целиком в верхней трети кадра, глаз-в-линзу; её колени уходят за нижние углы кадра — сиденье читается весом, а не рисуется",
-   "pos": "она оседает ВЕРХОМ на колени сидящего зрителя лицом к линзе — вес сквозь бёдра уходит вниз в незримое сиденье (косной контакт там, где X4 был воздух над опорой); ткань зажата между бёдер и утаена вверх / лямка съезжает под весом; руки — на СВОИХ коленях, подлокотниках или бёдрах, НИКОГДА к линзе; спина держит равновесие сама",
-   "pov": "зритель-сиденье: lens = глаза того, на кого осели; второй человек НЕ рисуется (solo) — присутствие несут бёдра за нижними углами кадра и зажатая ткань; POV-дисциплина X1/X3/X4: без selfie-рук, лицо в кадре целиком, глаза прямо в линзу, токен «camera» — 0",
-   "pose": "first-use карты семьи saddle-settle PL469–PL477, по одной на слот (9 разных сидений); K-FF миды K285–K293",
-   "channel_law": "КАНАЛ-ЗАКОН (В24, новое): каждый слот X5 несёт токен таблицы тиров (LAWS §3) из канала дрессера с ротацией pantyline → bumps → on_skin → pantyline…; канал объявлен в шапке слота; фактура (ворс/соль/статика) — вторым слоем ПОВЕРХ токена, никогда вместо",
-   "status": "⚗ эксперимент: 9 EXP-слотов T5-20, вердикт решает судьбу комбо",
-   "neg_guard": "second figure, two girls, extra person, arms toward lens, selfie arm, face hidden, profile view only, side view"
-  }
- },
- "y_cards": {
-  "born": "2026-11-13, применён аплоад автора «T5-YODAYO-RATING-REPAIR-MERGED» (Cole/Grok §2.4)",
-  "law": "Y-карты — ПАТТЕРНЫ сборки высокотирного слота (копировать паттерн, не эссе): pose × camera × exposure × pov. Отличие от клеток X: X — константы комбо-тестов (⚗, вердикт решает), Y — рабочие шаблоны мейков/VOLT. Exposure-классы: COVER | PROCESS | LINGERIE | CLOTHED-TIGHT | SHEER; SHEER сам по себе слаб на площадке. Коридор обязателен: без A/B слот собирается как честный R. (1.9.0: Y9 — продолжение серии по приказу автора «Y1-Y8, продолжение»; процесс-паттерн, честный R-совместим — без тир-токена заявка читается процессом.) (1.11.0: Y10–Y18 — продолжение серии по повторному приказу автора; физические якоря В27 вшиты в паттерн после провала Y1–Y9 на T5-22.) Обновление 2026-11-15 (вердикт T5-23): Y-комбо легальны в мейнах и ОС-темах, не только в EXP; сборка мейнов по Y-картам снимает вопрос «комбинаторика сомнительная» (вердикт T5-23 по основной теме).",
-  "cards": [
-   {
-    "id": "Y1",
-    "pattern": "shirt hem stopped mid-lift under crossed forearms + the lifted hem's weight hanging off both elbows + upper body + slight low angle",
-    "corridor": "A+B",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y2",
-    "pattern": "both palms flat as cover at the chest + the hair's spill caught between collarbone and wrist + upper body + slight low angle",
-    "corridor": "A",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y3",
-    "pattern": "knees past the bench's edge into the low camera + gaze down through her own arms + the hem's straight line framing the torso from below",
-    "corridor": "B",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y4",
-    "pattern": "towel caught mid-slide + both fists hauling it back flat against the chest + the wet hem's drag still pulling down",
-    "corridor": "A",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y5",
-    "pattern": "straddle-settle over the saddle's pommel + the hem hauled taut across both thighs by the knee spread + three-quarter from below",
-    "corridor": "B",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y6",
-    "pattern": "waistband half-rolled under both thumbs + the roll's tension pinning the fabric low on the hips + cowboy shot from below",
-    "corridor": "B",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y7",
-    "pattern": "shoulder braced on the open door's frame + one hand re-hooking the strap at the shoulder + three-quarter low",
-    "corridor": "B",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y8",
-    "pattern": "close on the hands' cover grip + the fabric gathering between the fingers + eye level",
-    "corridor": "A",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y9",
-    "pattern": "strap slipped off the shoulder's slope + the collarbone taking the strap's old line + eye-level close",
-    "corridor": "A",
-    "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
-    "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»"
-   },
-   {
-    "id": "Y10",
-    "pattern": "weapon-weight strap torque + cover by the crooked arm + upper body + slight low angle",
-    "corridor": "A",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y11",
-    "pattern": "kneel-back settle + hem pinned under shin weight + tails fan frames the torso",
-    "corridor": "B",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y12",
-    "pattern": "jacket sliding off one shoulder + sleeve caught at the elbow fold + eye-level close",
-    "corridor": "A",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y13",
-    "pattern": "apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling",
-    "corridor": "B",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y14",
-    "pattern": "lean back on both palms + collar opens by the lean + fabric bridges taut across the ribs",
-    "corridor": "A+B",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y15",
-    "pattern": "belt cinch mid-pull against the perch's lean + weight honest on the seat edge + from below",
-    "corridor": "B",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y16",
-    "pattern": "shirt hem tucked by the raised arm + fabric bridge across the ribs holds the line + upper body",
-    "corridor": "A",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y17",
-    "pattern": "hem lifted where no hand holds it + lower body passing through its own fold + eye-level",
-    "corridor": "B",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   },
-   {
-    "id": "Y18",
-    "pattern": "glove peel mid-grip + wrist-guard raising the hem line + close insert at eye level",
-    "corridor": "A",
-    "trust": "HIGH (вердикт T5-23, 2026-11-15)",
-    "verdict": "T5-23 EXP: полный зачёт — «комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая» (вердикт автора 2026-11-15)"
-   }
-  ],
-  "avoid_as_fake_high_tier": [
-   "sheer + eye-level cowboy + smile",
-   "lingerie name + formal sit",
-   "rating word with no geometry"
-  ],
-  "verdict_receipt": {
-   "at": "2026-11-14",
-   "verdict": "T5-22 EXP — «позы не впечатляющие (я знаю что ты юзал комбо Y, но тут они не получились. совсем. нужно очень сильно реинфорснуть и передумать этот момент»",
-   "ruling": "ПРОВАЛ: все 9 Y-сборок не зачтены. y_cards → режим REWORK: до пересборки Y-карты в EXP не выходят; trust паттернов снимается. «Реинфорснуть» = паттерн переписывается с физическими якорями (опора/вес/направление тканевого события — урок В27), не повтором строк; «передумать» = пересобрать набор паттернов (KEEP/KILL) и показать автору на вердикт. Кандидаты механизма провала: паттерны собирались перечислением слоёв без физики ткани; insert/gap-формулировки тянут рамки (В29); R+ заявка в EXP легла на print-канал (В26-эскалация P25)."
-  },
-  "verdict_receipt_t523": {
-   "at": "2026-11-15",
-   "verdict": "T5-23 EXP — «мне 9 слотов EXP понравились сильно больше, чем весь остальной батч. Без рофлов… комбо позы, камеры и экспозиции получились просто охуенные. Особенно 26 слот, имба лютая»",
-   "ruling": "ПОЛНЫЙ ЗАЧЁТ Y10–Y18: физика в паттерне (вес/тяга/зацеп) рендерится и читается. Y10–Y18 → HIGH. Y1–Y9 пересобраны той же дисциплиной (В27) — REBUILT, выход с T5-24 на вердикт. МЕЖДУ ПРОЧИМ: по прямому приказу автора («обязательно нужно составить множество Y комбинаций, потому что это просто охуенно и именно то, чего иногда не хватает нашим картинкам») Y-комбо легализованы НЕ только для EXP: мейны и ОС-темы могут собираться по Y-картам наравне с D-картами."
-  }
- },
- "changelog": [
-  "1.9.0 (2026-11-14, T5-22): +Y9 «strap losing its post + collarbone focus + eye-level close insert» (A, MID) — девятое комбо EXP-ростера по приказу автора («9 новых комбо (Y1-Y8, продолжение)»); первый прогон всех девяти Y-карт по слоту на батч.",
-  "1.10.0 (2026-11-14, вердикт T5-22): Y-СБОРКА провалена вердиктом («позы не впечатляющие… совсем»); y_cards Y1–Y9 → REWORK (trust снят, в EXP не выходят до пересборки с физическими якорями В27); пересмотр набора паттернов KEEP/KILL — на вердикт автора.",
-  "1.11.0 (2026-11-15, T5-23 «VENATOR»): +Y10–Y18 (девять новых карт по повторному приказу «Y1-Y8, продолжение»; каждая несёт В27-физику: вес/тяга/зацеп — урок REWORK Y1–Y9; trust untested, вердикт T5-23 решает)",
-  "1.12.0 (2026-11-15, вердикт T5-23): Y10–Y18 — полный зачёт («имба лютая») → HIGH; Y1–Y9 пересобраны с В27-физикой (вес/тяга/зацеп) по приказу «составить множество Y комбинаций» → REBUILT, выход с T5-24; Y-комбо легализованы для мейнов и ОС-тем."
- ]
 }

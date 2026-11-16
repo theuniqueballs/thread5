@@ -898,7 +898,7 @@ export function InboxView() {
 
       {/* лайтбокс галереи: портал в body — должен перекрывать шапку (z-20)
           и жить выше stacking-контекста main (урок: fixed внутри z-10 main не перебивает шапку) */}
-      {lightboxItem && createPortal(
+      {lightbox !== null && lightboxItem && createPortal(
         <div
           role="dialog"
           aria-modal="true"

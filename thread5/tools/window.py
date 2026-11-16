@@ -46,7 +46,9 @@ def collect(paths):
     per_batch, agg = [], {
         "pose": set(), "palette": set(), "kinetics": set(),
         "carriers": set(), "channels": set(), "ratings": {},
+        "ycards": set(),  # v1.12.0 Y-first: окно Y-карт
     }
+    y_body_re = re.compile(r"\bY\d{1,2}\b\s*[«\"]")  # карта, процитированная в теле слота
     for p in paths:
         _, _, slots = parse_batch(p)
         batch = {
@@ -58,11 +60,20 @@ def collect(paths):
             "carriers": sorted({c for s in slots for c in s.carriers}),
             "channels": sorted({s.channel for s in slots if s.channel}),
             "ratings": {},
+            # v1.12.0: карта из шапки/поля Y-card: или из цитаты в теле (ретро-батчи)
+            "ycards": sorted(
+                {
+                    s.y_card
+                    or (m.group(0)[:-1].strip() if (m := next((y_body_re.search(b) for b in s.body_lines if y_body_re.search(b)), None)) else None)
+                    for s in slots
+                    if s.y_card or any(y_body_re.search(b) for b in s.body_lines)
+                }
+            ),
         }
         for s in slots:
             if s.rating:
                 batch["ratings"][s.rating] = batch["ratings"].get(s.rating, 0) + 1
-        for key in ("pose", "palette", "kinetics", "carriers", "channels"):
+        for key in ("pose", "palette", "kinetics", "carriers", "channels", "ycards"):
             agg[key] |= set(batch[key])
         for r, n in batch["ratings"].items():
             agg["ratings"][r] = agg["ratings"].get(r, 0) + n
@@ -85,9 +96,9 @@ def receipt_md(per_batch, agg, depth):
         "# Квитанция СТАНЦИИ ОКНА",
         "",
         f"- Прогон: {now} · tools/window.py · глубина окна: {depth}",
-        "- Окно = последние сданные батчи: позы/палитры/кинетики окна НЕ",
-        "  повторяются в новом батче (LAWS §7). Burn-актив не назначается",
-        "  никогда, кроме ⚗ с явной гипотезой (law burned.json).",
+        "- Окно = последние сданные батчи: позы/палитры/кинетики/Y-карты окна НЕ",
+        "  повторяются в новом батче (LAWS §7, y_assembly.window). Burn-актив не",
+        "  назначается никогда, кроме ⚗ с явной гипотезой (law burned.json).",
         "",
     ]
     for b in per_batch:
@@ -98,6 +109,7 @@ def receipt_md(per_batch, agg, depth):
         lines.append(f"- кинетики: {', '.join(b['kinetics']) or '—'}")
         lines.append(f"- носители: {', '.join(b['carriers']) or '—'}")
         lines.append(f"- каналы: {', '.join(b['channels']) or '—'}")
+        lines.append(f"- Y-карты (Y-first, camera.json 1.13.0): {', '.join(b['ycards']) or '—'}")
         lines.append("")
     lines.append("## ЗАПРЕТ ОКНА (агрегат — не назначать)")
     lines.append(f"- позы ({len(agg['pose'])}): {', '.join(sorted(agg['pose'])) or '—'}")
@@ -105,6 +117,7 @@ def receipt_md(per_batch, agg, depth):
     lines.append(f"- кинетики ({len(agg['kinetics'])}): {', '.join(sorted(agg['kinetics'])) or '—'}")
     lines.append(f"- носители ({len(agg['carriers'])}): {', '.join(sorted(agg['carriers'])) or '—'}")
     lines.append(f"- каналы ({len(agg['channels'])}): {', '.join(sorted(agg['channels'])) or '—'}")
+    lines.append(f"- Y-карты ({len(agg['ycards'])}): {', '.join(sorted(agg['ycards'], key=lambda x: int(x[1:]))) or '—'}")
     lines.append("")
     lines.append(f"## BURN-АКТИВ ({len(BURNED.get('entries', []))} кодов, specs/burned.json)")
     lines += burned_lines() or ["— реестр пуст"]

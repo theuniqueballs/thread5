@@ -15,6 +15,9 @@ export interface T5Slot {
   character: string | null; // имя OC / раса ("Sol", "Cat-kin", "—")
   rating: string | null; // "PG-13" | "R" | "R+" | "X"
   pose: string | null; // "PL163"
+  yCard: string | null; // "Y14" — Y-first (camera.json 1.13.0 y_assembly)
+  corridor: string | null; // "A" | "B" | "A+B" — коридор заявки (В31)
+  channel: string | null; // полная строка Channel: (канал доставки)
   palette: string | null; // "P52_MEIJI_DUSK"
   expLetter: string | null; // "α" для EXP
   expHalf: string | null; // "A" | "B"
@@ -82,6 +85,7 @@ interface SlotHeader {
   character: string | null;
   rating: string | null;
   pose: string | null;
+  yCard: string | null;
   palette: string | null;
 }
 
@@ -92,6 +96,7 @@ export function parseSlotHeader(rawMeta: string): SlotHeader {
   let character: string | null = null;
   let rating: string | null = null;
   let pose: string | null = null;
+  let yCard: string | null = null;
   let palette: string | null = null;
 
   for (const part of parts) {
@@ -108,6 +113,11 @@ export function parseSlotHeader(rawMeta: string): SlotHeader {
       pose = clean;
       continue;
     }
+    // Y-first (camera.json 1.13.0): карта Y## в шапке слота рядом с PL
+    if (yCard === null && /^Y\d{1,2}$/u.test(clean)) {
+      yCard = clean;
+      continue;
+    }
     if (palette === null && PALETTE_RE.test(clean)) {
       palette = clean;
       continue;
@@ -115,7 +125,7 @@ export function parseSlotHeader(rawMeta: string): SlotHeader {
     if (character === null && clean.length > 0 && clean !== '—') character = clean;
   }
 
-  return { genre, experimental, character, rating, pose, palette };
+  return { genre, experimental, character, rating, pose, yCard, palette };
 }
 
 function extractExpMarker(thesis: string | null): { letter: string | null; half: string | null } {
@@ -237,6 +247,8 @@ export function parseBatch(raw: string): T5Batch {
         pos: '',
         neg: '',
         ...header,
+        corridor: null,
+        channel: null,
         expLetter: null,
         expHalf: null,
       };
@@ -246,6 +258,25 @@ export function parseBatch(raw: string): T5Batch {
     }
 
     if (!current) continue;
+
+    // Y-first (camera.json 1.13.0): поле Y-card: в теле слота — как Corridor:/Channel:
+    const yCardM = t.match(/^Y-card:\s*(Y\d{1,2})/u);
+    if (yCardM) {
+      current.yCard = yCardM[1];
+      continue;
+    }
+    // коридор заявки (В31): Corridor: A|B|A+B|—
+    const corrM = t.match(/^Corridor:\s*(A\+B|A|B|—)/u);
+    if (corrM) {
+      current.corridor = corrM[1] === '—' ? null : corrM[1];
+      continue;
+    }
+    // канал доставки: полная строка Channel: до конца строки
+    const chanM = t.match(/^Channel:\s*(.+)$/u);
+    if (chanM) {
+      current.channel = chanM[1].trim();
+      continue;
+    }
 
     const fieldM = t.match(FIELD_RE);
     if (fieldM) {

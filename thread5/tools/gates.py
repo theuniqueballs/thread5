@@ -81,6 +81,22 @@ v1.11.0 (вердикт T5-23, постмортем рейтинга): claimPhys
 нарушение = WARN «бейдж само-сертифицирован» (В31). applyFrom 24.
 Словари токенов — specs/gates.json claimPhysics.
 
+v1.12.0 (поручение автора 2026-11-16 «Y-позы вместо поз и положений камеры»
++ «разительно баффнуть промпт-составляющую» + уборка по T5-23):
+(1) yCardGate — Y-first (camera.json 1.13.0 y_assembly): R+ слот обязан
+нести Y-card; слот с картой обязан нести токены паттерна в POS
+(stem-сверка с camera.json); дубль карты в батче — WARN; счётчики
+y_cards идут в квитанцию. Парсер слота читает Y-card: и Y## в шапке.
+(2) claimPhysics расширен на спред R (applyToR: R-бейдж без класса
+раскрытия exposure_r — WARN; постмортем T5-23 п.5). (3) conceptFlag —
+R+ слот с концептом-визиткой (поклон/реверанс/витрина/волна) без
+физики заявки — WARN «концепт несовместим с тиром, флаг автору»
+(постмортем §4.3). (4) negDressGuards — гарды одетости в R+-слотах
+(кроме X-доставки) — WARN (постмортем §4.4). (5) detailsGate — В32
+«детали — постоянный слой»: каждый мейн/EXP несёт ≥2 фишечки-ФОРМЫ в
+POS — WARN (поручение автора T5-23: «больше деталей… серёжки,
+татуировочки, узоры…»).
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -131,12 +147,14 @@ class Slot:
         self.channel = None
         self.channel_mark = ""
         self.corridor = None  # v1.10.0 corridorAudit: A|B|A+B|— (fact ≠ label)
+        self.y_card = None    # v1.12.0 Y-first: карта Y## из шапки или поля Y-card:
         self.mark = "☠" if "☠" in header_line else ("⚗" if "⚗" in header_line else "")
         self.thesis = ""
         self.pos = ""
         self.neg = ""
         self.pos_lines = []
         self.neg_lines = []
+        self.body_lines = [header_line.strip()]  # v1.12.0: шапка+тело слота целиком
         parts = [p.strip() for p in paren.split("·")]
         if parts:
             self.genre = parts[0]
@@ -151,6 +169,10 @@ class Slot:
         m = re.search(r"\bP\d{1,3}_[A-Z0-9_]+", paren)
         if m:
             self.palette = m.group(0)
+        # v1.12.0 Y-first: карта может стоять в шапке слота рядом с PL
+        m = re.search(r"\bY\d{1,2}\b", paren)
+        if m:
+            self.y_card = m.group(0)
 
 
 def parse_batch(path):
@@ -210,6 +232,13 @@ def parse_batch(path):
             flush_mode()
             cur.corridor = sm.group(1)
             continue
+        sm = re.match(r"^Y-card:\s*(Y\d{1,2})", ln)  # v1.12.0 Y-first
+        if sm:
+            flush_mode()
+            cur.y_card = sm.group(1)
+            continue
+        if cur is not None:  # v1.12.0: тело слота целиком — для окна/fallback
+            cur.body_lines.append(ln.strip())
         if re.match(r"^POS:\s*$", ln):
             flush_mode()
             mode, buf = "pos", []
@@ -673,28 +702,208 @@ def check_claimphysics(slots, warns, batch_no=-1):
     cover = [t.lower() for t in cfg.get("cover_a", [])]
     geom = [t.lower() for t in cfg.get("geometry_b", [])]
     expo = [t.lower() for t in cfg.get("exposure", [])]
+    expo_r = [t.lower() for t in cfg.get("exposure_r", [])]
+    caught = 0
+    r_caught = 0
+    for s in slots:
+        if s.rating in ("R+", "X") and s.corridor and s.corridor != "—":
+            pos = (s.pos or "").lower()
+            corr = s.corridor.upper()
+            miss = []
+            if "A" in corr and not any(t in pos for t in cover):
+                miss.append("нет объекта-прикрытия (коридор A)")
+            if "B" in corr and not any(t in pos for t in geom):
+                miss.append("нет геометрии позы/камеры (коридор B)")
+            if not any(t in pos for t in expo):
+                miss.append("нет класса раскрытия")
+            if miss:
+                caught += 1
+                warns.append(
+                    (s.sid, "claim-physics",
+                     f"R+ бейдж само-сертифицирован ({'; '.join(miss)}) — поле Corridor "
+                     f"не равно физике: вшить токен-объект/геометрию/раскрытие или "
+                     f"писать честный R (В31, постмортем рейтинга T5-23)")
+                )
+        elif s.rating == "R" and cfg.get("applyToR"):
+            # v1.12.0: словарь раскрытия на спред R (постмортем §5 — NICHE-мейны
+            # с бейджем R за счёт «reading her breast shape» = PG-13 с бейджем)
+            pos = (s.pos or "").lower()
+            if not any(t in pos for t in expo_r):
+                r_caught += 1
+                warns.append(
+                    (s.sid, "claim-physics-r",
+                     "R-бейдж без класса раскрытия — тело не разоблачено ни одним "
+                     "токеном (exposure_r): вшить состояние ткани/зону/процесс или "
+                     "писать PG-13 (В31 на спред R, поручение автора 2026-11-16)")
+                )
+    return caught + r_caught
+
+
+def load_y_cards():
+    """v1.12.0 Y-first: карты из specs/camera.json y_cards (паттерн = pose+camera)."""
+    try:
+        data = json.loads((ROOT / "specs/camera.json").read_text(encoding="utf-8"))
+        return {c["id"]: c for c in data.get("y_cards", {}).get("cards", [])}
+    except Exception:
+        return {}
+
+
+def _pattern_stems(card):
+    """Отличительные стемы паттерна карты: pattern+camera, слова ≥5 символов без STOP."""
+    comp = card.get("components") or {}
+    src = " ".join([card.get("pattern", ""), comp.get("camera", "")])
+    out = set()
+    for w in words(src):
+        w = w.strip("'")
+        if len(w) >= 5 and w not in STOP and not w.isdigit():
+            out.add(w[:5])
+    return out
+
+
+def check_ycards(slots, warns, batch_no=-1, ab_pairs=frozenset()):
+    """v1.12.0 yCardGate (Y-first, поручение автора 2026-11-16 «Y-позы вместо поз
+    и положений камеры»; база — вердикт T5-23: Y-комбо легальны в мейнах/ОС).
+    (1) R+ слот без Y-card — WARN «сборка мимо Y-множества» (выход: карта Y1–Y18
+    или PL-сборка с причиной в THESIS — PG-13/NICHE-выдох). (2) слот с картой:
+    ≥minPatternStems стемов паттерна в POS (копипаст-юнит обязан доехать);
+    (3) дубль карты в батче — WARN (кроме A/B-пар). Счётчики — в квитанцию."""
+    cfg = GATES.get("yCards")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return {"used": [], "rplus_without": 0, "pattern_misses": 0, "duplicates": 0}
+    ycards = load_y_cards()
+    used, seen = [], Counter()
+    rplus_without = 0
+    pattern_misses = 0
+    duplicates = 0
+    for s in slots:
+        if s.y_card:
+            used.append(s.y_card)
+            seen[s.y_card] += 1
+            if s.y_card not in ycards:
+                warns.append(
+                    (s.sid, "y-card",
+                     f"Y-card {s.y_card} не найдена в camera.json (множество Y1–Y{len(ycards)})")
+                )
+                continue
+            stems = _pattern_stems(ycards[s.y_card])
+            pos_stems = {w[:5] for w in words(s.pos) if len(w) >= 5}
+            hits = len(stems & pos_stems)
+            if hits < int(cfg.get("minPatternStems", 2)):
+                pattern_misses += 1
+                warns.append(
+                    (s.sid, "y-card",
+                     f"паттерн {s.y_card} не доехал в POS ({hits} стемов из "
+                     f"≥{cfg.get('minPatternStems', 2)}) — карта копируется в POS "
+                     "целиком (копипаст-юнит), не пересказывается")
+                )
+        elif s.rating == "R+" and cfg.get("rplusRequiresCard", True):
+            rplus_without += 1
+            warns.append(
+                (s.sid, "y-card",
+                 "R+ слот собран мимо Y-множества (нет Y-card) — Y-first: собрать "
+                 "по карте Y1–Y18 (camera.json y_assembly) или записать в THESIS "
+                 "причину PL-сборки (PG-13/NICHE-выдох не считается)")
+            )
+    for yid, n in seen.items():
+        if n > 1:
+            # A/B-пара одной переменной — легальный дубль
+            pair_slots = [s.sid for s in slots if s.y_card == yid]
+            if len(pair_slots) == 2 and frozenset(pair_slots) in ab_pairs:
+                continue
+            duplicates += 1
+            warns.append(
+                ("BATCH", "y-card",
+                 f"карта {yid} использована {n}× в батче — повтор паттерна читается "
+                 f"копипастом; окно ротации Y-карт — 3 батча (y_assembly.window)")
+            )
+    return {"used": used, "rplus_without": rplus_without,
+            "pattern_misses": pattern_misses, "duplicates": duplicates}
+
+
+def check_concept_flag(slots, warns, batch_no=-1):
+    """v1.12.0 conceptFlag (постмортем T5-23 §4.3 «концепт-инфляция»): концепт,
+    структурно неспособный нести R+ (визитка/поклон/реверанс/витрина/приветствие),
+    стопится на сборке и выносится автору с вариантами — молчаливый бейдж запрещён.
+    Флаг поднимается, когда в POS есть концепт-лексема визитки (word-boundary),
+    а физики заявки (physicsLexemes — свой жёсткий словарь; kinetics-теги вида
+    mid_settle физикой не считаются) нет."""
+    cfg = GATES.get("conceptFlag")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return 0
+    visits = [t.lower() for t in cfg.get("visitLexemes", [])]
+    phys = [t.lower() for t in cfg.get("physicsLexemes", [])]
+
+    def lex_hit(tokens, text):
+        return any(re.search(r"\b" + re.escape(t) + r"\b", text) for t in tokens)
+
     caught = 0
     for s in slots:
-        if s.rating not in ("R+", "X") or not s.corridor or s.corridor == "—":
+        if s.rating not in ("R+", "X"):
             continue
         pos = (s.pos or "").lower()
-        corr = s.corridor.upper()
-        miss = []
-        if "A" in corr and not any(t in pos for t in cover):
-            miss.append("нет объекта-прикрытия (коридор A)")
-        if "B" in corr and not any(t in pos for t in geom):
-            miss.append("нет геометрии позы/камеры (коридор B)")
-        if not any(t in pos for t in expo):
-            miss.append("нет класса раскрытия")
-        if miss:
+        is_visit = lex_hit(visits, pos)
+        has_phys = lex_hit(phys, pos)
+        if is_visit and not has_phys:
             caught += 1
             warns.append(
-                (s.sid, "claim-physics",
-                 f"R+ бейдж само-сертифицирован ({'; '.join(miss)}) — поле Corridor "
-                 f"не равно физике: вшить токен-объект/геометрию/раскрытие или "
-                 f"писать честный R (В31, постмортем рейтинга T5-23)")
+                (s.sid, "concept-flag",
+                 "концепт-визитка в R+ (поклон/реверанс/витрина/приветствие) — "
+                 "структурно не тянет тир (постмортем T5-23: ОС-интро P01–P03): "
+                 "стоп сборки — флаг автору с вариантами (понижаем тир / вшиваем "
+                 "физику Y-карты / меняем концепт)")
             )
     return caught
+
+
+def check_neg_dress_guards(slots, warns, batch_no=-1):
+    """v1.12.0 negDressGuards (постмортем T5-23 §4.4 «NEG-войны»): в R+-слоте
+    гарды одетости добивают заявку до PG-13 (46–50 юнитов NEG при слабой
+    эротике POS). X-доставка — исключение (LAWS §3: блок покрытия в NEG —
+    инструмент доставки X). R+ с гардом одетости — WARN."""
+    cfg = GATES.get("negDressGuards")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return 0
+    guards = [t.lower() for t in cfg.get("units", [])]
+    caught = 0
+    for s in slots:
+        if s.rating != "R+":
+            continue
+        neg = (s.neg or "").lower()
+        hit = [g for g in guards if g in neg]
+        if hit:
+            caught += 1
+            warns.append(
+                (s.sid, "neg-dress",
+                 f"гарды одетости в R+ NEG ({', '.join(hit)}) — добивают заявку "
+                 f"(постмортем §4.4): NEG R+ — не война, гарды одетости запрещены, "
+                 f"кроме X-доставки")
+            )
+    return caught
+
+
+def check_details_layer(slots, warns, batch_no=-1, oc_names=()):
+    """v1.12.0 detailsGate — В32 «детали — постоянный слой» (поручение автора,
+    вердикт T5-23: «я бы хотел больше деталей… серёжки, татуировочки, узоры,
+    может курительная трубка, повязка на глазу.. как в основной теме, так и в
+    EXP»): каждый мейн и EXP-слот несёт ≥2 фишечки-ФОРМЫ (не слов) в POS.
+    Меньше — риск-флаг на сборке. ОС — вне гейта: канон несёт гэг-стек ≥3."""
+    cfg = GATES.get("detailsGate")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return
+    tokens = [t.lower() for t in cfg.get("formTokens", [])]
+    need = int(cfg.get("minPerSlot", 2))
+    for s in slots:
+        if s.genre == "OC" or is_oc_slot(s, oc_names):
+            continue
+        pos = (s.pos or "").lower()
+        found = sorted({t for t in tokens if t in pos})
+        if len(found) < need:
+            warns.append(
+                (s.sid, "details",
+                 f"фишечек-ФОРМ {len(found)} < {need} (В32 «детали — постоянный слой»): "
+                 f"вшить ≥{need} из словаря formTokens (тату/повязка/шрам/украшения/"
+                 f"предмет-подпись) — деталь читается формой в первых 12 тегах")
+            )
 
 
 def check_header(text, header, slots, fails, warns, oc_names=()):
@@ -1265,6 +1474,10 @@ def main():
     check_channels(slots, channels, fails, warns)
     fact_rplus = check_corridor(slots, warns, batch_no)  # v1.10.0 corridorAudit
     physics_caught = check_claimphysics(slots, warns, batch_no)  # v1.11.0 В31
+    y_stats = check_ycards(slots, warns, batch_no, ab_pairs)  # v1.12.0 Y-first
+    concept_caught = check_concept_flag(slots, warns, batch_no)  # v1.12.0
+    dress_caught = check_neg_dress_guards(slots, warns, batch_no)  # v1.12.0
+    check_details_layer(slots, warns, batch_no, oc_names)  # v1.12.0 В32
     check_header(text, header, slots, fails, warns, oc_names)
     check_header_contract(header, warns, batch_no)
     moves_declared = check_moves_gate(header, warns, batch_no)
@@ -1304,6 +1517,16 @@ def main():
         "claim_physics": {  # v1.11.0 В31: самосертификация коридора
             "self_certified_Rplus": physics_caught,
         },
+        "y_cards": {  # v1.12.0 Y-first: сборка слотов от Y-карт
+            "used": y_stats["used"],
+            "rplus_without_card": y_stats["rplus_without"],
+            "pattern_misses": y_stats["pattern_misses"],
+            "duplicates": y_stats["duplicates"],
+        },
+        "buffs": {  # v1.12.0: квитанция баффа промпт-составляющей
+            "concept_flagged": concept_caught,
+            "neg_dress_guards": dress_caught,
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -1313,6 +1536,14 @@ def main():
         print(
             f"fact/label: fact_R+ {fl['fact_R+']} · label_R+ {fl['label_R+']}"
             f" · ложные бейджи {fl['label_R+'] - fl['fact_R+']}"
+        )
+    if GATES.get("yCards") and (batch_no >= int(GATES["yCards"].get("applyFrom", 10 ** 9))):
+        y = receipt["y_cards"]
+        used_sorted = ", ".join(sorted(set(y["used"]), key=lambda x: int(x[1:]))) or "—"
+        print(
+            f"Y-first: карт {len(y['used'])} ({used_sorted}) · R+ без карты "
+            f"{y['rplus_without_card']} · паттерн не доехал {y['pattern_misses']}"
+            f" · дублей {y['duplicates']}"
         )
     for a, b, c in fails:
         print(f"  FAIL [{a}] {b}: {c}")

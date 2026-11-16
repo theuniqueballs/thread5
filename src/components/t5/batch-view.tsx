@@ -49,7 +49,7 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
   const [openCanon, setOpenCanon] = useState(false);
   const { toast } = useToast();
   return (
-    <article className="t5-panel p-5">
+    <article className="t5-panel p-5 transition-colors duration-200 hover:border-white/[0.13] hover:bg-white/[0.025]">
       <header className="mb-3 flex flex-wrap items-center gap-2">
         {/* пасхалка: долгий тап на номер слота — слот «выпускает пар» */}
         <LongPressable
@@ -72,6 +72,22 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
           <GenreBadge genre={slot.genre} />
           {slot.character && <Chip>{slot.character}</Chip>}
           <RatingBadge rating={slot.rating} />
+          {slot.yCard && (
+            <span
+              title="Y-карта — сборка Y-first: экспозиция + поза + POV + камера + профайлинг (camera.json y_assembly)"
+              className="t5-badge t5-badge--violet"
+            >
+              {slot.yCard}
+            </span>
+          )}
+          {slot.corridor && (
+            <span
+              title={`Коридор заявки ${slot.corridor} (В31: коридор = физика в POS)`}
+              className="t5-badge t5-badge--mint"
+            >
+              corridor {slot.corridor}
+            </span>
+          )}
           {slot.pose && <Chip>{slot.pose}</Chip>}
           {slot.palette && <Chip>{slot.palette}</Chip>}
           {slot.experimental && (
@@ -96,6 +112,11 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
       {slot.spine && (
         <p className="mb-1 font-mono text-xs leading-relaxed text-zinc-500">
           <span className="font-semibold text-zinc-400">Spine:</span> {slot.spine}
+        </p>
+      )}
+      {slot.channel && (
+        <p className="mb-1 font-mono text-xs leading-relaxed text-zinc-500">
+          <span className="font-semibold text-zinc-400">Channel:</span> {slot.channel}
         </p>
       )}
       {slot.stackIds.length > 0 && (

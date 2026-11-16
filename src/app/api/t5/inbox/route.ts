@@ -8,6 +8,7 @@ import {
   sortItems,
   writeMeta,
 } from '@/lib/t5/inbox';
+import type { InboxItem } from '@/lib/t5/inbox';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -60,7 +61,7 @@ export async function POST(req: Request) {
 
   const items = await readMeta();
   const results: { origName: string; id?: string; tag?: string | null; status?: string; error?: string }[] = [];
-  const saved = [];
+  const saved: InboxItem[] = [];
 
   for (let i = 0; i < files.length; i++) {
     const tag = (perFileTags[i] ?? '').trim() || fallback;
