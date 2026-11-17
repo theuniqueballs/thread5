@@ -1,0 +1,185 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.14.0)",
+ "batch": "special/SO-09.md",
+ "sha256": "1bfe2b0ee49eba25e6c032592cb3ea0398bd3124ee4b156725f42e953502f046",
+ "utc": "2026-11-17T17:12:15+00:00",
+ "verdict": "PASS",
+ "slots": 1,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «glasses covering both eyes»"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«exposed genitals» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«vulva» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«pubic hair» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«child» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«children» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«childish» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«chibi» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«milf» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«mature female» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«male» — класс «solo-extra» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«man» — класс «solo-extra» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 45 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "приборных юнитов 3 > 2 — база v3 держит только candle, lamp (закон света v2: POS без приборов)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "цветовые гарды волос (pubic hair) — только canon-lock ОС; у рандомных девиц цвет пишет POS VERBATIM (negBase v3)"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "NEG в 11 строках > 3 — лишние абзацы ни к чему (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header",
+   "msg": "в шапке нет заявления окна ротации"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: спред мейнов «R+×N · R×N» — проверка «spread» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: EXP-оверлей (N…) — проверка «expOverlay» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: окно ротации — проверка «window» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: расовый каст N/M — проверка «cast» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: HEAT-оплата разнообразия — проверка «heat» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "story-cards",
+   "msg": "special/SO-09/stories.md не найден — карточки историй отсутствуют, бюджет мысли не проверяем пост-фактум (директива роста 2026-11-01, идея 1; пилот — мейн-пул)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "каст 0/1 вне вилки 12–14 (policy v1.8)"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "pink-glasses-airkiss",
+   "genre": "SPECIAL",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 193
+  }
+ ],
+ "crossBatchShared": [],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": false,
+ "fact_label": {
+  "label_R+": 0,
+  "fact_R+": 0
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "combo_pose": {
+  "composite_used": 0,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "silent",
+  "with_card": 0,
+  "stamped": 0,
+  "missing": 0,
+  "malformed": 0,
+  "foreign": 0,
+  "mismatch": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0,
+  "stamp_without_card": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ }
+}

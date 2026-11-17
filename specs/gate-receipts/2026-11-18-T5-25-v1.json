@@ -1,0 +1,234 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.14.0)",
+ "batch": "batches/T5-25.md",
+ "sha256": "a9fbc8cd4aab1662baaa876a3880ea803bcf0f0f9836d57e9c44d0c49ac5394e",
+ "utc": "2026-11-17T17:06:27+00:00",
+ "verdict": "PASS",
+ "slots": 9,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "каст 0/0 вне вилки 12–14 (policy v1.8)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "6 общих 6-грамм с предыдущими партиями (T5-23.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "clock-wind-lullaby",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 215
+  },
+  {
+   "id": "P02",
+   "slug": "doorjamb-shield-hold",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 194
+  },
+  {
+   "id": "P03",
+   "slug": "rooftop-siren-cut",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 197
+  },
+  {
+   "id": "P04",
+   "slug": "glass-pane-cartography",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 193
+  },
+  {
+   "id": "P05",
+   "slug": "forge-towel-turn",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 208
+  },
+  {
+   "id": "P06",
+   "slug": "tailgate-seed-count",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 214
+  },
+  {
+   "id": "P07",
+   "slug": "memorial-slide-song",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 215
+  },
+  {
+   "id": "P08",
+   "slug": "kettle-sun-ladle",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 224
+  },
+  {
+   "id": "P09",
+   "slug": "chalk-circle-hover",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 69,
+   "posWords": 210
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "huge silent owl wings folded close",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "silent owl wings folded close like",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "owl wings folded close like a",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "wings folded close like a cloak",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "into pale incense smoke at the",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P33"
+   ]
+  },
+  {
+   "gram": "pale incense smoke at the tips",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P33"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 9,
+  "fact_R+": 9
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y334",
+   "Y446",
+   "Y363",
+   "Y320",
+   "Y388",
+   "Y147",
+   "Y480",
+   "Y411",
+   "Y359"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "combo_pose": {
+  "composite_used": 9,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 9,
+  "stamped": 9,
+  "missing": 0,
+  "malformed": 0,
+  "foreign": 0,
+  "mismatch": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0,
+  "stamp_without_card": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ }
+}
