@@ -170,7 +170,7 @@ class Slot:
         if m:
             self.palette = m.group(0)
         # v1.12.0 Y-first: карта может стоять в шапке слота рядом с PL
-        m = re.search(r"\bY\d{1,2}\b", paren)
+        m = re.search(r"\bY\d{1,3}\b", paren)  # 1.13.0: серия до Y512 (акт 1)
         if m:
             self.y_card = m.group(0)
 
@@ -232,7 +232,7 @@ def parse_batch(path):
             flush_mode()
             cur.corridor = sm.group(1)
             continue
-        sm = re.match(r"^Y-card:\s*(Y\d{1,2})", ln)  # v1.12.0 Y-first
+        sm = re.match(r"^Y-card:\s*(Y\d{1,3})", ln)  # v1.12.0 Y-first; 1.13.0: до Y512
         if sm:
             flush_mode()
             cur.y_card = sm.group(1)
@@ -663,11 +663,14 @@ def check_channels(slots, channels, fails, warns):
         )
 
 
-def check_corridor(slots, warns, batch_no=-1):
+def check_corridor(slots, warns, fails, batch_no=-1):
     """v1.10.0 corridorAudit (закон 8.6: WARN-старт). fact ≠ label:
     R+ бейдж легален только при коридоре A|B|A+B (Corridor: в теле слота).
     R+ без поля / с «—» = ложный бейдж — хуже честного R. Счётчик fact_R+
-    возвращается для квитанции. applyFrom/mode — specs/gates.json."""
+    возвращается для квитанции. applyFrom/mode — specs/gates.json.
+    v1.13.0 В33 (автор 2026-11-17 «устрани пиздёж в рейтинге»: либо честно
+    «не получилось», либо реальный тир): с failFrom ложный бейдж = FAIL,
+    а не WARN-статистика."""
     cfg = GATES.get("corridorAudit")
     if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
         return 0
@@ -681,11 +684,15 @@ def check_corridor(slots, warns, batch_no=-1):
             fact += 1
             continue
         why = "нет поля Corridor:" if s.corridor is None else f"Corridor: {downgrade}"
-        warns.append(
-            (s.sid, "corridor",
-             f"R+ без коридора A|B ({why}) — ложный бейдж хуже честного R: "
-             f"вшить объект у груди (A) / камеру-интим (B) или писать R")
+        entry = (
+            s.sid, "corridor",
+            f"R+ без коридора A|B ({why}) — ложный бейдж хуже честного R: "
+            f"вшить объект у груди (A) / камеру-интим (B) или писать R"
         )
+        if batch_no >= int(cfg.get("failFrom", 10 ** 9)):
+            fails.append(entry)  # В33: с failFrom ложный бейдж = FAIL
+        else:
+            warns.append(entry)
     return fact
 
 
@@ -818,6 +825,59 @@ def check_ycards(slots, warns, batch_no=-1, ab_pairs=frozenset()):
             )
     return {"used": used, "rplus_without": rplus_without,
             "pattern_misses": pattern_misses, "duplicates": duplicates}
+
+
+def load_combo_map():
+    """v1.13.0 comboPose: составные позы poses.json (combo:true) -> их карты."""
+    try:
+        data = json.loads((ROOT / "specs/poses.json").read_text(encoding="utf-8"))
+        return {
+            p["id"]: p.get("card")
+            for p in data.get("poses", []) if p.get("combo")
+        }
+    except Exception:
+        return {}
+
+
+def check_combo_pose(slots, warns, batch_no=-1):
+    """v1.13.0 comboPose (акт 1 вердикта T5-24, приказ автора А «всю составную
+    позу — в доктрину комбо-Y»): составная поза (poses.json combo:true) обязана
+    собираться в слоте от своей карты-обёртки (поле card, серия Y38+,
+    camera.json 1.15.0). PL составной, а карта не в шапке / чужая карта = WARN
+    (закон 8.6: WARN-старт, FAIL по вердикту). Карты-обёртки с меткой
+    «В27 ПУСТО» в R+ не выходят до пересборки печью (В33-честность)."""
+    cfg = GATES.get("comboPose")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return {"composite_used": 0, "without_card": 0, "mismatch": 0}
+    cmap = load_combo_map()
+    stats = {"composite_used": 0, "without_card": 0, "mismatch": 0}
+    for s in slots:
+        if not s.pose or s.pose not in cmap:
+            continue
+        stats["composite_used"] += 1
+        card = cmap[s.pose]
+        if not card or card in ("—", "indirect"):
+            stats["without_card"] += 1
+            warns.append(
+                (s.sid, "combo-pose",
+                 f"составная поза {s.pose} без карты-обёртки (poses.json "
+                 f"card={card}) — акт 1: сборка от карты Y38+ (доктрина комбо-Y)")
+            )
+        elif not s.y_card:
+            stats["without_card"] += 1
+            warns.append(
+                (s.sid, "combo-pose",
+                 f"составная поза {s.pose} (карта {card}) — в шапке слота нет "
+                 f"Y-card: сборка мимо комбо-доктрины (акт 1)")
+            )
+        elif s.y_card != card:
+            stats["mismatch"] += 1
+            warns.append(
+                (s.sid, "combo-pose",
+                 f"составная поза {s.pose} собрана от {s.y_card}, карта позы "
+                 f"= {card} — привести к карте-обёртке или обновить built_from")
+            )
+    return stats
 
 
 def check_concept_flag(slots, warns, batch_no=-1):
@@ -1472,9 +1532,10 @@ def main():
         })
     cp_canon_exempt = check_copypaste(slots, ab_pairs, fails, warns, canon_grams)
     check_channels(slots, channels, fails, warns)
-    fact_rplus = check_corridor(slots, warns, batch_no)  # v1.10.0 corridorAudit
+    fact_rplus = check_corridor(slots, warns, fails, batch_no)  # v1.10.0 corridorAudit; v1.13.0 В33 failFrom
     physics_caught = check_claimphysics(slots, warns, batch_no)  # v1.11.0 В31
     y_stats = check_ycards(slots, warns, batch_no, ab_pairs)  # v1.12.0 Y-first
+    combo_stats = check_combo_pose(slots, warns, batch_no)  # v1.13.0 акт 1
     concept_caught = check_concept_flag(slots, warns, batch_no)  # v1.12.0
     dress_caught = check_neg_dress_guards(slots, warns, batch_no)  # v1.12.0
     check_details_layer(slots, warns, batch_no, oc_names)  # v1.12.0 В32
@@ -1523,6 +1584,11 @@ def main():
             "pattern_misses": y_stats["pattern_misses"],
             "duplicates": y_stats["duplicates"],
         },
+        "combo_pose": {  # v1.13.0 акт 1: составные позы — от карт-обёрток
+            "composite_used": combo_stats["composite_used"],
+            "without_card": combo_stats["without_card"],
+            "card_mismatch": combo_stats["mismatch"],
+        },
         "buffs": {  # v1.12.0: квитанция баффа промпт-составляющей
             "concept_flagged": concept_caught,
             "neg_dress_guards": dress_caught,
@@ -1533,9 +1599,20 @@ def main():
     print(f"ВЕРДИКТ: {verdict} · FAIL: {len(fails)} · WARN: {len(warns)}")
     if GATES.get("corridorAudit") and (batch_no >= int(GATES["corridorAudit"].get("applyFrom", 10 ** 9))):
         fl = receipt["fact_label"]
+        honesty = (
+            " · В33: FAIL"
+            if batch_no >= int(GATES["corridorAudit"].get("failFrom", 10 ** 9))
+            else " · В33: WARN-старт"
+        )
         print(
             f"fact/label: fact_R+ {fl['fact_R+']} · label_R+ {fl['label_R+']}"
-            f" · ложные бейджи {fl['label_R+'] - fl['fact_R+']}"
+            f" · ложные бейджи {fl['label_R+'] - fl['fact_R+']}{honesty}"
+        )
+    if GATES.get("comboPose") and (batch_no >= int(GATES["comboPose"].get("applyFrom", 10 ** 9))):
+        cp = receipt["combo_pose"]
+        print(
+            f"comboPose: составных использовано {cp['composite_used']}"
+            f" · без карты {cp['without_card']} · чужая карта {cp['card_mismatch']}"
         )
     if GATES.get("yCards") and (batch_no >= int(GATES["yCards"].get("applyFrom", 10 ** 9))):
         y = receipt["y_cards"]

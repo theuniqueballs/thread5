@@ -48,7 +48,7 @@ def collect(paths):
         "carriers": set(), "channels": set(), "ratings": {},
         "ycards": set(),  # v1.12.0 Y-first: окно Y-карт
     }
-    y_body_re = re.compile(r"\bY\d{1,2}\b\s*[«\"]")  # карта, процитированная в теле слота
+    y_body_re = re.compile(r"\bY\d{1,3}\b\s*[«\"]")  # карта в теле слота; 1.13.0: серия до Y512 (акт 1)
     for p in paths:
         _, _, slots = parse_batch(p)
         batch = {

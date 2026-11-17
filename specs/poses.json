@@ -1,5 +1,5 @@
 {
- "version": "1.16.0",
+ "version": "1.17.0",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -33,7 +33,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y38"
   },
   {
    "id": "PL03",
@@ -65,7 +67,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y39"
   },
   {
    "id": "PL05",
@@ -113,7 +117,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y40"
   },
   {
    "id": "PL08",
@@ -129,7 +135,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y41"
   },
   {
    "id": "PL09",
@@ -161,7 +169,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y42"
   },
   {
    "id": "PL11",
@@ -209,7 +219,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y43"
   },
   {
    "id": "PL14",
@@ -225,7 +237,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y44"
   },
   {
    "id": "PL15",
@@ -241,7 +255,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y45"
   },
   {
    "id": "PL16",
@@ -273,7 +289,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y46"
   },
   {
    "id": "PL18",
@@ -289,7 +307,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y47"
   },
   {
    "id": "PL19",
@@ -321,7 +341,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y48"
   },
   {
    "id": "PL21",
@@ -353,7 +375,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y49"
   },
   {
    "id": "PL23",
@@ -369,7 +393,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y50"
   },
   {
    "id": "PL24",
@@ -385,7 +411,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y51"
   },
   {
    "id": "PL25",
@@ -401,7 +429,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y52"
   },
   {
    "id": "PL26",
@@ -433,7 +463,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y53"
   },
   {
    "id": "PL28",
@@ -449,7 +481,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y54"
   },
   {
    "id": "PL29",
@@ -481,7 +515,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y55"
   },
   {
    "id": "PL31",
@@ -497,7 +533,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y56"
   },
   {
    "id": "PL32",
@@ -513,7 +551,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y57"
   },
   {
    "id": "PL33",
@@ -529,7 +569,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y58"
   },
   {
    "id": "PL34",
@@ -577,7 +619,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y59"
   },
   {
    "id": "PL37",
@@ -609,7 +653,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y60"
   },
   {
    "id": "PL39",
@@ -657,7 +703,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y61"
   },
   {
    "id": "PL42",
@@ -673,7 +721,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y62"
   },
   {
    "id": "PL43",
@@ -689,7 +739,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y63"
   },
   {
    "id": "PL44",
@@ -705,7 +757,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y64"
   },
   {
    "id": "PL45",
@@ -721,7 +775,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y65"
   },
   {
    "id": "PL46",
@@ -737,7 +793,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y66"
   },
   {
    "id": "PL47",
@@ -769,7 +827,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y67"
   },
   {
    "id": "PL49",
@@ -786,7 +846,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y68"
   },
   {
    "id": "PL50",
@@ -803,7 +865,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y69"
   },
   {
    "id": "PL51",
@@ -820,7 +884,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y70"
   },
   {
    "id": "PL52",
@@ -837,7 +903,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y71"
   },
   {
    "id": "PL53",
@@ -854,7 +922,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y72"
   },
   {
    "id": "PL54",
@@ -871,7 +941,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y73"
   },
   {
    "id": "PL55",
@@ -905,7 +977,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y74"
   },
   {
    "id": "PL57",
@@ -922,7 +996,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y75"
   },
   {
    "id": "PL58",
@@ -939,7 +1015,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y76"
   },
   {
    "id": "PL59",
@@ -956,7 +1034,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y77"
   },
   {
    "id": "PL60",
@@ -973,7 +1053,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y78"
   },
   {
    "id": "PL61",
@@ -989,7 +1071,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y79"
   },
   {
    "id": "PL62",
@@ -1005,7 +1089,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y80"
   },
   {
    "id": "PL63",
@@ -1021,7 +1107,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y81"
   },
   {
    "id": "PL64",
@@ -1037,7 +1125,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y82"
   },
   {
    "id": "PL65",
@@ -1053,7 +1143,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y83"
   },
   {
    "id": "PL66",
@@ -1069,7 +1161,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y84"
   },
   {
    "id": "PL67",
@@ -1085,7 +1179,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y85"
   },
   {
    "id": "PL68",
@@ -1101,7 +1197,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y86"
   },
   {
    "id": "PL69",
@@ -1117,7 +1215,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y87"
   },
   {
    "id": "PL70",
@@ -1133,7 +1233,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y88"
   },
   {
    "id": "PL71",
@@ -1149,7 +1251,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y89"
   },
   {
    "id": "PL72",
@@ -1165,7 +1269,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y90"
   },
   {
    "id": "PL73",
@@ -1197,7 +1303,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y91"
   },
   {
    "id": "PL75",
@@ -1213,7 +1321,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y92"
   },
   {
    "id": "PL76",
@@ -1229,7 +1339,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y93"
   },
   {
    "id": "PL77",
@@ -1245,7 +1357,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y94"
   },
   {
    "id": "PL78",
@@ -1261,7 +1375,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y95"
   },
   {
    "id": "PL79",
@@ -1277,7 +1393,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y96"
   },
   {
    "id": "PL80",
@@ -1293,7 +1411,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y97"
   },
   {
    "id": "PL81",
@@ -1309,7 +1429,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y98"
   },
   {
    "id": "PL82",
@@ -1325,7 +1447,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y99"
   },
   {
    "id": "PL83",
@@ -1341,7 +1465,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y100"
   },
   {
    "id": "PL84",
@@ -1357,7 +1483,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y101"
   },
   {
    "id": "PL85",
@@ -1373,7 +1501,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y102"
   },
   {
    "id": "PL86",
@@ -1389,7 +1519,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y103"
   },
   {
    "id": "PL87",
@@ -1405,7 +1537,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y104"
   },
   {
    "id": "PL88",
@@ -1421,7 +1555,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y105"
   },
   {
    "id": "PL89",
@@ -1437,7 +1573,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y106"
   },
   {
    "id": "PL90",
@@ -1453,7 +1591,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y107"
   },
   {
    "id": "PL91",
@@ -1469,7 +1609,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y108"
   },
   {
    "id": "PL92",
@@ -1485,7 +1627,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y109"
   },
   {
    "id": "PL93",
@@ -1501,7 +1645,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y110"
   },
   {
    "id": "PL94",
@@ -1517,7 +1663,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y111"
   },
   {
    "id": "PL95",
@@ -1533,7 +1681,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y112"
   },
   {
    "id": "PL96",
@@ -1549,7 +1699,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y113"
   },
   {
    "id": "PL97",
@@ -1565,7 +1717,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y114"
   },
   {
    "id": "PL98",
@@ -1581,7 +1735,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y115"
   },
   {
    "id": "PL99",
@@ -1597,7 +1753,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y116"
   },
   {
    "id": "PL100",
@@ -1613,7 +1771,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y117"
   },
   {
    "id": "PL101",
@@ -1629,7 +1789,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y118"
   },
   {
    "id": "PL102",
@@ -1645,7 +1807,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y119"
   },
   {
    "id": "PL103",
@@ -1661,7 +1825,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y120"
   },
   {
    "id": "PL104",
@@ -1677,7 +1843,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y121"
   },
   {
    "id": "PL105",
@@ -1693,7 +1861,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y122"
   },
   {
    "id": "PL106",
@@ -1709,7 +1879,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y123"
   },
   {
    "id": "PL107",
@@ -1725,7 +1897,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y124"
   },
   {
    "id": "PL108",
@@ -1741,7 +1915,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y125"
   },
   {
    "id": "PL109",
@@ -1757,7 +1933,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y126"
   },
   {
    "id": "PL110",
@@ -1773,7 +1951,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y127"
   },
   {
    "id": "PL111",
@@ -1789,7 +1969,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y128"
   },
   {
    "id": "PL112",
@@ -1805,7 +1987,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y129"
   },
   {
    "id": "PL113",
@@ -1821,7 +2005,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y130"
   },
   {
    "id": "PL114",
@@ -1837,7 +2023,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y131"
   },
   {
    "id": "PL115",
@@ -1853,7 +2041,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y132"
   },
   {
    "id": "PL116",
@@ -1885,7 +2075,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y133"
   },
   {
    "id": "PL118",
@@ -1901,7 +2093,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y134"
   },
   {
    "id": "PL119",
@@ -1917,7 +2111,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y135"
   },
   {
    "id": "PL120",
@@ -1933,7 +2129,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y136"
   },
   {
    "id": "PL121",
@@ -1949,7 +2147,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y137"
   },
   {
    "id": "PL122",
@@ -1965,7 +2165,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y138"
   },
   {
    "id": "PL123",
@@ -1981,7 +2183,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y139"
   },
   {
    "id": "PL124",
@@ -1997,7 +2201,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y140"
   },
   {
    "id": "PL125",
@@ -2013,7 +2219,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y141"
   },
   {
    "id": "PL126",
@@ -2029,7 +2237,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y142"
   },
   {
    "id": "PL127",
@@ -2045,7 +2255,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y143"
   },
   {
    "id": "PL128",
@@ -2077,7 +2289,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y144"
   },
   {
    "id": "PL130",
@@ -2093,7 +2307,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y145"
   },
   {
    "id": "PL131",
@@ -2109,7 +2325,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y146"
   },
   {
    "id": "PL132",
@@ -2125,7 +2343,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y147"
   },
   {
    "id": "PL133",
@@ -2141,7 +2361,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y148"
   },
   {
    "id": "PL134",
@@ -2157,7 +2379,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y149"
   },
   {
    "id": "PL135",
@@ -2173,7 +2397,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y150"
   },
   {
    "id": "PL136",
@@ -2189,7 +2415,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y151"
   },
   {
    "id": "PL137",
@@ -2205,7 +2433,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y152"
   },
   {
    "id": "PL138",
@@ -2221,7 +2451,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y153"
   },
   {
    "id": "PL139",
@@ -2237,7 +2469,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y154"
   },
   {
    "id": "PL140",
@@ -2253,7 +2487,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y155"
   },
   {
    "id": "PL141",
@@ -2269,7 +2505,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y156"
   },
   {
    "id": "PL142",
@@ -2285,7 +2523,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y157"
   },
   {
    "id": "PL143",
@@ -2301,7 +2541,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y158"
   },
   {
    "id": "PL144",
@@ -2317,7 +2559,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y159"
   },
   {
    "id": "PL145",
@@ -2333,7 +2577,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y160"
   },
   {
    "id": "PL146",
@@ -2349,7 +2595,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y161"
   },
   {
    "id": "PL147",
@@ -2365,7 +2613,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y162"
   },
   {
    "id": "PL148",
@@ -2381,7 +2631,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y163"
   },
   {
    "id": "PL149",
@@ -2397,7 +2649,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y164"
   },
   {
    "id": "PL150",
@@ -2413,7 +2667,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y165"
   },
   {
    "id": "PL151",
@@ -2429,7 +2685,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y166"
   },
   {
    "id": "PL152",
@@ -2445,7 +2703,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y167"
   },
   {
    "id": "PL153",
@@ -2461,7 +2721,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y168"
   },
   {
    "id": "PL154",
@@ -2477,7 +2739,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y169"
   },
   {
    "id": "PL155",
@@ -2493,7 +2757,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y170"
   },
   {
    "id": "PL156",
@@ -2509,7 +2775,9 @@
    ],
    "use": "N",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y171"
   },
   {
    "id": "PL157",
@@ -2525,7 +2793,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y172"
   },
   {
    "id": "PL158",
@@ -2541,7 +2811,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y173"
   },
   {
    "id": "PL159",
@@ -2557,7 +2829,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y174"
   },
   {
    "id": "PL160",
@@ -2573,7 +2847,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y175"
   },
   {
    "id": "PL161",
@@ -2605,7 +2881,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y176"
   },
   {
    "id": "PL163",
@@ -2621,7 +2899,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y177"
   },
   {
    "id": "PL164",
@@ -2637,7 +2917,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y178"
   },
   {
    "id": "PL165",
@@ -2653,7 +2935,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y179"
   },
   {
    "id": "PL166",
@@ -2669,7 +2953,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y180"
   },
   {
    "id": "PL167",
@@ -2685,7 +2971,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y181"
   },
   {
    "id": "PL168",
@@ -2701,7 +2989,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y182"
   },
   {
    "id": "PL169",
@@ -2717,7 +3007,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y183"
   },
   {
    "id": "PL170",
@@ -2733,7 +3025,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y184"
   },
   {
    "id": "PL171",
@@ -2749,7 +3043,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y185"
   },
   {
    "id": "PL172",
@@ -2765,7 +3061,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y186"
   },
   {
    "id": "PL173",
@@ -2781,7 +3079,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y187"
   },
   {
    "id": "PL174",
@@ -2797,7 +3097,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y188"
   },
   {
    "id": "PL175",
@@ -2813,7 +3115,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y189"
   },
   {
    "id": "PL176",
@@ -2829,7 +3133,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y190"
   },
   {
    "id": "PL177",
@@ -2845,7 +3151,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y191"
   },
   {
    "id": "PL178",
@@ -2861,7 +3169,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y192"
   },
   {
    "id": "PL179",
@@ -2877,7 +3187,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y193"
   },
   {
    "id": "PL180",
@@ -2893,7 +3205,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y194"
   },
   {
    "id": "PL181",
@@ -2910,7 +3224,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y195"
   },
   {
    "id": "PL182",
@@ -2927,7 +3243,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y196"
   },
   {
    "id": "PL183",
@@ -2944,7 +3262,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y197"
   },
   {
    "id": "PL184",
@@ -2961,7 +3281,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y198"
   },
   {
    "id": "PL185",
@@ -2978,7 +3300,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y199"
   },
   {
    "id": "PL186",
@@ -2995,7 +3319,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y200"
   },
   {
    "id": "PL187",
@@ -3012,7 +3338,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y201"
   },
   {
    "id": "PL188",
@@ -3029,7 +3357,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y202"
   },
   {
    "id": "PL189",
@@ -3046,7 +3376,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y203"
   },
   {
    "id": "PL190",
@@ -3063,7 +3395,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y204"
   },
   {
    "id": "PL191",
@@ -3080,7 +3414,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y205"
   },
   {
    "id": "PL192",
@@ -3097,7 +3433,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y206"
   },
   {
    "id": "PL193",
@@ -3114,7 +3452,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y207"
   },
   {
    "id": "PL194",
@@ -3131,7 +3471,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y208"
   },
   {
    "id": "PL195",
@@ -3148,7 +3490,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "A",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y209"
   },
   {
    "id": "PL196",
@@ -3165,7 +3509,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y210"
   },
   {
    "id": "PL197",
@@ -3182,7 +3528,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y211"
   },
   {
    "id": "PL198",
@@ -3199,7 +3547,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y212"
   },
   {
    "id": "PL199",
@@ -3216,7 +3566,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y213"
   },
   {
    "id": "PL200",
@@ -3233,7 +3585,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y214"
   },
   {
    "id": "PL201",
@@ -3250,7 +3604,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y215"
   },
   {
    "id": "PL202",
@@ -3267,7 +3623,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y216"
   },
   {
    "id": "PL203",
@@ -3284,7 +3642,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y217"
   },
   {
    "id": "PL204",
@@ -3301,7 +3661,9 @@
    "use": "N",
    "use_note": "R+ движок библиотеки: геометрия HIGH — по §4.9 законна в R и ниже; R+ добирается каналом дрессера (bumps/on_skin/pantyline/through) поверх LOW/MID геометрии",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y218"
   },
   {
    "id": "PL205",
@@ -3317,7 +3679,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y219"
   },
   {
    "id": "PL206",
@@ -3333,7 +3697,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y220"
   },
   {
    "id": "PL207",
@@ -3349,7 +3715,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y221"
   },
   {
    "id": "PL208",
@@ -3381,7 +3749,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y222"
   },
   {
    "id": "PL210",
@@ -3397,7 +3767,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y223"
   },
   {
    "id": "PL211",
@@ -3413,7 +3785,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y224"
   },
   {
    "id": "PL212",
@@ -3429,7 +3803,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y225"
   },
   {
    "id": "PL213",
@@ -3445,7 +3821,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y226"
   },
   {
    "id": "PL214",
@@ -3461,7 +3839,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y227"
   },
   {
    "id": "PL215",
@@ -3477,7 +3857,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y228"
   },
   {
    "id": "PL216",
@@ -3509,7 +3891,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y229"
   },
   {
    "id": "PL218",
@@ -3525,7 +3909,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y230"
   },
   {
    "id": "PL219",
@@ -3541,7 +3927,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y231"
   },
   {
    "id": "PL220",
@@ -3573,7 +3961,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y232"
   },
   {
    "id": "PL222",
@@ -3589,7 +3979,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y233"
   },
   {
    "id": "PL223",
@@ -3605,7 +3997,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y234"
   },
   {
    "id": "PL224",
@@ -3621,7 +4015,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y235"
   },
   {
    "id": "PL225",
@@ -3653,7 +4049,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y236"
   },
   {
    "id": "PL227",
@@ -3669,7 +4067,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y237"
   },
   {
    "id": "PL228",
@@ -3685,7 +4085,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y238"
   },
   {
    "id": "PL229",
@@ -3701,7 +4103,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y239"
   },
   {
    "id": "PL230",
@@ -3717,7 +4121,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y240"
   },
   {
    "id": "PL231",
@@ -3733,7 +4139,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y241"
   },
   {
    "id": "PL232",
@@ -3749,7 +4157,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y242"
   },
   {
    "id": "PL233",
@@ -3765,7 +4175,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y243"
   },
   {
    "id": "PL234",
@@ -3781,7 +4193,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y244"
   },
   {
    "id": "PL235",
@@ -3797,7 +4211,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y245"
   },
   {
    "id": "PL236",
@@ -3813,7 +4229,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y246"
   },
   {
    "id": "PL237",
@@ -3829,7 +4247,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y247"
   },
   {
    "id": "PL238",
@@ -3845,7 +4265,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y248"
   },
   {
    "id": "PL239",
@@ -3861,7 +4283,9 @@
    ],
    "use": "N",
    "corridor": "B",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y249"
   },
   {
    "id": "PL240",
@@ -3877,7 +4301,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y250"
   },
   {
    "id": "PL241",
@@ -3894,7 +4320,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y251"
   },
   {
    "id": "PL242",
@@ -3911,7 +4339,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y252"
   },
   {
    "id": "PL243",
@@ -3928,7 +4358,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y253"
   },
   {
    "id": "PL244",
@@ -3945,7 +4377,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y254"
   },
   {
    "id": "PL245",
@@ -3962,7 +4396,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y255"
   },
   {
    "id": "PL246",
@@ -3979,7 +4415,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y256"
   },
   {
    "id": "PL247",
@@ -3996,7 +4434,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y257"
   },
   {
    "id": "PL248",
@@ -4030,7 +4470,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y258"
   },
   {
    "id": "PL250",
@@ -4047,7 +4489,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y259"
   },
   {
    "id": "PL251",
@@ -4064,7 +4508,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y260"
   },
   {
    "id": "PL252",
@@ -4081,7 +4527,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y261"
   },
   {
    "id": "PL253",
@@ -4098,7 +4546,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y262"
   },
   {
    "id": "PL254",
@@ -4115,7 +4565,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y263"
   },
   {
    "id": "PL255",
@@ -4132,7 +4584,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y264"
   },
   {
    "id": "PL256",
@@ -4149,7 +4603,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y265"
   },
   {
    "id": "PL257",
@@ -4166,7 +4622,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y266"
   },
   {
    "id": "PL258",
@@ -4183,7 +4641,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y267"
   },
   {
    "id": "PL259",
@@ -4200,7 +4660,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y268"
   },
   {
    "id": "PL260",
@@ -4217,7 +4679,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y269"
   },
   {
    "id": "PL261",
@@ -4234,7 +4698,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y270"
   },
   {
    "id": "PL262",
@@ -4251,7 +4717,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y271"
   },
   {
    "id": "PL263",
@@ -4268,7 +4736,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y272"
   },
   {
    "id": "PL264",
@@ -4285,7 +4755,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y273"
   },
   {
    "id": "PL265",
@@ -4302,7 +4774,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y274"
   },
   {
    "id": "PL266",
@@ -4319,7 +4793,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y275"
   },
   {
    "id": "PL267",
@@ -4336,7 +4812,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y276"
   },
   {
    "id": "PL268",
@@ -4353,7 +4831,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y277"
   },
   {
    "id": "PL269",
@@ -4370,7 +4850,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y278"
   },
   {
    "id": "PL270",
@@ -4387,7 +4869,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y279"
   },
   {
    "id": "PL271",
@@ -4421,7 +4905,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y280"
   },
   {
    "id": "PL273",
@@ -4438,7 +4924,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y281"
   },
   {
    "id": "PL274",
@@ -4472,7 +4960,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y282"
   },
   {
    "id": "PL276",
@@ -4489,7 +4979,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y283"
   },
   {
    "id": "PL277",
@@ -4506,7 +4998,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y284"
   },
   {
    "id": "PL278",
@@ -4523,7 +5017,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y285"
   },
   {
    "id": "PL279",
@@ -4540,7 +5036,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y286"
   },
   {
    "id": "PL280",
@@ -4557,7 +5055,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y287"
   },
   {
    "id": "PL281",
@@ -4574,7 +5074,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y288"
   },
   {
    "id": "PL282",
@@ -4608,7 +5110,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y289"
   },
   {
    "id": "PL284",
@@ -4625,7 +5129,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y290"
   },
   {
    "id": "PL285",
@@ -4693,7 +5199,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y291"
   },
   {
    "id": "PL289",
@@ -4710,7 +5218,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y292"
   },
   {
    "id": "PL290",
@@ -4744,7 +5254,9 @@
    ],
    "use": "NV",
    "corridor": "A+B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y293"
   },
   {
    "id": "PL292",
@@ -4761,7 +5273,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y294"
   },
   {
    "id": "PL293",
@@ -4778,7 +5292,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y295"
   },
   {
    "id": "PL294",
@@ -4795,7 +5311,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y296"
   },
   {
    "id": "PL295",
@@ -4812,7 +5330,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y297"
   },
   {
    "id": "PL296",
@@ -4829,7 +5349,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y298"
   },
   {
    "id": "PL297",
@@ -4846,7 +5368,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y299"
   },
   {
    "id": "PL298",
@@ -4863,7 +5387,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y300"
   },
   {
    "id": "PL299",
@@ -4880,7 +5406,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y301"
   },
   {
    "id": "PL300",
@@ -4897,7 +5425,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y302"
   },
   {
    "id": "PL301",
@@ -4914,7 +5444,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y303"
   },
   {
    "id": "PL302",
@@ -4931,7 +5463,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y304"
   },
   {
    "id": "PL303",
@@ -4948,7 +5482,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y305"
   },
   {
    "id": "PL304",
@@ -4965,7 +5501,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y306"
   },
   {
    "id": "PL305",
@@ -4982,7 +5520,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y307"
   },
   {
    "id": "PL306",
@@ -4999,7 +5539,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y308"
   },
   {
    "id": "PL307",
@@ -5016,7 +5558,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y309"
   },
   {
    "id": "PL308",
@@ -5067,7 +5611,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y310"
   },
   {
    "id": "PL311",
@@ -5101,7 +5647,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y311"
   },
   {
    "id": "PL313",
@@ -5135,7 +5683,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y312"
   },
   {
    "id": "PL315",
@@ -5152,7 +5702,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y313"
   },
   {
    "id": "PL316",
@@ -5169,7 +5721,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y314"
   },
   {
    "id": "PL317",
@@ -5186,7 +5740,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y315"
   },
   {
    "id": "PL318",
@@ -5203,7 +5759,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y316"
   },
   {
    "id": "PL319",
@@ -5220,7 +5778,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y317"
   },
   {
    "id": "PL320",
@@ -5237,7 +5797,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y318"
   },
   {
    "id": "PL321",
@@ -5254,7 +5816,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y319"
   },
   {
    "id": "PL322",
@@ -5271,7 +5835,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y320"
   },
   {
    "id": "PL323",
@@ -5305,7 +5871,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y321"
   },
   {
    "id": "PL325",
@@ -5322,7 +5890,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y322"
   },
   {
    "id": "PL326",
@@ -5356,7 +5926,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y323"
   },
   {
    "id": "PL328",
@@ -5373,7 +5945,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y324"
   },
   {
    "id": "PL329",
@@ -5390,7 +5964,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y325"
   },
   {
    "id": "PL330",
@@ -5407,7 +5983,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y326"
   },
   {
    "id": "PL331",
@@ -5441,7 +6019,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y327"
   },
   {
    "id": "PL333",
@@ -5458,7 +6038,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y328"
   },
   {
    "id": "PL334",
@@ -5474,7 +6056,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y329"
   },
   {
    "id": "PL335",
@@ -5490,7 +6074,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y330"
   },
   {
    "id": "PL336",
@@ -5506,7 +6092,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y331"
   },
   {
    "id": "PL337",
@@ -5522,7 +6110,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y332"
   },
   {
    "id": "PL338",
@@ -5538,7 +6128,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y333"
   },
   {
    "id": "PL339",
@@ -5554,7 +6146,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y334"
   },
   {
    "id": "PL340",
@@ -5570,7 +6164,9 @@
    ],
    "use": "NV",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y335"
   },
   {
    "id": "PL341",
@@ -5586,7 +6182,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y336"
   },
   {
    "id": "PL342",
@@ -5602,7 +6200,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y337"
   },
   {
    "id": "PL343",
@@ -5618,7 +6218,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y338"
   },
   {
    "id": "PL344",
@@ -5634,7 +6236,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y339"
   },
   {
    "id": "PL345",
@@ -5650,7 +6254,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y340"
   },
   {
    "id": "PL346",
@@ -5666,7 +6272,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y341"
   },
   {
    "id": "PL347",
@@ -5682,7 +6290,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y342"
   },
   {
    "id": "PL348",
@@ -5698,7 +6308,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y343"
   },
   {
    "id": "PL349",
@@ -5714,7 +6326,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y344"
   },
   {
    "id": "PL350",
@@ -5730,7 +6344,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y345"
   },
   {
    "id": "PL351",
@@ -5746,7 +6362,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y346"
   },
   {
    "id": "PL352",
@@ -5762,7 +6380,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y347"
   },
   {
    "id": "PL353",
@@ -5778,7 +6398,9 @@
    ],
    "use": "NV",
    "corridor": "A+B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y348"
   },
   {
    "id": "PL354",
@@ -5794,7 +6416,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y349"
   },
   {
    "id": "PL355",
@@ -5810,7 +6434,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y350"
   },
   {
    "id": "PL356",
@@ -5826,7 +6452,9 @@
    ],
    "use": "NV",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y351"
   },
   {
    "id": "PL357",
@@ -5842,7 +6470,9 @@
    ],
    "use": "NV",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y352"
   },
   {
    "id": "PL358",
@@ -5859,7 +6489,9 @@
    "pick": "T5-16",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y353"
   },
   {
    "id": "PL359",
@@ -5876,7 +6508,9 @@
    "pick": "T5-16",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y354"
   },
   {
    "id": "PL360",
@@ -5892,7 +6526,9 @@
    "use": "V",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y355"
   },
   {
    "id": "PL361",
@@ -5909,7 +6545,9 @@
    "pick": "T5-16",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "A+B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y356"
   },
   {
    "id": "PL362",
@@ -5926,7 +6564,9 @@
    "pick": "T5-16",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y357"
   },
   {
    "id": "PL363",
@@ -5942,7 +6582,9 @@
    "use": "V",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y358"
   },
   {
    "id": "PL364",
@@ -5958,7 +6600,9 @@
    "use": "V",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "A",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y359"
   },
   {
    "id": "PL365",
@@ -5974,7 +6618,9 @@
    "use": "V",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "B",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y360"
   },
   {
    "id": "PL366",
@@ -5990,7 +6636,9 @@
    "use": "V",
    "use_note": "ЖИВАЯ семья (вердикт T5-16 принял комбо; авторские пики PL358/359/361/362) — первый приоритет VOLT-ротации",
    "corridor": "A",
-   "rating_trust": "HIGH"
+   "rating_trust": "HIGH",
+   "combo": true,
+   "card": "Y361"
   },
   {
    "id": "PL367",
@@ -6006,7 +6654,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y362"
   },
   {
    "id": "PL368",
@@ -6022,7 +6672,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y363"
   },
   {
    "id": "PL369",
@@ -6054,7 +6706,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y364"
   },
   {
    "id": "PL371",
@@ -6086,7 +6740,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y365"
   },
   {
    "id": "PL373",
@@ -6102,7 +6758,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y366"
   },
   {
    "id": "PL374",
@@ -6118,7 +6776,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y367"
   },
   {
    "id": "PL375",
@@ -6134,7 +6794,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y368"
   },
   {
    "id": "PL376",
@@ -6166,7 +6828,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y369"
   },
   {
    "id": "PL378",
@@ -6182,7 +6846,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y370"
   },
   {
    "id": "PL379",
@@ -6214,7 +6880,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y371"
   },
   {
    "id": "PL381",
@@ -6230,7 +6898,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y372"
   },
   {
    "id": "PL382",
@@ -6246,7 +6916,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y373"
   },
   {
    "id": "PL383",
@@ -6278,7 +6950,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y374"
   },
   {
    "id": "PL385",
@@ -6294,7 +6968,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y375"
   },
   {
    "id": "PL386",
@@ -6310,7 +6986,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y376"
   },
   {
    "id": "PL387",
@@ -6326,7 +7004,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y377"
   },
   {
    "id": "PL388",
@@ -6342,7 +7022,9 @@
    "use": "N",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y378"
   },
   {
    "id": "PL389",
@@ -6358,7 +7040,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y379"
   },
   {
    "id": "PL390",
@@ -6374,7 +7058,9 @@
    "use": "NV",
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y380"
   },
   {
    "id": "PL391",
@@ -6390,7 +7076,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y381"
   },
   {
    "id": "PL392",
@@ -6406,7 +7094,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y382"
   },
   {
    "id": "PL393",
@@ -6422,7 +7112,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y383"
   },
   {
    "id": "PL394",
@@ -6438,7 +7130,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y384"
   },
   {
    "id": "PL395",
@@ -6454,7 +7148,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y385"
   },
   {
    "id": "PL396",
@@ -6470,7 +7166,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y386"
   },
   {
    "id": "PL397",
@@ -6486,7 +7184,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y387"
   },
   {
    "id": "PL398",
@@ -6502,7 +7202,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y388"
   },
   {
    "id": "PL399",
@@ -6518,7 +7220,9 @@
    "source": "first-use T5-17 CITY NEVER SLEEPS (custom card)",
    "use_note": "архив эксперимента (вердикт T5-17: «вышло слабовато») — в ротацию не ставить, реюз только ребилдом комбо",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y389"
   },
   {
    "id": "PL400",
@@ -6533,7 +7237,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y390"
   },
   {
    "id": "PL401",
@@ -6548,7 +7254,9 @@
    "use": "NV",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y391"
   },
   {
    "id": "PL402",
@@ -6563,7 +7271,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y392"
   },
   {
    "id": "PL403",
@@ -6593,7 +7303,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y393"
   },
   {
    "id": "PL405",
@@ -6608,7 +7320,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y394"
   },
   {
    "id": "PL406",
@@ -6623,7 +7337,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y395"
   },
   {
    "id": "PL407",
@@ -6638,7 +7354,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y396"
   },
   {
    "id": "PL408",
@@ -6653,7 +7371,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y397"
   },
   {
    "id": "PL409",
@@ -6668,7 +7388,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y398"
   },
   {
    "id": "PL410",
@@ -6683,7 +7405,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "LOW"
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y399"
   },
   {
    "id": "PL411",
@@ -6698,7 +7422,9 @@
    "use": "NV",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y400"
   },
   {
    "id": "PL412",
@@ -6713,7 +7439,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y401"
   },
   {
    "id": "PL413",
@@ -6728,7 +7456,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y402"
   },
   {
    "id": "PL414",
@@ -6743,7 +7473,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y403"
   },
   {
    "id": "PL415",
@@ -6758,7 +7490,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y404"
   },
   {
    "id": "PL416",
@@ -6773,7 +7507,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y405"
   },
   {
    "id": "PL417",
@@ -6788,7 +7524,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y406"
   },
   {
    "id": "PL418",
@@ -6803,7 +7541,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y407"
   },
   {
    "id": "PL419",
@@ -6818,7 +7558,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y408"
   },
   {
    "id": "PL420",
@@ -6833,7 +7575,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y409"
   },
   {
    "id": "PL421",
@@ -6848,7 +7592,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y410"
   },
   {
    "id": "PL422",
@@ -6863,7 +7609,9 @@
    "use": "V",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y411"
   },
   {
    "id": "PL423",
@@ -6878,7 +7626,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (custom card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y412"
   },
   {
    "id": "PL424",
@@ -6894,7 +7644,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y413"
   },
   {
    "id": "PL425",
@@ -6910,7 +7662,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y414"
   },
   {
    "id": "PL426",
@@ -6926,7 +7680,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y415"
   },
   {
    "id": "PL427",
@@ -6942,7 +7698,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y416"
   },
   {
    "id": "PL428",
@@ -6958,7 +7716,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y417"
   },
   {
    "id": "PL429",
@@ -6974,7 +7734,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y418"
   },
   {
    "id": "PL430",
@@ -6990,7 +7752,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y419"
   },
   {
    "id": "PL431",
@@ -7006,7 +7770,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y420"
   },
   {
    "id": "PL432",
@@ -7022,7 +7788,9 @@
    "source": "first-use T5-18 REVERSE WONDERLAND (EXP-combo X3 «В-ШЁПОТ», custom card)",
    "use_note": "клетка расформирована: ядро 6/9 принято вердиктом 2026-11-10 — карты живут как NV в обычной ротации (EXP-константа снята)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y421"
   },
   {
    "id": "PL433",
@@ -7038,7 +7806,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (canon-OS card, вето-пересборка)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y422"
   },
   {
    "id": "PL434",
@@ -7054,7 +7824,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (canon-OS card, вето-пересборка)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y423"
   },
   {
    "id": "PL435",
@@ -7069,7 +7841,9 @@
    "use": "N",
    "source": "first-use T5-18 REVERSE WONDERLAND (canon-OS card, вето-пересборка)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y424"
   },
   {
    "id": "PL436",
@@ -7086,7 +7860,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y425"
   },
   {
    "id": "PL437",
@@ -7103,7 +7879,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y426"
   },
   {
    "id": "PL438",
@@ -7120,7 +7898,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y427"
   },
   {
    "id": "PL439",
@@ -7137,7 +7917,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y428"
   },
   {
    "id": "PL440",
@@ -7154,7 +7936,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y429"
   },
   {
    "id": "PL441",
@@ -7171,7 +7955,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y430"
   },
   {
    "id": "PL442",
@@ -7188,7 +7974,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y431"
   },
   {
    "id": "PL443",
@@ -7205,7 +7993,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y432"
   },
   {
    "id": "PL444",
@@ -7222,7 +8012,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y433"
   },
   {
    "id": "PL445",
@@ -7239,7 +8031,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y434"
   },
   {
    "id": "PL446",
@@ -7256,7 +8050,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y435"
   },
   {
    "id": "PL447",
@@ -7273,7 +8069,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y436"
   },
   {
    "id": "PL448",
@@ -7290,7 +8088,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "A+B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y437"
   },
   {
    "id": "PL449",
@@ -7307,7 +8107,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y438"
   },
   {
    "id": "PL450",
@@ -7324,7 +8126,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y439"
   },
   {
    "id": "PL451",
@@ -7358,7 +8162,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y440"
   },
   {
    "id": "PL453",
@@ -7375,7 +8181,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (мейн)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y441"
   },
   {
    "id": "PL454",
@@ -7442,7 +8250,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y442"
   },
   {
    "id": "PL458",
@@ -7458,7 +8268,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y443"
   },
   {
    "id": "PL459",
@@ -7474,7 +8286,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y444"
   },
   {
    "id": "PL460",
@@ -7490,7 +8304,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y445"
   },
   {
    "id": "PL461",
@@ -7506,7 +8322,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y446"
   },
   {
    "id": "PL462",
@@ -7522,7 +8340,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y447"
   },
   {
    "id": "PL463",
@@ -7538,7 +8358,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y448"
   },
   {
    "id": "PL464",
@@ -7554,7 +8376,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y449"
   },
   {
    "id": "PL465",
@@ -7570,7 +8394,9 @@
    "source": "first-use T5-19 DEVIL'S GREED (EXP-семья X4 cage-lean, 9 карт)",
    "use_note": "архив эксперимента (вердикт T5-19: «не особо»; P25 — единственный зачёт и референс X5: навал + намёк на около-эротику)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y450"
   },
   {
    "id": "PL466",
@@ -7586,7 +8412,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (canon-OS card)",
    "corridor": "A+B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y451"
   },
   {
    "id": "PL467",
@@ -7602,7 +8430,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (canon-OS card)",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y452"
   },
   {
    "id": "PL468",
@@ -7618,7 +8448,9 @@
    "use": "N",
    "source": "first-use T5-19 DEVIL'S GREED (canon-OS card)",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y453"
   },
   {
    "id": "PL469",
@@ -7632,7 +8464,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y454"
   },
   {
    "id": "PL470",
@@ -7646,7 +8480,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y455"
   },
   {
    "id": "PL471",
@@ -7660,7 +8496,9 @@
    ],
    "use": "V",
    "corridor": "A+B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y456"
   },
   {
    "id": "PL472",
@@ -7674,7 +8512,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y457"
   },
   {
    "id": "PL473",
@@ -7688,7 +8528,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y458"
   },
   {
    "id": "PL474",
@@ -7702,7 +8544,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y459"
   },
   {
    "id": "PL475",
@@ -7716,7 +8560,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y460"
   },
   {
    "id": "PL476",
@@ -7730,7 +8576,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y461"
   },
   {
    "id": "PL477",
@@ -7744,7 +8592,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "PENDING"
+   "rating_trust": "PENDING",
+   "combo": true,
+   "card": "Y462"
   },
   {
    "id": "PL478",
@@ -7758,7 +8608,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y463"
   },
   {
    "id": "PL479",
@@ -7772,7 +8624,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y464"
   },
   {
    "id": "PL480",
@@ -7786,7 +8640,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y465"
   },
   {
    "id": "PL481",
@@ -7800,7 +8656,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y466"
   },
   {
    "id": "PL482",
@@ -7814,7 +8672,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y467"
   },
   {
    "id": "PL483",
@@ -7828,7 +8688,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y468"
   },
   {
    "id": "PL484",
@@ -7842,7 +8704,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y469"
   },
   {
    "id": "PL485",
@@ -7856,7 +8720,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y470"
   },
   {
    "id": "PL486",
@@ -7870,7 +8736,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y471"
   },
   {
    "id": "PL487",
@@ -7884,7 +8752,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y472"
   },
   {
    "id": "PL488",
@@ -7898,7 +8768,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y473"
   },
   {
    "id": "PL489",
@@ -7912,7 +8784,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y474"
   },
   {
    "id": "PL490",
@@ -7940,7 +8814,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y475"
   },
   {
    "id": "PL492",
@@ -7954,7 +8830,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y476"
   },
   {
    "id": "PL493",
@@ -7968,7 +8846,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y477"
   },
   {
    "id": "PL494",
@@ -7982,7 +8862,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y478"
   },
   {
    "id": "PL495",
@@ -7996,7 +8878,9 @@
    ],
    "use": "V",
    "corridor": "B",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y479"
   },
   {
    "id": "PL496",
@@ -8010,7 +8894,9 @@
    ],
    "use": "V",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y480"
   },
   {
    "id": "PL497",
@@ -8024,7 +8910,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y481"
   },
   {
    "id": "PL498",
@@ -8038,7 +8926,9 @@
    ],
    "use": "V",
    "corridor": "SUPPORT",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y482"
   },
   {
    "id": "PL499",
@@ -8052,7 +8942,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y483"
   },
   {
    "id": "PL500",
@@ -8066,7 +8958,9 @@
    ],
    "use": "N",
    "corridor": "A",
-   "rating_trust": "MID"
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y484"
   },
   {
    "id": "PL501",
@@ -8080,7 +8974,9 @@
    ],
    "use": "N",
    "corridor": "NICHE",
-   "rating_trust": "UNKNOWN"
+   "rating_trust": "UNKNOWN",
+   "combo": true,
+   "card": "Y485"
   },
   {
    "id": "PL502",
@@ -8095,7 +8991,9 @@
    "use": "N",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P01, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P01, 2026-11-13)",
+   "combo": true,
+   "card": "Y486"
   },
   {
    "id": "PL503",
@@ -8110,7 +9008,9 @@
    "use": "N",
    "corridor": "B",
    "rating_trust": "HIGH",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P02, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P02, 2026-11-13)",
+   "combo": true,
+   "card": "Y487"
   },
   {
    "id": "PL504",
@@ -8125,7 +9025,9 @@
    "use": "N",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P03, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P03, 2026-11-13)",
+   "combo": true,
+   "card": "Y488"
   },
   {
    "id": "PL511",
@@ -8140,7 +9042,9 @@
    "use": "N",
    "corridor": "NICHE",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P04, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P04, 2026-11-13)",
+   "combo": true,
+   "card": "Y489"
   },
   {
    "id": "PL512",
@@ -8155,7 +9059,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P09, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P09, 2026-11-13)",
+   "combo": true,
+   "card": "Y490"
   },
   {
    "id": "PL513",
@@ -8170,7 +9076,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P10, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P10, 2026-11-13)",
+   "combo": true,
+   "card": "Y491"
   },
   {
    "id": "PL514",
@@ -8185,7 +9093,9 @@
    "use": "N",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P21, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P21, 2026-11-13)",
+   "combo": true,
+   "card": "Y492"
   },
   {
    "id": "PL505",
@@ -8200,7 +9110,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "HIGH",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P28, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P28, 2026-11-13)",
+   "combo": true,
+   "card": "Y493"
   },
   {
    "id": "PL506",
@@ -8215,7 +9127,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P29, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P29, 2026-11-13)",
+   "combo": true,
+   "card": "Y494"
   },
   {
    "id": "PL507",
@@ -8230,7 +9144,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "HIGH",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P30, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P30, 2026-11-13)",
+   "combo": true,
+   "card": "Y495"
   },
   {
    "id": "PL508",
@@ -8245,7 +9161,9 @@
    "use": "V",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P31, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P31, 2026-11-13)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL509",
@@ -8260,7 +9178,9 @@
    "use": "V",
    "corridor": "A+B",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P32, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P32, 2026-11-13)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL510",
@@ -8275,7 +9195,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-21 «THE MIDNIGHT LINE» (P33, 2026-11-13)"
+   "born": "T5-21 «THE MIDNIGHT LINE» (P33, 2026-11-13)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL515",
@@ -8290,7 +9212,9 @@
    "use": "N",
    "corridor": "A",
    "rating_trust": "HIGH",
-   "born": "T5-22 «COLD STOCK» (P01, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P01, 2026-11-14)",
+   "combo": true,
+   "card": "Y496"
   },
   {
    "id": "PL516",
@@ -8305,7 +9229,9 @@
    "use": "N",
    "corridor": "A",
    "rating_trust": "HIGH",
-   "born": "T5-22 «COLD STOCK» (P02, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P02, 2026-11-14)",
+   "combo": true,
+   "card": "Y497"
   },
   {
    "id": "PL517",
@@ -8320,7 +9246,9 @@
    "use": "N",
    "corridor": "A",
    "rating_trust": "HIGH",
-   "born": "T5-22 «COLD STOCK» (P03, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P03, 2026-11-14)",
+   "combo": true,
+   "card": "Y498"
   },
   {
    "id": "PL518",
@@ -8335,7 +9263,9 @@
    "use": "N",
    "corridor": "NICHE",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P04, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P04, 2026-11-14)",
+   "combo": true,
+   "card": "Y499"
   },
   {
    "id": "PL519",
@@ -8350,7 +9280,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "HIGH",
-   "born": "T5-22 «COLD STOCK» (P05, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P05, 2026-11-14)",
+   "combo": true,
+   "card": "Y500"
   },
   {
    "id": "PL520",
@@ -8366,7 +9298,9 @@
    "use": "V",
    "corridor": "A+B",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P25, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P25, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL521",
@@ -8382,7 +9316,9 @@
    "use": "V",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P26, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P26, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL522",
@@ -8397,7 +9333,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P27, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P27, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL523",
@@ -8412,7 +9350,9 @@
    "use": "V",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P28, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P28, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL524",
@@ -8427,7 +9367,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P29, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P29, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL525",
@@ -8442,7 +9384,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P30, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P30, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL526",
@@ -8457,7 +9401,9 @@
    "use": "V",
    "corridor": "B",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P31, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P31, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL527",
@@ -8472,7 +9418,9 @@
    "use": "V",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P32, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P32, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL528",
@@ -8487,7 +9435,9 @@
    "use": "V",
    "corridor": "A",
    "rating_trust": "PENDING",
-   "born": "T5-22 «COLD STOCK» (P33, 2026-11-14)"
+   "born": "T5-22 «COLD STOCK» (P33, 2026-11-14)",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL529",
@@ -8502,7 +9452,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y501"
   },
   {
    "id": "PL530",
@@ -8517,7 +9469,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y502"
   },
   {
    "id": "PL531",
@@ -8532,7 +9486,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y503"
   },
   {
    "id": "PL532",
@@ -8547,7 +9503,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y504"
   },
   {
    "id": "PL533",
@@ -8562,7 +9520,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y505"
   },
   {
    "id": "PL534",
@@ -8577,7 +9537,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y506"
   },
   {
    "id": "PL535",
@@ -8592,7 +9554,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y507"
   },
   {
    "id": "PL536",
@@ -8607,7 +9571,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y508"
   },
   {
    "id": "PL537",
@@ -8622,7 +9588,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y509"
   },
   {
    "id": "PL538",
@@ -8637,7 +9605,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y510"
   },
   {
    "id": "PL539",
@@ -8652,7 +9622,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y511"
   },
   {
    "id": "PL540",
@@ -8667,7 +9639,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "Y512"
   },
   {
    "id": "PL541",
@@ -8682,7 +9656,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL542",
@@ -8697,7 +9673,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL543",
@@ -8712,7 +9690,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL544",
@@ -8727,7 +9707,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL545",
@@ -8742,7 +9724,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL546",
@@ -8757,7 +9741,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL547",
@@ -8772,7 +9758,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL548",
@@ -8787,7 +9775,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL549",
@@ -8802,7 +9792,9 @@
     "CAM03_low",
     "CAM04_from_below"
    ],
-   "rating_trust": "R/R+"
+   "rating_trust": "R/R+",
+   "combo": true,
+   "card": "indirect"
   },
   {
    "id": "PL550",
@@ -8818,7 +9810,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y35"
   },
   {
    "id": "PL551",
@@ -8834,7 +9828,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y36"
   },
   {
    "id": "PL552",
@@ -8850,7 +9846,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A+B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y37"
   },
   {
    "id": "PL553",
@@ -8866,7 +9864,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y19"
   },
   {
    "id": "PL554",
@@ -8882,7 +9882,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y20"
   },
   {
    "id": "PL555",
@@ -8898,7 +9900,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y21"
   },
   {
    "id": "PL556",
@@ -8913,7 +9917,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y22"
   },
   {
    "id": "PL557",
@@ -8929,7 +9935,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y23"
   },
   {
    "id": "PL558",
@@ -8944,7 +9952,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y24"
   },
   {
    "id": "PL559",
@@ -8959,7 +9969,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y25"
   },
   {
    "id": "PL560",
@@ -8974,7 +9986,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y26"
   },
   {
    "id": "PL561",
@@ -8989,7 +10003,9 @@
    ],
    "rating_trust": "R",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y27"
   },
   {
    "id": "PL562",
@@ -9005,7 +10021,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y28"
   },
   {
    "id": "PL563",
@@ -9020,7 +10038,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y29"
   },
   {
    "id": "PL564",
@@ -9035,7 +10055,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y30"
   },
   {
    "id": "PL565",
@@ -9050,7 +10072,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y31"
   },
   {
    "id": "PL566",
@@ -9065,7 +10089,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y32"
   },
   {
    "id": "PL567",
@@ -9080,7 +10106,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "B",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y33"
   },
   {
    "id": "PL568",
@@ -9095,7 +10123,9 @@
    ],
    "rating_trust": "R/R+",
    "corridor": "A",
-   "first_use": "T5-24"
+   "first_use": "T5-24",
+   "combo": true,
+   "card": "Y34"
   }
  ],
  "family_counts": {
@@ -10644,7 +11674,8 @@
   "1.14.1 (2026-11-14, вердикт T5-22): author_picks +8 (PL515/516/517/519/256/203/353/127); trust PENDING→HIGH на PL515/516/517/519; PL520–528 (y_card_build) остаются PENDING до REWORK y_cards (camera 1.10.0).",
   "1.15.0 (2026-11-15, T5-23 «VENATOR»): +PL529–PL549 (21 first-use: OC 3 + мейны 9 + EXP 9); реюзы вне окна: PL150/PL151 (en-garde/full draw — охотничье ядро), PL56/PL81/PL106/PL111/PL115/PL123/PL124/PL125/PL129/PL145/PL97.",
   "1.15.0 (2026-11-15, вердикт T5-23): author_picks +14; trust PENDING→HIGH на Y-позах PL541–549 (первый прогон Y10–Y18 — полный зачёт вердиктом).",
-  "1.16.0 (2026-11-18, батч T5-24 «SEDUCTION»): PL550–PL568 — 19 поз Y-сборки (OC_T5-24 ×3 + y_card_build ×16) под новые Y-карты Y35–Y37 (ОС) и Y19–Y34 (EXP+мейны); все с В27-физикой и first_use T5-24."
+  "1.16.0 (2026-11-18, батч T5-24 «SEDUCTION»): PL550–PL568 — 19 поз Y-сборки (OC_T5-24 ×3 + y_card_build ×16) под новые Y-карты Y35–Y37 (ОС) и Y19–Y34 (EXP+мейны); все с В27-физикой и first_use T5-24.",
+  "1.17.0 (2026-11-17, акт 1 вердикта T5-24, приказ А «всю составную позу — в доктрину комбо-Y»): составных 515/568 поз получили поля combo+card (карты-обёртки Y38–YY512 в camera.json 1.15.0; sd остаётся скелетом, сборка — от карты; примитивы без второго элемента не тронуты)"
  ],
  "use_division": {
   "born": "2026-11-08, вердикт T5-16 (4,7/5) — приказ автора: «поделить позы которые у нас есть на те, которые хорошо подходят для ниши и те, которые необходимы в Волт»",
