@@ -1,0 +1,372 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.14.0)",
+ "batch": "tools/tmp/T5-25-ystamp-broken.md",
+ "sha256": "aab6eae7a97d5166879d64a0c5c35c586e04475f7213282ef3c834a789829f0e",
+ "utc": "2026-11-17T14:43:47+00:00",
+ "verdict": "FAIL",
+ "slots": 5,
+ "fails": [
+  {
+   "slot": "P01",
+   "gate": "y-stamp",
+   "msg": "Y-карта Y29 не напечатана клеймом в POS — промпт без клейма не RAW+ (LAWS §17): строка «Y-STAMP: Y29 «COVER» × dress zipper caught half-down at the spine + the palm pressed flat holding the dress front + glance back over the shoulder × upper body + over-the-shoulder glance · corridor A»"
+  },
+  {
+   "slot": "P02",
+   "gate": "y-stamp",
+   "msg": "клеймо расходится с картой Y24: поза карты пересказана — нужен копипаст-юнит 1:1 — правка промпта мимо карты запрещена: правь карту, клеймо перерождает сам (LAWS §17.4)"
+  },
+  {
+   "slot": "P03",
+   "gate": "y-stamp",
+   "msg": "клеймо Y38 при карте Y39 — паспорт не той карты: клеймо печатается из camera.json, правка промпта мимо карты запрещена (LAWS §17.4)"
+  },
+  {
+   "slot": "P04",
+   "gate": "y-stamp",
+   "msg": "клеймо расходится с картой Y30: класс «—» ≠ карты «PROCESS»; corridor A ≠ карты B — правка промпта мимо карты запрещена: правь карту, клеймо перерождает сам (LAWS §17.4)"
+  },
+  {
+   "slot": "P05",
+   "gate": "y-stamp",
+   "msg": "клеймо Y35 не исполняется телом POS (0 стемов паттерна вне клейма, нужно ≥2) — паттерн один в POS и один в клейме: исполнение + паспорт, не паспорт вместо исполнения (LAWS §17.3)"
+  }
+ ],
+ "warns": [
+  {
+   "slot": "P05",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P05",
+   "gate": "y-stamp",
+   "msg": "клеймо Y35 в окне ротации (использована в T5-24.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P03",
+   "gate": "combo-pose",
+   "msg": "составная поза PL02 собрана от Y39, карта позы = Y38 — привести к карте-обёртке или обновить built_from"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "story-cards",
+   "msg": "tools/tmp/T5-25-ystamp-broken/stories.md не найден — карточки историй отсутствуют, бюджет мысли не проверяем пост-фактум (директива роста 2026-11-01, идея 1; пилот — мейн-пул)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "каст 0/5 вне вилки 12–14 (policy v1.8)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "164 общих 6-грамм с предыдущими партиями (T5-24.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "ystamp-zipper",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 50,
+   "posWords": 138
+  },
+  {
+   "id": "P02",
+   "slug": "ystamp-hood-wind",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": null,
+   "posWords": 153
+  },
+  {
+   "id": "P03",
+   "slug": "ystamp-wall-lean",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 137
+  },
+  {
+   "id": "P04",
+   "slug": "ystamp-surf-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 17,
+   "posWords": 166
+  },
+  {
+   "id": "P05",
+   "slug": "ystamp-vigil",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 41,
+   "posWords": 164
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "the dress zipper caught half down",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "dress zipper caught half down at",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "zipper caught half down at the",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "caught half down at the spine",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "ash copper hair in a single",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "copper hair in a single thick",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "hair in a single thick braid",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "in a single thick braid garnet",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "a single thick braid garnet eyes",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "single thick braid garnet eyes dusk",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "thick braid garnet eyes dusk bronze",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "braid garnet eyes dusk bronze skin",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "garnet eyes dusk bronze skin athletic",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "eyes dusk bronze skin athletic young",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "dusk bronze skin athletic young build",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "bronze skin athletic young build mid_zipper_half",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "skin athletic young build mid_zipper_half both",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "athletic young build mid_zipper_half both palms",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "young build mid_zipper_half both palms pressed",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "build mid_zipper_half both palms pressed flat",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P08"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": false,
+ "fact_label": {
+  "label_R+": 3,
+  "fact_R+": 3
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 1
+ },
+ "y_cards": {
+  "used": [
+   "Y29",
+   "Y24",
+   "Y39",
+   "Y30",
+   "Y35"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "combo_pose": {
+  "composite_used": 5,
+  "without_card": 0,
+  "card_mismatch": 1
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 5,
+  "stamped": 4,
+  "missing": 1,
+  "malformed": 0,
+  "foreign": 1,
+  "mismatch": 2,
+  "empty_class_rplus": 0,
+  "not_executed": 1,
+  "window_hits": 1,
+  "corridor_warn": 0,
+  "stamp_without_card": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ }
+}

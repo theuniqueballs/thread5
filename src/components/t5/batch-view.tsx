@@ -45,6 +45,46 @@ function TagBlock({ title, text }: { title: string; text: string }) {
   );
 }
 
+function StampChip({ cardId }: { cardId: string }) {
+  // Акт 2 (приказ Б): клеймо печатается ИЗ КАРТЫ одним кликом — никаких
+  // ручных строк. Формат 1:1 с tools/gates.py v1.14.0 / LAWS §17.
+  const [busy, setBusy] = useState(false);
+  const { toast } = useToast();
+  return (
+    <button
+      type="button"
+      disabled={busy}
+      title="Y-STAMP — клеймо/паспорт из карты (акт 2, LAWS §17): копирует строку 1:1 из camera.json; правка промпта мимо карты запрещена"
+      onClick={async () => {
+        setBusy(true);
+        try {
+          const res = await fetch(`/api/t5/ystamp?card=${encodeURIComponent(cardId)}`);
+          const data = (await res.json()) as { stamp?: string; error?: string };
+          if (!res.ok || !data?.stamp) {
+            throw new Error(data?.error ?? 'клеймо не собралось');
+          }
+          const ok = await copyText(data.stamp);
+          toast({
+            title: ok ? `${cardId}: клеймо скопировано` : `${cardId}: клеймо получено`,
+            description: ok ? data.stamp : data.stamp,
+          });
+        } catch (err) {
+          toast({
+            title: `${cardId}: клеймо не собралось`,
+            description: err instanceof Error ? err.message : String(err),
+          });
+        } finally {
+          setBusy(false);
+        }
+      }}
+      className="t5-badge t5-badge--violet inline-flex cursor-pointer items-center gap-1 disabled:cursor-wait disabled:opacity-50"
+    >
+      {busy && <Loader2 className="size-3 animate-spin" aria-hidden />}
+      Y-STAMP
+    </button>
+  );
+}
+
 function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) {
   const [openCanon, setOpenCanon] = useState(false);
   const { toast } = useToast();
@@ -80,6 +120,7 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
               {slot.yCard}
             </span>
           )}
+          {slot.yCard && <StampChip cardId={slot.yCard} />}
           {slot.corridor && (
             <span
               title={`Коридор заявки ${slot.corridor} (В31: коридор = физика в POS)`}
