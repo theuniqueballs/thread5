@@ -1,0 +1,1271 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.9.0)",
+ "batch": "batches/T5-17.md",
+ "sha256": "3ace9cd2464ac6221d64591bbbdc12cda16df5e3000afbd4ade16157745e7566",
+ "utc": "2026-11-08T13:31:02+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "POS-строка 430 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "POS-строка 395 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "POS-строка 293 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "POS-строка 208 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "POS-строка 223 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P02",
+   "gate": "format",
+   "msg": "POS-строка 432 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P02",
+   "gate": "format",
+   "msg": "POS-строка 295 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P02",
+   "gate": "format",
+   "msg": "POS-строка 202 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P02",
+   "gate": "format",
+   "msg": "POS-строка 204 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P03",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «hair past the shoulders»"
+  },
+  {
+   "slot": "P03",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «wide-awake round eyes»"
+  },
+  {
+   "slot": "P03",
+   "gate": "format",
+   "msg": "POS-строка 393 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P03",
+   "gate": "format",
+   "msg": "POS-строка 452 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P03",
+   "gate": "format",
+   "msg": "POS-строка 213 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P04",
+   "gate": "format",
+   "msg": "POS-строка 341 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P04",
+   "gate": "format",
+   "msg": "POS-строка 317 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P04",
+   "gate": "format",
+   "msg": "POS-строка 244 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P05",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «grommets along the spine»"
+  },
+  {
+   "slot": "P05",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «seam-lines at the joints»"
+  },
+  {
+   "slot": "P05",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «strings from above-frame»"
+  },
+  {
+   "slot": "P05",
+   "gate": "format",
+   "msg": "POS-строка 393 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P05",
+   "gate": "format",
+   "msg": "POS-строка 419 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P05",
+   "gate": "format",
+   "msg": "POS-строка 219 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P05",
+   "gate": "format",
+   "msg": "POS-строка 212 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P06",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «bare forearms without feather-shawl»"
+  },
+  {
+   "slot": "P06",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 7 слов: «red crown spot hidden under the braid»"
+  },
+  {
+   "slot": "P06",
+   "gate": "format",
+   "msg": "POS-строка 420 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P06",
+   "gate": "format",
+   "msg": "POS-строка 280 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P07",
+   "gate": "format",
+   "msg": "POS-строка 390 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P07",
+   "gate": "format",
+   "msg": "POS-строка 356 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P07",
+   "gate": "format",
+   "msg": "POS-строка 326 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P08",
+   "gate": "format",
+   "msg": "POS-строка 307 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P08",
+   "gate": "format",
+   "msg": "POS-строка 294 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P09",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «crowd on the ice»"
+  },
+  {
+   "slot": "P09",
+   "gate": "format",
+   "msg": "POS-строка 339 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P09",
+   "gate": "format",
+   "msg": "POS-строка 400 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P09",
+   "gate": "format",
+   "msg": "POS-строка 229 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P09",
+   "gate": "format",
+   "msg": "POS-строка 202 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P10",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «four lower tentacle-arms»"
+  },
+  {
+   "slot": "P10",
+   "gate": "format",
+   "msg": "POS-строка 337 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P10",
+   "gate": "format",
+   "msg": "POS-строка 467 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P10",
+   "gate": "format",
+   "msg": "POS-строка 218 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P10",
+   "gate": "format",
+   "msg": "POS-строка 225 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P11",
+   "gate": "format",
+   "msg": "POS-строка 359 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P11",
+   "gate": "format",
+   "msg": "POS-строка 416 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P12",
+   "gate": "format",
+   "msg": "POS-строка 396 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P12",
+   "gate": "format",
+   "msg": "POS-строка 225 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P12",
+   "gate": "format",
+   "msg": "POS-строка 438 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P13",
+   "gate": "format",
+   "msg": "POS-строка 410 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P13",
+   "gate": "format",
+   "msg": "POS-строка 225 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P13",
+   "gate": "format",
+   "msg": "POS-строка 217 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P13",
+   "gate": "format",
+   "msg": "POS-строка 370 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P14",
+   "gate": "format",
+   "msg": "POS-строка 345 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P14",
+   "gate": "format",
+   "msg": "POS-строка 231 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P14",
+   "gate": "format",
+   "msg": "POS-строка 495 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P15",
+   "gate": "format",
+   "msg": "POS-строка 355 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P15",
+   "gate": "format",
+   "msg": "POS-строка 315 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P15",
+   "gate": "format",
+   "msg": "POS-строка 375 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P15",
+   "gate": "format",
+   "msg": "POS-строка 222 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P16",
+   "gate": "format",
+   "msg": "POS-строка 393 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P16",
+   "gate": "format",
+   "msg": "POS-строка 225 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P16",
+   "gate": "format",
+   "msg": "POS-строка 265 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P16",
+   "gate": "format",
+   "msg": "POS-строка 388 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P17",
+   "gate": "format",
+   "msg": "POS-строка 458 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P17",
+   "gate": "format",
+   "msg": "POS-строка 229 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P17",
+   "gate": "format",
+   "msg": "POS-строка 441 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P18",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «key on a chain»"
+  },
+  {
+   "slot": "P18",
+   "gate": "format",
+   "msg": "POS-строка 368 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P18",
+   "gate": "format",
+   "msg": "POS-строка 355 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P18",
+   "gate": "format",
+   "msg": "POS-строка 264 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P18",
+   "gate": "format",
+   "msg": "POS-строка 353 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P19",
+   "gate": "format",
+   "msg": "POS-строка 362 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P19",
+   "gate": "format",
+   "msg": "POS-строка 202 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P19",
+   "gate": "format",
+   "msg": "POS-строка 418 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P20",
+   "gate": "format",
+   "msg": "POS-строка 454 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P20",
+   "gate": "format",
+   "msg": "POS-строка 372 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P20",
+   "gate": "format",
+   "msg": "POS-строка 268 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P20",
+   "gate": "format",
+   "msg": "POS-строка 335 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P21",
+   "gate": "format",
+   "msg": "POS-строка 313 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P21",
+   "gate": "format",
+   "msg": "POS-строка 268 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P21",
+   "gate": "format",
+   "msg": "POS-строка 396 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P21",
+   "gate": "format",
+   "msg": "POS-строка 207 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P22",
+   "gate": "format",
+   "msg": "POS-строка 366 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P22",
+   "gate": "format",
+   "msg": "POS-строка 272 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P22",
+   "gate": "format",
+   "msg": "POS-строка 397 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P23",
+   "gate": "format",
+   "msg": "POS-строка 297 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P23",
+   "gate": "format",
+   "msg": "POS-строка 312 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P23",
+   "gate": "format",
+   "msg": "POS-строка 317 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P23",
+   "gate": "format",
+   "msg": "POS-строка 413 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P23",
+   "gate": "format",
+   "msg": "POS-строка 223 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P24",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «droplets on the lens»"
+  },
+  {
+   "slot": "P24",
+   "gate": "format",
+   "msg": "POS-строка 394 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P24",
+   "gate": "format",
+   "msg": "POS-строка 411 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P24",
+   "gate": "format",
+   "msg": "POS-строка 265 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P24",
+   "gate": "format",
+   "msg": "POS-строка 424 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P24",
+   "gate": "format",
+   "msg": "POS-строка 227 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P25",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P25",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «vial rack over the face»"
+  },
+  {
+   "slot": "P25",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P25",
+   "gate": "format",
+   "msg": "POS-строка 287 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P25",
+   "gate": "format",
+   "msg": "POS-строка 231 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P25",
+   "gate": "format",
+   "msg": "POS-строка 536 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P26",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P26",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «motion blur over the face»"
+  },
+  {
+   "slot": "P26",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P26",
+   "gate": "format",
+   "msg": "POS-строка 352 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P26",
+   "gate": "format",
+   "msg": "POS-строка 503 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P27",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P27",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «sparks over the face»"
+  },
+  {
+   "slot": "P27",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P27",
+   "gate": "format",
+   "msg": "POS-строка 310 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P27",
+   "gate": "format",
+   "msg": "POS-строка 548 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P28",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P28",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «glow flare over the face»"
+  },
+  {
+   "slot": "P28",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P28",
+   "gate": "format",
+   "msg": "POS-строка 365 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P28",
+   "gate": "format",
+   "msg": "POS-строка 206 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P28",
+   "gate": "format",
+   "msg": "POS-строка 623 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P29",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P29",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «cable across the face»"
+  },
+  {
+   "slot": "P29",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P29",
+   "gate": "format",
+   "msg": "POS-строка 304 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P29",
+   "gate": "format",
+   "msg": "POS-строка 204 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P29",
+   "gate": "format",
+   "msg": "POS-строка 525 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P30",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P30",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «water arc over the face»"
+  },
+  {
+   "slot": "P30",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P30",
+   "gate": "format",
+   "msg": "POS-строка 363 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P30",
+   "gate": "format",
+   "msg": "POS-строка 498 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P31",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P31",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «feathers over the face»"
+  },
+  {
+   "slot": "P31",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P31",
+   "gate": "format",
+   "msg": "POS-строка 356 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P31",
+   "gate": "format",
+   "msg": "POS-строка 239 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P31",
+   "gate": "format",
+   "msg": "POS-строка 556 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P32",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P32",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «towel over the face»"
+  },
+  {
+   "slot": "P32",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P32",
+   "gate": "format",
+   "msg": "POS-строка 325 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P32",
+   "gate": "format",
+   "msg": "POS-строка 217 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P32",
+   "gate": "format",
+   "msg": "POS-строка 512 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P33",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «back of head only»"
+  },
+  {
+   "slot": "P33",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «jar flare over the face»"
+  },
+  {
+   "slot": "P33",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 7 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P33",
+   "gate": "format",
+   "msg": "POS-строка 327 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P33",
+   "gate": "format",
+   "msg": "POS-строка 504 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P01+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «cleavage's line ending in shadow where»"
+  },
+  {
+   "slot": "P01+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «ending in shadow where the neckline»"
+  },
+  {
+   "slot": "P01+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «in shadow where the neckline stops»"
+  },
+  {
+   "slot": "P01+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «line ending in shadow where the»"
+  },
+  {
+   "slot": "P01+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «shadow where the neckline stops the»"
+  },
+  {
+   "slot": "P01+P17",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the cleavage's line ending in shadow»"
+  },
+  {
+   "slot": "P01+P23",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «pool of hard light holding the»"
+  },
+  {
+   "slot": "P02+P18",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «gathered in one spiral the knot»"
+  },
+  {
+   "slot": "P02+P18",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «hem gathered in one spiral the»"
+  },
+  {
+   "slot": "P02+P18",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «in one spiral the knot owns»"
+  },
+  {
+   "slot": "P03+P08",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the cool moonlit wash holding the»"
+  },
+  {
+   "slot": "P03+P26",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «collar holding its arc by fabric»"
+  },
+  {
+   "slot": "P03+P26",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «holding its arc by fabric weight»"
+  },
+  {
+   "slot": "P05+P10",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «view nipples a soft press under»"
+  },
+  {
+   "slot": "P05+P21",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «skirt hanging off the hip in»"
+  },
+  {
+   "slot": "P05+P21",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the skirt hanging off the hip»"
+  },
+  {
+   "slot": "P06+P07",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «accent her colors are the hour»"
+  },
+  {
+   "slot": "P06+P07",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «her colors are the hour when»"
+  },
+  {
+   "slot": "P06+P12",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «holding the drape cool and heavy»"
+  },
+  {
+   "slot": "P06+P12",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «mist holding the drape cool and»"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "7 общих 6-грамм с предыдущими партиями (T5-15.md, T5-16.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "ledger-pin-afterparty",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 18,
+   "posWords": 288
+  },
+  {
+   "id": "P02",
+   "slug": "rooftop-rail-vault",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 17,
+   "posWords": 247
+  },
+  {
+   "id": "P03",
+   "slug": "star-hung-vigil",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 18,
+   "posWords": 280
+  },
+  {
+   "id": "P04",
+   "slug": "underground-ring-deadweight",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 232
+  },
+  {
+   "id": "P05",
+   "slug": "crane-hook-idle-shift",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 16,
+   "posWords": 267
+  },
+  {
+   "id": "P06",
+   "slug": "dawn-beam-hawkwatch",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 239
+  },
+  {
+   "id": "P07",
+   "slug": "fire-door-rain-stride",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 13,
+   "posWords": 279
+  },
+  {
+   "id": "P08",
+   "slug": "cornice-cradle-drowse",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 206
+  },
+  {
+   "id": "P09",
+   "slug": "rink-edge-glide-stop",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 16,
+   "posWords": 249
+  },
+  {
+   "id": "P10",
+   "slug": "spectral-anchor-fop",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 13,
+   "posWords": 262
+  },
+  {
+   "id": "P11",
+   "slug": "gutter-pour-reform",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 11,
+   "posWords": 242
+  },
+  {
+   "id": "P12",
+   "slug": "storm-cell-warden",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 271
+  },
+  {
+   "id": "P13",
+   "slug": "spore-punk-tape-cross",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 13,
+   "posWords": 265
+  },
+  {
+   "id": "P14",
+   "slug": "fog-ledge-sniper",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 265
+  },
+  {
+   "id": "P15",
+   "slug": "flame-door-aviatrix",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 270
+  },
+  {
+   "id": "P16",
+   "slug": "subway-rat-queen",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 263
+  },
+  {
+   "id": "P17",
+   "slug": "midnight-tea-grandmother",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 269
+  },
+  {
+   "id": "P18",
+   "slug": "smoke-key-fire-escape",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 13,
+   "posWords": 287
+  },
+  {
+   "id": "P19",
+   "slug": "veil-wrist-countess",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 250
+  },
+  {
+   "id": "P20",
+   "slug": "calico-rain-pounce",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 16,
+   "posWords": 296
+  },
+  {
+   "id": "P21",
+   "slug": "card-fan-waltz",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 262
+  },
+  {
+   "id": "P22",
+   "slug": "blade-kiss-riposte",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 246
+  },
+  {
+   "id": "P23",
+   "slug": "syringe-prime-night-shift",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 295
+  },
+  {
+   "id": "P24",
+   "slug": "paint-drop-brass-hour",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 14,
+   "posWords": 332
+  },
+  {
+   "id": "P25",
+   "slug": "herb-rack-in-trail",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 245
+  },
+  {
+   "id": "P26",
+   "slug": "long-hill-coal-carve",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 237
+  },
+  {
+   "id": "P27",
+   "slug": "coin-scale-spear-spark",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 233
+  },
+  {
+   "id": "P28",
+   "slug": "gaslight-circle-tail-pedal",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 269
+  },
+  {
+   "id": "P29",
+   "slug": "echo-check-cable-whip",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 246
+  },
+  {
+   "id": "P30",
+   "slug": "leaf-calendar-can-tip",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 232
+  },
+  {
+   "id": "P31",
+   "slug": "air-mail-feather-ruffle",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 253
+  },
+  {
+   "id": "P32",
+   "slug": "ring-bell-towel-snap",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 237
+  },
+  {
+   "id": "P33",
+   "slug": "warm-tank-jar-glow",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 235
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "viewed from the front at eye",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-16.md",
+   "slotsThere": [
+    "P23"
+   ]
+  },
+  {
+   "gram": "from the front at eye level",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-16.md",
+   "slotsThere": [
+    "P23"
+   ]
+  },
+  {
+   "gram": "viewed from a three quarter angle",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "knot riding loose at the ribs",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P16"
+   ]
+  },
+  {
+   "gram": "slouched knit thighhighs pooling above the",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P16"
+   ]
+  },
+  {
+   "gram": "knit thighhighs pooling above the knee",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P16"
+   ]
+  },
+  {
+   "gram": "hair in a sectioned bubble ponytail",
+   "slotsHere": [
+    "P33"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P13"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "matte milk white skin glowing faintly",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-15.md"
+  },
+  {
+   "gram": "milk white skin glowing faintly cool",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-15.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [
+  "M01"
+ ],
+ "storyCards": true
+}

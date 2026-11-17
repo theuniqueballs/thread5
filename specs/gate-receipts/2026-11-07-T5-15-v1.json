@@ -1,0 +1,592 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.9.0)",
+ "batch": "batches/T5-15.md",
+ "sha256": "fcf14df4099588420d1b77515a2231e5f9fccd0151ac1a95ae264460243ae7cf",
+ "utc": "2026-11-07T14:55:28+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "61 общих 6-грамм с предыдущими партиями (T5-13.md, T5-14.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "clown-half-wiped-face",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 54,
+   "posWords": 194
+  },
+  {
+   "id": "P02",
+   "slug": "battle-angel-wings-hold",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 58,
+   "posWords": 220
+  },
+  {
+   "id": "P03",
+   "slug": "cyberpsychosis-mirror-split",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 166
+  },
+  {
+   "id": "P04",
+   "slug": "ticket-booth-fang-maw",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 167
+  },
+  {
+   "id": "P05",
+   "slug": "banner-leash-carousel-wind",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 157
+  },
+  {
+   "id": "P06",
+   "slug": "ring-toss-blind-catch",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 156
+  },
+  {
+   "id": "P07",
+   "slug": "sugar-kettle-steam-claim",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 166
+  },
+  {
+   "id": "P08",
+   "slug": "lure-bloom-watering",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 165
+  },
+  {
+   "id": "P09",
+   "slug": "fire-loop-cross-true",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 54,
+   "posWords": 155
+  },
+  {
+   "id": "P10",
+   "slug": "shadow-groom-second-shift",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 164
+  },
+  {
+   "id": "P11",
+   "slug": "tamer-corridor-whistle",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 53,
+   "posWords": 162
+  },
+  {
+   "id": "P12",
+   "slug": "target-cushion-breathe-out",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 150
+  },
+  {
+   "id": "P13",
+   "slug": "juggler-zipper-mid",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 47,
+   "posWords": 141
+  },
+  {
+   "id": "P14",
+   "slug": "curtain-crowd-parting",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 146
+  },
+  {
+   "id": "P15",
+   "slug": "ribbon-shop-shirt-half",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 58,
+   "posWords": 161
+  },
+  {
+   "id": "P16",
+   "slug": "mirror-labyrinth-bargain",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 154
+  },
+  {
+   "id": "P17",
+   "slug": "tent-lungs-mooring",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 60,
+   "posWords": 181
+  },
+  {
+   "id": "P18",
+   "slug": "belly-kettle-stir-lap",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 161
+  },
+  {
+   "id": "P19",
+   "slug": "drummer-bench-fan",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 60,
+   "posWords": 178
+  },
+  {
+   "id": "P20",
+   "slug": "prize-cabinet-yawn",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 168
+  },
+  {
+   "id": "P21",
+   "slug": "resin-pole-slide",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 58,
+   "posWords": 178
+  },
+  {
+   "id": "P22",
+   "slug": "carousel-herd-warden",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 175
+  },
+  {
+   "id": "P23",
+   "slug": "booth-vitrine-verdict",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 54,
+   "posWords": 172
+  },
+  {
+   "id": "P24",
+   "slug": "ringmaster-last-beat-cross",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 185
+  },
+  {
+   "id": "P25",
+   "slug": "umi-dome-press-adjust",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 55,
+   "posWords": 174
+  },
+  {
+   "id": "P26",
+   "slug": "umi-sock-strand-tangle",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 158
+  },
+  {
+   "id": "P27",
+   "slug": "umi-ladder-after-catch",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 173
+  },
+  {
+   "id": "P28",
+   "slug": "zara-frame-measure-lookdown",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 56,
+   "posWords": 162
+  },
+  {
+   "id": "P29",
+   "slug": "zara-jacket-insert-shoulders",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 160
+  },
+  {
+   "id": "P30",
+   "slug": "zara-jacket-payoff-wind",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 60,
+   "posWords": 162
+  },
+  {
+   "id": "P31",
+   "slug": "nessa-buckle-snag-watch",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 57,
+   "posWords": 170
+  },
+  {
+   "id": "P32",
+   "slug": "nessa-snake-wave-almost",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 151
+  },
+  {
+   "id": "P33",
+   "slug": "nessa-mirror-back-double",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 43,
+   "posWords": 171
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "body viewed from a three quarter",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P12"
+   ]
+  },
+  {
+   "gram": "viewed from a three quarter angle",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P12"
+   ]
+  },
+  {
+   "gram": "with a wet look wave pale",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "a wet look wave pale green",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "wet look wave pale green eyes",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "look wave pale green eyes half",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "wave pale green eyes half closed",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "pale green eyes half closed matte",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "green eyes half closed matte milk",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "eyes half closed matte milk white",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "half closed matte milk white skin",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "collar length blunt cut with curtain",
+   "slotsHere": [
+    "P04"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P23"
+   ]
+  },
+  {
+   "gram": "length blunt cut with curtain bangs",
+   "slotsHere": [
+    "P04"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P23"
+   ]
+  },
+  {
+   "gram": "tie collar blouse with sleeves rolled",
+   "slotsHere": [
+    "P04"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "low angle honey blonde hair in",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "angle honey blonde hair in a",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "honey blonde hair in a high",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "blonde hair in a high sleek",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-13.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "hair in a high sleek ponytail",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P12"
+   ]
+  },
+  {
+   "gram": "eyes warm ivory skin supple young",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P13"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "mint hair loose mid length with",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md"
+  },
+  {
+   "gram": "hair loose mid length with a",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md"
+  },
+  {
+   "gram": "loose mid length with a wet",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md"
+  },
+  {
+   "gram": "mid length with a wet look",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md"
+  },
+  {
+   "gram": "length with a wet look wave",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-13.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [
+  "M01"
+ ],
+ "storyCards": true
+}

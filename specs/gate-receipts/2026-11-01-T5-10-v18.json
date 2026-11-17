@@ -1,0 +1,362 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.7.1)",
+ "batch": "batches/T5-10.md",
+ "sha256": "01b36a6942eaed612b6e3b9e9b288cf232c0834ad78179be7ecfd7db7e22b440",
+ "utc": "2026-11-01T19:11:30+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "zia-gale-frenzy",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 60,
+   "posWords": 164
+  },
+  {
+   "id": "P02",
+   "slug": "nix-key-lag",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 39,
+   "posWords": 163
+  },
+  {
+   "id": "P03",
+   "slug": "doe-xeno-shoreline",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 58,
+   "posWords": 155
+  },
+  {
+   "id": "P04",
+   "slug": "laundry-folds-itself",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 135
+  },
+  {
+   "id": "P05",
+   "slug": "stretch-before-the-day",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 131
+  },
+  {
+   "id": "P06",
+   "slug": "broom-sweeps-alone",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 146
+  },
+  {
+   "id": "P07",
+   "slug": "tram-stop-broom-commute",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 141
+  },
+  {
+   "id": "P08",
+   "slug": "kettle-knows-the-hour",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 140
+  },
+  {
+   "id": "P09",
+   "slug": "sheet-loses-to-gust",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 42,
+   "posWords": 135
+  },
+  {
+   "id": "P10",
+   "slug": "greenhouse-rains-inside",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 136
+  },
+  {
+   "id": "P11",
+   "slug": "market-haggle-hat-tip",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 130
+  },
+  {
+   "id": "P12",
+   "slug": "sigil-sorts-the-mail",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 126
+  },
+  {
+   "id": "P13",
+   "slug": "fridge-at-midnight",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 35,
+   "posWords": 133
+  },
+  {
+   "id": "P14",
+   "slug": "shadow-does-the-dishes",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 126
+  },
+  {
+   "id": "P15",
+   "slug": "grimoire-caught-midair",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 132
+  },
+  {
+   "id": "P16",
+   "slug": "pantry-brews-shapes",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 140
+  },
+  {
+   "id": "P17",
+   "slug": "balcony-silk-herb-tie",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 136
+  },
+  {
+   "id": "P18",
+   "slug": "cauldron-blows-the-spoon",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 134
+  },
+  {
+   "id": "P19",
+   "slug": "basket-follows-the-broom-home",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 139
+  },
+  {
+   "id": "P20",
+   "slug": "washhouse-wring-and-steam",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 34,
+   "posWords": 134
+  },
+  {
+   "id": "P21",
+   "slug": "rain-sprint-hood-slip",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 124
+  },
+  {
+   "id": "P22",
+   "slug": "bedtime-book-slide",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 128
+  },
+  {
+   "id": "P23",
+   "slug": "vacuum-versus-familiar",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 35,
+   "posWords": 124
+  },
+  {
+   "id": "P24",
+   "slug": "hangs-the-moon-to-dry",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 35,
+   "posWords": 132
+  },
+  {
+   "id": "P25",
+   "slug": "aurelia-bell-patience",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 140
+  },
+  {
+   "id": "P26",
+   "slug": "vyuga-feather-pivot",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 7,
+   "posWords": 123
+  },
+  {
+   "id": "P27",
+   "slug": "striga-parlor-fitting",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 128
+  },
+  {
+   "id": "P28",
+   "slug": "kupa-milk-dawn-routine",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 128
+  },
+  {
+   "id": "P29",
+   "slug": "iskra-oven-loaves",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 111
+  },
+  {
+   "id": "P30",
+   "slug": "tabi-drum-belly-busking",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 126
+  },
+  {
+   "id": "P31",
+   "slug": "aspa-coil-library-night",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 24,
+   "posWords": 128
+  },
+  {
+   "id": "P32",
+   "slug": "akka-tusk-chili-verdict",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 128
+  },
+  {
+   "id": "P33",
+   "slug": "sel-dawn-laps-towel",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 45,
+   "posWords": 125
+  }
+ ],
+ "crossBatchShared": [],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "small soft purple scales on the",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-08.md"
+  },
+  {
+   "gram": "soft purple scales on the cheeks",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-08.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [],
+ "storyCards": true
+}

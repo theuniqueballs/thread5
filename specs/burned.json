@@ -1,0 +1,106 @@
+{
+  "id": "burned",
+  "name": "Реестр сгоревших спеков — активы, больше не входящие в оборот",
+  "version": "1.0.0",
+  "born": "2026-10-28",
+  "born_from": "Внешний аудит конвейера 2026-10-28, причина №5 (5.5): burn-квитанции жили прозой в LIVING-NOTES и были недоступны машине — «сгоревшее навсегда» не проверялось никем. Контур 2, мера 8.2.4: burn-реестр как машина; печь проверяет палитры/позы/кинетики/носители против реестра; повтор без пометки ⚗ — FAIL.",
+  "law": "Актив из реестра не назначается новым слотам. Исключение — только ⚗-слот с явной гипотезой «почему сгоревшее должно ожить» и объявлением в чате. Реестр пополняется ТОЛЬКО квитанцией вердикта (автор — единственный законодатель, §9).",
+  "entries": [
+    {
+      "code": "P40_VOID_MONOCHROME_RED",
+      "class": "palette",
+      "name": "Void Monochrome Red",
+      "burned": "2026-10-26",
+      "source": "SO-05 v1 burn-квитанция (LIVING-NOTES, вердикт SO-05 2026-10-26 17:33: «сделано на отъебись максимально. Анлак, я очень расстроен»)",
+      "burn_count": 1,
+      "note": "Монохромный красный как носитель диагноза. Возвращён в оборот ошибочно в T5-05 (P23) — пойман аудитом 2026-10-28; в T5-05R заменён на P61_MONOCHROME_VIOLET."
+    },
+    {
+      "code": "P116_AFTERGLOW_EMBERS",
+      "class": "palette",
+      "name": "Afterglow Embers",
+      "burned": "2026-10-26",
+      "source": "SO-05 v1 burn-квитанция",
+      "burn_count": 1,
+      "note": "Уголёчки-послесвечение. Возвращена в оборот ошибочно в T5-05 (P22) — поймана аудитом; в T5-05R заменена на P113_CURFEW_PLUM."
+    },
+    {
+      "code": "P69_EMBER_FROST",
+      "class": "palette",
+      "name": "Ember Frost",
+      "burned": "2026-10-26",
+      "source": "SO-05 v2 burn-квитанция (LIVING-NOTES)",
+      "burn_count": 1
+    },
+    {
+      "code": "P04_BLOOD_IVORY",
+      "class": "palette",
+      "name": "Blood Ivory",
+      "burned": "2026-10-26",
+      "source": "SO-05 v2 burn-квитанция (повторно; была в v1-эпизодах SO-05)",
+      "burn_count": 2
+    },
+    {
+      "code": "PL181",
+      "class": "pose",
+      "burned": "2026-10-26",
+      "source": "SO-05 v1 burn-квитанция",
+      "burn_count": 1
+    },
+    {
+      "code": "PL215",
+      "class": "pose",
+      "burned": "2026-10-26",
+      "source": "SO-05 v2 burn-квитанция",
+      "burn_count": 1
+    },
+    {
+      "code": "PL121",
+      "class": "pose",
+      "burned": "2026-10-26",
+      "source": "SO-05 v2 burn-квитанция",
+      "burn_count": 1
+    },
+    {
+      "code": "K07",
+      "class": "kinetic",
+      "name": "Collapse",
+      "burned": "2026-10-26",
+      "source": "SO-05 v1 burn-квитанция",
+      "burn_count": 1
+    },
+    {
+      "code": "K149",
+      "class": "kinetic",
+      "name": "mid_glaze_hold",
+      "burned": "2026-10-26",
+      "source": "SO-05 v1 burn-квитанция",
+      "burn_count": 1,
+      "note": "Возвращён в оборот ошибочно в T5-05 ДВАЖДЫ (P06, P09) — аудит поймал только палитры, кинетики нашёл burn-гейт при перевыпуске. В T5-05R: P06 → K82 mid_invert_suspend, P09 → K144 mid_lie_settle."
+    },
+    {
+      "code": "K170",
+      "class": "kinetic",
+      "name": "mid_warmth_clutch",
+      "burned": "2026-10-26",
+      "source": "SO-05 v2 burn-квитанция",
+      "burn_count": 1
+    },
+    {
+      "code": "K166",
+      "class": "kinetic",
+      "name": "mid_horizon_scan",
+      "burned": "2026-10-26",
+      "source": "SO-05 v2 burn-квитанция",
+      "burn_count": 1
+    },
+    { "code": "CR-W04", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v1 burn-квитанция", "burn_count": 1 },
+    { "code": "CR-H10", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v1 burn-квитанция", "burn_count": 1 },
+    { "code": "CR-W28", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v1 burn-квитанция", "burn_count": 1 },
+    { "code": "CR-G05", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v1 burn-квитанция", "burn_count": 1 },
+    { "code": "CR-E25", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v2 burn-квитанция", "burn_count": 1 },
+    { "code": "CR-H12", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v2 burn-квитанция", "burn_count": 1 },
+    { "code": "CR-G02", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v2 burn-квитанция", "burn_count": 1 },
+    { "code": "CR-H07", "class": "carrier", "burned": "2026-10-26", "source": "SO-05 v2 burn-квитанция", "burn_count": 1 }
+  ]
+}

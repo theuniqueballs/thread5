@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# THREAD 5 — sha-замок квитанций (внешний аудит 2026-10-31, F2/рек. 2)
+# + ревизия 2026-11-01 (docs/THREAD5-REVIEW-2026-11-01.md, 1.11):
+#   (a) валидатор спек прогоняется ДО гейтов (1.3) — битые specs блокируют
+#       коммит, а не выключают гейты молча;
+#   (b) untracked-квитанции/отчёты блокируют коммит (1.11a): sha-лок пройдёт,
+#       а квитанция не уедет в коммит — проверка git status --porcelain;
+#   (c) special/SO-батчи под тем же замком — «все гейты без скидок».
+#
+# На каждый изменённый батч: гейты должны проходить, а sha256 файла —
+# совпадать с последней квитанцией. Несовпадение блокирует коммит:
+# перегенерируй квитанцию ТЕМ ЖЕ коммитом:
+#
+#   python3 tools/gates.py batches/T5-NN.md \
+#       --json specs/gate-receipts/<дата>-T5-NN-vNN.json \
+#       --md batches/T5-NN.gate-report.md
+#
+# Установка для клона: bash setup.sh   (git config core.hooksPath .githooks)
+set -u
+
+# (1.3) спеки валидны — иначе гейты молча выключены
+if ! python3 tools/validate.py; then
+  echo "  ✗ валидатор спек FAIL — коммит заблокирован (ревизия 2026-11-01, 1.3)"
+  exit 1
+fi
+
+changed=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(batches/T5-[0-9]+R?|special/SO-[0-9]+)\.md$' || true)
+[ -z "$changed" ] && exit 0
+
+# (1.11a) машинные следы не должны остаться untracked
+untracked=$(git status --porcelain | grep -E '^\?\? (specs/gate-receipts/|batches/.*gate-report|special/.*gate-report)' || true)
+if [ -n "$untracked" ]; then
+  echo "  ✗ untracked машинные файлы — квитанция не уедет в коммит (ревизия 2026-11-01, 1.11):"
+  echo "$untracked"
+  echo "  → git add их тем же коммитом"
+  exit 1
+fi
+
+rc=0
+for f in $changed; do
+  echo "гейт-замок: $f"
+  if ! python3 tools/gates.py "$f" >/dev/null; then
+    echo "  ✗ гейты FAIL на $f — коммит заблокирован"
+    rc=1
+    continue
+  fi
+  sha=$(sha256sum "$f" | cut -d' ' -f1)
+  latest=$(grep -rl "\"batch\": \"$f\"" specs/gate-receipts --include='*.json' 2>/dev/null | xargs -r ls -t 2>/dev/null | head -1)
+  if [ -n "$latest" ]; then
+    rsha=$(python3 -c "import json,sys;print(json.load(open('$latest'))['sha256'])" 2>/dev/null || true)
+    if [ -n "$rsha" ] && [ "$rsha" != "$sha" ]; then
+      echo "  ✗ sha256 $f ≠ квитанции $latest — перегенерируй квитанцию тем же коммитом"
+      rc=1
+    else
+      echo "  ✓ гейты PASS, sha совпадает с $latest"
+    fi
+  else
+    echo "  ~ квитанции нет (батч до-гейтовый) — sha-сверка пропущена"
+  fi
+done
+exit $rc

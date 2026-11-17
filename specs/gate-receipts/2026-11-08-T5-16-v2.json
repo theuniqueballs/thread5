@@ -1,0 +1,556 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.9.0)",
+ "batch": "batches/T5-16.md",
+ "sha256": "b099a846e00250585b8b44fbacc56438a291b43e4d477138fc3e43b83f402a09",
+ "utc": "2026-11-08T06:26:04+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "23 общих 6-грамм с предыдущими партиями (T5-14.md, T5-15.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "tea-in-fall-pause",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 186
+  },
+  {
+   "id": "P02",
+   "slug": "granary-lid-siege",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 179
+  },
+  {
+   "id": "P03",
+   "slug": "inverted-mass-throne",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 47,
+   "posWords": 175
+  },
+  {
+   "id": "P04",
+   "slug": "stair-grows-a-step",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 157
+  },
+  {
+   "id": "P05",
+   "slug": "water-column-bath",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 41,
+   "posWords": 155
+  },
+  {
+   "id": "P06",
+   "slug": "clock-shadow-keeper",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 152
+  },
+  {
+   "id": "P07",
+   "slug": "door-into-noon",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 54,
+   "posWords": 180
+  },
+  {
+   "id": "P08",
+   "slug": "room-bigger-inside",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 167
+  },
+  {
+   "id": "P09",
+   "slug": "gravity-late-jump",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 52,
+   "posWords": 173
+  },
+  {
+   "id": "P10",
+   "slug": "laundry-moon-roof",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 165
+  },
+  {
+   "id": "P11",
+   "slug": "pin-no-answer",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 53,
+   "posWords": 174
+  },
+  {
+   "id": "P12",
+   "slug": "words-crawl-to-skin",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 166
+  },
+  {
+   "id": "P13",
+   "slug": "halo-on-chairback",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 49,
+   "posWords": 164
+  },
+  {
+   "id": "P14",
+   "slug": "outlines-outlive-light",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 153
+  },
+  {
+   "id": "P15",
+   "slug": "jet-arch-dish",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 56,
+   "posWords": 178
+  },
+  {
+   "id": "P16",
+   "slug": "eclipse-rehearsal-table",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 143
+  },
+  {
+   "id": "P17",
+   "slug": "tails-rope-ladder",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 59,
+   "posWords": 169
+  },
+  {
+   "id": "P18",
+   "slug": "stone-takes-shift",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 165
+  },
+  {
+   "id": "P19",
+   "slug": "list-reads-world",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 154
+  },
+  {
+   "id": "P20",
+   "slug": "forest-by-blueprint",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 151
+  },
+  {
+   "id": "P21",
+   "slug": "morning-switch-half",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 167
+  },
+  {
+   "id": "P22",
+   "slug": "spare-wings-closet",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 153
+  },
+  {
+   "id": "P23",
+   "slug": "moonlight-wash",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 151
+  },
+  {
+   "id": "P24",
+   "slug": "heels-morning-line",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 52,
+   "posWords": 170
+  },
+  {
+   "id": "P25",
+   "slug": "moth-thread-sew",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 59,
+   "posWords": 207
+  },
+  {
+   "id": "P26",
+   "slug": "marionette-thread-step",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 198
+  },
+  {
+   "id": "P27",
+   "slug": "tanuki-leaf-straddle",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 178
+  },
+  {
+   "id": "P28",
+   "slug": "moonrabbit-pest-kneel",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 60,
+   "posWords": 195
+  },
+  {
+   "id": "P29",
+   "slug": "cecaelia-ink-fourfours",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 171
+  },
+  {
+   "id": "P30",
+   "slug": "vampire-balcony-stare",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 55,
+   "posWords": 171
+  },
+  {
+   "id": "P31",
+   "slug": "ghost-crawl-approach",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 177
+  },
+  {
+   "id": "P32",
+   "slug": "wind-orbit-lean",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 54,
+   "posWords": 179
+  },
+  {
+   "id": "P33",
+   "slug": "banshee-tear-count",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 178
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "upper body three quarter view at",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P11"
+   ]
+  },
+  {
+   "gram": "body three quarter view at chest",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P11"
+   ]
+  },
+  {
+   "gram": "three quarter view at chest height",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P11"
+   ]
+  },
+  {
+   "gram": "hair in a loose sleeping braid",
+   "slotsHere": [
+    "P05"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "hair in a wet slick low",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "in a wet slick low bun",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "upper body frontal at eye level",
+   "slotsHere": [
+    "P11"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "hair in a low loose ponytail",
+   "slotsHere": [
+    "P11"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P10"
+   ]
+  },
+  {
+   "gram": "tie collar blouse with the sleeve",
+   "slotsHere": [
+    "P12"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P26"
+   ]
+  },
+  {
+   "gram": "upper body three quarter view from",
+   "slotsHere": [
+    "P13"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "mouth the arch light holding the",
+   "slotsHere": [
+    "P15"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P22"
+   ]
+  },
+  {
+   "gram": "hair in a nape tucked cut",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P20"
+   ]
+  },
+  {
+   "gram": "in a nape tucked cut with",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P20"
+   ]
+  },
+  {
+   "gram": "mouth the morning light holding the",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-14.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "hair in a glass sleek middle",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P15"
+   ]
+  },
+  {
+   "gram": "in a glass sleek middle part",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P15"
+   ]
+  },
+  {
+   "gram": "blouse with the sleeve rolled for",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P26"
+   ]
+  },
+  {
+   "gram": "with the sleeve rolled for the",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P26"
+   ]
+  },
+  {
+   "gram": "mouth the wing light holding the",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "the wing light holding the shoulder",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-15.md",
+   "slotsThere": [
+    "P02"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [
+  "M01"
+ ],
+ "storyCards": true
+}

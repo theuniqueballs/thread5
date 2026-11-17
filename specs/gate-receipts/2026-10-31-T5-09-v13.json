@@ -1,0 +1,550 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.3.1)",
+ "batch": "batches/T5-09.md",
+ "sha256": "cb2dc77536e78473224012efcdc24775735e8632951bf71298db5eabfdcb13f3",
+ "utc": "2026-10-31T14:10:19+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "26 общих 6-грамм с предыдущими партиями (T5-07.md, T5-08.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "sue-vertical-run",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 60,
+   "posWords": 152
+  },
+  {
+   "id": "P02",
+   "slug": "miyu-thermoptic-flicker",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 53,
+   "posWords": 149
+  },
+  {
+   "id": "P03",
+   "slug": "ash-first-morning",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "claimToken": 35,
+   "posWords": 121
+  },
+  {
+   "id": "P04",
+   "slug": "mannequin-turns-first",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 135
+  },
+  {
+   "id": "P05",
+   "slug": "witch-lacing-tightens",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 37,
+   "posWords": 139
+  },
+  {
+   "id": "P06",
+   "slug": "palm-lit-row",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 143
+  },
+  {
+   "id": "P07",
+   "slug": "vending-gift-stairs",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 49,
+   "posWords": 159
+  },
+  {
+   "id": "P08",
+   "slug": "projection-picks-her",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 44,
+   "posWords": 157
+  },
+  {
+   "id": "P09",
+   "slug": "acid-rain-nurse",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 37,
+   "posWords": 150
+  },
+  {
+   "id": "P10",
+   "slug": "puddle-waves-first",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 57,
+   "posWords": 152
+  },
+  {
+   "id": "P11",
+   "slug": "tail-counts-floors",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 160
+  },
+  {
+   "id": "P12",
+   "slug": "halo-drops-queue",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 150
+  },
+  {
+   "id": "P13",
+   "slug": "punch-maps-tee",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 51,
+   "posWords": 149
+  },
+  {
+   "id": "P14",
+   "slug": "rail-takes-coil",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 64,
+   "posWords": 145
+  },
+  {
+   "id": "P15",
+   "slug": "candy-cross-vitrine",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 35,
+   "posWords": 130
+  },
+  {
+   "id": "P16",
+   "slug": "scarf-sings-heat",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 52,
+   "posWords": 156
+  },
+  {
+   "id": "P17",
+   "slug": "aquarium-keeps-pumpkins",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 48,
+   "posWords": 147
+  },
+  {
+   "id": "P18",
+   "slug": "sheet-reads-body",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 146
+  },
+  {
+   "id": "P19",
+   "slug": "feather-garlands",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 69,
+   "posWords": 168
+  },
+  {
+   "id": "P20",
+   "slug": "tray-on-hip",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 43,
+   "posWords": 146
+  },
+  {
+   "id": "P21",
+   "slug": "ear-keeps-letter",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 37,
+   "posWords": 148
+  },
+  {
+   "id": "P22",
+   "slug": "drone-treats",
+   "genre": "VOLT",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 149
+  },
+  {
+   "id": "P23",
+   "slug": "cart-and-arrow",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 62,
+   "posWords": 145
+  },
+  {
+   "id": "P24",
+   "slug": "lift-vampire-tape",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 53,
+   "posWords": 163
+  },
+  {
+   "id": "P25",
+   "slug": "brew-counts-stirs",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 60,
+   "posWords": 181
+  },
+  {
+   "id": "P26",
+   "slug": "upside-fruit-ledger",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 52,
+   "posWords": 151
+  },
+  {
+   "id": "P27",
+   "slug": "mask-loses-horns",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 50,
+   "posWords": 150
+  },
+  {
+   "id": "P28",
+   "slug": "silk-self-wrapped",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 54,
+   "posWords": 148
+  },
+  {
+   "id": "P29",
+   "slug": "jar-keeps-shape",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 147
+  },
+  {
+   "id": "P30",
+   "slug": "snakes-drink-neon",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 58,
+   "posWords": 159
+  },
+  {
+   "id": "P31",
+   "slug": "ledger-of-debts",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 43,
+   "posWords": 155
+  },
+  {
+   "id": "P32",
+   "slug": "dock-gill-count",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": 67,
+   "posWords": 166
+  },
+  {
+   "id": "P33",
+   "slug": "bud-opens-dusk",
+   "genre": "EXP",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 160
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "platinum white hair in twin ponytails",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "square white medical eyepatch over the",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "white medical eyepatch over the left",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "medical eyepatch over the left eye",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "narrow frame soft natural set breasts",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "her spine's line ember freckles at",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "spine's line ember freckles at the",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "line ember freckles at the jaw",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "flame feather accents at her shoulders",
+   "slotsHere": [
+    "P16"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P17"
+   ]
+  },
+  {
+   "gram": "small white wings folded tight at",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-07.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "red iris eyes under lazy lids",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "iris eyes under lazy lids cold",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "eyes under lazy lids cold pale",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "under lazy lids cold pale skin",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "lazy lids cold pale skin with",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "lids cold pale skin with a",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "cold pale skin with a living",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "pale skin with a living blush",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "skin with a living blush at",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "with a living blush at the",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-08.md",
+   "slotsThere": [
+    "P25"
+   ]
+  }
+ ]
+}

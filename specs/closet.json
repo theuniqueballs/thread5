@@ -1,0 +1,229 @@
+{
+ "id": "closet",
+ "name": "CLOSET — гардероб на кодах (шкаф Дрессера)",
+ "version": "1.0.0",
+ "born": "2026-11-03, приказ автора (вердикт-директива на язык T5-11): «Расширить и составить просто ебейший огромный пул одежды для Дрессера. Платья, шортики, чулочки, лифчики, футболочки, блузки, свитера и так далее. Всё пронумеровать, выдать кодовые значения, чтобы дрессер работал на кодах. Под каждым кодом - отдельный элемент одежды, всё распределено по полочкам, как в настоящем гардеробе. Систему шкафа можно обозвать CLOSET. Приурочить к ULTIMATE DICE»",
+ "law": "ДРЕССЕР РАБОТАЕТ НА КОДАХ: полка (shelf) → код (CL-XX-NN) → одна вещь. Код вида CL-<ПОЛКА>-<NN>; под кодом ровно один элемент одежды с готовой pos-строкой. Кубик ULTIMATE DICE кидает по полкам: полка → код на полке. Рандом legit только броском, переброс — на коллизию (окно, burn, hard-конфликты Дрессера, канал тира) с записанной причиной — унаследовано от ultimate-dice law.",
+ "code_format": {
+  "pattern": "CL-<SHELF>-<NN>",
+  "example": "CL-DR-07 = полка «платья», вещь №07",
+  "shelf_codes": {
+   "DR": "платья",
+   "SK": "юбки",
+   "TS": "верх (футболки/блузки/топы)",
+   "SW": "свитера и вязаное",
+   "BT": "низ (шорты/штаны/леггинсы)",
+   "UR": "бельё (лифчики/трусики/комплекты/корсеты)",
+   "HK": "чулочно-носочное (чулочки/гольфы/носки)",
+   "SM": "купальники (крутые; one-piece — в VAULT)",
+   "LG": "дом/сон (пижамы/халаты/кимоно/полотенца)",
+   "OU": "верхняя одежда (куртки/пальто/плащи)",
+   "FX": "формал/сцена (вечернее/сценическое)",
+   "AC": "аксессуары (чокеры/перчатки/цепи/ленты)",
+   "V": "VAULT — редкий рейд (≤1 за 5 батчей)"
+  }
+ },
+ "shelves": {
+  "DR": {
+   "name": "Платья",
+   "items": [
+    {"code": "CL-DR-01", "name": "Slip Dress Silk", "pos": "silk slip dress, thin straps, bias-cut, hem skating on the hip", "hook": "ткань отражает и просвечивает на просвет — носитель wet-sheer", "fit": ["lounge", "street", "intimates"], "source": "GAR01"},
+    {"code": "CL-DR-02", "name": "Ribbed Knit Turtleneck Dress", "pos": "ribbed knit turtleneck dress, ribs striping every curve", "hook": "рельс-вязка читает тело честно (undersized — ещё честнее)", "fit": ["street", "lounge"], "source": "GAR23"},
+    {"code": "CL-DR-03", "name": "Qipao Fitted Silk", "pos": "fitted silk qipao, mandarin collar, side-slit riding high with each step", "hook": "разрез = лестница света; хвост кина выходит без препятствий", "fit": ["street", "formal"], "race_hook": "tail exits the slit", "source": "GAR40"},
+    {"code": "CL-DR-04", "name": "Cotton Sundress", "pos": "cotton sundress with thin straps, sun-washed pattern, hem lifting in the breeze", "hook": "лёгкая, дышит, летит — ветер соавтор", "fit": ["street", "swim-cover"]},
+    {"code": "CL-DR-05", "name": "Shirt Dress Half-Buttoned", "pos": "cotton shirt dress half-buttoned, belt tied loose, collar open at the throat", "hook": "нижняя пуговица — поле боя (gar_f one_hook_state)", "fit": ["street", "lounge"]},
+    {"code": "CL-DR-06", "name": "Strapless Sun Dress", "pos": "strapless bandeau-neck sun dress, bare shoulders and collarbones in the light", "hook": "открытые плечи = зона заявки; держится честно или падает по каналу", "fit": ["street", "lounge"]},
+    {"code": "CL-DR-07", "name": "Jersey Wrap Dress", "pos": "jersey wrap dress with a deep V, wrap-knot riding loose at the ribs", "hook": "завязка-узел = единственное, что держит интригу", "fit": ["street", "lounge", "intimates"]},
+    {"code": "CL-DR-08", "name": "Long Black Dress Gothic", "pos": "long black dress, fitted bodice, heavy skirt with one thigh-slit", "hook": "траур/готика регистр; разрез = заявка (№26)", "fit": ["formal", "street"]},
+    {"code": "CL-DR-09", "name": "Tulle Petticoat Dress", "pos": "layered tulle petticoat dress, tiers hazing the light like waterfalls", "hook": "слои мутят свет — тело в глубине слоёв", "fit": ["formal", "specialty"], "source": "GAR24"},
+    {"code": "CL-DR-10", "name": "Ceremonial Veil Dress", "pos": "ceremonial dress of sheer veils, three layers of decreasing opacity", "hook": "тело глубжеет с каждым слоем; horn-aware drape", "fit": ["formal", "specialty"], "race_hook": "horn-aware drape", "source": "GAR36"},
+    {"code": "CL-DR-11", "name": "Linen Pinafore Dress", "pos": "linen pinafore dress, bib flat-lit, bare shoulders above", "hook": "над голое или поверх блузы — та же вещь, другой тир", "fit": ["street", "lounge"], "source": "GAR21"},
+    {"code": "CL-DR-12", "name": "Backless Sequin Party Dress", "pos": "backless sequin party dress, open back field of skin, sequins a coin-shower of light", "hook": "спина — главный носитель; блёстки = крапанье света", "fit": ["formal"]},
+    {"code": "CL-DR-13", "name": "Cardigan-Only Dress", "pos": "oversized cardigan worn as a dress, buttons fighting the gap at the thighs", "hook": "канал-aware: с nothing underneath — заявка на нижней границе", "fit": ["lounge", "intimates"]},
+    {"code": "CL-DR-14", "name": "Cheongsam-Inspired Mini", "pos": "miniature cheongsam-cut dress, frog buttons, hem two spans below the hips", "hook": "фрог-пуговицы — лесенка света по животу", "fit": ["street", "formal"]}
+   ]
+  },
+  "SK": {
+   "name": "Юбки",
+   "items": [
+    {"code": "CL-SK-01", "name": "Pleated Microskirt + Belt", "pos": "pleated microskirt with a matte belt, pleats fanning hard lines", "hook": "undersized — складки не смыкаются", "fit": ["street", "active"], "source": "GAR30"},
+    {"code": "CL-SK-02", "name": "Satin Skirt Flowing", "pos": "flowing satin skirt, waves of light running the folds", "hook": "свет катается по ткани волнами", "fit": ["street", "formal"], "source": "GAR08"},
+    {"code": "CL-SK-03", "name": "Frayed Denim Mini", "pos": "frayed denim mini skirt, whiskered fade at the hips", "hook": "матовый деним, светлые потёртости как износ-карта", "fit": ["street"]},
+    {"code": "CL-SK-04", "name": "Breezy Maxi Skirt", "pos": "long breezy maxi skirt, hem caught mid-wave by the wind", "hook": "полы-парус; ноги читаются сквозь такт ветра", "fit": ["street", "swim-cover"]},
+    {"code": "CL-SK-05", "name": "Plaid Pleated Skirt", "pos": "pleated plaid skirt, tartan shading the pleats", "hook": "клетка рисует складки сама", "fit": ["street"]},
+    {"code": "CL-SK-06", "name": "Pencil Skirt Back-Slit", "pos": "pencil skirt with a back slit, stride limited to the slit's verdict", "hook": "шаг = открытие разреза", "fit": ["street", "formal"]},
+    {"code": "CL-SK-07", "name": "Layered Tulle Skirt", "pos": "layered tulle skirt, each tier a translucent edge", "hook": "мутные слои — ноги в глубине", "fit": ["formal", "specialty"]},
+    {"code": "CL-SK-08", "name": "Sarong Wrap", "pos": "sarong wrapped low on the hips, diagonal folds, accidental geometry", "hook": "случайная геометрия обёртки — пляж/онсэн", "fit": ["swim-cover", "lounge"], "source": "GAR14"},
+    {"code": "CL-SK-09", "name": "Suspender Skirt", "pos": "suspender skirt with straps riding over bare shoulders", "hook": "лямки на голых плечах — сельский флирт", "fit": ["street", "lounge"]},
+    {"code": "CL-SK-10", "name": "High-Low Asymmetric Skirt", "pos": "high-low asymmetric skirt, short in front and pouring down behind", "hook": "две длины в одном кадре — ноги спереди, водопад сзади", "fit": ["street", "formal"]}
+   ]
+  },
+  "TS": {
+   "name": "Верх: футболки/блузки/топы",
+   "items": [
+    {"code": "CL-TS-01", "name": "Tie-Collar Blouse", "pos": "cotton blouse with a ribbon tie at the collar, collar points catching light", "hook": "развязанный = свет на горле; завязанный = дисциплина", "fit": ["street", "formal"], "source": "GAR26"},
+    {"code": "CL-TS-02", "name": "Organza Blouse Translucent", "pos": "translucent organza blouse, a film of light over the torso", "hook": "плёночный свет — тело сквозь штору блеска", "fit": ["street", "intimates"], "source": "GAR32"},
+    {"code": "CL-TS-03", "name": "Knotted Slim Tee", "pos": "slim cotton tee knotted at the ribs, hem gone", "hook": "узел поднимает низ — живот в кадре", "fit": ["street", "active"]},
+    {"code": "CL-TS-04", "name": "Ribbed Tank Top", "pos": "thin ribbed tank top, straps honest and narrow", "hook": "узкие бретели — линия плеч голая", "fit": ["street", "lounge", "active"]},
+    {"code": "CL-TS-05", "name": "Knit Tube Top", "pos": "knit tube top with bare shoulders and a bare midriff", "hook": "два разреза ткани — максимум кожи в legality", "fit": ["street", "lounge"]},
+    {"code": "CL-TS-06", "name": "Backless Halter Top", "pos": "backless halter top, neck-line diving to a knot between the shoulder blades", "hook": "спина открыта целиком — спинная заявка", "fit": ["street", "swim-cover"]},
+    {"code": "CL-TS-07", "name": "Off-Shoulder Top", "pos": "off-shoulder top, neckline a soft horizon across the upper arms", "hook": "горизонт выреза — плечи/ключицы играют", "fit": ["street", "lounge"]},
+    {"code": "CL-TS-08", "name": "Athletic Crop Top", "pos": "athletic crop top, midriff bare, fabric dry-fit matte", "hook": "спорт-регистр; живот работает на дыхание", "fit": ["active"]},
+    {"code": "CL-TS-09", "name": "Open Linen Shirt", "pos": "loose linen shirt worn open, creased folds diffusing light", "hook": "распахнутая — вертикаль света по животу", "fit": ["street", "swim-cover", "lounge"], "source": "GAR05"},
+    {"code": "CL-TS-10", "name": "Borrowed Oversized Button-Up", "pos": "oversized button-up shirt worn borrowed, sleeves past the fingertips, hem to mid-thigh", "hook": "мужской регистр на девичьем теле — конфликт честный", "fit": ["lounge", "intimates"]},
+    {"code": "CL-TS-11", "name": "Tie-Front Blouse", "pos": "blouse tied in a knot at the sternum, sleeves billowing", "hook": "узел у груди — рамка для заявки", "fit": ["street"]},
+    {"code": "CL-TS-12", "name": "Fishnet Mesh Top", "pos": "fishnet mesh top, grid of shadows printed on the skin", "hook": "сетка = рисунок теней, кожа — фон", "fit": ["street", "intimates"], "source": "GAR07"},
+    {"code": "CL-TS-13", "name": "Wet-Look Vinyl Top", "pos": "wet-look vinyl top, mirror shine on every curve", "hook": "зеркальные блики — контровой живёт на ткани", "fit": ["street", "specialty"]},
+    {"code": "CL-TS-14", "name": "Bandage Wrap Top", "pos": "elastic bandage wrapped as a top, spiral of shadows, body reading through", "hook": "спираль обёртки — тело читается между витками", "fit": ["active", "specialty"], "source": "GAR19"}
+   ]
+  },
+  "SW": {
+   "name": "Свитера и вязаное",
+   "items": [
+    {"code": "CL-SW-01", "name": "Oversized Mohair Sweater", "pos": "oversized mohair sweater, volume swallowing the arms, face floating above the knit", "hook": "объём против тела; руки исчезают", "fit": ["lounge", "street"], "source": "GAR13"},
+    {"code": "CL-SW-02", "name": "Off-Shoulder Sweater", "pos": "soft wool sweater ridden off one shoulder, neckline dragging at the upper arm", "hook": "сползающее плечо = hand-play (sleeves swallow the hands)", "fit": ["lounge", "street"], "source": "GAR28"},
+    {"code": "CL-SW-03", "name": "Wool Turtleneck", "pos": "dense wool turtleneck, matte light-eater, throat framed", "hook": "поглощает свет — контраст-носитель", "fit": ["street"], "source": "GAR02"},
+    {"code": "CL-SW-04", "name": "Unbuttoned Knit Cardigan", "pos": "knit cardigan worn unbuttoned over bare skin, edges framing the centerline", "hook": "рамка-полочка — вертикаль кожи между краями", "fit": ["lounge", "intimates"]},
+    {"code": "CL-SW-05", "name": "Cropped Pullover", "pos": "cropped knit pullover stopping above the navel, midriff bare", "hook": "короткий низ — живот и линия талии в кадре", "fit": ["street", "active"]},
+    {"code": "CL-SW-06", "name": "Paw-Sleeve Sweater", "pos": "sweater with sleeves swallowing the hands, paw-cuffs flopping", "hook": "лапки-рукава — жест прячется в ткани", "fit": ["lounge"]},
+    {"code": "CL-SW-07", "name": "Oversized Hoodie", "pos": "oversized hoodie, hood a cave of shadow, body a rumor inside", "hook": "borrowed = sleeves past the fingertips", "fit": ["lounge", "street"], "source": "GAR39"},
+    {"code": "CL-SW-08", "name": "Knit Sweater Vest", "pos": "knit sweater vest worn over bare arms and bare skin", "hook": "жилет на голое — скромный силуэт, наглый контекст", "fit": ["street", "formal"]}
+   ]
+  },
+  "BT": {
+   "name": "Низ: шорты/штаны/леггинсы",
+   "items": [
+    {"code": "CL-BT-01", "name": "Cutoff Denim Shorts", "pos": "cutoff denim shorts, frayed hems, pockets as ballast", "hook": "бахрома-кромка ловит свет бахромой", "fit": ["street", "active"], "source": "GAR18"},
+    {"code": "CL-BT-02", "name": "High-Cut Denim Shorts", "pos": "high-cut denim shorts, hip-bones in the light, whisker-fade at the crease", "hook": "усы-потёртости рисуют линию сгиба", "fit": ["street"]},
+    {"code": "CL-BT-03", "name": "Gym Leggings", "pos": "gym leggings, matte stretch reading every line of the leg", "hook": "честная ткань — вся геометрия ноги", "fit": ["active"]},
+    {"code": "CL-BT-04", "name": "Track Shorts", "pos": "loose track shorts with a side slit to the hip", "hook": "боковой разрез — нога выходит при шаге", "fit": ["active"]},
+    {"code": "CL-BT-05", "name": "Cotton Lounge Shorts", "pos": "soft cotton lounge shorts, hem riding up the thigh", "hook": "домашний регистр; подол едет — честно", "fit": ["lounge"]},
+    {"code": "CL-BT-06", "name": "Rolled Cargo Pants", "pos": "cargo pants rolled at the cuff, pockets flat matte", "hook": "маскулинный регистр на женском теле", "fit": ["street", "active"]},
+    {"code": "CL-BT-07", "name": "Tailored Slacks", "pos": "tailored wool slacks, flat front, crease a vertical of light", "hook": "стрелка = вертикаль света", "fit": ["formal", "street"], "source": "GAR27"},
+    {"code": "CL-BT-08", "name": "Compression Bike Shorts", "pos": "compression bike shorts, hip-to-hem one honest surface", "hook": "вторая кожа — вся линия бёдер", "fit": ["active"]},
+    {"code": "CL-BT-09", "name": "Slouched Joggers", "pos": "slouched joggers pooling at the ankles, drawstring undone", "hook": "стянутый шнур — талия открыта ленте ткани", "fit": ["lounge", "active"]},
+    {"code": "CL-BT-10", "name": "Silk Pajama Shorts", "pos": "silk pajama shorts, piping lines as light-rails at the seams", "hook": "канты = световые рельсы", "fit": ["lounge"], "source": "GAR31"}
+   ]
+  },
+  "UR": {
+   "name": "Бельё: лифчики/трусики/комплекты/корсеты",
+   "items": [
+    {"code": "CL-UR-01", "name": "Delicate Lace Bra", "pos": "delicate lace bra, patterned shadows of the lace on the skin", "hook": "кружево = свет сквозь узор", "fit": ["intimates"], "source": "GAR03"},
+    {"code": "CL-UR-02", "name": "Thin Cotton Bralette", "pos": "thin cotton bralette, honest seams, fabric half a millimeter from skin", "hook": "тонкая ткань — каждая шишечка честная", "fit": ["lounge", "intimates"]},
+    {"code": "CL-UR-03", "name": "Satin Lingerie Set", "pos": "satin lingerie set, sheen sliding across the cups, elastic biting soft at the thighs", "hook": "сатиновый блеск + упругая резинка", "fit": ["intimates", "lounge"]},
+    {"code": "CL-UR-04", "name": "Simple Cotton Panties", "pos": "simple cotton panties, matte, honest waistband", "hook": "никакой магии — честная нижняя", "fit": ["intimates", "lounge"], "source": "GAR09"},
+    {"code": "CL-UR-05", "name": "Stretch Boyshorts", "pos": "stretch boyshorts riding low, fabric hugging the hip line", "hook": "нижняя заявка (pantyline-канал совместим)", "fit": ["intimates", "lounge"]},
+    {"code": "CL-UR-06", "name": "Satin Garter Belt", "pos": "satin garter belt, straps descending to the stocking tops", "hook": "живёт только с formal-низом/intimates — НИКОГДА с swim (hard)", "fit": ["intimates", "formal"], "source": "GAR38"},
+    {"code": "CL-UR-07", "name": "Brocade Overbust Corset", "pos": "brocade overbust corset, busk a vertical highlight, lacing a ladder up the spine", "hook": "шнуровка = лестница теней по хребту", "fit": ["formal", "specialty"], "source": "GAR25"},
+    {"code": "CL-UR-08", "name": "Leather Corset", "pos": "leather corset, specular shine, sharp shadow at every seam", "hook": "жёсткий блеск — свет режется по швам", "fit": ["specialty", "formal"], "source": "GAR04"},
+    {"code": "CL-UR-09", "name": "Latex Bodysuit", "pos": "latex bodysuit, mirror finish, every fold a highlight", "hook": "максимум блика на квадратный сантиметр", "fit": ["specialty", "formal"], "source": "GAR16"},
+    {"code": "CL-UR-10", "name": "Leather Harness", "pos": "leather harness of straps, geometry of shadows, skin between as negative space", "hook": "геометрия ремней — кожа как негативное пространство", "fit": ["specialty"], "source": "GAR12"}
+   ]
+  },
+  "HK": {
+   "name": "Чулочно-носочное",
+   "items": [
+    {"code": "CL-HK-01", "name": "Sheer Stockings 15D", "pos": "sheer 15-denier stockings, even tone, back-seam a thin dark line up the calf", "hook": "шов — вертикаль, свет ровный", "fit": ["intimates", "formal"], "source": "GAR11"},
+    {"code": "CL-HK-02", "name": "Slouched Knit Thighhighs", "pos": "slouched knit thighhighs pooling above the knee, bare thigh band above", "hook": "голая полоса бедра — рамка заявки", "fit": ["lounge", "street"]},
+    {"code": "CL-HK-03", "name": "Sheer Pantyhose", "pos": "sheer pantyhose, one even veil down both legs, waistband hidden", "hook": "единая вуаль на обе ноги", "fit": ["street", "formal"]},
+    {"code": "CL-HK-04", "name": "Loose Slouch Socks", "pos": "loose slouch socks puddled at the ankles", "hook": "домашний регистр; сборка у щиколотки", "fit": ["lounge"]},
+    {"code": "CL-HK-05", "name": "Striped Knee Socks", "pos": "striped knee socks, ribs striping the calf", "hook": "полоса рисует икру", "fit": ["street", "active"]},
+    {"code": "CL-HK-06", "name": "Fishnet Tights", "pos": "fishnet tights, grid of small shadows over the legs", "hook": "сетка — текстура на всю ногу", "fit": ["specialty", "intimates"]},
+    {"code": "CL-HK-07", "name": "Back-Seam Stockings", "pos": "stockings with a red back-seam, the seam the only color on the leg", "hook": "ретро-бурлеск регистр; шов = акцент", "fit": ["intimates", "formal"]},
+    {"code": "CL-HK-08", "name": "Ribbed Ankle Socks", "pos": "ribbed ankle socks sitting neat above sneakers", "hook": "спорт-милота; резинка честная", "fit": ["active", "street"]}
+   ]
+  },
+  "SM": {
+   "name": "Купальники — крутые (one-piece отправлен в VAULT навсегда-до-рейда)",
+   "law": "ПРИКАЗ АВТОРА 2026-11-03: «Запретить нахуй ебучий One-Piece купальник чтобы я его больше никогда не видел. Либо просто сделать так, чтобы я его видел всего раз за пять батчей. Нахуй с пляжа, наделай себе крутых купальников» → дефолт кубика — ТОЛЬКО эта полка; one-piece/competition/sukumizu живут в VAULT (CL-V-01..03), рейд ≤1 за 5 сданных батчей с записью в шапке.",
+   "items": [
+    {"code": "CL-SM-01", "name": "Side-Tie String Bikini", "pos": "string bikini tied at the hips in small bows, triangles honest and narrow", "hook": "банта на бёдрах — два узла-заявки", "fit": ["swim"]},
+    {"code": "CL-SM-02", "name": "Halterneck Bikini", "pos": "halterneck bikini, knot at the nape, back bare to the waistband", "hook": "спина открыта от затылка до поясницы", "fit": ["swim"]},
+    {"code": "CL-SM-03", "name": "Strapless Bandeau Bikini", "pos": "strapless bandeau bikini, straight band across the chest, shoulders and collarbones bare", "hook": "прямая полоса — вся работа на груди и ключицах", "fit": ["swim"]},
+    {"code": "CL-SM-04", "name": "High-Leg Racing Bikini", "pos": "high-leg racing bikini, hip-lines cut high, sport-honest fit", "hook": "спорт-регистр, высокая линия бёдер", "fit": ["swim", "active"]},
+    {"code": "CL-SM-05", "name": "Tankini Set", "pos": "tankini top riding off the hem line, swim bottoms low", "hook": "верх едет — живот мигает", "fit": ["swim"]},
+    {"code": "CL-SM-06", "name": "Zip Rash Guard Surf Set", "pos": "half-zipped rash guard over swim bottoms, zipper frozen mid-descent", "hook": "замок на полдороге — gar_f frozen_fastener", "fit": ["swim", "active"]},
+    {"code": "CL-SM-07", "name": "Half-Peeled Wetsuit", "pos": "wetsuit peeled to the waist, arms out of the sleeves, neoprene folded at the hips", "hook": "снятый верх = сурф-финал; неопрен блестит", "fit": ["swim", "active"]},
+    {"code": "CL-SM-08", "name": "Swim Shorts Set", "pos": "swim shorts with a drawstring bow, crop rashguard above", "hook": "спорт-пляж; шнурок = узел-заявка", "fit": ["swim", "active"]},
+    {"code": "CL-SM-09", "name": "Bikini + Sarong", "pos": "bikini with a sarong knotted at the hip, slit to the thigh", "hook": "парео — ткань-соучастник (cover-abandoned hook)", "fit": ["swim"]},
+    {"code": "CL-SM-10", "name": "Open Beach Kimono", "pos": "open beach kimono over swim bottoms, sleeves wide, nothing tied", "hook": "кимоно-плащ не завязан — развевается", "fit": ["swim-cover", "swim"]}
+   ]
+  },
+  "LG": {
+   "name": "Дом и сон",
+   "items": [
+    {"code": "CL-LG-01", "name": "Oversized Sleep Shirt", "pos": "oversized sleep shirt, hem at the thighs, collar slipping off one shoulder", "hook": "одна футболка = весь аутфит", "fit": ["lounge", "intimates"]},
+    {"code": "CL-LG-02", "name": "Silk Cami Set", "pos": "silk camisole and shorts set, piping light at the seams", "hook": "шёлк ловит свет по кантам", "fit": ["lounge", "intimates"]},
+    {"code": "CL-LG-03", "name": "Open Silk Robe", "pos": "silk robe worn open, belt hanging unused, front a vertical of skin", "hook": "халат-рамка; пояс не при делах", "fit": ["lounge", "intimates"]},
+    {"code": "CL-LG-04", "name": "Open Silk Kimono", "pos": "silk kimono worn open, sleeves wings of light, obi loose", "hook": "рукава-крылья; оби не держит ничего", "fit": ["lounge", "specialty"], "source": "GAR17"},
+    {"code": "CL-LG-05", "name": "Bath Towel Wrap", "pos": "bath towel wrapped and held by its own last tuck, one hand keeping the fold", "hook": "полотенце держится на честном слове (towel_last_grip)", "fit": ["lounge", "intimates"]},
+    {"code": "CL-LG-06", "name": "Sheer Lace-Trim Nightgown", "pos": "sheer nightgown with lace trim, body deepening through the veil of the fabric", "hook": "полупрозрачная — через-ткань по каналу", "fit": ["lounge", "intimates"]},
+    {"code": "CL-LG-07", "name": "Cropped Pajama Pants", "pos": "cropped cotton pajama pants with a thin tank, drawstring bow at the front", "hook": "утренний регистр; узел шнурка", "fit": ["lounge"]},
+    {"code": "CL-LG-08", "name": "Knit Bed Shorts + Cami", "pos": "knit bed shorts with a matching cami strap fallen off the shoulder", "hook": "бретель сползла — плечо в свете", "fit": ["lounge", "intimates"]}
+   ]
+  },
+  "OU": {
+   "name": "Верхняя одежда",
+   "items": [
+    {"code": "CL-OU-01", "name": "Cropped Denim Jacket", "pos": "cropped denim jacket, matte, collar a small wing at the neck", "hook": "матовый деним — честный фон", "fit": ["street"]},
+    {"code": "CL-OU-02", "name": "Clear Vinyl Raincoat", "pos": "clear vinyl raincoat, gloss planes, rain beads as white points on transparent skin", "hook": "coverage lie — это THROUGH_FABRIC-машина", "fit": ["street", "specialty"], "source": "GAR34"},
+    {"code": "CL-OU-03", "name": "Hooded Wool Cloak", "pos": "hooded wool cloak, face in shadow, silhouette a standing mass", "hook": "капюшон-пещера; силуэт как масса", "fit": ["street", "specialty"], "source": "GAR20"},
+    {"code": "CL-OU-04", "name": "Belted Trench", "pos": "belted trench coat, collar up, one lapel dragged open by the wind", "hook": "ветер против лацкана", "fit": ["street"]},
+    {"code": "CL-OU-05", "name": "Satin Bomber", "pos": "satin bomber jacket, sheen sliding on the shoulders, cuffs ribbed", "hook": "сатиновый блеск на плечах", "fit": ["street", "active"]},
+    {"code": "CL-OU-06", "name": "Long Duster Cardigan", "pos": "long duster cardigan to the calves, open front pouring verticals of knit", "hook": "вертикали вязи — колонны по бокам", "fit": ["street", "lounge"]},
+    {"code": "CL-OU-07", "name": "Open Leather Jacket", "pos": "open leather jacket, zips and seams cutting sharp light", "hook": "кожа режет свет по швам", "fit": ["street", "specialty"]},
+    {"code": "CL-OU-08", "name": "Oversized Blazer Bare", "pos": "oversized blazer with nothing underneath, lapels framing the centerline", "hook": "канал-aware: без всего под пиджаком — заявка в рамке лацканов", "fit": ["street", "formal", "intimates"]}
+   ]
+  },
+  "FX": {
+   "name": "Формал и сцена",
+   "items": [
+    {"code": "CL-FX-01", "name": "Thigh-Slit Satin Gown", "pos": "satin evening gown with a thigh-high slit, the leg arriving before she does", "hook": "разрез = заявка (№26)", "fit": ["formal"]},
+    {"code": "CL-FX-02", "name": "Sequined Stage Dress", "pos": "sequined stage dress, light-scatter with every breath, hem short", "hook": "сцена держит жанр (роль в костюме)", "fit": ["formal"]},
+    {"code": "CL-FX-03", "name": "Performance Corset + Shorts", "pos": "performance corset over tailored shorts, boning a ladder of shadows", "hook": "сценический комплект; косточки корсета = рельсы", "fit": ["formal"]},
+    {"code": "CL-FX-04", "name": "Elbow Opera Gloves", "pos": "elbow-length opera gloves, arms as pattern, bare upper arm a sudden interruption", "hook": "перчатка-рукав; кожа выше = событие", "fit": ["formal"], "source": "GAR15/GAR37"},
+    {"code": "CL-FX-05", "name": "Thigh-Heel Boots", "pos": "thigh-high heel boots, leather drinking the light to the top line", "hook": "верхняя линия голенища — рамка бедра", "fit": ["formal", "specialty"]},
+    {"code": "CL-FX-06", "name": "Tux Vest + Bow", "pos": "tuxedo vest worn over bare skin, bow tie, sleeves absent", "hook": "смокинг-верх без рубашки", "fit": ["formal"]},
+    {"code": "CL-FX-07", "name": "Cheer Set", "pos": "cheer crop top and pleated skirt set, team colors saturated, pom-poms optional", "hook": "спорт-сцена; pleats fan on every jump", "fit": ["formal", "active"]},
+    {"code": "CL-FX-08", "name": "Bunny Suit", "pos": "bunny girl outfit: strapless leotard, collar with a bow, wrist cuffs, sheer tights", "hook": "классика; кину с ушами — ободок не носить (уши уже есть)", "race_hook": "ear headband skipped for any kin with ears", "fit": ["formal", "specialty"]}
+   ]
+  },
+  "AC": {
+   "name": "Аксессуары",
+   "items": [
+    {"code": "CL-AC-01", "name": "Velvet Choker", "pos": "thin velvet choker, neck accent, collarbone shadow", "hook": "поясок на шее — горизонт кадра", "fit": ["street", "lounge", "formal"], "source": "GAR10"},
+    {"code": "CL-AC-02", "name": "Bow Ribbon Choker", "pos": "ribbon choker with a small bow at the throat", "hook": "бант у горла — точка света", "fit": ["street", "formal"]},
+    {"code": "CL-AC-03", "name": "Gold Body Chain", "pos": "gold chain draped in the valley between, links drinking the key light", "hook": "цепь на коже — свет пьёт звено за звеном", "fit": ["intimates", "swim"]},
+    {"code": "CL-AC-04", "name": "Lace Elbow Gloves", "pos": "lace elbow gloves, skin patterned through the lace", "hook": "кружево-рукав; кожа сквозь узор", "fit": ["formal", "intimates"]},
+    {"code": "CL-AC-05", "name": "Fingerless Knit Gloves", "pos": "fingerless knit gloves, thumbs out", "hook": "пальцы голые — контакт-зона свободна", "fit": ["street"]},
+    {"code": "CL-AC-06", "name": "Bell Collar", "pos": "collar with a small gold bell, the bell ringing at every step", "hook": "звук как свет; кину-зверю — родной аксессуар", "race_hook": "R27/R52 native", "fit": ["lounge", "specialty"]},
+    {"code": "CL-AC-07", "name": "Long Silk Hair-Ribbon", "pos": "long silk ribbon woven through the hair, ends trailing to the waist", "hook": "лента-хвост — движение продолжается за волосами", "fit": ["street", "formal"]},
+    {"code": "CL-AC-08", "name": "Thin-Frame Glasses", "pos": "thin-framed glasses, lenses flashing small light-cuts at the turn", "hook": "блики линз — микро-заявка лица", "fit": ["street", "formal"]},
+    {"code": "CL-AC-09", "name": "Loose Suspenders", "pos": "suspenders hanging loose from the waistband, straps swinging", "hook": "подтяжки без дела — расхлябанность честная", "fit": ["street"]},
+    {"code": "CL-AC-10", "name": "Thigh Garter Band", "pos": "single garter band around one thigh, elastic biting soft", "hook": "одна лента на бедре — точечная заявка (не пояс!)", "fit": ["lounge", "intimates", "street"]}
+   ]
+  },
+  "V": {
+   "name": "VAULT — редкий рейд",
+   "law": "ПРИКАЗ АВТОРА 2026-11-03: one-piece купальник — «чтобы я его больше никогда не видел. Либо... всего раз за пять батчей». Реализовано строже из двух: кубик vault-полку НЕ выдаёт; рейд — только явной записью в шапке батча «VAULT-REID: CL-V-0N» и не чаще 1 за 5 сданных батчей.",
+   "items": [
+    {"code": "CL-V-01", "name": "One-Piece Swimsuit", "pos": "one-piece swimsuit, wet, clinging honest", "vault": true, "raid_cap": "≤1 за 5 сданных батчей", "note": "только прямым рейдом; квитанция P21 («это прям заебись получилось») — легенда, не ротация", "fit": ["swim"]},
+    {"code": "CL-V-02", "name": "Competition Racing Suit", "pos": "competition racing swimsuit, high-leg, honest sport cut", "vault": true, "raid_cap": "≤1 за 5 сданных батчей", "fit": ["swim", "active"]},
+    {"code": "CL-V-03", "name": "School Swimsuit", "pos": "navy school swimsuit, name-tag detail omitted, honest cut", "vault": true, "raid_cap": "≤1 за 5 сданных батчей", "note": "сукумидзу = one-piece-класс, потому в vault; имя-бирка не пишем", "fit": ["swim"]}
+   ]
+  }
+ },
+ "gar_f_note": "Состояния-поломки ткани (GAR41-GAR64, pools.json#sections.gar_f) остаются носителями состояний ПОВЕРХ кодов CLOSET: код = вещь, состояние = то, что с ней делает гравитация/вода/время. Пример: CL-SM-01 + GAR49 (knot_slack).",
+ "dice_hook": {
+  "owner": "MERCURY (docs/ars/02-MERCURY.md)",
+  "protocol": "бросок: полка → код; record_format 'P##: CL-SM-01 (переброс: причина)';sources.ultimate-dice обновлён: gar → specs/closet.json",
+  "batch_caps": {
+   "closet_min_distinct": 12,
+   "shelf_min_distinct": 6,
+   "upper_half_min": 4,
+   "white_thin_max": 3,
+   "vault_raid_cap_per_5_batches": 1
+  }
+ },
+ "supersedes": "specs/pools.json#sections.gar (GAR01-GAR40) — исторические коды остаются в окнах/реестрах, новые слоты пишут CL-коды; GAR41-GAR64 (gar_f) живы как слой состояний",
+ "swimsuit_law": "ПРИКАЗ АВТОРА 2026-11-03: one-piece (и one-piece-класс: competition/sukumizu) — VAULT, кубик их не выдаёт; дефолт пляжа — полка SM (крутые купальники: бикини-класс, танк-сет, вэтсьют, сёрф-сеты, парео). Канал swim_wet (dresser) работает на полке SM без изменений."}

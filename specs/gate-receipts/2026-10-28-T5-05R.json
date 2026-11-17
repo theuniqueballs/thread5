@@ -1,0 +1,493 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.0.0)",
+ "batch": "batches/T5-05R.md",
+ "sha256": "2a20c28ca3ccbd16aa8e289bf7c733df2aa35a8c3f0652f826c6c9eec79660e9",
+ "utc": "2026-10-28T15:24:23+00:00",
+ "verdict": "PASS",
+ "slots": 30,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "pos-budget",
+   "msg": "POS 148 слов > цель 110"
+  },
+  {
+   "slot": "P02",
+   "gate": "pos-budget",
+   "msg": "POS 146 слов > цель 110"
+  },
+  {
+   "slot": "P03",
+   "gate": "pos-budget",
+   "msg": "POS 148 слов > цель 110"
+  },
+  {
+   "slot": "P04",
+   "gate": "pos-budget",
+   "msg": "POS 126 слов > цель 110"
+  },
+  {
+   "slot": "P05",
+   "gate": "pos-budget",
+   "msg": "POS 129 слов > цель 110"
+  },
+  {
+   "slot": "P06",
+   "gate": "pos-budget",
+   "msg": "POS 149 слов > цель 110"
+  },
+  {
+   "slot": "P07",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «sweater on both shoulders»"
+  },
+  {
+   "slot": "P07",
+   "gate": "pos-budget",
+   "msg": "POS 146 слов > цель 110"
+  },
+  {
+   "slot": "P08",
+   "gate": "pos-budget",
+   "msg": "POS 147 слов > цель 110"
+  },
+  {
+   "slot": "P09",
+   "gate": "pos-budget",
+   "msg": "POS 147 слов > цель 110"
+  },
+  {
+   "slot": "P10",
+   "gate": "pos-budget",
+   "msg": "POS 134 слов > цель 110"
+  },
+  {
+   "slot": "P11",
+   "gate": "pos-budget",
+   "msg": "POS 139 слов > цель 110"
+  },
+  {
+   "slot": "P12",
+   "gate": "pos-budget",
+   "msg": "POS 144 слов > цель 110"
+  },
+  {
+   "slot": "P13",
+   "gate": "pos-budget",
+   "msg": "POS 143 слов > цель 110"
+  },
+  {
+   "slot": "P14",
+   "gate": "pos-budget",
+   "msg": "POS 145 слов > цель 110"
+  },
+  {
+   "slot": "P15",
+   "gate": "pos-budget",
+   "msg": "POS 145 слов > цель 110"
+  },
+  {
+   "slot": "P16",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «spot lighting her face»"
+  },
+  {
+   "slot": "P16",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 5 слов: «spotlight circle on her body»"
+  },
+  {
+   "slot": "P16",
+   "gate": "pos-budget",
+   "msg": "POS 136 слов > цель 110"
+  },
+  {
+   "slot": "P17",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «upright large fox ears»"
+  },
+  {
+   "slot": "P17",
+   "gate": "pos-budget",
+   "msg": "POS 147 слов > цель 110"
+  },
+  {
+   "slot": "P18",
+   "gate": "pos-budget",
+   "msg": "POS 127 слов > цель 110"
+  },
+  {
+   "slot": "P19",
+   "gate": "pos-budget",
+   "msg": "POS 142 слов > цель 110"
+  },
+  {
+   "slot": "P20",
+   "gate": "pos-budget",
+   "msg": "POS 142 слов > цель 110"
+  },
+  {
+   "slot": "P21",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «piece on the board»"
+  },
+  {
+   "slot": "P21",
+   "gate": "pos-budget",
+   "msg": "POS 120 слов > цель 110"
+  },
+  {
+   "slot": "P22",
+   "gate": "pos-budget",
+   "msg": "POS 131 слов > цель 110"
+  },
+  {
+   "slot": "P23",
+   "gate": "pos-budget",
+   "msg": "POS 141 слов > цель 110"
+  },
+  {
+   "slot": "P24",
+   "gate": "neg-unit",
+   "msg": "юнит NEG из 4 слов: «pawn carried in hand»"
+  },
+  {
+   "slot": "P24",
+   "gate": "pos-budget",
+   "msg": "POS 146 слов > цель 110"
+  },
+  {
+   "slot": "P26",
+   "gate": "pos-budget",
+   "msg": "POS 111 слов > цель 110"
+  },
+  {
+   "slot": "P27",
+   "gate": "pos-budget",
+   "msg": "POS 113 слов > цель 110"
+  },
+  {
+   "slot": "P28",
+   "gate": "pos-budget",
+   "msg": "POS 113 слов > цель 110"
+  },
+  {
+   "slot": "P30",
+   "gate": "pos-budget",
+   "msg": "POS 135 слов > цель 110"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "channel-quota",
+   "msg": "candidate-каналы использованы 5× (P02,P04,P09,P13,P19) > 2 — WARN волны 2, эскалация по KPI"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "pantyline-quota",
+   "msg": "pantyline 4× (P02,P04,P13,P19) > 2 — WARN волны 2"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "yui-spot-on-flourish",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 148
+  },
+  {
+   "id": "P02",
+   "slug": "una-devilish-manners-curtsy",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "pantyline-lower",
+   "channelStatus": "candidate",
+   "claimToken": 51,
+   "posWords": 146
+  },
+  {
+   "id": "P03",
+   "slug": "mab-porcelain-theatre-act",
+   "genre": "OC",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "claimToken": null,
+   "posWords": 148
+  },
+  {
+   "id": "P04",
+   "slug": "center-pawn-offer",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "pantyline-lower",
+   "channelStatus": "candidate",
+   "claimToken": 41,
+   "posWords": 126
+  },
+  {
+   "id": "P05",
+   "slug": "first-light-curtsy-clock",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 129
+  },
+  {
+   "id": "P06",
+   "slug": "ceiling-position-membranes",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 32,
+   "posWords": 149
+  },
+  {
+   "id": "P07",
+   "slug": "wisp-makes-the-move",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 146
+  },
+  {
+   "id": "P08",
+   "slug": "pool-ladder-concession",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 147
+  },
+  {
+   "id": "P09",
+   "slug": "sleeper-berth-dusk",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "nipple-ridges",
+   "channelStatus": "candidate",
+   "claimToken": 45,
+   "posWords": 147
+  },
+  {
+   "id": "P10",
+   "slug": "captured-bowl-coil",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 134
+  },
+  {
+   "id": "P11",
+   "slug": "flagfall-handbra",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 41,
+   "posWords": 139
+  },
+  {
+   "id": "P12",
+   "slug": "thirty-boards-arbiter",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 144
+  },
+  {
+   "id": "P13",
+   "slug": "phase-through-partition",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "pantyline-lower",
+   "channelStatus": "candidate",
+   "claimToken": 57,
+   "posWords": 143
+  },
+  {
+   "id": "P14",
+   "slug": "diamond-floor-climb",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 75,
+   "posWords": 145
+  },
+  {
+   "id": "P15",
+   "slug": "coil-tell-lean",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 55,
+   "posWords": 145
+  },
+  {
+   "id": "P16",
+   "slug": "refused-spotlight",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": null,
+   "posWords": 136
+  },
+  {
+   "id": "P17",
+   "slug": "piece-sweep-ritual",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 44,
+   "posWords": 147
+  },
+  {
+   "id": "P18",
+   "slug": "king-tip-resignation",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 18,
+   "posWords": 127
+  },
+  {
+   "id": "P19",
+   "slug": "hood-carries-sunset",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "pantyline-lower",
+   "channelStatus": "candidate",
+   "claimToken": 46,
+   "posWords": 142
+  },
+  {
+   "id": "P20",
+   "slug": "blinds-grid-square",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 28,
+   "posWords": 142
+  },
+  {
+   "id": "P21",
+   "slug": "held-piece-over-clock",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 37,
+   "posWords": 120
+  },
+  {
+   "id": "P22",
+   "slug": "post-mortem-demo-board",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "claimToken": 34,
+   "posWords": 131
+  },
+  {
+   "id": "P23",
+   "slug": "shadow-plays-her-side",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "claimToken": 40,
+   "posWords": 141
+  },
+  {
+   "id": "P24",
+   "slug": "promotion-last-rank",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "claimToken": 48,
+   "posWords": 146
+  },
+  {
+   "id": "P25",
+   "slug": "weights-control",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "nipple-ridges",
+   "channelStatus": "candidate",
+   "claimToken": 47,
+   "posWords": 107
+  },
+  {
+   "id": "P26",
+   "slug": "weights-boost",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "nipple-ridges",
+   "channelStatus": "candidate",
+   "claimToken": 49,
+   "posWords": 111
+  },
+  {
+   "id": "P27",
+   "slug": "fabric-tone-dark",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "nipple-ridges",
+   "channelStatus": "candidate",
+   "claimToken": 41,
+   "posWords": 113
+  },
+  {
+   "id": "P28",
+   "slug": "fabric-tone-mid",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "nipple-ridges",
+   "channelStatus": "candidate",
+   "claimToken": 41,
+   "posWords": 113
+  },
+  {
+   "id": "P29",
+   "slug": "claim-early",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 29,
+   "posWords": 107
+  },
+  {
+   "id": "P30",
+   "slug": "claim-late",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "claimToken": 101,
+   "posWords": 135
+  }
+ ]
+}
