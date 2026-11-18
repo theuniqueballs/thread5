@@ -1,13 +1,15 @@
+/**
+ * Y-STAMP API (акт 2 вердикта T5-24, приказ Б; В34 2026-11-19): клеймо
+ * печатается автоматически из id карты — никаких ручных строк. Прилавок
+ * запрашивает по id (Y{NN}): `weave` — вплетение паттерна 1:1 без
+ * обозначений (единственный текст, легальный в POS, строка 3) и `stamp` —
+ * метку-паспорт (только метаданные/сверка, в POS не печатается).
+ */
 import { NextResponse } from 'next/server';
 import { readFile } from 'fs/promises';
 import path from 'path';
-import { buildYStampLine, type YCardLike } from '@/lib/t5/ystamp';
+import { buildYStampLine, buildWeave, type YCardLike } from '@/lib/t5/ystamp';
 
-/**
- * Y-STAMP API (акт 2 вердикта T5-24, приказ Б): клеймо печатается
- * автоматически из id карты — никаких ручных строк. Прилавок запрашивает
- * строку-паспорт по id (Y{NN}) и кладёт её в буфер одним кликом.
- */
 const T5_ROOT = path.join(process.cwd(), 'thread5');
 const CACHE_CONTROL = 'public, max-age=30, stale-while-revalidate=60';
 
@@ -41,6 +43,7 @@ export async function GET(req: Request) {
   return NextResponse.json(
     {
       cardId: id,
+      weave: buildWeave(card),
       stamp: buildYStampLine(card),
       exposureClass: card.components?.exposure?.class ?? '—',
       corridor: card.corridor ?? '—',

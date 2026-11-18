@@ -111,6 +111,20 @@ claim-строки, до деталей): «Y-STAMP: Y{NN} «класс» × п�
 клейма выведена из капа «башенки» (formatGate) и из n-грамм копипаста
 (паспорт ≠ исполнение). Прогон с ретро: --retro
 
+v1.15.0 (вердикт автора 2026-11-19 по T5-25, В34 «и прочие обозначения
+- не нужны, нужно только то, что за ними имеется в виду. Ты не оставляешь
+промпт на произвол судьбы.» + В35 «чем лучше ты описываешь комбо, тем
+лучше модель понимает что ей надо нарисовать.»): yStamp перевёрнут —
+клеймо = вплетённый смысл, метка-паспорт из POS изъята. FAIL с T5-25:
+служебные обозначения в POS (строка-метка Y-STAMP:, «класс», CAM-коды,
+corridor-токен); паттерн карты не вплетён (стемы < minWeaveStems в одной
+строке); пересказ паттерна (копипаст-юнит 1:1 подстрокой); чужая карта;
+класс «—» (обёртка В27 ПУСТО) под R+; исполнение отсутствует (стемы
+паттерна вне вплетения < minExecStems). WARN: окно ротации (глубина 3),
+corridor карты ≠ полю Corridor:. Exemption'ы эры 1.14.0 сняты
+(stamp_exempt_* = false): вплетение — обычная проза POS (formatGate и
+n-граммы действуют). Ретро: история ≤T5-24 не переписывается.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -489,6 +503,8 @@ def check_format_gate(slot, warns, batch_no=-1):
     # v1.14.0 yStamp: строка клейма выведена из капа «башенки» — её длину
     # задаёт карта (копипаст-юнит), а не дисциплина строк POS (LAWS §17.7)
     stamp_prefix = ((GATES.get("yStamp") or {}).get("linePrefix", "Y-STAMP")) + ":"
+    stamp_exempt_fmt = bool(((GATES.get("yStamp") or {}).get(
+        "stamp_exempt_format_gate", True)))
     pos_lines = [l for l in getattr(slot, "pos_lines", []) if l.strip()]
     if pos_lines:
         if len(pos_lines) < cfg.get("posMinLines", 4):
@@ -496,7 +512,7 @@ def check_format_gate(slot, warns, batch_no=-1):
                           f"POS собран в {len(pos_lines)} строку(и) — башенка: разбросай "
                           f"по семантическим строкам (≥{cfg.get('posMinLines', 4)})"))
         for l in pos_lines:
-            if len(l) > mx and not l.startswith(stamp_prefix):
+            if len(l) > mx and not (stamp_exempt_fmt and l.startswith(stamp_prefix)):
                 warns.append((slot.sid, "format",
                               f"POS-строка {len(l)} знаков > {mx} — башенка, читается "
                               f"по вертикали, а не разом"))
@@ -910,33 +926,40 @@ def load_prev_y_usage(depth, exclude=None):
 
 
 def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
-    """v1.14.0 yStampGate (акт 2 вердикта T5-24, приказ Б «доктрину переписать
-    так, чтобы в промптах она железобетонно печаталась как клеймо и была
-    мега-важной его составляющей»). Клеймо = паспорт слота: слот с Y-картой
-    печатает в POS строку-клеймо (строка 3 PROSE PLUS, после claim-строки,
-    до деталей): «Y-STAMP: Y{NN} «класс» × поза карты × камера карты ·
-    corridor X».
+    """v1.15.0 yStamp (вердикт автора 2026-11-19 по T5-25, В34 «и прочие
+    обозначения - не нужны, нужно только то, что за ними имеется в виду. Ты
+    не оставляешь промпт на произвол судьбы.» + В35 «я генерил без PH и
+    понял, что чем лучше ты описываешь комбо, тем лучше модель понимает что
+    ей надо нарисовать.»). Клеймо = вплетённый смысл: слот с Y-картой несёт
+    в POS строку 3 (после claim-строки, до деталей) = паттерн карты КОПИПАСТ
+    1:1 с физикой — БЕЗ строки-метки «Y-STAMP: Y{NN} «класс» × ... · corridor
+    X»: обозначения в POS запрещены, каждое доезжает только смыслом (камера —
+    камерным кластером OPENER, коридор — физикой claim-строки, класс —
+    рейтингом слота). Паспорт живёт в метаданных: поле Y-card в шапке, чип
+    прилавка (печатается из camera.json по id).
 
-    FAIL (с failFrom):
-      (1) клейма нет в POS — промпт без клейма не RAW+;
-      (2) клеймо не разбирается по формату / не той карты;
-      (3) клеймо расходится с картой: класс, поза (копипаст-юнит 1:1,
-          пересказ запрещён), камера, corridor;
-      (4) R+/X собран от обёртки с классом «—» (В27 ПУСТО) — В33: паспорт
-          не самосертифицирует рейтинг;
-      (5) клеймо не исполняется телом POS (стемы паттерна вне строки
-          клейма < minExecStems) — паспорт вместо исполнения не считается.
-    WARN: (6) карта в окне ротации (глубина windowDepth); (7) коридор
-    клейма ≠ полю Corridor:; (8) клеймо без Y-card в шапке/теле.
+    FAIL (с failFrom=applyFrom=25):
+      (1) служебные обозначения в POS — строка-метка Y-STAMP:, «класс
+          экспозиции», CAM-коды, corridor-токен (закон непрозы: метка не
+          рисуется);
+      (2) паттерн карты не вплетён (стемы паттерна в лучшей строке <
+          minWeaveStems) — «промпт оставлен на произвол судьбы»;
+      (3) вплетение пересказано / чужой карты (копипаст-юнит 1:1 не найден
+          подстрокой);
+      (4) R+/X собран от обёртки с классом «—» (В27 ПУСТО) — В33;
+      (5) исполнение отсутствует (стемы паттерна вне строки вплетения <
+          minExecStems) — вплетение вместо исполнения не считается.
+    WARN: (6) карта в окне ротации (глубина windowDepth); (7) corridor
+    карты ≠ полю Corridor: слота.
 
     Эры: партия < applyFrom без --retro молчит (объявленная эра, история
-    не переписывается); с --retro все находки — WARN (ретро-демонстрация).
-    В33-честность: клеймо — паспорт, а не новый вектор само-сертификации."""
+    не переписывается); с --retro все находки — WARN (ретро-демонстрация
+    эпохи 1.14.0: метки-паспорта в POS были легальны до T5-25).
+    В33-честность: паспорт не самосертифицирует рейтинг."""
     cfg = GATES.get("yStamp") or {}
-    zero = {"mode": "silent", "with_card": 0, "stamped": 0, "missing": 0,
-            "malformed": 0, "foreign": 0, "mismatch": 0,
-            "empty_class_rplus": 0, "not_executed": 0, "window_hits": 0,
-            "corridor_warn": 0, "stamp_without_card": 0}
+    zero = {"mode": "silent", "with_card": 0, "weaved": 0, "no_weave": 0,
+            "mismatch": 0, "banned": 0, "empty_class_rplus": 0,
+            "not_executed": 0, "window_hits": 0, "corridor_warn": 0}
     if not cfg:
         return zero
     applied = 0 <= batch_no >= int(cfg.get("applyFrom", 10 ** 9))
@@ -955,18 +978,35 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
     window_map = load_prev_y_usage(
         int(cfg.get("windowDepth", 3)), exclude=str(batch_path)
     )
-    prefix = cfg.get("linePrefix", "Y-STAMP") + ":"
+    banned_res = [re.compile(p) for p in cfg.get("bannedMarkers", [])]
+    min_weave = int(cfg.get("minWeaveStems", 4))
+    min_exec = int(cfg.get("minExecStems", 2))
     st = dict(zero)
     st["mode"] = zero["mode"]
     for s in slots:
-        if s.stamp_line and not s.y_card:
-            st["stamp_without_card"] += 1
-            warns.append(
+        # (1) обозначения в POS — ловим независимо от карты (метка без
+        # Y-card тоже нарушение)
+        hit = None
+        for l in s.pos_lines:
+            for bre in banned_res:
+                m = bre.search(l)
+                if m:
+                    hit = (l.strip()[:72], m.group(0))
+                    break
+            if hit:
+                break
+        if hit:
+            st["banned"] += 1
+            emit(
                 (s.sid, "y-stamp",
-                 "клеймо в POS без Y-card в шапке/теле слота — паспорт не "
-                 "объявлен: добавить поле Y-card: или снять клеймо (LAWS §17)")
+                 f"служебное обозначение в POS («{hit[1]}» в строке "
+                 f"«{hit[0]}») — В34: обозначения в промпте не нужны, нужно "
+                 "только то, что за ними имеется в виду; смысл доезжает "
+                 "прозой: паттерн — вплетением 1:1, камера — камерным "
+                 "кластером OPENER, коридор — физикой claim-строки; паспорт "
+                 "— метаданные (Y-card в шапке, чип прилавка), LAWS §17"),
+                True,
             )
-            continue
         if not s.y_card:
             continue
         card = ycards.get(s.y_card)
@@ -976,63 +1016,61 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
         st["with_card"] += 1
         comp = card.get("components") or {}
         pose = comp.get("pose", "") or ""
-        camera = comp.get("camera", "") or ""
         cls = (comp.get("exposure") or {}).get("class", "—") or "—"
         corr = card.get("corridor", "—") or "—"
-        expected = (
-            f"Y-STAMP: {s.y_card} «{cls}» × {pose} × {camera} · corridor {corr}"
-        )
-        if not s.stamp_line:
-            st["missing"] += 1
+        pose_stems = _card_pose_stems(card)
+        pose_n = norm_ws(pose).lower()
+        # (2) вплетение: ПЕРВИЧНЫЙ детектор — копипаст-юнит 1:1 подстрокой
+        # (LAWS §17.2); стемы — только диагностика «пересказа» (короткие
+        # паттерны стем-порог ложно роняют — урок P28/Y320)
+        weave_idx = -1
+        if pose_n:
+            for i, l in enumerate(s.pos_lines):
+                if pose_n in norm_ws(l).lower():
+                    weave_idx = i
+                    break
+        best_hits, best_idx = 0, -1
+        for i, l in enumerate(s.pos_lines):
+            hits = len(pose_stems & {w[:5] for w in words(l) if len(w) >= 5})
+            if hits > best_hits:
+                best_hits, best_idx = hits, i
+        if weave_idx < 0 and best_hits < min_weave:
+            st["no_weave"] += 1
             emit(
                 (s.sid, "y-stamp",
-                 f"Y-карта {s.y_card} не напечатана клеймом в POS — промпт без "
-                 f"клейма не RAW+ (LAWS §17): строка «{expected}»"),
+                 f"паттерн карты {s.y_card} не вплетён в POS ({best_hits} "
+                 f"стемов в лучшей строке, нужно ≥{min_weave}; копипаста 1:1 "
+                 f"нет) — В34: не оставляй промпт на произвол судьбы; строка "
+                 f"3 = паттерн карты копипастом 1:1 (LAWS §17.1; начало: "
+                 f"«{norm_ws(pose)[:70]}…»)"),
                 True,
             )
-            continue
-        st["stamped"] += 1
-        if not s.stamp_id:
-            st["malformed"] += 1
-            emit(
-                (s.sid, "y-stamp",
-                 "строка Y-STAMP не разбирается по формату «Y-STAMP: Y{NN} "
-                 "«класс» × поза × камера · corridor X» — паспорт врёт сам "
-                 "себе (LAWS §17)"),
-                True,
-            )
-            continue
-        if s.stamp_id != s.y_card:
-            st["foreign"] += 1
-            emit(
-                (s.sid, "y-stamp",
-                 f"клеймо {s.stamp_id} при карте {s.y_card} — паспорт не той "
-                 "карты: клеймо печатается из camera.json, правка промпта мимо "
-                 "карты запрещена (LAWS §17.4)"),
-                True,
-            )
-            continue
-        mism = []
-        if s.stamp_class != cls:
-            mism.append(f"класс «{s.stamp_class}» ≠ карты «{cls}»")
-        low_stamp = (s.stamp_line or "").lower()
-        n_pose, n_camera = norm_ws(pose).lower(), norm_ws(camera).lower()
-        if n_pose and n_pose not in low_stamp:
-            mism.append("поза карты пересказана — нужен копипаст-юнит 1:1")
-        if n_camera and n_camera not in low_stamp:
-            mism.append("камера карты не в клейме 1:1")
-        if s.stamp_corridor != corr:
-            mism.append(f"corridor {s.stamp_corridor} ≠ карты {corr}")
-        if mism:
+        elif weave_idx < 0:
             st["mismatch"] += 1
             emit(
                 (s.sid, "y-stamp",
-                 f"клеймо расходится с картой {s.y_card}: {'; '.join(mism)} — "
-                 "правка промпта мимо карты запрещена: правь карту, клеймо "
-                 "перерождает сам (LAWS §17.4)"),
+                 f"вплетение {s.y_card} пересказано — копипаст-юнит 1:1 из "
+                 "camera.json не найден в POS подстрокой (LAWS §17.2); если "
+                 "вшита чужая карта — сверить поле Y-card"),
                 True,
             )
-            continue
+        else:
+            st["weaved"] += 1
+            # (5) исполнение вне строки вплетения
+            body = " ".join(l for i, l in enumerate(s.pos_lines)
+                            if i != weave_idx)
+            body_stems = {w[:5] for w in words(body) if len(w) >= 5}
+            hits = len(pose_stems & body_stems)
+            if hits < min_exec:
+                st["not_executed"] += 1
+                emit(
+                    (s.sid, "y-stamp",
+                     f"вплетение {s.y_card} не исполняется телом POS ({hits} "
+                     f"стемов паттерна вне вплетения, нужно ≥{min_exec}) — "
+                     "паттерн живёт дважды: камерный кластер OPENER + строка 3 "
+                     "(LAWS §17.3)"),
+                    True,
+                )
         # (4) В33: R+ от обёртки без класса
         if s.rating in ("R+", "X") and cls in cfg.get("rplus_banned_classes", ["—"]):
             st["empty_class_rplus"] += 1
@@ -1043,40 +1081,24 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
                  "пересобрать печью или писать честный тир"),
                 True,
             )
-        # (5) исполнение телом POS (без строки клейма)
-        body_pos = " ".join(
-            l for l in s.pos_lines if not l.startswith(prefix)
-        )
-        body_stems = {w[:5] for w in words(body_pos) if len(w) >= 5}
-        hits = len(_card_pose_stems(card) & body_stems)
-        if hits < int(cfg.get("minExecStems", 2)):
-            st["not_executed"] += 1
-            emit(
-                (s.sid, "y-stamp",
-                 f"клеймо {s.y_card} не исполняется телом POS ({hits} стемов "
-                 f"паттерна вне клейма, нужно ≥{cfg.get('minExecStems', 2)}) — "
-                 "паттерн один в POS и один в клейме: исполнение + паспорт, "
-                 "не паспорт вместо исполнения (LAWS §17.3)"),
-                True,
-            )
         # (6) окно ротации карт
         src_batch = window_map.get(s.y_card)
         if src_batch:
             st["window_hits"] += 1
             warns.append(
                 (s.sid, "y-stamp",
-                 f"клеймо {s.y_card} в окне ротации (использована в {src_batch}, "
+                 f"карта {s.y_card} в окне ротации (использована в {src_batch}, "
                  f"окно {cfg.get('windowDepth', 3)} батчей, y_assembly.window) — "
                  "неизбежный повтор — ⚗ + объявление в чате")
             )
-        # (7) коридор клейма vs поле слота
-        if s.corridor and s.stamp_corridor and s.corridor != s.stamp_corridor:
+        # (7) corridor карты vs поле слота
+        if s.corridor and corr not in ("—", "") and s.corridor != corr:
             st["corridor_warn"] += 1
             warns.append(
                 (s.sid, "y-stamp",
-                 f"исполнение объявило Corridor: {s.corridor}, паспорт карты "
-                 f"{s.stamp_corridor} — свести (В31: коридор = физика; клеймо "
-                 "= паспорт слота)")
+                 f"исполнение объявило Corridor: {s.corridor}, карта "
+                 f"{s.y_card} несёт corridor {corr} — свести (В31: коридор = "
+                 "физика POS)")
             )
     return st
 
@@ -1664,9 +1686,11 @@ def batch_number(path):
 def pos_prose(slot):
     """v1.14.0: POS без строк клейма — паспорт (Y-STAMP) не считается в
     n-граммах копипаста: считается исполнение, а не паспорт (LAWS §17.7)."""
-    prefix = ((GATES.get("yStamp") or {}).get("linePrefix", "Y-STAMP")) + ":"
+    ys = GATES.get("yStamp") or {}
+    prefix = ys.get("linePrefix", "Y-STAMP") + ":"
+    exempt = bool(ys.get("stamp_exempt_ngrams", True))
     lines = [l for l in getattr(slot, "pos_lines", [])
-             if l and not l.startswith(prefix)]
+             if l and not (exempt and l.startswith(prefix))]
     return " ".join(lines) if lines else slot.pos
 
 
@@ -1842,19 +1866,17 @@ def main():
             "without_card": combo_stats["without_card"],
             "card_mismatch": combo_stats["mismatch"],
         },
-        "y_stamp": {  # v1.14.0 акт 2: клеймо Y-карты в POS (паспорт слота)
+        "y_stamp": {  # v1.15.0 вердикт 2026-11-19: клеймо = вплетённый смысл
             "mode": ystamp_stats["mode"],
             "with_card": ystamp_stats["with_card"],
-            "stamped": ystamp_stats["stamped"],
-            "missing": ystamp_stats["missing"],
-            "malformed": ystamp_stats["malformed"],
-            "foreign": ystamp_stats["foreign"],
+            "weaved": ystamp_stats["weaved"],
+            "no_weave": ystamp_stats["no_weave"],
             "mismatch": ystamp_stats["mismatch"],
+            "banned": ystamp_stats["banned"],
             "empty_class_rplus": ystamp_stats["empty_class_rplus"],
             "not_executed": ystamp_stats["not_executed"],
             "window_hits": ystamp_stats["window_hits"],
             "corridor_warn": ystamp_stats["corridor_warn"],
-            "stamp_without_card": ystamp_stats["stamp_without_card"],
         },
         "buffs": {  # v1.12.0: квитанция баффа промпт-составляющей
             "concept_flagged": concept_caught,
@@ -1895,12 +1917,12 @@ def main():
         ys = receipt["y_stamp"]
         print(
             f"Y-STAMP [{ys['mode']}]: слотов с картой {ys['with_card']} · "
-            f"с клеймом {ys['stamped']} · нет клейма {ys['missing']} · "
-            f"чужих/битых {ys['foreign'] + ys['malformed']} · "
-            f"расхождений с картой {ys['mismatch']} · "
+            f"вплетено 1:1 {ys['weaved']} · не вплетено {ys['no_weave']} · "
+            f"пересказов {ys['mismatch']} · меток в POS {ys['banned']} · "
             f"R+ от «—» {ys['empty_class_rplus']} · "
             f"не исполнено телом POS {ys['not_executed']} · "
-            f"в окне ротации {ys['window_hits']}"
+            f"в окне ротации {ys['window_hits']} · "
+            f"corridor-разносов {ys['corridor_warn']}"
         )
     for a, b, c in fails:
         print(f"  FAIL [{a}] {b}: {c}")

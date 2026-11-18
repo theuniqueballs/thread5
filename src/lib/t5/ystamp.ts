@@ -1,15 +1,14 @@
 /**
- * Y-STAMP — клеймо/паспорт слота (акт 2 вердикта T5-24, приказ Б;
- * LAWS §17, raw-plus 2.1.0, gates.json 1.14.0 yStampGate).
+ * Y-STAMP — клеймо/паспорт слота (акт 2 вердикта T5-24, приказ Б; уточнение
+ * автора 2026-11-19, В34 «не оставляй промпт на произвол судьбы»;
+ * LAWS §17, raw-plus 2.2.0, gates.json 1.15.0 yStamp).
  *
- * Единый канонический формат с tools/gates.py v1.14.0:
- *   Y-STAMP: Y29 «COVER» × <поза карты 1:1> × <камера карты> · corridor A
- *
- * Клеймо печатается ТОЛЬКО из карты (specs/camera.json y_cards) — правка
- * промпта мимо карты запрещена: правишь карту — клеймо перерождает сам.
- * Печатаются рисуемые компоненты паспорта (класс экспозиции, поза, камера,
- * коридор); служебные поля карты (POV-read, профайлинг) в POS не печатаются
- * (закон непрозы: каждое слово рисуется).
+ * В34: обозначения в POS ЗАПРЕЩЕНЫ — клеймо = вплетённый смысл. Чип копирует
+ * ВПЛЕТЕНИЕ (паттерн карты 1:1 с физикой, без метки/класса/CAM-кодов/
+ * corridor-токена) — то, что встает строкой 3 POS. Метка-паспорт
+ * (buildYStampLine) — только метаданные чипа/сверки, в промпт не идет.
+ * Печать ТОЛЬКО из карты (specs/camera.json y_cards): правка промпта мимо
+ * карты запрещена — правишь карту, вплетение перерождает сам.
  */
 export interface YCardComponents {
   exposure?: { class?: string; cover_object?: string; read?: string };
@@ -27,13 +26,22 @@ export interface YCardLike {
   components?: YCardComponents;
 }
 
-/** Строка клейма из карты — копипаст-юнит 1:1, пересказ запрещён. */
+/** Строка клейма-метки — ТОЛЬКО метаданные (В34: в POS не печатается). */
 export function buildYStampLine(card: YCardLike): string {
   const cls = card.components?.exposure?.class || '—';
   const pose = card.components?.pose || '';
   const camera = card.components?.camera || '';
   const corridor = card.corridor || '—';
   return `Y-STAMP: ${card.id} «${cls}» × ${pose} × ${camera} · corridor ${corridor}`;
+}
+
+/**
+ * Вплетение (COMBO-WEAVE, строка 3 POS) — паттерн карты копипастом 1:1,
+ * БЕЗ обозначений (В34); физика карты целиком (В35). Единственный текст
+ * клейма, легальный в POS.
+ */
+export function buildWeave(card: YCardLike): string {
+  return card.components?.pose || '';
 }
 
 /**

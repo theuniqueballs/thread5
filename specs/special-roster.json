@@ -1,57 +1,64 @@
 {
-  "version": "1.2.0",
-  "born": "2026-10-25",
-  "purpose": "Ростер гостевых персонажей Special Orders — чужие персонажи и персонажи-не-OC, уже использованные в заказах. Сюда НЕ вносятся OC автора (их канон живёт в specs/oc-canon.json). Назначение: автор не ищет каждый раз референс — канон-ран берётся отсюда verbatim. (2026-11-08: расширено — полка принимает и тредовых кандидатов, оставленных автором ВНЕ канона ОС: зрительский фаворит ≠ канон, гостевой статус = «хранить Appearance и ждать SO». Новое поле ph_prompt — PH-промпт-источник рендера, verbatim.)",
-  "usage_policy": "Канон-ран вшивается в POS verbatim в первых ~10 токенах; ИМЯ персонажа в POS не входит (триггерит реальных персонажей) — узнаваемость несут дескрипторы. Слаг заказа может содержать имя, POS — нет. Рендер-квитанции по каждому гостю копятся в notes.",
-  "guests": [
-    {
-      "name": "Hecate",
-      "origin": "персонаж создательницы (подарочные заказы автора)",
-      "orders": [
-        "SO-01",
-        "SO-05",
-        "SO-07",
-        "SO-08"
-      ],
-      "canon_run": "very long white hair with dark-navy inner hair, blunt white bangs with small black strands at the center, loose windswept strands, large curved black ram horns with ribbed texture, red ribbon tied around one horn, vivid glowing red eyes, pale porcelain skin, oversized black knit sweater with a wide neckline fallen off one shoulder",
-      "notes": "Канон-деталь создательницы: чёрные волоски посерёдке чёлки (blunt white bangs with small black strands at the center) — обязателен в POS, квитанция SO-01 v2. Свитер — валюта канона (последняя мягкая вещь кадра). SO-05 «CYBERPSYCHOSIS» история вердиктов: v1 (свет/эхо) и v2 (генерик-фольга имплантов) мертвы; v3 = хром-ХАРДВЕР с историей: кольцо плеча, поршни, болты, skin seams, subdermal ports, serial-плейта; P01 — хром с чужого плеча (наследие мёртвого, размер не её), P02 — тело-в-розетке (нейролинк Пондсмита на спине, силовые кабели). Лицо канона не тронуто всегда. SO-07/SO-08 (2026-11-18): сцены «заплата из ленты» и «океан смолы» по прямому заказу автора; свитер в SO-08 сброшен на берегу и уходит в смолу — валюта канона расходуется сценой."
-    },
-    {
-      "name": "Ereshkigal",
-      "origin": "Fate/Grand Order",
-      "orders": [
-        "SO-03",
-        "SO-09"
-      ],
-      "canon_run": "very long blonde hair, blonde twintails tied with black ribbons, vivid red eyes, pale skin, small gold hair ornament, black gothic dress with gold trim",
-      "notes": "Рендер-вердикт SO-03: «ножки на заднем фоне, игрушки - охуенно, идея со стикером - забавно» — PL36 читается фоном даже в крупном плане, масса стада = один объект, прикол одной наклейкой (валидированный ход, ≤1 на заказ). Мрак её родной эстетики в мягких заказах гасить в NEG. SO-09 (2026-11-18): «розовые очки» + воздушный поцелуй с подмигиванием в купальнике; сердечко-стикер — валидированный ход SO-03 (≤1 на заказ); мрак родной эстетики гасится в NEG."
-    },
-    {
-      "name": "Miramme",
-      "origin": "референс-картинка автора",
-      "orders": [
-        "SO-04"
-      ],
-      "canon_run": "messy black bob with crimson-red inner color and red streaks, messy side-swept bangs covering one eye, two large curved glossy black ram horns with ribbed texture, pointed elf ears, multiple silver ear piercings, long dangling cross earring, glowing red eyes, small fangs, pale skin, curvy body, wide hips, large soft breasts, long black claw-like nails, black bat wings with deep-red membrane, thin black devil tail ending in a spade, thick black leather choker with a large silver O-ring, black lace crop top with red plaid pattern, black leather harness with silver buckles and rings, cross pendant on a chain, oversized black jacket slipping off both shoulders with deep-red lining and white occult sigils on the sleeve, black lace-trimmed shorts, black leather thigh straps, black cracked-pattern thighhigh stocking on one leg, black fingerless glove",
-      "notes": "Appearance забран построчно с референса (SO-04, прецедент «построчный канон-чек»). Вердикт: «очень милый промпт, неплохо» — нежность доехала на уровне промпта; ждать рендер-квитанцию по «когти × фарфор» и орбу-ночнику. Референсный гот-собор в мягких заказах гасить в NEG."
-    },
-    {
-      "name": "Eclipse-officiant",
-      "origin": "тредовый кандидат T5-16 P16 «eclipse-rehearsal-table» (Race R48 Eclipse-officiant-kin). Автор: «мне она особо не нравится, а зрителям зашло» — канонизации ОС не получает, сохранена гостем (2026-11-08, прямое поручение). Позже планируется SO — «но это позже».",
-      "orders": [],
-      "canon_run": "silver eclipse-disc floating at the brow like a small halo-ring, dusk-violet skin, moon-white hair in a crown braid, calm grey eyes, slender grown build, tulle petticoat dress in thinning layers, bow choker at the throat",
-      "ph_prompt": "A high-angle medium shot looking down at a tabletop features a slender adult woman with dusk-violet skin and moon-white hair styled in a crown braid. She lies with her cheek resting on the edge of the table, her arm tucked under her head; her grey, half-lidded eyes are focused as she uses one stretched fingertip to move a small copper-sun coin over a silver saucer-moon. She wears a tulle petticoat dress with thinning layers and a bow choker at her throat, while a small silver eclipse-disc floats like a halo-ring above her brow. The background is a long, dimming corridor that fades into deep shadow. The scene is bathed in a blood-moon palette of oxblood depths and silver highlights, with the light from the saucer illuminating the line of her cheek. The visual style is a high-quality 2D anime illustration with a focused, serene mood and stylized facial features.",
-      "notes": "Имя не присвоено (автор называет персонажей лично — прецеденты Meine/Luvv/Liebe/Hana); в POS имя не входит, узнаваемость несут дескрипторы: диск-нимб + сумеречная кожа (RF-якоря R48). Канон-ран собран из POS слота P16 verbatim; PH-промпт автора — источник рендера («в основном рендер рисуется с этого») — verbatim в поле ph_prompt. При будущем SO: выдать имя, внести в orders, в POS имя не пускать. Родные регистры: палитра P37_BLOOD_MOON (oxblood depth, moon-dish silver, copper-sun accent на монете), ARCH N24 BOTTLED_ENVIRONMENT, DOOR D01 UNSEEN, гэг «затмение — вопрос постановки» (монета-солнце закрывает блюдце-луну — коридор гаснет слой за слоем). Спайн PL349 Cheek-Table Eclipse Set · CAM04 · гардероб CL-DR-09 (tulle petticoat dress) + CL-AC-02 (bow choker) · причёска HS11 Crown Braid Halo. Выражение-подпись: grey eyes half-lidded focused, счёт-жест «двигает монету ногтем».",
-      "render_receipts": "T5-16 (2026-11-08): слот NICHE R, вердикт батча 4.7/5; отдельных авторских пиков по P16 в вердикте нет — статус «зрительский фаворит» дан поручением 2026-11-08."
-    },
-    {
-      "name": "Haumea",
-      "origin": "ОС автора Binard (внешний автор, референс-картинка 2026-11-18)",
-      "orders": [
-        "SO-10"
-      ],
-      "canon_run": "fluffy orange curly twin-tails with two thin side braids, very long pointed elf ears, large gold hoop earrings, round thin-framed glasses, one hand adjusting the glasses' bridge, green eyes, freckles across nose and cheeks, warm cream skin, dark-green dress with gold floral embroidery",
-      "notes": "ОС автора Binard (внешний автор, благодарственный SO по прямому заказу 2026-11-18). Appearance забран ПОСТРОЧНО с референса автора (картинка 2026-11-18): рыжие пышные кудрявые twin-tails + две тонкие косички по бокам · длинные остроконечные эльфийские уши · большие золотые кольца-серьги · круглые тонкооправные очки (одна рука поправляет перемычку) · зелёные глаза · веснушки · тёмно-зелёное платье с золотым растительным узором. Имя «Haumea» в POS не входит (закон ростера); узнаваемость — дескрипторами. Ждать рендер-квитанцию по очкам-поправке и золотым кольцам."
-    }
-  ]
+ "version": "1.3.0",
+ "born": "2026-10-25",
+ "purpose": "Ростер гостевых персонажей Special Orders — чужие персонажи и персонажи-не-OC, уже использованные в заказах. Сюда НЕ вносятся OC автора (их канон живёт в specs/oc-canon.json). Назначение: автор не ищет каждый раз референс — канон-ран берётся отсюда verbatim. (2026-11-08: расширено — полка принимает и тредовых кандидатов, оставленных автором ВНЕ канона ОС: зрительский фаворит ≠ канон, гостевой статус = «хранить Appearance и ждать SO». Новое поле ph_prompt — PH-промпт-источник рендера, verbatim.) (2026-11-19, вердикт T5-25: тредовый кандидат EXP P26 «Дверь как щит» оставлен автором в гостях под код-именем BALLS — «понравился персонаж на 26 слоте, но пока не уверен что хочу её взять. Возьми на заметку, потом чёт придумаем с ней».)",
+ "usage_policy": "Канон-ран вшивается в POS verbatim в первых ~10 токенах; ИМЯ персонажа в POS не входит (триггерит реальных персонажей) — узнаваемость несут дескрипторы. Слаг заказа может содержать имя, POS — нет. Рендер-квитанции по каждому гостю копятся в notes.",
+ "guests": [
+  {
+   "name": "Hecate",
+   "origin": "персонаж создательницы (подарочные заказы автора)",
+   "orders": [
+    "SO-01",
+    "SO-05",
+    "SO-07",
+    "SO-08"
+   ],
+   "canon_run": "very long white hair with dark-navy inner hair, blunt white bangs with small black strands at the center, loose windswept strands, large curved black ram horns with ribbed texture, red ribbon tied around one horn, vivid glowing red eyes, pale porcelain skin, oversized black knit sweater with a wide neckline fallen off one shoulder",
+   "notes": "Канон-деталь создательницы: чёрные волоски посерёдке чёлки (blunt white bangs with small black strands at the center) — обязателен в POS, квитанция SO-01 v2. Свитер — валюта канона (последняя мягкая вещь кадра). SO-05 «CYBERPSYCHOSIS» история вердиктов: v1 (свет/эхо) и v2 (генерик-фольга имплантов) мертвы; v3 = хром-ХАРДВЕР с историей: кольцо плеча, поршни, болты, skin seams, subdermal ports, serial-плейта; P01 — хром с чужого плеча (наследие мёртвого, размер не её), P02 — тело-в-розетке (нейролинк Пондсмита на спине, силовые кабели). Лицо канона не тронуто всегда. SO-07/SO-08 (2026-11-18): сцены «заплата из ленты» и «океан смолы» по прямому заказу автора; свитер в SO-08 сброшен на берегу и уходит в смолу — валюта канона расходуется сценой."
+  },
+  {
+   "name": "Ereshkigal",
+   "origin": "Fate/Grand Order",
+   "orders": [
+    "SO-03",
+    "SO-09"
+   ],
+   "canon_run": "very long blonde hair, blonde twintails tied with black ribbons, vivid red eyes, pale skin, small gold hair ornament, black gothic dress with gold trim",
+   "notes": "Рендер-вердикт SO-03: «ножки на заднем фоне, игрушки - охуенно, идея со стикером - забавно» — PL36 читается фоном даже в крупном плане, масса стада = один объект, прикол одной наклейкой (валидированный ход, ≤1 на заказ). Мрак её родной эстетики в мягких заказах гасить в NEG. SO-09 (2026-11-18): «розовые очки» + воздушный поцелуй с подмигиванием в купальнике; сердечко-стикер — валидированный ход SO-03 (≤1 на заказ); мрак родной эстетики гасится в NEG."
+  },
+  {
+   "name": "Miramme",
+   "origin": "референс-картинка автора",
+   "orders": [
+    "SO-04"
+   ],
+   "canon_run": "messy black bob with crimson-red inner color and red streaks, messy side-swept bangs covering one eye, two large curved glossy black ram horns with ribbed texture, pointed elf ears, multiple silver ear piercings, long dangling cross earring, glowing red eyes, small fangs, pale skin, curvy body, wide hips, large soft breasts, long black claw-like nails, black bat wings with deep-red membrane, thin black devil tail ending in a spade, thick black leather choker with a large silver O-ring, black lace crop top with red plaid pattern, black leather harness with silver buckles and rings, cross pendant on a chain, oversized black jacket slipping off both shoulders with deep-red lining and white occult sigils on the sleeve, black lace-trimmed shorts, black leather thigh straps, black cracked-pattern thighhigh stocking on one leg, black fingerless glove",
+   "notes": "Appearance забран построчно с референса (SO-04, прецедент «построчный канон-чек»). Вердикт: «очень милый промпт, неплохо» — нежность доехала на уровне промпта; ждать рендер-квитанцию по «когти × фарфор» и орбу-ночнику. Референсный гот-собор в мягких заказах гасить в NEG."
+  },
+  {
+   "name": "Eclipse-officiant",
+   "origin": "тредовый кандидат T5-16 P16 «eclipse-rehearsal-table» (Race R48 Eclipse-officiant-kin). Автор: «мне она особо не нравится, а зрителям зашло» — канонизации ОС не получает, сохранена гостем (2026-11-08, прямое поручение). Позже планируется SO — «но это позже».",
+   "orders": [],
+   "canon_run": "silver eclipse-disc floating at the brow like a small halo-ring, dusk-violet skin, moon-white hair in a crown braid, calm grey eyes, slender grown build, tulle petticoat dress in thinning layers, bow choker at the throat",
+   "ph_prompt": "A high-angle medium shot looking down at a tabletop features a slender adult woman with dusk-violet skin and moon-white hair styled in a crown braid. She lies with her cheek resting on the edge of the table, her arm tucked under her head; her grey, half-lidded eyes are focused as she uses one stretched fingertip to move a small copper-sun coin over a silver saucer-moon. She wears a tulle petticoat dress with thinning layers and a bow choker at her throat, while a small silver eclipse-disc floats like a halo-ring above her brow. The background is a long, dimming corridor that fades into deep shadow. The scene is bathed in a blood-moon palette of oxblood depths and silver highlights, with the light from the saucer illuminating the line of her cheek. The visual style is a high-quality 2D anime illustration with a focused, serene mood and stylized facial features.",
+   "notes": "Имя не присвоено (автор называет персонажей лично — прецеденты Meine/Luvv/Liebe/Hana); в POS имя не входит, узнаваемость несут дескрипторы: диск-нимб + сумеречная кожа (RF-якоря R48). Канон-ран собран из POS слота P16 verbatim; PH-промпт автора — источник рендера («в основном рендер рисуется с этого») — verbatim в поле ph_prompt. При будущем SO: выдать имя, внести в orders, в POS имя не пускать. Родные регистры: палитра P37_BLOOD_MOON (oxblood depth, moon-dish silver, copper-sun accent на монете), ARCH N24 BOTTLED_ENVIRONMENT, DOOR D01 UNSEEN, гэг «затмение — вопрос постановки» (монета-солнце закрывает блюдце-луну — коридор гаснет слой за слоем). Спайн PL349 Cheek-Table Eclipse Set · CAM04 · гардероб CL-DR-09 (tulle petticoat dress) + CL-AC-02 (bow choker) · причёска HS11 Crown Braid Halo. Выражение-подпись: grey eyes half-lidded focused, счёт-жест «двигает монету ногтем».",
+   "render_receipts": "T5-16 (2026-11-08): слот NICHE R, вердикт батча 4.7/5; отдельных авторских пиков по P16 в вердикте нет — статус «зрительский фаворит» дан поручением 2026-11-08."
+  },
+  {
+   "name": "Haumea",
+   "origin": "ОС автора Binard (внешний автор, референс-картинка 2026-11-18)",
+   "orders": [
+    "SO-10"
+   ],
+   "canon_run": "fluffy orange curly twin-tails with two thin side braids, very long pointed elf ears, large gold hoop earrings, round thin-framed glasses, one hand adjusting the glasses' bridge, green eyes, freckles across nose and cheeks, warm cream skin, dark-green dress with gold floral embroidery",
+   "notes": "ОС автора Binard (внешний автор, благодарственный SO по прямому заказу 2026-11-18). Appearance забран ПОСТРОЧНО с референса автора (картинка 2026-11-18): рыжие пышные кудрявые twin-tails + две тонкие косички по бокам · длинные остроконечные эльфийские уши · большие золотые кольца-серьги · круглые тонкооправные очки (одна рука поправляет перемычку) · зелёные глаза · веснушки · тёмно-зелёное платье с золотым растительным узором. Имя «Haumea» в POS не входит (закон ростера); узнаваемость — дескрипторами. Ждать рендер-квитанцию по очкам-поправке и золотым кольцам."
+  },
+  {
+   "name": "BALLS",
+   "origin": "T5-25 EXP P26 «Дверь как щит» (тредовый кандидат ОС, тема Omniknight; в батче работала под рабочим именем «Галатея»), вердикт автора 2026-11-19",
+   "orders": [],
+   "canon_run": "short white undercut hair, deep umber skin, calm gold left eye, pale-lit glass right eye, gilded right prosthetic hand, tall broad-shouldered build, strong soft waist, silver ear studs, a thin scar over the brow",
+   "notes": "Код-имя BALLS дал автор (вербатим 2026-11-19: «понравился персонаж на 26 слоте, но пока не уверен что хочу её взять. Возьми на заметку, потом чёт придумаем с ней (сунь пока в ростер гостей, обзови BALLS чтобы я вспомнил когда-нибудь)»). Сигнатура: gilded right prosthetic hand — из дверной ручки: держит то, что обещала; door-iron ring taps her palm. Гостевой статус «хранить Appearance и ждать SO» (2026-11-08) — канон ОС не присваивать до решения автора. Имя BALLS в POS не входит (закон ростера); узнаваемость — дескрипторами (золотая протеза-рука, стеклянный правый глаз)."
+  }
+ ]
 }

@@ -46,27 +46,29 @@ function TagBlock({ title, text }: { title: string; text: string }) {
 }
 
 function StampChip({ cardId }: { cardId: string }) {
-  // Акт 2 (приказ Б): клеймо печатается ИЗ КАРТЫ одним кликом — никаких
-  // ручных строк. Формат 1:1 с tools/gates.py v1.14.0 / LAWS §17.
+  // Акт 2 (приказ Б) + В34 (2026-11-19): клеймо печатается ИЗ КАРТЫ одним
+  // кликом — никаких ручных строк. Чип копирует ВПЛЕТЕНИЕ паттерна 1:1
+  // (строка 3 POS, без обозначений — метки в POS запрещены, В34).
   const [busy, setBusy] = useState(false);
   const { toast } = useToast();
   return (
     <button
       type="button"
       disabled={busy}
-      title="Y-STAMP — клеймо/паспорт из карты (акт 2, LAWS §17): копирует строку 1:1 из camera.json; правка промпта мимо карты запрещена"
+      title="Y-STAMP — паспорт слота из карты (В34, LAWS §17): копирует ВПЛЕТЕНИЕ паттерна 1:1 без обозначений — метки в POS запрещены, метка ≠ промпт"
       onClick={async () => {
         setBusy(true);
         try {
           const res = await fetch(`/api/t5/ystamp?card=${encodeURIComponent(cardId)}`);
-          const data = (await res.json()) as { stamp?: string; error?: string };
-          if (!res.ok || !data?.stamp) {
+          const data = (await res.json()) as { stamp?: string; weave?: string; error?: string };
+          const text = data?.weave || data?.stamp || '';
+          if (!res.ok || !text) {
             throw new Error(data?.error ?? 'клеймо не собралось');
           }
-          const ok = await copyText(data.stamp);
+          const ok = await copyText(text);
           toast({
-            title: ok ? `${cardId}: клеймо скопировано` : `${cardId}: клеймо получено`,
-            description: ok ? data.stamp : data.stamp,
+            title: ok ? `${cardId}: вплетение скопировано` : `${cardId}: вплетение получено`,
+            description: text,
           });
         } catch (err) {
           toast({
@@ -102,9 +104,9 @@ function SlotCard({ slot, loop }: { slot: T5Slot; loop?: LoopSlotInfo | null }) 
           <span className="cursor-pointer font-mono text-sm font-bold text-white">{slot.id}</span>
         </LongPressable>
         <span className="font-mono text-[13px] text-zinc-400">— {slot.slug}</span>
-        <span className="ml-auto flex flex-wrap items-center gap-1.5">
-          {/* каждая строка — один юнит: POS/NEG из парсера уже плоские,
-              никаких пустых отбивок между полями */}
+        <span className="ml-auto flex flex-wrap items-center gap-1.5 select-none">
+          {/* чипы — метаданные слота (В34: в промпт не входят); select-none —
+              выделение промпта мышью не захватывает обозначения */}
           <CopyButton
             text={`${slot.id} — ${slot.slug}\nPOS: ${slot.pos}\nNEG: ${slot.neg}`}
             label="Слот"
