@@ -1,0 +1,526 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.14.0)",
+ "batch": "batches/T5-25.md",
+ "sha256": "ed66fe42413289b279dfeaa26a7fcd419a4a9fcb971e8a236c5c27f95aa3413e",
+ "utc": "2026-11-18T15:12:20+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "channel-quota",
+   "msg": "candidate-каналы использованы 10× (P01,P02,P03,P04,P05,P06,P07,P08,P09,P10) > 2 — WARN волны 2, эскалация по KPI"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "7 общих 6-грамм с предыдущими партиями (T5-23.md, T5-24.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "ila-wall-ledger",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "moss-ring-press",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 214
+  },
+  {
+   "id": "P02",
+   "slug": "nix-stake-service",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "stake-flat-strike",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 28,
+   "posWords": 200
+  },
+  {
+   "id": "P03",
+   "slug": "lyn-wall-ambush",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wall-pin-dusk",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 33,
+   "posWords": 224
+  },
+  {
+   "id": "P04",
+   "slug": "towel-clamp-stand",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "towel-clamp-stand",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 36,
+   "posWords": 202
+  },
+  {
+   "id": "P05",
+   "slug": "hay-spread-prone",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "hay-spread-prone",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 172
+  },
+  {
+   "id": "P06",
+   "slug": "bunk-tuck-crawl",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "bunk-tuck-crawl",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 184
+  },
+  {
+   "id": "P07",
+   "slug": "fare-count-palm",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "fare-count-palm",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 32,
+   "posWords": 197
+  },
+  {
+   "id": "P08",
+   "slug": "panel-screw-palm",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "panel-screw-palm",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 27,
+   "posWords": 188
+  },
+  {
+   "id": "P09",
+   "slug": "furnace-door-stride",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "furnace-door-stride",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 25,
+   "posWords": 201
+  },
+  {
+   "id": "P10",
+   "slug": "organ-palm-column",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "organ-palm-column",
+   "channelStatus": "candidate",
+   "corridor": "A+B",
+   "claimToken": 20,
+   "posWords": 194
+  },
+  {
+   "id": "P11",
+   "slug": "bell-hang-reach",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 158
+  },
+  {
+   "id": "P12",
+   "slug": "ruin-garden-pour",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 160
+  },
+  {
+   "id": "P13",
+   "slug": "flag-stitch-hands",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 161
+  },
+  {
+   "id": "P14",
+   "slug": "gutter-walk-dawn",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 156
+  },
+  {
+   "id": "P15",
+   "slug": "rain-gather-wring",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 161
+  },
+  {
+   "id": "P16",
+   "slug": "ferry-push-off",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": 75,
+   "posWords": 183
+  },
+  {
+   "id": "P17",
+   "slug": "well-brace-bend",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": 54,
+   "posWords": 155
+  },
+  {
+   "id": "P18",
+   "slug": "wood-split-turn",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 159
+  },
+  {
+   "id": "P19",
+   "slug": "petal-sweep-crouch",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 155
+  },
+  {
+   "id": "P20",
+   "slug": "barrel-half-roll",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 163
+  },
+  {
+   "id": "P21",
+   "slug": "chalk-ward-shadow",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 168
+  },
+  {
+   "id": "P22",
+   "slug": "cradle-one-knee",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 167
+  },
+  {
+   "id": "P23",
+   "slug": "story-grin-hold",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 142
+  },
+  {
+   "id": "P24",
+   "slug": "shelf-tuck-book",
+   "genre": "EXQUISITE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": null,
+   "posWords": 144
+  },
+  {
+   "id": "P25",
+   "slug": "clock-wind-lullaby",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 215
+  },
+  {
+   "id": "P26",
+   "slug": "doorjamb-shield-hold",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 194
+  },
+  {
+   "id": "P27",
+   "slug": "rooftop-siren-cut",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 197
+  },
+  {
+   "id": "P28",
+   "slug": "glass-pane-cartography",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 193
+  },
+  {
+   "id": "P29",
+   "slug": "forge-towel-turn",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 208
+  },
+  {
+   "id": "P30",
+   "slug": "tailgate-seed-count",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 214
+  },
+  {
+   "id": "P31",
+   "slug": "memorial-slide-song",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 215
+  },
+  {
+   "id": "P32",
+   "slug": "kettle-sun-ladle",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": null,
+   "posWords": 224
+  },
+  {
+   "id": "P33",
+   "slug": "chalk-circle-hover",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 69,
+   "posWords": 210
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "her breast shape honest under the",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-24.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "huge silent owl wings folded close",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "silent owl wings folded close like",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "owl wings folded close like a",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "wings folded close like a cloak",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "into pale incense smoke at the",
+   "slotsHere": [
+    "P31"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P33"
+   ]
+  },
+  {
+   "gram": "pale incense smoke at the tips",
+   "slotsHere": [
+    "P31"
+   ],
+   "sourceBatch": "T5-23.md",
+   "slotsThere": [
+    "P33"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "at the small of the back",
+   "slotsHere": [
+    "P16"
+   ],
+   "sourceBatch": "T5-24.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 19,
+  "fact_R+": 19
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y428",
+   "Y452",
+   "Y82",
+   "Y89",
+   "Y168",
+   "Y209",
+   "Y250",
+   "Y342",
+   "Y366",
+   "Y451",
+   "Y334",
+   "Y446",
+   "Y363",
+   "Y320",
+   "Y388",
+   "Y147",
+   "Y480",
+   "Y411",
+   "Y359"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "combo_pose": {
+  "composite_used": 19,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 19,
+  "stamped": 19,
+  "missing": 0,
+  "malformed": 0,
+  "foreign": 0,
+  "mismatch": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0,
+  "stamp_without_card": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ }
+}
