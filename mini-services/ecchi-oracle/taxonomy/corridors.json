@@ -1,0 +1,185 @@
+{
+  "version": "2.0.0",
+  "source": "RATING-REPAIR-2026-11-13 (гайд Коула, merged) + RATING-POSTMORTEM-T5-23 (claimPhysics В31) + АКТ 1 комбо-Y (camera 1.15.1, poses 1.17.0, POSE-RAZBOR-COMBO-2026-11-17) + АКТ 2 Y-STAMP (LAWS §17, raw-plus 2.1.0, gates 1.14.0, ACT2-YSTAMP-RECEIPT-2026-11-18) + В33 «пиздёж-бани» (LAWS §3) + batches/T5-25 (Y-STAMP-эра)",
+  "corridors": {
+    "A": {
+      "name": "Cover object — объект у груди",
+      "idea": "Сильное раскрытие тела + грудь закрыта объектом: руки, тейп, лента, ткань в руках, полотенце, фартук, книга, хвост. В Y-STAMP-эре — прикрытие ОДЕЖДОЙ коридора A (T5-25: «прикрытие одеждой коридора A в каждом R+»).",
+      "trust": "HIGH когда объект явно в тегах",
+      "signals": ["hands covering chest", "arms covering chest", "taped nipples", "topless with tape", "towel mid-catch", "handbra", "apron only", "object held to chest", "shirt only + hands flat on chest", "palm pressed flat at the dress front", "palm pressed flat holding the dress front"]
+    },
+    "B": {
+      "name": "Pose geometry — геометрия позы+камеры",
+      "idea": "Поза и камера сами несут интим: низкий ракурс, straddle/посадка, mid-action с одеждой, камера между колен, щель двери.",
+      "trust": "MID-HIGH",
+      "signals": ["low angle", "from below", "straddle", "mid-action garment", "waistband mid-pull", "between knees", "door gap", "lean back", "kneel-back settle", "hem lifted by pose"]
+    },
+    "A+B": {
+      "name": "Оба коридора",
+      "idea": "Лучший вариант для «супер R+» EXP-слотов.",
+      "trust": "BEST"
+    },
+    "NONE": {
+      "name": "Ни A ни B",
+      "idea": "Только красивая сцена → план R или PG-13. НЕ маркировать R+. С T5-25 (В33, corridorAudit failFrom=25) R+ без коридора = FAIL гейта, не WARN-статистика: либо слот добирает факт, либо честно понижается до сдачи.",
+      "trust": "Планируй R"
+    }
+  },
+  "exposure_classes": ["COVER", "PROCESS", "LINGERIE", "CLOTHED-TIGHT", "SHEER", "—"],
+  "exposure_note": "SHEER в одиночку слаб на платформе. Комбо-единица: pose × camera × exposure × pov. Класс «—» = В27 ПУСТО: карта-обёртка без вшитой физики (вес/тяга/зацеп) — честно не выходят в R+ до пересборки печью; R+/X от класса «—» = FAIL yStampGate (В33).",
+  "combo_doctrine": {
+    "born": "АКТ 1 вердикта T5-24 (приказ А автора, 2026-11-17, POSE-RAZBOR-COMBO-2026-11-17)",
+    "law": "Поза = скелет, карта = сборка, слот = от карты. Не остаётся ни одной составной конструкции позы вне Y-доктрины: каждая составная собирается от карты, а не пишется руками заново.",
+    "composite_criterion": "Поза описывает ≥2 скоординированных элемента (тело × объект × среда) либо собрана из карты: семьи y_card_build, сборки A1–A9, клетки-константы X1–X5, тематические одноштучные, OC-семьи. Из 568 позиций poses.json 1.17.0 составных 515.",
+    "wrapper_cards": "Y38–Y512 — карты-обёртки (475 шт., camera.json 1.15.x), поле built_from: PL-… — обратная ссылка на конструкцию; 40 связаны стем-оверлапом с существующими картами. 284 обёртки честно помечены «В27 ПУСТО» (класс «—») — в R+ не выходят до В27-пересборки; 191 несут физику в sd.",
+    "gates": "comboPose (gates 1.13.0, applyFrom=25): составная поза в слоте без карты-обёртки = WARN (FAIL по вердикту); дубль карты = FAIL; окно Y-карт — 3 батча.",
+    "learning": "PL-каталог — слой поддержки (скелеты); примитивы остаются позами. Учебный принцип для модели: составной паттерн не сочинять — найти/построить карту и собрать от неё."
+  },
+  "y_stamp": {
+    "born": "АКТ 2 вердикта T5-24 (приказ Б «железобетонно печаталась как клеймо», LAWS §17, raw-plus 2.1.0, gates 1.14.0, клеймо печатается с T5-25)",
+    "idea": "Y-карта печатается в финальном PROMPT как клеймо — фиксированный блок, копипаст-юнит из карты 1:1, мега-важная составляющая промпта. Клеймо = паспорт слота; промпт без клейма — не RAW+.",
+    "format": "Y-STAMP: Y{NN} «{класс экспозиции карты}» × {поза карты — КОПИПАСТ 1:1} × {камера карты} · corridor {A|B|A+B}",
+    "example": "Y-STAMP: Y29 «COVER» × dress zipper caught half-down at the spine + the palm pressed flat holding the dress front + glance back over the shoulder × upper body + over-the-shoulder glance · corridor A",
+    "position": "Строка 3 шаблона PROSE PLUS (raw-plus 2.1.0): после claim-строки NL-ядра («— the X is the claim, Y-made»), до деталей-слоя SCENE. Строки шаблона: OPENER → CLAIM → Y-STAMP → SCENE → PALETTE → FACE.",
+    "rules": [
+      "Паттерн копируется из карты 1:1 — пересказ своими словами запрещён (та же дисциплина, что у паттерна в POS).",
+      "Печатается из карты (camera.json) автоматически — никаких ручных строк; правка промпта мимо карты запрещена (правка карты — тогда клеймо обновляется само).",
+      "Паттерн один в POS и один в клейме: то же тело, два носителя — исполнение + паспорт.",
+      "Рисуемое подмножество: класс/поза/камера/коридор. POV-read и профайлинг карт — русский сервис-текст, в POS не печатаются (закон непрозы «каждое слово рисуется», LAWS §6) — служебные поля остаются в паспорте карты.",
+      "Строка клейма вне капа «башенки» и вне n-грамм межбатчевого копипаста (паттерны карт легально копируются из camera.json)."
+    ],
+    "gate_yStampGate": {
+      "version": "gates 1.14.0, applyFrom/failFrom 25",
+      "FAIL": [
+        "нет клейма в PROMPT",
+        "клеймо не разбирается по формату",
+        "клеймо не той карты (чужой паспорт)",
+        "расхождение с картой (класс / поза не 1:1 / камера не 1:1 / corridor)",
+        "R+/X от класса «—» (В27 ПУСТО — В33)",
+        "клеймо не исполняется телом POS (менее 2 стемов паттерна вне строки клейма — клеймо-пустышка)"
+      ],
+      "WARN": [
+        "карта в окне ротации (глубина 3 батча)",
+        "коридор клейма ≠ полю Corridor: слота",
+        "клеймо без Y-card в шапке/теле"
+      ]
+    },
+    "honesty_В33": "Клеймо — паспорт, не самосертификация. Класс «—» не выносит R+. Печать клейма не заменяет физику: тело POS обязано исполнять паттерн (≥2 стемов вне строки клейма)."
+  },
+  "y_assembly": {
+    "born": "АКТ 1 + АКТ 6 вердикта T5-24 (машина сборки: кнопка «собрать от Y-карты»)",
+    "steps": [
+      "0. Определи тир слота и класс раскрытия (COVER/PROCESS/LINGERIE/CLOTHED-TIGHT/SHEER; «—» = стоп для R+).",
+      "1. Выбери Y-карту под класс и коридор A/B/A+B — не изобретать «просто стоит»; составную позу не сочинять, брать карту (Y1–Y512).",
+      "2. Скелет: паттерн карты — тело слота (PL-каталог — слой поддержки).",
+      "3. POV/камера: камерный кластер карты в первые 10–20 токенов OPENER.",
+      "4. Профайлинг: служебные поля карты (POV-read, profiling) остаются в паспорте — не печатаются.",
+      "5. Собери POS по PROSE PLUS: OPENER → CLAIM («— the X is the claim, Y-made», заявка ≤ токена 60) → SCENE (В32 ≥2 фишечки-ФОРМЫ) → PALETTE → FACE.",
+      "6. Печать клейма Y-STAMP из карты 1:1 (строка 3) — автоматически, не руками.",
+      "7. NEG — зеркало цели + safety-пол; честная шапка: нет коридора → пиши R, не R+ (В33)."
+    ],
+    "theme_rule": "В VOLT-слотах объекты темы идут ПОСЛЕ заявки. Один-три якоря — не поэма в первых токенах.",
+    "salience_note": "Заявка ≤ токена 60 (первый семантический чанк CLIP ~77 с запасом); POS ≤130 слов цель, 150 hard."
+  },
+  "y_cards": {
+    "registry": "camera.json 1.15.1: Y1–Y512 (36 канонических комбо + 475 обёрток Y38–Y512)",
+    "window": "Окно ротации Y-карт — 3 батча (window.py)",
+    "Y1": {"pattern": "mid-lift garment + cover at chest + upper body + slight low angle", "corridor": "A+B", "trust": "HIGH"},
+    "Y2": {"pattern": "hands as cover + upper body + slight low angle", "corridor": "A", "trust": "HIGH"},
+    "Y3": {"pattern": "low camera between knees + look down + hem frames torso", "corridor": "B", "trust": "MID"},
+    "Y4": {"pattern": "cloth/towel mid-catch at chest", "corridor": "A", "trust": "HIGH"},
+    "Y5": {"pattern": "straddle/settle + hem pulled by pose + claim token", "corridor": "B", "trust": "MID"},
+    "Y6": {"pattern": "waistband process + cowboy from below", "corridor": "B", "trust": "MID"},
+    "Y7": {"pattern": "through door gap + adjusting cover/strap", "corridor": "B", "trust": "MID"},
+    "Y8": {"pattern": "close insert on cover gesture → optional payoff shot", "corridor": "A", "trust": "HIGH"},
+    "Y10": {"pattern": "weapon-weight strap torque + cover by the crooked arm + upper body + slight low angle", "corridor": "A", "trust": "HIGH"},
+    "Y11": {"pattern": "kneel-back settle + hem pinned under shin weight + tails fan frames the torso", "corridor": "B", "trust": "MID"},
+    "Y12": {"pattern": "jacket sliding off one shoulder + sleeve caught at the elbow fold + eye-level close", "corridor": "A", "trust": "MID"},
+    "Y13": {"pattern": "apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling", "corridor": "B", "trust": "MID"},
+    "Y14": {"pattern": "lean back on both palms + collar opens by the lean + fabric bridges taut across the ribs", "corridor": "A+B", "trust": "MID"},
+    "Y15": {"pattern": "belt cinch mid-pull against the perch's lean + weight honest on the seat edge + from below", "corridor": "B", "trust": "MID"},
+    "Y16": {"pattern": "shirt hem tucked by the raised arm + fabric bridge across the ribs holds the line + upper body", "corridor": "A", "trust": "HIGH"},
+    "Y17": {"pattern": "hem lifted where no hand holds it + lower body passing through its own fold + eye-level", "corridor": "B", "trust": "MID"},
+    "Y18": {"pattern": "glove peel + layered undress process + close insert", "corridor": "A", "trust": "MID"},
+    "Y29": {"pattern": "dress zipper caught half-down at the spine + the palm pressed flat holding the dress front + glance back over the shoulder", "camera": "upper body + over-the-shoulder glance", "corridor": "A", "class": "COVER", "trust": "NEW (собрана под заказ автора 2026-11-17 «одна новая Y для R+», вход с T5-24)"},
+    "Y35": {"pattern": "still-breath-vigil — единственное движение кадра: дыхание (тризна по живой, M04)", "corridor": "A", "trust": "эталон ОС-темы (похвала автора T5-24 P01 Noir «очень круто»)"}
+  },
+  "golden_moves_T5_24": {
+    "born": "Вердикт T5-24 «SEDUCTION» (автор, 2026-11-17, похвалы 6/8/11/23/24 + ОС 1) — рёмка АКТ 3: победители становятся правилами",
+    "moves": [
+      {"slot": "P06 marilyn-bar-draft", "move": "среда-актёр: сквозняк поднимает ткань — среда делает половину позы"},
+      {"slot": "P08 zipper-half-spine", "move": "процесс-на-середине: молния до половины позвоночника — GEOMETRY-обещание (пойманный процесс)"},
+      {"slot": "P11 feather-regrow-stretch", "move": "регенерация-как-тело: перо отрастает на растяжке — биология персонажа как движение"},
+      {"slot": "P23 pareo-knot-hop", "move": "узел-как-опора: эротика в развязке узла, не в обнажении"},
+      {"slot": "P24 fan-half-verdict", "move": "веер-полурешение: прикрытое объявляет прикрытое — ПАУЗА как кадр"},
+      {"slot": "P01 noir-still-breath", "move": "тризна-дыхание: единственное движение — дыхание (M04), эталон ОС-темы"}
+    ],
+    "anti_case": "P13 bronze-shield-look — «хуйня какая-то»: заявка живёт в невидимом носителе (взгляд «по-прокси» в отражении щита). Рождение claimVisibility: заявка должна иметь видимый носитель в первых двух строках POS."
+  },
+  "claim_visibility": {
+    "born": "АКТ 3 вердикта T5-24, постмортем P13 (gates: аудит claimVisibility)",
+    "rule": "Заявка (claim) обязана иметь видимый носитель в первых двух строках POS: OPENER-кластер или CLAIM-строка. Отражение/тень/эхо/по-прокси — невидимые носители: кадр не читает, кто смотрит и что заявлено.",
+    "check": "Найди в первых двух строках POS объект/жест/ткань, который виден глазами и несёт заявку. Нет → FAIL."
+  },
+  "influence_layers": {
+    "born": "АКТ 7 вердикта T5-24 («слабовато для соблазна» → модель воздействия вместо словаря-ярлыка)",
+    "layers": [
+      "ОБЕЩАНИЕ — что кадр сулит (GEOMETRY-обещание: пойманный процесс, полурешение)",
+      "ПОЛУРЕШЕНИЕ — геометрия на середине: процесс пойман, но не завершён (zipper half-down, hem traveling)",
+      "ПАУЗА — темпо-остановка кадра (веер-полурешение, тризна-дыхание)",
+      "НАСЛОЖЕНИЕ — сенсорика: волна 9 «аромат и вкус» легальна — запах/температура/звук/вкус как материал среды"
+    ],
+    "mediator_object": "К каждому слоту — объект-посредник: предмет, держащий обещание (узел pareo, молния, веер). Объект-посредник и есть эротика кадра.",
+    "exp_law": "Закон EXP-комбо: минимум 2 скоординированных взаимодействия (тело×среда×объект) и палитра вшита в позу (материал двигает геометрию: липкое, скользкое, тающее), а не только в цвет. Порог «простоватые» T5-24 EXP."
+  },
+  "batch_structure": {
+    "canonical": "33 слота = 3 ОС + 21 мейн + 9 EXP (канон T5-22…24, восстановлен в T5-25)",
+    "rplus_discipline": "R+ мейны и ОС собираются от своих карт-обёрток (комбоPose карта=карта); клеймо Y-STAMP копипаст-юнитом; заявка ≤60 токенов; прикрытие одеждой коридора A в каждом R+ (В33)"
+  },
+  "fake_high_tier": [
+    "sheer + eye-level cowboy + smile",
+    "lingerie name + formal sit",
+    "rating word with no geometry (рейтинг только в шапке слота)",
+    "catalog standing + smile",
+    "politeness gestures: поклон / реверанс / подача ладони",
+    "оружие/фишечка вместо заявки (тема съела VOLT, болезнь T5-23)",
+    "клеймо Y-STAMP как самосертификация: печать паспорта не создаёт физику (В33)",
+    "составной паттерн без карты-обёртки (comboPose)"
+  ],
+  "claim_physics": {
+    "born": "RATING-POSTMORTEM-T5-23, аудит В31, gates 1.11.0",
+    "problem": "Самосертификация: поле «Corridor:» в теле слота заполняет та же рука, что писала POS. Гейт v1.10.0 честно считал поле и рапортовал «fact 18 = label 18», пока геометрия позы не соответствовала заявке. Ретро-прогон T5-23 поймал 8/18 бейджей R+ как самосертифицированные.",
+    "checks": [
+      "Класс раскрытия: есть ли в POS хоть один класс (COVER/PROCESS/LINGERIE/CLOTHED-TIGHT/SHEER)? Нет → бейдж R+ самосертифицирован.",
+      "Коридор A: заявлен объект-прикрытие — есть ли он в POS тегом/контакт-геометрией? Нет → FAIL A.",
+      "Коридор B: заявлена геометрия — есть ли теги низкого ракурса/straddle/mid-action? Нет → FAIL B.",
+      "Канал рейтинга: есть ли ОДИН ранний канал-токен (tape / hands covering chest / mid-lift / low corridor / towel mid-catch)?",
+      "Тема съела VOLT?: первый зарядный чанк POS — тело/заявка или оружие/фишечка/декорация?",
+      "POS-текст: написана ли одежда/вежливость вместо тела? Рендерер рисует то, что написано.",
+      "claimVisibility: заявка имеет видимый носитель в первых двух строках POS? (АКТ 3, постмортем P13)",
+      "Y-STAMP: клеймо исполняется телом POS (≥2 стемов паттерна вне строки клейма)? (АКТ 2, В33)"
+    ],
+    "one_minute_test": "Прикрой окружение рукой. Верх промпта всё ещё заряжен? Если нет — тема съела VOLT.",
+    "lesson": "Рендерер НЕ режет рейтинг — он рисует то, что написано. Написан поклон → нарисован поклон. Бейдж поверх концепта, который не мог дать R+, — ложь с печатью PASS."
+  },
+  "volt_assembly": {
+    "steps": [
+      "1. Выбери коридор A / B / A+B — или остановись и маркируй R",
+      "2. Выбери комбо-карту (Y-карта, Y1–Y512). Не изобретать «просто стоит»; составную позу — только от карты",
+      "3. Напиши ОДНУ строку заявки, на которую можно указать пальцем (объект-прикрытие / mid-lift / низкий коридор / процесс подола) — с видимым носителем (claimVisibility)",
+      "4. POS-порядок: quality (absurdres, intricate details) → camera → body → claim → action → остальная одежда → среда → свет → лицо",
+      "5. NL: present continuous, mid-action, заявка + взгляд; мир — одной короткой строкой максимум",
+      "6. NEG: зеркало цели (нужен cover — блокируй полный оголос груди; держи bad-hands; блокируй catalog standing)",
+      "7. Честная шапка: нет коридора → пиши R, не R+ (В33: занижение — тоже пиздёж)"
+    ],
+    "theme_rule": "В VOLT-слотах объекты темы идут ПОСЛЕ заявки. Один-три якоря — не поэма в первых токенах.",
+    "salience_note": "Заявка ≤ токена 60 (первый семантический чанк CLIP ~77 с запасом); POS ≤130 слов цель, 150 hard."
+  },
+  "rating_trust": {
+    "HIGH": "Ядра VOLT: shirt mid-lift + tape, hands covering chest, towel/cloth mid-catch, low/between-knees + look down, straddle/settle с hem-геометрией, one-sided waistband + low angle; карты с классом ≠ «—», исполненные телом POS",
+    "MID": "Апгрейдится камерой/экспозицией: strap slip mid-catch, hip-cock at door, over-shoulder look, shirt lift без cover-объекта",
+    "LOW": "Не целиться в высокий тир без более сильного комбо: прямая стойка руки по швам, cowboy + улыбка + имя белья, wet/sheer без cover и жёсткой позы, широкий фуллбоди с крошечным лицом, формальная посадка руки в замке",
+    "NICHE_only": "Мир/объект ведёт силуэт — не форсировать высокий тир"
+  },
+  "pose_library_fields": ["id", "name", "corridor", "rating_trust", "camera_default (distance × angle)", "pool", "anti (что убивает считывание)", "combo", "card (id Y-карты)", "superseded_by"]
+}

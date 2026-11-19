@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "source": "LAWS.md §2 (hard-флоры v1.8.0) + §3 (X Cut) + specs/gates.json",
+  "status": "НИКОГДА не расслабляются. Только прямой приказ автора.",
+  "floors": {
+    "xxx_never": {
+      "rule": "XXX (половой акт) — НИКОГДА. Ни тегами, ни прозой, ни NEG-доставкой. Абсолютный потолок конвейера — R+.",
+      "words": ["sex", "sexual act", "penis", "cum", "intercourse"]
+    },
+    "x_default_out": {
+      "rule": "X-слоты по умолчанию ИЗЪЯТЫ из плана (вердикт: «хорошее эччи намного лучше любого порно»). Возврат — только прямой приказ автора. X Cut = один жёсткий факт (видимый сосок/ареола или гениталии), не сумма намёков."
+    },
+    "genital_lock_pos": {
+      "rule": "exposed genitals, vulva, pubic hair — никогда в POS. В NEG НЕ пишется (negBase v3 — рендерер «и без тебя разберётся»)."
+    },
+    "anti_loli": {
+      "rule": "child, children, childish, chibi, young girl, immature body, oversized head, loli, shota — никогда в POS. Возраст передаётся ФОРМОЙ ТЕЛА (регистры student/young/milf), не тегами возраста.",
+      "neg_prefix": "young girl, immature body, oversized head, loli, shota — ОБЯЗАТЕЛЬНЫЙ префикс NEG каждого слота (вердикт T5-13: перегруз-реакция negBase v3 не имела права резать safety-пол)",
+      "model_behavior": "Признаки childish-тела в заявке → отказ от повышения тира + рекомендация adult-регистра формы тела. Эччи-контент только для взрослых тел."
+    },
+    "oc_canon_locks": {
+      "rule": "Внешность ровно по specs/oc-canon.json; канон-цвета волос/гроз VERBATIM в первые ~10 токенов. Имена OC никогда в POS (триггерят реальных персонажей) — только дескрипторы."
+    },
+    "leak_guard": {
+      "rule": "signature, watermark, artist name, logo — в NEG каждого. Artist-теги запрещены в POS и прозе."
+    },
+    "ip_floors": {
+      "rule": "Имена/титулы франшиз и чужих персонажей — НИКОГДА в POS/THESIS. Тема живёт предметами и фишечками, не референсами."
+    },
+    "milf_word_ban": {
+      "rule": "Слово milf запрещено в POS включая прозу (N30) — голос возраста только формой тела; в NEG НЕ пишется."
+    },
+    "muscle_law": {
+      "rule": "muscular, ripped, six-pack, defined abs, bulging, bodybuilder — нет в POS; тон soft/firm/toned-lite."
+    },
+    "device_guard": {
+      "rule": "candle, lamp — в NEG каждого. Свет описывается поведением (закон света v2), приборы POS не называет."
+    }
+  },
+  "x_cut_hold": {
+    "note": "Блок X Cut hold (рейтинг-техники, блок 9): при X-риске в NEG добавляются penis, cum, uncensored, spread legs, nude lower body — держат жёсткий факт.",
+    "banned_neg_terms_v17": ["visible pantyline", "topless", "exposed breasts", "naked", "nude", "bare breasts", "nsfw", "nipples through clothing", "clothed nipples", "extreme fanservice", "exposed genitals", "vulva", "pubic hair", "sex", "sexual act"],
+    "why": "Закон №25 «NEG-гигиена»: эти слова в NEG сами по себе — семантический мусор и триггеры; доставка рейтинга живёт POS-механизмами, а NEG лочит только подслой/покрытие по делу."
+  },
+  "model_ethics": {
+    "ceiling": "Рабочий диапазон модели: SFW → PG-13 → R → R+. X — только как ЗНАНИЕ о границе (распознать, пометить, не доставлять). XXX — отказ всегда.",
+    "age": "Все примеры и генерации — взрослые тела. Child-кодированные признаки = жёсткий отказ/понижение.",
+    "tone": "Технический, non-graphic, filter-safe wording — как сам проект: «технический тон, без графики»."
+  }
+}

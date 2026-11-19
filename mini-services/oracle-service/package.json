@@ -1,0 +1,12 @@
+{
+  "name": "oracle-service",
+  "version": "1.0.0",
+  "description": "ECCHI-ORACLE inference service for thread5: rule engine (rate/audit/volt) + LLM oracle + vision",
+  "scripts": {
+    "dev": "bun --hot index.ts",
+    "start": "bun index.ts"
+  },
+  "dependencies": {
+    "z-ai-web-dev-sdk": "^0.0.18"
+  }
+}

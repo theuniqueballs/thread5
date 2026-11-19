@@ -1,0 +1,26 @@
+{
+  "total": 509,
+  "train": 463,
+  "val": 46,
+  "dupes_removed": 0,
+  "by_category": {
+    "accounting": 28,
+    "audit": 44,
+    "carriers": 46,
+    "classify": 47,
+    "combo-doctrine": 12,
+    "honesty": 13,
+    "influence": 10,
+    "laws-tier": 10,
+    "render-facts": 36,
+    "safety": 28,
+    "techniques": 71,
+    "triage-v2": 22,
+    "vision-desc": 39,
+    "volt": 71,
+    "y-stamp": 32
+  },
+  "seed": 1337,
+  "val_fraction": 0.09,
+  "system_prompt_len_chars": 198
+}

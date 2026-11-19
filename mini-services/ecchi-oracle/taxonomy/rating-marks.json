@@ -1,0 +1,139 @@
+{
+  "version": "2.0.0",
+  "born": "distilled from theuniqueballs/thread5 (LAWS.md §3+§17, rating-recipes.json v1.10.0, rating-techniques.json v1.2.1) + RATING-REPAIR-2026-11-13 + RATING-POSTMORTEM-T5-23 + В33 «пиздёж-бани» (LAWS §3, 2026-11-17) + АКТ 9 триаж v2 (вердикт T5-24: слот-тип + факт-рейтинг по оракулу Grok) + шкала автора (чат 2026-11-17)",
+  "scale_name": "thread5 / Yodayo tier scale",
+  "marks": {
+    "SFW": {
+      "order": 0,
+      "name_ru": "Чистый кадр",
+      "definition": "Никаких эччи-сигналов: обычная одежда, нейтральная подача.",
+      "signals": [],
+      "typical_genres": ["NICHE-light"],
+      "note": "Ни один сигнал таблицы тиров не задействован."
+    },
+    "PG13": {
+      "order": 1,
+      "name_ru": "Дразнящий тир (the tease tier)",
+      "definition": "Сексуальная подача без нижнего белья в кадре: костюм, купальник, декольте, бёдра.",
+      "signals": ["sexy outfit", "bikini", "cleavage", "thighs", "off-shoulder", "bare shoulders", "short shorts", "miniskirt", "midriff", "zettai ryouiki", "thighhighs", "bare back", "swimsuit", "pareo"],
+      "signal_min": 2,
+      "counter_neg": ["nipples", "areola", "lingerie visible"],
+      "prose_floor": "state nouns >= 2; the outfit IS the claim",
+      "layer_law": "1 сигнал = PG-13",
+      "typical_genres": ["NICHE", "VOLT-light"]
+    },
+    "R": {
+      "order": 2,
+      "name_ru": "Бельевой тир (the underwear tier)",
+      "definition": "Нижнее бельё, трусики, лифчик, апскёрт или эротическая поза в кадре.",
+      "signals": ["lingerie", "panties", "bra", "underwear", "upskirt", "erotic pose", "microbikini", "garter belt", "thong", "boyshorts", "pantyshot", "side-tie panties", "bunny suit", "naked apron", "towel only"],
+      "signal_min": 2,
+      "counter_neg": ["nipples", "areola", "cameltoe"],
+      "prose_floor": "state nouns >= 3; underwear state named explicitly, never implied",
+      "layer_law": "1 сильный сигнал (бельё/поза) = R",
+      "typical_genres": ["VOLT", "NICHE"]
+    },
+    "RPLUS": {
+      "order": 3,
+      "name_ru": "Граничный тир (the edge tier)",
+      "definition": "Грань без жёсткого факта: грудь закрыта руками/тапами/тканью, соски через сухую ткань без цвета, cameltoe как флейвор, пантлайн.",
+      "signals": ["covered nipples", "breast clinging", "cameltoe", "camel toe", "clothed nipples", "extreme fanservice", "see-through", "wet clothes", "visible pantyline", "tight clothes", "almost naked", "topless with tape", "taped nipples", "handbra", "arms covering chest"],
+      "signals_hard": ["visible pantyline", "clothed nipples", "covered nipples", "taped nipples", "topless with tape", "handbra"],
+      "hard_min": 1,
+      "signal_min": 2,
+      "mechanisms": {
+        "bumps_channel": "Закон №28 «Просвет-чёткость»: R+ через-ткань = канал БУГОРКОВ БЕЗ ЦВЕТА — DRY тёмная вещь + «covered nipples, clothed nipples» ПЕРВЫМИ в блоке груди + «dark garment» + clinging + «sweat glistening» (НЕ «wet clothes»). Свет НЕ на зоне убивает канал.",
+        "wet_one_piece_exception": "Мокрый one-piece купальник держит R+ (P21-золото) — единственное выжившее мокрое исключение.",
+        "lower_channel": "Светлый/средний верх — канал НЕ-через-ткани: visible pantyline / tape / handbra.",
+        "cameltoe_dead": "cameltoe — рендер-мёртв (флейвор максимум, заявкой быть не может)."
+      },
+      "corridor_law": "R+ бейдж легален ТОЛЬКО при коридоре A (грудь закрыта объектом: руки/лента/ткань в руках/тапы) или B (поза+камера несут интим: низкий ракурс, straddle, mid-action с одеждой), или A+B. Ни A ни B → это R или PG-13, независимо от бейджа. С T5-25 (В33, corridorAudit failFrom=25) R+ без коридора = FAIL гейта: либо слот добирает факт, либо честно понижается до сдачи.",
+      "y_stamp_law": "Клеймо Y-STAMP — паспорт слота (LAWS §17), не самосертификация: класс «—» (В27 ПУСТО) не выносит R+; клеймо обязано исполняться телом POS (≥2 стемов паттерна вне строки клейма).",
+      "author_scale_fact": "Шкала автора (чат 2026-11-17): R+ = еле прикрытая; R = suggestive, купальники, бельё; PG-13 = всё остальное; Partial = частичные/полупрозрачные случаи. Триаж выносит fact-рейтинг (что в кадре), label — только сверка.",
+      "layer_law": "3+ R-сигнала через 2+ слоя = R+ (закон суммы слоёв)",
+      "counter_neg": ["bra", "camisole", "bandeau", "undershirt", "covered breasts, bra, clothing on chest — при bare-state заявке"],
+      "typical_genres": ["VOLT", "OC", "EXQUISITE", "EXP"]
+    },
+    "X": {
+      "order": 4,
+      "name_ru": "Жёсткий факт (X Cut)",
+      "definition": "ОДИН жёсткий факт: видимый сосок/ареола или гениталии. Не сумма намёков — один факт.",
+      "signals": ["nipples exposed", "nipples", "areola", "nude", "topless bare", "exposed breasts", "genitals"],
+      "cut_law": "X Cut = один жёсткий факт, не сумма намёков. Всё остальное (R, R+) — лестница к этому факту.",
+      "delivery_law": "Доставка X (когда легален): bare state удвоен (теги + face-блок) + блок покрытия в NEG (covered breasts, bra, clothing on chest) — NEG-блокировка покрытия есть инструмент доставки.",
+      "status": "X-слоты по умолчанию ИЗЪЯТЫ из плана (вердикт: «хорошее эччи намного лучше любого порно»). Возврат — только прямой приказ автора. Рабочий потолок конвейера — R+.",
+      "x_drivers": ["wet clothes + see-through + свет на зоне", "nipples through clothing (цвет)", "sheer + влага", "свет осветлил тёмное (призма-свет P04)"]
+    },
+    "XXX": {
+      "order": 5,
+      "name_ru": "Никогда",
+      "definition": "Половой акт. АБСОЛЮТНЫЙ запрет конвейера.",
+      "signals": ["sex", "sexual act", "penis", "cum"],
+      "status": "НИКОГДА. Не обсуждается, не пишется, не доставляется. Модель обязана отказать и вернуть разговор в рамки R+."
+    }
+  },
+  "layer_sum_law": {
+    "name": "Закон суммы слоёв",
+    "layers": [
+      {"n": 1, "name": "что видно", "blocks": [1, 2], "note": "сколько кожи, белья, груди"},
+      {"n": 2, "name": "как показано", "blocks": [4, 5], "note": "камера, поза, кадрирование"},
+      {"n": 3, "name": "зачем показано", "blocks": [6, 7], "note": "выражение лица, атмосфера, ecchi/pin-up-подача"},
+      {"n": 4, "name": "что модель дорисует сама", "blocks": [3], "note": "вода, прозрачность, «случайные» оголения"}
+    ],
+    "rules": [
+      "1 сигнал = PG-13/R",
+      "3+ R-сигнала через 2+ слоя = R+",
+      "X = один жёсткий факт, не сумма"
+    ]
+  },
+  "genre_defaults": {
+    "OC": "R+ (канон-локи, тема в слоте)",
+    "VOLT": "R+/X (плоть: камера-участник, тело в движении, взгляд-вектор)",
+    "NICHE": "R (чудо: невозможный образ, раса — физический механизм)",
+    "EXQUISITE": "R+ (ультра своего жанра, 1-2 слота)",
+    "EXP": "гипотезы поверх 24-слотового закона, A/B-пары одной переменной"
+  },
+  "batch_structure": "33 слота = 3 ОС + 21 мейн + 9 EXP (канон T5-22…24); R+ мейны — от карт-обёрток (комбоPose карта=карта), клеймо Y-STAMP копипаст-юнитом, заявка ≤60 токенов, прикрытие одеждой коридора A в каждом R+ (В33)",
+  "honesty_law_В33": {
+    "name": "В33 — честный рейтинг, «пиздёж-бани» (автор, 2026-11-17, чат, вербатим: «ты или пиши что так и так ничё не получилось или делай в рейтинг который ты указываешь»)",
+    "rules": [
+      "R+ без коридора = FAIL (corridorAudit failFrom=25), не WARN-статистика",
+      "честность в обе стороны: беспричинное занижение тира — тот же пиздёж",
+      "не получилось — так и пиши, что не получилось; получится — делай в заявленный рейтинг",
+      "класс карты «—» (В27 ПУСТО) не выносит R+ (yStampGate FAIL)",
+      "составная поза без карты-обёртки = comboPose FAIL/WARN"
+    ]
+  },
+  "heat_spread": {
+    "default": "21 мейн + 3 OC: R+×14 · R×7 (HEAT может ширить, но «все R+» = смерть разнообразия — T5-06)",
+    "quotas": {
+      "fact_Rplus_aim": "6-14 на батч (не 26)",
+      "label_must_track_fact": "label ≈ fact, sheer ≤25% высокотирных",
+      "plain_cowboy_eye_level": "≤5-7/21 мейнов"
+    }
+  },
+  "triage_v1": {
+    "note": "Триаж v1 (до T5-25): машинный триаж рендеров (инбокс): sfw / borderline / x",
+    "use": "Контроль факта: если спред бейджей R+×18, а триаж 29 sfw · 4 borderline · 0 x — бейджи самосертифицированы."
+  },
+  "triage_v2": {
+    "born": "АКТ 9 вердикта T5-24 (приказ автора: «не только Х-триаж, но и определять что за слот и его рейтинг. Основа — оракул Grok»), ремонт 502: CAP_PER_REQUEST=1, меньшими пачками",
+    "pipeline": [
+      "0. X-фильтр (первый шаг, тем же vision-вызовом)",
+      "1. Слот-тип: мейн / ОС / EXP / спец — по тегу файла («T5-18 P07») и имени («P07 - name.webp»); несматчился → unknown с просьбой тега",
+      "2. Факт-рейтинг по оракулу Grok (docs/RATING-REPAIR-2026-11-13.md: A · Cover object / B · Pose geometry) + шкала автора: R+ — еле прикрытая; R — suggestive, купальники, бельё; PG-13 — всё остальное; Partial — частичные/полупрозрачные; далее по лестнице REPAIR-дока",
+      "3. Сверка label vs fact: у тегированных слотов ложный бейдж помечается drift — поле в мету инбокса",
+      "4. Реестр неудач: specs/inbox-patterns.json — паттерн / где случился / почему / какое правило родилось; триаж при попадании файла в паттерн помечает его"
+    ],
+    "slot_types": ["main", "OC", "EXP", "special", "unknown"],
+    "fact_scale": {
+      "R+": "еле прикрытая (barely covered) — грудь/низ закрыты ровно объектом или геометрией, не одеждой",
+      "Partial": "частичные/полупрозрачные случаи (подчерпывается из лестницы REPAIR)",
+      "R": "suggestive, купальники, бельё",
+      "PG-13": "всё остальное",
+      "SFW": "ноль эччи-сигналов"
+    },
+    "law": "Правило: триаж выносит fact-рейтинг (что в кадре), label — только сверка. Ложный бейдж → drift, не молча PASS (В33).",
+    "report_card": "Карточка файла в UI инбокса: X-вердикт · слот-тип · fact-рейтинг · drift · совпавшие паттерны неудач"
+  }
+}
