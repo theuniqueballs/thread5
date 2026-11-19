@@ -7643,6 +7643,32 @@
     "P32",
     "P33"
    ]
+  },
+  {
+   "wave": "exp_color_wave_11",
+   "born": "2026-11-19, T5-26 «Ancient Abyss» — заказ автора: «Новенькие палитры и способы раскраски» + «Новенькие Y которых ещё не создавали» в каждом EXP-слоте; волна «раскраска как ремесло глубины» (батик / эбру / суми / меццо-тинто / пьетра-дура / сграффито / патина-поталь / дагерротип / фосфор-лишайник)",
+   "palettes": [
+    "P243_BATIK_WAX_CRACK",
+    "P250_DAGUERREOTYPE_PLATE",
+    "P244_EBRU_MARBLE_POOL",
+    "P249_VERDIGRIS_PATINA_GILD",
+    "P245_SUMI_INK_WASH",
+    "P246_MEZZOTINT_ROCK_BURR",
+    "P247_PIETRA_DURA_INLAY",
+    "P248_SGRAFFITO_LAYERS",
+    "P251_PHOSPHOR_LICHEN_GLOW"
+   ],
+   "slots": [
+    "P25",
+    "P26",
+    "P27",
+    "P28",
+    "P29",
+    "P30",
+    "P31",
+    "P32",
+    "P33"
+   ]
   }
  ]
 }
