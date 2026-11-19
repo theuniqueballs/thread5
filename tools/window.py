@@ -32,13 +32,32 @@ BATCH_DIR = ROOT / "batches"
 BURNED = json.loads((ROOT / "specs/burned.json").read_text(encoding="utf-8"))
 
 
+def bnum(p):
+    """Номер партии из имени файла («T5-09.md» → 9; нет кода → -1)."""
+    m = re.search(r"T5-(\d+)", Path(p).name)
+    return int(m.group(1)) if m else -1
+
+
 def delivered_batches():
-    """Сданные батчи T5-*.md (без шаблона и отчётов), свежие первыми."""
+    """Сданные батчи T5-*.md (без шаблона и отчётов), свежие первыми.
+    2026-11-20: сортировка по НОМЕРУ партии (mtime — только тай-брейк):
+    mtime врёт после правок старых файлов, и драфт-батчи лезут вперёд
+    (аудит 2026-10-31, F2 — тот же урок, что у --for)."""
     files = [
         p for p in BATCH_DIR.glob("T5-*.md")
         if not p.name.endswith(".gate-report.md")
     ]
-    return sorted(files, key=lambda p: p.stat().st_mtime, reverse=True)
+    return sorted(files, key=lambda p: (bnum(p), p.stat().st_mtime), reverse=True)
+
+
+def _body_ycard(body_lines, y_body_re):
+    """Карта из цитаты в теле слота (ретро-батчи до поля Y-card:).
+    2026-11-20: без морского волчка — честный цикл, регекс один раз на строку."""
+    for b in body_lines:
+        m = y_body_re.search(b)
+        if m:
+            return m.group(0)[:-1].strip()
+    return None
 
 
 def collect(paths):
@@ -48,7 +67,7 @@ def collect(paths):
         "carriers": set(), "channels": set(), "ratings": {},
         "ycards": set(),  # v1.12.0 Y-first: окно Y-карт
     }
-    y_body_re = re.compile(r"\bY\d{1,3}\b\s*[«\"]")  # карта в теле слота; 1.13.0: серия до Y512 (акт 1)
+    y_body_re = re.compile(r"\bY\d{1,3}\b\s*[«\"]")  # карта в теле слота; серия до Y521+
     for p in paths:
         _, _, slots = parse_batch(p)
         batch = {
@@ -63,10 +82,10 @@ def collect(paths):
             # v1.12.0: карта из шапки/поля Y-card: или из цитаты в теле (ретро-батчи)
             "ycards": sorted(
                 {
-                    s.y_card
-                    or (m.group(0)[:-1].strip() if (m := next((y_body_re.search(b) for b in s.body_lines if y_body_re.search(b)), None)) else None)
+                    y
                     for s in slots
-                    if s.y_card or any(y_body_re.search(b) for b in s.body_lines)
+                    for y in [s.y_card or _body_ycard(s.body_lines, y_body_re)]
+                    if y
                 }
             ),
         }
@@ -109,7 +128,7 @@ def receipt_md(per_batch, agg, depth):
         lines.append(f"- кинетики: {', '.join(b['kinetics']) or '—'}")
         lines.append(f"- носители: {', '.join(b['carriers']) or '—'}")
         lines.append(f"- каналы: {', '.join(b['channels']) or '—'}")
-        lines.append(f"- Y-карты (Y-first, camera.json 1.13.0): {', '.join(b['ycards']) or '—'}")
+        lines.append(f"- Y-карты (Y-first, camera.json): {', '.join(b['ycards']) or '—'}")
         lines.append("")
     lines.append("## ЗАПРЕТ ОКНА (агрегат — не назначать)")
     lines.append(f"- позы ({len(agg['pose'])}): {', '.join(sorted(agg['pose'])) or '—'}")
@@ -124,28 +143,35 @@ def receipt_md(per_batch, agg, depth):
     return "\n".join(lines) + "\n"
 
 
-def main():
-    depth = 3
-    out = None
-    argv = sys.argv[1:]
-    if "--depth" in argv:
-        depth = int(argv[argv.index("--depth") + 1])
-    if "--out" in argv:
-        out = Path(argv[argv.index("--out") + 1])
+def _arg_value(argv, flag, default=None, cast=str):
+    """2026-11-20: значение флага без IndexError/ValueError."""
+    if flag not in argv:
+        return default
+    i = argv.index(flag)
+    if i + 1 >= len(argv) or argv[i + 1].startswith("--"):
+        print(f"window: флаг {flag} требует значение")
+        sys.exit(2)
+    try:
+        return cast(argv[i + 1])
+    except (TypeError, ValueError):
+        print(f"window: не поняла значение {flag}={argv[i + 1]!r}")
+        sys.exit(2)
 
-    if "--for" in argv:
+
+def main():
+    argv = sys.argv[1:]
+    depth = _arg_value(argv, "--depth", default=3, cast=int)
+    out = _arg_value(argv, "--out", default=None, cast=Path)
+
+    for_target = _arg_value(argv, "--for", default=None, cast=str)
+    if for_target is not None:
         # Окно для конкретной партии (аудит 2026-10-31, F2): предыдущие по
         # НОМЕРУ, не по mtime — mtime-порядок врёт после правок старых файлов.
-        target = argv[argv.index("--for") + 1]
-        m = re.search(r"T5-(\d+)", target)
+        m = re.search(r"T5-(\d+)", for_target)
         if not m:
-            print(f"--for: не понял партию «{target}»")
+            print(f"--for: не понял партию «{for_target}»")
             sys.exit(2)
         tnum = int(m.group(1))
-
-        def bnum(p):
-            mm = re.search(r"T5-(\d+)", p.name)
-            return int(mm.group(1)) if mm else -1
 
         paths = sorted(
             (p for p in delivered_batches() if 0 < bnum(p) < tnum),

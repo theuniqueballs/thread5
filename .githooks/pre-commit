@@ -6,6 +6,12 @@
 #   (b) untracked-квитанции/отчёты блокируют коммит (1.11a): sha-лок пройдёт,
 #       а квитанция не уедет в коммит — проверка git status --porcelain;
 #   (c) special/SO-батчи под тем же замком — «все гейты без скидок».
+# + ревизия 2026-11-20 (инженерный апгрейд):
+#   (d) свежая квитанция выбирается по ИМЕНИ (дата+версия в файле),
+#       не по mtime — тронутый старый файл больше не выигрывает гонку;
+#   (e) чтение квитанции — с encoding='utf-8' (кириллица в receipts не
+#       роняет замок молча на Windows/cp1251);
+#   (f) перебор изменённых файлов — построчно (while read), не word-split.
 #
 # На каждый изменённый батч: гейты должны проходить, а sha256 файла —
 # совпадать с последней квитанцией. Несовпадение блокирует коммит:
@@ -37,7 +43,8 @@ if [ -n "$untracked" ]; then
 fi
 
 rc=0
-for f in $changed; do
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
   echo "гейт-замок: $f"
   if ! python3 tools/gates.py "$f" >/dev/null; then
     echo "  ✗ гейты FAIL на $f — коммит заблокирован"
@@ -45,9 +52,11 @@ for f in $changed; do
     continue
   fi
   sha=$(sha256sum "$f" | cut -d' ' -f1)
-  latest=$(grep -rl "\"batch\": \"$f\"" specs/gate-receipts --include='*.json' 2>/dev/null | xargs -r ls -t 2>/dev/null | head -1)
+  # (d) свежая квитанция — по имени (дата-версия), mtime не участвует
+  latest=$(grep -rl "\"batch\": \"$f\"" specs/gate-receipts --include='*.json' 2>/dev/null | sort -V | tail -1)
   if [ -n "$latest" ]; then
-    rsha=$(python3 -c "import json,sys;print(json.load(open('$latest'))['sha256'])" 2>/dev/null || true)
+    # (e) путь через sys.argv + encoding: кириллица и пробелы не ломают чтение
+    rsha=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1],encoding="utf-8"))["sha256"])' "$latest" 2>/dev/null || true)
     if [ -n "$rsha" ] && [ "$rsha" != "$sha" ]; then
       echo "  ✗ sha256 $f ≠ квитанции $latest — перегенерируй квитанцию тем же коммитом"
       rc=1
@@ -57,5 +66,7 @@ for f in $changed; do
   else
     echo "  ~ квитанции нет (батч до-гейтовый) — sha-сверка пропущена"
   fi
-done
+done <<EOF
+$changed
+EOF
 exit $rc

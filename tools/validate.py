@@ -12,16 +12,22 @@ THREAD 5 — валидатор спек (ревизия 2026-11-01, docs/THREAD
 Проверяет:
   1. каждый specs/*.json парсится (1.3);
   2. gates.json: обязательные секции на месте, файлы-реестры существуют (1.3);
+     2026-11-20: список секций догнан до v1.15.0 (negBase…detailsGate) и
+     ВСЕ конфиг-регексы компилируются (не только headerContract) — битый
+     паттерн раньше ронял гейт в трейсбек на самом прогоне;
   3. delivery-stats.json: id каналов уникальны, статусы легальны,
      exempt-каналы существуют; пересечения с burn-реестром (1.15);
   4. races.json: id уникальны, статусы легальны, карантин gates.json
      согласован со статусами races.json (1.15);
   5. burned.json: коды уникальны; hair-eye-library.json / oc-canon.json —
-     структура, на которой стоят гейты (1.3);
+     структура, на которой стоят гейты (1.3); camera.json — y_cards непуст
+     и формат id валиден (2026-11-20: пустой реестр ослеплял yStamp);
   6. docstring gates.py не отстаёт от версии gates.json (2.5);
   7. policy.json ↔ gates.json: решение по POS-бюджету одно, не три (2.1);
   8. pre-commit хук установлен: core.hooksPath=.githooks (1.11b) —
      свежий клон без setup.sh коммитит без замка молча.
+     2026-11-20: флаг --ci (или env T5_VALIDATE_CI=1) пропускает проверку
+     хука — в CI/артефактах хука нет и не должно быть;
   9. moves-ledger.json: структура реестра ходов (директива роста
      2026-11-01, идея 3): id M## уникальны, retired/standing легальны,
      applications числятся, отставка только вердиктом, триггер-индекс
@@ -29,11 +35,13 @@ THREAD 5 — валидатор спек (ревизия 2026-11-01, docs/THREAD
  10. header-contract: applyFrom — int, паттерны компилируются (v1.7.0).
 
 Прогон:
-    python3 tools/validate.py
+    python3 tools/validate.py           # рабочая станция (хук проверяется)
+    python3 tools/validate.py --ci      # CI/артефакт (без проверки хука)
 Выход: 0 = PASS, 1 = FAIL (блокирует pre-commit и прогонку батчей).
 """
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -44,18 +52,50 @@ SPEC = ROOT / "specs"
 
 CHANNEL_STATUSES = {"live", "dead", "rehab", "artifact", "candidate", "special"}
 RACE_STATUSES = {"active", "gold", "banned", "quarantine"}
+# 2026-11-20: догнано до gates.json v1.15.0 — секции, которые gates.py
+# читает через GATES.get(...): отсутствующая секция = гейт МОЛЧА выключен,
+# а валидатор печатал PASS (ровно та failure-мода, против которой он стоит)
 REQUIRED_GATES_KEYS = [
     "claim", "claimGate", "ocClassGate", "charSpecGate", "pos", "neg",
     "copypaste", "crossBatch", "channels", "registry", "posFloors",
     "raceCast", "burn", "header", "headerContract", "movesGate",
     "storyCardsGate",
+    # эры 1.8.0–1.15.0
+    "negBase", "formatGate", "corridorAudit", "claimPhysics", "yCards",
+    "yStamp", "comboPose", "conceptFlag", "negDressGuards", "detailsGate",
 ]
+
+# режим CI: без проверки хука (в раннере хука нет — проверка №8 не про него)
+CI_MODE = "--ci" in sys.argv or os.environ.get("T5_VALIDATE_CI") == "1"
 
 fails = []
 
 
 def fail(msg):
     fails.append(msg)
+
+
+def _walk_regexes(node, path="gates.json"):
+    """2026-11-20: рекурсивно ищем строки-паттерны в ключах-регексах
+    (pattern, bannedMarkers, noClassPattern, stem-списки не трогаем) и
+    проверяем, что каждый компилируется — битый паттерн роняет gates.py
+    в трейсбек на живом прогоне вместо валидации на коммите."""
+    RE_KEYS = {"pattern", "bannedMarkers", "noClassPattern"}
+    if isinstance(node, dict):
+        for k, v in node.items():
+            if k in RE_KEYS:
+                patterns = v if isinstance(v, list) else [v]
+                for p in patterns:
+                    if isinstance(p, str):
+                        try:
+                            re.compile(p)
+                        except re.error as e:
+                            fail(f"{path} → {k}: паттерн {p!r} не компилируется — {e}")
+            else:
+                _walk_regexes(v, f"{path}.{k}")
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            _walk_regexes(v, f"{path}[{i}]")
 
 
 def main():
@@ -77,6 +117,8 @@ def main():
         for k in REQUIRED_GATES_KEYS:
             if k not in gates:
                 fail(f"gates.json: нет секции «{k}» — гейты на ней молча выключены")
+        # 2026-11-20: все конфиг-регексы компилируются (см. _walk_regexes)
+        _walk_regexes(gates)
         # файлы-реестры существуют
         refs = []
         cs = gates.get("charSpecGate") or {}
@@ -128,19 +170,20 @@ def main():
             if not unlimited and pt is None:
                 fail("POS-бюджет: gates.pos.unlimited=false, а policy law posTargetTokens=null — рассинхрон")
 
-        # ── 8. хук установлен (1.11b) ───────────────────────────────────
-        try:
-            hp = subprocess.run(
-                ["git", "config", "core.hooksPath"],
-                capture_output=True, text=True, cwd=ROOT,
-            ).stdout.strip()
-        except Exception:
-            hp = ""
-        if hp != ".githooks":
-            fail(
-                f"pre-commit хук не стоит (core.hooksPath={hp!r}) — свежий клон "
-                f"коммитит без sha-замка молча; запусти: bash setup.sh (ревизия 1.11)"
-            )
+        # ── 8. хук установлен (1.11b); CI-режим пропускает (2026-11-20) ──
+        if not CI_MODE:
+            try:
+                hp = subprocess.run(
+                    ["git", "config", "core.hooksPath"],
+                    capture_output=True, text=True, cwd=ROOT,
+                ).stdout.strip()
+            except Exception:
+                hp = ""
+            if hp != ".githooks":
+                fail(
+                    f"pre-commit хук не стоит (core.hooksPath={hp!r}) — свежий клон "
+                    f"коммитит без sha-замка молча; запусти: bash setup.sh (ревизия 1.11)"
+                )
 
     # ── 3. каналы (delivery-stats.json) ──────────────────────────────────
     ds = data.get("delivery-stats.json")
@@ -205,6 +248,16 @@ def main():
                     )
 
     # ── 5. структуры, на которых стоят гейты ────────────────────────────
+    cam = data.get("camera.json")
+    if cam:
+        # 2026-11-20: пустой/битый y_cards ослеплял yStamp молча (карты «не
+        # найдены», проверки вплетения пропускались) — теперь это FAIL валидатора
+        cards = (cam.get("y_cards") or {}).get("cards") or []
+        if not cards:
+            fail("camera.json: y_cards.cards пуст — yCardGate/yStamp слепнут (проверь структуру)")
+        bad_ids = [c.get("id") for c in cards if not (isinstance(c.get("id"), str) and re.fullmatch(r"Y\d{1,3}", c["id"]))]
+        if bad_ids:
+            fail(f"camera.json: id карт вне формата Y{{NNN}} — {bad_ids[:5]}")
     he = data.get("hair-eye-library.json")
     if he:
         for k in ("hair", "eyes"):
@@ -246,8 +299,8 @@ def main():
             fail(f"moves-ledger.json: дубликаты id ходов {dupes}")
         for m in moves:
             mid = m.get("id", "?")
-            if not (isinstance(mid, str) and re.fullmatch(r"M\d{2}", mid)):
-                fail(f"moves-ledger.json: id «{mid}» вне формата M##")
+            if not (isinstance(mid, str) and re.fullmatch(r"M\d{2,3}", mid)):
+                fail(f"moves-ledger.json: id «{mid}» вне формата M##(##)")
             if not m.get("name") or not isinstance(m.get("triggers"), list):
                 fail(f"moves-ledger.json: {mid} без name/triggers — триггер-закон ослепнет")
             if not isinstance(m.get("standing"), bool):

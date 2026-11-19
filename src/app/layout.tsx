@@ -24,7 +24,8 @@ export const metadata: Metadata = {
   description:
     "Прилавок Thread 5: батчи RAW+ для Tsubaki.2 Pro → Yodayo. Чат — двигатель, файлы — память, прилавок — посмотреть, скопировать POS/NEG, дать вердикт.",
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    // локальный логотип: внешний CDN на иконке — лишняя зависимость и запрос
+    icon: "/logo.svg",
   },
 };
 

@@ -125,10 +125,26 @@ corridor карты ≠ полю Corridor:. Exemption'ы эры 1.14.0 снят�
 (stamp_exempt_* = false): вплетение — обычная проза POS (formatGate и
 n-граммы действуют). Ретро: история ≤T5-24 не переписывается.
 
+v1.16.0 (инженерный апгрейд 2026-11-20, трек «гейты молча не выключаются»):
+(1) нулевой слот-парсинг = FAIL — батч с дрейфнувшим форматом шапки
+(перенос строки внутри скобок) раньше проходил послотовые проверки НОЛЬ
+раз и молча давал PASS (живой пример: special/SO-06); (2) окно ротации
+Y-карт смотрит НАЗАД по номеру партии (как cross-copypaste), а не на
+глобально новейшие — правка старого батча не ловит фантомные «карта в
+окне» от будущих партий; (3) поле Corridor: терпит «A + B»/дефисы и
+печатает фактическое значение в диагностику (а не «—»); (4) слоты
+P100+, расы R100+ и ходы M100+ парсятся (реестры растут); (5) диапазон
+Y-множества в сообщениях — из живого camera.json (Y1–Y521), не из
+реликтовой эры Y1–Y18; (6) CLI: краш = exit 3 с баннером (отличим от
+FAIL), битые --json/--md = exit 2 без трейсбека, stdout не падает на
+кириллице в cp1251-пайпе; (7) квитанция пишет batch-путь относительно
+корня репо + mkdir для --md — sha-замок хука не слепнет от чужого CWD.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
         --md batches/T5-08.gate-report.md
+Выход: 0 = PASS · 1 = FAIL · 2 = битый вызов · 3 = краш инструмента.
 """
 
 import hashlib
@@ -140,11 +156,18 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+# кириллица + ⚗/☠ в cp1251-пайпе (Windows-консоль) не должны ронять печать
+try:
+    sys.stdout.reconfigure(errors="replace")
+    sys.stderr.reconfigure(errors="replace")
+except Exception:
+    pass  # python < 3.7 или экзотика — работаем как работали
+
 ROOT = Path(__file__).resolve().parent.parent
 GATES = json.loads((ROOT / "specs/gates.json").read_text(encoding="utf-8"))
 
 SLOT_RE = re.compile(
-    r"^P(\d{2})\s+—\s+(\S+)\s+\((.+?)\)\s*[⚗☠]?\s*$"
+    r"^P(\d{2,3})\s+—\s+(\S+)\s+\((.+?)\)\s*[⚗☠]?\s*$"
 )
 STOP = {
     "the", "a", "an", "of", "and", "or", "to", "in", "on", "at", "by",
@@ -275,10 +298,12 @@ def parse_batch(path):
             cur.channel = val.split()[0] if val else None
             cur.channel_mark = "☠" if "☠" in val else ""
             continue
-        sm = re.match(r"^Corridor:\s*([A+B]+|—|—)\s*$", ln)  # v1.10.0
+        sm = re.match(r"^Corridor:\s*(A\s*\+\s*B|A\+B|A|B|—|–|-)\s*$", ln)  # v1.10.0; v1.16.0: «A + B»/дефисы терпим
         if sm:
             flush_mode()
-            cur.corridor = sm.group(1)
+            cur.corridor = norm_ws(sm.group(1).replace(" ", ""))
+            if cur.corridor in ("—", "–", "-"):
+                cur.corridor = "—"
             continue
         sm = re.match(r"^Y-card:\s*(Y\d{1,3})", ln)  # v1.12.0 Y-first; 1.13.0: до Y512
         if sm:
@@ -310,7 +335,7 @@ def parse_batch(path):
 def ab_pairs_from_header(header):
     return {
         frozenset((a, b))
-        for a, b in re.findall(r"\((P\d{2})\s*,\s*(P\d{2})\)", header)
+        for a, b in re.findall(r"\((P\d{2,3})\s*,\s*(P\d{2,3})\)", header)
     }
 
 
@@ -736,7 +761,7 @@ def check_corridor(slots, warns, fails, batch_no=-1):
         if s.corridor in legal:
             fact += 1
             continue
-        why = "нет поля Corridor:" if s.corridor is None else f"Corridor: {downgrade}"
+        why = "нет поля Corridor:" if s.corridor is None else f"Corridor: {s.corridor!r}"
         entry = (
             s.sid, "corridor",
             f"R+ без коридора A|B ({why}) — ложный бейдж хуже честного R: "
@@ -808,6 +833,15 @@ def load_y_cards():
         return {}
 
 
+def y_range(ycards):
+    """v1.16.0: живой диапазон множества из camera.json («Y1–Y521»),
+    а не зашитая строка реликтовой эры («Y1–Y18»)."""
+    nums = sorted(int(k[1:]) for k in ycards if re.fullmatch(r"Y\d+", k))
+    if not nums:
+        return "Y∅ (camera.json не читается!)"
+    return f"Y{nums[0]}–Y{nums[-1]}"
+
+
 def _pattern_stems(card):
     """Отличительные стемы паттерна карты: pattern+camera, слова ≥5 символов без STOP."""
     comp = card.get("components") or {}
@@ -842,7 +876,7 @@ def check_ycards(slots, warns, batch_no=-1, ab_pairs=frozenset()):
             if s.y_card not in ycards:
                 warns.append(
                     (s.sid, "y-card",
-                     f"Y-card {s.y_card} не найдена в camera.json (множество Y1–Y{len(ycards)})")
+                     f"Y-card {s.y_card} не найдена в camera.json (множество {y_range(ycards)})")
                 )
                 continue
             stems = _pattern_stems(ycards[s.y_card])
@@ -861,7 +895,7 @@ def check_ycards(slots, warns, batch_no=-1, ab_pairs=frozenset()):
             warns.append(
                 (s.sid, "y-card",
                  "R+ слот собран мимо Y-множества (нет Y-card) — Y-first: собрать "
-                 "по карте Y1–Y18 (camera.json y_assembly) или записать в THESIS "
+                 f"по карте из camera.json ({y_range(ycards)}, y_assembly) или записать в THESIS "
                  "причину PL-сборки (PG-13/NICHE-выдох не считается)")
             )
     for yid, n in seen.items():
@@ -903,18 +937,21 @@ def _card_pose_stems(card, minlen=5):
     return out
 
 
-def load_prev_y_usage(depth, exclude=None):
+def load_prev_y_usage(depth, exclude=None, batch_no=-1):
     """v1.14.0 yStamp: окно ротации карт — что использовано в последних
-    `depth` сданных батчах (batches/T5-*.md, новейшие последними).
-    Возвращает {Y-id: имя батча, где использована}."""
+    `depth` сданных батчах ДО ТЕКУЩЕЙ партии (v1.16.0: фильтр по номеру,
+    как в check_cross_batch — правка старого батча не должна видеть
+    «будущие» партии как «предыдущие»). Возвращает {Y-id: имя батча}."""
     prevs = sorted(
         (p for p in (ROOT / "batches").glob("T5-*.md")
          if not p.name.endswith(".gate-report.md")
-         and (exclude is None or p.resolve() != Path(exclude).resolve())),
+         and (exclude is None or p.resolve() != Path(exclude).resolve())
+         and (batch_no <= 0 or 0 < batch_number(p) < batch_no)),
         key=lambda p: (batch_number(p), p.stat().st_mtime),
     )
     used = {}
-    for p in prevs[-max(0, depth):]:
+    # depth=0 — окно выключено (v1.16.0: раньше «-max(0, 0):» отдавало ВСЕ батчи)
+    for p in (prevs[-depth:] if depth > 0 else []):
         try:
             _, _, pslots = parse_batch(p)
         except Exception:
@@ -976,7 +1013,7 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
 
     ycards = load_y_cards()
     window_map = load_prev_y_usage(
-        int(cfg.get("windowDepth", 3)), exclude=str(batch_path)
+        int(cfg.get("windowDepth", 3)), exclude=str(batch_path), batch_no=batch_no
     )
     banned_res = [re.compile(p) for p in cfg.get("bannedMarkers", [])]
     min_weave = int(cfg.get("minWeaveStems", 4))
@@ -1308,7 +1345,7 @@ def check_moves_gate(header, warns, batch_no=-1):
     if not m:
         return  # обязательность декларации — header-contract (с T5-10)
     block = m.group(0)
-    declared = sorted(set(re.findall(r"\bM\d{2}\b", block)))
+    declared = sorted(set(re.findall(r"\bM\d{2,3}\b", block)))
     try:
         ledger = load_moves_ledger()
     except Exception as e:
@@ -1349,10 +1386,14 @@ def check_moves_gate(header, warns, batch_no=-1):
 
 
 def check_story_cards(batch_path, warns, batch_no=-1):
-    """Директива роста 2026-11-01, идея 1 (story-cards, пилот T5-10)."""
+    """Директива роста 2026-11-01, идея 1 (story-cards, пилот T5-10).
+    v1.16.0: SO-кометы (batch_no < 0) не шумят — stories.md для заказов
+    вне цикла никогда не существовал, WARN был постоянным фоном."""
     cfg = GATES.get("storyCardsGate", {})
     apply_from = int(cfg.get("applyFrom", 10))
-    if batch_no >= 0 and batch_no < apply_from:
+    if batch_no < 0:
+        return True  # SO вне цикла story-cards
+    if batch_no < apply_from:
         return False
     p = Path(batch_path)
     if not p.is_absolute():
@@ -1640,7 +1681,7 @@ def check_race_cast(header, slots, statuses, warns, oc_names=()):
         if s.genre != "EXP" and not is_oc_slot(s, oc_names)
     ]
     counts = Counter(
-        c for s in mains for c in re.findall(r"\bR\d{2}\b", s.paren)
+        c for s in mains for c in re.findall(r"\bR\d{2,3}\b", s.paren)
     )
     for c, n in sorted(counts.items()):
         st = statuses.get(c)
@@ -1657,7 +1698,7 @@ def check_race_cast(header, slots, statuses, warns, oc_names=()):
             warns.append(("BATCH", "race-cast",
                           f"{c} использован {n}× > RF {cfg['rfMax']}"))
     declared = re.search(r"каст\s+(\d{1,2})/(\d{1,2})", header)
-    fact = sum(1 for s in mains if re.search(r"\bR\d{2}\b", s.paren))
+    fact = sum(1 for s in mains if re.search(r"\bR\d{2,3}\b", s.paren))
     if declared and int(declared.group(1)) != fact:
         warns.append(
             ("BATCH", "race-cast",
@@ -1748,23 +1789,50 @@ def check_cross_batch(batch_path, slots, warns, canon_grams=frozenset()):
     ], canon_exempt[: cfg["maxListed"]]
 
 
+def _argv_value(argv, flag):
+    """v1.16.0: значение флага без IndexError — «--json» без значения = exit 2."""
+    try:
+        i = argv.index(flag)
+    except ValueError:
+        return None
+    if i + 1 >= len(argv) or argv[i + 1].startswith("--"):
+        print(f"gates: флаг {flag} требует значение (путь)")
+        sys.exit(2)
+    return argv[i + 1]
+
+
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+    argv = sys.argv[1:]
+    if len(argv) < 1 or argv[0] in ("-h", "--help"):
         print(__doc__)
-        sys.exit(0 if len(sys.argv) >= 2 else 2)
-    batch_path = Path(sys.argv[1])
+        sys.exit(0 if argv else 2)
+    if argv[0] in ("-v", "--version"):
+        print(f"tools/gates.py v1.16.0 · specs/gates.json v{GATES.get('version', '?')}")
+        sys.exit(0)
+    batch_path = Path(argv[0])
     if not batch_path.is_file():
         print(f"gates: батч не найден: {batch_path}")
         sys.exit(2)
     out_json = None
-    if "--json" in sys.argv:
-        out_json = Path(sys.argv[sys.argv.index("--json") + 1])
+    _j = _argv_value(argv, "--json")
+    if _j is not None:
+        out_json = Path(_j)
     out_md = None
-    if "--md" in sys.argv:
-        out_md = Path(sys.argv[sys.argv.index("--md") + 1])
+    _m = _argv_value(argv, "--md")
+    if _m is not None:
+        out_md = Path(_m)
 
     text, header, slots = parse_batch(batch_path)
     batch_no = batch_number(batch_path)
+    fails, warns = [], []
+    if not slots:
+        # v1.16.0: молчаливый PASS на нулевом парсинге — худший режим отказа
+        # (все послотовые проверки исполнялись 0 раз; живой пример — SO-06,
+        # шапка слота разорвана переносом строки внутри скобок)
+        fails.append(("BATCH", "parse",
+                      "0 слотов распарсено — формат шапки слота не совпал "
+                      "(ожидается одна строка «P## — slug (мета)»); проверь "
+                      "эм-тире, скобки и переносы строки (v1.16.0)"))
     ab_pairs = ab_pairs_from_header(header)
     burned = load_burned()
     channels = load_channels()
@@ -1783,8 +1851,7 @@ def main():
                      load_registry_ids(reg_cfg["carriers"], r"CR-[A-Z]\d+")),
     }
 
-    fails, warns = [], []
-    slot_rows = []
+    slot_rows = []  # fails/warns уже живут с нулевого guards-блока выше (v1.16.0)
     for s in slots:
         check_floors(s, fails, batch_no)
         check_neg_linter(s, fails, warns)
@@ -1803,7 +1870,7 @@ def main():
             "id": s.sid, "slug": s.slug, "genre": s.genre, "rating": s.rating,
             "channel": s.channel or "", "channelStatus": ch_status,
             "corridor": s.corridor or "",
-            "claimToken": idx, "posWords": n,
+            "claimToken": idx or "—", "posWords": n,
         })
     cp_canon_exempt = check_copypaste(slots, ab_pairs, fails, warns, canon_grams)
     check_channels(slots, channels, fails, warns)
@@ -1829,13 +1896,19 @@ def main():
         batch_path, slots, warns, canon_grams
     )
 
+    # v1.16.0: путь в квитанции — относительно корня репо: хук sha-замка
+    # грепает "batch": "batches/..." и слепнет от абсолютных/чужих-CWD путей
+    try:
+        batch_rel = os.path.relpath(batch_path.resolve(), ROOT).replace(os.sep, "/")
+    except ValueError:
+        batch_rel = str(batch_path)
     verdict = "FAIL" if fails else "PASS"
     sha = hashlib.sha256(batch_path.read_bytes()).hexdigest()
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     receipt = {
         "tool": "tools/gates.py (specs/gates.json v%s)" % GATES["version"],
-        "batch": str(batch_path),
+        "batch": batch_rel,
         "sha256": sha,
         "utc": now,
         "verdict": verdict,
@@ -1937,6 +2010,7 @@ def main():
         print(f"квитанция: {out_json}")
 
     if out_md:
+        out_md.parent.mkdir(parents=True, exist_ok=True)  # v1.16.0: как у --json
         lines = [
             f"# Машинная квитанция печи — {batch_path.name}",
             "",
@@ -1964,4 +2038,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except SystemExit:
+        raise
+    except Exception as exc:  # v1.16.0: краш ≠ FAIL — отделяем кодом 3
+        import traceback
+        traceback.print_exc()
+        print()
+        print(f"=== ГЕЙТЫ КРАШНУЛИСЬ: {exc!r} — это баг инструмента, не FAIL батча (exit 3) ===")
+        sys.exit(3)

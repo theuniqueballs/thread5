@@ -20,7 +20,11 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const PKG = [join(HERE, "..", "ecchi-oracle"), join(HERE, "..", "..", "ecchi-oracle")].find((p) =>
   existsSync(join(p, "taxonomy", "rating-marks.json")),
 ) || join(HERE, "..", "ecchi-oracle");
-const PORT = 3031;
+// 2026-11-20: порт и хост из env (по умолчанию — как раньше); слушаем
+// localhost: за платформенным Caddy (:81 → XTransformPort) наружу торчать
+// незачем, а прямой доступ к платному LLM-прокси лучше закрыть
+const PORT = Number.parseInt(process.env.ORACLE_PORT || "3031", 10) || 3031;
+const HOST = process.env.ORACLE_HOST || "127.0.0.1";
 
 // ---------------------------------------------------------------- knowledge
 
@@ -36,9 +40,18 @@ const distillPrompt = existsSync(distillPath)
   : "Ты — ECCHI-ORACLE, эксперт домена «эччи-приёмы манги и аниме» конвейера thread5.";
 
 // Y-card registry (camera.json из чекаута thread5 при наличии; taxonomy fallback)
-// в нашей раскладке (thread5/mini-services/oracle-service) ../.. = корень thread5/
-const THREAD5_CANDIDATES = [join(HERE, "..", "..", "specs", "camera.json"), "/home/z/my-project/thread5/specs/camera.json"];
-const GATES_CANDIDATES = [join(HERE, "..", "..", "specs", "gates.json"), "/home/z/my-project/thread5/specs/gates.json"];
+// 2026-11-20: THREAD5_ROOT env в приоритете; рядом с сервисом ../.. — корень
+// репо с каноничным specs/; хардкод-путь песочницы — последний резерв
+const THREAD5_CANDIDATES = [
+  process.env.THREAD5_ROOT ? join(process.env.THREAD5_ROOT, "specs", "camera.json") : null,
+  join(HERE, "..", "..", "specs", "camera.json"),
+  "/home/z/my-project/thread5/specs/camera.json",
+].filter(Boolean) as string[];
+const GATES_CANDIDATES = [
+  process.env.THREAD5_ROOT ? join(process.env.THREAD5_ROOT, "specs", "gates.json") : null,
+  join(HERE, "..", "..", "specs", "gates.json"),
+  "/home/z/my-project/thread5/specs/gates.json",
+].filter(Boolean) as string[];
 let cameraCards: Record<string, { pattern?: string; corridor?: string; trust?: string; components?: Record<string, unknown> }> = {};
 let cameraVersion: string | null = null;
 for (const c of THREAD5_CANDIDATES) {
@@ -382,8 +395,9 @@ function cardClassOf(card: { pattern?: string; corridor?: string; trust?: string
 }
 
 function printStamp(cardId: string) {
-  const id = cardId.toUpperCase().replace(/^Y(?!\d)/, "Y");
-  const card = cameraCards[id];
+  const id = cardId.toUpperCase();
+  // 2026-11-20: hasOwn — «?card=constructor» больше не возвращает фантомный штамп
+  const card = Object.hasOwn(cameraCards, id) ? cameraCards[id] : undefined;
   if (!card) return null;
   const pattern = String(card.components?.pose || card.pattern || "");
   const corridor = String(card.corridor || card.components?.corridor || "—");
@@ -566,7 +580,11 @@ function buildFixes(checks: { name: string; status: string; detail: string }[], 
 // ---------------------------------------------------------------- engine: volt skeleton
 
 function voltSkeleton(scene: string, ycard: string, target: string) {
-  const card = cameraCards[ycard.toUpperCase()] as { pattern?: string; corridor?: string; trust?: string; components?: { pose?: string } } | undefined;
+  const key = ycard.toUpperCase();
+  const card = Object.hasOwn(cameraCards, key)
+    ? (cameraCards[key] as { pattern?: string; corridor?: string; trust?: string; components?: { pose?: string } })
+    : undefined;
+  const cardFound = Boolean(card);
   const cardPattern = card ? String(card.components?.pose || card.pattern || "") : "";
   const tier = target && /r\+/i.test(target) ? "R+" : "R";
   const lines = [
@@ -583,6 +601,7 @@ function voltSkeleton(scene: string, ycard: string, target: string) {
   return {
     tier,
     ycard: ycard.toUpperCase(),
+    ycard_found: cardFound, // 2026-11-20: честный флаг — неизвестная карта ≠ тихий скелет «—»
     corridor: card?.corridor || "—",
     trust: card?.trust || "—",
     pos_skeleton: lines.join("\n"),
@@ -599,11 +618,15 @@ function voltSkeleton(scene: string, ycard: string, target: string) {
 
 // ---------------------------------------------------------------- dataset index
 
-function datasetIndex() {
+/* 2026-11-20: mtime-кэш — полный парс 509 строк на каждый /dataset ни к чему */
+let datasetCache: { key: string; value: ReturnType<typeof buildDatasetIndex> } | null = null;
+
+function buildDatasetIndex() {
   const statsPath = join(PKG, "dataset", "stats.json");
   const stats = existsSync(statsPath) ? JSON.parse(readFileSync(statsPath, "utf-8")) : null;
   const files = ["train.jsonl", "val.jsonl"];
   let total = 0;
+  let broken = 0;
   const samples: Record<string, unknown[]> = {};
   for (const f of files) {
     const p = join(PKG, "dataset", f);
@@ -618,10 +641,29 @@ function datasetIndex() {
           question: d.messages[1].content.slice(0, 160),
           answer: d.messages[2].content.slice(0, 260),
         });
-      } catch { /* skip broken */ }
+      } catch { broken += 1; /* битая строка видна в счётчике, не молча */ }
     }
   }
-  return { stats, total_indexed: total, samples };
+  return { stats, total_indexed: total, broken_lines: broken, samples };
+}
+
+function datasetIndex() {
+  const files = ["train.jsonl", "val.jsonl", "stats.json"];
+  const key = files
+    .map((f) => {
+      const p = join(PKG, "dataset", f);
+      try {
+        const s = Bun.file(p).statSync ? Bun.file(p).statSync() : null;
+        return s ? `${f}:${s.mtime}:${s.size}` : `${f}:-`;
+      } catch {
+        return `${f}:-`;
+      }
+    })
+    .join("|");
+  if (datasetCache && datasetCache.key === key) return datasetCache.value;
+  const value = buildDatasetIndex();
+  datasetCache = { key, value };
+  return value;
 }
 
 // ---------------------------------------------------------------- LLM oracle
@@ -637,7 +679,8 @@ async function askOracle(question: string, mode: "distill" | "short" = "distill"
   const system = mode === "distill" ? distillPrompt : SYS_SHORT;
   const completion = await client.chat.completions.create({
     messages: [
-      { role: "assistant", content: system },
+      // 2026-11-20: персона — системным ходом (каноничный приоритет инструкции)
+      { role: "system", content: system },
       { role: "user", content: question },
     ],
     thinking: { type: "disabled" },
@@ -693,6 +736,7 @@ const json = (data: unknown, status = 200) =>
 
 const server = Bun.serve({
   port: PORT,
+  hostname: HOST, // 2026-11-20: по умолчанию localhost — наружу только через платформенный прокси
   async fetch(req) {
     const url = new URL(req.url);
     const path = url.pathname.replace(/\/$/, "") || "/";
@@ -731,8 +775,12 @@ const server = Bun.serve({
 
       if (req.method === "POST" && path === "/audit") {
         const body = await req.json().catch(() => ({}));
-        if (!String(body.pos || "").trim()) return json({ error: "pos required" }, 400);
-        return json(auditSlot(body));
+        // 2026-11-20: нестроковый pos (число/объект) раньше долетал до движка
+        // и ронял сервис в TypeError-500 — теперь честный 400
+        const pos = String((body as { pos?: unknown }).pos ?? "");
+        if (!pos.trim()) return json({ error: "pos required" }, 400);
+        if (pos.length > 20_000) return json({ error: "pos слишком большой (лимит 20k символов)" }, 413);
+        return json(auditSlot({ ...body, pos }));
       }
 
       if (path === "/ystamp" && (req.method === "GET" || req.method === "POST")) {
@@ -761,6 +809,7 @@ const server = Bun.serve({
         const body = await req.json().catch(() => ({}));
         const question = String(body.question || "");
         if (!question.trim()) return json({ error: "question required" }, 400);
+        if (question.length > 32_000) return json({ error: "question слишком большой (лимит 32k символов)" }, 413);
         const mode = body.mode === "short" ? "short" : "distill";
         const answer = await askOracle(question, mode);
         return json({ question, answer, mode, system: mode === "distill" ? "distill/system_prompt.txt" : "short persona" });
@@ -770,7 +819,9 @@ const server = Bun.serve({
         const body = await req.json().catch(() => ({}));
         const b64 = String(body.image_base64 || "");
         if (!b64) return json({ error: "image_base64 required" }, 400);
+        if (b64.length > 11_000_000) return json({ error: "image_base64 слишком большой (лимит ~8 МБ картинки)" }, 413);
         const mime = String(body.mime || "image/jpeg");
+        if (!/^image\/(png|jpeg|webp)$/.test(mime)) return json({ error: "mime: image/png|image/jpeg|image/webp" }, 400);
         const detailed = body.detailed !== false;
         const result = await analyzeImage(b64, mime, detailed);
         // триаж v2 поверх описания (акт 9): X-фильтр → слот-тип → fact → drift
@@ -780,10 +831,12 @@ const server = Bun.serve({
 
       return json({ error: "not found", routes: ["GET /health", "GET /taxonomy", "GET /dataset", "POST /rate", "POST /audit", "POST /volt", "POST /ask", "POST /vision", "POST /triage", "GET|POST /ystamp?card=Y29"] }, 404);
     } catch (e) {
-      return json({ error: String(e) }, 500);
+      // 2026-11-20: наружу — общий ответ, детали — в лог сервиса
+      console.error("[ecchi-oracle] request failed:", e);
+      return json({ error: "internal error" }, 500);
     }
   },
 });
 
-console.log(`[ecchi-oracle] listening on :${server.port}`);
+console.log(`[ecchi-oracle] listening on ${HOST}:${server.port}`);
 console.log(`[ecchi-oracle] knowledge package: ${PKG}`);

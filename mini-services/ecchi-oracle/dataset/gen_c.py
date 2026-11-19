@@ -2,6 +2,7 @@
 # ECCHI-ORACLE SFT dataset — generator part C (genC): volt / render-facts / safety / accounting
 # Источники: taxonomy/rating-marks.json, corridors.json, techniques.json, renderer-facts.json,
 # safety-floors.json, source/laws.md. Только факты из источников.
+import os
 import json
 
 SYS = ("Ты — ECCHI-ORACLE, компактная экспертная модель домена «эччи-приёмы манги и аниме» "
@@ -1270,7 +1271,9 @@ Anti-примеры: «She stands there beautifully» (не continuous, не mid
 for i, item in enumerate(ITEMS, 1):
     item["id"] = "genC-%03d" % i
 
-with open("gen-c.jsonl", "w", encoding="utf-8") as f:
+# 2026-11-20: вывод рядом со скриптом — запуск из корня репо больше не раскидывает файлы
+_out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen-c.jsonl")
+with open(_out, "w", encoding="utf-8") as f:
     for item in ITEMS:
         f.write(json.dumps(item, ensure_ascii=False) + "\n")
 print("WROTE", len(ITEMS), "items")

@@ -93,11 +93,15 @@ function Hero({
       className="t5-frame relative overflow-hidden rounded-2xl border border-white/[0.08]"
       aria-label={overline}
     >
-      {/* город-подложка: монохром, тихий — титул издателя, а не постер */}
+      {/* город-подложка: монохром, тихий — титул издателя, а не постер;
+          размеры заданы — рамка не прыгает при загрузке (CLS) */}
       <img
         src="/t5/hero-city.jpg"
         alt=""
         aria-hidden
+        width={1536}
+        height={640}
+        decoding="async"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_78%] opacity-40 grayscale contrast-[1.06]"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/15" aria-hidden />
@@ -366,26 +370,33 @@ function DocSkeleton() {
   );
 }
 
+/* ── Память: кэш доков живёт на уровне модуля — переживает уход со вкладки ── */
+const docTexts = new Map<string, string>();
+
 function DocsView({ active, onActive }: { active: string; onActive: (name: string) => void }) {
-  const [cache, setCache] = useState<Record<string, string>>({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [known, setKnown] = useState<Record<string, string>>(() => Object.fromEntries(docTexts));
+  const [pending, setPending] = useState<Record<string, boolean>>({});
+  const [errors, setErrors] = useState<Record<string, string | null>>({});
+  const inFlight = useRef<Set<string>>(new Set());
 
   const load = useCallback(async (name: string) => {
-    if (cache[name]) return;
-    setLoading(true);
-    setError(null);
+    if (docTexts.has(name) || inFlight.current.has(name)) return;
+    inFlight.current.add(name);
+    setPending((p) => ({ ...p, [name]: true }));
+    setErrors((e) => ({ ...e, [name]: null }));
     try {
       const res = await fetch(`/api/t5/docs?name=${encodeURIComponent(name)}`);
       const data = (await res.json()) as { content?: string; error?: string };
       if (!res.ok || typeof data.content !== 'string') throw new Error(data.error ?? 'Документ не найден');
-      setCache((c) => ({ ...c, [name]: data.content as string }));
+      docTexts.set(name, data.content);
+      setKnown((k) => ({ ...k, [name]: data.content as string }));
     } catch (err) {
-      setError(String(err instanceof Error ? err.message : err));
+      setErrors((e) => ({ ...e, [name]: String(err instanceof Error ? err.message : err) }));
     } finally {
-      setLoading(false);
+      inFlight.current.delete(name);
+      setPending((p) => ({ ...p, [name]: false }));
     }
-  }, [cache]);
+  }, []);
 
   useEffect(() => {
     void load(active);
@@ -412,9 +423,9 @@ function DocsView({ active, onActive }: { active: string; onActive: (name: strin
         ))}
       </nav>
       <div className="t5-panel t5-scroll min-h-[420px] overflow-y-auto rounded-xl p-6 lg:sticky lg:top-[84px] lg:max-h-[calc(100vh-110px)] lg:p-8">
-        {loading && <DocSkeleton />}
-        {error && !loading && <p className="text-sm text-red-400">{error}</p>}
-        {!loading && !error && cache[active] && <T5Markdown content={cache[active]} />}
+        {pending[active] && <DocSkeleton />}
+        {errors[active] && !pending[active] && <p className="text-sm text-red-400">{errors[active]}</p>}
+        {!pending[active] && !errors[active] && known[active] && <T5Markdown content={known[active]} />}
       </div>
     </div>
   );
@@ -434,15 +445,21 @@ export default function Home() {
   /* куда возвращаться при «Список»: позиция скролла прилавка на момент ухода */
   const scrollMemo = useRef<number | null>(null);
 
-  const syncHash = useCallback((next: string) => {
+  /* навигация пишется в историю: открывающие действия — pushState (Back/Forward
+     работают), корректировки (не нашёлся батч) — replaceState */
+  const syncHash = useCallback((next: string, mode: 'push' | 'replace' = 'push') => {
     try {
-      if (window.location.hash !== `#${next}`) window.history.replaceState(null, '', `#${next}`);
+      if (window.location.hash !== `#${next}`) {
+        if (mode === 'push') window.history.pushState(null, '', `#${next}`);
+        else window.history.replaceState(null, '', `#${next}`);
+      }
     } catch {
       /* окружение без history — навигация просто не пишется */
     }
   }, []);
 
-  /* deep-link: hash ↔ view, без перезагрузки */
+  /* deep-link: hash ↔ view, без перезагрузки (hashchange — ручной ввод/ссылка,
+     popstate — Back/Forward; pushState сам события не бросает) */
   useEffect(() => {
     const apply = () => {
       const s = parseHash();
@@ -452,7 +469,11 @@ export default function Home() {
     };
     apply();
     window.addEventListener('hashchange', apply);
-    return () => window.removeEventListener('hashchange', apply);
+    window.addEventListener('popstate', apply);
+    return () => {
+      window.removeEventListener('hashchange', apply);
+      window.removeEventListener('popstate', apply);
+    };
   }, []);
 
   /* батч из hash не нашёлся в списке → молча показываем список */
@@ -460,7 +481,7 @@ export default function Home() {
     if (loading) return;
     if (view.kind === 'batch' && !batches.some((b) => b.slug === view.slug)) {
       setView({ kind: 'list' });
-      syncHash('batches');
+      syncHash('batches', 'replace');
     }
   }, [loading, view, batches, syncHash]);
 
@@ -468,9 +489,18 @@ export default function Home() {
     if (loading) return;
     if (view.kind === 'special' && !special.some((b) => b.slug === view.slug)) {
       setView({ kind: 'list' });
-      syncHash('special');
+      syncHash('special', 'replace');
     }
   }, [loading, view, special, syncHash]);
+
+  /* мягкий JSON: шлюз на ошибке отдаёт HTML — не роняет весь прилавок */
+  const readJson = async <T,>(res: Response): Promise<T | null> => {
+    try {
+      return (await res.json()) as T;
+    } catch {
+      return null;
+    }
+  };
 
   const loadBatches = useCallback(async (soft: boolean) => {
     if (soft) setRefreshing(true);
@@ -478,18 +508,22 @@ export default function Home() {
     setError(null);
     try {
       const [res, sRes] = await Promise.all([fetch('/api/t5/batches'), fetch('/api/t5/special')]);
-      const data = (await res.json()) as { batches?: BatchListItem[]; error?: string };
+      const data = (await readJson<{ batches?: BatchListItem[]; error?: string }>(res)) ?? {};
       if (!res.ok) throw new Error(data.error ?? 'Ошибка чтения');
       setBatches(data.batches ?? []);
-      const sData = (await sRes.json()) as { special?: BatchListItem[] };
-      setSpecial(sData.special ?? []);
+      /* витрина заказов не критична: упала — показываем пустую полку, батчи живы */
+      const sData = (await readJson<{ special?: BatchListItem[]; error?: string }>(sRes)) ?? {};
+      setSpecial(sRes.ok ? sData.special ?? [] : []);
+      if (!sRes.ok) {
+        toast({ title: 'Special Orders не доехали', description: sData.error ?? 'витрина заказов недоступна — батчи на месте' });
+      }
     } catch (err) {
       setError(String(err instanceof Error ? err.message : err));
     } finally {
       setLoading(false);
       setRefreshing(false);
     }
-  }, []);
+  }, [toast]);
 
   useEffect(() => {
     void loadBatches(false);
@@ -545,17 +579,23 @@ export default function Home() {
   }, [view]);
 
   /* горячие клавиши: 1–4 разделы · Esc список · [ ] соседний батч.
-     Палитра слушает ⌘K сама; в полях ввода и при модификаторах — тишина */
+     Палитра слушает ⌘K сама; в полях ввода и при модификаторах — тишина.
+     Оверлеи (палитра, лайтбоксы) гасят Esc/цифры: они закрываются сами.
+     Обработчики — через ref: подписка на window живёт один раз, без пересборки */
+  const hotRef = useRef({ view, batches, paletteOpen, openTab, openBatch, backToList });
+  hotRef.current = { view, batches, paletteOpen, openTab, openBatch, backToList };
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      const { view, batches, paletteOpen, openTab, openBatch, backToList } = hotRef.current;
       const t = e.target as HTMLElement | null;
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (paletteOpen || document.querySelector('[data-t5-overlay="open"]')) return; // оверлей сам ловит Esc
       if (e.key === 'Escape') {
         if (view.kind !== 'list') backToList();
         return;
       }
-      if (e.key >= '1' && e.key <= '4') {
+      if (/^[1-4]$/.test(e.key)) {
         const order: Tab[] = ['batches', 'special', 'inbox', 'docs'];
         openTab(order[Number(e.key) - 1]);
         return;
@@ -570,7 +610,7 @@ export default function Home() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  });
+  }, []);
 
   /* Konami → дискотека золотой нити */
   const onKonami = useCallback(() => {

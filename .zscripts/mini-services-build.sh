@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # 配置项
-ROOT_DIR="/home/z/my-project/mini-services"
+# 2026-11-20: путь берём от расположения скрипта — жёсткий /home/z/my-project
+# ломал сборку в любой другой раскладке (dev.sh так делает с самого начала)
+SCRIPT_CWD="$(pwd)"
+ROOT_DIR="${T5_MINI_SERVICES_DIR:-$SCRIPT_CWD/mini-services}"
 DIST_DIR="/tmp/build_fullstack_$BUILD_ID/mini-services-dist"
 
 main() {
@@ -52,6 +55,14 @@ main() {
                 --minify; then
                 echo "✅ $project_name 构建成功 -> $output_file"
                 success_count=$((success_count + 1))
+                # 2026-11-20: knowledge-пак оракула (readFileSync компут-путей не
+                # попадает в бандл): без файлов рядом сервис падал в деплое (ENOENT)
+                if [ "$project_name" = "oracle-service" ] && [ -d "$dir/../ecchi-oracle/taxonomy" ]; then
+                    _dst="$DIST_DIR/ecchi-oracle"
+                    mkdir -p "$_dst"
+                    cp -r "$dir/../ecchi-oracle/taxonomy" "$dir/../ecchi-oracle/distill" "$_dst/" 2>/dev/null || true
+                    echo "  - knowledge-пак скопирован: ecchi-oracle/taxonomy+distill"
+                fi
             else
                 echo "❌ $project_name 构建失败"
                 fail_count=$((fail_count + 1))

@@ -32,7 +32,7 @@ NOTES = ROOT / "docs/LIVING-NOTES.md"
 GENRES = {"OC", "NICHE", "VOLT", "EXQUISITE", "EXP"}
 
 LOVED_RE = re.compile(
-    r"\*\*(?:Сработало|ПРОМОЦИЯ)[^\n]*?P(\d{2})[^\n]*?\*\*\s*\(([^)]*)\)"
+    r"\*\*(?:Сработало|ПРОМОЦИЯ)[^\n]*?P(\d{2,3})\b[^\n]*?\*\*\s*\(([^)]*)\)"
 )
 SECTION_RE = re.compile(r"^##\s*Вердикт\s+(T5-\d+R?)", re.M)
 ENGINE_RE = re.compile(r"##\s*Движок[^\n]*?:\s*(.+)$")
@@ -91,13 +91,22 @@ def engines_for(batches):
     return out
 
 
+def take_recent(batches, depth):
+    """Последние `depth` вердикт-секций (2026-11-20: исправлена инверсия —
+    раньше брались ПЕРВЫЕ секции LIVING-NOTES, т.е. самые старые вердикты,
+    и свежайший вкус автора в бриф не попадал)."""
+    if depth <= 0:
+        return []
+    return batches[-depth:]
+
+
 def brief(depth=3, out_path=None):
     loved_all = parse_loved()
     batches = []
     for b, *_ in loved_all:
         if b not in batches:
             batches.append(b)
-    recent = batches[:depth]
+    recent = take_recent(batches, depth)
     loved = [(b, s, m) for b, s, m in loved_all if b in recent]
 
     if not loved:
@@ -160,13 +169,25 @@ def brief(depth=3, out_path=None):
     return 0
 
 
+def _arg_value(argv, flag, default=None, cast=str):
+    """2026-11-20: значение флага без IndexError/ValueError."""
+    if flag not in argv:
+        return default
+    i = argv.index(flag)
+    if i + 1 >= len(argv) or argv[i + 1].startswith("--"):
+        print(f"taste: флаг {flag} требует значение")
+        sys.exit(2)
+    try:
+        return cast(argv[i + 1])
+    except (TypeError, ValueError):
+        print(f"taste: не поняла значение {flag}={argv[i + 1]!r}")
+        sys.exit(2)
+
+
 def main():
-    depth = 3
-    if "--depth" in sys.argv:
-        depth = int(sys.argv[sys.argv.index("--depth") + 1])
-    out_path = None
-    if "--out" in sys.argv:
-        out_path = sys.argv[sys.argv.index("--out") + 1]
+    argv = sys.argv[1:]
+    depth = _arg_value(argv, "--depth", default=3, cast=int)
+    out_path = _arg_value(argv, "--out", default=None, cast=str)
     sys.exit(brief(depth=depth, out_path=out_path))
 
 

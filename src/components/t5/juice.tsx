@@ -389,11 +389,17 @@ export function useKonami(onHit: () => void) {
 }
 
 const DISCO_MS = 9000;
+let discoTimer: number | null = null;
 
 export function startDisco() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.classList.add('t5-disco');
-  window.setTimeout(() => document.documentElement.classList.remove('t5-disco'), DISCO_MS);
+  /* повторный Konami перезапускает таймер, а не даёт старому снять класс раньше времени */
+  if (discoTimer !== null) window.clearTimeout(discoTimer);
+  discoTimer = window.setTimeout(() => {
+    document.documentElement.classList.remove('t5-disco');
+    discoTimer = null;
+  }, DISCO_MS);
 }
 
 /* ── виджеты: золотая нить, звук, счётчик газов ───────────────────────── */
@@ -450,13 +456,12 @@ export function SoundToggle() {
     };
   }, []);
   const toggle = useCallback(() => {
-    setOn((prev) => {
-      const next = !prev;
-      setSoundOn(next);
-      if (next) synthFart({ rate: 1.15, seconds: 0.28, volume: 0.32 });
-      return next;
-    });
-  }, []);
+    // вычисляем вне апдейтера: сеттер чистый, звук и localStorage — по одному разу
+    const next = !on;
+    setOn(next);
+    setSoundOn(next);
+    if (next) synthFart({ rate: 1.15, seconds: 0.28, volume: 0.32 });
+  }, [on]);
   return (
     <button
       type="button"

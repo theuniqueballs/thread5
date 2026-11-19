@@ -1,0 +1,83 @@
+# THREAD 5 — непрерывная интеграция (инженерный апгрейд 2026-11-20).
+#
+# Три работы на каждый пуш/PR:
+#   web      — прилавок: типы (tsc), линт (eslint), юнит-тесты (bun test);
+#   pipeline — печь: юнит-тесты инструментов, валидатор спек (--ci),
+#              гейты на свежайшей сданной партии (PASS обязателен);
+#   shell    — smoke тестов сборок рантаймов (fake-bun, без uv/docker).
+#
+# Философия та же, что у pre-commit: молчание гейтов исключено — но здесь
+# проверяется ещё и то, что сами инструменты не сломались молча.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    name: прилавок (tsc · lint · bun test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Установка зависимостей
+        run: bun install --frozen-lockfile
+
+      - name: Типы (tsc --noEmit)
+        run: bunx tsc --noEmit
+
+      - name: Линт (eslint)
+        run: bun run lint
+
+      - name: Юнит-тесты прилавка (parser/ystamp/inbox/store)
+        run: bun test tests/unit
+
+  pipeline:
+    name: печь (unittest · validate · gates)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Юнит-тесты инструментов (gates/window/taste)
+        run: python3 -m unittest discover -s tests/python -v
+
+      - name: Валидатор спек (CI-режим, без проверки хука)
+        run: python3 tools/validate.py --ci
+
+      - name: Гейты на свежайшей сданной партии
+        run: |
+          latest=$(ls batches/T5-[0-9]*.md 2>/dev/null | grep -v 'gate-report' | sort -V | tail -1)
+          if [ -z "$latest" ]; then
+            echo "нет сданных батчей — пропуск"; exit 0
+          fi
+          echo "гейты: $latest"
+          python3 tools/gates.py "$latest"
+
+      - name: Станция окна — дымовой прогон (квитанция в stdout)
+        run: python3 tools/window.py --depth 3 > /dev/null && echo "window OK"
+
+  shell-smoke:
+    name: сборки рантаймов (smoke)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: database-runtime-build (fake-bun, без БД)
+        run: bash tests/database-runtime-build.sh

@@ -34,7 +34,8 @@ const CIRCLE_LABEL: Record<string, string> = { c1: 'круг 1', c2: 'круг 2
 export function LoopRenders({ info }: { info?: LoopSlotInfo | null }) {
   const [zoom, setZoom] = useState<{ url: string; label: string } | null>(null);
 
-  /* Escape закрывает лайтбокс — клавиатурный выход */
+  /* Escape закрывает лайтбокс — клавиатурный выход; страница при открытом
+     оверлее не реагирует на Esc/цифры (data-t5-overlay, см. page.tsx) */
   useEffect(() => {
     if (!zoom) return;
     const onKey = (e: KeyboardEvent) => {
@@ -88,6 +89,7 @@ export function LoopRenders({ info }: { info?: LoopSlotInfo | null }) {
         <div
           role="dialog"
           aria-modal="true"
+          data-t5-overlay="open"
           aria-label="Прокси-рендер крупно"
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
           onClick={() => setZoom(null)}

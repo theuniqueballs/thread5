@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -37,18 +37,26 @@ interface CopyButtonProps {
 
 export function CopyButton({ text, label, className }: CopyButtonProps) {
   const [done, setDone] = useState(false);
+  const doneTimer = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (doneTimer.current !== null) window.clearTimeout(doneTimer.current);
+    },
+    [],
+  );
   const onCopy = useCallback(async () => {
     const ok = await copyText(text);
     if (ok) {
       setDone(true);
-      window.setTimeout(() => setDone(false), 1400);
+      if (doneTimer.current !== null) window.clearTimeout(doneTimer.current);
+      doneTimer.current = window.setTimeout(() => setDone(false), 1400);
     }
   }, [text]);
   return (
     <button
       type="button"
       onClick={onCopy}
-      aria-label={label ?? 'Скопировать'}
+      aria-label={label ? `Скопировать: ${label}` : 'Скопировать'}
       className={cn('t5-btn t5-btn-sm', className)}
     >
       {done ? <Check className="size-3.5 text-t5-mint" /> : <Copy className="size-3.5" />}
@@ -105,41 +113,44 @@ export function Chip({ children }: { children: React.ReactNode }) {
 
 /* ── markdown доков ──────────────────────────────────────────────── */
 
+/* маппинг рендереров стабилен — один объект на модуль, а не новый каждый рендер */
+const MARKDOWN_COMPONENTS = {
+  h1: (p: React.ComponentProps<'h1'>) => <h1 className="mb-5 mt-8 border-b border-white/[0.08] pb-3 font-display text-lg font-bold text-white first:mt-0" {...p} />,
+  h2: (p: React.ComponentProps<'h2'>) => <h2 className="mb-3 mt-9 text-base font-extrabold tracking-wide text-white" {...p} />,
+  h3: (p: React.ComponentProps<'h3'>) => <h3 className="mb-2 mt-7 flex items-center gap-2 text-sm font-bold text-t5-violet-bright" {...p} />,
+  p: (p: React.ComponentProps<'p'>) => <p className="mb-3 max-w-[78ch] text-sm leading-relaxed text-zinc-300" {...p} />,
+  ul: (p: React.ComponentProps<'ul'>) => <ul className="mb-3 max-w-[78ch] list-disc space-y-1 pl-5 text-sm text-zinc-300 marker:text-t5-accent/70" {...p} />,
+  ol: (p: React.ComponentProps<'ol'>) => <ol className="mb-3 max-w-[78ch] list-decimal space-y-1 pl-5 text-sm text-zinc-300 marker:text-zinc-600" {...p} />,
+  li: (p: React.ComponentProps<'li'>) => <li className="leading-relaxed" {...p} />,
+  strong: (p: React.ComponentProps<'strong'>) => <strong className="font-bold text-white" {...p} />,
+  em: (p: React.ComponentProps<'em'>) => <em className="text-zinc-400" {...p} />,
+  hr: () => <hr className="my-7 h-px border-0 bg-gradient-to-r from-transparent via-white/15 to-transparent" />,
+  blockquote: (p: React.ComponentProps<'blockquote'>) => <blockquote className="mb-3 border-l-2 border-t5-accent/40 bg-white/[0.02] py-1 pl-3 text-sm italic text-zinc-400" {...p} />,
+  code: ({ children, className }: React.ComponentProps<'code'>) =>
+    className?.includes('language-') ? (
+      <code className="t5-scroll block whitespace-pre-wrap break-words rounded-lg border border-white/[0.07] bg-black/30 p-3.5 font-mono text-xs leading-relaxed text-zinc-300">{children}</code>
+    ) : (
+      <code className="rounded-md bg-white/[0.07] px-1.5 py-0.5 font-mono text-xs text-t5-accent-bright">{children}</code>
+    ),
+  pre: (p: React.ComponentProps<'pre'>) => <pre className="mb-3 overflow-x-auto" {...p} />,
+  table: (p: React.ComponentProps<'table'>) => (
+    <div className="t5-scroll mb-5 overflow-x-auto rounded-lg border border-white/[0.08]">
+      <table className="w-full border-collapse text-sm" {...p} />
+    </div>
+  ),
+  thead: (p: React.ComponentProps<'thead'>) => <thead className="bg-white/[0.04]" {...p} />,
+  th: (p: React.ComponentProps<'th'>) => <th className="border-b border-white/[0.08] px-3 py-2 text-left text-[11px] font-bold uppercase tracking-wider text-zinc-200" {...p} />,
+  td: (p: React.ComponentProps<'td'>) => <td className="border-b border-white/[0.05] px-3 py-2 align-top text-zinc-300" {...p} />,
+  /* ссылки доков не уводят SPA с текущего hash-состояния */
+  a: (p: React.ComponentProps<'a'>) => (
+    <a className="text-t5-accent-bright underline decoration-t5-accent/45 underline-offset-2 transition-colors hover:text-white hover:decoration-t5-accent" target="_blank" rel="noopener noreferrer" {...p} />
+  ),
+} as const;
+
 export function T5Markdown({ content }: { content: string }) {
   return (
     <div className="t5-prose max-w-none">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        components={{
-          h1: (p) => <h1 className="mb-5 mt-8 border-b border-white/[0.08] pb-3 font-display text-lg font-bold text-white first:mt-0" {...p} />,
-          h2: (p) => <h2 className="mb-3 mt-9 text-base font-extrabold tracking-wide text-white" {...p} />,
-          h3: (p) => <h3 className="mb-2 mt-7 flex items-center gap-2 text-sm font-bold text-t5-violet-bright" {...p} />,
-          p: (p) => <p className="mb-3 max-w-[78ch] text-sm leading-relaxed text-zinc-300" {...p} />,
-          ul: (p) => <ul className="mb-3 max-w-[78ch] list-disc space-y-1 pl-5 text-sm text-zinc-300 marker:text-t5-accent/70" {...p} />,
-          ol: (p) => <ol className="mb-3 max-w-[78ch] list-decimal space-y-1 pl-5 text-sm text-zinc-300 marker:text-zinc-600" {...p} />,
-          li: (p) => <li className="leading-relaxed" {...p} />,
-          strong: (p) => <strong className="font-bold text-white" {...p} />,
-          em: (p) => <em className="text-zinc-400" {...p} />,
-          hr: () => <hr className="my-7 h-px border-0 bg-gradient-to-r from-transparent via-white/15 to-transparent" />,
-          blockquote: (p) => <blockquote className="mb-3 border-l-2 border-t5-accent/40 bg-white/[0.02] py-1 pl-3 text-sm italic text-zinc-400" {...p} />,
-          code: ({ children, className }) =>
-            className?.includes('language-') ? (
-              <code className="t5-scroll block whitespace-pre-wrap break-words rounded-lg border border-white/[0.07] bg-black/30 p-3.5 font-mono text-xs leading-relaxed text-zinc-300">{children}</code>
-            ) : (
-              <code className="rounded-md bg-white/[0.07] px-1.5 py-0.5 font-mono text-xs text-t5-accent-bright">{children}</code>
-            ),
-          pre: (p) => <pre className="mb-3 overflow-x-auto" {...p} />,
-          table: (p) => (
-            <div className="t5-scroll mb-5 overflow-x-auto rounded-lg border border-white/[0.08]">
-              <table className="w-full border-collapse text-sm" {...p} />
-            </div>
-          ),
-          thead: (p) => <thead className="bg-white/[0.04]" {...p} />,
-          th: (p) => <th className="border-b border-white/[0.08] px-3 py-2 text-left text-[11px] font-bold uppercase tracking-wider text-zinc-200" {...p} />,
-          td: (p) => <td className="border-b border-white/[0.05] px-3 py-2 align-top text-zinc-300" {...p} />,
-          a: (p) => <a className="text-t5-accent-bright underline decoration-t5-accent/45 underline-offset-2 transition-colors hover:text-white hover:decoration-t5-accent" {...p} />,
-        }}
-      >
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={MARKDOWN_COMPONENTS}>
         {content}
       </ReactMarkdown>
     </div>

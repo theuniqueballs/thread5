@@ -135,6 +135,16 @@ if [ -d "public" ]; then
     cp -r public "$BUILD_DIR/next-service-dist/"
 fi
 
+# thread5-контент (2026-11-20): прилавок читает batches/specs/verdicts/docs/
+# special/ из T5_ROOT — без них каждый /api/t5/* в деплое отвечал пустотой.
+# Кладём контент рядом с сервером: resolver store.ts найдёт его по cwd.
+for _t5dir in batches specs verdicts docs special; do
+    if [ -d "$NEXTJS_PROJECT_DIR/$_t5dir" ]; then
+        echo "  - 复制 контент-корпус: $_t5dir/"
+        cp -r "$NEXTJS_PROJECT_DIR/$_t5dir" "$BUILD_DIR/next-service-dist/"
+    fi
+done
+
 # Python 不继承 workspace-agent 的 /home/z/.venv。若项目包含 Python 源码或
 # 依赖清单，在构建期将生产依赖固化到产物，并保持 Python 源码的项目相对路径。
 PROJECT_DIR="$NEXTJS_PROJECT_DIR" BUILD_DIR="$BUILD_DIR" \

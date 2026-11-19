@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { needsTriage, readMeta, triageItem, writeMeta } from '@/lib/t5/inbox';
+import { needsTriage, readMeta, triageItem, withMetaLock, writeMeta } from '@/lib/t5/inbox';
+import { writeAllowed, writeDenied } from '@/lib/t5/guard';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -19,6 +20,7 @@ interface TriageBody {
  * Ответ всегда JSON с remaining — клиент крутит цикл, пока очередь не иссякнет.
  */
 export async function POST(req: Request) {
+  if (!writeAllowed(req)) return writeDenied();
   let body: TriageBody = {};
   try {
     body = (await req.json()) as TriageBody;
@@ -26,19 +28,22 @@ export async function POST(req: Request) {
     // пустое тело = триаж очереди
   }
 
-  const items = await readMeta();
+  const result = await withMetaLock(async () => {
+    const items = await readMeta();
 
-  const wanted =
-    Array.isArray(body.ids) && body.ids.length > 0
-      ? items.filter((i) => body.ids?.includes(i.id) && needsTriage(i))
-      : items.filter(needsTriage);
-  const queue = wanted.slice(0, CAP_PER_REQUEST);
+    const wanted =
+      Array.isArray(body.ids) && body.ids.length > 0
+        ? items.filter((i) => body.ids?.includes(i.id) && needsTriage(i))
+        : items.filter(needsTriage);
+    const queue = wanted.slice(0, CAP_PER_REQUEST);
 
-  for (const item of queue) {
-    await triageItem(item);
-  }
-  await writeMeta(items);
+    for (const item of queue) {
+      await triageItem(item);
+    }
+    await writeMeta(items);
 
-  const remaining = items.filter(needsTriage).length;
-  return NextResponse.json({ triaged: queue.length, remaining, items });
+    const remaining = items.filter(needsTriage).length;
+    return { triaged: queue.length, remaining, items };
+  });
+  return NextResponse.json(result);
 }

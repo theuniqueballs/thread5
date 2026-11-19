@@ -6,8 +6,10 @@ import {
   readMeta,
   saveFile,
   sortItems,
+  withMetaLock,
   writeMeta,
 } from '@/lib/t5/inbox';
+import { writeAllowed, writeDenied } from '@/lib/t5/guard';
 import type { InboxItem } from '@/lib/t5/inbox';
 
 export const runtime = 'nodejs';
@@ -33,6 +35,7 @@ export async function GET() {
  * Если метки нет — слот вытаскивается из имени файла (P07 / 07 - name.webp).
  */
 export async function POST(req: Request) {
+  if (!writeAllowed(req)) return writeDenied();
   let form: FormData;
   try {
     form = await req.formData();
@@ -63,28 +66,33 @@ export async function POST(req: Request) {
   const results: { origName: string; id?: string; tag?: string | null; status?: string; error?: string }[] = [];
   const saved: InboxItem[] = [];
 
-  for (let i = 0; i < files.length; i++) {
-    const tag = (perFileTags[i] ?? '').trim() || fallback;
-    const out = await saveFile(files[i], tag);
-    if (out.item) {
-      saved.push(out.item);
-      results.push({ origName: out.origName, id: out.item.id, tag: out.item.tag, status: out.item.status });
-    } else {
-      results.push({ origName: out.origName, error: out.error ?? 'не сохранён' });
+  // вся пачка — одна транзакция над журналом (withMetaLock): параллельная
+  // закидка/триаж не затирают записи друг друга
+  const finalItems = await withMetaLock(async () => {
+    for (let i = 0; i < files.length; i++) {
+      const tag = (perFileTags[i] ?? '').trim() || fallback;
+      const out = await saveFile(files[i], tag);
+      if (out.item) {
+        saved.push(out.item);
+        results.push({ origName: out.origName, id: out.item.id, tag: out.item.tag, status: out.item.status });
+      } else {
+        results.push({ origName: out.origName, error: out.error ?? 'не сохранён' });
+      }
     }
-  }
 
-  if (saved.length > 0) {
-    items.unshift(...saved);
-    await writeMeta(items);
-  }
+    if (saved.length > 0) {
+      items.unshift(...saved);
+      await writeMeta(items);
+    }
+    return items;
+  });
 
   return NextResponse.json({
     uploaded: saved.length,
     failed: results.filter((r) => r.error).length,
     queued: saved.length,
     results,
-    items: sortItems(items),
+    items: sortItems(finalItems),
   });
 }
 
@@ -95,6 +103,7 @@ export async function POST(req: Request) {
  *  - ?status=...   — убрать всё с перечисленными статусами (analyzed,x,error).
  */
 export async function DELETE(req: Request) {
+  if (!writeAllowed(req)) return writeDenied();
   const url = new URL(req.url);
   try {
     if (url.searchParams.get('all') === '1') {
@@ -113,7 +122,7 @@ export async function DELETE(req: Request) {
     if (ids.length === 0) {
       return NextResponse.json({ error: 'укажи ids=, status= или all=1' }, { status: 400 });
     }
-    const report = await deleteItems(ids);
+    const report = await withMetaLock(() => deleteItems(ids));
     return NextResponse.json({ ...report, items: sortItems(await readMeta()) });
   } catch (err) {
     return NextResponse.json({ error: String(err instanceof Error ? err.message : err) }, { status: 500 });

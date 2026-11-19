@@ -1,6 +1,6 @@
 # ECCHI-ORACLE → ЦЕПЬ ТРЕДА: карта внедрения, промпты, цепочка действий
 
-Версия 2.0 (эпоха Y-STAMP, T5-25+, гейты 1.14.0, raw-plus 2.1.0).
+Версия 2.1 (эпоха В34/В35, T5-25+, гейты 1.15.0, raw-plus 2.2.0; актуализация 2026-11-20).
 Синхронизировано с thread5 по коммитам 2026-11-18 (T5-25 пересборка, АКТЫ 1–2, В33).
 
 Оракул встаёт в петлю thread5 **без смены ролей**: автор — тема и вердикт, писец —
@@ -37,7 +37,7 @@
 | SOL (исследование темы) | бриф 00-brief §16 | `POST /ask` | карта темы: 4 слоя + посредники + анти-словарь |
 | MERCURY (каст/тир-план) | бриф HEAT-план | `POST /ask` + `POST /rate` | план тиров по слотам, honest квоты |
 | VENUS (сцена) | бриф словарь | `POST /ask` | словарь-якоря с сенсорными глаголами, Y-карты под класс |
-| EARTH (сборка) | слот PROSE PLUS | `GET /ystamp?card=YNN` + `POST /volt` | клеймо 1:1 из карты + скелет POS/NEG + шапка |
+| EARTH (сборка) | слот PROSE PLUS | `GET /ystamp?card=YNN` + `POST /volt` | вплетение 1:1 из карты (weave) + скелет POS/NEG + шапка |
 | FURNACE (печь) | tools/gates.py | `POST /audit` | вердикт PASS/WARN/FAIL + self_certified + stamp-checks → в квитанцию |
 | INBOX (триаж рендеров) | инбокс, акт 9 | `POST /vision` (или `/triage` по описанию) | карточка: X-вердикт · слот-тип · fact · drift · паттерны |
 | ПОСЛЕ-ВЕРДИКТ | постмортем | дамп `/dataset`, `/taxonomy` | материал разборов: факт-спред, drift-карта |
@@ -59,7 +59,7 @@
 cd mini-services/oracle-service && bun run dev
 # проверка реестра карт
 curl -s localhost:3031/health
-# → { "era": "Y-STAMP (T5-25+)", "camera_registry": "1.15.1", "cards_indexed": 512 }
+# → { "era": "Y-STAMP v1.15.0 (В34/В35...)", "camera_registry": "1.16.0", "cards_indexed": 521 }
 ```
 
 ### ЭТАП 1 — Тема и контракт (SOL/MERCURY)
@@ -73,7 +73,9 @@ curl -s localhost:3031/health
 Для каждого слота, по порядку доктрины:
 1. Тир + класс раскрытия (COVER/PROCESS/LINGERIE/CLOTHED-TIGHT/SHEER; «—» = стоп для R+).
 2. Выбор Y-карты: реестр 512 карт, класс ≠ «—», физика в паттерне, вне окна ротации (3 батча).
-3. `GET /ystamp?card=YNN` — паспорт кладётся в буфер (строка 3 PROMPT).
+3. `GET /ystamp?card=YNN` — в буфер кладётся ВПЛЕТЕНИЕ (поле `weave`, паттерн карты 1:1
+   с физикой, В34/В35) — это и есть строка 3 PROMPT; `stamp_metadata` — только паспорт
+   для сверки, в POS НЕ печатается (метки в POS запрещены gates 1.15.0).
 4. `POST /volt { scene, ycard, target }` — скелет POS/NEG по карте.
 5. Писец достраивает: канон-локи ОС (VERBATIM), тема ПОСЛЕ заявки, В32 ≥2 фишечки-ФОРМЫ,
    палитра, face-блок, NEG-зеркало + safety-пол.
@@ -84,8 +86,8 @@ curl -s localhost:3031/health
 1. Машинные гейты thread5 (`tools/gates.py`) — как обычно.
 2. Оракул-аудит каждого слота: **ПРОМПТ-Т2** (§3.2) или `POST /audit` —
    claimPhysics + claimVisibility + yStampGate + В33.
-3. Счётчики в квитанцию: `self_certified_Rplus` (цель 0) · `stamps` (цель = числу карт) ·
-   `stamp_mismatches` (цель 0) · `drift_forecast` (label vs /rate, цель 0).
+3. Счётчики в квитанцию: `self_certified_Rplus` (цель 0) · `weaved` (цель = числу карт) ·
+   `mismatch` (цель 0) · `drift_forecast` (label vs /rate, цель 0).
 4. FAIL → либо добор факта (карта с физикой + коридор), либо честное понижение
    с диагнозом в бриф. Никаких бейджей «на удачу рендера».
 
@@ -139,8 +141,8 @@ EXP-приказ: {9 слотов — что экспериментируем}.
 Слот {PNN}: {ID}, план-тир {ТИР}, коридор {A|B|A+B}, карта {YNN}.
 POS (вербатим):
 {POS-ТЕКСТ}
-Клеймо (строка 3):
-{Y-STAMP: ...}
+Вплетение COMBO-WEAVE (строка 3, В34/В35):
+<weave из /ystamp — паттерн карты копипастом 1:1 с физикой, без меток/класса/CAM-кодов/corridor-токена>
 
 Проверь и выдай вердикт PASS/WARN/FAIL по чеклисту:
 1. claimPhysics: класс раскрытия в POS? коридоры A/B по тегам? ОДИН канал-токен ранним?
@@ -181,14 +183,14 @@ fact-рейтинга. Тон технический; label не влияет н
 
 ```
 Слот {PNN}, тир {ТИР}, класс {КЛАСС}.
-Карта: {YNN} (GET /ystamp?card={YNN} — паспорт в буфер).
+Карта: {YNN} (GET /ystamp?card={YNN} — вплетение weave в буфер, метаданные — для сверки).
 
 Порядок PROSE PLUS (raw-plus 2.1.0):
 строка 1 OPENER: quality-теги + камерный кластер карты (первые 10–20 токенов) + 1girl, solo +
   канон-теги VERBATIM (ОС) + тело-регистр (3–5) + K-FF кинетика
 строка 2 CLAIM: NL-ядро «— the {X} is the claim, {Y}-made» — вещь + состояние ткани +
   контакт-геометрия + заявка тира + nothing underneath; ≤60 токенов
-строка 3 Y-STAMP: клеймо из карты КОПИПАСТ 1:1 (не руками!)
+строка 3 = вплетение из карты КОПИПАСТ 1:1 (weave из /ystamp; метка-паспорт в POS запрещена — В34)
 строка 4 SCENE: В32 ≥2 фишечки-ФОРМЫ + свидетель + состояния мира (тема ПОСЛЕ заявки)
 строка 5 PALETTE: sd_fragment + accent + her colors
 строка 6 FACE: stylized 2D anime face + глаза + рот + деталь у лица
@@ -205,16 +207,16 @@ NEG: young girl, immature body, oversized head, loli, shota + leak guard + пр�
 
 ```python
 # печать клейма в строку 3 PROMPT
-stamp = oracle_stamp("Y29")            # GET /ystamp?card=Y29 → stamp
-prompt = f"{opener}\n{claim_line}\n{stamp}\n{scene}\n{palette}\n{face}"
+weave = oracle_weave("Y29")            # GET /ystamp?card=Y29 → weave (В34)
+prompt = f"{opener}\n{claim_line}\n{weave}\n{scene}\n{palette}\n{face}"
 
 # аудит слота (в квитанцию печи)
 audit = oracle_audit(slot)             # POST /audit → verdict/self_certified/stamp/checks
 receipt["oracle"] = {
     "verdict": audit["verdict"],
     "self_certified_Rplus": audit["self_certified"],
-    "stamp_ok": audit["stamp"] is not None,
-    "stamp_checks": [c for c in audit["checks"] if "Клеймо" in c["name"] or "В33" in c["name"]],
+    "weaved": audit["stamp"]["weaved"],
+    "stamp_checks": [c for c in audit["checks"] if "вплет" in c["name"] or "В33" in c["name"]],
 }
 
 # триаж рендеров (инбокс, по 1 файлу)
@@ -226,7 +228,7 @@ inbox_meta[file]["triage_v2"] = card   # x_verdict · slot_type · fact_rating �
 
 ## 5. Критерии естественности (чек-лист внедрения)
 
-1. Прилавок и оракул печатают клеймо ОДИНАКОВО (один источник camera.json; чип Y-STAMP
+1. Прилавок и оракул печатают вплетение ОДИНАКОВО (один источник camera.json; чип Y-STAMP
    и `GET /ystamp` дают ту же строку).
 2. Гейты thread5 и оракул не спорят: обе стороны сверяют паттерн стемами, класс и
    коридор строка-в-строку; расхождения — WARN, не молчание.

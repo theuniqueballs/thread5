@@ -60,5 +60,17 @@ db/
 upload/
 
 # инбокс финальных рендеров (журнал+файлы автора, не для гита)
+# 2026-11-20: инбокс живёт в <T5_ROOT>/inbox — корневая раскладка; легаси-путь
+# оставлен для старых клонов (app-репо + контент-клон в thread5/)
+/inbox/
 thread5/inbox/
 tools/__pycache__/
+tests/__pycache__/
+
+# обучение ecchi-oracle: адаптеры/чекс-пойнты — мультигигабайтный мусор в гите
+mini-services/ecchi-oracle/checkpoints/
+mini-services/ecchi-oracle/models/
+mini-services/ecchi-oracle/eval/
+
+# сборка мини-сервисов
+mini-services-dist/

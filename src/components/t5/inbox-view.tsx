@@ -83,14 +83,15 @@ function fmtSize(n: number): string {
 
 const RETRIAGE_RE = /fail-closed|429|too many|карантин/iu;
 
-/** Слот из имени файла: «P07.webp», «t5-18 p7.png», «07 - name.webp» → «P07». */
+/** Слот из имени файла: «P07.webp», «t5-18 p7.png», «07 - name.webp» → «P07».
+ *  До P999 — парсер батчей трёхзначный, инбокс не должен отставать. */
 function parseSlotFromName(name: string): string {
-  const p = /(?:^|[^a-z0-9])P(\d{1,2})(?![a-z0-9])/iu.exec(name);
-  const lead = /^(\d{1,2})(?:[\s_.-]|$)/u.exec(name);
+  const p = /(?:^|[^a-z0-9])P(\d{1,3})(?![a-z0-9])/iu.exec(name);
+  const lead = /^(\d{1,3})(?:[\s_.-]|$)/u.exec(name);
   const m = p ?? lead;
   if (!m) return '';
   const n = Number.parseInt(m[1], 10);
-  if (!Number.isInteger(n) || n < 1 || n > 99) return '';
+  if (!Number.isInteger(n) || n < 1 || n > 999) return '';
   return `P${n < 10 ? `0${n}` : n}`;
 }
 
@@ -101,10 +102,10 @@ function parseBatchFromName(name: string): string {
 
 function normalizeSlotInput(v: string): string {
   const t = v.trim().toUpperCase().replace(/[^P0-9]/gu, '');
-  const m = /^P?(\d{1,2})$/u.exec(t);
+  const m = /^P?(\d{1,3})$/u.exec(t);
   if (!m) return '';
   const n = Number.parseInt(m[1], 10);
-  if (n < 1 || n > 99) return '';
+  if (n < 1 || n > 999) return '';
   return `P${n < 10 ? `0${n}` : n}`;
 }
 
@@ -165,6 +166,22 @@ export function InboxView() {
   const fileRef = useRef<HTMLInputElement>(null);
   const wipeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoTriageRef = useRef(false);
+  /* отмена циклов: ушли со вкладки — все порционные циклы (триаж/разбор/
+     загрузка) обрываются, на повторном монтировании не начинается второй
+     параллельный цикл поверх старого */
+  const loopsAbort = useRef<AbortController | null>(null);
+  useEffect(
+    () => () => {
+      loopsAbort.current?.abort();
+    },
+    [],
+  );
+  const beginLoops = useCallback((): AbortSignal => {
+    loopsAbort.current?.abort();
+    const ac = new AbortController();
+    loopsAbort.current = ac;
+    return ac.signal;
+  }, []);
 
   const load = useCallback(async () => {
     try {
@@ -252,54 +269,72 @@ export function InboxView() {
 
   const slotsFilled = picked.filter((p) => p.slot).length;
 
-  /* ── X-триаж порционным циклом (сервер капает по 2 файла на запрос) ── */
-  const runTriage = useCallback(async (ids?: string[], onProgress?: (done: number, remaining: number) => void) => {
-    let done = 0;
-    for (let guard = 0; guard < 80; guard++) {
-      const res = await fetch('/api/t5/inbox/triage', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(ids && ids.length > 0 ? { ids } : {}),
-      });
-      const data = await readJson<{ triaged?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
-      if (!res.ok) throw new Error(data.error ?? 'триаж не удался');
-      setItems(data.items ?? []);
-      done += data.triaged ?? 0;
-      onProgress?.(done, data.remaining ?? 0);
-      if ((data.remaining ?? 0) === 0 || (data.triaged ?? 0) === 0) break;
-    }
-    return done;
-  }, []);
+  /* ── X-триаж порционным циклом (сервер капает по 2 файла на запрос).
+     Возвращает { done, remaining } — remaining > 0 значит упёрлись в
+     предохранитель цикла: очередь не потеряна, просто жми ещё раз. ── */
+  const runTriage = useCallback(
+    async (ids?: string[], onProgress?: (done: number, remaining: number) => void, signal?: AbortSignal): Promise<{ done: number; remaining: number }> => {
+      let done = 0;
+      let remaining = 0;
+      for (let guard = 0; guard < 80; guard++) {
+        if (signal?.aborted) return { done, remaining };
+        const res = await fetch('/api/t5/inbox/triage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(ids && ids.length > 0 ? { ids } : {}),
+          signal,
+        });
+        const data = await readJson<{ triaged?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
+        if (!res.ok) throw new Error(data.error ?? 'триаж не удался');
+        setItems(data.items ?? []);
+        done += data.triaged ?? 0;
+        remaining = data.remaining ?? 0;
+        onProgress?.(done, remaining);
+        if (remaining === 0 || (data.triaged ?? 0) === 0) break;
+      }
+      return { done, remaining };
+    },
+    [],
+  );
 
-  /* ── загрузка кучкой: чанки по 8, теги пофайлово → затем триаж-цикл ── */
+  /* ── загрузка кучкой: чанки по 8, теги пофайлово → затем триаж-цикл.
+     Загруженные чанки вычёркиваются из списка сразу: обрыв на середине →
+     «Закинуть» доехает только остаток, дублей на диске нет. ── */
   const upload = useCallback(async () => {
     if (picked.length === 0 || busy) return;
     setMessage(null);
+    const signal = beginLoops();
+    const list = picked; // снимок: чанки режем от него, список живёт своей жизнью
     try {
       let uploaded = 0;
       let failed = 0;
-      for (let i = 0; i < picked.length; i += UPLOAD_CHUNK) {
-        const chunk = picked.slice(i, i + UPLOAD_CHUNK);
-        setBusy(`Заливаю ${Math.min(i + chunk.length, picked.length)}/${picked.length}…`);
+      for (let i = 0; i < list.length; i += UPLOAD_CHUNK) {
+        if (signal.aborted) return;
+        const chunk = list.slice(i, i + UPLOAD_CHUNK);
+        setBusy(`Заливаю ${Math.min(i + chunk.length, list.length)}/${list.length}…`);
         const fd = new FormData();
         const tags = chunk.map((p) => [batch.trim(), p.slot].filter(Boolean).join(' '));
         for (const p of chunk) fd.append('files', p.file);
         fd.append('tags', JSON.stringify(tags));
-        const res = await fetch('/api/t5/inbox', { method: 'POST', body: fd });
+        const res = await fetch('/api/t5/inbox', { method: 'POST', body: fd, signal });
         const data = await readJson<{ uploaded?: number; failed?: number; items?: InboxItem[]; error?: string }>(res);
         if (!res.ok) throw new Error(data.error ?? 'загрузка не удалась');
         uploaded += data.uploaded ?? 0;
         failed += data.failed ?? 0;
         setItems(data.items ?? []);
+        /* успешно залитый чанк — из списка долой (ретрай не дублирует файлы) */
+        const doneKeys = new Set(chunk.map((p) => p.key));
+        setPicked((prev) => prev.filter((p) => !doneKeys.has(p.key)));
       }
       clearPicked();
 
       let triaged = 0;
       try {
         setBusy('Залито. Гоню X-триаж порциями…');
-        triaged = await runTriage(undefined, (done, remaining) => {
+        const out = await runTriage(undefined, (done, remaining) => {
           setBusy(`X-триаж: обработано ${done}, осталось ${remaining}…`);
-        });
+        }, signal);
+        triaged = out.done;
       } catch (err) {
         setMessage(
           `Залито: ${uploaded}, но X-триаж прервался (${String(err instanceof Error ? err.message : err)}) — жми «Прогнать X-триаж» ниже, очередь не теряется`,
@@ -310,27 +345,38 @@ export function InboxView() {
         `Залито: ${uploaded}${failed > 0 ? ` · отброшено: ${failed}` : ''} · X-триаж пройден: ${triaged}. Файлы лежат на диске до очистки.`,
       );
     } catch (err) {
-      setMessage(`Ошибка: ${String(err instanceof Error ? err.message : err)}`);
+      if ((err as DOMException)?.name !== 'AbortError') {
+        setMessage(`Ошибка: ${String(err instanceof Error ? err.message : err)}`);
+      }
     } finally {
       setBusy(null);
     }
-  }, [picked, batch, busy, runTriage, clearPicked]);
+  }, [picked, batch, busy, runTriage, clearPicked, beginLoops]);
 
   const triageQueue = useCallback(async () => {
     if (busy) return;
     setMessage(null);
+    const signal = beginLoops();
     try {
       setBusy('X-триаж очереди…');
-      const done = await runTriage(undefined, (d, remaining) => {
+      const out = await runTriage(undefined, (d, remaining) => {
         setBusy(`X-триаж: обработано ${d}, осталось ${remaining}…`);
-      });
-      setMessage(done > 0 ? `X-триаж пройден: ${done}` : 'Очередь триажа пуста');
+      }, signal);
+      setMessage(
+        out.done > 0
+          ? out.remaining > 0
+            ? `X-триаж: обработано ${out.done}, в очереди ещё ${out.remaining} — жми ещё раз, предохранитель цикла сработал`
+            : `X-триаж пройден: ${out.done}`
+          : 'Очередь триажа пуста',
+      );
     } catch (err) {
-      setMessage(`Ошибка триажа: ${String(err instanceof Error ? err.message : err)} — очередь сохранена, можно жать снова`);
+      if ((err as DOMException)?.name !== 'AbortError') {
+        setMessage(`Ошибка триажа: ${String(err instanceof Error ? err.message : err)} — очередь сохранена, можно жать снова`);
+      }
     } finally {
       setBusy(null);
     }
-  }, [busy, runTriage]);
+  }, [busy, runTriage, beginLoops]);
 
   /* ── автотриаж: инбокс открыт, а очередь осталась (урок T5-19 про 401) ── */
   useEffect(() => {
@@ -339,20 +385,29 @@ export function InboxView() {
     if (queued === 0) return;
     autoTriageRef.current = true;
     setMessage(null);
+    const signal = beginLoops();
     void (async () => {
       try {
         setBusy(`Автотриаж: в очереди ${queued}…`);
-        const done = await runTriage(undefined, (d, remaining) => {
+        const out = await runTriage(undefined, (d, remaining) => {
           setBusy(`Автотриаж: обработано ${d}, осталось ${remaining}…`);
-        });
-        setMessage(done > 0 ? `Автотриаж догнал очередь: ${done} — можно разбирать` : null);
+        }, signal);
+        setMessage(
+          out.done > 0
+            ? out.remaining > 0
+              ? `Автотриаж: догнал ${out.done}, в очереди ещё ${out.remaining} — жми «Прогнать X-триаж»`
+              : 'Автотриаж догнал очередь — можно разбирать'
+            : null,
+        );
       } catch (err) {
-        setMessage(`Автотриаж прервался: ${String(err instanceof Error ? err.message : err)} — очередь цела, жми «Прогнать X-триаж»`);
+        if ((err as DOMException)?.name !== 'AbortError') {
+          setMessage(`Автотриаж прервался: ${String(err instanceof Error ? err.message : err)} — очередь цела, жми «Прогнать X-триаж»`);
+        }
       } finally {
         setBusy(null);
       }
     })();
-  }, [items, loading, busy, runTriage]);
+  }, [items, loading, busy, runTriage, beginLoops]);
 
   const retriageQuarantine = useCallback(async () => {
     if (busy) return;
@@ -361,49 +416,72 @@ export function InboxView() {
       .map((i) => i.id);
     if (ids.length === 0) return;
     setMessage(null);
+    const signal = beginLoops();
     try {
       setBusy(`Перетриаживаю карантин (${ids.length})…`);
-      const done = await runTriage(ids, (d, remaining) => {
+      const out = await runTriage(ids, (d, remaining) => {
         setBusy(`Перетриаж карантина: обработано ${d}, осталось ${remaining}…`);
-      });
-      setMessage(`Перетриажено: ${done} — fail-closed карантины пересмотрены`);
+      }, signal);
+      setMessage(
+        out.remaining > 0
+          ? `Перетриажено: ${out.done}, осталось ${out.remaining} — жми ещё раз`
+          : `Перетриажено: ${out.done} — fail-closed карантины пересмотрены`,
+      );
     } catch (err) {
-      setMessage(`Ошибка перетриажа: ${String(err instanceof Error ? err.message : err)}`);
+      if ((err as DOMException)?.name !== 'AbortError') {
+        setMessage(`Ошибка перетриажа: ${String(err instanceof Error ? err.message : err)}`);
+      }
     } finally {
       setBusy(null);
     }
-  }, [busy, items, runTriage]);
+  }, [busy, items, runTriage, beginLoops]);
 
   /* ── разбор порционным циклом (сервер капает по 3 файла на запрос) ── */
-  const analyze = useCallback(async (ids?: string[]) => {
-    if (busy) return;
-    setMessage(null);
-    let total = 0;
-    try {
-      for (let guard = 0; guard < 40; guard++) {
-        setBusy(total === 0 ? 'Разбираю…' : `Разобрано ${total}, докручиваю…`);
-        const res = await fetch('/api/t5/inbox/analyze', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(ids && ids.length > 0 ? { ids } : { action: 'analyze' }),
-        });
-        const data = await readJson<{ analyzed?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
-        if (!res.ok) throw new Error(data.error ?? 'разбор не удался');
-        setItems(data.items ?? []);
-        total += data.analyzed ?? 0;
-        if ((data.analyzed ?? 0) === 0 || (data.remaining ?? 0) === 0) break;
+  const analyze = useCallback(
+    async (ids?: string[]) => {
+      if (busy) return;
+      setMessage(null);
+      const signal = beginLoops();
+      let total = 0;
+      let remaining = 0;
+      try {
+        for (let guard = 0; guard < 40; guard++) {
+          if (signal.aborted) return;
+          setBusy(total === 0 ? 'Разбираю…' : `Разобрано ${total}, докручиваю…`);
+          const res = await fetch('/api/t5/inbox/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(ids && ids.length > 0 ? { ids } : { action: 'analyze' }),
+            signal,
+          });
+          const data = await readJson<{ analyzed?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
+          if (!res.ok) throw new Error(data.error ?? 'разбор не удался');
+          setItems(data.items ?? []);
+          total += data.analyzed ?? 0;
+          remaining = data.remaining ?? 0;
+          if ((data.analyzed ?? 0) === 0 || remaining === 0) break;
+        }
+        setMessage(
+          total > 0
+            ? remaining > 0
+              ? `Разобрано: ${total}, в очереди ещё ${remaining} — жми ещё раз, докрутит`
+              : `Разобрано: ${total}`
+            : 'Разбирать нечего — всё разобрано или в карантине',
+        );
+      } catch (err) {
+        if ((err as DOMException)?.name !== 'AbortError') {
+          setMessage(
+            total > 0
+              ? `Разобрано ${total}, дальше прервалось: ${String(err instanceof Error ? err.message : err)} — жми ещё раз, докрутит`
+              : `Ошибка: ${String(err instanceof Error ? err.message : err)}`,
+          );
+        }
+      } finally {
+        setBusy(null);
       }
-      setMessage(total > 0 ? `Разобрано: ${total}` : 'Разбирать нечего — всё разобрано или в карантине');
-    } catch (err) {
-      setMessage(
-        total > 0
-          ? `Разобрано ${total}, дальше прервалось: ${String(err instanceof Error ? err.message : err)} — жми ещё раз, докрутит`
-          : `Ошибка: ${String(err instanceof Error ? err.message : err)}`,
-      );
-    } finally {
-      setBusy(null);
-    }
-  }, [busy]);
+    },
+    [busy, beginLoops],
+  );
 
   const override = useCallback(async (id: string, label: 'sfw' | 'x') => {
     if (busy) return;
@@ -498,7 +576,26 @@ export function InboxView() {
   /* прогресс конвейера: обработанные (разобранные + карантин + ошибки) от всех */
   const progressPct = stats.total === 0 ? 0 : Math.round((stats.processed / stats.total) * 100);
 
-  /* лайтбокс: Esc — закрыть, стрелки — листать галерею */
+  /* лайтбокс: Esc — закрыть, стрелки — листать галерею. Индекс живёт в
+     visibleItems — фильтр мог ужать список, клещуем; фокус — в диалог,
+     скролл страницы — под замок, взад — на место, откуда открыли */
+  const lightboxCloseRef = useRef<HTMLButtonElement | null>(null);
+  const lightboxReturnRef = useRef<Element | null>(null);
+  useEffect(() => {
+    if (lightbox === null) return;
+    if (lightbox > visibleItems.length - 1) {
+      setLightbox(Math.max(0, visibleItems.length - 1));
+      return;
+    }
+    lightboxReturnRef.current = document.activeElement;
+    lightboxCloseRef.current?.focus();
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      (lightboxReturnRef.current instanceof HTMLElement ? lightboxReturnRef.current : null)?.focus?.();
+    };
+  }, [lightbox, visibleItems.length]);
   useEffect(() => {
     if (lightbox === null) return;
     const onKey = (e: KeyboardEvent) => {
@@ -535,7 +632,7 @@ export function InboxView() {
               Сбрось итоговые рендеры кучкой
             </h2>
             <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
-              Перетащи файлы сюда или выбери вручную — png/jpg/webp, до 25 МБ каждый, хоть все 33 разом. Заливаю
+              Перетащи файлы сюда или выбери вручную — png/jpg/webp, до 25 МБ каждый, до 40 за раз. Заливаю
               порциями по 8, затем X-триаж идёт маленькими шагами (без таймаутов). Слот ставится пофайлово —
               сама вытаскивается из имени («P07.webp», «07 - name»), правится в списке ниже или проставляется
               по порядку одной кнопкой. Файлы лежат на диске до явной очистки — после разбора жми «Убрать обработанные».
@@ -902,6 +999,7 @@ export function InboxView() {
         <div
           role="dialog"
           aria-modal="true"
+          data-t5-overlay="open"
           aria-label={`Просмотр рендера ${lightboxItem.origName}`}
           className="fixed inset-0 z-50 flex flex-col bg-black/90 p-4 backdrop-blur-md sm:p-6"
           onClick={() => setLightbox(null)}
@@ -913,6 +1011,7 @@ export function InboxView() {
               <span className="text-zinc-600">· {lightbox + 1}/{visibleItems.length}</span>
             </div>
             <button
+              ref={lightboxCloseRef}
               type="button"
               onClick={() => setLightbox(null)}
               aria-label="Закрыть просмотр"

@@ -51,15 +51,21 @@ function StampChip({ cardId }: { cardId: string }) {
   // (строка 3 POS, без обозначений — метки в POS запрещены, В34).
   const [busy, setBusy] = useState(false);
   const { toast } = useToast();
+  const abortRef = useRef<AbortController | null>(null);
+  useEffect(() => () => abortRef.current?.abort(), []);
   return (
     <button
       type="button"
       disabled={busy}
+      aria-label={`Y-STAMP ${cardId}: скопировать вплетение паттерна из карты`}
       title="Y-STAMP — паспорт слота из карты (В34, LAWS §17): копирует ВПЛЕТЕНИЕ паттерна 1:1 без обозначений — метки в POS запрещены, метка ≠ промпт"
       onClick={async () => {
         setBusy(true);
+        abortRef.current?.abort();
+        const ac = new AbortController();
+        abortRef.current = ac;
         try {
-          const res = await fetch(`/api/t5/ystamp?card=${encodeURIComponent(cardId)}`);
+          const res = await fetch(`/api/t5/ystamp?card=${encodeURIComponent(cardId)}`, { signal: ac.signal });
           const data = (await res.json()) as { stamp?: string; weave?: string; error?: string };
           const text = data?.weave || data?.stamp || '';
           if (!res.ok || !text) {
@@ -71,10 +77,12 @@ function StampChip({ cardId }: { cardId: string }) {
             description: text,
           });
         } catch (err) {
-          toast({
-            title: `${cardId}: клеймо не собралось`,
-            description: err instanceof Error ? err.message : String(err),
-          });
+          if ((err as DOMException)?.name !== 'AbortError') {
+            toast({
+              title: `${cardId}: клеймо не собралось`,
+              description: err instanceof Error ? err.message : String(err),
+            });
+          }
         } finally {
           setBusy(false);
         }
@@ -202,11 +210,19 @@ type MarkKind = keyof SlotMarks;
 /* POS/NEG кнопка копировалки: зелёная навсегда, пока слот не отработан */
 function PartButton({ text, label, copied, onCopied, ariaLabel }: { text: string; label: string; copied: boolean; onCopied: () => void; ariaLabel?: string }) {
   const [done, setDone] = useState(false);
+  const doneTimer = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (doneTimer.current !== null) window.clearTimeout(doneTimer.current);
+    },
+    [],
+  );
   const onCopy = useCallback(async () => {
     const ok = await copyText(text);
     if (ok) {
       setDone(true);
-      window.setTimeout(() => setDone(false), 1400);
+      if (doneTimer.current !== null) window.clearTimeout(doneTimer.current);
+      doneTimer.current = window.setTimeout(() => setDone(false), 1400);
       onCopied();
     }
   }, [text, onCopied]);
@@ -351,12 +367,19 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
     void (async () => {
       await Promise.resolve(); // асинхронно: отметки нужны только после гидрации
       if (!alive) return;
+      let parsed: unknown = null;
       try {
         const raw = window.localStorage.getItem(storeKey);
-        setMarks(raw ? (JSON.parse(raw) as Record<string, SlotMarks>) : {});
+        parsed = raw ? (JSON.parse(raw) as unknown) : null;
       } catch {
-        setMarks({});
+        parsed = null;
       }
+      /* битое значение в localStorage не должно валить рендер копировалки */
+      setMarks(
+        parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+          ? (parsed as Record<string, SlotMarks>)
+          : {},
+      );
       setReady(true);
     })();
     return () => {
@@ -364,21 +387,23 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
     };
   }, [storeKey]);
 
-  const mark = useCallback(
-    (slotId: string, kind: MarkKind) => {
-      setMarks((prev) => {
-        const prevMarks = prev[slotId] ?? { pos: false, neg: false };
-        const next = { ...prev, [slotId]: { ...prevMarks, [kind]: true } };
-        try {
-          window.localStorage.setItem(storeKey, JSON.stringify(next));
-        } catch {
-          /* приватный режим — отметки живут до перезагрузки */
-        }
-        return next;
-      });
-    },
-    [storeKey]
-  );
+  const mark = useCallback((slotId: string, kind: MarkKind) => {
+    // апдейтер чистый: побочный эффект (запись localStorage) — отдельным эффектом ниже
+    setMarks((prev) => {
+      const prevMarks = prev[slotId] ?? { pos: false, neg: false };
+      return { ...prev, [slotId]: { ...prevMarks, [kind]: true } };
+    });
+  }, []);
+
+  /* персист отметок: после гидрации и на каждое изменение */
+  useEffect(() => {
+    if (!ready) return;
+    try {
+      window.localStorage.setItem(storeKey, JSON.stringify(marks));
+    } catch {
+      /* приватный режим — отметки живут до перезагрузки */
+    }
+  }, [marks, ready, storeKey]);
 
   const clear = useCallback(() => {
     setMarks({});
@@ -393,8 +418,8 @@ function CopyWorkbench({ batch }: { batch: T5BatchBody }) {
   // служебные строки, столбики тегов и пустые отбивки. Теперь: одна строка
   // на слот, только ид + юниты, никакого слова NEG/POS и абзацев. POS и NEG
   // симметричны (урок повторился на «Все POS» — фикс закрыл оба разом).
-  const allPos = batch.slots.map((s) => `${s.id}: ${s.pos}`).join('\n');
-  const allNeg = batch.slots.map((s) => `${s.id}: ${s.neg}`).join('\n');
+  const allPos = useMemo(() => batch.slots.map((s) => `${s.id}: ${s.pos}`).join('\n'), [batch]);
+  const allNeg = useMemo(() => batch.slots.map((s) => `${s.id}: ${s.neg}`).join('\n'), [batch]);
   const doneCount = batch.slots.filter((s) => {
     const m = marks[s.id];
     return m?.pos && m?.neg;
@@ -528,6 +553,13 @@ function ViewToggle({ view, onChange }: { view: 'copy' | 'detail'; onChange: (v:
 function LazyCopyButton({ getText, label }: { getText: () => Promise<string | null>; label: string }) {
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
+  const doneTimer = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (doneTimer.current !== null) window.clearTimeout(doneTimer.current);
+    },
+    [],
+  );
   const onClick = useCallback(async () => {
     if (busy) return;
     setBusy(true);
@@ -535,7 +567,8 @@ function LazyCopyButton({ getText, label }: { getText: () => Promise<string | nu
       const text = await getText();
       if (text && (await copyText(text))) {
         setDone(true);
-        window.setTimeout(() => setDone(false), 1400);
+        if (doneTimer.current !== null) window.clearTimeout(doneTimer.current);
+        doneTimer.current = window.setTimeout(() => setDone(false), 1400);
       }
     } finally {
       setBusy(false);
@@ -615,6 +648,7 @@ function VerdictBox({ slug, slotIds, onSaved }: { slug: string; slotIds: string[
           ref={taRef}
           value={text}
           onChange={(e) => setText(e.target.value)}
+          aria-label={`Вердикт автора по ${slug}`}
           onKeyDown={(e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
               e.preventDefault();
@@ -785,7 +819,7 @@ function BatchArc({ arc }: { arc: string }) {
         const paras = arcParagraphs(s.lines);
         const openByDefault = i === 0;
         return (
-          <details key={s.title} className="group mb-2 rounded-lg border border-white/[0.06] bg-black/20" open={openByDefault}>
+          <details key={`${i}-${s.title}`} className="group mb-2 rounded-lg border border-white/[0.06] bg-black/20" open={openByDefault}>
             <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 transition-colors hover:text-white [&::-webkit-details-marker]:hidden">
               <ChevronRight className="size-3.5 shrink-0 text-t5-accent/70 transition-transform group-open:rotate-90" aria-hidden />
               <span className="t5-label text-zinc-300">{s.title}</span>
@@ -818,8 +852,12 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
   const [view, setView] = useState<'copy' | 'detail'>('copy');
   const [rawText, setRawText] = useState<string | null>(null);
   const [loopMap, setLoopMap] = useState<Record<string, LoopSlotInfo> | null>(null);
+  /* гонка загрузок: [ ] и палитра крутят слаги быстро — поздний ответ
+     прежнего батча не должен перезаписать свежий (seq-замок) */
+  const loadSeq = useRef(0);
 
   const load = useCallback(async () => {
+    const seq = ++loadSeq.current;
     setLoading(true);
     setError(null);
     setRawText(null); // raw перечитаем лениво при следующем клике
@@ -827,13 +865,14 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
       const [bRes, vRes] = await Promise.all([fetch(`/api/t5/${source}/${slug}`), fetch(`/api/t5/verdicts?slug=${encodeURIComponent(slug)}`)]);
       const bData = (await bRes.json()) as { batch?: T5BatchBody; error?: string };
       if (!bRes.ok || !bData.batch) throw new Error(bData.error ?? 'Не найдено');
-      setBatch(bData.batch);
       const vData = (await vRes.json()) as { verdicts?: VerdictItem[] };
+      if (seq !== loadSeq.current) return; // пришёл позднее нового запроса
+      setBatch(bData.batch);
       setVerdicts(vData.verdicts ?? []);
     } catch (err) {
-      setError(String(err instanceof Error ? err.message : err));
+      if (seq === loadSeq.current) setError(String(err instanceof Error ? err.message : err));
     } finally {
-      setLoading(false);
+      if (seq === loadSeq.current) setLoading(false);
     }
   }, [slug, source]);
 
@@ -988,7 +1027,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
           <nav aria-label="Переход к акту" className="t5-scroll -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
             {detailActs.map((act, i) => (
               <button
-                key={act.title}
+                key={`${i}-${act.title}`}
                 type="button"
                 onClick={() => document.getElementById(`t5-act-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                 className="t5-btn shrink-0 whitespace-nowrap !rounded-lg font-semibold"
@@ -998,7 +1037,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
             ))}
           </nav>
           {detailActs.map((act, i) => (
-            <section key={act.title} id={`t5-act-${i}`} aria-label={act.title} className="scroll-mt-24">
+            <section key={`${i}-${act.title}`} id={`t5-act-${i}`} aria-label={act.title} className="scroll-mt-24">
               <h3 className="mb-4 mt-2 flex items-center gap-3">
                 <span className="h-px flex-1 bg-gradient-to-r from-transparent to-white/15" aria-hidden />
                 <span className="t5-label text-zinc-300">{act.title}</span>

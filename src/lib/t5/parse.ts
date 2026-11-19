@@ -59,11 +59,16 @@ export type T5BatchBody = Omit<T5Batch, 'raw'>;
 // любой хвост без скобок после меты: жадный (.+) берёт ДО последней «)».
 const SLOT_RE = /^P(\d{1,3})\s*[—–-]\s*(\S[^(]*?)\s*\((.+)\)\s*[^()]*$/u;
 const FIELD_RE = /^(THESIS|Canon|Spine|Stack|POS|NEG):(.*)$/u;
+/** поля тела вне FIELD_RE: THESIS-многострочность обязана останавливаться
+ * на них, иначе «Corridor:»/«Channel:» после THESIS молча уезжают в тезис */
+const BODY_FIELD_RE = /^(Corridor|Channel|Y-card):/u;
 const ACT_TITLE_RE = /^(ACT\s+[IVX]+[^\n]*|EXP\s+OVERLAY[^\n]*)$/u;
 const RATING_RE = /^(PG-13|R\+|R|X|XXX)$/u;
 const POSE_RE = /^PL\d{1,3}$/u;
 const PALETTE_RE = /^P\d{1,3}_.+$/u;
 const GENRE_RE = /^(OC|NICHE|VOLT|EXQUISITE|EXP)$/u;
+/** Corridor: A|B|A+B|— ; «A + B»/дефисы нормализуются (контракт gates.py v1.16.0) */
+const CORRIDOR_BODY_RE = /^Corridor:\s*(A\s*\+\s*B|A\+B|A|B|—|–|-)\s*$/u;
 
 function isActDelimiter(line: string): boolean {
   const t = line.trim();
@@ -113,8 +118,11 @@ export function parseSlotHeader(rawMeta: string): SlotHeader {
       pose = clean;
       continue;
     }
-    // Y-first (camera.json 1.13.0): карта Y## в шапке слота рядом с PL
-    if (yCard === null && /^Y\d{1,2}$/u.test(clean)) {
+    // Y-first (camera.json 1.13.0): карта Y## в шапке слота рядом с PL.
+    // 2026-11-20: {1,3} — серия дошла до Y521 (camera 1.16.0); {1,2} резал
+    // трёхзначные id до Y51 — чип подтягивал ЧУЖУЮ карту и копировал не то
+    // вплетение (урок T5-26: «Y-чип прилавка резал 3-значные карты»).
+    if (yCard === null && /^Y\d{1,3}$/u.test(clean)) {
       yCard = clean;
       continue;
     }
@@ -130,7 +138,8 @@ export function parseSlotHeader(rawMeta: string): SlotHeader {
 
 function extractExpMarker(thesis: string | null): { letter: string | null; half: string | null } {
   if (!thesis) return { letter: null, half: null };
-  const m = thesis.match(/^EXP\s+([α-ω])\s*[-–]\s*([AB])\b/u);
+  // 2026-11-20: длинное тире в классе — «EXP α — A: …» парсилось как null
+  const m = thesis.match(/^EXP\s+([α-ω])\s*[-–—]\s*([AB])\b/u);
   if (!m) return { letter: null, half: null };
   return { letter: m[1], half: m[2] };
 }
@@ -234,6 +243,9 @@ export function parseBatch(raw: string): T5Batch {
       currentField = null;
       const id = `P${slotM[1]}`;
       const header = parseSlotHeader(slotM[3].trim());
+      // ⚗ может стоять и за скобкой — как gates.py (Slot.mark смотрит всю
+      // строку шапки, не только скобки; паритет прилавка и печи, 2026-11-20)
+      const experimental = header.experimental || /⚗/u.test(t);
       current = {
         id,
         position: Number.parseInt(slotM[1], 10),
@@ -247,6 +259,7 @@ export function parseBatch(raw: string): T5Batch {
         pos: '',
         neg: '',
         ...header,
+        experimental,
         corridor: null,
         channel: null,
         expLetter: null,
@@ -260,15 +273,18 @@ export function parseBatch(raw: string): T5Batch {
     if (!current) continue;
 
     // Y-first (camera.json 1.13.0): поле Y-card: в теле слота — как Corridor:/Channel:
-    const yCardM = t.match(/^Y-card:\s*(Y\d{1,2})/u);
+    // 2026-11-20: {1,3} + якорь конца слова — иначе «Y-card: Y513» парсилось
+    // как Y51 (жадные 2 цифры без границы) и чип копировал чужое вплетение.
+    const yCardM = t.match(/^Y-card:\s*(Y\d{1,3})\b/u);
     if (yCardM) {
       current.yCard = yCardM[1];
       continue;
     }
-    // коридор заявки (В31): Corridor: A|B|A+B|—
-    const corrM = t.match(/^Corridor:\s*(A\+B|A|B|—)/u);
+    // коридор заявки (В31): Corridor: A|B|A+B|—; «A + B»/дефисы нормализуем
+    const corrM = t.match(CORRIDOR_BODY_RE);
     if (corrM) {
-      current.corridor = corrM[1] === '—' ? null : corrM[1];
+      const raw = corrM[1].replace(/\s+/gu, '');
+      current.corridor = ['—', '–', '-'].includes(raw) ? null : raw;
       continue;
     }
     // канал доставки: полная строка Channel: до конца строки
@@ -284,7 +300,8 @@ export function parseBatch(raw: string): T5Batch {
       const rest = fieldM[2].trim();
       currentField = null;
       if (key === 'THESIS') {
-        // THESIS может быть многострочным
+        // THESIS может быть многострочным; на поля тела (Corridor:/Channel:/
+        // Y-card:) обязан останавливаться — иначе они молча уезжают в тезис
         let thesisText = rest;
         let j = i + 1;
         while (j < lines.length) {
@@ -294,14 +311,14 @@ export function parseBatch(raw: string): T5Batch {
             let k = j + 1;
             while (k < lines.length && lines[k].trim() === '') k++;
             const ahead = (lines[k] ?? '').trim();
-            if (FIELD_RE.test(ahead) || SLOT_RE.test(ahead) || isActTitle(lines, k) || isActDelimiter(lines[k] ?? '')) {
+            if (FIELD_RE.test(ahead) || BODY_FIELD_RE.test(ahead) || SLOT_RE.test(ahead) || isActTitle(lines, k) || isActDelimiter(lines[k] ?? '')) {
               j = k;
               break;
             }
             j = k;
             continue;
           }
-          if (FIELD_RE.test(nt) || SLOT_RE.test(nt) || isActTitle(lines, j) || isActDelimiter(rawLine)) break;
+          if (FIELD_RE.test(nt) || BODY_FIELD_RE.test(nt) || SLOT_RE.test(nt) || isActTitle(lines, j) || isActDelimiter(rawLine)) break;
           thesisText += `\n${nt}`;
           j++;
         }

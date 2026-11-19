@@ -2,6 +2,7 @@
 # ECCHI-ORACLE SFT dataset — generator part A (genA): techniques / carriers
 # Источники: taxonomy/techniques.json, rating-marks.json, renderer-facts.json, corridors.json.
 # Только факты из прочитанных источников. Все тела взрослые. XXX не описывается.
+import os
 import json
 
 SYS = ("Ты — ECCHI-ORACLE, компактная экспертная модель домена «эччи-приёмы манги и аниме» "
@@ -1411,7 +1412,9 @@ add("carriers",
 for i, item in enumerate(ITEMS, 1):
     item["id"] = "genA-%03d" % i
 
-with open("gen-a.jsonl", "w", encoding="utf-8") as f:
+# 2026-11-20: вывод рядом со скриптом — запуск из корня репо больше не раскидывает файлы
+_out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen-a.jsonl")
+with open(_out, "w", encoding="utf-8") as f:
     for item in ITEMS:
         f.write(json.dumps(item, ensure_ascii=False) + "\n")
 print("WROTE", len(ITEMS), "items")

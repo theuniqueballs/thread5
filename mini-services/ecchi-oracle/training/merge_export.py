@@ -31,7 +31,7 @@ def main():
     model.save_pretrained(args.out, safe_serialization=True)
     tokenizer.save_pretrained(args.out)
     print("MERGED ->", args.out)
-    print("Next: convert to GGUF (see export_gguf.md) or serve with vLLM/Ollama.")
+    print("Next: convert to GGUF (см. training/README.md, раздел «Экспорт в GGUF / Ollama») or serve with vLLM/Ollama.")
 
 
 if __name__ == "__main__":

@@ -49,10 +49,18 @@ def main():
     ap.add_argument("--lora-alpha", type=int, default=32)
     args = ap.parse_args()
 
+    # 2026-11-20: bitsandbytes требует CUDA — падать сразу и по-человечески
+    if not torch.cuda.is_available():
+        raise SystemExit("!! CUDA не найдена: QLoRA-тренировка требует GPU (bitsandbytes). "
+                         "Для CPU-проверки датасета используй eval_oracle.py --fallback.")
+
+    # 2026-11-20: compute-dtype по фактической поддержке GPU — жёсткий bf16
+    # на T4 (Colab-цель README) ронял bitsandbytes в CUDA-ошибку
+    compute_dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
     bnb = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16,
+        bnb_4bit_compute_dtype=compute_dtype,
         bnb_4bit_use_double_quant=True,
     )
     tokenizer = AutoTokenizer.from_pretrained(args.base, trust_remote_code=True)
@@ -106,7 +114,7 @@ def main():
     with open(os.path.join(args.out, "train_meta.json"), "w", encoding="utf-8") as f:
         json.dump({"base": args.base, "epochs": args.epochs, "lr": args.lr,
                    "lora_r": args.lora_r, "lora_alpha": args.lora_alpha,
-                   "max_len": args.max_len, "dataset": "ecchi-oracle v1 (420 examples)"}, f, ensure_ascii=False, indent=2)
+                   "max_len": args.max_len, "dataset": "ecchi-oracle (dataset/train.jsonl — см. stats.json)"}, f, ensure_ascii=False, indent=2)
     print("DONE ->", os.path.join(args.out, "adapter"))
 
 

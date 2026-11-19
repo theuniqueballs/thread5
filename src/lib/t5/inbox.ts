@@ -11,7 +11,7 @@
  *   3) некарантинные разбираются на артефакты/анатомию/камеру — писец ищет
  *      то, что автор не нашёл; журнал живёт на диске рядом с файлами.
  *
- * Хранение: thread5/inbox/ (gitignored) — meta.json + uploads/* + previews/*.
+ * Хранение: <T5_ROOT>/inbox/ (gitignored) — meta.json + uploads/* + previews/*.
  * Файлы хранятся ДО явной очистки (DELETE ?all=1 / ?ids=) — писец видит их
  * между сессиями; после разбора пачка убирается кнопками, чтобы не копилась.
  *
@@ -22,14 +22,20 @@
  *     по слотам подряд, без контент-матчинга;
  *   - meta.json хранится отсортированным (батч ↓, слот ↑).
  *
+ * 2026-11-20: инбокс переехал за контентом (T5_ROOT — resolver store.ts);
+ * все операции «прочитал→изменил→записал» сериализуются withMetaLock —
+ * параллельные циклы триажа/анализа больше не затирают записи друг друга;
+ * слоты — до P999 (парсер батчей давно трёхзначный).
+ *
  * SDK: z-ai-web-dev-sdk ТОЛЬКО здесь (backend).
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { randomBytes } from 'node:crypto';
 import { parseBatch } from '@/lib/t5/parse';
+import { T5_ROOT } from '@/lib/t5/store';
 
-const INBOX_DIR = path.join(process.cwd(), 'thread5', 'inbox');
+const INBOX_DIR = path.join(T5_ROOT, 'inbox');
 const UPLOADS_DIR = path.join(INBOX_DIR, 'uploads');
 const PREVIEWS_DIR = path.join(INBOX_DIR, 'previews');
 const META_PATH = path.join(INBOX_DIR, 'meta.json');
@@ -71,10 +77,10 @@ export const MAX_BATCH_FILES = 40;
 
 /* ── слот-маппинг: из имени файла и свободного текста в канонический тег ── */
 
-/** «P07», «p4», «..._P07.webp» → номер слота 1..99. */
-const SLOT_P_RE = /(?:^|[^a-z0-9])P(\d{1,2})(?![a-z0-9])/iu;
+/** «P07», «p4», «..._P07.webp» → номер слота 1..999. */
+const SLOT_P_RE = /(?:^|[^a-z0-9])P(\d{1,3})(?![a-z0-9])/iu;
 /** «07 - name.webp», «04_name.png» → номер слота. */
-const LEADING_NUM_RE = /^(\d{1,2})(?:[\s_.-]|$)/u;
+const LEADING_NUM_RE = /^(\d{1,3})(?:[\s_.-]|$)/u;
 /** «T5-18», «t5-07» → код батча. */
 const BATCH_CODE_RE = /T5-(\d{1,3})/iu;
 
@@ -87,7 +93,7 @@ export function parseSlotFromName(name: string): string | null {
   const m = SLOT_P_RE.exec(name) ?? LEADING_NUM_RE.exec(name);
   if (!m) return null;
   const n = Number.parseInt(m[1], 10);
-  if (!Number.isInteger(n) || n < 1 || n > 99) return null;
+  if (!Number.isInteger(n) || n < 1 || n > 999) return null;
   return `P${pad2(n)}`;
 }
 
@@ -114,10 +120,10 @@ export function normalizeTag(raw: string | null | undefined): CanonicalTag {
   let slot: string | null = null;
   if (slotM) {
     const n = Number.parseInt(slotM[1], 10);
-    if (Number.isInteger(n) && n >= 1 && n <= 99) slot = `P${pad2(n)}`;
-  } else if (/^(?:СЛОТ\s*)?\d{1,2}$/iu.test(text)) {
+    if (Number.isInteger(n) && n >= 1 && n <= 999) slot = `P${pad2(n)}`;
+  } else if (/^(?:СЛОТ\s*)?\d{1,3}$/iu.test(text)) {
     const n = Number.parseInt(text.replace(/\D+/gu, ''), 10);
-    if (Number.isInteger(n) && n >= 1 && n <= 99) slot = `P${pad2(n)}`;
+    if (Number.isInteger(n) && n >= 1 && n <= 999) slot = `P${pad2(n)}`;
   }
   if (batch || slot) {
     return { tag: [batch, slot].filter(Boolean).join(' '), batch, slot };
@@ -125,17 +131,25 @@ export function normalizeTag(raw: string | null | undefined): CanonicalTag {
   return { tag: text, batch: null, slot: null }; // свободная метка без слота
 }
 
-/** Порядок карточек: батч ↓, слот ↑, внутри — новее выше. */
+/** Порядок карточек: батч ↓ (по номеру, не строке — T5-9 < T5-10), слот ↑, внутри — новее выше. */
 function slotNum(item: Pick<InboxItem, 'slot'>): number {
   const m = /P(\d{1,3})/iu.exec(item.slot ?? '');
-  return m ? Number.parseInt(m[1], 10) : 999;
+  return m ? Number.parseInt(m[1], 10) : 9999;
+}
+
+function batchNum(item: Pick<InboxItem, 'batch'>): number {
+  const m = /T5-(\d{1,3})/iu.exec(item.batch ?? '');
+  return m ? Number.parseInt(m[1], 10) : 0;
 }
 
 export function sortItems(items: InboxItem[]): InboxItem[] {
   return [...items].sort((a, b) => {
-    const ba = a.batch ?? '';
-    const bb = b.batch ?? '';
-    if (ba !== bb) return ba < bb ? 1 : -1; // T5-18 выше T5-17
+    const hasA = a.batch ? 1 : 0;
+    const hasB = b.batch ? 1 : 0;
+    if (hasA !== hasB) return hasA ? -1 : 1; // без тега — в конец
+    const na = batchNum(a);
+    const nb = batchNum(b);
+    if (na !== nb) return nb - na; // T5-18 выше T5-17, T5-100 выше T5-99
     const sa = slotNum(a);
     const sb = slotNum(b);
     if (sa !== sb) return sa - sb;
@@ -223,7 +237,7 @@ async function visionJsonRetry(args: VisionArgs): Promise<string | null> {
   throw lastErr instanceof Error ? lastErr : new Error(String(lastErr));
 }
 
-/* ── мета-журнал (атомарная запись: tmp → rename) ──────────────────────── */
+/* ── мета-журнал (атомарная запись: tmp → rename + мьютекс на RMW) ─────── */
 
 export async function readMeta(): Promise<InboxItem[]> {
   try {
@@ -240,6 +254,22 @@ export async function writeMeta(items: InboxItem[]): Promise<void> {
   const tmp = `${META_PATH}.tmp`;
   await fs.writeFile(tmp, JSON.stringify(sortItems(items), null, 1), 'utf8');
   await fs.rename(tmp, META_PATH);
+}
+
+/**
+ * Мьютекс read-modify-write журнала: триаж/анализ/загрузка ходят в meta.json
+ * конкурентно (клиент крутит циклы; вкладка пережила перемонтирование) —
+ * без сериализации поздний writeMeta затирает чужие записи (2026-11-20).
+ */
+let metaLockTail: Promise<unknown> = Promise.resolve();
+
+export function withMetaLock<T>(fn: () => Promise<T>): Promise<T> {
+  const run = metaLockTail.then(fn, fn);
+  metaLockTail = run.then(
+    () => undefined,
+    () => undefined,
+  );
+  return run;
 }
 
 /* ── X-фильтр-триаж: label-only, fail-closed ───────────────────────────── */
@@ -304,7 +334,7 @@ const ANALYSIS_SYSTEM =
 async function slotContext(batch: string | null, slot: string | null): Promise<string> {
   if (!batch || !slot) return '';
   try {
-    const raw = await fs.readFile(path.join(process.cwd(), 'thread5', 'batches', `${batch}.md`), 'utf8');
+    const raw = await fs.readFile(path.join(T5_ROOT, 'batches', `${batch}.md`), 'utf8');
     const parsed = parseBatch(raw);
     const s = parsed.slots.find((x) => x.id.toLowerCase() === slot.toLowerCase());
     if (!s) return '';
@@ -559,12 +589,13 @@ export async function deleteAll(): Promise<DeleteReport> {
 /* ── служебное ─────────────────────────────────────────────────────────── */
 
 export function resolveUploadPath(file: string): string | null {
-  if (!/^[\w.-]+$/u.test(file)) return null; // только имена внутри uploads/
+  // только имена внутри uploads/: без «..», без разделителей, без скрытых
+  if (!/^[\w][\w.-]*$/u.test(file) || file.includes('..')) return null;
   return path.join(UPLOADS_DIR, file);
 }
 
 export function resolvePreviewPath(file: string): string | null {
-  if (!/^[\w.-]+\.webp$/u.test(file)) return null;
+  if (!/^[\w][\w.-]*\.webp$/u.test(file) || file.includes('..')) return null;
   return path.join(PREVIEWS_DIR, file);
 }
 

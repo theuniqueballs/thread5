@@ -9,7 +9,9 @@ import type {
 } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 1000000
+// 2026-11-20: 1 000 000 мс держал закрытые тосты в памяти ~17 минут;
+// 5 с достаточно, чтобы анимация успела доехать (shadcn-классика)
+const TOAST_REMOVE_DELAY = 5000
 
 type ToasterToast = ToastProps & {
   id: string

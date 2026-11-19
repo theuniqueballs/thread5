@@ -11,23 +11,36 @@ SEED = 1337
 
 def main():
     items, seen_hashes, dupes = [], set(), 0
+    missing, broken = [], 0
     for part in PARTS:
         path = os.path.join(HERE, part)
         if not os.path.exists(path):
             print(f"!! missing part: {part}")
+            missing.append(part)
             continue
-        for line in open(path, encoding="utf-8"):
-            line = line.strip()
-            if not line:
-                continue
-            d = json.loads(line)
-            # dedupe by (user, assistant-first-200) hash
-            key = hashlib.md5((d["messages"][1]["content"] + "|" + d["messages"][2]["content"][:200]).encode()).hexdigest()
-            if key in seen_hashes:
-                dupes += 1
-                continue
-            seen_hashes.add(key)
-            items.append(d)
+        with open(path, encoding="utf-8") as fh:  # 2026-11-20: контекст-менеджер
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    d = json.loads(line)
+                    key = hashlib.md5((d["messages"][1]["content"] + "|" + d["messages"][2]["content"][:200]).encode()).hexdigest()
+                except (json.JSONDecodeError, KeyError, IndexError, TypeError):
+                    # 2026-11-20: битая строка не должна валить всю сборку молча
+                    broken += 1
+                    continue
+                if key in seen_hashes:
+                    dupes += 1
+                    continue
+                seen_hashes.add(key)
+                items.append(d)
+    if missing:
+        # 2026-11-20: явный отказ вместо «тихо построила датасет меньше»
+        raise SystemExit(
+            f"!! отсутствуют части датасета: {', '.join(missing)} — "
+            f"запусти генераторы (gen_a.py…gen_e.py) рядом с build.py"
+        )
 
     # global renumbering with source-prefixed ids kept
     random.seed(SEED)
@@ -59,10 +72,11 @@ def main():
         "train": len(train),
         "val": len(val),
         "dupes_removed": dupes,
+        "broken_lines_skipped": broken,
         "by_category": {c: len(v) for c, v in sorted(by_cat.items())},
         "seed": SEED,
         "val_fraction": VAL_FRACTION,
-        "system_prompt_len_chars": len(items[0]["messages"][0]["content"]),
+        "system_prompt_len_chars": len(items[0]["messages"][0]["content"]) if items else 0,
     }
     with open(os.path.join(HERE, "stats.json"), "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=2)

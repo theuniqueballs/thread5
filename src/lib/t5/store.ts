@@ -1,6 +1,17 @@
 /**
- * THREAD 5 — доступ к памяти (файлы репо thread5/).
+ * THREAD 5 — доступ к памяти (файлы контент-корпуса).
  * Прилавок и API читают одни и те же файлы; никакого другого состояния нет.
+ *
+ * Раскладка (инженерный апгрейд 2026-11-20): контент живёт в КОРНЕ репо
+ * (batches/ specs/ verdicts/ docs/ special/ — сюда указывают хук, гейты и
+ * квитанции с 2026-11-17, коммит 49313c2). Дубль в thread5/ был заморожен
+ * на эре T5-24 (camera.json 1.14.0, 37 карт) и удалён: прилавок читал
+ * труп и не видел T5-25/T5-26, SO-07…10 и 3-значные Y-карты.
+ *
+ * Порядок разрешения T5_ROOT (старые раскладки продолжают работать):
+ *   1. env T5_ROOT — явное указание (деплой standalone-сборки);
+ *   2. cwd с batches/ — каноничная корневая раскладка;
+ *   3. cwd/thread5 — легаси (app-репо + отдельный клон контента).
  *
  * Кэш: всё, что дорого читать+парсить, живёт в памяти процесса с
  * mtime-инвалидацией. Алгоритм один: stat файла → если mtime/size не
@@ -8,12 +19,22 @@
  * Списки (listBatches/listSpecial) не читают файлы вовсе, пока сигнатура
  * набора (имя+mtime+size каждого файла) совпадает — только readdir + stat.
  */
+import { existsSync } from 'node:fs';
 import { readFile, readdir, stat, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { parseBatch, type T5Batch } from './parse';
 import type { BatchListItem, StoredVerdict } from './types';
 
-export const T5_ROOT = path.join(process.cwd(), 'thread5');
+/** Где живёт контент-корпус (см. комментарий модуля). */
+export function resolveT5Root(): string {
+  const env = process.env.T5_ROOT;
+  if (env && env.trim()) return path.resolve(env.trim());
+  const cwd = process.cwd();
+  if (existsSync(path.join(cwd, 'batches'))) return cwd; // каноничная раскладка
+  return path.join(cwd, 'thread5'); // легаси: контент-клон рядом с app-репо
+}
+
+export const T5_ROOT = resolveT5Root();
 export const BATCHES_DIR = path.join(T5_ROOT, 'batches');
 export const VERDICTS_DIR = path.join(T5_ROOT, 'verdicts');
 export const DOCS_DIR = path.join(T5_ROOT, 'docs');
@@ -23,6 +44,32 @@ const SLUG_RE = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u;
 
 export function isSafeSlug(slug: string): boolean {
   return SLUG_RE.test(slug);
+}
+
+/**
+ * Естественный порядок полки: «T5-9» < «T5-10» < «T5-100» (лексикографическая
+ * сортировка ломается на разных разрядах номеров — инцидент прилавка).
+ * Терпит хвост «.md» и суффикс R: работает и для слагов, и для имён файлов.
+ */
+const SHELF_NUM_RE = /^(T5|SO)-(\d+)(R)?(?=\.|$)/iu;
+
+export function shelfOrder(a: string, b: string): number {
+  const ma = SHELF_NUM_RE.exec(a);
+  const mb = SHELF_NUM_RE.exec(b);
+  if (ma && mb) {
+    if (ma[1].toUpperCase() !== mb[1].toUpperCase()) return a.localeCompare(b);
+    const na = Number.parseInt(ma[2], 10);
+    const nb = Number.parseInt(mb[2], 10);
+    if (na !== nb) return na - nb;
+    if (!!ma[3] !== !!mb[3]) return ma[3] ? 1 : -1; // T5-05R после T5-05
+  }
+  return a.localeCompare(b);
+}
+
+/** числовой ключ батча для сортировок («T5-10» → 10; нет кода → -1) */
+export function batchKey(slug: string | null | undefined): number {
+  const m = SHELF_NUM_RE.exec((slug ?? '').trim());
+  return m ? Number.parseInt(m[2], 10) : -1;
 }
 
 /* ── mtime-кэш: общие механики ─────────────────────────────────────── */
@@ -104,7 +151,7 @@ async function listSource(source: 'batches' | 'special'): Promise<BatchListItem[
   try {
     files = (await readdir(dir))
       .filter((f) => f.endsWith('.md') && f.startsWith(prefix) && !f.includes('.gate-report.'))
-      .sort();
+      .sort(shelfOrder); // естественный порядок: T5-9 < T5-10 < T5-100
   } catch {
     return []; // папки может не быть (friend-pass) — полка просто пуста
   }
@@ -246,7 +293,8 @@ export async function saveVerdict(slug: string, text: string): Promise<StoredVer
   if (!isSafeSlug(slug)) return null;
   const now = new Date();
   const pad = (n: number) => String(n).padStart(2, '0');
-  const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
+  // секунды в штампе: два вердикта в одну минуту больше не затирают друг друга
+  const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
   const file = `${slug}-verdict-${stamp}.md`;
   const header = `# Вердикт ${slug} — ${now.toISOString()}\n# (источник: прилавок)\n\n`;
   const body = text.trim() + '\n';
@@ -288,6 +336,28 @@ const DOC_PATHS: Partial<Record<DocName, string>> = {
 
 export function isDocName(name: string): name is DocName {
   return (DOC_WHITELIST as readonly string[]).includes(name);
+}
+
+/* ── спеки (specs/*.json) с mtime-кэшем: Y-чип и будущие потребители ──── */
+
+const SPEC_RE = /^specs\/[a-z0-9][a-z0-9.-]*\.json$/iu;
+const specCache = new Map<string, CacheEntry<unknown>>();
+
+/** JSON-спека из контент-корпуса с mtime-кэшем (camera.json — 521+ карт). */
+export async function readSpecJson<T>(rel: string): Promise<T | null> {
+  if (!SPEC_RE.test(rel)) return null; // только белый вид «specs/имя.json»
+  const p = path.join(T5_ROOT, rel);
+  try {
+    const s = await statFile(p);
+    const key = freshnessKey(s);
+    const hit = specCache.get(rel);
+    if (hit && hit.key === key) return hit.value as T;
+    const value = JSON.parse(await readFile(p, 'utf8')) as T;
+    specCache.set(rel, { key, value });
+    return value;
+  } catch {
+    return null;
+  }
 }
 
 export async function readDoc(name: string): Promise<string | null> {

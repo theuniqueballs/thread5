@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { listVerdicts, saveVerdict } from '@/lib/t5/store';
+import { writeAllowed, writeDenied } from '@/lib/t5/guard';
 
 const CACHE_CONTROL = 'public, max-age=5, stale-while-revalidate=30';
 
@@ -15,6 +16,7 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  if (!writeAllowed(req)) return writeDenied();
   let body: unknown;
   try {
     body = await req.json();
