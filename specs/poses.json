@@ -1,5 +1,5 @@
 {
- "version": "1.17.0",
+ "version": "1.18.0",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
@@ -10126,6 +10126,159 @@
    "first_use": "T5-24",
    "combo": true,
    "card": "Y34"
+  },
+  {
+   "id": "PL569",
+   "name": "Kelp-Curtain Part",
+   "sd": "both palms raising the wet kelp-curtain apart overhead, the strands' drag bowing the wrists outward, one frond crossing the chest line as it parts",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "source": "T5-26 EXP (новая карта Y513, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y513"
+  },
+  {
+   "id": "PL572",
+   "name": "Steam-Veil Press",
+   "sd": "leaning into the cold vent's lift, both palms pressing the steam-veil flat, the veil dragging thin across the chest",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "source": "T5-26 EXP (новая карта Y516, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y516"
+  },
+  {
+   "id": "PL571",
+   "name": "Tide-Net Rope Haul",
+   "sd": "both arms hauling the tide-net's rope across the chest, the rope's bite printing the forearms, the knot coming short against the sternum",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM01"
+   ],
+   "source": "T5-26 EXP (новая карта Y515, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y515"
+  },
+  {
+   "id": "PL577",
+   "name": "Corset-Lace Haul",
+   "sd": "palms sliding the corset-bone's lace through, one haul short of closed, the lacing's tension bowing the elbows wide",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "source": "T5-26 EXP (новая карта Y521, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y521"
+  },
+  {
+   "id": "PL573",
+   "name": "Veil-Pin Stone",
+   "sd": "one hand pinning the drifting veil to the stone, the other combing the current's grain, the veil's edge crossing the collarbones",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "source": "T5-26 EXP (новая карта Y517, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y517"
+  },
+  {
+   "id": "PL575",
+   "name": "Ink-Veil Catch",
+   "sd": "catching the ink-veil mid-drift with both palms cupped, ink pooling in the hollows, the pool's weight swinging the wrists low across the chest",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM06_side"
+   ],
+   "source": "T5-26 EXP (новая карта Y519, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y519"
+  },
+  {
+   "id": "PL574",
+   "name": "Oyster-Hoop Turn",
+   "sd": "turning the oyster-bed's iron hoop up from the silt, the hoop's rim pressing the chest line at the turn, pearls ticking inside the rim",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "source": "T5-26 EXP (новая карта Y518, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y518"
+  },
+  {
+   "id": "PL576",
+   "name": "Bell-Rope Arc",
+   "sd": "backing into the bell-rope's arc, the rope crossing the chest diagonally, the bell's first swing pulling the shoulder after it",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "source": "T5-26 EXP (новая карта Y520, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y520"
+  },
+  {
+   "id": "PL570",
+   "name": "Shell-Comb Stroke",
+   "sd": "one palm braced on the shell-comb's spine, drawing the comb through the drifting ink-silk across the chest line, the stroke's tension arcing the wrist",
+   "category": "DYNAMIC",
+   "risk": "MID",
+   "family": "y_card_build",
+   "use": "V",
+   "preferred_cams": [
+    "CAM06_side"
+   ],
+   "source": "T5-26 EXP (новая карта Y514, заказ автора)",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y514"
   }
  ],
  "family_counts": {
