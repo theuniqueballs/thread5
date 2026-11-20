@@ -16,6 +16,8 @@ tests/unit/oracle.test.ts проверяет канон против них же
 Команды:
   status [--url URL]                    пульс сервиса (+ режимы органов)
   window [--for T5-NN] [--depth N]      окно ротации Y-карт по корпусу
+  pool --for T5-NN [--depth N] [--ids]  активный пул Y (аудит Коула R5):
+                                       сколько карт реально доступно жребию
   draw --for T5-NN [--oc N] [--main N] [--exp N] [--depth N] [--md]
                                        жребий карт на партию (детерминирован)
   heat BATCH.md [--service URL]        жар партии (R+/коридоры/свежесть/каналы;
@@ -44,6 +46,7 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "tools"))
 
 import gates  # noqa: E402  (канонический парсер батчей печи)
+import t5delivery  # noqa: E402  (единый индекс сдачи — аудит 2026-11-20 P0-06)
 
 # кириллица в cp1251-пайпе (Windows-консоль) не должна ронять печать — как gates.py
 try:
@@ -109,13 +112,14 @@ def load_camera():
     return data.get("version", "—"), cards
 
 
-def corpus_batches():
-    """Партии корпуса: [(no, path)] по номеру; канонический парсер — gates."""
+def corpus_batches(batch_dir=None):
+    """Партии корпуса: [(no, path)] по номеру; канонический парсер — gates.
+    2026-11-21: «кто сдан» — t5delivery (индекс specs/delivery-index.json),
+    не локальный glob: черновик/ready не попадают в корпус жребия (двойной
+    аудит 2026-11-20, Коул §6.3 + P0-06). batch_dir — для тестов/векторов."""
+    root = REPO / "batches" if batch_dir is None else Path(batch_dir)
     out = []
-    for p in (ROOT / "batches").glob("T5-*.md"):
-        if p.name.endswith(".gate-report.md"):
-            continue
-        no = gates.batch_number(p)
+    for no, p in t5delivery.delivered_batches(batch_dir=root):
         if no and no > 0:
             out.append((no, p))
     out.sort(key=lambda x: x[0])
@@ -458,6 +462,65 @@ def cmd_window(args) -> int:
     return 0
 
 
+def active_pool(cards, usage, batch_no, window_depth=3, window_poses=None):
+    """Активный пул — ТОЧНОЕ зеркало фильтра usable из draw_constellation
+    (аудит Коула R5: писец видит реальное пространство выбора жребия):
+    карты с валидным id/паттерном, не в окне ротации, не на позе окна.
+    Возвращает (usable, n_window, n_pose_banned)."""
+    past_nos = sorted({u["lastBatch"] for u in usage.values() if u["lastBatch"] and u["lastBatch"] < batch_no})
+    window_nos = set(past_nos[-window_depth:] if window_depth > 0 else set())
+
+    def in_window(cid):
+        u = usage.get(cid)
+        return bool(u and u["lastBatch"] in window_nos)
+
+    pose_window = set(window_poses or [])
+
+    def pose_banned(c):
+        return bool(pose_window and c.get("builtFrom") and c["builtFrom"] in pose_window)
+
+    n_win = sum(1 for c in cards if in_window(c["id"]))
+    n_pose = sum(1 for c in cards if pose_banned(c))
+    usable = [c for c in cards
+              if c["id"] and card_num(c["id"]) > 0 and c["pattern"].strip()
+              and not in_window(c["id"]) and not pose_banned(c)]
+    return usable, n_win, n_pose
+
+
+def cmd_pool(args) -> int:
+    """Активный пул Y-карт для партии: сколько карт РЕАЛЬНО доступно
+    жребию после окна ротации и запрета поз (аудит Коула R5 «лотерея из
+    500»: писец не видел пространства выбора). Target — из
+    specs/active-pools.json; пул < target = окно жрёт слишком много."""
+    batch_no = parse_for(args.for_batch)
+    if batch_no <= 0:
+        print("нужен номер партии: --for T5-28")
+        return 1
+    version, cards = load_camera()
+    if not cards:
+        print("specs/camera.json не читается")
+        return 3
+    pools_spec = {}
+    try:
+        pools_spec = json.loads((ROOT / "specs/active-pools.json").read_text(encoding="utf-8"))
+    except Exception:
+        pass
+    target = int((pools_spec.get("pools") or {}).get("y_cards", {}).get("target") or 60)
+
+    usage = build_usage(batch_no)
+    window_poses = build_pose_window(batch_no, args.depth)
+    usable, n_win, n_pose = active_pool(cards, usage, batch_no, args.depth, window_poses)
+    health = "ЗДОРОВ" if len(usable) >= target else "ТУГО (окно жрёт много — сигнал SOL'у)"
+    print(f"=== АКТИВНЫЙ ПУЛ Y · T5-{batch_no} · реестр camera {version} ===")
+    print(f"всего карт: {len(cards)} · окно ротации ({args.depth} партий) съело: {n_win} · запрет поз съел: {n_pose}")
+    print(f"АКТИВНО жребию: {len(usable)} карт · target {target} · {health}")
+    if usable and args.ids:
+        print("карты: " + " ".join(c["id"] for c in usable))
+    print("квитанция в бриф: 'Активный пул Y: %d из %d (окно −%d, позы −%d, target %d)'" % (len(usable), len(cards), n_win, n_pose, target))
+    print("long tail (весь реестр) — только режим LAB по приказу автора (specs/active-pools.json)")
+    return 0
+
+
 def cmd_draw(args) -> int:
     batch_no = parse_for(args.for_batch)
     if batch_no <= 0:
@@ -486,6 +549,14 @@ def cmd_draw(args) -> int:
         return 0
     print(f"=== ЖРЕБИЙ · T5-{batch_no} · seed {draw['seed']} · реестр camera {version} ===")
     print(f"окно съело: {draw['windowExcluded']} карт · позы окна съели: {draw['windowPosesExcluded']} · пул иссяк на: {draw['shortfall']} слотах")
+    try:
+        pools_spec = json.loads((ROOT / "specs/active-pools.json").read_text(encoding="utf-8"))
+        y_target = int((pools_spec.get("pools") or {}).get("y_cards", {}).get("target") or 0)
+        if y_target:
+            usable, _nw, _np = active_pool(cards, usage, batch_no, args.depth, window_poses)
+            print(f"активный пул Y: {len(usable)} карт (target {y_target}, specs/active-pools.json — аудит Коула R5; детали: oracle.py pool --for T5-{batch_no})")
+    except Exception:
+        pass
     for title, group in (("OC", draw["oc"]), ("МЕЙН", draw["main"]), ("EXP", draw["exp"])):
         ids = " ".join(c["id"] for c in group)
         print(f"{title} ({len(group)}): {ids}")
@@ -611,6 +682,11 @@ def main() -> int:
     p_window.add_argument("--for", dest="for_batch", default="", help="номер партии (чьё прошлое смотрим)")
     p_window.add_argument("--depth", type=int, default=3, help="глубина окна (0 — выключить)")
 
+    p_pool = sub.add_parser("pool", help="активный пул Y-карт (аудит Коула R5)")
+    p_pool.add_argument("--for", dest="for_batch", required=True, help="номер партии: T5-28")
+    p_pool.add_argument("--depth", type=int, default=3, help="глубина окна ротации")
+    p_pool.add_argument("--ids", action="store_true", help="печатать id карт пула")
+
     p_draw = sub.add_parser("draw", help="жребий карт на партию")
     p_draw.add_argument("--for", dest="for_batch", required=True, help="номер партии: T5-27")
     p_draw.add_argument("--oc", type=int, default=3)
@@ -633,6 +709,8 @@ def main() -> int:
         return cmd_status(args)
     if args.cmd == "window":
         return cmd_window(args)
+    if args.cmd == "pool":
+        return cmd_pool(args)
     if args.cmd == "draw":
         return cmd_draw(args)
     if args.cmd == "heat":

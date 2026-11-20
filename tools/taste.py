@@ -4,19 +4,23 @@
 THREAD 5 — вкус → план (директива роста автора 2026-11-01, идея 8).
 
 Вердикт говорит «любимые слоты: P16, P20, P22» — и на этом связь
-обрывалась. Скрипт читает вердикт-квитанции (структурированные
-«Сработало»-строки LIVING-NOTES), сопоставляет с метаданными слотов
-(жанр/кин/тир/палитра) и движками батчей (01-sol), агрегирует паттерны
-вкуса и выдаёт ВКУС-БРИФ — раздел для брифа следующего батча.
-TASTE.md перестаёт быть мёртвым архивом: это машинный вход SOL.
+обрывалась. Скрипт читает вербатимы вердиктов и выдаёт ВКУС-БРИФ —
+раздел для брифа следующего батча. TASTE.md перестаёт быть мёртвым
+архивом: это машинный вход SOL.
 
-Уровень 1 (этот скрипт): метаданные вердикт-квитанций.
+Уровень 0 (с 2026-11-21, двойной аудит P1-02): СТРУКТУРИРОВАННЫЕ
+вердикты verdicts/T5-NN.json — канонический вход. Парсинг Markdown
+(«Сработало»-строки LIVING-NOTES) — фолбэк для батчей без JSON: регексы
+чувствительны к оформлению, поэтому новая эра пишет JSON, а LIVING-NOTES
+остаётся человекочитаемой сводкой (источник — JSON, не наоборот).
+
+Уровень 1: метаданные вердикт-квитанций (жанр/кин/тир/палитра).
 Уровень 2 (после пилота story-cards T5-10): ходы/свидетели/каналы из
-карточек историй + разбор нелюбимого (вербатимы разнородны для машины).
+карточек историй + разбор нелюбимого.
 
 Прогон:
     python3 tools/taste.py [--depth N] [--out path]
-По умолчанию: последние 3 вердикт-секции, вывод в stdout.
+По умолчанию: последние 3 вердикта, вывод в stdout.
 """
 
 import json
@@ -28,6 +32,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "docs/LIVING-NOTES.md"
+VERDICTS_DIR = ROOT / "verdicts"
 
 GENRES = {"OC", "NICHE", "VOLT", "EXQUISITE", "EXP"}
 
@@ -76,6 +81,47 @@ def parse_loved():
     return out
 
 
+def parse_json_verdicts():
+    """Уровень 0 (двойной аудит 2026-11-20, P1-02): вердикты в
+    структурированной форме verdicts/T5-NN.json — канонический вход,
+    не зависящий от оформления Markdown. Возвращает
+    ([(batch, sid, meta)], {batch: {json-поля}}).
+
+    Схема t5-verdict/1: loved[] со слотами и метой (genre/kin/rating/
+    palette), overall, lessons (В-уроки), hypothesis_hits. Батч с JSON
+    полностью заменяет свою Markdown-секцию (двойного счёта нет)."""
+    loved, extra = [], {}
+    if not VERDICTS_DIR.exists():
+        return loved, extra
+    for p in sorted(VERDICTS_DIR.glob("T5-*.json")):
+        try:
+            v = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            continue  # битый JSON — фолбэк на Markdown той же партии
+        batch = v.get("batch") or p.stem
+        rows = []
+        for row in v.get("loved") or []:
+            sid = row.get("slot")
+            if not sid:
+                continue
+            meta = {
+                "genre": row.get("genre") or "",
+                "kin": row.get("kin") or "",
+                "rating": row.get("rating") or "",
+                "palette": row.get("palette") or "",
+            }
+            rows.append((batch, sid, meta))
+        loved.extend(rows)
+        extra[batch] = {
+            "overall": (v.get("overall") or {}).get("score", ""),
+            "file": p.name,
+            "lessons": len(v.get("lessons") or []),
+            "ok_with_issues": len(v.get("ok_with_issues") or []),
+            "loved_count": len(rows),
+        }
+    return loved, extra
+
+
 def engines_for(batches):
     """{batch: имя движка} из 01-sol артефактов."""
     out = {}
@@ -101,7 +147,14 @@ def take_recent(batches, depth):
 
 
 def brief(depth=3, out_path=None):
-    loved_all = parse_loved()
+    # уровень 0: структурированные JSON-вердикты — канон (P1-02);
+    # Markdown «Сработало» — фолбэк для батчей без JSON (без двойного счёта:
+    # батч с JSON исключается из MD-выборки целиком)
+    json_loved, json_extra = parse_json_verdicts()
+    json_batches = {b for b, *_ in json_loved} | set(json_extra)
+    md_loved = [(b, s, m) for b, s, m in parse_loved() if b not in json_batches]
+    loved_all = md_loved + json_loved
+
     batches = []
     for b, *_ in loved_all:
         if b not in batches:
@@ -110,18 +163,24 @@ def brief(depth=3, out_path=None):
     loved = [(b, s, m) for b, s, m in loved_all if b in recent]
 
     if not loved:
-        print("ВКУС-БРИФ: структурированных «Сработало»-квитанций не найдено")
+        print("ВКУС-БРИФ: вердиктов не найдено (ни JSON, ни «Сработало»-квитанций)")
         return 1
 
     engines = engines_for(recent)
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
+    json_in_window = [b for b in recent if b in json_extra]
+    src_line = (
+        f"verdicts/*.json ({', '.join(json_in_window)})" if json_in_window else "—"
+    )
+
     lines = [
-        "# ВКУС-БРИФ (tools/taste.py v1.0.0) — машинный вход SOL",
+        "# ВКУС-БРИФ (tools/taste.py v1.1.0) — машинный вход SOL",
         "",
         f"- сгенерирован: {now}",
-        f"- источник: docs/LIVING-NOTES.md (структурированные «Сработало»-квитанции)",
-        f"- глубина: {depth} вердикт-секций ({', '.join(recent)}) · любимых слотов: {len(loved)}",
+        f"- источник-канон: verdicts/T5-NN.json (схема t5-verdict/1): {src_line}",
+        f"- фолбэк: docs/LIVING-NOTES.md «Сработало»-квитанции (батчи без JSON)",
+        f"- глубина: {depth} вердиктов ({', '.join(recent)}) · любимых слотов: {len(loved)}",
         "",
         "## Любимое автора — подтверждено вердиктами",
         "",
@@ -151,13 +210,25 @@ def brief(depth=3, out_path=None):
         f"- палитры любимых слотов: {counter('palette')}",
         f"- движки любимых слотов: {eng_s}",
         "",
+        "## Итоговые оценки партий (JSON-вердикты)",
+        "",
+    ]
+    for b in recent:
+        if b in json_extra:
+            e = json_extra[b]
+            lines.append(
+                f"- {b}: {e['overall'] or '—'} · любимых {e['loved_count']} · "
+                f"уроков {e['lessons']} · с-оговорками {e['ok_with_issues']} ({e['file']})"
+            )
+    lines += [
+        "",
         "## Как пользоваться SOL",
         "",
         "- следующий движок ищи на пересечении паттернов выше и темы автора;",
         "- повтор любимого движка в лоб = износ (movesGate WARN, specs/moves-ledger.json) — вариация, не копия;",
         "- тиры не молоти в R+: любимые R/PG-13 держала история, не эротика;",
         "- уровень 2 (ходы/свидетели/каналы из карточек, разбор нелюбимого) — после пилота story-cards T5-10;",
-        "- вердикты — единственный источник правды: секции без структурированных квитанций в статистику не попали.",
+        "- вердикты — единственный источник правды: новые партии пишутся в verdicts/T5-NN.json (JSON-канон), LIVING-NOTES — человекочитаемая сводка.",
     ]
 
     text = "\n".join(lines) + "\n"

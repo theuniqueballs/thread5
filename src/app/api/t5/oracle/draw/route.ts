@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { readSpecJson, listBatches, readBatch } from '@/lib/t5/store';
+import { readSpecJson, listBatches, readBatch, deliveryStatusMap, isDeliveredBatch } from '@/lib/t5/store';
 import {
   buildRotationWindow,
   buildCardUsage,
@@ -56,9 +56,15 @@ export async function GET(req: Request) {
   }));
 
   // корпус: партии С НОМЕРОМ МЕНЬШЕ batchNo (окно не должно видеть будущее)
-  const all = await Promise.all((await listBatches()).map(async (b) => await readBatch(b.slug)));
+  // и только СДАННЫЕ по индексу сдачи (delivery-index.json: черновик/ready
+  // не считаются «предыдущей партией» — двойной аудит 2026-11-20, P0-06)
+  const deliveryMap = await deliveryStatusMap();
+  const listed = await listBatches();
+  const all = await Promise.all(listed.map(async (b) => await readBatch(b.slug)));
+  const excluded = listed.filter((b) => !isDeliveredBatch(deliveryMap, b.slug)).map((b) => b.slug);
   const corpus = all
     .filter((b): b is T5Batch => b !== null)
+    .filter((b) => isDeliveredBatch(deliveryMap, b.slug))
     .map((b) => ({ slug: b.slug, slots: b.slots.map((s) => ({ yCard: s.yCard, pose: s.pose })) }));
 
   const depth = Math.max(0, Math.min(10, Number.parseInt(url.searchParams.get('depth') ?? '3', 10) || 3));
@@ -81,6 +87,7 @@ export async function GET(req: Request) {
       window,
       windowPoses: { depth, poses: windowPoses.length },
       registry: { version: cam.version ?? '—', cards: cards.length },
+      delivery: { corpus: corpus.length, excludedDrafts: excluded },
       engine: ENGINE_ERA,
     },
     { headers: { 'Cache-Control': CACHE_CONTROL } },

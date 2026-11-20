@@ -1,0 +1,47 @@
+{
+ "schema": "t5-verdict/1",
+ "batch": "T5-27",
+ "theme": "PREY",
+ "date": "2026-11-21",
+ "source": "чат, вербатим (полный разбор: verdicts/T5-27-verdict-20261121-1646.md)",
+ "overall": {
+  "score": "average",
+  "verbatim": "не в восторге, но и не разочарован. Наверное, тема мне не особо зашла, а может и раскрытие получилось какое-то тухловатенькое, не знаю. В общем и целом - среднячково. Хуже прошлого, лучше чем если бы батча не было.",
+  "signal": "тема не зашла ИЛИ раскрытие тухловатенькое — разбор при следующем выходе PREY-родственных заявок"
+ },
+ "loved": [
+  {"slot": "P05", "group": "main", "genre": "VOLT", "kin": "Serpent-kin", "rating": "R+", "palette": "P33_VOID_PRISM", "note": "mid-molt freeze"},
+  {"slot": "P06", "group": "main", "genre": "VOLT", "kin": "Sheep-kin", "rating": "R+", "palette": "P249", "note": "fleece-shake arc"},
+  {"slot": "P08", "group": "main", "genre": "VOLT", "kin": "Succubus-kin", "rating": "R+", "palette": "P72_OPIUM_PLUM", "note": "cover-grip closeup"},
+  {"slot": "P16", "group": "main", "genre": "VOLT", "kin": "Cat-kin", "rating": "R", "palette": "P79_WAX_NOON", "note": "bench lounging"},
+  {"slot": "P18", "group": "main", "genre": "VOLT", "kin": "human", "rating": "R", "palette": "P97_SELKIE_COMMUTE", "note": "beacon scarf wrestle"},
+  {"slot": "P23", "group": "main", "genre": "NICHE", "kin": "human", "rating": "PG-13", "palette": "P205_TERMINAL_DAWN", "note": "summer watch bottle — низкий тир держала история"},
+  {"slot": "P29", "group": "exp", "genre": "EXP", "kin": "Lynx-kin", "rating": "R+", "palette": "P256_FRESCO_LIME", "note": "поза просто имба (PL582/Y526 — prey_survival-обёртки с низким трекингом работают)"},
+  {"slot": "P33", "group": "exp", "genre": "EXP", "kin": "Banshee-kin", "rating": "R+", "palette": "P260_AMATE_BARK_FIBER", "note": "охуенная раскраска, охуенный персонаж, лютая имба — кандидат в повтор, потенциально в ростер гостей по образцу BALLS T5-25"}
+ ],
+ "ok_with_issues": [
+  {"slot": "P01", "group": "oc", "genre": "EXQUISITE", "kin": "Vae (OC)", "rating": "R+", "palette": "P37_BLOOD_MOON", "note": "понравился, НО на рендере красная кожа при каноне obsidian — минус вайб; корень = урок В36 token bleed"}
+ ],
+ "neutral": [
+  {"slot": "P02", "group": "oc", "note": "Lucy — норм"},
+  {"slot": "P03", "group": "oc", "note": "Ana — норм"}
+ ],
+ "lessons": [
+  {
+   "id": "В36",
+   "title": "палитра ≠ кожа (token bleed)",
+   "text": "в строке палитры запрещено ставить цветовой токен палитры рядом с токеном кожи как её прилагательное; кожа называется после разделяющей конструкции и остаётся безусловной; палитра живёт в свете/фоне/акцентах",
+   "machine": "gates.json paletteSkin (v1.16.0), FAIL-эра с T5-28",
+   "origin_slot": "P01"
+  }
+ ],
+ "hypothesis_hits": [
+  {"slot": "P29", "hypothesis": "новые Y-карты волны prey_survival (Y522–Y530) с низким трекингом читаются моделью", "verdict": "подтверждена позой"},
+  {"slot": "P33", "hypothesis": "волна 12 палитр «раскраска выживания» (P252–P260)", "verdict": "подтверждена раскраской"}
+ ],
+ "engine": {
+  "id": "Г9",
+  "name": "добыча = взгляд, который выбирает",
+  "verdict": "средне: коридорные карты и NICHE-покой работали ровно, тема/раскрытие — сигнал на разбор"
+ }
+}

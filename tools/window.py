@@ -26,7 +26,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from gates import parse_batch  # noqa: E402  (общий парсер слотов)
+from gates import parse_batch, load_oc_names, is_oc_slot  # noqa: E402  (общий парсер слотов)
+import t5delivery  # noqa: E402  (единый индекс сдачи — аудит 2026-11-20 P0-06)
 
 BATCH_DIR = ROOT / "batches"
 BURNED = json.loads((ROOT / "specs/burned.json").read_text(encoding="utf-8"))
@@ -34,20 +35,22 @@ BURNED = json.loads((ROOT / "specs/burned.json").read_text(encoding="utf-8"))
 
 def bnum(p):
     """Номер партии из имени файла («T5-09.md» → 9; нет кода → -1)."""
-    m = re.search(r"T5-(\d+)", Path(p).name)
-    return int(m.group(1)) if m else -1
+    return t5delivery.bnum(p)
 
 
 def delivered_batches():
-    """Сданные батчи T5-*.md (без шаблона и отчётов), свежие первыми.
+    """Сданные батчи T5-*.md, свежие первыми.
     2026-11-20: сортировка по НОМЕРУ партии (mtime — только тай-брейк):
-    mtime врёт после правок старых файлов, и драфт-батчи лезут вперёд
-    (аудит 2026-10-31, F2 — тот же урок, что у --for)."""
-    files = [
-        p for p in BATCH_DIR.glob("T5-*.md")
-        if not p.name.endswith(".gate-report.md")
-    ]
-    return sorted(files, key=lambda p: (bnum(p), p.stat().st_mtime), reverse=True)
+    mtime врёт после правок старых файлов (аудит 2026-10-31, F2).
+    2026-11-21: единственный источник «кто сдан» — t5delivery (индекс
+    specs/delivery-index.json: черновик/ready не лезут в окно; двойной
+    аудит 2026-11-20, Коул §6.3 + P0-06)."""
+    rows = t5delivery.delivered_batches(batch_dir=BATCH_DIR)
+    return sorted(
+        (p for _no, p in rows),
+        key=lambda p: (bnum(p), p.stat().st_mtime),
+        reverse=True,
+    )
 
 
 def _body_ycard(body_lines, y_body_re):
@@ -61,15 +64,27 @@ def _body_ycard(body_lines, y_body_re):
 
 
 def collect(paths):
-    """По батчу: заголовок + агрегаты. По системе: множества окна."""
+    """По батчу: заголовок + агрегаты. По системе: множества окна.
+    2026-11-21 (аудит Коула R6 + вердикт T5-24 «дрифт и частая ротация
+    одних OC»): собираем и OC-состав — машинное OC-окно вместо «как
+    вспомнил» (is_oc_slot из gates — тот же детект, что у гейтов)."""
+    oc_names = load_oc_names()
     per_batch, agg = [], {
         "pose": set(), "palette": set(), "kinetics": set(),
         "carriers": set(), "channels": set(), "ratings": {},
         "ycards": set(),  # v1.12.0 Y-first: окно Y-карт
+        "ocs": set(),    # 2026-11-21: OC-окно (аудит Коула R6)
     }
     y_body_re = re.compile(r"\bY\d{1,3}\b\s*[«\"]")  # карта в теле слота; серия до Y521+
     for p in paths:
         _, _, slots = parse_batch(p)
+        batch_ocs = set()
+        for s in slots:
+            if is_oc_slot(s, oc_names):
+                tokens = {t.strip() for t in s.paren.split("·")}
+                hit = next((n for n in tokens if n in oc_names), None)
+                if hit:
+                    batch_ocs.add(hit)
         batch = {
             "file": p.name,
             "slots": len(slots),
@@ -88,11 +103,12 @@ def collect(paths):
                     if y
                 }
             ),
+            "ocs": sorted(batch_ocs),
         }
         for s in slots:
             if s.rating:
                 batch["ratings"][s.rating] = batch["ratings"].get(s.rating, 0) + 1
-        for key in ("pose", "palette", "kinetics", "carriers", "channels", "ycards"):
+        for key in ("pose", "palette", "kinetics", "carriers", "channels", "ycards", "ocs"):
             agg[key] |= set(batch[key])
         for r, n in batch["ratings"].items():
             agg["ratings"][r] = agg["ratings"].get(r, 0) + n
@@ -129,6 +145,7 @@ def receipt_md(per_batch, agg, depth):
         lines.append(f"- носители: {', '.join(b['carriers']) or '—'}")
         lines.append(f"- каналы: {', '.join(b['channels']) or '—'}")
         lines.append(f"- Y-карты (Y-first, camera.json): {', '.join(b['ycards']) or '—'}")
+        lines.append(f"- OC-состав: {', '.join(b['ocs']) or '—'}")
         lines.append("")
     lines.append("## ЗАПРЕТ ОКНА (агрегат — не назначать)")
     lines.append(f"- позы ({len(agg['pose'])}): {', '.join(sorted(agg['pose'])) or '—'}")
@@ -137,6 +154,10 @@ def receipt_md(per_batch, agg, depth):
     lines.append(f"- носители ({len(agg['carriers'])}): {', '.join(sorted(agg['carriers'])) or '—'}")
     lines.append(f"- каналы ({len(agg['channels'])}): {', '.join(sorted(agg['channels'])) or '—'}")
     lines.append(f"- Y-карты ({len(agg['ycards'])}): {', '.join(sorted(agg['ycards'], key=lambda x: int(x[1:]))) or '—'}")
+    lines.append("")
+    lines.append("## OC-ОКНО (не назначать — дрифт/ротация одних, вердикт T5-24; аудит Коула R6)")
+    lines.append(f"- OC последних {depth} партий: {', '.join(sorted(agg['ocs'])) or '—'}")
+    lines.append("- ростер готовых: остальной актив oc-canon.json (ready к жребию, без окна)")
     lines.append("")
     lines.append(f"## BURN-АКТИВ ({len(BURNED.get('entries', []))} кодов, specs/burned.json)")
     lines += burned_lines() or ["— реестр пуст"]

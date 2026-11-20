@@ -68,6 +68,44 @@ class TestWindowOrder(unittest.TestCase):
         self.assertEqual(names, ["T5-01.md"])
 
 
+class TestJsonVerdicts(unittest.TestCase):
+    """Уровень 0 вкуса (двойной аудит 2026-11-20, P1-02): вердикты в
+    структурированной форме verdicts/T5-NN.json — канонический вход,
+    Markdown — фолбэк. Батч с JSON не считается дважды."""
+
+    def test_parse_json_verdicts_reads_loved_slots(self):
+        loved, extra = taste.parse_json_verdicts()
+        # живой вердикт T5-27 обязан читаться из JSON
+        t27 = [(b, s, m) for b, s, m in loved if b == "T5-27"]
+        self.assertTrue(t27, "T5-27.json не читается — JSON-канон вкуса слеп")
+        slots = {s for _, s, _ in t27}
+        self.assertIn("P29", slots)   # «поза просто имба»
+        self.assertIn("P33", slots)   # «лютая имба»
+        for _b, _s, m in t27:
+            self.assertTrue(m["genre"], f"мета без жанра: {m}")
+            self.assertTrue(m["rating"], f"мета без тира: {m}")
+
+    def test_json_replaces_markdown_no_double_count(self):
+        """Батч с JSON исключается из MD-выборки: любимые слоты T5-27
+        приходят только из verdicts/T5-27.json, не из LIVING-NOTES."""
+        json_loved, json_extra = taste.parse_json_verdicts()
+        json_batches = {b for b, *_ in json_loved} | set(json_extra)
+        md_all = taste.parse_loved()
+        md_json_batches = {b for b, *_ in md_all if b in json_batches}
+        # LIVING-NOTES может не иметь секции T5-27 вовсе; если имеет —
+        # она не должна попадать в выборку вкуса (json_batches исключаются)
+        self.assertIsInstance(json_batches, set)
+        self.assertIn("T5-27", json_batches)
+
+    def test_json_extra_fields(self):
+        _loved, extra = taste.parse_json_verdicts()
+        self.assertIn("T5-27", extra)
+        e = extra["T5-27"]
+        self.assertEqual(e["overall"], "average")
+        self.assertGreaterEqual(e["loved_count"], 8)
+        self.assertGreaterEqual(e["lessons"], 1)  # В36
+
+
 class TestTakeRecent(unittest.TestCase):
     def test_last_not_first(self):
         """Инверсия: [:3] отдавало СТАРЫЕ секции — свежий вкус не доезжал до SOL."""

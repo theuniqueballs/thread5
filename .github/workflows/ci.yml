@@ -1,9 +1,11 @@
-# THREAD 5 — непрерывная интеграция (инженерный апгрейд 2026-11-20).
+# THREAD 5 — непрерывная интеграция (инженерный апгрейд 2026-11-20;
+# двойной аудит 2026-11-21: P1-06 production build, P0-06 индекс сдачи).
 #
 # Три работы на каждый пуш/PR:
-#   web      — прилавок: типы (tsc), линт (eslint), юнит-тесты (bun test);
+#   web      — прилавок: типы (tsc), линт (eslint), юнит-тесты (bun test)
+#              и production build (сборка падает на PR, не на проде);
 #   pipeline — печь: юнит-тесты инструментов, валидатор спек (--ci),
-#              гейты на свежайшей сданной партии (PASS обязателен);
+#              гейты на свежайшей сданной партии (индекс сдачи, PASS обязателен);
 #   shell    — smoke тестов сборок рантаймов (fake-bun, без uv/docker).
 #
 # Философия та же, что у pre-commit: молчание гейтов исключено — но здесь
@@ -24,7 +26,7 @@ permissions:
 
 jobs:
   web:
-    name: прилавок (tsc · lint · bun test)
+    name: прилавок (tsc · lint · bun test · build)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,6 +47,18 @@ jobs:
       - name: Юнит-тесты прилавка (parser/ystamp/inbox/store)
         run: bun test tests/unit
 
+      # Двойной аудит 2026-11-20, P1-06: production build — не разовый
+      # ручной прогон, а CI-контракт: сборка падает на PR, а не на проде.
+      - name: Prisma client (генерация типов для сборки)
+        run: bun run db:generate
+        env:
+          DATABASE_URL: "file:/tmp/ci.db"
+
+      - name: Production build (16 роутов)
+        run: bun run build
+        env:
+          DATABASE_URL: "file:/tmp/ci.db"
+
   pipeline:
     name: печь (unittest · validate · gates)
     runs-on: ubuntu-latest
@@ -64,11 +78,11 @@ jobs:
       - name: Валидатор спек (CI-режим, без проверки хука)
         run: python3 tools/validate.py --ci
 
-      - name: Гейты на свежайшей сданной партии
+      - name: Гейты на свежайшей сданной партии (двойной аудит P0-06: статус — из индекса сдачи, не ls|sort — черновик не считается сданным)
         run: |
-          latest=$(ls batches/T5-[0-9]*.md 2>/dev/null | grep -v 'gate-report' | sort -V | tail -1)
+          latest=$(python3 tools/t5delivery.py latest)
           if [ -z "$latest" ]; then
-            echo "нет сданных батчей — пропуск"; exit 0
+            echo "нет сданных партий — пропуск"; exit 0
           fi
           echo "гейты: $latest"
           python3 tools/gates.py "$latest"

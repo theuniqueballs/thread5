@@ -144,6 +144,10 @@ FAIL), битые --json/--md = exit 2 без трейсбека, stdout не п
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
         --md batches/T5-08.gate-report.md
+    python3 tools/gates.py --md-from-receipt specs/gate-receipts/<json>
+        # 2026-11-21 (двойной аудит, P0-04): отчёт — ПРОИЗВОДНАЯ квитанции;
+        # перегенерация MD из JSON без перегона батча (версия гейтов/ша/
+        # вердикт — ровно те, что зафикированы, проверка №13 валидатора)
 Выход: 0 = PASS · 1 = FAIL · 2 = битый вызов · 3 = краш инструмента.
 """
 
@@ -165,6 +169,13 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent.parent
 GATES = json.loads((ROOT / "specs/gates.json").read_text(encoding="utf-8"))
+
+# Единый индекс сдачи партий (двойной аудит 2026-11-20, Коул §6.3 + P0-06):
+# «кто сдан» решает ОДИН модуль — окно/жребий/CI читают его, черновики и
+# ready не попадают в историю ротации до сдачи. Импорт после ROOT: t5delivery
+# самодостаточен, но держим порядок для читаемости трейсов.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import t5delivery  # noqa: E402
 
 SLOT_RE = re.compile(
     r"^P(\d{2,3})\s+—\s+(\S+)\s+\((.+?)\)\s*[⚗☠]?\s*$"
@@ -941,11 +952,12 @@ def load_prev_y_usage(depth, exclude=None, batch_no=-1):
     """v1.14.0 yStamp: окно ротации карт — что использовано в последних
     `depth` сданных батчах ДО ТЕКУЩЕЙ партии (v1.16.0: фильтр по номеру,
     как в check_cross_batch — правка старого батча не должна видеть
-    «будущие» партии как «предыдущие»). Возвращает {Y-id: имя батча}."""
+    «будущие» партии как «предыдущие»). Возвращает {Y-id: имя батча}.
+    2026-11-21: «кто сдан» — через t5delivery (индекс сдачи), не локальный
+    glob: черновик T5-28 больше не считается «предыдущей партией»."""
     prevs = sorted(
-        (p for p in (ROOT / "batches").glob("T5-*.md")
-         if not p.name.endswith(".gate-report.md")
-         and (exclude is None or p.resolve() != Path(exclude).resolve())
+        (p for _no, p in t5delivery.delivered_batches(batch_dir=ROOT / "batches")
+         if (exclude is None or p.resolve() != Path(exclude).resolve())
          and (batch_no <= 0 or 0 < batch_number(p) < batch_no)),
         key=lambda p: (batch_number(p), p.stat().st_mtime),
     )
@@ -1806,9 +1818,8 @@ def check_cross_batch(batch_path, slots, warns, canon_grams=frozenset()):
     cfg = GATES["crossBatch"]
     num = batch_number(batch_path)
     prevs = sorted(
-        (p for p in (ROOT / "batches").glob("T5-*.md")
-         if not p.name.endswith(".gate-report.md")
-         and p.resolve() != Path(batch_path).resolve()
+        (p for _no, p in t5delivery.delivered_batches(batch_dir=ROOT / "batches")
+         if p.resolve() != Path(batch_path).resolve()
          and 0 < batch_number(p) < num),
         key=lambda p: (batch_number(p), p.stat().st_mtime),
         reverse=True,
@@ -1852,6 +1863,45 @@ def _argv_value(argv, flag):
     return argv[i + 1]
 
 
+def report_md_from_receipt(receipt, batch_name):
+    """2026-11-21 (двойной аудит, P0-04 «Markdown из JSON»): отчёт —
+    ПРОИЗВОДНАЯ квитанции, не вторая независимая прогонка. Строит тот же
+    --md-формат из JSON-квитанции: доказательство проверки не может
+    показывать другую версию гейтов/вердикт, чем зафикировал JSON."""
+    tool = str(receipt.get("tool", "tools/gates.py"))
+    m = re.search(r"specs/gates\.json v([\d.]+)", tool)
+    gver = m.group(1) if m else "?"
+    fails = receipt.get("fails") or []
+    warns = receipt.get("warns") or []
+    verdict = receipt.get("verdict", "?")
+    sha = receipt.get("sha256", "?")
+    utc = receipt.get("utc", "?")
+    lines = [
+        f"# Машинная квитанция печи — {batch_name}",
+        "",
+        f"- Вердикт гейтов: **{verdict}** (FAIL {len(fails)} / WARN {len(warns)})",
+        f"- sha256: `{sha}`",
+        f"- Прогон: {utc} · specs/gates.json v{gver}",
+        f"- Сгенерировано из JSON-квитанции (проверка №13 валидатора: MD ≡ JSON)",
+        "",
+        "| Слот | Слаг | Жанр | Тир | Канал | Статус | Заявка, токен | POS, слов |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for r in receipt.get("slot_table") or []:
+        lines.append(
+            "| {id} | {slug} | {genre} | {rating} | {channel} | {channelStatus} | {claimToken} | {posWords} |".format(**{**{
+                "id": "", "slug": "", "genre": "", "rating": "", "channel": "",
+                "channelStatus": "", "claimToken": "", "posWords": ""}, **r})
+        )
+    if fails:
+        lines += ["", "## FAIL", ""]
+        lines += [f"- **[{f.get('slot', '?')}]** {f.get('gate', '?')}: {f.get('msg', '')}" for f in fails]
+    if warns:
+        lines += ["", "## WARN", ""]
+        lines += [f"- [{w.get('slot', '?')}] {w.get('gate', '?')}: {w.get('msg', '')}" for w in warns]
+    return "\n".join(lines) + "\n"
+
+
 def main():
     argv = sys.argv[1:]
     if len(argv) < 1 or argv[0] in ("-h", "--help"):
@@ -1860,6 +1910,29 @@ def main():
     if argv[0] in ("-v", "--version"):
         print(f"tools/gates.py v1.16.0 · specs/gates.json v{GATES.get('version', '?')}")
         sys.exit(0)
+
+    # 2026-11-21: отчёт ИЗ квитанции — MD не перегоняет батч заново (это
+    # врало бы версией гейтов), а печатает зафикированное доказательство
+    if argv[0] == "--md-from-receipt":
+        if len(argv) < 2:
+            print("gates: --md-from-receipt требует путь к JSON-квитанции")
+            sys.exit(2)
+        rp = Path(argv[1])
+        if not rp.is_file():
+            print(f"gates: квитанция не найдена: {rp}")
+            sys.exit(2)
+        receipt = json.loads(rp.read_text(encoding="utf-8"))
+        batch_rel = str(receipt.get("batch", "")).strip()
+        if not batch_rel:
+            print("gates: в квитанции нет поля batch — не понимаю, чей отчёт")
+            sys.exit(2)
+        out = Path(argv[2]) if len(argv) > 2 and not argv[2].startswith("--") \
+            else ROOT / (batch_rel.replace(".md", ".gate-report.md"))
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(report_md_from_receipt(receipt, Path(batch_rel).name), encoding="utf-8")
+        print(f"отчёт из квитанции {rp.name}: {out}")
+        sys.exit(0)
+
     batch_path = Path(argv[0])
     if not batch_path.is_file():
         print(f"gates: батч не найден: {batch_path}")

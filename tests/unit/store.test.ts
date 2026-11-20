@@ -5,7 +5,7 @@
  * показывал бы хаос, а [ ] ходил бы не туда.
  */
 import { describe, expect, test } from 'bun:test';
-import { batchKey, isSafeSlug, resolveT5Root, shelfOrder } from '../../src/lib/t5/store';
+import { batchKey, isDeliveredBatch, isSafeSlug, resolveT5Root, shelfOrder } from '../../src/lib/t5/store';
 
 describe('shelfOrder — естественный порядок полки', () => {
   test('T5-2 < T5-9 < T5-10 < T5-11 < T5-100 (имена файлов)', () => {
@@ -66,5 +66,30 @@ describe('resolveT5Root — раскладки контента', () => {
       if (prev === undefined) delete process.env.T5_ROOT;
       else process.env.T5_ROOT = prev;
     }
+  });
+});
+
+describe('isDeliveredBatch — индекс сдачи (двойной аудит P0-06)', () => {
+  test('null-карта = все партии сданы (легаси без индекса)', () => {
+    expect(isDeliveredBatch(null, 'T5-27')).toBe(true);
+    expect(isDeliveredBatch(null, 'T5-99')).toBe(true);
+  });
+
+  test('явный статус решает: delivered проходит, draft/ready/superseded — нет', () => {
+    const map = new Map([
+      ['T5-27', 'delivered'],
+      ['T5-28', 'draft'],
+      ['T5-29', 'ready'],
+      ['T5-05', 'superseded'],
+    ]);
+    expect(isDeliveredBatch(map, 'T5-27')).toBe(true);
+    expect(isDeliveredBatch(map, 'T5-28')).toBe(false);
+    expect(isDeliveredBatch(map, 'T5-29')).toBe(false);
+    expect(isDeliveredBatch(map, 'T5-05')).toBe(false);
+  });
+
+  test('партия без записи — толерантный дефолт delivered (как в печи t5delivery)', () => {
+    const map = new Map([['T5-27', 'delivered']]);
+    expect(isDeliveredBatch(map, 'T5-03')).toBe(true);
   });
 });

@@ -360,6 +360,34 @@ export async function readSpecJson<T>(rel: string): Promise<T | null> {
   }
 }
 
+/**
+ * Индекс сдачи партий (specs/delivery-index.json) — единственный источник
+ * статуса draft/ready/delivered/superseded (двойной аудит 2026-11-20,
+ * Коул §6.3 «один модуль окна» + P0-06 «delivery index»). Жребий прилавка
+ * фильтрует корпус как печь (tools/t5delivery.py): черновик в batches/
+ * не считается «предыдущей партией» до сдачи. Партия без записи —
+ * толерантный дефолт «delivered» (легаси-корпус, как в python-зеркале).
+ */
+export interface DeliveryIndexRow {
+  batch?: string;
+  status?: string;
+}
+
+export async function deliveryStatusMap(): Promise<Map<string, string> | null> {
+  const idx = await readSpecJson<{ batches?: DeliveryIndexRow[] }>('specs/delivery-index.json');
+  if (!idx?.batches?.length) return null;
+  const map = new Map<string, string>();
+  for (const row of idx.batches) {
+    if (row?.batch) map.set(row.batch, row.status ?? 'delivered');
+  }
+  return map;
+}
+
+export function isDeliveredBatch(statusMap: Map<string, string> | null, slug: string): boolean {
+  if (!statusMap) return true; // индекса нет — все партии сданы (легаси)
+  return (statusMap.get(slug) ?? 'delivered') === 'delivered';
+}
+
 export async function readDoc(name: string): Promise<string | null> {
   if (!isDocName(name)) return null;
   const docPath = DOC_PATHS[name as DocName];

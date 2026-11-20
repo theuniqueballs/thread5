@@ -1,0 +1,43 @@
+{
+ "id": "gate-registry",
+ "name": "Реестр гейтов: секция gates.json → реализация в gates.py → поле квитанции",
+ "version": "1.0.0",
+ "born": "2026-11-21",
+ "born_from": "Двойной аудит 2026-11-20 (внешний P0-05 «нет реестра gate → code → test»; живой прецедент: paletteSkin был объявлен в gates.json v1.16.0, но отсутствовал в обязательном списке валидатора — объявленный гейт ≠ работающий гейт). Реестр замыкает цепочку: валидатор сверяет каждую секцию gates.json с реализацией в tools/gates.py и полем в квитанции; test — прямой юнит-тест (null = долги перечислены явно, не спрятаны); end-to-end страховка всего конвейера — tests/python/test_gate_registry.py (золотой прогон T5-27 PASS 0F/2W + тамперы: изъятая hard-флора → FAIL, изъятое вплетение → FAIL).",
+ "rules": {
+  "sectionSetMustMatch": "множество секций реестра == REQUIRED_GATES_KEYS валидатора == ключи-секции gates.json — ни одна секция не может появиться/исчезнуть молча",
+  "implMustExist": "каждая impl-функция обязана существовать в tools/gates.py (def имя() — иначе секция объявлена, но не исполняется)",
+  "receiptFieldMustExist": "поле квитанции обязано собираться в receipt gates.py — результат проверки не может не доезжать до доказательства",
+  "testOrNull": "прямой тест или явный null; null — видимый долг, не молчание"
+ },
+ "gates": [
+  {"section": "claim", "impl": ["check_salience", "check_format_gate"], "receiptField": null, "test": null, "owner": "EARTH", "note": "заявка ≤ claimMaxToken, салиенс — токен в верхних строках POS; результат в slot_table.claimToken"},
+  {"section": "claimGate", "impl": ["check_claim_exists"], "receiptField": null, "test": null, "owner": "EARTH", "note": "claim-токен существует в POS (FAIL с T5-08)"},
+  {"section": "ocClassGate", "impl": ["check_oc_class_floor"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "OC-слоты класс EXQUISITE не ниже (вердикт T5-09)"},
+  {"section": "charSpecGate", "impl": ["check_char_spec"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "идентичность явно в POS: волосы/глаза/кожа/тело (posFullSpec)"},
+  {"section": "pos", "impl": ["check_pos_budget"], "receiptField": null, "test": null, "owner": "EARTH", "note": "POS-бюджет снят (unlimited), счёт слов в slot_table.posWords"},
+  {"section": "neg", "impl": ["check_neg_linter"], "receiptField": null, "test": null, "owner": "EARTH", "note": "NEG-линтер: якорные стили X gone/off/intact, юниты по словам"},
+  {"section": "negBase", "impl": ["neg_v3_active", "check_neg_hygiene"], "receiptField": null, "test": null, "owner": "EARTH", "note": "эра NEG v3: removed-классы + гигиена гардов"},
+  {"section": "copypaste", "impl": ["check_copypaste"], "receiptField": "copypasteCanonExempt", "test": null, "owner": "FURNACE", "note": "n-граммы внутри батча; канон-вербатим ОС гасится с прозрачным счётчиком"},
+  {"section": "crossBatch", "impl": ["check_cross_batch"], "receiptField": "crossBatchShared", "test": null, "owner": "FURNACE", "note": "6-граммы против prevDepth предыдущих СДАННЫХ партий (через t5delivery)"},
+  {"section": "channels", "impl": ["check_channels"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "каналы доставки: статус/квоты/burn-пересечения; результат в slot_table.channelStatus"},
+  {"section": "registry", "impl": ["check_registry"], "receiptField": null, "test": null, "owner": "FURNACE", "note": "коды палитр/поз/кинетик/носителей существуют в реестрах"},
+  {"section": "posFloors", "impl": ["check_pos_floors"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "имена OC и флоры POS по реестру oc-canon"},
+  {"section": "raceCast", "impl": ["check_race_cast"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "расовый каст 12–14/21, карантин согласован с races.json"},
+  {"section": "burn", "impl": ["check_burn"], "receiptField": null, "test": null, "owner": "FURNACE", "note": "сожжённые коды не назначаются (burned.json)"},
+  {"section": "header", "impl": ["check_floors", "check_header"], "receiptField": null, "test": "tests/python/test_gate_registry.py", "owner": "FURNACE", "note": "hard-флоры/анти-ваша/candle в NEG + декларации шапки; тампер-тест: изъятая флора → FAIL"},
+  {"section": "headerContract", "impl": ["check_header_contract"], "receiptField": null, "test": null, "owner": "FURNACE", "note": "applyFrom-декларации шапки (ГИПОТЕЗА ДВИЖКА, ХОДЫ)"},
+  {"section": "movesGate", "impl": ["check_moves_gate"], "receiptField": "movesDeclared", "test": null, "owner": "FURNACE", "note": "ходы против moves-ledger.json: M-id/износ/отставка"},
+  {"section": "storyCardsGate", "impl": ["check_story_cards"], "receiptField": "storyCards", "test": "tests/python/test_gates.py", "owner": "SOL", "note": "карточки историй batches/T5-NN/stories.md"},
+  {"section": "formatGate", "impl": ["check_format_gate"], "receiptField": null, "test": null, "owner": "EARTH", "note": "В32: башенки-строки POS, капы длины"},
+  {"section": "corridorAudit", "impl": ["check_corridor"], "receiptField": "fact_label", "test": null, "owner": "FURNACE", "note": "fact_R+ ≠ label_R+ (В33, FAIL-эра)"},
+  {"section": "claimPhysics", "impl": ["check_claimphysics"], "receiptField": "claim_physics", "test": null, "owner": "VENUS", "note": "В31: коридор = физика в POS, не самосертификация поля"},
+  {"section": "yCards", "impl": ["check_ycards"], "receiptField": "y_cards", "test": null, "owner": "VENUS", "note": "Y-first: R+ слоты собираются от карт, паттерн доехал, дублей нет"},
+  {"section": "yStamp", "impl": ["check_ystamp"], "receiptField": "y_stamp", "test": "tests/python/test_gate_registry.py", "owner": "EARTH", "note": "В34/В35: вплетение 1:1, метки изъяты; тампер-тест: изъятое вплетение → FAIL; окно — load_prev_y_usage (test_gates.py)"},
+  {"section": "comboPose", "impl": ["check_combo_pose"], "receiptField": "combo_pose", "test": null, "owner": "VENUS", "note": "акт 1: составные позы от карт-обёрток"},
+  {"section": "conceptFlag", "impl": ["check_concept_flag"], "receiptField": "buffs.concept_flagged", "test": null, "owner": "SOL", "note": "концепт-визитка без механизма — WARN"},
+  {"section": "negDressGuards", "impl": ["check_neg_dress_guards"], "receiptField": "buffs.neg_dress_guards", "test": null, "owner": "MERCURY", "note": "NEG-гарды одежды против канала доставки"},
+  {"section": "detailsGate", "impl": ["check_details_layer"], "receiptField": null, "test": null, "owner": "EARTH", "note": "В32: ≥2 фишечки-формы на мейн/EXP"},
+  {"section": "paletteSkin", "impl": ["check_palette_skin"], "receiptField": "palette_skin", "test": "tests/python/test_gates.py", "owner": "MERCURY", "note": "В36: палитра ≠ кожа, token bleed"}
+ ]
+}

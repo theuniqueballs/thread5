@@ -47,6 +47,8 @@ interface DrawResp {
 interface RateResp {
   lite: LiteVerdict;
   service: { url: string; verdict: { verdict?: string; warnings?: string[] } | null } | null;
+  /** P1-05: версия движка — подпись режима прилагается к любому результату */
+  engine?: string;
 }
 
 const CORRIDOR_TONE: Record<string, string> = {
@@ -318,6 +320,13 @@ function RateConsole() {
       </div>
       {lite && (
         <div className="mt-4 space-y-2.5 rounded-xl border border-white/[0.07] bg-black/25 p-4">
+          {/* двойной аудит P1-05: любой результат Oracle подписан режимом —
+              LOCAL-LITE / +SERVICE-RULE; финал всегда AUTHOR-VERDICT */}
+          <div className="flex flex-wrap items-center gap-2 border-b border-white/[0.06] pb-2.5">
+            <span className="rounded-lg bg-t5-oracle/10 px-2.5 py-1 font-mono text-[10px] font-bold tracking-wider text-t5-oracle-bright">РЕЖИМ: LOCAL-LITE{result?.service?.verdict?.verdict ? ' + SERVICE-RULE' : ''}</span>
+            <Chip>движок {result?.engine ?? '…'}</Chip>
+            <span className="font-mono text-[10px] text-zinc-600">метрика ≠ вердикт качества — финал за автором (AUTHOR-VERDICT)</span>
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             <span
               className={cn(

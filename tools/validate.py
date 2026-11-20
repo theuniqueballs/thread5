@@ -32,7 +32,19 @@ THREAD 5 — валидатор спек (ревизия 2026-11-01, docs/THREAD
      2026-11-01, идея 3): id M## уникальны, retired/standing легальны,
      applications числятся, отставка только вердиктом, триггер-индекс
      указывает только на известные ходы (v1.7.0);
- 10. header-contract: applyFrom — int, паттерны компилируются (v1.7.0).
+ 10. header-contract: applyFrom — int, паттерны компилируются (v1.7.0);
+ 11. PL-ссылки в batches/**/*.md существуют в poses.json (находка T5-16);
+ 12. delivery-index.json (двойной аудит 2026-11-20, P0-06): каждая партия
+     T5-*.md имеет явный статус draft/ready/delivered/superseded; записи
+     без файла и файлы без записи — FAIL; окно/жребий/CI читают только
+     delivered (tools/t5delivery.py — единственный модуль сдачи);
+ 13. gate-report.md ≡ новейшей JSON-квитанции той же партии (P0-04):
+     версия гейтов / sha256 / вердикт / счётчики FAIL-WARN совпадают;
+     отчёт — производная квитанции (gates.py --md-from-receipt);
+ 14. gate-registry.json (P0-05): каждая секция gates.json имеет живую
+     impl-функцию в gates.py и поле в квитанции; множество секций ==
+     REQUIRED-списку; прямые тесты считаются, долги без теста — видимый
+     список, не молчание.
 
 Прогон:
     python3 tools/validate.py           # рабочая станция (хук проверяется)
@@ -55,14 +67,18 @@ RACE_STATUSES = {"active", "gold", "banned", "quarantine"}
 # 2026-11-20: догнано до gates.json v1.15.0 — секции, которые gates.py
 # читает через GATES.get(...): отсутствующая секция = гейт МОЛЧА выключен,
 # а валидатор печатал PASS (ровно та failure-мода, против которой он стоит)
+# 2026-11-21 (двойной аудит, P0-05 «объявленный гейт ≠ работающий»):
+# + paletteSkin — живой прецедент: секция была объявлена в v1.16.0, а
+#   REQUIRED-список молчал — валидатор не заметил бы её исчезновение.
 REQUIRED_GATES_KEYS = [
     "claim", "claimGate", "ocClassGate", "charSpecGate", "pos", "neg",
     "copypaste", "crossBatch", "channels", "registry", "posFloors",
     "raceCast", "burn", "header", "headerContract", "movesGate",
     "storyCardsGate",
-    # эры 1.8.0–1.15.0
+    # эры 1.8.0–1.16.0
     "negBase", "formatGate", "corridorAudit", "claimPhysics", "yCards",
     "yStamp", "comboPose", "conceptFlag", "negDressGuards", "detailsGate",
+    "paletteSkin",
 ]
 
 # режим CI: без проверки хука (в раннере хука нет — проверка №8 не про него)
@@ -346,6 +362,157 @@ def main():
                         fail(f"{_md.relative_to(ROOT)}: PL-ссылка «{_pl}» не существует в poses.json — битый ID (проверка №11)")
     except FileNotFoundError:
         pass  # poses.json отсутствует — поймано проверкой №1
+
+    # ── 12. delivery-index: каждая партия имеет статус, статусы легальны ──
+    # (двойной аудит 2026-11-20, P0-06: черновик T5-NN.md без записи в индексе
+    #  молча считался «сданным» — лез в окно ротации, жребий и CI; теперь
+    #  specs/delivery-index.json — единственный источник, tools/t5delivery.py
+    #  — единственный читатель для окна/жребия/гейтов/CI)
+    DELIVERY_STATUSES = {"draft", "ready", "delivered", "superseded"}
+    di = data.get("delivery-index.json")
+    if di is None:
+        fail("specs/delivery-index.json отсутствует — статус сдачи партий живёт мимо системы (проверка №12, аудит P0-06)")
+    else:
+        rows = di.get("batches") or []
+        indexed = {}
+        for row in rows:
+            name, status = row.get("batch"), row.get("status")
+            if not name or status not in DELIVERY_STATUSES:
+                fail(f"delivery-index.json: битая запись {row!r} — batch обязателен, status ∈ {sorted(DELIVERY_STATUSES)}")
+                continue
+            if name in indexed:
+                fail(f"delivery-index.json: партия «{name}» записана дважды")
+            indexed[name] = status
+        for md in (ROOT / "batches").glob("T5-*.md"):
+            if md.name.endswith(".gate-report.md"):
+                continue
+            stem = md.name[: -len(".md")]
+            if stem not in indexed:
+                fail(f"delivery-index.json: нет записи для «{stem}» — впиши статус (draft/ready/delivered/superseded), черновик без записи считается сданным (проверка №12)")
+        for stem in indexed:
+            if not (ROOT / "batches" / f"{stem}.md").exists():
+                fail(f"delivery-index.json: запись «{stem}» без файла batches/{stem}.md")
+
+    # ── 13. Markdown gate-report не отстаёт от JSON-квитанции ──────────
+    # (двойной аудит 2026-11-20, P0-04: отчёт T5-27 показывал gates v1.15.0,
+    #  а живая квитанция — v1.16.0 с paletteSkin; доказательство PASS
+    #  показывало старую норму. Отчёт — ПРОИЗВОДНАЯ от квитанции: версия
+    #  гейтов, sha, вердикт и счётчики обязаны совпадать с новейшей
+    #  JSON-квитанцией той же партии)
+    def _receipt_sort_key(p):
+        # 2026-11-18-T5-24-v2-act2.json → (2026-11-18, 2); суффиксы после
+        # -vN (act2/baseline/ystamp-*) легальны; диагностические без -vN
+        # (ystamp-broken/synthetic, baseline) сортируются ниже нумерованных
+        m = re.match(r"(\d{4}-\d{2}-\d{2})-(T5-\d+R?|SO-\d+)(?:-v(\d+))?(?:-[a-z0-9-]+)?\.json$", p.name)
+        if not m:
+            return None
+        return (m.group(1), int(m.group(3) or 0))
+
+    receipts_by_batch = {}
+    for rp in (SPEC / "gate-receipts").glob("*.json"):
+        try:
+            rd = json.loads(rp.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        b = rd.get("batch", "")
+        receipts_by_batch.setdefault(b, []).append(rp)
+
+    md_verdict_re = re.compile(r"Вердикт гейтов: \*\*(PASS|FAIL)\*\* \(FAIL (\d+) / WARN (\d+)\)")
+    md_sha_re = re.compile(r"sha256: `([0-9a-f]{64})`")
+    md_ver_re = re.compile(r"specs/gates\.json v([\d.]+)")
+    for report_dir, pattern in ((ROOT / "batches", "T5-*.gate-report.md"), (ROOT / "special", "SO-*.gate-report.md")):
+        if not report_dir.exists():
+            continue
+        for rep in report_dir.glob(pattern):
+            stem = rep.name[: -len(".gate-report.md")]
+            batch_key = f"{report_dir.name}/{stem}.md"
+            candidates = receipts_by_batch.get(batch_key) or []
+            if not candidates:
+                continue  # до-квитанционная эра — нечем сверять
+            keyed = [(k, p) for k, p in ((_receipt_sort_key(p), p) for p in candidates) if k]
+            if not keyed:
+                continue
+            newest = max(keyed, key=lambda kp: kp[0])[1]
+            rd = json.loads(newest.read_text(encoding="utf-8"))
+            tool_ver = re.search(r"v([\d.]+)", str(rd.get("tool", "")))
+            md_text = rep.read_text(encoding="utf-8")
+            mv = md_verdict_re.search(md_text)
+            ms = md_sha_re.search(md_text)
+            mr = md_ver_re.search(md_text)
+            if not (mv and ms and mr):
+                fail(f"{rep.name}: не парсится шапка отчёта (вердикт/sha/версия) — формат сломан (проверка №13)")
+                continue
+            md_verdict, md_fails, md_warns = mv.group(1), int(mv.group(2)), int(mv.group(3))
+            problems = []
+            if mr.group(1) != (tool_ver.group(1) if tool_ver else None):
+                problems.append(f"версия гейтов {mr.group(1)} ≠ квитанции {tool_ver.group(1) if tool_ver else '?'}")
+            if ms.group(1) != rd.get("sha256"):
+                problems.append(f"sha256 не совпадает с квитанцией")
+            if md_verdict != rd.get("verdict") or md_fails != len(rd.get("fails", [])) or md_warns != len(rd.get("warns", [])):
+                problems.append(
+                    f"вердикт {md_verdict} {md_fails}F/{md_warns}W ≠ квитанции "
+                    f"{rd.get('verdict')} {len(rd.get('fails', []))}F/{len(rd.get('warns', []))}W"
+                )
+            if problems:
+                fail(f"{rep.name}: отстаёт от {newest.name} — {'; '.join(problems)}; перегенерируй: python3 tools/gates.py {batch_key} --md {report_dir.name}/{rep.name} (проверка №13, аудит P0-04)")
+
+    # ── 14. gate registry: секция → impl → receiptField ─────────────────
+    # (двойной аудит 2026-11-20, P0-05 «объявленный гейт ≠ работающий»:
+    #  paletteSkin был объявлен в gates.json v1.16.0, но не было способа
+    #  проверить, что за секцией стоит живой код и поле квитанции. Реестр
+    #  specs/gate-registry.json — карта цепочки; валидатор сверяет её с
+    #  реальностью: impl-функции существуют в gates.py, поля собираются
+    #  в receipt, множество секций == обязательному списку)
+    reg = data.get("gate-registry.json")
+    if reg is None:
+        fail("specs/gate-registry.json отсутствует — реестр «гейт → код → квитанция» обязателен (проверка №14, аудит P0-05)")
+    else:
+        try:
+            gpy_src = (ROOT / "tools/gates.py").read_text(encoding="utf-8")
+        except Exception as e:
+            gpy_src = ""
+            fail(f"tools/gates.py не читается — {e}")
+        reg_sections = []
+        tested, untested = [], []
+        for row in reg.get("gates") or []:
+            sec = row.get("section")
+            if not sec:
+                fail(f"gate-registry.json: запись без section — {row!r}")
+                continue
+            reg_sections.append(sec)
+            impls = row.get("impl") or []
+            if not impls:
+                fail(f"gate-registry.json: секция «{sec}» без impl — кто её исполняет? (проверка №14)")
+            for fn in impls:
+                if gpy_src and not re.search(rf"^def {re.escape(str(fn))}\(", gpy_src, re.M):
+                    fail(f"gate-registry.json: секция «{sec}» → impl «{fn}» не существует в tools/gates.py — гейт объявлен, но не исполняется (проверка №14, аудит P0-05)")
+            rf = row.get("receiptField")
+            if rf:
+                leaf = str(rf).split(".")[-1]
+                if gpy_src and f'"{leaf}"' not in gpy_src:
+                    fail(f"gate-registry.json: секция «{sec}» → receiptField «{rf}» не собирается в квитанции gates.py — результат проверки не доезжает до доказательства (проверка №14)")
+            if row.get("test"):
+                tested.append(sec)
+                tp = ROOT / str(row["test"])
+                if not tp.exists():
+                    fail(f"gate-registry.json: секция «{sec}» → тест {row['test']} не существует (проверка №14)")
+            else:
+                untested.append(sec)
+        # множество секций == REQUIRED_GATES_KEYS == ключи gates.json
+        missing_in_reg = [k for k in REQUIRED_GATES_KEYS if k not in reg_sections]
+        extra_in_reg = [k for k in reg_sections if k not in REQUIRED_GATES_KEYS]
+        if missing_in_reg:
+            fail(f"gate-registry.json: секций нет в реестре {missing_in_reg} — объявлены в gates.json, но не отражены (проверка №14)")
+        if extra_in_reg:
+            fail(f"gate-registry.json: лишние секции {extra_in_reg} — нет в REQUIRED-списке валидатора (проверка №14)")
+        if gates:
+            gate_sections_missing = [k for k in REQUIRED_GATES_KEYS if k not in gates]
+            if gate_sections_missing:
+                fail(f"gates.json: нет секций {gate_sections_missing} — гейты на них молча выключены")
+        print(
+            f"gate-registry: {len(reg_sections)} секций · прямые тесты {len(tested)} · "
+            f"без прямого теста {len(untested)} (долги видимы: {', '.join(untested) or '—'})"
+        )
 
     # ── вердикт ──────────────────────────────────────────────────────────
     if fails:
