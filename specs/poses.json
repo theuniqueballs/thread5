@@ -1,6 +1,6 @@
 {
- "version": "1.18.0",
- "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)",
+ "version": "1.19.0",
+ "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)\n2026-11-20 — T5-27 «PREY»: +PL578–PL586 (EXP-семья prey_survival, обёртки Y522–Y530, заказ «новенькие Y которых ещё не создавали»)",
  "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
  "poses": [
   {
@@ -10279,6 +10279,168 @@
    "rating_trust": "MID",
    "combo": true,
    "card": "Y514"
+  },
+  {
+   "id": "PL578",
+   "name": "Armor-Curl Unfurl",
+   "sd": "unrolling from the armor-curl against the burrow wall, one knee still folded to the chest, both palms pressing the scale-wrap's loose front flat over the ribs, its weight dragging low",
+   "category": "OC_T5-27",
+   "risk": "MID",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y522: панголин-кандидат — броня-нора раскрывается",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y522"
+  },
+  {
+   "id": "PL579",
+   "name": "Dust-Hollow Sprawl",
+   "sd": "sprawled flat in the dust hollow, chin on crossed wrists, both heels kicking a slow dust-bloom, one palm pinning the mended vest flat to the ribs",
+   "category": "OC_T5-27",
+   "risk": "LOW",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM06_side"
+   ],
+   "use": "N",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y523: шиншилла-кандидат — пыльная ванна",
+   "corridor": "A",
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y523"
+  },
+  {
+   "id": "PL580",
+   "name": "Half-Shed Coat Stretch",
+   "sd": "mid-stretch in the half-shed coat, one arm out of the winter sleeve, the coat's weight hanging off the crooked elbow and its front panel swung across the chest line, summer-brown bared",
+   "category": "OC_T5-27",
+   "risk": "MID",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y524: горностай-кандидат — полулинька",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y524"
+  },
+  {
+   "id": "PL581",
+   "name": "Hoard-Rim Offer",
+   "sd": "crouched on the hoard-rim, presenting one shining find in both palms at the lens, the wing-panels flared for balance, tail-feathers counting the wind",
+   "category": "OC_T5-27",
+   "risk": "LOW",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y525: сорока-кандидат — блестяшка в обеих ладонях",
+   "corridor": "A",
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y525"
+  },
+  {
+   "id": "PL582",
+   "name": "Low-Track Listen",
+   "sd": "crouched low with one ear turned back to the wind, both forearms flat on the ground and the knit wrap's fold crossing the chest line, chin on the wrists, haunches high, tail-tip flagging",
+   "category": "OC_T5-27",
+   "risk": "MID",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM03_low"
+   ],
+   "use": "V",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y526: рысь-кандидат — низкое слушание",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y526"
+  },
+  {
+   "id": "PL583",
+   "name": "Prayer-Fold Still",
+   "sd": "stone-still in the prayer fold, both raptorial forelegs bent at the chest like a closed book, the head's slow tilt the only motion, one hind-leg's spike notched on a stem",
+   "category": "OC_T5-27",
+   "risk": "MID",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y527: богомол-кандидат — неподвижность как оружие",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y527"
+  },
+  {
+   "id": "PL584",
+   "name": "Regrown-Limb Inspect",
+   "sd": "sitting in the shallow with the regrown arm held up to the light, the new limb counting its own fingers, the waterline crossing the chest line, the other palm flat on the sill",
+   "category": "OC_T5-27",
+   "risk": "LOW",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y528: аксолотль-кандидат — новая рука считает пальцы",
+   "corridor": "A",
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y528"
+  },
+  {
+   "id": "PL585",
+   "name": "Beckon-Coin Balance",
+   "sd": "balanced on one heel on the sill's edge, the raised paw held in the beckon curl, the coin's warmth in the other palm at the chest, the tail counting the balance",
+   "category": "OC_T5-27",
+   "risk": "LOW",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "N",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y529: манэки-нэко-кандидат — монета и приглашение",
+   "corridor": "A",
+   "rating_trust": "LOW",
+   "combo": true,
+   "card": "Y529"
+  },
+  {
+   "id": "PL586",
+   "name": "Note-Before-Note",
+   "sd": "standing at the herd's edge with both hands folded at the sternum, the breath drawn to the top of the lungs, the mouth one heartbeat from the note, the veil's hem lifting with the intake",
+   "category": "OC_T5-27",
+   "risk": "MID",
+   "family": "prey_survival",
+   "preferred_cams": [
+    "CAM02"
+   ],
+   "use": "V",
+   "source": "first-use T5-27 PREY (EXP-семья prey_survival, 9 карт)",
+   "use_note": "обёртка Y530: банши-кандидат — вдох перед нотой",
+   "corridor": "A",
+   "rating_trust": "MID",
+   "combo": true,
+   "card": "Y530"
   }
  ],
  "family_counts": {

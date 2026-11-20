@@ -1,5 +1,5 @@
 {
- "version": "1.13.0",
+ "version": "1.14.0",
  "born": "2026-11-18: волна 10 «способы раскраски» P234–P242 (T5-25)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -7519,6 +7519,249 @@
    "family": "exp_color_wave_11",
    "born": "2026-11-19, T5-26 «Ancient Abyss» — волна 11 «способы раскраски» (заказ автора)",
    "trial": "trial до вердикта T5-26"
+  },
+  {
+   "id": "P252_SHIBORI_STITCH_RESIST",
+   "name": "Shibori Stitch Resist",
+   "dominant": [
+    "shibori-indigo deep",
+    "thread-bind white"
+   ],
+   "secondary": [
+    "resist-pale cloth"
+   ],
+   "accent1": [
+    "one unbound madder spill"
+   ],
+   "accent2": [
+    "knot-shadow navy"
+   ],
+   "shadow": "dye-shadow-navy",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "стежок держит краску: где нить стянула ткань — бело, свет читает рельеф стежка как тактильную карту",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P253_KINTSUGI_GOLD_MEND",
+   "name": "Kintsugi Gold Mend",
+   "dominant": [
+    "lacquer-black",
+    "mend-gold seam"
+   ],
+   "secondary": [
+    "old-bone porcelain"
+   ],
+   "accent1": [
+    "one fresh-crack copper"
+   ],
+   "accent2": [
+    "resin amber"
+   ],
+   "shadow": "resin-shadow-brown",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "золото в трещине: свет идёт по шву ремонта, трещина — самый яркий путь кадра",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P254_SHOUSUGIBAN_CHAR",
+   "name": "Shou-Sugi-Ban Char",
+   "dominant": [
+    "char-black satin",
+    "cedar-ember line"
+   ],
+   "secondary": [
+    "soot-grey feather"
+   ],
+   "accent1": [
+    "one unburned cedar-gold plank"
+   ],
+   "accent2": [
+    "smoke-ghost silver"
+   ],
+   "shadow": "smoke-shadow",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "обжиг-хранитель: уголь ест блики, живая доска — единственный тёплый акцент",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P255_UKIYO_WOODBLOCK",
+   "name": "Ukiyo-e Woodblock",
+   "dominant": [
+    "prussian-wave blue",
+    "safflower rose"
+   ],
+   "secondary": [
+    "paper-cream",
+    "bokashi sky gradient"
+   ],
+   "accent1": [
+    "one vermilion seal"
+   ],
+   "accent2": [
+    "mokuhanga woodgrain"
+   ],
+   "shadow": "woodgrain-shadow",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "плоские плашки и градиент бокаси: свет — слой туши, не луч; зерно доски дышит под краской",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P256_FRESCO_LIME",
+   "name": "Fresco Lime",
+   "dominant": [
+    "lime-bianco wet",
+    "mineral terre-verte"
+   ],
+   "secondary": [
+    "wet-plaster grey"
+   ],
+   "accent1": [
+    "one true-fresco red earth"
+   ],
+   "accent2": [
+    "sand-pink intonaco"
+   ],
+   "shadow": "matte mineral shadow",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "пигмент утонул в сырой извести: матовый свет изнутри стены, без лака и блика",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P257_CEL_PAINT_FLAT",
+   "name": "Cel Animation Paint",
+   "dominant": [
+    "cel-vinyl two-tone flat"
+   ],
+   "secondary": [
+    "register-line clean"
+   ],
+   "accent1": [
+    "one highlight-bloom white"
+   ],
+   "accent2": [
+    "shadow-edge hard"
+   ],
+   "shadow": "single-tone shadow",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "аниме-целл: плоские заливки, жёсткая кромка тени, один блик-цветом; никаких градиентов",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P258_DECALCOMANIA_PRESS",
+   "name": "Decalcomania Press",
+   "dominant": [
+    "dendrite-ink black",
+    "squid-vein violet"
+   ],
+   "secondary": [
+    "press-pale ground"
+   ],
+   "accent1": [
+    "one coral bloom"
+   ],
+   "accent2": [
+    "fingerprint whorl"
+   ],
+   "shadow": "fold-shadow",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "краска сжата между двумя поверхностями: свет течёт по жилам-дендритам, узор рождён давлением",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P259_SILVERPOINT_TARNISH",
+   "name": "Silverpoint Tarnish",
+   "dominant": [
+    "toned-ground grey",
+    "silver-line pale"
+   ],
+   "secondary": [
+    "warm-tarnish bloom"
+   ],
+   "accent1": [
+    "one red-chalk note"
+   ],
+   "accent2": [
+    "ground-tooth speckle"
+   ],
+   "shadow": "ground-tooth shadow",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "след серебряного штифта стареет в тёплый тон: свет читает линию ретро-окислом, тонированная бумага ест полутон",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P260_AMATE_BARK_FIBER",
+   "name": "Amate Bark Fiber",
+   "dominant": [
+    "bark-fiber kraft",
+    "fig-bark speckle"
+   ],
+   "secondary": [
+    "cochineal earth"
+   ],
+   "accent1": [
+    "one wild-cotton white"
+   ],
+   "accent2": [
+    "fig-leaf green press"
+   ],
+   "shadow": "fiber-shadow",
+   "forbidden": [
+    "neon",
+    "muddy colors",
+    "photo color"
+   ],
+   "light_type": "волокно коры держит пигмент как ловчая сеть: свет рассеян в фибре, земляные краски сидят глубоко",
+   "family": "exp_color_wave_12",
+   "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
+   "trial": "trial до вердикта T5-27"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -7669,6 +7912,23 @@
     "P32",
     "P33"
    ]
+  },
+  {
+   "wave": "exp_color_wave_12",
+   "name": "раскраска выживания",
+   "born": "2026-11-20, T5-27 «PREY»: заказ автора «новенькие палитры и способы раскраски»",
+   "methods": [
+    "shibori stitch-resist indigo",
+    "kintsugi gold-mend",
+    "shou-sugi-ban char",
+    "ukiyo-e woodblock",
+    "fresco lime",
+    "cel animation paint",
+    "decalcomania press",
+    "silverpoint tarnish",
+    "amate bark fiber"
+   ],
+   "note": "девять РАЗНЫХ механик; семьи ни разу не выходили (волны 1–11 не пересечены); методы читают тему: сопротивление/починка/сохранение/плоскость/минерал/жёсткая кромка/отпечаток/линия/волокно"
   }
  ]
 }

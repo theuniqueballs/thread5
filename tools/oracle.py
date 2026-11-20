@@ -103,6 +103,7 @@ def load_camera():
             "corridor": c.get("corridor") or "—",
             "exposureClass": exposure.get("class") or "—",
             "pattern": comps.get("pose") or c.get("pattern") or "",
+            "builtFrom": c.get("built_from") or "",
         })
     cards.sort(key=lambda c: card_num(c["id"]))
     return data.get("version", "—"), cards
@@ -182,7 +183,29 @@ def oc_rank(card, usage):
     return cover + fresh + rarity + age
 
 
-def draw_constellation(batch_no, cards, usage, oc_target=3, main_target=21, exp_target=9, window_depth=3):
+def build_pose_window(batch_no: int, depth: int, corpus=None):
+    """Окно ПОЗ ротации (§7, обкатка T5-27 проблема №1): PL-коды слотов
+    последних depth партий до batch_no — карта жребия, чей built_from в этом
+    множестве, не раздаётся (зеркало buildPoseWindow oracle-engine.ts)."""
+    past = []
+    for no, path in (corpus if corpus is not None else corpus_batches()):
+        if 0 < no < batch_no:
+            past.append((no, path))
+    past.sort(key=lambda x: x[0])
+    window = past[-depth:] if depth > 0 else []
+    poses = set()
+    for _no, path in window:
+        try:
+            _, _, slots = gates.parse_batch(path)
+        except Exception:
+            continue
+        for s in slots:
+            if s.pose:
+                poses.add(s.pose)
+    return sorted(poses)
+
+
+def draw_constellation(batch_no, cards, usage, oc_target=3, main_target=21, exp_target=9, window_depth=3, window_poses=None):
     """Побитовое зеркало drawConstellation (oracle-engine.ts). Порядок
     корзин, сортировок и rng-вызовов свято совпадает — иначе векторы падают."""
     # окно: последние window_depth партий прошлого
@@ -193,8 +216,15 @@ def draw_constellation(batch_no, cards, usage, oc_target=3, main_target=21, exp_
         u = usage.get(cid)
         return bool(u and u["lastBatch"] in window_nos)
 
+    # обкатка T5-27, проблема №1: PL-окно поз — карта на позе окна не раздаётся
+    pose_window = set(window_poses or [])
+
+    def pose_banned(c):
+        return bool(pose_window and c.get("builtFrom") and c["builtFrom"] in pose_window)
+
     usable = [c for c in cards
-              if c["id"] and card_num(c["id"]) > 0 and c["pattern"].strip() and not in_window(c["id"])]
+              if c["id"] and card_num(c["id"]) > 0 and c["pattern"].strip()
+              and not in_window(c["id"]) and not pose_banned(c)]
     usable.sort(key=lambda c: card_num(c["id"]))
     pool_a = [c for c in usable if c["corridor"] in ("A", "A+B")]
     pool_b = [c for c in usable if c["corridor"] in ("B", "A+B")]
@@ -263,6 +293,7 @@ def draw_constellation(batch_no, cards, usage, oc_target=3, main_target=21, exp_
         "main": main,
         "exp": exp,
         "windowExcluded": sum(1 for c in cards if in_window(c["id"])),
+        "windowPosesExcluded": sum(1 for c in cards if pose_banned(c)),
         "shortfall": shortfall,
     }
 
@@ -437,9 +468,11 @@ def cmd_draw(args) -> int:
         print("specs/camera.json не читается — жребий бросается только по живому реестру")
         return 3
     usage = build_usage(batch_no)
+    window_poses = build_pose_window(batch_no, args.depth)
     draw = draw_constellation(batch_no, cards, usage,
                               oc_target=args.oc, main_target=args.main,
-                              exp_target=args.exp, window_depth=args.depth)
+                              exp_target=args.exp, window_depth=args.depth,
+                              window_poses=window_poses)
     if args.md:
         print(f"## Жребий оракула — партия №{batch_no} (seed {draw['seed']})")
         print()
@@ -452,7 +485,7 @@ def cmd_draw(args) -> int:
             print()
         return 0
     print(f"=== ЖРЕБИЙ · T5-{batch_no} · seed {draw['seed']} · реестр camera {version} ===")
-    print(f"окно съело: {draw['windowExcluded']} карт · пул иссяк на: {draw['shortfall']} слотах")
+    print(f"окно съело: {draw['windowExcluded']} карт · позы окна съели: {draw['windowPosesExcluded']} · пул иссяк на: {draw['shortfall']} слотах")
     for title, group in (("OC", draw["oc"]), ("МЕЙН", draw["main"]), ("EXP", draw["exp"])):
         ids = " ".join(c["id"] for c in group)
         print(f"{title} ({len(group)}): {ids}")

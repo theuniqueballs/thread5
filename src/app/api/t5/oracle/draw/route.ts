@@ -3,6 +3,7 @@ import { readSpecJson, listBatches, readBatch } from '@/lib/t5/store';
 import {
   buildRotationWindow,
   buildCardUsage,
+  buildPoseWindow,
   drawConstellation,
   ENGINE_ERA,
   type OracleCard,
@@ -20,6 +21,7 @@ interface CameraSpec {
       corridor?: string;
       components?: { exposure?: { class?: string }; pose?: string };
       pattern?: string;
+      built_from?: string;
     }[];
   };
 }
@@ -50,29 +52,34 @@ export async function GET(req: Request) {
     corridor: c.corridor ?? '—',
     exposureClass: c.components?.exposure?.class ?? '—',
     pattern: c.components?.pose || c.pattern || '',
+    builtFrom: c.built_from || undefined,
   }));
 
   // корпус: партии С НОМЕРОМ МЕНЬШЕ batchNo (окно не должно видеть будущее)
   const all = await Promise.all((await listBatches()).map(async (b) => await readBatch(b.slug)));
   const corpus = all
     .filter((b): b is T5Batch => b !== null)
-    .map((b) => ({ slug: b.slug, slots: b.slots.map((s) => ({ yCard: s.yCard })) }));
+    .map((b) => ({ slug: b.slug, slots: b.slots.map((s) => ({ yCard: s.yCard, pose: s.pose })) }));
 
   const depth = Math.max(0, Math.min(10, Number.parseInt(url.searchParams.get('depth') ?? '3', 10) || 3));
   const window = buildRotationWindow(corpus, batchNo, depth);
   const usage = buildCardUsage(corpus, batchNo);
+  // обкатка T5-27, проблема №1: PL-окно поз — карты на позах окна не раздаются
+  const windowPoses = buildPoseWindow(corpus, batchNo, depth);
 
   const draw = drawConstellation(batchNo, cards, usage, {
     ocTarget: clampOpt(url.searchParams.get('oc'), 3),
     mainTarget: clampOpt(url.searchParams.get('main'), 21),
     expTarget: clampOpt(url.searchParams.get('exp'), 9),
     windowDepth: depth,
+    windowPoses,
   });
 
   return NextResponse.json(
     {
       draw,
       window,
+      windowPoses: { depth, poses: windowPoses.length },
       registry: { version: cam.version ?? '—', cards: cards.length },
       engine: ENGINE_ERA,
     },

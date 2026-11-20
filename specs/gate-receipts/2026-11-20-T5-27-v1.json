@@ -1,0 +1,580 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.15.0)",
+ "batch": "batches/T5-27.md",
+ "sha256": "de12c5316b348dab8f6b6fa3da4a15678ba219b157e7363706a2e0dcbf7fa05c",
+ "utc": "2026-11-20T15:11:48+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "BATCH",
+   "gate": "channel-quota",
+   "msg": "candidate-каналы использованы 10× (P01,P02,P03,P04,P05,P06,P07,P08,P09,P10) > 2 — WARN волны 2, эскалация по KPI"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "12 общих 6-грамм с предыдущими партиями (T5-26.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "vae-shelf-cage-seduce",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "shelf-cage-lean",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 286
+  },
+  {
+   "id": "P02",
+   "slug": "lucy-afterglow-window",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "afterglow-window-fog",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 286
+  },
+  {
+   "id": "P03",
+   "slug": "ana-coolant-bath-rise",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "coolant-bath-rise",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 290
+  },
+  {
+   "id": "P04",
+   "slug": "rabbit-corner-turn",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "cornered-wall-turn",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 17,
+   "posWords": 287
+  },
+  {
+   "id": "P05",
+   "slug": "serpent-mid-molt",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "mid-molt-freeze",
+   "channelStatus": "candidate",
+   "corridor": "A+B",
+   "claimToken": 22,
+   "posWords": 302
+  },
+  {
+   "id": "P06",
+   "slug": "sheep-fleece-shake",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "fleece-shake-arc",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 283
+  },
+  {
+   "id": "P07",
+   "slug": "elf-preserve-vitrine",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "preserve-glass-watch",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 299
+  },
+  {
+   "id": "P08",
+   "slug": "succubus-cover-grip",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "cover-grip-closeup",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 270
+  },
+  {
+   "id": "P09",
+   "slug": "inkslime-water-column",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "water-column-watch",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 301
+  },
+  {
+   "id": "P10",
+   "slug": "raccoon-hoard-swallow",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "hoard-mouth-swallow",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 287
+  },
+  {
+   "id": "P11",
+   "slug": "dullahan-head-in-lap",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 272
+  },
+  {
+   "id": "P12",
+   "slug": "nephilim-tide-verdict",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 263
+  },
+  {
+   "id": "P13",
+   "slug": "golem-belt-maintenance",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 256
+  },
+  {
+   "id": "P14",
+   "slug": "netmender-straight-needle",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 268
+  },
+  {
+   "id": "P15",
+   "slug": "hedgehog-soft-landing",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 285
+  },
+  {
+   "id": "P16",
+   "slug": "cat-bench-lounging",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 286
+  },
+  {
+   "id": "P17",
+   "slug": "trapcam-quiet-feed",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 233
+  },
+  {
+   "id": "P18",
+   "slug": "beacon-scarf-wrestle",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 241
+  },
+  {
+   "id": "P19",
+   "slug": "burrow-slot-elbow",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 210
+  },
+  {
+   "id": "P20",
+   "slug": "meadow-fence-two-laws",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 265
+  },
+  {
+   "id": "P21",
+   "slug": "ledge-silk-half-knot",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 256
+  },
+  {
+   "id": "P22",
+   "slug": "decoy-offer-posture",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 247
+  },
+  {
+   "id": "P23",
+   "slug": "summer-watch-bottle",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 241
+  },
+  {
+   "id": "P24",
+   "slug": "dream-catalogue-letter",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 241
+  },
+  {
+   "id": "P25",
+   "slug": "pangolin-armor-unfurl",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 301
+  },
+  {
+   "id": "P26",
+   "slug": "chinchilla-dust-wallow",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 19,
+   "posWords": 288
+  },
+  {
+   "id": "P27",
+   "slug": "ermine-half-shed-stretch",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 25,
+   "posWords": 315
+  },
+  {
+   "id": "P28",
+   "slug": "magpie-shiny-offering",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 28,
+   "posWords": 290
+  },
+  {
+   "id": "P29",
+   "slug": "lynx-low-track-listen",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 311
+  },
+  {
+   "id": "P30",
+   "slug": "mantis-prayer-stillness",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 299
+  },
+  {
+   "id": "P31",
+   "slug": "axolotl-new-hand",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 289
+  },
+  {
+   "id": "P32",
+   "slug": "fortunecat-beckon-balance",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 327
+  },
+  {
+   "id": "P33",
+   "slug": "banshee-note-intake",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 317
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "behind the viewer both palms flat",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "the viewer both palms flat on",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "viewer both palms flat on the",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "at the temples her colors the",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P29"
+   ]
+  },
+  {
+   "gram": "both palms flat on the pane",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "palms flat on the pane breath",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "fog white at the breath circle",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "white at the breath circle her",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "at the breath circle her colors",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "the breath circle her colors the",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "at the ear her colors the",
+   "slotsHere": [
+    "P12"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P31"
+   ]
+  },
+  {
+   "gram": "reading her breast shape at the",
+   "slotsHere": [
+    "P27"
+   ],
+   "sourceBatch": "T5-26.md",
+   "slotsThere": [
+    "P06"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 19,
+  "fact_R+": 19
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y443",
+   "Y351",
+   "Y486",
+   "Y45",
+   "Y1",
+   "Y258",
+   "Y265",
+   "Y8",
+   "Y333",
+   "Y427",
+   "Y261",
+   "Y243",
+   "Y15",
+   "Y353",
+   "Y460",
+   "Y3",
+   "Y301",
+   "Y306",
+   "Y305",
+   "Y245",
+   "Y352",
+   "Y71",
+   "Y99",
+   "Y404",
+   "Y522",
+   "Y523",
+   "Y524",
+   "Y525",
+   "Y526",
+   "Y527",
+   "Y528",
+   "Y529",
+   "Y530"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "combo_pose": {
+  "composite_used": 29,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 33,
+  "weaved": 33,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ }
+}

@@ -20,6 +20,7 @@ import { join, dirname } from "node:path";
 // один и тот же алгоритм (паритет лочат золотые векторы обоих тестовых).
 import {
   drawConstellation,
+  buildPoseWindow,
   buildRotationWindow,
   buildCardUsage,
   type OracleCard,
@@ -82,10 +83,10 @@ function repoRoot(): string | null {
 /** Лёгкий скан корпуса: партии → слоты с Y-картами (для окна/жар/жребия).
  *  Канонический парсер — src/lib/t5/parse.ts и tools/gates.py; здесь только
  *  поля `Y-card:` — их формат стабилен с эры 1.13 (`Y-card: Y### — паттерн`). */
-function lightScanBatches(): { slug: string; slots: { yCard: string | null }[] }[] {
+function lightScanBatches(): { slug: string; slots: { yCard: string | null; pose: string | null }[] }[] {
   const root = repoRoot();
   if (!root) return [];
-  const out: { slug: string; slots: { yCard: string | null }[] }[] = [];
+  const out: { slug: string; slots: { yCard: string | null; pose: string | null }[] }[] = [];
   let files: string[] = [];
   try {
     files = readdirSync(join(root, "batches"))
@@ -97,12 +98,14 @@ function lightScanBatches(): { slug: string; slots: { yCard: string | null }[] }
   for (const f of files) {
     try {
       const text = readFileSync(join(root, "batches", f), "utf-8");
-      const slots: { yCard: string | null }[] = [];
+      const slots: { yCard: string | null; pose: string | null }[] = [];
       for (const line of text.split("\n")) {
-        const m = /^Y-card:\s*(Y\d{1,3})\b/iu.exec(line.trim());
-        slots.push({ yCard: m ? m[1].toUpperCase() : null });
+        const t = line.trim();
+        const m = /^Y-card:\s*(Y\d{1,3})\b/iu.exec(t);
+        const pm = /^P\d{2}\s+—/.test(t) ? (/\b(PL\d{1,3})\b/u.exec(t)?.[1] ?? null) : null;
+        slots.push({ yCard: m ? m[1].toUpperCase() : null, pose: pm });
       }
-      out.push({ slug: f.replace(/\.md$/iu, ""), slots: slots.filter((s) => s.yCard) });
+      out.push({ slug: f.replace(/\.md$/iu, ""), slots: slots.filter((s) => s.yCard || s.pose) });
     } catch {
       /* битый файл не роняет скан */
     }
@@ -117,6 +120,7 @@ function registryAsOracleCards(): OracleCard[] {
     corridor: String(c.corridor || c.components?.corridor || "—"),
     exposureClass: String((c.components?.exposure as { class?: string } | undefined)?.class || "—"),
     pattern: String(c.components?.pose || c.pattern || ""),
+    builtFrom: String((c as { built_from?: string }).built_from || "") || undefined,
   })).sort((a, b) => Number.parseInt(/\d+/u.exec(a.id)?.[0] ?? "0", 10) - Number.parseInt(/\d+/u.exec(b.id)?.[0] ?? "0", 10));
 }
 
@@ -956,7 +960,9 @@ const server = Bun.serve({
         if (!cards.length) return json({ error: "реестр карт пуст — camera.json не найден" }, 500);
         const corpus = lightScanBatches();
         const usage = buildCardUsage(corpus, batchNo);
-        const draw = drawConstellation(batchNo, cards, usage, { ocTarget: ocT, mainTarget: mainT, expTarget: expT, windowDepth: depth });
+        // обкатка T5-27, проблема №1: PL-окно поз — карты на позах окна не раздаются
+        const windowPoses = buildPoseWindow(corpus, batchNo, depth);
+        const draw = drawConstellation(batchNo, cards, usage, { ocTarget: ocT, mainTarget: mainT, expTarget: expT, windowDepth: depth, windowPoses });
         const window = buildRotationWindow(corpus, batchNo, depth);
         return json({
           draw,

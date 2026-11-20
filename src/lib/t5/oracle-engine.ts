@@ -208,6 +208,8 @@ export interface OracleCard {
   corridor: string;      // "A" | "B" | "A+B" | "—"
   exposureClass: string; // "COVER" | "PROCESS" | "CLOTHED-TIGHT" | "—"
   pattern: string;       // вплетение (строка 3 POS, В34)
+  /** поза-обёртка "PL###" — окно поз §7 исключает карты на позах окна (обкатка T5-27, проблема №1) */
+  builtFrom?: string;
 }
 
 /** история использования карты по корпусу */
@@ -289,6 +291,30 @@ export function buildCardUsage(
 }
 
 /* ═════════════════════════ 4. ЖАР ПАРТИИ ═════════════════════════════ */
+
+/** окно ПОЗ ротации (§7): PL-коды слотов последних depth партий до batchNo —
+ *  карты жребия, чьи built_from попадают в это множество, не раздаются
+ *  (обкатка T5-27, проблема №1: Y-окно чисто, а поза карты — в бане) */
+export function buildPoseWindow(
+  batches: { slug: string; slots: { pose: string | null }[] }[],
+  batchNo: number,
+  depth: number,
+): string[] {
+  const numbered = batches
+    .map((b) => {
+      const m = /^(?:T5)-(\d+)$/i.exec(b.slug.trim());
+      return m ? { no: Number.parseInt(m[1], 10), b } : null;
+    })
+    .filter((x): x is { no: number; b: { slug: string; slots: { pose: string | null }[] } } => x !== null)
+    .filter((x) => (batchNo <= 0 ? true : 0 < x.no && x.no < batchNo))
+    .sort((a, b) => a.no - b.no);
+  const windowBatches = depth > 0 ? numbered.slice(-depth) : [];
+  const poses = new Set<string>();
+  for (const w of windowBatches) {
+    for (const s of w.b.slots) if (s.pose) poses.add(s.pose);
+  }
+  return [...poses];
+}
 
 export interface HeatSlotDrift {
   slotId: string;
@@ -506,6 +532,8 @@ export interface DrawResult {
   exp: DrawCard[];
   /** сколько карт отсечено окном ротации */
   windowExcluded: number;
+  /** сколько карт село на позы PL-окна (обкатка T5-27) */
+  windowPosesExcluded: number;
   /** сколько карт не хватило (пул иссяк) — 0 = расклад полный */
   shortfall: number;
   determinism: string;
@@ -520,6 +548,11 @@ export interface DrawOptions {
   expTarget?: number;
   /** глубина окна ротации (по умолчанию 3, как y_assembly.window) */
   windowDepth?: number;
+  /** PL-окно поз (LAWS §7): карты, чьи built_from-позы в окне, не раздаются.
+   *  Обкатка T5-27, проблема №1: жребий вычёл только Y-окно, а Y81→PL63 и
+   *  Y95→PL78 сели на позы-запреты. Пустой список/undefined = фильтр выключен
+   *  (fixture-карты без builtFrom проходят насквозь — векторы не тронуты). */
+  windowPoses?: string[];
 }
 
 /** сортировка карт по номеру — стабильная база для детерминизма */
@@ -567,8 +600,13 @@ export function drawConstellation(
     return Boolean(u && u.lastBatch !== null && windowNos.has(u.lastBatch));
   };
 
+  // обкатка T5-27, проблема №1: PL-окно поз — карта на позе окна не раздаётся
+  const poseWindow = new Set(opts.windowPoses ?? []);
+  const poseBanned = (c: OracleCard): boolean =>
+    poseWindow.size > 0 && Boolean(c.builtFrom) && poseWindow.has(c.builtFrom as string);
+
   const usable = cards
-    .filter((c) => c.id && cardNum(c.id) > 0 && c.pattern.trim() && !inWindow(c.id))
+    .filter((c) => c.id && cardNum(c.id) > 0 && c.pattern.trim() && !inWindow(c.id) && !poseBanned(c))
     .sort(byNum);
   const poolA = usable.filter((c) => c.corridor === 'A' || c.corridor === 'A+B');
   const poolB = usable.filter((c) => c.corridor === 'B' || c.corridor === 'A+B');
@@ -635,6 +673,7 @@ export function drawConstellation(
     main,
     exp,
     windowExcluded: cards.filter((c) => inWindow(c.id)).length,
+    windowPosesExcluded: cards.filter((c) => poseBanned(c)).length,
     shortfall: shortfall.n,
     determinism: `seed = ${batchNo} × 2654435761 mod 2³² = ${seed}; тот же вход → тот же расклад (зеркала: прилавок/печь/сервис, векторы tests/fixtures/oracle_vectors.json)`,
   };

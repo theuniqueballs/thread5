@@ -1,7 +1,7 @@
 {
  "id": "camera",
  "name": "CAMERA-FIRST — камера как половина работы",
- "version": "1.16.0",
+ "version": "1.17.0",
  "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
  "law": "КАМЕРА-ПЕРВАЯ (вердикт 2026-11-03) + ревизия 2026-11-05 (вердикт автора чатом): «всё чё он говорит тру инфа, камера - одно из важных частей композиции. если посмотришь официальный гайд по тсубаки 2, там так и написано» → §13.0 LAWS: камерный кластер (D+A+F) — первые 10–20 токенов POS (Cole-B9 принят, кадровая строка у face-блока отменена); дисциплина дистанций D1–D8 «ближе/дальше» (ковбой — признанный доминант рендера, кап снят); dutch A09 ≤10%/батч — закон («закон!»); Combo:/Package: в теле слота с T5-13 («yes»); A/B insert→payoff 1–2 пары/батч («наверное да», пробно).",
  "distance_ladder": {
@@ -546,17 +546,17 @@
   "cards": [
    {
     "id": "Y1",
-    "pattern": "shirt hem stopped mid-lift under crossed forearms + the lifted hem's weight hanging off both elbows + upper body + slight low angle",
+    "pattern": "shirt hem stopped mid-lift under crossed forearms, the lifted hem's weight hanging off both elbows, the under-curve of the chest reading where the cotton's gone transparent with the stretch + upper body + slight low angle",
     "corridor": "A+B",
     "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
     "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
     "components": {
      "exposure": {
       "class": "PROCESS",
-      "cover_object": "crossed forearms (коридор A)",
-      "read": "подол пойман на середине подъёма — процесс не завершён и не отменён"
+      "cover_object": "the lifted hem's weight hanging off both elbows",
+      "read": "объект-прикрытие (коридор A, пересборка T5-27): the lifted hem's weight hanging off both elbows"
      },
-     "pose": "shirt hem stopped mid-lift under crossed forearms + the lifted hem's weight hanging off both elbows",
+     "pose": "shirt hem stopped mid-lift under crossed forearms, the lifted hem's weight hanging off both elbows, the under-curve of the chest reading where the cotton's gone transparent with the stretch",
      "pov": "зритель стоит чуть ниже линии глаз — видит, что вес подъёма честно висит на локтях",
      "camera": "upper body + slight low angle",
      "profiling": "VOLT/EXQUISITE R+ (A+B); универсальный opener процесса; не для полностью одетых NICHE"
@@ -672,17 +672,17 @@
    },
    {
     "id": "Y8",
-    "pattern": "close on the hands' cover grip + the fabric gathering between the fingers + eye level",
+    "pattern": "close on the hands' cover grip, the fabric gathering between the fingers over the sternum, the knuckles' tension telling how little the cover weighs + eye level",
     "corridor": "A",
     "trust": "REBUILT (В27-физика, 2026-11-15) — выход с T5-24 на вердикт",
     "verdict": "T5-22 EXP: не зачтён («позы не впечатляющие… совсем») — REWORK; T5-23: пересобран с физическими якорями (вес/тяга/зацеп в паттерне, В27) по приказу автора «обязательно нужно составить множество Y комбинаций»",
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "the hands' cover grip (коридор A — крупный план прикрытия)",
-      "read": "ткань собирается между пальцами — прикрытие видно фактурой хвата"
+      "cover_object": "the fabric gathering between the fingers over the sternum",
+      "read": "объект-прикрытие (коридор A, пересборка T5-27): the fabric gathering between the fingers over the sternum"
      },
-     "pose": "close on the hands' cover grip + the fabric gathering between the fingers",
+     "pose": "close on the hands' cover grip, the fabric gathering between the fingers over the sternum, the knuckles' tension telling how little the cover weighs",
      "pov": "глаз-уровень, крупный план рук и ткани — тело за кадром читается хватом",
      "camera": "close-up (hands) + eye level",
      "profiling": "VOLT R+ (A); insert-кадры; не ронять лицо: второй кадр батча с лицом"
@@ -1345,7 +1345,7 @@
    },
    {
     "id": "Y45",
-    "pattern": "spine flat against wall or glass, palms pressed beside hips, chin tilted down + CAM05_over_shoulder",
+    "pattern": "spine flat against wall or glass, both palms pressed beside the hips, chin tilted down and eyes lifted under the lashes, the wall taking the shoulders' full weight + CAM05_over_shoulder",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL15; В27-физика в sd: press, pressed; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -1353,10 +1353,10 @@
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "spine flat against wall or glass",
-      "read": "объект-прикрытие наследуется от позы (коридор A): spine flat against wall or glass"
+      "cover_object": "the wall taking the shoulders' full weight",
+      "read": "объект-прикрытие (коридор A, пересборка T5-27): the wall taking the shoulders' full weight"
      },
-     "pose": "spine flat against wall or glass, palms pressed beside hips, chin tilted down",
+     "pose": "spine flat against wall or glass, both palms pressed beside the hips, chin tilted down and eyes lifted under the lashes, the wall taking the shoulders' full weight",
      "pov": "CAM05_over_shoulder (камера позы CAM05_over_shoulder)",
      "camera": "CAM05_over_shoulder",
      "profiling": "base · VERTICAL · use: N"
@@ -5392,18 +5392,18 @@
    },
    {
     "id": "Y258",
-    "pattern": "mid-flip of wet hair after the towel, face briefly hidden by the hair arc, arms up + upper body three-quarter",
+    "pattern": "mid-flip of wet hair after the towel, face briefly hidden by the hair arc, arms up, the towel-wrap's tuck caught under one elbow while both wrists shake the water out + upper body three-quarter",
     "corridor": "A",
-    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL249; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
+    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL249; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27): физика в sd залита, карта легальна под R+; trust позы MID — тир решает вердикт; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27)",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
     "built_from": "PL249",
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "mid-flip of wet hair after the towel",
-      "read": "объект-прикрытие наследуется от позы (коридор A): mid-flip of wet hair after the towel"
+      "cover_object": "the towel-wrap's tuck caught under one elbow",
+      "read": "объект-прикрытие (коридор A, пересборка T5-27): the towel-wrap's tuck caught under one elbow"
      },
-     "pose": "mid-flip of wet hair after the towel, face briefly hidden by the hair arc, arms up",
+     "pose": "mid-flip of wet hair after the towel, face briefly hidden by the hair arc, arms up, the towel-wrap's tuck caught under one elbow while both wrists shake the water out",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "A4 · VERTICAL · use: NV"
@@ -5525,18 +5525,18 @@
    },
    {
     "id": "Y265",
-    "pattern": "behind glass, palm on the pane, eyes finding the viewer outside + upper body three-quarter",
+    "pattern": "behind glass, palm on the pane, eyes finding the viewer outside, the nightgown's front pressed flat to the glass by the palm's spread, the chest line reading through the sheer layer + upper body three-quarter",
     "corridor": "A",
-    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL256; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
+    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL256; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27): физика в sd залита, карта легальна под R+; trust позы MID — тир решает вердикт; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27)",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
     "built_from": "PL256",
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "behind glass",
-      "read": "объект-прикрытие наследуется от позы (коридор A): behind glass"
+      "cover_object": "the nightgown's front pressed flat to the glass",
+      "read": "объект-прикрытие (коридор A): the nightgown's front pressed flat to the glass"
      },
-     "pose": "behind glass, palm on the pane, eyes finding the viewer outside",
+     "pose": "behind glass, palm on the pane, eyes finding the viewer outside, the nightgown's front pressed flat to the glass by the palm's spread, the chest line reading through the sheer layer",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "A5 · VERTICAL · use: NV"
@@ -6817,7 +6817,7 @@
    },
    {
     "id": "Y333",
-    "pattern": "standing at the tub, both palms cupped around a vertical column of water lifted from the bath, leaning in to look through it + eye level",
+    "pattern": "standing at the tub, both palms cupped around a vertical column of water lifted from the bath, leaning in to look through it, the column's weight bowing both wrists inward, soaked shift clinging + eye level",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL338; В27-физика в sd: lean; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -6825,10 +6825,10 @@
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "standing at the tub",
-      "read": "объект-прикрытие наследуется от позы (коридор A): standing at the tub"
+      "cover_object": "the vertical column of water lifted from the bath",
+      "read": "объект-прикрытие (коридор A): the vertical column of water lifted from the bath"
      },
-     "pose": "standing at the tub, both palms cupped around a vertical column of water lifted from the bath, leaning in to look through it",
+     "pose": "standing at the tub, both palms cupped around a vertical column of water lifted from the bath, leaning in to look through it, the column's weight bowing both wrists inward, soaked shift clinging",
      "pov": "eye level (камера позы CAM01_eye_level)",
      "camera": "eye level",
      "profiling": "A6 · env_interaction · use: NV"
@@ -7159,7 +7159,7 @@
    },
    {
     "id": "Y351",
-    "pattern": "forehead pressed to cool window glass above the basin, palms flat on the pane, breath fog starting, wet camisole straps at the shoulders + upper body three-quarter",
+    "pattern": "forehead pressed to cool window glass above the basin, both palms flat on the pane, breath fog starting, the wet camisole straps' weight slipping off both shoulders honest + upper body three-quarter",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL356; В27-физика в sd: press, pressed, strap; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -7167,10 +7167,10 @@
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "forehead pressed to cool window glass above the basin",
-      "read": "объект-прикрытие наследуется от позы (коридор A): forehead pressed to cool window glass above the basin"
+      "cover_object": "the wet camisole straps' weight slipping off both shoulders honest",
+      "read": "объект-прикрытие (коридор A, пересборка T5-27): the wet camisole straps' weight slipping off both shoulders honest"
      },
-     "pose": "forehead pressed to cool window glass above the basin, palms flat on the pane, breath fog starting, wet camisole straps at the shoulders",
+     "pose": "forehead pressed to cool window glass above the basin, both palms flat on the pane, breath fog starting, the wet camisole straps' weight slipping off both shoulders honest",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "A7 · base · use: NV"
@@ -8603,18 +8603,18 @@
    },
    {
     "id": "Y427",
-    "pattern": "tilting the piggy-bank over her open palm while its mouth swallows the nearest shine first + CAM01",
+    "pattern": "tilting the piggy-bank over her open palm while its mouth swallows the nearest shine first, the bank's ceramic weight balanced on the sternum's line, one coin already warm in the palm + CAM01",
     "corridor": "A",
-    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL438; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
+    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL438; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27): физика в sd залита, карта легальна под R+; trust позы MID — тир решает вердикт; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27)",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
     "built_from": "PL438",
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "tilting the piggy-bank over her open palm while its mouth swallows the nearest shine first",
-      "read": "объект-прикрытие наследуется от позы (коридор A): tilting the piggy-bank over her open palm while its mouth swallows the nearest s"
+      "cover_object": "the bank's ceramic weight balanced on the sternum's line",
+      "read": "объект-прикрытие (коридор A, пересборка T5-27): the bank's ceramic weight balanced on the sternum's line"
      },
-     "pose": "tilting the piggy-bank over her open palm while its mouth swallows the nearest shine first",
+     "pose": "tilting the piggy-bank over her open palm while its mouth swallows the nearest shine first, the bank's ceramic weight balanced on the sternum's line, one coin already warm in the palm",
      "pov": "CAM01 (камера позы CAM01)",
      "camera": "CAM01",
      "profiling": "greed_toll · greed_toll · use: N"
@@ -8907,18 +8907,18 @@
    },
    {
     "id": "Y443",
-    "pattern": "braced into the bookcase behind the viewer, palms flat on the shelf-boards either side of the frame + CAM02",
+    "pattern": "braced into the bookcase behind the viewer, both palms flat on the shelf-boards either side of the frame, the spine's weight leaning into the shelf's edge, one knee notched on the lower rail + CAM02",
     "corridor": "A",
-    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL458; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
+    "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL458; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27): физика в sd залита, карта легальна под R+; trust позы MID — тир решает вердикт; В27-ПЕРЕСБОРКА акт 3, волна 1 (T5-27)",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
     "built_from": "PL458",
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "braced into the bookcase behind the viewer",
-      "read": "объект-прикрытие наследуется от позы (коридор A): braced into the bookcase behind the viewer"
+      "cover_object": "both palms flat on the shelf-boards either side of the frame",
+      "read": "объект-прикрытие (коридор A): both palms flat on the shelf-boards either side of the frame"
      },
-     "pose": "braced into the bookcase behind the viewer, palms flat on the shelf-boards either side of the frame",
+     "pose": "braced into the bookcase behind the viewer, both palms flat on the shelf-boards either side of the frame, the spine's weight leaning into the shelf's edge, one knee notched on the lower rail",
      "pov": "CAM02 (камера позы CAM02)",
      "camera": "CAM02",
      "profiling": "X4 · X4 · use: V"
@@ -9724,7 +9724,7 @@
    },
    {
     "id": "Y486",
-    "pattern": "rising from a wide dark bath, both palms pressing a folded towel flat against the chest, steam leaning with the rise + upper body three-quarter",
+    "pattern": "rising from a wide dark bath, both palms pressing a folded towel flat against the chest, the towel's hem caught between forearms, steam leaning with the rise's slow pull + upper body three-quarter",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL502; В27-физика в sd: lean, press, pressing; trust позы PENDING — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -9732,10 +9732,10 @@
     "components": {
      "exposure": {
       "class": "COVER",
-      "cover_object": "rising from a wide dark bath",
-      "read": "объект-прикрытие наследуется от позы (коридор A): rising from a wide dark bath"
+      "cover_object": "both palms pressing a folded towel flat against the chest",
+      "read": "объект-прикрытие (коридор A, пересборка T5-27): both palms pressing a folded towel flat against the chest"
      },
-     "pose": "rising from a wide dark bath, both palms pressing a folded towel flat against the chest, steam leaning with the rise",
+     "pose": "rising from a wide dark bath, both palms pressing a folded towel flat against the chest, the towel's hem caught between forearms, steam leaning with the rise's slow pull",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "OC_T5-21 · VERTICAL · use: N"
@@ -10405,6 +10405,177 @@
      "camera": "CAM06_side",
      "profiling": "abyss_service · abyss_service · use: V"
     }
+   },
+   {
+    "id": "Y522",
+    "pattern": "unrolling from the armor-curl against the burrow wall, one knee still folded to the chest, both palms pressing the scale-wrap's loose front flat over the ribs, its weight dragging low + full body three-quarter",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL578; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; панголин: броня-нора",
+    "built_from": "PL578",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "the scale-wrap's loose front flat over the ribs",
+      "read": "объект-прикрытие (коридор A): the scale-wrap's loose front flat over the ribs"
+     },
+     "pose": "unrolling from the armor-curl against the burrow wall, one knee still folded to the chest, both palms pressing the scale-wrap's loose front flat over the ribs, its weight dragging low",
+     "pov": "камера позы",
+     "camera": "full body three-quarter",
+     "profiling": "prey_survival · VERTICAL · use: V"
+    }
+   },
+   {
+    "id": "Y523",
+    "pattern": "sprawled flat in the dust hollow, chin on crossed wrists, both heels kicking a slow dust-bloom, one palm pinning the mended vest flat to the ribs, the kicks' rhythm riding the vest's hem + full body from the side",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL579; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; шиншилла: пыльная ванна",
+    "built_from": "PL579",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "one palm pinning the mended vest flat to the ribs",
+      "read": "объект-прикрытие в паттерне (коридор A): one palm pinning the mended vest flat to the ribs"
+     },
+     "pose": "sprawled flat in the dust hollow, chin on crossed wrists, both heels kicking a slow dust-bloom, one palm pinning the mended vest flat to the ribs, the kicks' rhythm riding the vest's hem",
+     "pov": "камера позы",
+     "camera": "full body from the side",
+     "profiling": "prey_survival · HORIZONTAL · use: N"
+    }
+   },
+   {
+    "id": "Y524",
+    "pattern": "mid-stretch in the half-shed coat, one arm out of the winter sleeve, the coat's weight hanging off the crooked elbow and its front panel swung across the chest line, summer-brown bared + upper body three-quarter",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL580; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; горностай: полулинька",
+    "built_from": "PL580",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "the coat's front panel swung across the chest line",
+      "read": "объект-прикрытие (коридор A): the coat's front panel swung across the chest line"
+     },
+     "pose": "mid-stretch in the half-shed coat, one arm out of the winter sleeve, the coat's weight hanging off the crooked elbow and its front panel swung across the chest line, summer-brown bared",
+     "pov": "камера позы",
+     "camera": "upper body three-quarter",
+     "profiling": "prey_survival · DIAGONAL · use: V"
+    }
+   },
+   {
+    "id": "Y525",
+    "pattern": "crouched on the hoard-rim, presenting one shining find in both palms at the lens, the wing-panels flared for balance, tail-feathers counting the wind's one direction + upper body three-quarter",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL581; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; сорока: блестяшка в дар",
+    "built_from": "PL581",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "one shining find in both palms at the lens",
+      "read": "объект-прикрытие в паттерне (коридор A): one shining find in both palms at the lens"
+     },
+     "pose": "crouched on the hoard-rim, presenting one shining find in both palms at the lens, the wing-panels flared for balance, tail-feathers counting the wind's one direction",
+     "pov": "камера позы",
+     "camera": "upper body three-quarter",
+     "profiling": "prey_survival · FRONTAL · use: N"
+    }
+   },
+   {
+    "id": "Y526",
+    "pattern": "crouched low with one ear turned back to the wind, both forearms flat on the ground and the knit wrap's fold crossing the chest line, chin on the wrists, haunches high, tail-tip flagging + full body profile",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL582; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; рысь: низкое слушание",
+    "built_from": "PL582",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "the knit wrap's fold crossing the chest line",
+      "read": "объект-прикрытие (коридор A): the knit wrap's fold crossing the chest line"
+     },
+     "pose": "crouched low with one ear turned back to the wind, both forearms flat on the ground and the knit wrap's fold crossing the chest line, chin on the wrists, haunches high, tail-tip flagging",
+     "pov": "камера позы",
+     "camera": "full body profile",
+     "profiling": "prey_survival · PROFILE · use: V"
+    }
+   },
+   {
+    "id": "Y527",
+    "pattern": "stone-still in the prayer fold, both raptorial forelegs bent at the chest like a closed book, the head's slow tilt the only motion, one hind-leg's spike notched on a stem + upper body frontal",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL583; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; богомол: неподвижность как заявка",
+    "built_from": "PL583",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "both raptorial forelegs bent at the chest like a closed book",
+      "read": "объект-прикрытие (коридор A): both raptorial forelegs bent at the chest like a closed book"
+     },
+     "pose": "stone-still in the prayer fold, both raptorial forelegs bent at the chest like a closed book, the head's slow tilt the only motion, one hind-leg's spike notched on a stem",
+     "pov": "камера позы",
+     "camera": "upper body frontal",
+     "profiling": "prey_survival · FRONTAL · use: V"
+    }
+   },
+   {
+    "id": "Y528",
+    "pattern": "sitting in the shallow with the regrown arm held up to the light, the new limb counting its own fingers, the waterline crossing the chest line, the other palm flat on the sill + upper body three-quarter",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL584; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; аксолотль: новая рука",
+    "built_from": "PL584",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "the waterline crossing the chest line",
+      "read": "объект-прикрытие (коридор A): the waterline crossing the chest line"
+     },
+     "pose": "sitting in the shallow with the regrown arm held up to the light, the new limb counting its own fingers, the waterline crossing the chest line, the other palm flat on the sill",
+     "pov": "камера позы",
+     "camera": "upper body three-quarter",
+     "profiling": "prey_survival · THREE-QUARTER · use: N"
+    }
+   },
+   {
+    "id": "Y529",
+    "pattern": "balanced on one heel on the sill's edge, the raised paw held in the beckon curl, the coin's warmth in the other palm held flat at the chest, the tail counting the balance + full body three-quarter",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL585; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; манэки-нэко: монета и приглашение",
+    "built_from": "PL585",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "the coin's warmth in the other palm held flat at the chest",
+      "read": "объект-прикрытие в паттерне (коридор A): the coin's warmth in the other palm held flat at the chest"
+     },
+     "pose": "balanced on one heel on the sill's edge, the raised paw held in the beckon curl, the coin's warmth in the other palm held flat at the chest, the tail counting the balance",
+     "pov": "камера позы",
+     "camera": "full body three-quarter",
+     "profiling": "prey_survival · THREE-QUARTER · use: N"
+    }
+   },
+   {
+    "id": "Y530",
+    "pattern": "standing at the herd's edge with both hands folded at the sternum, the breath drawn to the top of the lungs, the mouth one heartbeat from the note, the veil's hem lifting with the intake + upper body frontal",
+    "corridor": "A",
+    "trust": "DERIVED, T5-27 (2026-11-20): карта-обёртка над PL586; В27-физика в sd с рождения (вес/тяга/зацеп/финал); trust позы MID — тир решает вердикт",
+    "verdict": "T5-27 сборка 2026-11-20 (заказ автора «новенькие Y которых ещё не создавали»): новая карта, sd — копипаст-юнит; банши: вдох перед нотой",
+    "built_from": "PL586",
+    "components": {
+     "exposure": {
+      "class": "COVER",
+      "cover_object": "both hands folded at the sternum",
+      "read": "объект-прикрытие в паттерне (коридор A): both hands folded at the sternum"
+     },
+     "pose": "standing at the herd's edge with both hands folded at the sternum, the breath drawn to the top of the lungs, the mouth one heartbeat from the note, the veil's hem lifting with the intake",
+     "pov": "камера позы",
+     "camera": "upper body frontal",
+     "profiling": "prey_survival · FRONTAL · use: V"
+    }
    }
   ],
   "avoid_as_fake_high_tier": [
@@ -10447,6 +10618,7 @@
   "1.10.0 (2026-11-14, вердикт T5-22): Y-СБОРКА провалена вердиктом («позы не впечатляющие… совсем»); y_cards Y1–Y9 → REWORK (trust снят, в EXP не выходят до пересборки с физическими якорями В27); пересмотр набора паттернов KEEP/KILL — на вердикт автора.",
   "1.11.0 (2026-11-15, T5-23 «VENATOR»): +Y10–Y18 (девять новых карт по повторному приказу «Y1-Y8, продолжение»; каждая несёт В27-физику: вес/тяга/зацеп — урок REWORK Y1–Y9; trust untested, вердикт T5-23 решает)",
   "1.12.0 (2026-11-15, вердикт T5-23): Y10–Y18 — полный зачёт («имба лютая») → HIGH; Y1–Y9 пересобраны с В27-физикой (вес/тяга/зацеп) по приказу «составить множество Y комбинаций» → REBUILT, выход с T5-24; Y-комбо легализованы для мейнов и ОС-тем.",
-  "1.15.0 (2026-11-17, акт 1 вердикта T5-24): +475 карт-обёрток Y38–YY512 — каждая составная поза poses.json (критерий: второй элемент объект/среда/партнёр в sd, либо >=4 сегментов, либо семья построена из карт) переделана в доктрину комбо-Y; sd — копипаст-юнит; В33: карты без коридора не несут тир-заявки"
+  "1.15.0 (2026-11-17, акт 1 вердикта T5-24): +475 карт-обёрток Y38–YY512 — каждая составная поза poses.json (критерий: второй элемент объект/среда/партнёр в sd, либо >=4 сегментов, либо семья построена из карт) переделана в доктрину комбо-Y; sd — копипаст-юнит; В33: карты без коридора не несут тир-заявки",
+  "1.17.0 (2026-11-20, T5-27 «PREY»): +Y522–Y530 — девять НОВЫХ карт по заказу «новенькие Y которых ещё не создавали» (обёртки PL578–PL586, В27-физика с рождения: вес/тяга/зацеп/финал); В27-пересборка акта 3, волна 1 — 10 карт жребия T5-27 (Y443/Y351/Y486/Y333/Y1/Y427/Y265/Y8/Y45/Y258) получили физику в паттерне, клеймо переродилось само (LAWS §17.4)"
  ]
 }
