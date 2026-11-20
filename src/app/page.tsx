@@ -733,8 +733,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* градиентная кромка шапки: золото → малина → мята */}
-        <div className="h-px w-full bg-gradient-to-r from-t5-accent/40 via-t5-rose/25 to-t5-mint/40 to-t5-oracle/40" aria-hidden />
+        {/* градиентная кромка шапки: золото → малина → мята → фиолет-циан оракула.
+            Баг-фикс цикла 2: было from/via/to/to — два класса to- в Tailwind
+            конфликтуют, второй молча перебивал первого и мята не рисовалась;
+            4-стопный градиент задаётся инлайн-стилем */}
+        <div
+          className="h-px w-full"
+          aria-hidden
+          style={{
+            background:
+              'linear-gradient(90deg, color-mix(in srgb, var(--t5-accent) 40%, transparent), color-mix(in srgb, var(--t5-rose) 25%, transparent) 33%, color-mix(in srgb, var(--t5-mint) 40%, transparent) 66%, color-mix(in srgb, var(--t5-oracle) 40%, transparent))',
+          }}
+        />
       </header>
 
       {/* содержимое */}
@@ -800,7 +810,7 @@ export default function Home() {
             </p>
             <p className="mt-1.5">Thread 5 · наследие Thread 4 (45 батчей, 28 законов вкуса) · чат — двигатель, файлы — память</p>
             <p className="mt-1.5 font-mono text-[10px] tracking-wide text-zinc-600">
-              клавиши: 1–4 разделы · ⌘K палитра · [ ] соседний батч · Esc список · секрет: долгий тап на «5» или номер слота
+              клавиши: 1–5 разделы · ⌘K палитра · [ ] соседний батч · Esc список · секрет: долгий тап на «5» или номер слота
             </p>
           </div>
           <div className="flex flex-col items-end gap-2">

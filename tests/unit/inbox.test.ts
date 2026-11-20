@@ -19,6 +19,7 @@ import {
   type InboxItem,
 } from '../../src/lib/t5/inbox';
 import { buildUploadChunks } from '../../src/lib/t5/upload-chunks';
+import { RETRIAGE_RE, needsTriageLike } from '../../src/lib/t5/upload-limits';
 
 function item(patch: Partial<InboxItem>): InboxItem {
   return {
@@ -166,6 +167,45 @@ describe('buildUploadChunks — приказ автора «по две штук
 
   test('пустая пачка → пустой набор чанков', () => {
     expect(buildUploadChunks([])).toEqual([]);
+  });
+});
+
+/* ── цикл 2 (2026-11-21): общие правила очереди — единый источник ───────── */
+
+describe('needsTriageLike (общий модуль upload-limits) — сервер и клиент без дрейфа', () => {
+  const q = (patch: Partial<Parameters<typeof needsTriageLike>[0]>) =>
+    needsTriageLike({
+      status: 'queued',
+      triage: { label: 'unknown', reason: 'в очереди' },
+      authorOverride: null,
+      ...patch,
+    });
+
+  test('новые и аварийные карантины просят триаж', () => {
+    expect(q({})).toBe(true);
+    expect(q({ status: 'x', triage: { label: 'x', reason: 'триаж упал (429 Too Many) — карантин (fail-closed)' } })).toBe(true);
+  });
+
+  test('вердикт фильтра 1301 и явный X — детерминированные, ретрая не заказывают', () => {
+    expect(q({ status: 'x', triage: { label: 'x', reason: 'контент-фильтр зрения отклонил кадр (1301) — вероятный X, вердикт фильтра (не сбой)' } })).toBe(false);
+    expect(q({ status: 'x', triage: { label: 'x', reason: 'явный контент' } })).toBe(false);
+  });
+
+  test('вердикт автора глушит авто-ретрай аварийного карантина', () => {
+    expect(q({ status: 'x', triage: { label: 'x', reason: '429 — карантин (fail-closed)' }, authorOverride: { label: 'x', at: '' } })).toBe(false);
+  });
+
+  test('RETRIAGE_RE общий для обоих берегов (клиент импортирует его же)', () => {
+    expect(RETRIAGE_RE.test('триаж упал (429) — карантин (fail-closed)')).toBe(true);
+    expect(RETRIAGE_RE.test('вердикт фильтра (не сбой)')).toBe(false);
+  });
+
+  test('серверный needsTriage — тонкая обёртка над общим модулем (делегирует 1:1)', () => {
+    // если делегирование сломается и берега разойдутся — поймаем тут
+    expect(needsTriage(item({}))).toBe(q({}));
+    expect(
+      needsTriage(item({ status: 'x', triage: { label: 'x', reason: '429 карантин fail-closed', at: '' } })),
+    ).toBe(q({ status: 'x', triage: { label: 'x', reason: '429 карантин fail-closed' } }));
   });
 });
 

@@ -63,8 +63,10 @@ export async function POST(req: Request) {
       Array.isArray(body.ids) && body.ids.length > 0
         ? items.filter((i) => body.ids?.includes(i.id))
         : items.filter((i) => i.status === 'ok' && !i.analysis);
+    // не разбираем карантин: вердикт автора «x» ИЛИ триаж X — оба бьют
+    // (средний операнд был избыточен: authorOverride===null ничего не менял)
     const queue = wanted.filter(
-      (i) => !(i.authorOverride?.label === 'x' || (i.authorOverride === null && i.triage.label === 'x') || i.triage.label === 'x'),
+      (i) => !(i.authorOverride?.label === 'x' || i.triage.label === 'x'),
     );
 
     if (queue.length === 0) {

@@ -1,8 +1,8 @@
 {
- "tool": "tools/gates.py (specs/gates.json v1.15.0)",
+ "tool": "tools/gates.py (specs/gates.json v1.16.0)",
  "batch": "batches/T5-27.md",
  "sha256": "de12c5316b348dab8f6b6fa3da4a15678ba219b157e7363706a2e0dcbf7fa05c",
- "utc": "2026-11-20T15:11:48+00:00",
+ "utc": "2026-11-20T18:08:26+00:00",
  "verdict": "PASS",
  "slots": 33,
  "fails": [],
@@ -576,5 +576,9 @@
  "buffs": {
   "concept_flagged": 0,
   "neg_dress_guards": 0
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
  }
 }

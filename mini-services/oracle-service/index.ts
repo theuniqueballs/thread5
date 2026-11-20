@@ -48,14 +48,23 @@ const HOST = process.env.ORACLE_HOST || "127.0.0.1";
 // ORACLE-2: опциональный замок ПЛАТНЫХ эндпоинтов (/ask, /vision — LLM-ходы).
 // Не задан — поведение прежнее (личный инструмент на localhost). Задан —
 // оба требуют `x-oracle-token: <token>` или `Authorization: Bearer <token>`.
+// Цикл 2 (2026-11-21): сравнение переписано на timing-safe — как в guard.ts
+// прилавка; === на длинных строках течёт по времени на совпавший префикс.
 const ORACLE_TOKEN = (process.env.ORACLE_TOKEN || "").trim();
+/** сравнение строк без утечки времени (паритет с src/lib/t5/guard.ts). */
+function timingSafeEq(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
 function llmAllowed(req: Request): boolean {
   if (!ORACLE_TOKEN) return true;
   const header = req.headers.get("x-oracle-token") ?? "";
-  if (header && header === ORACLE_TOKEN) return true;
+  if (header && timingSafeEq(header, ORACLE_TOKEN)) return true;
   const auth = req.headers.get("authorization") ?? "";
   const bearer = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
-  return bearer !== "" && bearer === ORACLE_TOKEN;
+  return bearer !== "" && timingSafeEq(bearer, ORACLE_TOKEN);
 }
 function llmDenied(): Response {
   return json({ error: "LLM-эндпоинты закрыты: нужен заголовок x-oracle-token (ORACLE_TOKEN)" }, 401);

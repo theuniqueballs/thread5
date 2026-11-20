@@ -907,7 +907,10 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
     setError(null);
     setRawText(null); // raw перечитаем лениво при следующем клике
     try {
-      const [bRes, vRes] = await Promise.all([fetch(`/api/t5/${source}/${slug}`), fetch(`/api/t5/verdicts?slug=${encodeURIComponent(slug)}`)]);
+      const [bRes, vRes] = await Promise.all([
+        fetch(`/api/t5/${source}/${encodeURIComponent(slug)}`),
+        fetch(`/api/t5/verdicts?slug=${encodeURIComponent(slug)}`),
+      ]);
       const bData = (await bRes.json()) as { batch?: T5BatchBody; error?: string };
       if (!bRes.ok || !bData.batch) throw new Error(bData.error ?? 'Не найдено');
       const vData = (await vRes.json()) as { verdicts?: VerdictItem[] };
@@ -947,7 +950,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
   const fetchRaw = useCallback(async (): Promise<string | null> => {
     if (rawText) return rawText;
     try {
-      const res = await fetch(`/api/t5/${source}/${slug}?raw=1`);
+      const res = await fetch(`/api/t5/${source}/${encodeURIComponent(slug)}?raw=1`);
       const data = (await res.json()) as { batch?: { raw?: string }; error?: string };
       if (!res.ok || !data.batch?.raw) return null;
       setRawText(data.batch.raw);

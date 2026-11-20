@@ -91,9 +91,10 @@ export interface InboxItem {
   authorOverride: { label: 'sfw' | 'x'; at: string } | null;
 }
 
-// лимиты — из чистого модуля (клиент/сервер единый источник; см. upload-limits.ts)
-export { ALLOWED_EXT, MAX_FILE_BYTES } from './upload-limits';
-import { ALLOWED_EXT, MAX_FILE_BYTES } from './upload-limits';
+// лимиты и правила очереди — из чистого модуля (клиент/сервер единый
+// источник; см. upload-limits.ts — там же RETRIAGE_RE и needsTriageLike)
+export { ALLOWED_EXT, MAX_FILE_BYTES, RETRIAGE_RE } from './upload-limits';
+import { ALLOWED_EXT, MAX_FILE_BYTES, needsTriageLike } from './upload-limits';
 /** Кап файлов на ОДИН запрос (2026-11-21): клиент режет пачки по 2 файла /
  *  ≤8 МБ (502 шлюза на тяжёлых multipart — Bad Gateway доходит до Next);
  *  4 = небольшой запас для ручного вызова API, легаси-«пачки по 8» теперь
@@ -688,14 +689,11 @@ export async function saveFile(file: File, tag: string | null): Promise<SaveOutc
 /**
  * Кому нужен триаж: новые (queued/unknown) и fail-closed карантины
  * (упавший/задушенный 429 триаж) — пока автор не вынес свой вердикт.
+ * Логика — в чистом модуле upload-limits.ts (needsTriageLike): её же
+ * крутит клиентский цикл инбокса, дрейф двух берегов исключён.
  */
 export function needsTriage(item: InboxItem): boolean {
-  if (item.status === 'queued' || item.triage.label === 'unknown') return true;
-  return (
-    !item.authorOverride &&
-    item.triage.label === 'x' &&
-    /fail-closed|429|too many|карантин/iu.test(item.triage.reason)
-  );
+  return needsTriageLike(item);
 }
 
 /** Триаж одного элемента (читает файл с диска, обновляет item in-place). */

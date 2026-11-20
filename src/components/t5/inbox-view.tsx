@@ -25,7 +25,7 @@ import { cn } from '@/lib/utils';
 import { Chip } from '@/components/t5/bits';
 import { Input } from '@/components/ui/input';
 import { buildUploadChunks } from '@/lib/t5/upload-chunks';
-import { ALLOWED_EXT, MAX_FILE_BYTES } from '@/lib/t5/upload-limits';
+import { ALLOWED_EXT, MAX_FILE_BYTES, RETRIAGE_RE, needsTriageLike } from '@/lib/t5/upload-limits';
 import type { InboxItem } from '@/lib/t5/inbox';
 
 /**
@@ -98,8 +98,6 @@ async function readJson<T>(res: Response): Promise<T> {
 function fmtSize(n: number): string {
   return n > 1024 * 1024 ? `${(n / 1024 / 1024).toFixed(1)} МБ` : `${Math.round(n / 1024)} КБ`;
 }
-
-const RETRIAGE_RE = /fail-closed|429|too many|карантин/iu;
 
 /** Слот из имени файла: «P07.webp», «t5-18 p7.png», «07 - name.webp» → «P07».
  *  До P999 — парсер батчей трёхзначный, инбокс не должен отставать. */
@@ -287,30 +285,48 @@ export function InboxView() {
 
   const slotsFilled = picked.filter((p) => p.slot).length;
 
-  /* ── X-триаж порционным циклом (сервер капает по 2 файла на запрос).
-     Возвращает { done, remaining } — remaining > 0 значит упёрлись в
-     предохранитель цикла: очередь не потеряна, просто жми ещё раз. ── */
+  /* ── X-триаж порционным циклом — КАЖДЫЙ файл ровно один раз за нажатие.
+
+     Живой урок цикла 2 (2026-11-21): прежний цикл гнал «серверную» очередь
+     по remaining и при стойком 429 пережаривал одни и те же первые два
+     файла до 80 итераций подряд (каждая — до 4 vision-попыток: звонки
+     горели впустую, очередь не двигалась). Теперь клиент сам режет
+     очередь на чанки по 2 и отправляет каждый чанк ОДИН раз: повторный
+     fail-closed остаётся карантином до следующего нажатия — автор решает.
+     Очередь без ids учится по свежему журналу (needsTriageLike — общий
+     модуль с сервером, дрейфа нет). ── */
   const runTriage = useCallback(
     async (ids?: string[], onProgress?: (done: number, remaining: number) => void, signal?: AbortSignal): Promise<{ done: number; remaining: number }> => {
+      /* очередь: явные ids → они; иначе свежий журнал → все, кто просит триажа */
+      let queue = ids && ids.length > 0 ? [...ids] : null;
+      if (!queue) {
+        const res = await fetch('/api/t5/inbox', { signal });
+        const data = await readJson<{ items?: InboxItem[]; error?: string }>(res);
+        if (!res.ok) throw new Error(data.error ?? 'журнал инбокса не прочитался');
+        setItems(data.items ?? []);
+        queue = (data.items ?? []).filter(needsTriageLike).map((i) => i.id);
+      }
       let done = 0;
-      let remaining = 0;
-      for (let guard = 0; guard < 80; guard++) {
+      let remaining = queue.length;
+      for (let i = 0; i < queue.length; i += 2) {
         if (signal?.aborted) return { done, remaining };
-        if (guard > 0) await sleep(600); // пауза-сглаживание: не долбим vision-API подряд (урок 429-шторма 2026-11-21)
+        if (i > 0) await sleep(600); // пауза-сглаживание: не долбим vision-API подряд (урок 429-шторма 2026-11-21)
+        const chunk = queue.slice(i, i + 2);
         const res = await fetch('/api/t5/inbox/triage', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(ids && ids.length > 0 ? { ids } : {}),
+          body: JSON.stringify({ ids: chunk }),
           signal,
         });
         const data = await readJson<{ triaged?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
         if (!res.ok) throw new Error(data.error ?? 'триаж не удался');
         setItems(data.items ?? []);
         done += data.triaged ?? 0;
-        remaining = data.remaining ?? 0;
+        remaining = Math.max(0, queue.length - i - chunk.length);
         onProgress?.(done, remaining);
-        if (remaining === 0 || (data.triaged ?? 0) === 0) break;
       }
+      /* кто остался просить триажа после прохода (повторный fail-closed) —
+         это не потеря, а вердикт «попробуй ещё раз или разбери глазами» */
       return { done, remaining };
     },
     [],
@@ -408,7 +424,7 @@ export function InboxView() {
       setMessage(
         out.done > 0
           ? out.remaining > 0
-            ? `X-триаж: обработано ${out.done}, в очереди ещё ${out.remaining} — жми ещё раз, предохранитель цикла сработал`
+            ? `X-триаж: пройдено ${out.done}, упрямо держатся ${out.remaining} (повторный сбой/429) — ещё одно нажатие даёт каждому ещё одну попытку`
             : `X-триаж пройден: ${out.done}`
           : 'Очередь триажа пуста',
       );
@@ -421,10 +437,12 @@ export function InboxView() {
     }
   }, [busy, runTriage, beginLoops]);
 
-  /* ── автотриаж: инбокс открыт, а очередь осталась (урок T5-19 про 401) ── */
+  /* ── автотриаж: инбокс открыт, а очередь осталась (урок T5-19 про 401).
+     Триггер — общий needsTriageLike: аварийные карантины прошлых сессий
+     догоняются тем же проходом (один раз на каждый файл, не циклом). ── */
   useEffect(() => {
     if (loading || autoTriageRef.current || busy) return;
-    const queued = items.filter((i) => i.status === 'queued' || i.triage.label === 'unknown').length;
+    const queued = items.filter(needsTriageLike).length;
     if (queued === 0) return;
     autoTriageRef.current = true;
     setMessage(null);
@@ -438,7 +456,7 @@ export function InboxView() {
         setMessage(
           out.done > 0
             ? out.remaining > 0
-              ? `Автотриаж: догнал ${out.done}, в очереди ещё ${out.remaining} — жми «Прогнать X-триаж»`
+              ? `Автотриаж: догнал ${out.done}, упрямятся ${out.remaining} (сбой/429) — жми «Прогнать X-триаж», каждая попытка бьёт один раз`
               : 'Автотриаж догнал очередь — можно разбирать'
             : null,
         );
@@ -467,7 +485,7 @@ export function InboxView() {
       }, signal);
       setMessage(
         out.remaining > 0
-          ? `Перетриажено: ${out.done}, осталось ${out.remaining} — жми ещё раз`
+          ? `Перетриажено: ${out.done}, не поддались ${out.remaining} — повторное нажатие бьёт по каждому ещё раз (не циклом)`
           : `Перетриажено: ${out.done} — fail-closed карантины пересмотрены`,
       );
     } catch (err) {
@@ -1045,7 +1063,11 @@ export function InboxView() {
                         Это чистое — разблокировать
                       </button>
                     )}
-                    {!quarantined && item.triage.label !== 'x' && (
+                    {/* баг-фикс цикла 2: убрано «&& item.triage.label !== 'x'» —
+                        после разблокировки (override sfw поверх X-триажа) автор
+                        не мог вернуть файл в карантин; теперь может всегда,
+                        когда карточка не в карантине */}
+                    {!quarantined && (
                       <button type="button" onClick={() => void override(item.id, 'x')} disabled={busy !== null} className="t5-btn t5-btn-sm disabled:opacity-40" aria-label="Убрать в карантин вручную">
                         <ShieldAlert className="size-3" aria-hidden />
                         В карантин
