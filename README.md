@@ -60,6 +60,13 @@ Batch-Prompt Conveyer Belt
   палитры/Y-карты; `--for T5-NN` — окно задним числом), `taste.py`
   (вкус → план: ВКУС-БРИФ из вердикт-квитанций), `validate.py`
   (валидатор спеков до гейтов)
+- **ORACLE-2 — нервная система** (`docs/ORACLE.md`): канонический движок
+  `src/lib/t5/oracle-engine.ts` вплетён во все органы — вкладка «Оракул»
+  прилавка (жар партий, жребий карт, экспресс-оценка; клавиша 5), API
+  `/api/t5/oracle/*`, сервисные `/batch /window /draw`, CLI печи
+  `tools/oracle.py` (window/draw/heat/audit/selftest). Жребий
+  детерминирован (seed = номер партии), паритет прилавок↔печь↔сервис
+  лочат золотые векторы `tests/fixtures/oracle_vectors.json`;
 - прилавок (корень репо): Next.js-вью цикла — список батчей/SO, батч-вью
   (POS/NEG/вердикт-редактор), инбокс, командная палитра ⌘K, loop-рендеры;
   компоненты в `src/components/t5/`, API в `src/app/api/t5/`.

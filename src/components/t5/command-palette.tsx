@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
-import { BookOpenText, FileText, Gift, Hash, Layers, MessageSquareQuote, Sparkles } from 'lucide-react';
+import { BookOpenText, Dices, FileText, Gift, Hash, Layers, MessageSquareQuote, Sparkles, Wand2 } from 'lucide-react';
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command';
 import type { BatchListItem } from '@/lib/t5/types';
 import { T5_DOCS } from '@/lib/t5/types';
@@ -12,7 +12,7 @@ import { T5_DOCS } from '@/lib/t5/types';
  * доки — из статического реестра T5_DOCS (контент докачает DocsView).
  */
 
-type NavTab = 'batches' | 'special' | 'inbox' | 'docs';
+type NavTab = 'batches' | 'special' | 'inbox' | 'docs' | 'oracle';
 
 interface CommandPaletteProps {
   open: boolean;
@@ -60,6 +60,12 @@ export function CommandPalette({ open, onOpenChange, batches, special, onTab, on
           </CommandItem>
           <CommandItem onSelect={running(() => onTab('docs'))}>
             <BookOpenText className="size-4 text-t5-violet" /> Память <span className="ml-auto font-mono text-[10px] text-zinc-600">4</span>
+          </CommandItem>
+          <CommandItem onSelect={running(() => onTab('oracle'))}>
+            <Wand2 className="size-4 text-t5-oracle" /> Оракул <span className="ml-auto font-mono text-[10px] text-zinc-600">5</span>
+          </CommandItem>
+          <CommandItem onSelect={running(() => onTab('oracle'))}>
+            <Dices className="size-4 text-t5-oracle/80" /> Жребий на следующую партию <span className="ml-auto font-mono text-[10px] text-zinc-600">жребий · кости</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />

@@ -11,13 +11,31 @@
  *      -> rule engine + optional LLM verdict.
  */
 import ZAI from "z-ai-web-dev-sdk";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
+// ORACLE-2 (2026-11-20): жребий/окно/жар — из ЕДИНОГО канонического движка
+// (src/lib/t5/oracle-engine.ts). bun build инлайнит этот импорт в бандл —
+// деплой-копия не зависит от раскладки репо, а прилавок/печь/сервис тянут
+// один и тот же алгоритм (паритет лочат золотые векторы обоих тестовых).
+import {
+  drawConstellation,
+  buildRotationWindow,
+  buildCardUsage,
+  type OracleCard,
+  type CardUsage,
+} from "../../src/lib/t5/oracle-engine";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-// знание (ecchi-oracle/) ищем рядом с сервисом; фолбэк — старая раскладка пака
-const PKG = [join(HERE, "..", "ecchi-oracle"), join(HERE, "..", "..", "ecchi-oracle")].find((p) =>
+// знание (ecchi-oracle/) ищем рядом с сервисом; фолбэк — старая раскладка пака.
+// ORACLE-2 (2026-11-20, прод-баг прошлой волны): деплой-скрипт кладёт пак
+// РЯДОМ С БАНДЛОМ (mini-services-dist/ecchi-oracle), а не на уровень выше —
+// первым кандидатом теперь именно он, иначе прод-бандл падал в ENOENT.
+const PKG = [
+  join(HERE, "ecchi-oracle"),        // деплой: пак рядом с бандлом (mini-services-build.sh)
+  join(HERE, "..", "ecchi-oracle"),  // раскладка репо: mini-services/ecchi-oracle
+  join(HERE, "..", "..", "ecchi-oracle"), // старый сэндбокс: контент-клон рядом
+].find((p) =>
   existsSync(join(p, "taxonomy", "rating-marks.json")),
 ) || join(HERE, "..", "ecchi-oracle");
 // 2026-11-20: порт и хост из env (по умолчанию — как раньше); слушаем
@@ -25,6 +43,87 @@ const PKG = [join(HERE, "..", "ecchi-oracle"), join(HERE, "..", "..", "ecchi-ora
 // незачем, а прямой доступ к платному LLM-прокси лучше закрыть
 const PORT = Number.parseInt(process.env.ORACLE_PORT || "3031", 10) || 3031;
 const HOST = process.env.ORACLE_HOST || "127.0.0.1";
+
+// ORACLE-2: опциональный замок ПЛАТНЫХ эндпоинтов (/ask, /vision — LLM-ходы).
+// Не задан — поведение прежнее (личный инструмент на localhost). Задан —
+// оба требуют `x-oracle-token: <token>` или `Authorization: Bearer <token>`.
+const ORACLE_TOKEN = (process.env.ORACLE_TOKEN || "").trim();
+function llmAllowed(req: Request): boolean {
+  if (!ORACLE_TOKEN) return true;
+  const header = req.headers.get("x-oracle-token") ?? "";
+  if (header && header === ORACLE_TOKEN) return true;
+  const auth = req.headers.get("authorization") ?? "";
+  const bearer = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
+  return bearer !== "" && bearer === ORACLE_TOKEN;
+}
+function llmDenied(): Response {
+  return json({ error: "LLM-эндпоинты закрыты: нужен заголовок x-oracle-token (ORACLE_TOKEN)" }, 401);
+}
+
+/** числовой query-параметр с потолком (для /draw) */
+function clampQ(raw: string | null, dflt: number): number {
+  if (raw === null) return dflt;
+  const n = Number.parseInt(raw, 10);
+  if (!Number.isFinite(n)) return dflt;
+  return Math.max(0, Math.min(33, n));
+}
+
+// ORACLE-2: корень репо (для лёгкого скана партий — окно/жребий/жар).
+// Кандидаты зеркаят THREAD5_CANDIDATES: раскладка репо + деплой-раскладка
+// (контент лежит в next-service-dist/ рядом с mini-services-dist).
+function repoRoot(): string | null {
+  for (const c of THREAD5_CANDIDATES) {
+    const root = dirname(dirname(c));
+    if (existsSync(join(root, "batches"))) return root;
+  }
+  return null;
+}
+
+/** Лёгкий скан корпуса: партии → слоты с Y-картами (для окна/жар/жребия).
+ *  Канонический парсер — src/lib/t5/parse.ts и tools/gates.py; здесь только
+ *  поля `Y-card:` — их формат стабилен с эры 1.13 (`Y-card: Y### — паттерн`). */
+function lightScanBatches(): { slug: string; slots: { yCard: string | null }[] }[] {
+  const root = repoRoot();
+  if (!root) return [];
+  const out: { slug: string; slots: { yCard: string | null }[] }[] = [];
+  let files: string[] = [];
+  try {
+    files = readdirSync(join(root, "batches"))
+      .filter((f) => /^T5-\d+\.md$/i.test(f) && !f.includes(".gate-report."))
+      .sort((a, b) => Number.parseInt(/\d+/u.exec(a)?.[0] ?? "0", 10) - Number.parseInt(/\d+/u.exec(b)?.[0] ?? "0", 10));
+  } catch {
+    return [];
+  }
+  for (const f of files) {
+    try {
+      const text = readFileSync(join(root, "batches", f), "utf-8");
+      const slots: { yCard: string | null }[] = [];
+      for (const line of text.split("\n")) {
+        const m = /^Y-card:\s*(Y\d{1,3})\b/iu.exec(line.trim());
+        slots.push({ yCard: m ? m[1].toUpperCase() : null });
+      }
+      out.push({ slug: f.replace(/\.md$/iu, ""), slots: slots.filter((s) => s.yCard) });
+    } catch {
+      /* битый файл не роняет скан */
+    }
+  }
+  return out;
+}
+
+/** маппинг живого реестра в форму движка жребия */
+function registryAsOracleCards(): OracleCard[] {
+  return Object.entries(cameraCards).map(([id, c]) => ({
+    id,
+    corridor: String(c.corridor || c.components?.corridor || "—"),
+    exposureClass: String((c.components?.exposure as { class?: string } | undefined)?.class || "—"),
+    pattern: String(c.components?.pose || c.pattern || ""),
+  })).sort((a, b) => Number.parseInt(/\d+/u.exec(a.id)?.[0] ?? "0", 10) - Number.parseInt(/\d+/u.exec(b.id)?.[0] ?? "0", 10));
+}
+
+/** история карт по лёгкому скану (до партии batchNo включительно — нет) */
+function usageUpTo(batchNo: number): Record<string, CardUsage> {
+  return buildCardUsage(lightScanBatches(), batchNo);
+}
 
 // ---------------------------------------------------------------- knowledge
 
@@ -40,16 +139,21 @@ const distillPrompt = existsSync(distillPath)
   : "Ты — ECCHI-ORACLE, эксперт домена «эччи-приёмы манги и аниме» конвейера thread5.";
 
 // Y-card registry (camera.json из чекаута thread5 при наличии; taxonomy fallback)
-// 2026-11-20: THREAD5_ROOT env в приоритете; рядом с сервисом ../.. — корень
-// репо с каноничным specs/; хардкод-путь песочницы — последний резерв
+// ORACLE-2: порядок кандидатов — env, раскладка репо, ДЕПЛОЙ-раскладка
+// (next-service-dist/specs рядом с mini-services-dist — иначе прод-бандл
+// молча сидел на устаревшем fallback-реестре таксономии), хардкод — последним.
 const THREAD5_CANDIDATES = [
   process.env.THREAD5_ROOT ? join(process.env.THREAD5_ROOT, "specs", "camera.json") : null,
   join(HERE, "..", "..", "specs", "camera.json"),
+  join(HERE, "..", "next-service-dist", "specs", "camera.json"),
+  join(HERE, "..", "specs", "camera.json"),
   "/home/z/my-project/thread5/specs/camera.json",
 ].filter(Boolean) as string[];
 const GATES_CANDIDATES = [
   process.env.THREAD5_ROOT ? join(process.env.THREAD5_ROOT, "specs", "gates.json") : null,
   join(HERE, "..", "..", "specs", "gates.json"),
+  join(HERE, "..", "next-service-dist", "specs", "gates.json"),
+  join(HERE, "..", "specs", "gates.json"),
   "/home/z/my-project/thread5/specs/gates.json",
 ].filter(Boolean) as string[];
 let cameraCards: Record<string, { pattern?: string; corridor?: string; trust?: string; components?: Record<string, unknown> }> = {};
@@ -742,7 +846,7 @@ const server = Bun.serve({
     const path = url.pathname.replace(/\/$/, "") || "/";
     try {
       if (req.method === "GET" && path === "/health")
-        return json({ ok: true, service: "ecchi-oracle", port: PORT, layers: ["rule-engine", "llm", "vision"], era: "Y-STAMP v1.15.0 (В34/В35: вплетение 1:1, метки в POS запрещены)", camera_registry: cameraVersion || "taxonomy-fallback", cards_indexed: Object.keys(cameraCards).length });
+        return json({ ok: true, service: "ecchi-oracle", port: PORT, layers: ["rule-engine", "llm", "vision", "draw"], era: "ORACLE-2 · Y-STAMP v1.15.0 (В34/В35) + жребий/жар/окно (2026-11-20)", camera_registry: cameraVersion || "taxonomy-fallback", cards_indexed: Object.keys(cameraCards).length, llm_lock: ORACLE_TOKEN ? "ON" : "off" });
 
       if (req.method === "GET" && path === "/taxonomy") {
         const marks = taxonomy.ratingMarks.marks;
@@ -770,7 +874,96 @@ const server = Bun.serve({
         const body = await req.json().catch(() => ({}));
         const text = String(body.text || "");
         if (!text.trim()) return json({ error: "text required" }, 400);
+        if (text.length > 20_000) return json({ error: "text слишком большой (лимит 20k символов)" }, 413);
         return json(rateText(text));
+      }
+
+      // ORACLE-2: /batch — агрегированный аудит партии глазами оракула.
+      // Тело: { slots: [{ id, pos, badge, corridor, ycard }, …] } — партицию
+      // делает клиент (прилавок парсит батч своим каноническим парсером).
+      if (req.method === "POST" && path === "/batch") {
+        const body = (await req.json().catch(() => ({}))) as { slots?: unknown };
+        const slots = Array.isArray(body.slots) ? body.slots : null;
+        if (!slots || !slots.length) return json({ error: "slots required: [{ id, pos, badge, corridor, ycard }, …]" }, 400);
+        if (slots.length > 100) return json({ error: "слишком много слотов (лимит 100)" }, 413);
+        const audits: Record<string, unknown>[] = [];
+        let fail = 0, warn = 0, drift = 0, weaved = 0, withCards = 0;
+        const corridorHistogram: Record<string, number> = {};
+        for (const raw of slots) {
+          const s = (raw ?? {}) as Record<string, unknown>;
+          const pos = String(s.pos ?? "");
+          if (!pos.trim()) continue;
+          if (pos.length > 20_000) return json({ error: `слот ${String(s.id ?? "?")} — pos больше 20k символов` }, 413);
+          const audit = auditSlot({
+            pos,
+            badge: String(s.badge ?? ""),
+            corridor: String(s.corridor ?? ""),
+            card_id: String(s.ycard ?? ""),
+          });
+          const bad = audit.verdict === "FAIL";
+          fail += audit.checks.filter((c) => c.status === "FAIL").length;
+          warn += audit.checks.filter((c) => c.status === "WARN").length;
+          if (bad) drift += 1;
+          if (audit.stamp) { withCards += 1; if (audit.stamp.weaved) weaved += 1; }
+          const corr = String(s.corridor || "—") || "—";
+          corridorHistogram[corr] = (corridorHistogram[corr] ?? 0) + 1;
+          audits.push({ id: String(s.id ?? "?"), verdict: audit.verdict, badge: audit.badge, self_certified: audit.self_certified, stamp: audit.stamp, checks: audit.checks });
+        }
+        return json({
+          verdict: fail === 0 && drift === 0 ? (warn ? "WARN" : "PASS") : "FAIL",
+          slots_audited: audits.length,
+          fail_checks: fail,
+          warn_checks: warn,
+          failed_slots: drift,
+          weave: { with_cards: withCards, weaved_1_to_1: weaved, misses: withCards - weaved },
+          corridor_histogram: corridorHistogram,
+          slots: audits,
+          note: "агрегат по слотам; вердикт автора — единственный законодатель (LAWS §9)",
+        });
+      }
+
+      // ORACLE-2: /window — окно ротации Y-карт по живому корпусу.
+      // ?for=T5-27 (номер партии, чьё «прошлое» смотрим) · ?depth=3
+      if (req.method === "GET" && path === "/window") {
+        const forParam = String(url.searchParams.get("for") || "");
+        const batchNo = Number.parseInt(forParam.replace(/^T5-/iu, ""), 10);
+        if (!Number.isFinite(batchNo) || batchNo <= 0 || batchNo > 999)
+          return json({ error: "for required: ?for=T5-27 (номер партии, до которой смотрим прошлое)" }, 400);
+        const depth = Math.max(0, Math.min(10, Number.parseInt(url.searchParams.get("depth") || "3", 10) || 3));
+        const corpus = lightScanBatches();
+        const window = buildRotationWindow(corpus, batchNo, depth);
+        return json({
+          window,
+          corpus_batches: corpus.length,
+          camera_registry: cameraVersion,
+          law: "окно = последние depth партий ДО for (gates.py v1.16.0 — правка старого батча не видит будущее)",
+        });
+      }
+
+      // ORACLE-2: /draw — жребий оракула: расклад карт на партию for=T5-27.
+      // Тот же движок, что прилавок и печь: seed = номер партии → расклад
+      // воспроизводим во всех трёх органах (векторы лочат паритет).
+      if (req.method === "GET" && path === "/draw") {
+        const forParam = String(url.searchParams.get("for") || "");
+        const batchNo = Number.parseInt(forParam.replace(/^T5-/iu, ""), 10);
+        if (!Number.isFinite(batchNo) || batchNo <= 0 || batchNo > 999)
+          return json({ error: "for required: ?for=T5-27" }, 400);
+        const ocT = clampQ(url.searchParams.get("oc"), 3);
+        const mainT = clampQ(url.searchParams.get("main"), 21);
+        const expT = clampQ(url.searchParams.get("exp"), 9);
+        const depth = clampQ(url.searchParams.get("depth"), 3);
+        const cards = registryAsOracleCards();
+        if (!cards.length) return json({ error: "реестр карт пуст — camera.json не найден" }, 500);
+        const corpus = lightScanBatches();
+        const usage = buildCardUsage(corpus, batchNo);
+        const draw = drawConstellation(batchNo, cards, usage, { ocTarget: ocT, mainTarget: mainT, expTarget: expT, windowDepth: depth });
+        const window = buildRotationWindow(corpus, batchNo, depth);
+        return json({
+          draw,
+          window,
+          registry: { version: cameraVersion, cards: cards.length },
+          law: "жребий детерминирован: окно ротации исключает горячий хвост, OC — A-коридор/COVER, EXP — новенькие; тот же for → тот же расклад",
+        });
       }
 
       if (req.method === "POST" && path === "/audit") {
@@ -780,7 +973,15 @@ const server = Bun.serve({
         const pos = String((body as { pos?: unknown }).pos ?? "");
         if (!pos.trim()) return json({ error: "pos required" }, 400);
         if (pos.length > 20_000) return json({ error: "pos слишком большой (лимит 20k символов)" }, 413);
-        return json(auditSlot({ ...body, pos }));
+        // ORACLE-2: нестроковые badge/corridor/card_id тоже коэрцим —
+        // «?badge=42» больше не роняет auditSlot в toUpperCase
+        return json(auditSlot({
+          pos,
+          badge: String((body as { badge?: unknown }).badge ?? ""),
+          corridor: String((body as { corridor?: unknown }).corridor ?? ""),
+          stamp: String((body as { stamp?: unknown }).stamp ?? "") || undefined,
+          card_id: String((body as { card_id?: unknown }).card_id ?? "") || undefined,
+        }));
       }
 
       if (path === "/ystamp" && (req.method === "GET" || req.method === "POST")) {
@@ -796,16 +997,21 @@ const server = Bun.serve({
         const body = await req.json().catch(() => ({}));
         const text = String(body.description || body.text || "");
         if (!text.trim()) return json({ error: "description required" }, 400);
+        if (text.length > 20_000) return json({ error: "description слишком большой (лимит 20k символов)" }, 413);
         const engine = rateText(text);
         return json({ description_engine: engine, triage_v2: triageV2({ engine, description: text, fileTag: body.file_tag, fileName: body.file_name, label: body.label }) });
       }
 
       if (req.method === "POST" && path === "/volt") {
         const body = await req.json().catch(() => ({}));
-        return json(voltSkeleton(String(body.scene || ""), String(body.ycard || ""), String(body.target || "R+")));
+        const scene = String(body.scene || "").slice(0, 500);
+        const ycard = String(body.ycard || "").slice(0, 8);
+        const target = String(body.target || "R+").slice(0, 8);
+        return json(voltSkeleton(scene, ycard, target));
       }
 
       if (req.method === "POST" && path === "/ask") {
+        if (!llmAllowed(req)) return llmDenied();
         const body = await req.json().catch(() => ({}));
         const question = String(body.question || "");
         if (!question.trim()) return json({ error: "question required" }, 400);
@@ -816,6 +1022,7 @@ const server = Bun.serve({
       }
 
       if (req.method === "POST" && path === "/vision") {
+        if (!llmAllowed(req)) return llmDenied();
         const body = await req.json().catch(() => ({}));
         const b64 = String(body.image_base64 || "");
         if (!b64) return json({ error: "image_base64 required" }, 400);
@@ -829,7 +1036,7 @@ const server = Bun.serve({
         return json({ ...result, triage_v2: triage });
       }
 
-      return json({ error: "not found", routes: ["GET /health", "GET /taxonomy", "GET /dataset", "POST /rate", "POST /audit", "POST /volt", "POST /ask", "POST /vision", "POST /triage", "GET|POST /ystamp?card=Y29"] }, 404);
+      return json({ error: "not found", routes: ["GET /health", "GET /taxonomy", "GET /dataset", "POST /rate", "POST /audit", "POST /batch", "GET /window?for=T5-27", "GET /draw?for=T5-27", "POST /volt", "POST /ask", "POST /vision", "POST /triage", "GET|POST /ystamp?card=Y29"] }, 404);
     } catch (e) {
       // 2026-11-20: наружу — общий ответ, детали — в лог сервиса
       console.error("[ecchi-oracle] request failed:", e);

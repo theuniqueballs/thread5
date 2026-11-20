@@ -53,6 +53,9 @@
   --color-t5-violet-bright: var(--t5-violet-bright);
   --color-t5-red: var(--t5-red);
   --color-t5-orange: var(--t5-orange);
+  /* ORACLE-2 (2026-11-20): циан нервной системы — вкладка Оракул, жребий, пульс */
+  --color-t5-oracle: var(--t5-oracle);
+  --color-t5-oracle-bright: var(--t5-oracle-bright);
 }
 
 :root {
@@ -107,6 +110,11 @@
   --t5-violet-bright: #c4b1fd;
   --t5-red: #ff7373;
   --t5-orange: #ffab5e;
+  /* oracle — холодный циан нервной системы: панель оракула, жребий, пульс.
+     Единственный «синий» тон в системе — осознанно: оракул видит то,
+     чего не видит конвейер (жар/жребий/дрейф), и должен читаться отдельно. */
+  --t5-oracle: #5ec8f2;
+  --t5-oracle-bright: #9adcfa;
 }
 
 @layer base {

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, Check, ChevronRight, ClipboardList, Copy, CornerDownRight, Loader2, MessageSquareQuote, RotateCcw, Search, SearchX } from 'lucide-react';
 import { Chip, CopyButton, GenreBadge, RatingBadge, copyText } from '@/components/t5/bits';
+import type { BatchHeat } from '@/lib/t5/oracle-engine';
 import { LongPressable, fartAt, randomFartLine } from '@/components/t5/juice';
 import { LoopRenders, type LoopManifest, type LoopSlotInfo } from '@/components/t5/loop-renders';
 import { Input } from '@/components/ui/input';
@@ -844,6 +845,50 @@ function shortActTitle(title: string): string {
   return base.length > 42 ? `${base.slice(0, 41)}…` : base;
 }
 
+/* ── полоска жара оракула: шёпот нервной системы в шапке батча ── */
+function OracleStrip({ slug }: { slug: string }) {
+  const [heat, setHeat] = useState<(BatchHeat & { drifts: { slotId: string; label: string | null; fact: string; drift: string | null }[] }) | null>(null);
+  useEffect(() => {
+    let alive = true;
+    void (async () => {
+      try {
+        const res = await fetch(`/api/t5/oracle/heat/${encodeURIComponent(slug)}`, { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = (await res.json()) as { heat?: BatchHeat };
+        if (alive && data.heat) setHeat(data.heat as typeof heat);
+      } catch {
+        /* полоска не критична: жара нет — молчим */
+      }
+    })();
+    return () => { alive = false; };
+  }, [slug]);
+  if (!heat) return null;
+  const tone = heat.score >= 75 ? 'text-t5-orange' : heat.score >= 50 ? 'text-t5-accent-bright' : 'text-t5-oracle-bright';
+  const drift = heat.drifts.filter((d) => d.drift);
+  return (
+    <div className="mb-4 mt-1 flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-xl border border-t5-oracle/20 bg-t5-oracle/[0.05] px-3 py-2 pl-2.5 font-mono text-[10px] tabular-nums text-zinc-500">
+      <span className="flex items-center gap-1.5 font-bold tracking-wider" style={{ color: 'var(--t5-oracle)' }}>
+        <span className="inline-block size-1.5 rounded-full bg-t5-oracle" aria-hidden />ОРАКУЛ
+      </span>
+      <span className={tone}>жар {heat.score}/100 · {heat.label}</span>
+      <span>R+ {Math.round(heat.rplusShare * 100)}%</span>
+      <span>карты {heat.cardsUsed} (свежих {heat.cardsFresh})</span>
+      {drift.length > 0 ? (
+        <span className="text-t5-orange" title={drift.map((d) => `${d.slotId}: ${d.drift}`).join('\n')}>
+          дрейф ×{drift.length}
+        </span>
+      ) : (
+        <span className="text-t5-mint/70">дрейфа нет</span>
+      )}
+      {heat.channelDupes.length > 0 && (
+        <span className="text-t5-orange/80" title={heat.channelDupes.map((c) => `${c.channel} ×${c.count}`).join('\n')}>
+          каналы-дубли ×{heat.channelDupes.length}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; onBack: () => void; source?: 'batches' | 'special' }) {
   const [batch, setBatch] = useState<T5BatchBody | null>(null);
   const [verdicts, setVerdicts] = useState<VerdictItem[]>([]);
@@ -985,6 +1030,7 @@ export function BatchView({ slug, onBack, source = 'batches' }: { slug: string; 
           {batch.slots.some((s) => s.genre === 'EXP') && <Chip>EXP {batch.slots.filter((s) => s.genre === 'EXP').length}</Chip>}
           <Chip>вердиктов: {verdictSlots}</Chip>
         </div>
+        {source === 'batches' && <OracleStrip slug={slug} />}
         {batch.arc && <BatchArc arc={batch.arc} />}
         <dl className="grid gap-2 pl-2.5 text-[13px] text-zinc-400">
           {batch.movement && (

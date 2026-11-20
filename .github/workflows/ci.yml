@@ -55,8 +55,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Юнит-тесты инструментов (gates/window/taste)
+      - name: Юнит-тесты инструментов (gates/window/taste/oracle)
         run: python3 -m unittest discover -s tests/python -v
+
+      - name: Самтест зеркала жребия (паритет прилавок↔печь↔сервис)
+        run: python3 tools/oracle.py selftest
 
       - name: Валидатор спек (CI-режим, без проверки хука)
         run: python3 tools/validate.py --ci

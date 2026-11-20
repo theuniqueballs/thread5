@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, BookOpenText, Gift, Inbox, Layers, RefreshCw, Search, Sparkles } from 'lucide-react';
+import { ArrowUpRight, BookOpenText, Gift, Inbox, Layers, RefreshCw, Search, Sparkles, Wand2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -10,11 +10,12 @@ import { T5Markdown } from '@/components/t5/bits';
 import { BatchView } from '@/components/t5/batch-view';
 import { CommandPalette } from '@/components/t5/command-palette';
 import { InboxView } from '@/components/t5/inbox-view';
+import { OraclePanel } from '@/components/t5/oracle-panel';
 import { FartBadge, GoldenThread, LongPressable, SoundToggle, burstConfetti, fartAt, startDisco, useKonami } from '@/components/t5/juice';
 import type { BatchListItem, T5DocMeta } from '@/lib/t5/types';
 import { T5_DOCS } from '@/lib/t5/types';
 
-type Tab = 'batches' | 'special' | 'inbox' | 'docs';
+type Tab = 'batches' | 'special' | 'inbox' | 'docs' | 'oracle';
 type View = { kind: 'list' } | { kind: 'batch'; slug: string } | { kind: 'special'; slug: string };
 
 const DEFAULT_DOC = 'LAWS';
@@ -27,6 +28,7 @@ const TAB_ACCENT: Record<Tab, string> = {
   special: 'var(--t5-rose)',
   inbox: 'var(--t5-mint)',
   docs: 'var(--t5-violet)',
+  oracle: 'var(--t5-oracle)',
 };
 
 interface HashState {
@@ -50,6 +52,7 @@ function parseHash(): HashState {
   }
   if (raw === 'special') return { tab: 'special', view: { kind: 'list' }, doc: DEFAULT_DOC };
   if (raw === 'inbox') return { tab: 'inbox', view: { kind: 'list' }, doc: DEFAULT_DOC };
+  if (raw === 'oracle') return { tab: 'oracle', view: { kind: 'list' }, doc: DEFAULT_DOC };
   if (raw.startsWith('SO-') && SLUG_HASH_RE.test(raw)) {
     return { tab: 'special', view: { kind: 'special', slug: raw }, doc: DEFAULT_DOC };
   }
@@ -595,8 +598,8 @@ export default function Home() {
         if (view.kind !== 'list') backToList();
         return;
       }
-      if (/^[1-4]$/.test(e.key)) {
-        const order: Tab[] = ['batches', 'special', 'inbox', 'docs'];
+      if (/^[1-5]$/.test(e.key)) {
+        const order: Tab[] = ['batches', 'special', 'inbox', 'docs', 'oracle'];
         openTab(order[Number(e.key) - 1]);
         return;
       }
@@ -647,6 +650,7 @@ export default function Home() {
     { id: 'special', label: 'Special', icon: <Gift className="size-4" /> },
     { id: 'inbox', label: 'Инбокс', icon: <Inbox className="size-4" /> },
     { id: 'docs', label: 'Память', icon: <BookOpenText className="size-4" /> },
+    { id: 'oracle', label: 'Оракул', icon: <Wand2 className="size-4" /> },
   ];
 
   return (
@@ -730,7 +734,7 @@ export default function Home() {
           </div>
         </div>
         {/* градиентная кромка шапки: золото → малина → мята */}
-        <div className="h-px w-full bg-gradient-to-r from-t5-accent/40 via-t5-rose/25 to-t5-mint/40" aria-hidden />
+        <div className="h-px w-full bg-gradient-to-r from-t5-accent/40 via-t5-rose/25 to-t5-mint/40 to-t5-oracle/40" aria-hidden />
       </header>
 
       {/* содержимое */}
@@ -779,6 +783,7 @@ export default function Home() {
           ))}
         {tab === 'inbox' && <InboxView />}
         {tab === 'docs' && <DocsView active={doc} onActive={openDoc} />}
+        {tab === 'oracle' && <OraclePanel batches={batches} onOpenBatch={openBatch} />}
       </main>
 
       {/* подвал — прилипает к низу */}

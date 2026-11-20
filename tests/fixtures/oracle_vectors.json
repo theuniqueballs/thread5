@@ -1,0 +1,384 @@
+{
+  "era": "ORACLE-2 · 2026-11-20",
+  "note": "золотые векторы паритета жребия: bun-тесты (tests/unit/oracle.test.ts) и python-зеркало (tools/oracle.py) обязаны воспроизводить эти значения побитово; правка алгоритма = перегенерация файла + правка обоих зеркал",
+  "mulberry32": {
+    "1": [
+      0.6270739405881613,
+      0.002735721180215478,
+      0.5274470399599522,
+      0.9810509674716741,
+      0.9683778982143849,
+      0.281103502959013,
+      0.6128388606011868,
+      0.7207431411370635
+    ],
+    "27": [
+      0.4032663959078491,
+      0.026339064817875624,
+      0.02117848745547235,
+      0.16912158858031034,
+      0.8311622459441423,
+      0.24043336254544556,
+      0.270500827813521,
+      0.09192476468160748
+    ],
+    "999": [
+      0.9699058223050088,
+      0.6347794097382575,
+      0.3093319069594145,
+      0.7726939893327653,
+      0.4566342122852802,
+      0.5768967438489199,
+      0.047645400976762176,
+      0.5799385919235647
+    ]
+  },
+  "fixture": {
+    "cards": [
+      {
+        "id": "Y1",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y1 — object near the chest line"
+      },
+      {
+        "id": "Y2",
+        "corridor": "A",
+        "exposureClass": "COVER",
+        "pattern": "fixture pattern Y2 — object near the chest line"
+      },
+      {
+        "id": "Y3",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y3 — object near the chest line"
+      },
+      {
+        "id": "Y4",
+        "corridor": "—",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y4 — object near the chest line"
+      },
+      {
+        "id": "Y5",
+        "corridor": "A+B",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y5 — object near the chest line"
+      },
+      {
+        "id": "Y6",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y6 — object near the chest line"
+      },
+      {
+        "id": "Y7",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y7 — object near the chest line"
+      },
+      {
+        "id": "Y8",
+        "corridor": "—",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y8 — object near the chest line"
+      },
+      {
+        "id": "Y9",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y9 — object near the chest line"
+      },
+      {
+        "id": "Y10",
+        "corridor": "A+B",
+        "exposureClass": "COVER",
+        "pattern": "fixture pattern Y10 — object near the chest line"
+      },
+      {
+        "id": "Y11",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y11 — object near the chest line"
+      },
+      {
+        "id": "Y12",
+        "corridor": "—",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y12 — object near the chest line"
+      },
+      {
+        "id": "Y13",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y13 — object near the chest line"
+      },
+      {
+        "id": "Y14",
+        "corridor": "A",
+        "exposureClass": "COVER",
+        "pattern": "fixture pattern Y14 — object near the chest line"
+      },
+      {
+        "id": "Y15",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y15 — object near the chest line"
+      },
+      {
+        "id": "Y16",
+        "corridor": "—",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y16 — object near the chest line"
+      },
+      {
+        "id": "Y17",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y17 — object near the chest line"
+      },
+      {
+        "id": "Y18",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y18 — object near the chest line"
+      },
+      {
+        "id": "Y19",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y19 — object near the chest line"
+      },
+      {
+        "id": "Y20",
+        "corridor": "—",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y20 — object near the chest line"
+      },
+      {
+        "id": "Y21",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y21 — object near the chest line"
+      },
+      {
+        "id": "Y22",
+        "corridor": "A",
+        "exposureClass": "COVER",
+        "pattern": "fixture pattern Y22 — object near the chest line"
+      },
+      {
+        "id": "Y23",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y23 — object near the chest line"
+      },
+      {
+        "id": "Y24",
+        "corridor": "—",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y24 — object near the chest line"
+      },
+      {
+        "id": "Y25",
+        "corridor": "A+B",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y25 — object near the chest line"
+      },
+      {
+        "id": "Y26",
+        "corridor": "A",
+        "exposureClass": "COVER",
+        "pattern": "fixture pattern Y26 — object near the chest line"
+      },
+      {
+        "id": "Y27",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y27 — object near the chest line"
+      },
+      {
+        "id": "Y28",
+        "corridor": "—",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y28 — object near the chest line"
+      },
+      {
+        "id": "Y29",
+        "corridor": "A",
+        "exposureClass": "PROCESS",
+        "pattern": "fixture pattern Y29 — object near the chest line"
+      },
+      {
+        "id": "Y30",
+        "corridor": "B",
+        "exposureClass": "—",
+        "pattern": "fixture pattern Y30 — object near the chest line"
+      }
+    ],
+    "usage": {
+      "Y3": {
+        "id": "Y3",
+        "usedCount": 2,
+        "lastBatch": 26,
+        "lastBatchFile": "T5-26.md"
+      },
+      "Y7": {
+        "id": "Y7",
+        "usedCount": 1,
+        "lastBatch": 25,
+        "lastBatchFile": "T5-25.md"
+      },
+      "Y11": {
+        "id": "Y11",
+        "usedCount": 1,
+        "lastBatch": 24,
+        "lastBatchFile": "T5-24.md"
+      },
+      "Y15": {
+        "id": "Y15",
+        "usedCount": 4,
+        "lastBatch": 12,
+        "lastBatchFile": "T5-12.md"
+      },
+      "Y19": {
+        "id": "Y19",
+        "usedCount": 1,
+        "lastBatch": 26,
+        "lastBatchFile": "T5-26.md"
+      },
+      "Y23": {
+        "id": "Y23",
+        "usedCount": 2,
+        "lastBatch": 8,
+        "lastBatchFile": "T5-08.md"
+      }
+    }
+  },
+  "draws": {
+    "27": {
+      "seed": 2950288811,
+      "oc": [
+        "Y25",
+        "Y5",
+        "Y29"
+      ],
+      "main": [
+        "Y17",
+        "Y18",
+        "Y20",
+        "Y1",
+        "Y15",
+        "Y24",
+        "Y23",
+        "Y6",
+        "Y12"
+      ],
+      "exp": [
+        "Y14",
+        "Y10",
+        "Y9",
+        "Y30"
+      ],
+      "windowExcluded": 4,
+      "shortfall": 0
+    },
+    "28": {
+      "seed": 1309757276,
+      "oc": [
+        "Y5",
+        "Y22",
+        "Y14"
+      ],
+      "main": [
+        "Y23",
+        "Y15",
+        "Y12",
+        "Y25",
+        "Y18",
+        "Y8",
+        "Y2",
+        "Y9",
+        "Y4"
+      ],
+      "exp": [
+        "Y30",
+        "Y21",
+        "Y27",
+        "Y17"
+      ],
+      "windowExcluded": 4,
+      "shortfall": 0
+    },
+    "40": {
+      "seed": 3098215336,
+      "oc": [
+        "Y2",
+        "Y23",
+        "Y29"
+      ],
+      "main": [
+        "Y17",
+        "Y10",
+        "Y20",
+        "Y13",
+        "Y5",
+        "Y24",
+        "Y25",
+        "Y27",
+        "Y12"
+      ],
+      "exp": [
+        "Y1",
+        "Y28",
+        "Y6",
+        "Y9"
+      ],
+      "windowExcluded": 4,
+      "shortfall": 0
+    }
+  },
+  "window": {
+    "depth": 3,
+    "batches": [
+      {
+        "no": 26,
+        "file": "T5-26.md"
+      },
+      {
+        "no": 25,
+        "file": "T5-25.md"
+      },
+      {
+        "no": 24,
+        "file": "T5-24.md"
+      }
+    ],
+    "usedInWindow": {
+      "Y11": "T5-24.md",
+      "Y7": "T5-25.md",
+      "Y3": "T5-26.md",
+      "Y19": "T5-26.md"
+    }
+  },
+  "heat": {
+    "slotCount": 4,
+    "ratedCount": 4,
+    "rplusShare": 0.5,
+    "corridorHistogram": {
+      "A": 2,
+      "B": 1,
+      "—": 1
+    },
+    "cardsUsed": 3,
+    "cardsFresh": 3,
+    "channelDupes": [
+      [
+        "chan-x",
+        2
+      ]
+    ],
+    "score": 85,
+    "label": "ГОРЯЧО"
+  }
+}
