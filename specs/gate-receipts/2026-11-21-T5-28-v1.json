@@ -1,0 +1,669 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.16.0)",
+ "batch": "batches/T5-28.md",
+ "sha256": "c7655df27038b7e9c6233073934be3e1ce76a0572bcff3d312b4c498802970a0",
+ "utc": "2026-11-20T22:19:35+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P03+P29",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «both palms flat on the ground»"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "channel-quota",
+   "msg": "candidate-каналы использованы 10× (P01,P02,P03,P04,P05,P06,P07,P08,P09,P10) > 2 — WARN волны 2, эскалация по KPI"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "29 общих 6-грамм с предыдущими партиями (T5-26.md, T5-27.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "dove-plugsuit-pressure",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "plugsuit-pressure-seal",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 273
+  },
+  {
+   "id": "P02",
+   "slug": "ash-pew-sprawl",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "pew-sprawl-lie-back",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 290
+  },
+  {
+   "id": "P03",
+   "slug": "zia-killhill-stretch",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "kill-hill-throat-sky",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 27,
+   "posWords": 321
+  },
+  {
+   "id": "P04",
+   "slug": "vampire-party-wall",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "party-wall-pulse",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 287
+  },
+  {
+   "id": "P05",
+   "slug": "mirror-fog-rehearsal",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "mirror-fog-rehearse",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 239
+  },
+  {
+   "id": "P06",
+   "slug": "jellyfish-bell-hem",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "bell-hem-crook",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 20,
+   "posWords": 275
+  },
+  {
+   "id": "P07",
+   "slug": "wolf-caught-name",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "caught-name-hold",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 20,
+   "posWords": 255
+  },
+  {
+   "id": "P08",
+   "slug": "bunny-grate-argument",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "grate-updraft-press",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 298
+  },
+  {
+   "id": "P09",
+   "slug": "dragon-knock-catch",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "knock-catch-towel",
+   "channelStatus": "candidate",
+   "corridor": "A+B",
+   "claimToken": 20,
+   "posWords": 274
+  },
+  {
+   "id": "P10",
+   "slug": "dryad-borrowed-wood",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "borrowed-wood-hum",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 20,
+   "posWords": 258
+  },
+  {
+   "id": "P11",
+   "slug": "mermaid-cast-wait",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 266
+  },
+  {
+   "id": "P12",
+   "slug": "weasel-his-chair",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 258
+  },
+  {
+   "id": "P13",
+   "slug": "bat-longer-route",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 261
+  },
+  {
+   "id": "P14",
+   "slug": "elf-lace-watch",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": 25,
+   "posWords": 265
+  },
+  {
+   "id": "P15",
+   "slug": "cold-water-count",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": 22,
+   "posWords": 281
+  },
+  {
+   "id": "P16",
+   "slug": "counter-second-shift",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 265
+  },
+  {
+   "id": "P17",
+   "slug": "ram-heavy-entrance",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": 23,
+   "posWords": 274
+  },
+  {
+   "id": "P18",
+   "slug": "waltz-third-repeat",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": 25,
+   "posWords": 276
+  },
+  {
+   "id": "P19",
+   "slug": "compartment-empty-seat",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 287
+  },
+  {
+   "id": "P20",
+   "slug": "balcony-beacon-watch",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 262
+  },
+  {
+   "id": "P21",
+   "slug": "dress-first-audience",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 242
+  },
+  {
+   "id": "P22",
+   "slug": "cecaelia-unearned-rain",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": 23,
+   "posWords": 268
+  },
+  {
+   "id": "P23",
+   "slug": "medusa-light-line",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 305
+  },
+  {
+   "id": "P24",
+   "slug": "letter-versus-excuse",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 285
+  },
+  {
+   "id": "P25",
+   "slug": "skunk-dice-favor",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A+B",
+   "claimToken": 21,
+   "posWords": 294
+  },
+  {
+   "id": "P26",
+   "slug": "doll-winding-key",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 25,
+   "posWords": 283
+  },
+  {
+   "id": "P27",
+   "slug": "bee-forward-attention",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 20,
+   "posWords": 298
+  },
+  {
+   "id": "P28",
+   "slug": "phoenix-feather-change",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 319
+  },
+  {
+   "id": "P29",
+   "slug": "crane-zero-top",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 315
+  },
+  {
+   "id": "P30",
+   "slug": "moth-pattern-match",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 294
+  },
+  {
+   "id": "P31",
+   "slug": "harpy-bead-curtain",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 319
+  },
+  {
+   "id": "P32",
+   "slug": "deer-blueprint-garden",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A+B",
+   "claimToken": 22,
+   "posWords": 354
+  },
+  {
+   "id": "P33",
+   "slug": "shark-empty-creel",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 320
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "across the chest line by the",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P27"
+   ]
+  },
+  {
+   "gram": "hair in a wet slick low",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "in a wet slick low bun",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "a wet slick low bun with",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "wet slick low bun with one",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "slick low bun with one stray",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "low bun with one stray drip",
+   "slotsHere": [
+    "P09"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "hair in a messy top bun",
+   "slotsHere": [
+    "P12"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P15"
+   ]
+  },
+  {
+   "gram": "in a messy top bun with",
+   "slotsHere": [
+    "P12"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P15"
+   ]
+  },
+  {
+   "gram": "eyes finding the viewer through the",
+   "slotsHere": [
+    "P14"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "the chest line reading through the",
+   "slotsHere": [
+    "P14"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "chest line reading through the sheer",
+   "slotsHere": [
+    "P14"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "line reading through the sheer layer",
+   "slotsHere": [
+    "P14"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "reading her breast shape and deep",
+   "slotsHere": [
+    "P15"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "her breast shape and deep cleavage",
+   "slotsHere": [
+    "P15"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "breast shape and deep cleavage curve",
+   "slotsHere": [
+    "P15"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P02"
+   ]
+  },
+  {
+   "gram": "the tie front blouse's knot seated",
+   "slotsHere": [
+    "P16"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "tie front blouse's knot seated under",
+   "slotsHere": [
+    "P16"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "front blouse's knot seated under the",
+   "slotsHere": [
+    "P16"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "front reading her breast shape where",
+   "slotsHere": [
+    "P17"
+   ],
+   "sourceBatch": "T5-27.md",
+   "slotsThere": [
+    "P32"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 19,
+  "fact_R+": 19
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y442",
+   "Y316",
+   "Y217",
+   "Y237",
+   "Y302",
+   "Y19",
+   "Y2",
+   "Y81",
+   "Y293",
+   "Y10",
+   "Y184",
+   "Y216",
+   "Y194",
+   "Y158",
+   "Y90",
+   "Y207",
+   "Y106",
+   "Y21",
+   "Y494",
+   "Y292",
+   "Y117",
+   "Y161",
+   "Y239",
+   "Y403",
+   "Y437",
+   "Y29",
+   "Y92",
+   "Y36",
+   "Y47",
+   "Y98",
+   "Y370",
+   "Y348",
+   "Y328"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "combo_pose": {
+  "composite_used": 27,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 33,
+  "weaved": 33,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
+ }
+}

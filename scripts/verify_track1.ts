@@ -1,6 +1,6 @@
 /* Быстрая проверка трека 1: парсер видит 3-значные Y-карты и прилавок — корень. */
-import { parseBatch } from '/home/z/my-project/thread5/src/lib/t5/parse';
-import { resolveT5Root, batchKey, shelfOrder } from '/home/z/my-project/thread5/src/lib/t5/store';
+import { parseBatch } from '../src/lib/t5/parse';
+import { resolveT5Root, batchKey, shelfOrder } from '../src/lib/t5/store';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 

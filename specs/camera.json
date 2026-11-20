@@ -1,7 +1,7 @@
 {
  "id": "camera",
  "name": "CAMERA-FIRST — камера как половина работы",
- "version": "1.17.0",
+ "version": "1.18.0",
  "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
  "law": "КАМЕРА-ПЕРВАЯ (вердикт 2026-11-03) + ревизия 2026-11-05 (вердикт автора чатом): «всё чё он говорит тру инфа, камера - одно из важных частей композиции. если посмотришь официальный гайд по тсубаки 2, там так и написано» → §13.0 LAWS: камерный кластер (D+A+F) — первые 10–20 токенов POS (Cole-B9 принят, кадровая строка у face-блока отменена); дисциплина дистанций D1–D8 «ближе/дальше» (ковбой — признанный доминант рендера, кап снят); dutch A09 ≤10%/батч — закон («закон!»); Combo:/Package: в теле слота с T5-13 («yes»); A/B insert→payoff 1–2 пары/батч («наверное да», пробно).",
  "distance_ladder": {
@@ -1383,7 +1383,7 @@
    },
    {
     "id": "Y47",
-    "pattern": "kneeling with both palms flat on the ground, hips lifted, head down between arms + CAM12_aerial",
+    "pattern": "kneeling with both palms flat on the ground, hips lifted high under their own weight, head down between the arms, the arch holding like a drawn bow + CAM12_aerial",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL18; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы LOW — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -1394,7 +1394,7 @@
       "cover_object": "kneeling with both palms flat on the ground",
       "read": "объект-прикрытие наследуется от позы (коридор A): kneeling with both palms flat on the ground"
      },
-     "pose": "kneeling with both palms flat on the ground, hips lifted, head down between arms",
+     "pose": "kneeling with both palms flat on the ground, hips lifted high under their own weight, head down between the arms, the arch holding like a drawn bow",
      "pov": "CAM12_aerial (камера позы CAM12_aerial)",
      "camera": "CAM12_aerial",
      "profiling": "base · KNEELING · use: N"
@@ -2238,7 +2238,7 @@
    },
    {
     "id": "Y92",
-    "pattern": "sitting cross-legged, both palms cupping own chin, elbows on knees, leaned forward into the viewer's space with full attention + eye level",
+    "pattern": "sitting cross-legged, both palms cupping own chin, elbows on knees, weight tipped forward into the viewer's space, the neckline falling with the lean, full attention",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL75; В27-физика в sd: lean; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -2249,7 +2249,7 @@
       "cover_object": "both palms cupping own chin",
       "read": "объект-прикрытие наследуется от позы (коридор A): both palms cupping own chin"
      },
-     "pose": "sitting cross-legged, both palms cupping own chin, elbows on knees, leaned forward into the viewer's space with full attention",
+     "pose": "sitting cross-legged, both palms cupping own chin, elbows on knees, weight tipped forward into the viewer's space, the neckline falling with the lean, full attention",
      "pov": "eye level (камера позы CAM01_eye_level)",
      "camera": "eye level",
      "profiling": "ecchi_classic · SEATED · use: N"
@@ -4613,7 +4613,7 @@
    },
    {
     "id": "Y217",
-    "pattern": "sitting cross-legged, both palms flat on the floor behind, chest lifted to the ceiling, head thrown back, throat leading + eye level",
+    "pattern": "sitting cross-legged, both palms flat on the ground behind bearing the shoulders' full weight, chest lifted to the ceiling, head thrown back, throat leading, the stretch riding the ribs + eye level",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL203; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -4624,7 +4624,7 @@
       "cover_object": "both palms flat on the floor behind",
       "read": "объект-прикрытие наследуется от позы (коридор A): both palms flat on the floor behind"
      },
-     "pose": "sitting cross-legged, both palms flat on the floor behind, chest lifted to the ceiling, head thrown back, throat leading",
+     "pose": "sitting cross-legged, both palms flat on the ground behind bearing the shoulders' full weight, chest lifted to the ceiling, head thrown back, throat leading, the stretch riding the ribs",
      "pov": "eye level (камера позы CAM01_eye_level)",
      "camera": "eye level",
      "profiling": "erotic_presentation_v2 · SEATED · use: N"
@@ -4993,7 +4993,7 @@
    },
    {
     "id": "Y237",
-    "pattern": "upper-body close: forehead to a cool wall, eyes closed, palms flat to the surface at the shoulders + upper body three-quarter",
+    "pattern": "upper-body close: forehead to a cool wall, eyes closed, both palms flat to the surface at the shoulders, the wall taking the whole pulse's weight + upper body three-quarter",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL227; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -5004,7 +5004,7 @@
       "cover_object": "upper-body close: forehead to a cool wall",
       "read": "объект-прикрытие наследуется от позы (коридор A): upper-body close: forehead to a cool wall"
      },
-     "pose": "upper-body close: forehead to a cool wall, eyes closed, palms flat to the surface at the shoulders",
+     "pose": "upper-body close: forehead to a cool wall, eyes closed, both palms flat to the surface at the shoulders, the wall taking the whole pulse's weight",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "micropose_expression · VERTICAL · use: N"
@@ -6494,7 +6494,7 @@
    },
    {
     "id": "Y316",
-    "pattern": "cross-legged lean-back against a firm back, one palm fanned + upper body three-quarter",
+    "pattern": "cross-legged lean-back against a firm pew-back, the spine's weight given to the wood, one palm fanned flat on the psalter's cover, the habit's front pulled taut by the lean + upper body three-quarter",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL318; В27-физика в sd: lean; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -6505,7 +6505,7 @@
       "cover_object": "one palm fanned",
       "read": "объект-прикрытие наследуется от позы (коридор A): one palm fanned"
      },
-     "pose": "cross-legged lean-back against a firm back, one palm fanned",
+     "pose": "cross-legged lean-back against a firm pew-back, the spine's weight given to the wood, one palm fanned flat on the psalter's cover, the habit's front pulled taut by the lean",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "A3 · SEATED · use: NV"
@@ -6722,7 +6722,7 @@
    },
    {
     "id": "Y328",
-    "pattern": "sitting on the stone edge, feet in water, towel hugged to the chest, steam rising + upper body three-quarter",
+    "pattern": "sitting on the stone edge, feet trailing in the water, the towel hugged tight to the chest with both forearms, its tuck's weight held honest, steam rising + upper body three-quarter",
     "corridor": "A",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL333; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -6733,7 +6733,7 @@
       "cover_object": "sitting on the stone edge",
       "read": "объект-прикрытие наследуется от позы (коридор A): sitting on the stone edge"
      },
-     "pose": "sitting on the stone edge, feet in water, towel hugged to the chest, steam rising",
+     "pose": "sitting on the stone edge, feet trailing in the water, the towel hugged tight to the chest with both forearms, its tuck's weight held honest, steam rising",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "A7 · SEATED · use: NV"
@@ -7102,7 +7102,7 @@
    },
    {
     "id": "Y348",
-    "pattern": "crouched on a chalk blueprint spread across the floor, one palm flat on a pine sapling growing along the drawn circle, compass in the other hand + upper body three-quarter",
+    "pattern": "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust",
     "corridor": "A+B",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL353; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -7113,7 +7113,7 @@
       "cover_object": "crouched on a chalk blueprint spread across the floor",
       "read": "объект-прикрытие наследуется от позы (коридор A): crouched on a chalk blueprint spread across the floor"
      },
-     "pose": "crouched on a chalk blueprint spread across the floor, one palm flat on a pine sapling growing along the drawn circle, compass in the other hand",
+     "pose": "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust",
      "pov": "upper body three-quarter (камера позы CAM02_three_quarter)",
      "camera": "upper body three-quarter",
      "profiling": "A3 · env_interaction · use: NV"
@@ -8793,7 +8793,7 @@
    },
    {
     "id": "Y437",
-    "pattern": "shaking the dice cup over her own palm, dice already settling stacked in her favor + CAM01",
+    "pattern": "shaking the dice cup over her own palm, the cup's rattle riding the wrist's snap, dice already settling stacked in her favor + CAM01",
     "corridor": "A+B",
     "trust": "DERIVED, акт 1 (2026-11-17): обёртка комбо-доктрины над PL448; В27 ПУСТО в sd — до пересборки печью карта не выходит в R+; trust позы MID — тир решает вердикт",
     "verdict": "акт 1 2026-11-17 (приказ автора «всю составную позу — в доктрину комбо-Y»): карта-обёртка, sd — копипаст-юнит; оплата качества — вердиктом",
@@ -8804,7 +8804,7 @@
       "cover_object": "shaking the dice cup over her own palm",
       "read": "объект-прикрытие наследуется от позы (коридор A): shaking the dice cup over her own palm"
      },
-     "pose": "shaking the dice cup over her own palm, dice already settling stacked in her favor",
+     "pose": "shaking the dice cup over her own palm, the cup's rattle riding the wrist's snap, dice already settling stacked in her favor",
      "pov": "CAM01 (камера позы CAM01)",
      "camera": "CAM01",
      "profiling": "greed_engine · greed_engine · use: N"
@@ -10607,6 +10607,7 @@
   }
  },
  "changelog": [
+  "1.18.0 (2026-11-21, T5-28 CLOCK): В27-пересборка волна 2 (прецедент — волна 1 T5-27, LAWS §17.4): Y316, Y217, Y237, Y437, Y92, Y47, Y348, Y328 — физика (вес/тяга/зацеп) влита в паттерны ДО сборки, карты получили право на R+; клеймо переродилось само. Компоненты/коридоры/id не тронуты — паритет жребия побитово цел.",
   "1.16.0 (2026-11-19, T5-26 «Ancient Abyss»): +9 НОВЫХ карт Y513–Y521 (заказ автора «новенькие Y которых ещё не создавали» — первые карты волны EXP T5-26); обёртки над PL569–PL577; коридор A, класс COVER, В27-физика в паттерне; вплетение 1:1 по В34/В35.",
   "1.16.0 (2026-11-19, T5-26 «Ancient Abyss»): +9 НОВЫХ карт Y513–Y521 (заказ автора «новенькие Y которых ещё не создавали» — первые карты волны EXP T5-26); обёртки над PL569–PL577; коридор A, класс COVER, В27-физика в паттерне; вплетение 1:1 по В34/В35.",
   {
