@@ -43,6 +43,23 @@ const META_PATH = path.join(INBOX_DIR, 'meta.json');
 export type TriageLabel = 'sfw' | 'borderline' | 'x' | 'unknown';
 export type InboxStatus = 'queued' | 'ok' | 'x' | 'analyzed' | 'error';
 
+/** Факт-рейтинг кадра по гайду Коула (docs/RATING-REPAIR-2026-11-13.md):
+ *  бейдж ≠ факт — считаем то, что ВИДНО в кадре, а не что заявлено в шапке. */
+export type ColeRating = 'PG-13' | 'R' | 'R+';
+/** Что несёт заряд R+: A — объект-прикрытие, B — геометрия позы+камеры. */
+export type ColeCorridor = 'A' | 'B' | 'A+B';
+
+export interface InboxIdentity {
+  at: string;
+  rating: ColeRating | null; // факт-рейтинг по Коу
+  corridor: ColeCorridor | null; // коридор, который несёт заряд
+  oneMinute: boolean | null; // one-minute test (гайд Коула §3): заряд живёт без окружения
+  slot: string | null; // слот, определённый ЗРЕНИЕМ (когда тега не было)
+  slotBatch: string | null; // в каком батче искали слот
+  slotConfidence: 'high' | 'mid' | 'low' | null;
+  note: string; // одно предложение: почему такой рейтинг
+}
+
 export interface InboxFinding {
   kind: string; // анатомия | руки | глаза | вид | камера | палитра | артефакт | композиция
   where: string;
@@ -68,12 +85,20 @@ export interface InboxItem {
     findings: InboxFinding[];
     note: string;
   } | null;
+  /** Рейтинг по Коу + слот зрением (заказ автора 2026-11-21: «сам, по мануалу
+   *  коула, и определял слот картинки, чтобы тебе потом было проще»). */
+  identity: InboxIdentity | null;
   authorOverride: { label: 'sfw' | 'x'; at: string } | null;
 }
 
-export const ALLOWED_EXT = ['png', 'jpg', 'jpeg', 'webp'] as const;
-export const MAX_FILE_BYTES = 25 * 1024 * 1024;
-export const MAX_BATCH_FILES = 40;
+// лимиты — из чистого модуля (клиент/сервер единый источник; см. upload-limits.ts)
+export { ALLOWED_EXT, MAX_FILE_BYTES } from './upload-limits';
+import { ALLOWED_EXT, MAX_FILE_BYTES } from './upload-limits';
+/** Кап файлов на ОДИН запрос (2026-11-21): клиент режет пачки по 2 файла /
+ *  ≤8 МБ (502 шлюза на тяжёлых multipart — Bad Gateway доходит до Next);
+ *  4 = небольшой запас для ручного вызова API, легаси-«пачки по 8» теперь
+ *  получают понятный 400 вместо таймаута шлюза. */
+export const MAX_BATCH_FILES = 4;
 
 /* ── слот-маппинг: из имени файла и свободного текста в канонический тег ── */
 
@@ -305,10 +330,65 @@ export async function triageImage(mime: string, buf: Buffer): Promise<{ label: T
     // модель ответила мусором — fail-closed
     return { label: 'x', reason: 'триаж дал нечитаемый ответ — карантин (fail-closed)' };
   } catch (err) {
+    const msg = String(err instanceof Error ? err.message : err);
+    // 1301/contentFilter — ДЕТЕРМИНИРОВАННЫЙ отказ зрения: кадр слишком горяч
+    // для moderation-gate. Это вердикт, а не сбой: ретраи жгут звонки впустую
+    // и не дают очереди дренироваться (живой урок 2026-11-21: 13 отказов
+    // крутились в цикле бесконечно). Тегаем X и НЕ перетриажируем авто-
+    // матически — формулировка без слов-триггеров RETRIAGE_RE/needsTriage.
+    if (/contentFilter|1301|unsafe|sensitive/iu.test(msg)) {
+      return {
+        label: 'x',
+        reason: 'контент-фильтр зрения отклонил кадр (1301) — вероятный X, вердикт фильтра (не сбой)',
+      };
+    }
     return {
       label: 'x',
-      reason: `триаж упал (${String(err instanceof Error ? err.message : err).slice(0, 60)}) — карантин (fail-closed)`,
+      reason: `триаж упал (${msg.slice(0, 60)}) — карантин (fail-closed)`,
     };
+  }
+}
+
+/* ── рейтинг по Коу + слот зрением (заказ автора 2026-11-21) ───────────── */
+
+/** Код последнего батча в batches/ (T5-XX с максимальным XX) — фолбэк,
+ *  когда у файла нет ни тега, ни батч-хинта от UI. */
+export async function latestBatchCode(): Promise<string | null> {
+  try {
+    const names = await fs.readdir(path.join(T5_ROOT, 'batches'));
+    let best: number | null = null;
+    for (const name of names) {
+      const m = /^T5-(\d{1,3})\.md$/iu.exec(name);
+      if (!m) continue;
+      const n = Number.parseInt(m[1], 10);
+      if (best === null || n > best) best = n;
+    }
+    return best === null ? null : `T5-${best}`;
+  } catch {
+    return null;
+  }
+}
+
+/** Компактная строка-сигнатура слота для матчинга зрением: раса/персонаж +
+ *  первые внешние токены POS (волосы/глаза/кожа стоят в POS рано). */
+function slotSignature(pos: string): string {
+  return pos.replace(/\s+/gu, ' ').trim().slice(0, 160);
+}
+
+/** Список слотов-кандидатов для одного батча: «P05 · персонаж R08 Serpent-kin ·
+ *  R+ · сигнатура…». null — батч не читается/пуст. */
+export async function slotCandidates(batch: string): Promise<string | null> {
+  try {
+    const raw = await fs.readFile(path.join(T5_ROOT, 'batches', `${batch}.md`), 'utf8');
+    const parsed = parseBatch(raw);
+    if (parsed.slots.length === 0) return null;
+    return parsed.slots
+      .map((s) =>
+        `${s.id} · ${s.character ?? '—'} · ${s.rating ?? '—'} · ${slotSignature(s.pos)}`,
+      )
+      .join('\n');
+  } catch {
+    return null;
   }
 }
 
@@ -318,6 +398,11 @@ interface AnalysisOut {
   severity?: string;
   findings?: { kind?: string; where?: string; what?: string }[];
   note?: string;
+  rating?: string;
+  corridor?: string;
+  oneMinute?: boolean;
+  slot?: string;
+  slotConfidence?: string;
 }
 
 const ANALYSIS_SYSTEM =
@@ -326,9 +411,55 @@ const ANALYSIS_SYSTEM =
   'артефакты рендера (швы, лишние конечности, расплавленные предметы, случайный текст/водяные знаки), ' +
   'несобранная камера/ракурс (точка съёма не совпадает с заявленной), палитра/свет вне регистра, ' +
   'видовая нестыковка (заявленная анатомия вида не соблюдена). Не описывай сюжет и не оценивай ' +
-  'привлекательность. Ответ — ТОЛЬКО JSON: {"severity":"clean|minor|major",' +
-  '"findings":[{"kind":"анатомия|руки|глаза|вид|камера|палитра|артефакт|композиция","where":"где на картинке","what":"что сломано"}],"note":"итог одной фразой"}. ' +
-  'Без находок: severity "clean", findings []. Не выдумывай дефекты, если их нет.';
+  'привлекательность. Не выдумывай дефекты, если их нет.';
+
+/** Блок факт-рейтинга по гайду Коула (docs/RATING-REPAIR-2026-11-13.md):
+ *  считаем ЧТО В КАДРЕ, а не что заявлено. Формулировки filter-safe. */
+const COLE_RATING_BLOCK =
+  '\n\nОтдельно оцени ФАКТ-рейтинг кадра по гайду Коула (бейдж ≠ факт):\n' +
+  '- "R+" — в кадре есть коридор A (заметное раскрытие тела, но грудь закрыта объектом: руки/лента/ткань/скотч в руках или на груди) ' +
+  'ИЛИ коридор B (интим несёт сама геометрия: низкий ракурс, посадка верхом, mid-action с одеждой, процесс снимания/сдвига); ' +
+  'если есть и A, и B — коридор "A+B".\n' +
+  '- "R" — лёгкий see-through/прозрачная ткань без объекта-прикрытия, каталог-поза с улыбкой, бельё без геометрии, заряд только в подписи.\n' +
+  '- "PG-13" — просто красивая сцена без заявки на заряд.\n' +
+  'one-minute test: прикрой мысленно окружение/фон — заряд остаётся в верхних токенах кадра (поза+камера+прикрытие)? ' +
+  'Если заряд живёт только за счёт декораций — oneMinute=false.\n' +
+  'Ответ строго по фактам кадра, без фантазии о том, «что имелось в виду».';
+
+/** Блок матчинга слота зрением — только когда слот файла неизвестен. */
+function slotMatchBlock(batch: string, candidates: string): string {
+  return (
+    `\n\nСлот файла НЕИЗВЕСТЕН. Матчинг зрением: ниже список слотов батча ${batch} ` +
+    '(id · персонаж/раса · заявленный рейтинг · сигнатура POS). ' +
+    'Найди ОДИН лучший кандидат по внешности (волосы/глаза/кожа/уши-хвост-рога/наряд) и позе; ' +
+    'совпадение по 2+ стабильным признакам — high, по 1 расплывчатому — low; не уверен — confidence low.\n' +
+    `КАНДИДАТЫ:\n${candidates}`
+  );
+}
+
+function normalizeSlotId(v: unknown): string | null {
+  const m = /P(\d{1,3})/iu.exec(String(v ?? ''));
+  if (!m) return null;
+  const n = Number.parseInt(m[1], 10);
+  if (!Number.isInteger(n) || n < 1 || n > 999) return null;
+  return `P${n < 10 ? `0${n}` : n}`;
+}
+
+function normalizeColeRating(v: unknown): ColeRating | null {
+  const s = String(v ?? '').toUpperCase().replace(/[^A-Z0-9+-]/gu, '');
+  if (s === 'R+') return 'R+';
+  if (s === 'R') return 'R';
+  if (s === 'PG13' || s === 'PG-13') return 'PG-13';
+  return null;
+}
+
+function normalizeCorridor(v: unknown): ColeCorridor | null {
+  const s = String(v ?? '').toUpperCase().replace(/[^AB+]/gu, '');
+  if (s === 'A+B' || s === 'B+A' || s === 'AB' || s === 'BA') return 'A+B';
+  if (s === 'A') return 'A';
+  if (s === 'B') return 'B';
+  return null;
+}
 
 /** POS/NEG контекст слота, если файл помечен каноническим тегом «T5-16 P28». */
 async function slotContext(batch: string | null, slot: string | null): Promise<string> {
@@ -349,19 +480,37 @@ async function slotContext(batch: string | null, slot: string | null): Promise<s
   }
 }
 
-export async function analyzeItem(item: InboxItem): Promise<InboxItem> {
-  const batch = item.batch ?? normalizeTag(item.tag).batch;
-  const slot = item.slot ?? normalizeTag(item.tag).slot;
+/**
+ * Разбор одного элемента: ОДИН vision-звонок = дефекты + факт-рейтинг по Коу
+ * + слот зрением (если тега не было). batchHint — выбранный в UI батч;
+ * фолбэи: тег файла → хинт UI → последний батч в batches/.
+ */
+export async function analyzeItem(item: InboxItem, batchHint?: string | null): Promise<InboxItem> {
+  const norm = normalizeTag(item.tag);
+  const batch = item.batch ?? norm.batch ?? (batchHint ? normalizeTag(batchHint).batch : null) ?? (await latestBatchCode());
+  const slot = item.slot ?? norm.slot;
   const context = await slotContext(batch, slot);
+  const needSlot = !slot && batch ? await slotCandidates(batch) : null;
   try {
     const buf = await fs.readFile(path.join(UPLOADS_DIR, item.file));
-    const raw = await visionJson({
+    const jsonShape =
+      '{"severity":"clean|minor|major",' +
+      '"findings":[{"kind":"анатомия|руки|глаза|вид|камера|палитра|артефакт|композиция","where":"где на картинке","what":"что сломано"}],' +
+      '"rating":"PG-13|R|R+","corridor":"A|B|A+B|null","oneMinute":true|false,' +
+      (needSlot ? '"slot":"P01..","slotConfidence":"high|mid|low",' : '') +
+      '"note":"итог одной фразой"}';
+    const raw = await visionJsonRetry({
       messages: [{
         role: 'user',
         content: [
           {
             type: 'text',
-            text: ANALYSIS_SYSTEM + (context ? `\n\nКОНТЕКСТ ПРОМПТА:\n${context}` : ''),
+            text:
+              ANALYSIS_SYSTEM +
+              `\nОтвет — ТОЛЬКО JSON без прозы: ${jsonShape}` +
+              COLE_RATING_BLOCK +
+              (needSlot ? slotMatchBlock(batch ?? '', needSlot) : '') +
+              (context ? `\n\nКОНТЕКСТ ПРОМПТА:\n${context}` : ''),
           },
           { type: 'image_url', image_url: { url: dataUrl(item.mime, buf) } },
         ],
@@ -386,13 +535,49 @@ export async function analyzeItem(item: InboxItem): Promise<InboxItem> {
       findings,
       note: (parsed.note ?? '').slice(0, 300),
     };
+
+    /* факт-рейтинг по Коу + слот зрением (заказ автора 2026-11-21) */
+    const rating = normalizeColeRating(parsed.rating);
+    const corridor = normalizeCorridor(parsed.corridor);
+    const seenSlot = needSlot ? normalizeSlotId(parsed.slot) : null;
+    const slotConfidence =
+      parsed.slotConfidence === 'high' || parsed.slotConfidence === 'mid' || parsed.slotConfidence === 'low'
+        ? parsed.slotConfidence
+        : null;
+    item.identity = {
+      at: new Date().toISOString(),
+      rating,
+      corridor,
+      oneMinute: typeof parsed.oneMinute === 'boolean' ? parsed.oneMinute : null,
+      slot: seenSlot,
+      slotBatch: needSlot ? batch : null,
+      slotConfidence: needSlot ? slotConfidence : null,
+      note: rating
+        ? `${rating}${corridor ? ` · коридор ${corridor}` : ''} — по фактам кадра (гайд Коула)`
+        : 'рейтинг не определился',
+    };
+
+    /* уверенный матч зрения заполняет пустой слот файла — ручные теги
+     * автора неприкосновенны (приоритет: ручной тег > зрение) */
+    if (seenSlot && (slotConfidence === 'high' || slotConfidence === 'mid') && !item.slot) {
+      item.slot = seenSlot;
+      item.batch = item.batch ?? batch;
+      item.tag = [item.batch, seenSlot].filter(Boolean).join(' ') || item.tag;
+    }
+
     item.status = 'analyzed';
   } catch (err) {
+    const msg = String(err instanceof Error ? err.message : err);
+    // 1301 — детерминированный отказ фильтра: ретраи бессмысленны, честно
+    // говорим автору, что разбор недоступен (урок живого прогона 2026-11-21)
+    const filterRefused = /contentFilter|1301|unsafe|sensitive/iu.test(msg);
     item.analysis = {
       at: new Date().toISOString(),
       severity: 'minor',
       findings: [],
-      note: `авто-разбор не удался: ${String(err instanceof Error ? err.message : err).slice(0, 120)}`,
+      note: filterRefused
+        ? 'контент-фильтр зрения отклонил кадр (1301) — авто-разбор недоступен, оцени глазами'
+        : `авто-разбор не удался: ${msg.slice(0, 120)}`,
     };
     item.status = 'error';
   }
@@ -492,6 +677,7 @@ export async function saveFile(file: File, tag: string | null): Promise<SaveOutc
     status: 'queued',
     triage: { label: 'unknown', reason: 'в очереди на X-триаж', at: new Date().toISOString() },
     analysis: null,
+    identity: null,
     authorOverride: null,
   };
   return { item, origName: file.name };
@@ -518,7 +704,11 @@ export async function triageItem(item: InboxItem): Promise<InboxItem> {
     const buf = await fs.readFile(path.join(UPLOADS_DIR, item.file));
     const triage = await triageImage(item.mime, buf);
     item.triage = { label: triage.label, reason: triage.reason, at: new Date().toISOString() };
-    item.status = triage.label === 'x' ? 'x' : 'ok';
+    // статус: карантин бьёт всё (fail-closed), но состоявшийся разбор
+    // ('analyzed'/'error') перетриаж не топчет — иначе карточки выпадают
+    // из фильтра «разобрано», хотя analysis/identity живы (живой урок 2026-11-21)
+    const keep = item.status === 'analyzed' || item.status === 'error';
+    item.status = triage.label === 'x' ? 'x' : keep ? item.status : 'ok';
   } catch (err) {
     item.triage = {
       label: 'x',

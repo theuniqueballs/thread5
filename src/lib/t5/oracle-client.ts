@@ -64,41 +64,7 @@ export async function oracleStatus(force = false): Promise<OracleServiceStatus> 
   return value;
 }
 
-/** полный аудит слота через сервис (null — сервиса нет, прилавок решает локально) */
-export async function oracleAuditSlot(input: {
-  pos: string;
-  badge?: string;
-  corridor?: string;
-  stamp?: string;
-  card_id?: string;
-}): Promise<Record<string, unknown> | null> {
-  return oracleFetch<Record<string, unknown>>('/audit', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(input),
-  });
-}
-
-/** агрегированный аудит партии через сервис: слоты уже распарсены прилавком */
-export async function oracleAuditBatch(
-  slots: { id: string; rating: string | null; corridor: string | null; yCard: string | null; pos: string }[],
-): Promise<Record<string, unknown> | null> {
-  return oracleFetch<Record<string, unknown>>('/batch', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      slots: slots.map((s) => ({
-        id: s.id, pos: s.pos, badge: s.rating ?? '', corridor: s.corridor ?? '', ycard: s.yCard ?? '',
-      })),
-    }),
-  }, 8000);
-}
-
-/** вопрос LLM-мозгу оракула (платный ход — только через живой сервис) */
-export async function oracleAsk(question: string, mode: 'distill' | 'short' = 'short'): Promise<{ answer: string } | null> {
-  return oracleFetch<{ answer: string }>('/ask', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ question, mode }),
-  }, 30_000);
-}
+/* Мёртвый путь убран (чистка 2026-11-21): клиенты /audit, /batch, /ask жили
+ * здесь без единого вызова из прилавка — агрегированный аудит и вопросы
+ * LLM-мозгу ходят через CLI (tools/oracle.py audit|ask) напрямую в сервис.
+ * Сервисные эндпоинты живы; прилавку они не нужны (усилитель, не замена). */

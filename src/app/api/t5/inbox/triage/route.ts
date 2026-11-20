@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
     const wanted =
       Array.isArray(body.ids) && body.ids.length > 0
-        ? items.filter((i) => body.ids?.includes(i.id) && needsTriage(i))
+        ? items.filter((i) => body.ids?.includes(i.id)) // ручной выбор автора — всегда можно (в т.ч. вердикты фильтра 1301)
         : items.filter(needsTriage);
     const queue = wanted.slice(0, CAP_PER_REQUEST);
 

@@ -159,5 +159,89 @@ class TestStoryCardsSoExempt(unittest.TestCase):
         self.assertEqual(warns, [], "SO-кометы вне цикла story-cards — WARN не шумит")
 
 
+class TestPaletteSkin(unittest.TestCase):
+    """v1.16.0 paletteSkin — В36 «палитра ≠ кожа» (вердикт T5-27 P01 Vae:
+    «blood-moon red deep over obsidian skin» = красная кожа на рендере)."""
+
+    def _slot_with_pos(self, pos):
+        s = gates.Slot(1, "synth", "VOLT · human · R+ · PL1", "P01 — synth (VOLT · human · R+ · PL1)")
+        s.pos = pos
+        return [s]
+
+    def test_bleed_caught(self):
+        # живой урок T5-27: цвет палитры мостом over утекает в кожу
+        warns = []
+        n = gates.check_palette_skin(
+            self._slot_with_pos("sheer red gown, blood-moon red deep over obsidian skin"),
+            warns, batch_no=28,
+        )
+        self.assertEqual(n, 1)
+        self.assertEqual(warns[0][1], "palette-skin")
+
+    def test_clean_skin_no_color(self):
+        # канон-цвет вида без цветового токена палитры рядом — чисто
+        warns = []
+        n = gates.check_palette_skin(
+            self._slot_with_pos("obsidian skin, crimson ribbon in her hands"),
+            warns, batch_no=28,
+        )
+        # «crimson ribbon in her hands» — моста к коже нет; skin без цвета в окне
+        self.assertEqual(n, 0)
+        self.assertEqual(warns, [])
+
+    def test_color_far_from_skin_is_clean(self):
+        # цвет в начале кадра, кожа далеко — окно 5 не дотягивается
+        warns = []
+        n = gates.check_palette_skin(
+            self._slot_with_pos("red neon signs far behind her, long corridor, "
+                                "deep shadows, quiet hall, obsidian skin"),
+            warns, batch_no=28,
+        )
+        self.assertEqual(n, 0)
+
+    def test_apply_from_28(self):
+        # 8.6: WARN с T5-28 — T5-27 не ретроактивен
+        warns = []
+        n = gates.check_palette_skin(
+            self._slot_with_pos("blood red over pale skin"), warns, batch_no=27
+        )
+        self.assertEqual(n, 0, "T5-27 вне зоны действия гейта (applyFrom 28)")
+
+    def test_no_config_no_crash(self):
+        # gates.json без paletteSkin — гейт молчит, не валит печь
+        old = gates.GATES.pop("paletteSkin", None)
+        try:
+            warns = []
+            n = gates.check_palette_skin(
+                self._slot_with_pos("red over skin"), warns, batch_no=28
+            )
+            self.assertEqual(n, 0)
+        finally:
+            if old is not None:
+                gates.GATES["paletteSkin"] = old
+
+    def test_hyphen_compound_is_one_token(self):
+        # живой ретро-прогон T5-27: P22 «stage-crimson-deep over amp-black,
+        # skin-spotlit warm» — кожа в СЛОЖНОМ слове, цвет её не трогает;
+        # ложняк дефис-сплита (words() рвал «skin-spotlit» на два) закрыт
+        warns = []
+        n = gates.check_palette_skin(
+            self._slot_with_pos(
+                "stage-crimson-deep over amp-black, skin-spotlit warm at the throat"
+            ),
+            warns, batch_no=28,
+        )
+        self.assertEqual(n, 0, "skin-spotlit — сложное слово, не модификатор кожи")
+
+    def test_retro_mode_fires_on_old_batches(self):
+        # --retro: гейт показывает, что поймал бы в старой партии
+        warns = []
+        n = gates.check_palette_skin(
+            self._slot_with_pos("blood red over pale skin"), warns,
+            batch_no=27, retro=True,
+        )
+        self.assertEqual(n, 1, "ретро-режим не смотрит на applyFrom")
+
+
 if __name__ == "__main__":
     unittest.main()

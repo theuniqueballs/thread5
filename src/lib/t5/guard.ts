@@ -10,10 +10,6 @@
  */
 import { NextResponse } from 'next/server';
 
-export function writeTokenEnabled(): boolean {
-  return Boolean(process.env.T5_WRITE_TOKEN && process.env.T5_WRITE_TOKEN.trim());
-}
-
 /** true — доступ разрешён (токен не задан или совпал). */
 export function writeAllowed(req: Request): boolean {
   const token = (process.env.T5_WRITE_TOKEN ?? '').trim();
@@ -34,7 +30,7 @@ export function writeDenied(): NextResponse {
 }
 
 /** сравнение строк без утечки времени (best-effort в рантайме edge/node). */
-export function timingSafeEqualStr(a: string, b: string): boolean {
+function timingSafeEqualStr(a: string, b: string): boolean {
   if (a.length !== b.length) return false;
   let diff = 0;
   for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);

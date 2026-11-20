@@ -6,14 +6,18 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 120;
 
-/** Кап на запрос: клиент докручивает циклом по remaining (короткие запросы — без таймаутов). */
-const CAP_PER_REQUEST = 3;
+/** Кап на запрос: клиент докручивает циклом по remaining (короткие запросы — без таймаутов).
+ *  2026-11-21: 3 → 2 (приказ автора «по две штуки, чтобы не перегружать») —
+ *  разбор теперь тяжелее: дефекты + рейтинг по Коу + слот зрением в одном звонке. */
+const CAP_PER_REQUEST = 2;
 
 interface AnalyzeBody {
   action?: 'analyze' | 'override';
   ids?: string[];
   id?: string;
   label?: 'sfw' | 'x';
+  /** Батч, выбранный в UI — фолбэй для файлов без тега (слот зрением). */
+  batch?: string;
 }
 
 /**
@@ -52,6 +56,7 @@ export async function POST(req: Request) {
 
   // action: analyze (по умолчанию) — тоже под замком: цикл клиента и
   // параллельный override не должны перезаписывать журнал друг друга
+  const batchHint = typeof body.batch === 'string' && body.batch.trim() ? body.batch.trim().slice(0, 8) : null;
   const result = await withMetaLock(async () => {
     const items = await readMeta();
     const wanted =
@@ -69,7 +74,7 @@ export async function POST(req: Request) {
     const batch = queue.slice(0, CAP_PER_REQUEST);
     // последовательно и бережно: SDK не любит залпы
     for (const item of batch) {
-      await analyzeItem(item);
+      await analyzeItem(item, batchHint);
     }
     await writeMeta(items);
 

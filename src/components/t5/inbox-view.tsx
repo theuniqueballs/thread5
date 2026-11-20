@@ -24,6 +24,8 @@ import {
 import { cn } from '@/lib/utils';
 import { Chip } from '@/components/t5/bits';
 import { Input } from '@/components/ui/input';
+import { buildUploadChunks } from '@/lib/t5/upload-chunks';
+import { ALLOWED_EXT, MAX_FILE_BYTES } from '@/lib/t5/upload-limits';
 import type { InboxItem } from '@/lib/t5/inbox';
 
 /**
@@ -60,10 +62,26 @@ const SEVERITY_CLS: Record<string, string> = {
   major: 't5-note t5-note--red',
 };
 
-const MAX_FILE_MB = 25;
-const ALLOWED_EXT = ['png', 'jpg', 'jpeg', 'webp'];
-const UPLOAD_CHUNK = 8; // файлов за один POST — короткие запросы, шлюз не злится
+const MAX_FILE_MB = 25; // только для текста подсказки; кап кода — MAX_FILE_BYTES из либы
+/** Приказ автора 2026-11-21: «порциями по 8 не хочет… по две штуки, чтобы не
+ *  перегружать». Чанк = максимум 2 файла И максимум 8 МБ — что раньше
+ *  кончится (одна тяжёлая картинка летит одна). Урок 502: шлюз валит
+ *  тяжёлые multipart-пачки Bad Gateway'ем ДО того, как Next их увидит. */
+const UPLOAD_RETRIES = 1; // один повтор чанка после паузы: 502 бывает мимолётным
+const UPLOAD_RETRY_PAUSE_MS = 4000;
 const BATCH_STORAGE_KEY = 't5:inbox:batch';
+
+/** Факт-рейтинг по Коу — бейджи карты/лайтбокса (гайд в либе, цвета — как у
+ *  Severity: R+ золото, R мята, PG-13 цинк). */
+const COLE_CLS: Record<string, string> = {
+  'R+': 't5-badge t5-badge--gold',
+  R: 't5-badge t5-badge--mint',
+  'PG-13': 't5-badge t5-badge--neutral',
+};
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
 
 /** JSON-парсер, который не давится HTML-страницей шлюза («Unexpected token '<'»). */
 async function readJson<T>(res: Response): Promise<T> {
@@ -224,11 +242,11 @@ export function InboxView() {
       let batchHint = '';
       for (const f of incoming) {
         const ext = f.name.includes('.') ? (f.name.split('.').pop() ?? '').toLowerCase() : '';
-        if (!ALLOWED_EXT.includes(ext)) {
+        if (!(ALLOWED_EXT as readonly string[]).includes(ext)) {
           bad.push(`${f.name} — не png/jpg/webp`);
           continue;
         }
-        if (f.size > MAX_FILE_MB * 1024 * 1024) {
+        if (f.size > MAX_FILE_BYTES) {
           bad.push(`${f.name} — больше ${MAX_FILE_MB} МБ`);
           continue;
         }
@@ -278,6 +296,7 @@ export function InboxView() {
       let remaining = 0;
       for (let guard = 0; guard < 80; guard++) {
         if (signal?.aborted) return { done, remaining };
+        if (guard > 0) await sleep(600); // пауза-сглаживание: не долбим vision-API подряд (урок 429-шторма 2026-11-21)
         const res = await fetch('/api/t5/inbox/triage', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -297,28 +316,52 @@ export function InboxView() {
     [],
   );
 
-  /* ── загрузка кучкой: чанки по 8, теги пофайлово → затем триаж-цикл.
+  /* ── загрузка кучкой: чанки ≤2 файлов И ≤8 МБ (приказ автора 2026-11-21:
+     «порциями по 8 не хочет… по две штуки, чтобы не перегружать»), каждый
+     чанк — один короткий POST + один ретрай на мимолётный 502.
      Загруженные чанки вычёркиваются из списка сразу: обрыв на середине →
-     «Закинуть» доехает только остаток, дублей на диске нет. ── */
+     «Закинуть» доедет только остаток, дублей на диске нет. ── */
   const upload = useCallback(async () => {
     if (picked.length === 0 || busy) return;
     setMessage(null);
     const signal = beginLoops();
     const list = picked; // снимок: чанки режем от него, список живёт своей жизнью
+    const chunks = buildUploadChunks(list);
     try {
       let uploaded = 0;
       let failed = 0;
-      for (let i = 0; i < list.length; i += UPLOAD_CHUNK) {
+      let doneFiles = 0;
+      for (let ci = 0; ci < chunks.length; ci++) {
         if (signal.aborted) return;
-        const chunk = list.slice(i, i + UPLOAD_CHUNK);
-        setBusy(`Заливаю ${Math.min(i + chunk.length, list.length)}/${list.length}…`);
+        const chunk = chunks[ci];
+        doneFiles += chunk.length;
+        setBusy(`Заливаю ${doneFiles}/${list.length} (пачка ${ci + 1}/${chunks.length})…`);
         const fd = new FormData();
         const tags = chunk.map((p) => [batch.trim(), p.slot].filter(Boolean).join(' '));
         for (const p of chunk) fd.append('files', p.file);
         fd.append('tags', JSON.stringify(tags));
-        const res = await fetch('/api/t5/inbox', { method: 'POST', body: fd, signal });
-        const data = await readJson<{ uploaded?: number; failed?: number; items?: InboxItem[]; error?: string }>(res);
-        if (!res.ok) throw new Error(data.error ?? 'загрузка не удалась');
+        /* шлюз иногда отдаёт мимолётный 502 — один повтор с паузой лечит;
+         * повторная неудача роняет загрузку, но залитое уже вычеркнуто */
+        let data: { uploaded?: number; failed?: number; items?: InboxItem[]; error?: string } | null = null;
+        let lastErr: unknown = null;
+        for (let attempt = 0; attempt <= UPLOAD_RETRIES; attempt++) {
+          if (signal.aborted) return;
+          try {
+            const res = await fetch('/api/t5/inbox', { method: 'POST', body: fd, signal });
+            data = await readJson<{ uploaded?: number; failed?: number; items?: InboxItem[]; error?: string }>(res);
+            if (!res.ok) throw new Error(data.error ?? 'загрузка не удалась');
+            lastErr = null;
+            break;
+          } catch (err) {
+            if ((err as DOMException)?.name === 'AbortError') throw err;
+            lastErr = err;
+            if (attempt < UPLOAD_RETRIES) {
+              setBusy(`Пачка ${ci + 1}/${chunks.length} упёрлась в шлюз — жду ${UPLOAD_RETRY_PAUSE_MS / 1000}с и повторяю…`);
+              await sleep(UPLOAD_RETRY_PAUSE_MS);
+            }
+          }
+        }
+        if (lastErr !== null || !data) throw lastErr instanceof Error ? lastErr : new Error('загрузка не удалась');
         uploaded += data.uploaded ?? 0;
         failed += data.failed ?? 0;
         setItems(data.items ?? []);
@@ -330,7 +373,7 @@ export function InboxView() {
 
       let triaged = 0;
       try {
-        setBusy('Залито. Гоню X-триаж порциями…');
+        setBusy('Залито. Гоню X-триаж порциями по 2…');
         const out = await runTriage(undefined, (done, remaining) => {
           setBusy(`X-триаж: обработано ${done}, осталось ${remaining}…`);
         }, signal);
@@ -342,7 +385,7 @@ export function InboxView() {
         return;
       }
       setMessage(
-        `Залито: ${uploaded}${failed > 0 ? ` · отброшено: ${failed}` : ''} · X-триаж пройден: ${triaged}. Файлы лежат на диске до очистки.`,
+        `Залито: ${uploaded}${failed > 0 ? ` · отброшено: ${failed}` : ''} · X-триаж пройден: ${triaged}. Дальше «Разобрать всё новое» — там рейтинг по Коу и слот зрением.`,
       );
     } catch (err) {
       if ((err as DOMException)?.name !== 'AbortError') {
@@ -436,22 +479,28 @@ export function InboxView() {
     }
   }, [busy, items, runTriage, beginLoops]);
 
-  /* ── разбор порционным циклом (сервер капает по 3 файла на запрос) ── */
+  /* ── разбор порционным циклом (сервер капает по 2 файла на запрос —
+     дефекты + факт-рейтинг по Коу + слот зрением в одном звонке) ── */
   const analyze = useCallback(
     async (ids?: string[]) => {
       if (busy) return;
       setMessage(null);
       const signal = beginLoops();
+      const batchHint = batch.trim() || undefined;
       let total = 0;
       let remaining = 0;
       try {
-        for (let guard = 0; guard < 40; guard++) {
+        for (let guard = 0; guard < 60; guard++) {
           if (signal.aborted) return;
-          setBusy(total === 0 ? 'Разбираю…' : `Разобрано ${total}, докручиваю…`);
+          setBusy(total === 0 ? 'Разбираю (дефекты + рейтинг по Коу + слот зрением)…' : `Разобрано ${total}, докручиваю…`);
           const res = await fetch('/api/t5/inbox/analyze', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(ids && ids.length > 0 ? { ids } : { action: 'analyze' }),
+            body: JSON.stringify(
+              ids && ids.length > 0
+                ? { ids, batch: batchHint }
+                : { action: 'analyze', batch: batchHint },
+            ),
             signal,
           });
           const data = await readJson<{ analyzed?: number; remaining?: number; items?: InboxItem[]; error?: string }>(res);
@@ -465,7 +514,7 @@ export function InboxView() {
           total > 0
             ? remaining > 0
               ? `Разобрано: ${total}, в очереди ещё ${remaining} — жми ещё раз, докрутит`
-              : `Разобрано: ${total}`
+              : `Разобрано: ${total} — рейтинг по Коу и слоты зрением проставлены в карточках`
             : 'Разбирать нечего — всё разобрано или в карантине',
         );
       } catch (err) {
@@ -480,7 +529,7 @@ export function InboxView() {
         setBusy(null);
       }
     },
-    [busy, beginLoops],
+    [busy, beginLoops, batch],
   );
 
   const override = useCallback(async (id: string, label: 'sfw' | 'x') => {
@@ -633,9 +682,10 @@ export function InboxView() {
             </h2>
             <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
               Перетащи файлы сюда или выбери вручную — png/jpg/webp, до 25 МБ каждый, до 40 за раз. Заливаю
-              порциями по 8, затем X-триаж идёт маленькими шагами (без таймаутов). Слот ставится пофайлово —
-              сама вытаскивается из имени («P07.webp», «07 - name»), правится в списке ниже или проставляется
-              по порядку одной кнопкой. Файлы лежат на диске до явной очистки — после разбора жми «Убрать обработанные».
+              пачками по 2 файла и не больше 8 МБ на запрос (502 шлюза лечится, упрямая пачка повторяется сама),
+              затем X-триаж идёт шагами по 2. Слот ставится пофайлово — сама вытаскивается из имени («P07.webp»,
+              «07 - name»), а если не вытащилась — зрение определит его при разборе (вместе с факт-рейтингом по
+              гайду Коула). Файлы лежат на диске до явной очистки — после разбора жми «Убрать обработанные».
             </p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
@@ -911,6 +961,20 @@ export function InboxView() {
                       {item.tag}
                     </span>
                   )}
+                  {/* факт-рейтинг по Коу (заказ автора 2026-11-21): рядом со слотом,
+                     цвет — золото R+ / мята R / цинк PG-13 */}
+                  {item.identity?.rating && (
+                    <span
+                      className={cn(
+                        'pointer-events-none absolute bottom-2 left-2 max-w-[calc(100%-1rem)] truncate !bg-black/65 backdrop-blur-sm',
+                        COLE_CLS[item.identity.rating] ?? 't5-badge t5-badge--neutral',
+                      )}
+                      title={item.identity.note}
+                    >
+                      {item.identity.rating}
+                      {item.identity.corridor ? ` · ${item.identity.corridor}` : ''}
+                    </span>
+                  )}
                   {!quarantined && (
                     <span className="pointer-events-none absolute bottom-2 right-2 rounded-md border border-white/[0.12] bg-black/60 p-1.5 text-zinc-300 opacity-0 backdrop-blur-sm transition-opacity duration-150 group-hover:opacity-100">
                       <Maximize2 className="size-3.5" aria-hidden />
@@ -931,6 +995,19 @@ export function InboxView() {
                       <>Триаж: {item.triage.label} — {item.triage.reason}</>
                     )}
                   </p>
+
+                  {/* рейтинг по Коу + слот зрением (заказ автора 2026-11-21) */}
+                  {item.identity && !quarantined && (
+                    <p className="text-xs leading-relaxed text-zinc-400">
+                      <span className="font-semibold text-zinc-300">Коул:</span>{' '}
+                      {item.identity.rating ?? '—'}
+                      {item.identity.corridor ? ` · коридор ${item.identity.corridor}` : ''}
+                      {item.identity.oneMinute !== null &&
+                        ` · one-minute: ${item.identity.oneMinute ? 'живёт без декораций' : 'держится только на фоне'}`}
+                      {item.identity.slot &&
+                        ` · слот зрением: ${item.identity.slot}${item.identity.slotBatch ? ` (${item.identity.slotBatch})` : ''}${item.identity.slotConfidence ? ` · ${item.identity.slotConfidence}` : ''}`}
+                    </p>
+                  )}
 
                   {item.analysis && (
                     <div className={cn('p-2.5 text-xs leading-relaxed', SEVERITY_CLS[item.analysis.severity] ?? 't5-note')}>
@@ -1007,6 +1084,12 @@ export function InboxView() {
           <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-3" onClick={(e) => e.stopPropagation()}>
             <div className="flex min-w-0 flex-wrap items-center gap-2 font-mono text-xs text-zinc-400">
               <span className="rounded-md border border-white/[0.14] bg-black/60 px-2 py-1 text-t5-accent-bright">{lightboxItem.tag ?? '—'}</span>
+              {lightboxItem.identity?.rating && (
+                <span className={cn('rounded-md border border-white/[0.14] bg-black/60 px-2 py-1', COLE_CLS[lightboxItem.identity.rating] ?? '')}>
+                  {lightboxItem.identity.rating}
+                  {lightboxItem.identity.corridor ? ` · ${lightboxItem.identity.corridor}` : ''}
+                </span>
+              )}
               <span className="truncate">{lightboxItem.origName}</span>
               <span className="text-zinc-600">· {lightbox + 1}/{visibleItems.length}</span>
             </div>

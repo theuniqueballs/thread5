@@ -1267,6 +1267,57 @@ def check_details_layer(slots, warns, batch_no=-1, oc_names=()):
             )
 
 
+def check_palette_skin(slots, warns, batch_no=-1, retro=False):
+    """v1.16.0 paletteSkin — В36 «палитра ≠ кожа» (вердикт T5-27: P01 Vae
+    «Absolute Seduction» вышла на рендере с КРАСНОЙ кожей при каноне
+    obsidian — строка палитры «blood-moon red deep over obsidian skin»
+    отдала цветовой токен палитры модификатором кожи, token bleed).
+    Паттерн: цвет → мост (over/on/onto/across…) → кожа в окне window
+    токенов. Палитра красит ПРЕДМЕТ/СВЕТ, кожа держит канон-цвет вида.
+    WARN с T5-28 (8.6: не ужесточать флоры из одного вердикта).
+    --retro: старые партии показывают, что гейт поймал бы (метки эпохи,
+    история не переписывается)."""
+    cfg = GATES.get("paletteSkin")
+    if not cfg:
+        return 0
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return 0
+    colors = {c.lower() for c in cfg.get("color_words", [])}
+    skins = {w.lower() for w in cfg.get("skin_words", [])}
+    bridges = {b.lower() for b in cfg.get("bridges", [])}
+    win = int(cfg.get("window", 5))
+    caught = 0
+    # свой токенайзер: дефисные составные — ОДИН токен («skin-spotlit» ≠
+    # «skin» — кожа в сложном слове не модифицируется цветом палитры;
+    # ловим ровно урок T5-27: «red … over obsidian skin», где skin стоит
+    # отдельно и цвет реально перетекает; words() для гейта не трогаем —
+    # он общий для остальных проверок)
+    token_re = re.compile(r"[A-Za-z0-9_'-]+")
+    for s in slots:
+        toks = token_re.findall(norm_ws(s.pos or "").lower())
+        for i, t in enumerate(toks):
+            if t not in skins:
+                continue
+            # смотрим НАЗАД от слова кожи: цвет … мост … кожа
+            span = toks[max(0, i - win):i]
+            for bi in range(len(span) - 1, -1, -1):
+                if span[bi] not in bridges:
+                    continue
+                color_hit = next((c for c in span[:bi] if c in colors), None)
+                if color_hit:
+                    caught += 1
+                    warns.append(
+                        (s.sid, "palette-skin",
+                         f"цвет палитры «{color_hit}» перетёк в модификатор кожи "
+                         f"(…{color_hit} … {span[bi]} … {t}): палитра красит "
+                         f"предмет/свет, НЕ кожу — кожа держит канон-цвет вида "
+                         f"(В36, урок T5-27 P01: red over obsidian skin = "
+                         f"красная кожа на рендере)")
+                    )
+                break
+    return caught
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -1883,6 +1934,7 @@ def main():
     concept_caught = check_concept_flag(slots, warns, batch_no)  # v1.12.0
     dress_caught = check_neg_dress_guards(slots, warns, batch_no)  # v1.12.0
     check_details_layer(slots, warns, batch_no, oc_names)  # v1.12.0 В32
+    palette_bleed = check_palette_skin(slots, warns, batch_no, retro)  # v1.16.0 В36
     check_header(text, header, slots, fails, warns, oc_names)
     check_header_contract(header, warns, batch_no)
     moves_declared = check_moves_gate(header, warns, batch_no)
@@ -1955,6 +2007,10 @@ def main():
             "concept_flagged": concept_caught,
             "neg_dress_guards": dress_caught,
         },
+        "palette_skin": {  # v1.16.0 В36: палитра ≠ кожа (token bleed)
+            "token_bleed": palette_bleed,
+            "retro": bool(retro),
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -1996,6 +2052,13 @@ def main():
             f"не исполнено телом POS {ys['not_executed']} · "
             f"в окне ротации {ys['window_hits']} · "
             f"corridor-разносов {ys['corridor_warn']}"
+        )
+    if GATES.get("paletteSkin") and (
+        batch_no >= int(GATES["paletteSkin"].get("applyFrom", 10 ** 9)) or retro
+    ):
+        print(
+            f"paletteSkin [В36]: перетёков цвета в кожу {receipt['palette_skin']['token_bleed']} "
+            f"(палитра красит предмет/свет, кожа — канон вида)"
         )
     for a, b, c in fails:
         print(f"  FAIL [{a}] {b}: {c}")
