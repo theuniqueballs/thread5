@@ -308,10 +308,12 @@ export function InboxView() {
       }
       let done = 0;
       let remaining = queue.length;
-      for (let i = 0; i < queue.length; i += 2) {
+      /* по ОДНОЙ за запрос (2026-11-21, вторая итерация фикса 502: чанки по 2
+         всё ещё ловили Bad Gateway — один vision-звонок = короткий запрос) */
+      for (let i = 0; i < queue.length; i += 1) {
         if (signal?.aborted) return { done, remaining };
         if (i > 0) await sleep(600); // пауза-сглаживание: не долбим vision-API подряд (урок 429-шторма 2026-11-21)
-        const chunk = queue.slice(i, i + 2);
+        const chunk = queue.slice(i, i + 1);
         const res = await fetch('/api/t5/inbox/triage', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -389,7 +391,7 @@ export function InboxView() {
 
       let triaged = 0;
       try {
-        setBusy('Залито. Гоню X-триаж порциями по 2…');
+        setBusy('Залито. Гоню X-триаж по одной…');
         const out = await runTriage(undefined, (done, remaining) => {
           setBusy(`X-триаж: обработано ${done}, осталось ${remaining}…`);
         }, signal);
@@ -497,7 +499,7 @@ export function InboxView() {
     }
   }, [busy, items, runTriage, beginLoops]);
 
-  /* ── разбор порционным циклом (сервер капает по 2 файла на запрос —
+  /* ── разбор порционным циклом (сервер капает по 1 файлу на запрос —
      дефекты + факт-рейтинг по Коу + слот зрением в одном звонке) ── */
   const analyze = useCallback(
     async (ids?: string[]) => {

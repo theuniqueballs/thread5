@@ -6,6 +6,8 @@
  */
 import { describe, expect, test } from 'bun:test';
 import {
+  applyAnalyzed,
+  applyTriage,
   effectiveLabel,
   latestBatchCode,
   needsTriage,
@@ -228,5 +230,97 @@ describe('latestBatchCode / slotCandidates — слот зрением (2026-11-
 
   test('несуществующий батч → null (зрение не получит мусор)', async () => {
     expect(await slotCandidates('T5-999')).toBeNull();
+  });
+});
+
+describe('гомоглифы кириллицы (живой урок T5-28: тег «Т5-28» не парсился)', () => {
+  test('normalizeTag: «Т5-28» (кир. Т) → batch T5-28, канонический тег латиницей', () => {
+    const out = normalizeTag('Т5-28');
+    expect(out.batch).toBe('T5-28');
+    expect(out.tag).toBe('T5-28');
+  });
+
+  test('normalizeTag: «Т5-28 Р07» (кир. Т и Р) → T5-28 P07', () => {
+    const out = normalizeTag('Т5-28 Р07');
+    expect(out.batch).toBe('T5-28');
+    expect(out.slot).toBe('P07');
+    expect(out.tag).toBe('T5-28 P07');
+  });
+
+  test('normalizeTag: «СЛОТ 12» живёт (хвостовая Т нормализуется, паттерн терпит обе)', () => {
+    expect(normalizeTag('СЛОТ 12').slot).toBe('P12');
+    expect(normalizeTag('СЛОT 12').slot).toBe('P12'); // латинская хвостовая
+  });
+
+  test('parseBatchFromName / parseSlotFromName: кириллица в имени файла читается', () => {
+    expect(parseBatchFromName('Т5-28__штамп-id.webp')).toBe('T5-28');
+    expect(parseSlotFromName('T5-28 Р07 render.webp')).toBe('P07');
+  });
+
+  test('свободный текст с русскими словами НЕ калечится (р/т в словах не при делах)', () => {
+    const out = normalizeTag('Партия треугольных рогов');
+    // ни батча, ни слота — свободная метка хранится как ввёл автор
+    expect(out.batch).toBeNull();
+    expect(out.slot).toBeNull();
+    expect(out.tag).toBe('Партия треугольных рогов');
+  });
+});
+
+describe('applyTriage / applyAnalyzed — вклейка результатов vision вне замка (фикс 502, 2026-11-21)', () => {
+  test('applyTriage: sfw-вердикт переводит queued → ok', () => {
+    const target = item({});
+    applyTriage(target, { triage: { label: 'sfw', reason: 'ок', at: 't' } });
+    expect(target.status).toBe('ok');
+    expect(target.triage.label).toBe('sfw');
+  });
+
+  test('applyTriage: карантин X бьёт всё, включая состоявшийся разбор', () => {
+    const target = item({ status: 'analyzed' });
+    applyTriage(target, { triage: { label: 'x', reason: 'X', at: 't' } });
+    expect(target.status).toBe('x');
+  });
+
+  test('applyTriage: sfw-перетриаж НЕ топчет состоявшийся разбор (analysis/identity живы)', () => {
+    const target = item({
+      status: 'analyzed',
+      analysis: { at: 't', severity: 'clean', findings: [], note: 'чисто' },
+    });
+    applyTriage(target, { triage: { label: 'sfw', reason: 'ок', at: 't' } });
+    expect(target.status).toBe('analyzed');
+    expect(target.analysis?.note).toBe('чисто');
+  });
+
+  test('applyAnalyzed: вклеивает разбор и слот зрением в пустой слот', () => {
+    const target = item({});
+    const done = item({
+      slot: 'P07',
+      batch: 'T5-28',
+      tag: 'T5-28 P07',
+      status: 'analyzed',
+      identity: { at: 't', rating: 'R+', corridor: 'B', oneMinute: true, slot: 'P07', slotBatch: 'T5-28', slotConfidence: 'high', note: 'x' },
+    });
+    applyAnalyzed(target, done);
+    expect(target.slot).toBe('P07');
+    expect(target.batch).toBe('T5-28');
+    expect(target.status).toBe('analyzed');
+    expect(target.identity?.rating).toBe('R+');
+  });
+
+  test('applyAnalyzed: слот автора неприкосновенен (зрение не перезаписывает ручной)', () => {
+    const target = item({ slot: 'P03', batch: 'T5-28', tag: 'T5-28 P03' });
+    const done = item({ slot: 'P17', status: 'analyzed' });
+    applyAnalyzed(target, done);
+    expect(target.slot).toBe('P03');
+  });
+
+  test('applyAnalyzed: вердикт автора, вынесенный пока летел звонок, сильнее статуса', () => {
+    const target = item({ authorOverride: { label: 'x', at: 't' } });
+    const done = item({
+      status: 'analyzed',
+      analysis: { at: 't', severity: 'clean', findings: [], note: 'ок' },
+    });
+    applyAnalyzed(target, done);
+    expect(target.status).toBe('x');
+    expect(target.analysis).toBeTruthy(); // но разбор вклеен — данные не теряем
   });
 });

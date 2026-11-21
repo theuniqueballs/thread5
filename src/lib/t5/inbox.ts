@@ -110,22 +110,36 @@ const LEADING_NUM_RE = /^(\d{1,3})(?:[\s_.-]|$)/u;
 /** «T5-18», «t5-07» → код батча. */
 const BATCH_CODE_RE = /T5-(\d{1,3})/iu;
 
+/** Гомоглифы латиницы в кириллической раскладке (живой урок T5-28, 2026-11-21:
+ *  тег «Т5-28» с кириллической Т не распарсился — batch=null у всех 33
+ *  файлов, имена на диске покорёжились в «5-28__…»). Нормализуем ТОЛЬКО
+ *  текст для матчинга (P/Т всегда рядом с цифрой в наших паттернах) —
+ *  хранимый свободный текст остаётся как ввёл автор. */
+const HOMOGLYPH_T_RE = /[\u0422\u0442]/gu; // Т т (кир.) → T (лат.)
+const HOMOGLYPH_P_RE = /[\u0420\u0440]/gu; // Р р (кир.) → P (лат.)
+export function normalizeHomoglyphs(s: string): string {
+  return s.replace(HOMOGLYPH_T_RE, 'T').replace(HOMOGLYPH_P_RE, 'P');
+}
+/** «СЛОТ 12» — после гомоглиф-нормализации хвостовая Т может стать латинской. */
+const SLOT_WORD_RE = /^(?:СЛО[ТT]\s*)?\d{1,3}$/iu;
+
 function pad2(n: number): string {
   return n < 10 ? `0${n}` : String(n);
 }
 
 /** Слот из имени файла: «P07.webp», «t5-18 p7.png», «07 - name.webp» → «P07». */
 export function parseSlotFromName(name: string): string | null {
-  const m = SLOT_P_RE.exec(name) ?? LEADING_NUM_RE.exec(name);
+  const norm = normalizeHomoglyphs(name);
+  const m = SLOT_P_RE.exec(norm) ?? LEADING_NUM_RE.exec(norm);
   if (!m) return null;
   const n = Number.parseInt(m[1], 10);
   if (!Number.isInteger(n) || n < 1 || n > 999) return null;
   return `P${pad2(n)}`;
 }
 
-/** Батч из имени файла: «T5-18_07.webp» → «T5-18». */
+/** Батч из имени файла: «T5-18_07.webp» → «T5-18»; «Т5-18» (кир. Т) — тоже. */
 export function parseBatchFromName(name: string): string | null {
-  const m = BATCH_CODE_RE.exec(name);
+  const m = BATCH_CODE_RE.exec(normalizeHomoglyphs(name));
   if (!m) return null;
   return `T5-${m[1]}`;
 }
@@ -136,18 +150,21 @@ export interface CanonicalTag {
   slot: string | null;
 }
 
-/** Свободный текст тега → канонический { tag, batch, slot }. */
+/** Свободный текст тега → канонический { tag, batch, slot }.
+ *  Гомоглифы «Т5-28»/«Р07» читаются как латиница — канонический вывод
+ *  всегда латиница, свободный текст хранится как ввён. */
 export function normalizeTag(raw: string | null | undefined): CanonicalTag {
   const text = (raw ?? '').trim().slice(0, 40);
   if (!text) return { tag: null, batch: null, slot: null };
-  const batchM = BATCH_CODE_RE.exec(text.toUpperCase());
+  const norm = normalizeHomoglyphs(text).toUpperCase();
+  const batchM = BATCH_CODE_RE.exec(norm);
   const batch = batchM ? `T5-${batchM[1]}` : null;
-  const slotM = SLOT_P_RE.exec(text.toUpperCase());
+  const slotM = SLOT_P_RE.exec(norm);
   let slot: string | null = null;
   if (slotM) {
     const n = Number.parseInt(slotM[1], 10);
     if (Number.isInteger(n) && n >= 1 && n <= 999) slot = `P${pad2(n)}`;
-  } else if (/^(?:СЛОТ\s*)?\d{1,3}$/iu.test(text)) {
+  } else if (SLOT_WORD_RE.test(norm)) {
     const n = Number.parseInt(text.replace(/\D+/gu, ''), 10);
     if (Number.isInteger(n) && n >= 1 && n <= 999) slot = `P${pad2(n)}`;
   }
@@ -194,6 +211,8 @@ interface VisionMessage { role: 'user' | 'assistant'; content: VisionPart[] }
 interface VisionArgs {
   messages: VisionMessage[];
   thinking?: { type: 'disabled' | 'enabled' };
+  /** Лестница пауз ретраев (по умолчанию — бережный RETRY_WAITS_DEFAULT). */
+  waits?: number[];
 }
 
 interface VisionResponse {
@@ -246,13 +265,22 @@ function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+/** Лестница пауз ретраев. Дефолт — бережный прогон (анализ).
+ *  ТРИАЖ и РАЗБОР в HTTP-запросе используют укороченную [0, 4000]:
+ *  живой урок 502 (2026-11-21, T5-28): лестница [0,6,12,20] под мета-замком
+ *  при CAP=2 растягивала запрос на минуты — шлюз резал Bad Gateway'ем
+ *  раньше ответа. Укороченная + CAP=1 + vision вне замка = короткий запрос;
+ *  упрямый 429 честно падает в карантин/ошибку, клиент докручивает кнопкой. */
+const RETRY_WAITS_DEFAULT = [0, 6000, 12000, 20000];
+export const RETRY_WAITS_HTTP = [0, 4000];
+
 async function visionJsonRetry(args: VisionArgs): Promise<string | null> {
-  const waits = [0, 6000, 12000, 20000];
+  const { waits = RETRY_WAITS_DEFAULT, ...rest } = args;
   let lastErr: unknown = null;
   for (const wait of waits) {
     if (wait > 0) await sleep(wait);
     try {
-      return await visionJson(args);
+      return await visionJson(rest);
     } catch (err) {
       lastErr = err;
       const msg = String(err instanceof Error ? err.message : err);
@@ -305,6 +333,7 @@ interface TriageOut { label: string; reason?: string }
 export async function triageImage(mime: string, buf: Buffer): Promise<{ label: TriageLabel; reason: string }> {
   try {
     const raw = await visionJsonRetry({
+      waits: RETRY_WAITS_HTTP,
       messages: [{
         role: 'user',
         content: [
@@ -501,6 +530,7 @@ export async function analyzeItem(item: InboxItem, batchHint?: string | null): P
       (needSlot ? '"slot":"P01..","slotConfidence":"high|mid|low",' : '') +
       '"note":"итог одной фразой"}';
     const raw = await visionJsonRetry({
+      waits: RETRY_WAITS_HTTP,
       messages: [{
         role: 'user',
         content: [
@@ -686,6 +716,35 @@ export async function saveFile(file: File, tag: string | null): Promise<SaveOutc
 
 /* ── X-триаж отдельным проходом (порции по 2-3 файла, чтобы не таймаутить шлюз) ── */
 
+/** Вклеить состоявшийся триаж в запись журнала: карантин бьёт всё,
+ *  состоявшийся разбор ('analyzed'/'error') перетриаж не топчет.
+ *  Выделено в чистую функцию: роут триажа гонит vision ВНЕ мета-замка
+ *  и вклеивает результат под замком по id (урок 502: замок+ретраи
+ *  в одном запросе = таймаут шлюза). */
+export function applyTriage(target: InboxItem, source: Pick<InboxItem, 'triage'>): void {
+  target.triage = source.triage;
+  const keep = target.status === 'analyzed' || target.status === 'error';
+  target.status = source.triage.label === 'x' ? 'x' : keep ? target.status : 'ok';
+}
+
+/** Вклеить состоявшийся разбор (analysis+identity+слот зрением) в запись
+ *  журнала. Вердикт автора, вынесенный ПОКА летел vision-звонок, сильнее:
+ *  статус считаем от него, а не от разбора. */
+export function applyAnalyzed(target: InboxItem, done: InboxItem): void {
+  target.analysis = done.analysis;
+  target.identity = done.identity;
+  if (done.slot && !target.slot) {
+    target.slot = done.slot;
+    target.batch = target.batch ?? done.batch;
+    target.tag = done.tag || target.tag;
+  }
+  if (target.authorOverride) {
+    target.status = target.authorOverride.label === 'x' ? 'x' : 'analyzed';
+  } else {
+    target.status = done.status;
+  }
+}
+
 /**
  * Кому нужен триаж: новые (queued/unknown) и fail-closed карантины
  * (упавший/задушенный 429 триаж) — пока автор не вынес свой вердикт.
@@ -701,12 +760,7 @@ export async function triageItem(item: InboxItem): Promise<InboxItem> {
   try {
     const buf = await fs.readFile(path.join(UPLOADS_DIR, item.file));
     const triage = await triageImage(item.mime, buf);
-    item.triage = { label: triage.label, reason: triage.reason, at: new Date().toISOString() };
-    // статус: карантин бьёт всё (fail-closed), но состоявшийся разбор
-    // ('analyzed'/'error') перетриаж не топчет — иначе карточки выпадают
-    // из фильтра «разобрано», хотя analysis/identity живы (живой урок 2026-11-21)
-    const keep = item.status === 'analyzed' || item.status === 'error';
-    item.status = triage.label === 'x' ? 'x' : keep ? item.status : 'ok';
+    applyTriage(item, { triage: { label: triage.label, reason: triage.reason, at: new Date().toISOString() } });
   } catch (err) {
     item.triage = {
       label: 'x',
