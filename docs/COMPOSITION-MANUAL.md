@@ -1880,30 +1880,42 @@ P25–P29 = только D8-тесты с одной переменной; не 
 
 # D12. СБОРОЧНЫЙ ШАБЛОН СЛОТА (копипаста писца)
 
+Обновление 2026-11-21 (цикл 4, заказ А–К): слот собирается от ЖРЕБИЯ через
+ПРЕ-ГАРДЕРОБ (dresser v1.3.0) с РЕГИСТРАМИ ЛИЧНОСТИ (bodytypes v1.0.0 /
+marks v1.0.0 / races v2.7.0) в порядке ТЕГ-ПОРЯДКА (raw-plus v2.3.0,
+LAWS §20–22). Полный манифест — как в тест-горне (tools/testforge.py):
+ни одной скрытой детали.
+
 ```
 SLOT: P__
 Role: NICHE|VOLT|OC|EXP
-Tier: PG-13|R|R+
+Tier: PG-13|R|R+ (predicted = class Y-карты × коридор, LAWS §23)
 Combo: D__-__ (name)
 Package: αβγδεζηθικ|-
+Y-card: Y___ (класс экспозиции → канал-партнёр, yStack)
+Pre-wardrobe: CL-__-__ + CL-__-__ (+ AC) — свежий набор партии (pregarment.py)
 Pose family: A__-__
-Camera: D_ × A__ × F_  (preset S/L/R__)
+Camera: D_ × A__ × F_  (preset S/L/R__) — в POS ПРОЗОЙ, не кодом
+Race: R__ (clarifiers + gimmick + wardrobe/light hook, races v2.7.0)
+Body: BT-__ (теги типажа — OPENER, bodytypes v1.0.0)
+Marks: MK-__ ×0–3 (видимые зоны, kin-совместимые, marks v1.0.0)
+OC-hook: (≤1/батч, ОС-сигнатурная метка → oc-candidates.json, пункт Д)
 Channel: (dresser live)
 Heat register: student|young|full / mood
 
-POS order:
-  [camera cluster]
-  [identity/body/canon]
-  [garment + claim one]
-  [pose/action tags]
-  [env]
-  [light behavior]
-  [face anchors]
+POS order (закон тег-порядка, LAWS §20 — порядок нерушим):
+  [quality] → [camera cluster ПРОЗОЙ из Y-карты] → 1girl, solo
+  → [identity/canon VERBATIM] → [кин-clarifiers + форм-лок]
+  → [тело-регистр BT 3–5 тегов] → [K-FF кинетика]
+  → [CLAIM: вещь + состояние канала + сигнал тира + подпись]
+  → [COMBO-WEAVE: паттерн карты 1:1, без служебных кодов]
+  → [SCENE: метки (видимые зоны) + гиммик кина + фишечки В32 + свидетель]
+  → [PALETTE] → [FACE: глаза (в т.ч. глазные метки) + лицо]
 
 NL (2–4 sentences, mid-action, gaze vector):
   ...
 
-NEG: floors + tier mirror + anti-default + combo risks
+NEG: safety-префикс + анти-ваш (five_locks) + tier counter-NEG (recipes)
 ```
 
 ---

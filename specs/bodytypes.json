@@ -1,0 +1,284 @@
+{
+ "id": "bodytypes",
+ "name": "BODYTYPES — типажи тел: 24 категории с тегами (заказ автора 2026-11-21, пункт Е)",
+ "version": "1.0.0",
+ "born": "2026-11-21, чат (вербатим): «Посмотри что там по фигуре, потому что у меня есть вайб, будто персонажи собираются плюс-минус одинаково (сейчас по-крайней мере), толстух жёстких я не приветствую, но вот небольшой животик - приемлимо. Большие, небольшие груди, собери просто типажи тел как вот ты сделал с Y, категорий, скажем, штук 20-30. Так будет сильно проще. Определи теги этих категорий и всё. Сильно накачанных тоже нахуй, это минус вайбик. Ну и, соответственно, слишком сильный уклон в Petite - тоже не вайб. Балансик надо»",
+ "law": "ТИПАЖ — РЕГИСТР OPENER, НЕ ПРОЗА. Слот собирается с ОДНИМ типажем BT-01…BT-24: 3–5 тегов формы тела встают в OPENER после канон/identity-тегов (закон тег-порядка, raw-plus v2.3.0, LAWS §20), проза NATURAL v2 (body.json) добавляет КОНТАКТ-ГЕОМЕТРИЮ — вес/провис/сплющивание — только на зонах, которые видит камера. Запреты СБОРКОЙ, не негативом (наследие body.json v1.0.0): мускулистых не собираем (в типажах нет ни muscular, ни abs, ни toned — ни в одном теге); жёстких толстух не собираем (максимум мягкой полноты — BT-18, вес 4); уклон в petite не делаем (BT-03/BT-04 — редкие акценты, суммарно ~4% кубика). Кости баланса: середина+мягкость ≈ 60% веса кубика, стройность ≈ 22%, грудные края ≈ 15%, рамочные спец-типы ≈ 10%. Типаж НЕ двигает рейтинг: экспозицию решает Y-карта и Дрессер, типаж решает ФОРМУ, которую экспозиция честно читает.",
+ "dice_note": "вес = относительный вес кубика (сумма 146). Слоты одного батча — ≥6 разных типажей, один типаж ≤3 раз (закон разнообразия, зеркало палитрового cap). Мейн/EXP логирует типаж в шапке слота строкой «Body: BT-16 soft-belly» — реестр для оракула покрытия.",
+ "visibility_note": "стыковка с body.json visibility_law: типаж даёт ФОРМУ, закон камеры — СПИСОК ЗОН. Пример: BT-09 (large breasts) со спины не описывает грудь; BT-17 (thick thighs) в upper-body кадре живёт только если бёдра в кадре. Незримые зоны типажа — молчат.",
+ "types": [
+  {
+   "id": "BT-01",
+   "name": "Ивовый стан",
+   "en": "willow-line",
+   "axes": {"height": "tall", "frame": "slender", "bust": "small", "belly": "flat", "hips": "narrow", "thighs": "slim"},
+   "tags": ["tall", "slender body", "small breasts", "narrow waist", "long legs"],
+   "prose": "the weight lands light and long — the whole line bends toward the support like willow, ribs reading at the side when she turns",
+   "weight": 5,
+   "synergy": {"SHEER": "шёлк висит на длинной линии с воздухом — ткань единственный объём в кадре", "LINGERIE": "бретели на узких плечах держатся честно, ничего не утоплено"},
+   "avoid": null
+  },
+  {
+   "id": "BT-02",
+   "name": "Танцевальная линия",
+   "en": "dancer-line",
+   "axes": {"height": "mid", "frame": "slender", "bust": "medium", "belly": "flat", "hips": "mid", "thighs": "slim"},
+   "tags": ["slim", "lithe body", "medium breasts", "flat stomach", "slim thighs"],
+   "prose": "control without bulk — the turn leads from the waist, the shadow under the collarbone stays honest",
+   "weight": 6,
+   "synergy": {"CLOTHED-TIGHT": "риб-вязка читает линию честно, натяжка по поясу", "COVER": "ладони на рёбрах — геометрия прикрытия точная"},
+   "avoid": "никаких танцевально-балетных регистра-тегов (ballerina, dance wear) — типаж несёт только ФОРМУ; muscular/abs не появляется (сборкой)"
+  },
+  {
+   "id": "BT-03",
+   "name": "Стеклянная",
+   "en": "glass-line",
+   "axes": {"height": "tall", "frame": "slender", "bust": "flat", "belly": "flat", "hips": "narrow", "thighs": "slim"},
+   "tags": ["very slender", "flat chest", "narrow shoulders", "collarbones sharp"],
+   "prose": "a frame the light passes twice — shoulder blades like folded paper under the skin",
+   "weight": 3,
+   "synergy": {"SHEER": "подчёркивает ткань, а не тело — кадр про материю", "PROCESS": "вещь сползает с узких плеч сама"},
+   "avoid": "редкий акцент (вес 3): не давать двум слотам батча подряд — иначе уклон в стройность; возраст всегда взрослый"
+  },
+  {
+   "id": "BT-04",
+   "name": "Хрупкая середина",
+   "en": "petite-balanced",
+   "axes": {"height": "short", "frame": "slender", "bust": "small", "belly": "flat", "hips": "mid", "thighs": "mid"},
+   "tags": ["short", "petite frame", "small breasts", "slim waist"],
+   "prose": "compact and quick — the center of gravity sits high, clothes fit like they were cut for someone one size braver",
+   "weight": 3,
+   "synergy": {"CLOTHED-TIGHT": "oversized вещь на petite-рамке — любимый силуэт «утонула в свитере»"},
+   "avoid": "PETITE-УКЛОН НЕ ВАЙБ (вес 3, не выше): рост — взрослой коротышки, НЕ девочки; loli-теги в NEG обязательны"
+  },
+  {
+   "id": "BT-05",
+   "name": "Речная",
+   "en": "stream-line",
+   "axes": {"height": "mid", "frame": "slender", "bust": "small", "belly": "flat", "hips": "narrow", "thighs": "slim"},
+   "tags": ["slender body", "small breasts", "slim hips", "flat stomach"],
+   "prose": "one clean current from shoulder to knee — nothing interrupts the line",
+   "weight": 5,
+   "synergy": {"PROCESS": "подъём вещи идёт по прямой линии без зацепов объёма"},
+   "avoid": null
+  },
+  {
+   "id": "BT-06",
+   "name": "Часы-классика",
+   "en": "hourglass-even",
+   "axes": {"height": "mid", "frame": "average", "bust": "medium", "belly": "flat", "hips": "wide", "thighs": "mid"},
+   "tags": ["hourglass figure", "medium breasts", "slim waist", "wide hips"],
+   "prose": "the classic balance — the waist draws the eye in and both ends of the hourglass answer it honestly",
+   "weight": 9,
+   "synergy": {"CLOTHED-TIGHT": "главная рабочая лошадка — натяжка читает талию и бёдра в один приём", "LINGERIE": "пояс сидит на талии как влитой"},
+   "avoid": null
+  },
+  {
+   "id": "BT-07",
+   "name": "Колонна",
+   "en": "column-calm",
+   "axes": {"height": "mid", "frame": "average", "bust": "medium", "belly": "flat", "hips": "mid", "thighs": "mid"},
+   "tags": ["average build", "medium breasts", "straight waistline", "moderate hips"],
+   "prose": "an even column with a quiet bust line — the calm the outfit gets to argue with",
+   "weight": 8,
+   "synergy": {"COVER": "объект-прикрытие на спокойной рамке — читается как композиция, не как борьба"},
+   "avoid": null
+  },
+  {
+   "id": "BT-08",
+   "name": "Лёгкий спорт",
+   "en": "light-active",
+   "axes": {"height": "mid", "frame": "average", "bust": "medium", "belly": "flat", "hips": "mid", "thighs": "mid"},
+   "tags": ["healthy build", "medium breasts", "flat stomach", "light frame"],
+   "prose": "a swimmer's easy tone at most — the body of someone who walks everywhere, definition stays a rumor",
+   "weight": 7,
+   "synergy": {"bumps": "лёгкая форма под мокрой тканью читается чисто", "swim_wet": "купальник на честной рамке"},
+   "avoid": "СТИЛЬ НЕ СПОРТ: никакой эстетики gym/athletics в сцене; muscular/abs/toned не появляются (сборкой, не NEG)"
+  },
+  {
+   "id": "BT-09",
+   "name": "Мягкие часы",
+   "en": "soft-hourglass",
+   "axes": {"height": "mid", "frame": "soft", "bust": "large", "belly": "soft", "hips": "wide", "thighs": "mid"},
+   "tags": ["curvy figure", "large breasts", "soft waist", "wide hips"],
+   "prose": "the hourglass poured a half-beat slower — the waist is there and answers soft when pressed",
+   "weight": 9,
+   "synergy": {"CLOTHED-TIGHT": "мягкое под натяжкой — ткань честно пишет объём", "COVER": "полотенце/ладонь на полной груди — геометрия прикрытия читается мгновенно"},
+   "avoid": null
+  },
+  {
+   "id": "BT-10",
+   "name": "Груша",
+   "en": "pear-soft",
+   "axes": {"height": "mid", "frame": "average", "bust": "small", "belly": "soft", "hips": "wide", "thighs": "thick"},
+   "tags": ["pear figure", "small breasts", "wide hips", "thick thighs"],
+   "prose": "the story lives below the waist — hips carry the frame, the top half argues politely",
+   "weight": 7,
+   "synergy": {"pantyline": "полнота бёдер несёт линию белья честно", "PROCESS": "сползание джинсов с широких бёдер — физика зацепа"},
+   "avoid": null
+  },
+  {
+   "id": "BT-11",
+   "name": "Верхняя тяжесть",
+   "en": "top-heavy",
+   "axes": {"height": "mid", "frame": "average", "bust": "large", "belly": "flat", "hips": "mid", "thighs": "mid"},
+   "tags": ["large breasts", "slender waist", "average hips"],
+   "prose": "the scale tips forward — the bust leads by a half-beat, the rest of the frame follows",
+   "weight": 8,
+   "synergy": {"bumps": "бугорки без цвета на большой груди — канал №28 работает в полный рост", "COVER": "объект-прикрытие на полном верхе — claim мгновенный"},
+   "avoid": "huge не наращивать: large — потолок этого типажа; huge breasts — только BT-15"
+  },
+  {
+   "id": "BT-12",
+   "name": "Маленькая гордость",
+   "en": "small-proud",
+   "axes": {"height": "mid", "frame": "slender", "bust": "small", "belly": "flat", "hips": "mid", "thighs": "mid"},
+   "tags": ["small breasts", "high-set chest", "slim waist", "flat stomach"],
+   "prose": "small and high and unbothered — the line of the chest stays clean in any knit",
+   "weight": 7,
+   "synergy": {"SHEER": "тонкая ткань на маленькой груди — соски читаются честно без ваты", "LINGERIE": "бельё без пуш-апа, честная посадка"},
+   "avoid": null
+  },
+  {
+   "id": "BT-13",
+   "name": "Плоская честность",
+   "en": "flat-honest",
+   "axes": {"height": "mid", "frame": "average", "bust": "flat", "belly": "soft", "hips": "wide", "thighs": "mid"},
+   "tags": ["flat chest", "wide hips", "soft middle"],
+   "prose": "flat and honest about it — the hips answer for both of them",
+   "weight": 5,
+   "synergy": {"LINGERIE": "бельё-топ без чашек сидит как вторая кожа"},
+   "avoid": "не путать с loli-эстетикой: возраст взрослый, hip-линия широкая — рамка женщины"
+  },
+  {
+   "id": "BT-14",
+   "name": "Полная капля",
+   "en": "full-teardrop",
+   "axes": {"height": "mid", "frame": "average", "bust": "large", "belly": "soft", "hips": "mid", "thighs": "mid"},
+   "tags": ["large breasts", "soft natural shape", "average build"],
+   "prose": "full and teardrop-heavy — gravity gets an honest vote, the shape answers the lean",
+   "weight": 7,
+   "synergy": {"PROCESS": "подъём/сползание на полной груди — физика веса главная фишка кадра", "COVER": "грудь в ладонях — пальцы честно тонут"},
+   "avoid": null
+  },
+  {
+   "id": "BT-15",
+   "name": "Огромная мягкая",
+   "en": "huge-soft",
+   "axes": {"height": "mid", "frame": "soft", "bust": "huge", "belly": "soft", "hips": "wide", "thighs": "thick"},
+   "tags": ["huge breasts", "soft body", "wide hips"],
+   "prose": "volume that arrives before she does — every surface she leans on gets the full argument",
+   "weight": 3,
+   "synergy": {"CLOTHED-TIGHT": "натяжка на huge — молнии и швы работают в кадре", "COVER": "объект-прикрытие теряется в объёме — лучше PROCESS/натяжка"},
+   "avoid": "редкий акцент (вес 3): не чаще 1 слота на батч; huge — потолок системы, дальше не наращивать"
+  },
+  {
+   "id": "BT-16",
+   "name": "Животик",
+   "en": "soft-belly",
+   "axes": {"height": "mid", "frame": "soft", "bust": "medium", "belly": "slight", "hips": "wide", "thighs": "thick"},
+   "tags": ["slightly plump", "soft belly", "medium breasts", "thick thighs"],
+   "prose": "a small soft belly that rounds honest when she sits and breathes when she laughs — the frame of someone fed and comfortable",
+   "weight": 9,
+   "synergy": {"LINGERIE": "мягкий живот над поясом белья — линия любимая и честная", "CLOTHED-TIGHT": "риб-вязка пишет животик рельсом — не прячет и не утрирует"},
+   "avoid": "ЖИВОТИК ≠ ТОЛСТУХА: slight — мягкая линия, не складка глубиной в кулак; bbw/obese не появляются (сборкой)"
+  },
+  {
+   "id": "BT-17",
+   "name": "Бёдра-тяжеловес",
+   "en": "thigh-major",
+   "axes": {"height": "mid", "frame": "average", "bust": "small", "belly": "soft", "hips": "wide", "thighs": "thick"},
+   "tags": ["thick thighs", "wide hips", "small breasts"],
+   "prose": "the thighs carry the whole argument — every seat she takes, they spread honest and own the chair",
+   "weight": 7,
+   "synergy": {"pantyline": "полные бёдра + пояс — линия читается без вопросов", "PROCESS": "джинсы на толстых бёдрах застревают честно — зацеп физики"},
+   "avoid": null
+  },
+  {
+   "id": "BT-18",
+   "name": "Пухлая мягкость",
+   "en": "chubby-soft",
+   "axes": {"height": "mid", "frame": "soft", "bust": "large", "belly": "slight", "hips": "wide", "thighs": "thick"},
+   "tags": ["chubby", "plump", "large breasts", "soft belly"],
+   "prose": "genuinely soft all the way down — plush at the arms, plush at the middle, every contact point forgives",
+   "weight": 4,
+   "synergy": {"COVER": "мягкость в ладонях — геометрия прикрытия тонет приятно", "LINGERIE": "полное бельё на пухлой рамке — посадка честная"},
+   "avoid": "ПОТОЛОК ПОЛНОТЫ СИСТЕМЫ (вес 4): мягкая пухлость, НЕ bbw — дальше система не идёт (запрет автора: «толстух жёстких я не приветствую»)"
+  },
+  {
+   "id": "BT-19",
+   "name": "Сидячая складка",
+   "en": "sitting-fold",
+   "axes": {"height": "mid", "frame": "average", "bust": "medium", "belly": "slight", "hips": "mid", "thighs": "mid"},
+   "tags": ["soft belly", "stomach fold when sitting", "medium breasts"],
+   "prose": "standing it's almost flat; sitting, the belly folds into one honest crease across the middle — the pose decides the truth",
+   "weight": 6,
+   "synergy": {"PROCESS": "складка появляется/исчезает с подолом — тайминг физики", "LINGERIE": "сидя в белье — складка главная честная деталь"},
+   "avoid": "складка — только в сидячих/наклонных позах: стоя типаж не заявляет складку (drift в bbw)"
+  },
+  {
+   "id": "BT-20",
+   "name": "Яблочко",
+   "en": "apple-soft",
+   "axes": {"height": "mid", "frame": "soft", "bust": "large", "belly": "slight", "hips": "mid", "thighs": "mid"},
+   "tags": ["full breasts", "soft belly", "round middle"],
+   "prose": "the middle rounds forward ahead of everything — the bust rides on top of the argument",
+   "weight": 6,
+   "synergy": {"CLOTHED-TIGHT": "обтягивающее на яблочке — вертикальная натяжка читает и грудь, и живот"},
+   "avoid": null
+  },
+  {
+   "id": "BT-21",
+   "name": "Плюс-часы",
+   "en": "hourglass-plus",
+   "axes": {"height": "mid", "frame": "soft", "bust": "large", "belly": "slight", "hips": "wide", "thighs": "thick"},
+   "tags": ["hourglass figure", "large breasts", "soft belly", "wide hips", "thick thighs"],
+   "prose": "the hourglass one size up — every curve keeps its address, the letters just got rounder",
+   "weight": 7,
+   "synergy": {"CLOTHED-TIGHT": "полные часы в обтяжке — классика коридора натяжки", "COVER": "ладони на полной груди — прикрытие с запасом объёма"},
+   "avoid": null
+  },
+  {
+   "id": "BT-22",
+   "name": "Высокая мягкая",
+   "en": "tall-soft",
+   "axes": {"height": "tall", "frame": "soft", "bust": "medium", "belly": "soft", "hips": "mid", "thighs": "mid"},
+   "tags": ["tall", "soft waist", "medium breasts"],
+   "prose": "height with softness over it — the long line stays, the edges don't; she takes up her whole inch",
+   "weight": 6,
+   "synergy": {"SHEER": "длинная мягкая линия под тонким шёлком — ткань пишет рост", "PROCESS": "вещь высокой девушки сползает долго — физика пути"},
+   "avoid": "высокая ≠ модельная доска: мягкость обязательна, модельный «runway»-вайб не вайб"
+  },
+  {
+   "id": "BT-23",
+   "name": "Коротыши",
+   "en": "shortstack-soft",
+   "axes": {"height": "short", "frame": "soft", "bust": "large", "belly": "soft", "hips": "wide", "thighs": "thick"},
+   "tags": ["short adult woman", "thick thighs", "wide hips", "large breasts"],
+   "prose": "compact and stacked — everything the height saved went into the hips and the bust, and both pay it back with interest",
+   "weight": 4,
+   "synergy": {"CLOTHED-TIGHT": "полная коротышка в обтяжке — объём на короткой рамке читается мгновенно"},
+   "avoid": "ВЗРОСЛАЯ коротышка (тег «short adult woman»): никакого детского чтения; loli-теги в NEG обязательны"
+  },
+  {
+   "id": "BT-24",
+   "name": "Широкая мягкая",
+   "en": "broad-soft",
+   "axes": {"height": "tall", "frame": "broad", "bust": "large", "belly": "slight", "hips": "wide", "thighs": "thick"},
+   "tags": ["broad shoulders", "large breasts", "soft belly", "wide hips"],
+   "prose": "a swimmer's breadth gone soft at the edges — the shoulders still hold the doorframe, the middle has opinions",
+   "weight": 5,
+   "synergy": {"COVER": "широкая рамка держит объект-прикрытие устойчиво — композиция не падает"},
+   "avoid": "широкая ≠ накачанная: плечи — ширина кости, НЕ рельеф; muscular/trap-теги не появляются (сборкой)"
+  }
+ ],
+ "forbidden_drift": {
+  "law": "ДРЕЙФ-ЗАПРЕТЫ СБОРКОЙ (не NEG — наследие body.json): muscular, abs, toned, six-pack, athletic build, veiny, bodybuilder — НИ В ОДНОМ типаже; bbw, obese, fat, cellulite-focus — потолок полноты BT-18, дальше не идём; loli-эстетика — возраст всех типажей взрослый (short adult woman, не girl).",
+  "tags_never_in_bodytypes": ["muscular", "abs", "toned", "athletic", "six pack", "bodybuilder", "bbw", "obese"],
+  "neg_guard_note": "нег-гварды возраста (young girl, immature body, loli) остаются в NEG каждого слота — они уже там (прецедент T5-28), типажи их не заменяют"
+ },
+ "batch_law": "≥6 разных типажей на батч мейнов; один типаж ≤3 слотов; в шапке слота строка «Body: BT-XX <en>» (реестр для оракула покрытия — как RACE-строка); тест-горн (tools/testforge.py) катает типажи взвешенным кубиком и пишет в coverage ledger.",
+ "changelog": {
+  "1.0.0": "2026-11-21: рождение — 24 типажа по заказу Е; вес кубика 146; запреты дрейфа сборкой (мускулы/жёсткая полнота/petite-уклон); синергия с 5 классами экспозиции; стыковка: body.json v1.1.0 (NATURAL v2 остаётся законом прозы), raw-plus v2.3.0 (тег-порядок), testforge (кубик+покрытие)"
+ }
+}

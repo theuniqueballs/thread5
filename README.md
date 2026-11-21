@@ -44,16 +44,15 @@ Batch-Prompt Conveyer Belt
 - `specs/` — данные-активы (счётчики — из живых JSON, 2026-11-21: позы ×586 —
   poses 1.19.0; палитры ×260 — palettes 1.14.0 (волна 12 «раскраска
   выживания» P252–P260 в основном пуле); **Y-множество ×530 — camera.json
-  1.18.0, Y-first + Y-STAMP (вплетение 1:1)**; расы ×74 — races 2.6.0;
-  OC-канон ×29 — canon 2.13.0 (Nier+Noir); CLOSET ×121 предмет на 13 полках
-  — closet 1.0.0 (единственный активный каталог одежды, GAR — legacy);
-  `gates.json` 1.16.0 + `gate-registry.json` 1.0.0 (реестр «гейт → код →
-  квитанция», 28 секций); `raw-plus.json` 2.2.0 (PROSE PLUS);
+  1.19.0, Y-first + Y-STAMP (вплетение 1:1) + POV-якоря В37**; расы ×74 — races 2.7.0 (кин-оверхаул: clarifiers+gimmick+skin_type, LAWS §21);
+  OC-канон ×29 — canon 2.13.0 (Nier+Noir); CLOSET ×121 предмет на 13 полках — closet 1.1.0 (exposure-классы, yStack; единственный активный каталог одежды, GAR — legacy); **bodytypes.json 1.0.0 — 24 типажа тел (пункт Е)**; **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**; **oc-candidates.json 1.0.0 — кандидаты в ОС, oc_hook (пункт Д)**;
+  `gates.json` 1.17.0 (yStackGate) + `gate-registry.json` 1.0.0 (реестр «гейт → код →
+  квитанция», 28 секций); `raw-plus.json` 2.3.0 (PROSE PLUS + закон ТЕГ-ПОРЯДКА, LAWS §20);
   `delivery-stats.json` 0.14.0 (89 каналов); **`delivery-index.json` 1.0.0 —
   статус сдачи партий draft/ready/delivered/superseded, единственный вход
   окна/жребия/CI**; **`active-pools.json` 1.0.0 — активный пул выбора
   (аудит Коула R5) + режимы CLOCK/LAB/SURGERY**; `ultimate-dice.json`,
-  `dresser.json` 1.1.0, `salon.json`, `furnace-ledger.json`,
+  `dresser.json` 1.3.0 (y_stack + ПРЕ-ГАРДЕРОБ, tools/pregarment.py, LAWS §22); `salon.json`, `furnace-ledger.json`,
   `moves-ledger.json`, …)
 - `verdicts/` — вербатим-вердикты автора по батчам; **новая эра (двойной
   аудит P1-02): структурированные `verdicts/T5-NN.json` (схема t5-verdict/1:
@@ -65,7 +64,7 @@ Batch-Prompt Conveyer Belt
   oc-class-floor, neg-anchor, header-contract, movesGate, storyCardsGate,
   yCardGate — Y-first, claimPhysics — В31, conceptFlag, negDressGuards,
   detailsGate — В32, **yStamp — вплетение 1:1 В34/В35, paletteSkin — В36**;
-  `--md-from-receipt` — отчёт как производная JSON-квитанции),
+  `--md-from-receipt` — отчёт как производная JSON-квитанции), **`pregarment.py` — пре-гардероб: свежие комбо под жребий, набор не повторяется (LAWS §22)**, **`testforge.py` — тест-горн: болванки tests/test-corpus/ (вне прилавка), roll/check/coverage/compare — петля воспроизводимости А/Б/В/Г (LAWS §23)**,
   `window.py` (станция окна: квитанция ротации — позы/палитры/Y-карты/**
   OC-окно машинно**; `--for T5-NN` — окно задним числом), `taste.py`
   (вкус → план: ВКУС-БРИФ из verdicts/*.json + MD-фолбэк), `validate.py`
