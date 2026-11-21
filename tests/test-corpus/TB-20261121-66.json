@@ -1,0 +1,1255 @@
+{
+ "id": "TB-20261121-66",
+ "born": "2026-11-21T21:23:37.037532+00:00",
+ "seed": 66,
+ "n": 21,
+ "law": "тест-батч-болванка: не в batches/, прилавком не читается; цели А/Б/В/Г (testforge.py)",
+ "slots": [
+  {
+   "n": 1,
+   "y_card": "Y530",
+   "pattern_weaved": "standing at the herd's edge with both hands folded at the sternum, the breath drawn to the top of the lungs, the mouth one heartbeat from the note, the veil's hem lifting with the intake + upper body frontal",
+   "pattern_source": "standing at the herd's edge with both hands folded at the sternum, the breath drawn to the top of the lungs, the mouth one heartbeat from the note, the veil's hem lifting with the intake + upper body frontal",
+   "race": "R04",
+   "race_name": "Cat-kin",
+   "clarifiers": [
+    "catgirl, cat ears, cat tail, human face"
+   ],
+   "gimmick": "one ear flicks toward any sudden sound before she reacts",
+   "bodytype": "BT-11",
+   "bodytype_tags": [
+    "large breasts",
+    "slender waist",
+    "average hips"
+   ],
+   "marks": [
+    "MK-B03",
+    "MK-S05"
+   ],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-DR-09",
+    "CL-AC-01"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "formal",
+   "palette": "P259_SILVERPOINT_TARNISH",
+   "kinetic": "K232",
+   "hair": "copper",
+   "eyes": "blue",
+   "predicted": {
+    "tier": "R+",
+    "corridor": "A",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор A + класс экспозиции: объект-прикрытие/состояние несёт заряд"
+   },
+   "signals": [
+    "arms covering chest"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, upper body frontal, standing at the herd's edge with both hands folded at the sternum, 1girl, solo, copper hair, blue eyes, catgirl, cat ears,",
+    "cat tail, human face, large breasts, slender waist, average hips, mid teapour rain,",
+    "layered tulle petticoat dress, tiers hazing the light like waterfalls, taped nipples, topless with tape, nothing underneath, arms covering chest — the cover is the claim, Y530-made,",
+    "standing at the herd's edge with both hands folded at the sternum, the breath drawn to the top of the lungs, the mouth one heartbeat from the note,",
+    "the veil's hem lifting with the intake + upper body frontal,",
+    "a strawberry-shaped birthmark on the right shoulder, work-calluses reading honest across the palm, one ear flicks toward any sudden sound before she reacts,",
+    "the scale tips forward — the bust leads by a half-beat, the rest of the frame follows, pupil-slits widen in dim key light,",
+    "toned-ground grey dominant, след серебряного штифта стареет в тёплый тон: свет читает линию ретро-окислом, тонированная бумага ест полутон, one red-chalk note accent; her colors: Silverpoint Tarnish,",
+    "stylized 2D anime face, anime eyes (blue), small nose, small mouth, copper hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples exposed, areola, bra, camisole, bandeau, undershirt"
+   ]
+  },
+  {
+   "n": 2,
+   "y_card": "Y19",
+   "pattern_weaved": "hem gathered into the crooked arm + skirt's weight hanging off the gathered fold + upper body + slight low angle",
+   "pattern_source": "hem gathered into the crooked arm + skirt's weight hanging off the gathered fold + upper body + slight low angle",
+   "race": "R46",
+   "race_name": "Ink-slime-kin",
+   "clarifiers": [
+    "ink slime girl, glossy black gel body, white ink swirls suspended inside, human face in negative"
+   ],
+   "gimmick": "her thoughts surface as pale swirls in the ink, then sink back",
+   "bodytype": "BT-06",
+   "bodytype_tags": [
+    "hourglass figure",
+    "medium breasts",
+    "slim waist",
+    "wide hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-TS-02",
+    "CL-AC-10"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "intimates",
+   "palette": "P165_COAL_EMBER",
+   "kinetic": "K118",
+   "hair": "navy",
+   "eyes": "heterochromia",
+   "predicted": {
+    "tier": "R+",
+    "corridor": "A",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор A + класс экспозиции: объект-прикрытие/состояние несёт заряд"
+   },
+   "signals": [
+    "arms covering chest"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, upper body + slight low angle, hem gathered into the crooked arm + skirt's weight hanging off the gathered fold + upper body + slight low angle,",
+    "1girl, solo, navy hair, heterochromia eyes, ink slime girl, glossy black gel body, white ink swirls suspended inside, human face in negative, hourglass figure, medium breasts, slim waist, wide hips,",
+    "mid breath catch,",
+    "translucent organza blouse, a film of light over the torso, taped nipples, topless with tape, nothing underneath, arms covering chest — the cover is the claim, Y19-made,",
+    "hem gathered into the crooked arm + skirt's weight hanging off the gathered fold + upper body + slight low angle,",
+    "her thoughts surface as pale swirls in the ink, then sink back, the classic balance — the waist draws the eye in and both ends of the hourglass answer it honestly,",
+    "white swirls read like signatures in the black,",
+    "coal-ember, spark-gold accent; her colors: Coal Ember,",
+    "stylized 2D anime face, anime eyes (heterochromia), small nose, small mouth, navy hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples exposed, areola, bra, camisole, bandeau, undershirt"
+   ]
+  },
+  {
+   "n": 3,
+   "y_card": "Y411",
+   "pattern_weaved": "leaning back against the counter away from the kettle's sunrise, thin chemise backlit through by the spout-light, breakfast tray on palm",
+   "pattern_source": "leaning back against the counter away from the kettle's sunrise, thin chemise backlit through by the spout-light, breakfast tray on palm + CAM02",
+   "race": "R47",
+   "race_name": "Wind-spirit-kin",
+   "clarifiers": [
+    "wind spirit girl, hair always mid-gust, translucent air-current edges, human face"
+   ],
+   "gimmick": "papers offer themselves to her — the room drafts around her mood",
+   "bodytype": "BT-09",
+   "bodytype_tags": [
+    "curvy figure",
+    "large breasts",
+    "soft waist",
+    "wide hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-TS-14",
+    "CL-DR-09"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "specialty",
+   "palette": "P191_EMBER_PILLOW",
+   "kinetic": "K340",
+   "hair": "mint",
+   "eyes": "hazel",
+   "predicted": {
+    "tier": "R+",
+    "corridor": "A",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор A + класс экспозиции: объект-прикрытие/состояние несёт заряд"
+   },
+   "signals": [
+    "arms covering chest"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, camera from above looking down, leaning back against the counter away from the kettle's sunrise, 1girl, solo, mint hair, hazel eyes,",
+    "wind spirit girl, hair always mid-gust, translucent air-current edges, human face, curvy figure, large breasts, soft waist, wide hips, mid net clip,",
+    "elastic bandage wrapped as a top, spiral of shadows, body reading through, taped nipples, topless with tape, nothing underneath, arms covering chest — the cover is the claim, Y411-made,",
+    "leaning back against the counter away from the kettle's sunrise, thin chemise backlit through by the spout-light, breakfast tray on palm,",
+    "papers offer themselves to her — the room drafts around her mood, the hourglass poured a half-beat slower — the waist is there and answers soft when pressed, her edges refract like heat-haze,",
+    "ash-warm grey over coal-orange, ember-glow accents, heat-shimmer edge, ash-warm grey accent; her colors: Ember Pillow,",
+    "stylized 2D anime face, anime eyes (hazel), small nose, small mouth, mint hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples exposed, areola, bra, camisole, bandeau, undershirt"
+   ]
+  },
+  {
+   "n": 4,
+   "y_card": "Y456",
+   "pattern_weaved": "settling astride the seated point's knees over the couch cushion, the cushion swallowing the weight in one slow give, knees past the bottom corners, palms on her own thighs",
+   "pattern_source": "settling astride the seated point's knees over the couch cushion, the cushion swallowing the weight in one slow give, knees past the bottom corners, palms on her own thighs + CAM03",
+   "race": "R44",
+   "race_name": "Marionette-kin",
+   "clarifiers": [
+    "marionette girl, ball joints at shoulders and hips, tar-black strings from above, human face"
+   ],
+   "gimmick": "her strings slacken when she trusts the room — she can tell, and so can we",
+   "bodytype": "BT-08",
+   "bodytype_tags": [
+    "healthy build",
+    "medium breasts",
+    "flat stomach",
+    "light frame"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-SM-09",
+    "CL-AC-03"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "swim",
+   "palette": "P54_ART_DECO_PLATINUM",
+   "kinetic": "K119",
+   "hair": "teal",
+   "eyes": "red",
+   "predicted": {
+    "tier": "R",
+    "corridor": "A+B",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, camera from below looking up, settling astride the seated point's knees over the couch cushion, 1girl, solo, teal hair, red eyes,",
+    "marionette girl, ball joints at shoulders and hips, tar-black strings from above, human face, healthy build, medium breasts, flat stomach, light frame, mid hem drag,",
+    "bikini with a sarong knotted at the hip, slit to the thigh, nothing underneath, lingerie; panties — the bikini + sarong is the claim, Y456-made,",
+    "settling astride the seated point's knees over the couch cushion, the cushion swallowing the weight in one slow give, knees past the bottom corners, palms on her own thighs,",
+    "her strings slacken when she trusts the room — she can tell, and so can we, a swimmer's easy tone at most — the body of someone who walks everywhere, definition stays a rumor,",
+    "the strings catch light as thin black highlights,",
+    "platinum-silver polished-metal with black-lacquer-deep secondary, ivory-bone-deco warmth, pale-gold-geometric edge, ivory-bone-deco accent; her colors: Art Deco Platinum,",
+    "stylized 2D anime face, anime eyes (red), small nose, small mouth, teal hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 5,
+   "y_card": "Y27",
+   "pattern_weaved": "glove peeled off finger by finger at the wrist's bend + the cuff still holding the palm + close insert",
+   "pattern_source": "glove peeled off finger by finger at the wrist's bend + the cuff still holding the palm + close insert",
+   "race": "R50",
+   "race_name": "Nine-tails-kin",
+   "clarifiers": [
+    "nine-tailed fox, nine tails fanned in display, golden fox ears, human face"
+   ],
+   "gimmick": "her nine tails count her moods — observers learn the fan patterns",
+   "bodytype": "BT-13",
+   "bodytype_tags": [
+    "flat chest",
+    "wide hips",
+    "soft middle"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-UR-08",
+    "CL-DR-03",
+    "CL-SK-07"
+   ],
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "scene": "formal",
+   "palette": "P155_CLOUDSEA_NOON",
+   "kinetic": "K132",
+   "hair": "emerald",
+   "eyes": "violet",
+   "predicted": {
+    "tier": "R+",
+    "corridor": "A",
+    "class": "PROCESS",
+    "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+    "why": "коридор A + класс экспозиции: объект-прикрытие/состояние несёт заряд"
+   },
+   "signals": [
+    "half-off garment"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, close insert, glove peeled off finger by finger at the wrist's bend + the cuff still holding the palm + close insert, 1girl, solo, emerald hair,",
+    "violet eyes, nine-tailed fox, nine tails fanned in display, golden fox ears, human face, flat chest, wide hips, soft middle, mid hem lag,",
+    "leather corset, specular shine, sharp shadow at every seam, covered nipples, clothed nipples, nothing underneath, half-off garment — the leather corset is the claim, Y27-made,",
+    "glove peeled off finger by finger at the wrist's bend + the cuff still holding the palm + close insert,",
+    "her nine tails count her moods — observers learn the fan patterns, flat and honest about it — the hips answer for both of them, each tail-tip holds its own gold rim,",
+    "cloud white high-noon silver with mist-blue-pale secondary, sun-gold-bright accent, faint pink bloom edge, sun-gold-bright accent; her colors: Cloudsea Noon,",
+    "stylized 2D anime face, anime eyes (violet), small nose, small mouth, emerald hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples exposed, areola, bra, camisole, bandeau, undershirt"
+   ]
+  },
+  {
+   "n": 6,
+   "y_card": "Y6",
+   "pattern_weaved": "waistband half-rolled under both thumbs + the roll's tension pinning the fabric low on the hips + cowboy shot from below",
+   "pattern_source": "waistband half-rolled under both thumbs + the roll's tension pinning the fabric low on the hips + cowboy shot from below",
+   "race": "R35",
+   "race_name": "Arachne-kin",
+   "clarifiers": [
+    "arachne, extra chitin arms from the shoulder blades, small closed spider eyes at the temples, human face"
+   ],
+   "gimmick": "her spare arms knit while the main pair is busy — the gift is always warm",
+   "bodytype": "BT-13",
+   "bodytype_tags": [
+    "flat chest",
+    "wide hips",
+    "soft middle"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-LG-04",
+    "CL-OU-02",
+    "CL-DR-09"
+   ],
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "scene": "specialty",
+   "palette": "P84_CERULEAN_STILL",
+   "kinetic": "K116",
+   "hair": "copper",
+   "eyes": "green",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "PROCESS",
+    "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, cowboy shot from below, waistband half-rolled under both thumbs + the roll's tension pinning the fabric low on the hips, 1girl, solo,",
+    "copper hair, green eyes, arachne, extra chitin arms from the shoulder blades, small closed spider eyes at the temples, human face, flat chest, wide hips, soft middle, mid hands claim,",
+    "silk kimono worn open, sleeves wings of light, obi loose, dark garment, fabric clinging, nothing underneath, lingerie; panties — the open silk kimono is the claim, Y6-made,",
+    "waistband half-rolled under both thumbs + the roll's tension pinning the fabric low on the hips + cowboy shot from below,",
+    "her spare arms knit while the main pair is busy — the gift is always warm, flat and honest about it — the hips answer for both of them, chitin arms take a blue-black specular,",
+    "cerulean flat-calm sky-glass with horizon-pale secondary, one rooftop-amber hour, tide-teal glass edge, rooftop-amber-one accent; her colors: Cerulean Still,",
+    "stylized 2D anime face, anime eyes (green), small nose, small mouth, copper hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 7,
+   "y_card": "Y13",
+   "pattern_weaved": "apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling",
+   "pattern_source": "apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling",
+   "race": "R35",
+   "race_name": "Arachne-kin",
+   "clarifiers": [
+    "arachne, extra chitin arms from the shoulder blades, small closed spider eyes at the temples, human face"
+   ],
+   "gimmick": "her spare arms knit while the main pair is busy — the gift is always warm",
+   "bodytype": "BT-16",
+   "bodytype_tags": [
+    "slightly plump",
+    "soft belly",
+    "medium breasts",
+    "thick thighs"
+   ],
+   "marks": [
+    "MK-N02"
+   ],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-TS-04",
+    "CL-AC-09",
+    "CL-OU-03"
+   ],
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "scene": "street",
+   "palette": "P209_GRAPHITE_MONO",
+   "kinetic": "K98",
+   "hair": "dusty-pink",
+   "eyes": "pale-blue",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "PROCESS",
+    "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, three-quarter low + cowboy shot, apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling, 1girl, solo, dusty-pink hair,",
+    "pale-blue eyes, arachne, extra chitin arms from the shoulder blades, small closed spider eyes at the temples, human face, slightly plump, soft belly, medium breasts, thick thighs, mid clutch,",
+    "thin ribbed tank top, straps honest and narrow, dark garment, fabric clinging, nothing underneath, lingerie; panties — the ribbed tank top is the claim, Y13-made,",
+    "apron wrap mid-turn + corner caught in the elbow bend + hem arc still traveling,",
+    "an old burn patch on the shoulder blade, edges soft as watercolor, her spare arms knit while the main pair is busy — the gift is always warm,",
+    "a small soft belly that rounds honest when she sits and breathes when she laughs — the frame of someone fed and comfortable, chitin arms take a blue-black specular,",
+    "graphite-grey-mid dominant, карандашный монохром: тональный свет, растушёвка, зерно бумаги, erased-highlight-warm accent; her colors: Graphite Monochrome,",
+    "stylized 2D anime face, anime eyes (pale-blue), small nose, small mouth, dusty-pink hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 8,
+   "y_card": "Y32",
+   "pattern_weaved": "ice cube melting a slow line from the collarbone between the ribs + halter pulled aside where the melt passes + head tipped back into the sun + slight low angle",
+   "pattern_source": "ice cube melting a slow line from the collarbone between the ribs + halter pulled aside where the melt passes + head tipped back into the sun + slight low angle",
+   "race": "R11",
+   "race_name": "Bat-kin",
+   "clarifiers": [
+    "bat girl, large bat ears, small fangs, human face"
+   ],
+   "gimmick": "her ears map the room — she turns to a whisper three seconds before it lands",
+   "bodytype": "BT-24",
+   "bodytype_tags": [
+    "broad shoulders",
+    "large breasts",
+    "soft belly",
+    "wide hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-SM-10"
+   ],
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "scene": "swim",
+   "palette": "P149_SCALE_ROOM",
+   "kinetic": "K180",
+   "hair": "chocolate",
+   "eyes": "sky-blue",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "PROCESS",
+    "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, slight low angle,",
+    "ice cube melting a slow line from the collarbone between the ribs + halter pulled aside where the melt passes + head tipped back into the sun + slight low angle, 1girl, solo, chocolate hair,",
+    "sky-blue eyes, bat girl, large bat ears, small fangs, human face, broad shoulders, large breasts, soft belly, wide hips, mid scarf release,",
+    "open beach kimono over swim bottoms, sleeves wide, nothing tied, dark garment, fabric clinging, nothing underneath, lingerie; panties — the open beach kimono is the claim, Y32-made,",
+    "ice cube melting a slow line from the collarbone between the ribs + halter pulled aside where the melt passes + head tipped back into the sun + slight low angle,",
+    "her ears map the room — she turns to a whisper three seconds before it lands, a swimmer's breadth gone soft at the edges — the shoulders still hold the doorframe, the middle has opinions,",
+    "perfectly calm stillness in the dark — she doesn't need the light,",
+    "the-verdict-one-degree-from-smiling, verdict-ruby-thin accent; her colors: Scale Room,",
+    "stylized 2D anime face, anime eyes (sky-blue), small nose, small mouth, chocolate hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 9,
+   "y_card": "Y134",
+   "pattern_weaved": "back along the couch's seat, legs thrown up over the backrest, head hanging off the arm toward the floor, hair in free-fall",
+   "pattern_source": "back along the couch's seat, legs thrown up over the backrest, head hanging off the arm toward the floor, hair in free-fall + CAM06_side",
+   "race": "R01",
+   "race_name": "Human",
+   "clarifiers": [],
+   "gimmick": null,
+   "bodytype": "BT-06",
+   "bodytype_tags": [
+    "hourglass figure",
+    "medium breasts",
+    "slim waist",
+    "wide hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [],
+   "gar_f": null,
+   "scene": "active",
+   "palette": "P171_CANDY_PISTOL",
+   "kinetic": "K245",
+   "hair": "platinum-white",
+   "eyes": "silver",
+   "predicted": {
+    "tier": "PG-13",
+    "corridor": "—",
+    "class": "—",
+    "channel": null,
+    "why": "нет стака одежды (геометрия/пустой кросс) — честный PG-13"
+   },
+   "signals": [
+    "sexy outfit",
+    "bikini"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, side view, back along the couch's seat, 1girl, solo, platinum-white hair, silver eyes, hourglass figure, medium breasts, slim waist, wide hips,",
+    "mid whisper ladder,",
+    "sexy outfit, bikini — the frame is the claim, Y134-made,",
+    "back along the couch's seat, legs thrown up over the backrest, head hanging off the arm toward the floor, hair in free-fall,",
+    "the classic balance — the waist draws the eye in and both ends of the hourglass answer it honestly, no race light signature — memorability from NR features and marks (marks budget +1),",
+    "candy-pistol-bright, cherry-bow-red accent; her colors: Candy Pistol,",
+    "stylized 2D anime face, anime eyes (silver), small nose, small mouth, platinum-white hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, lingerie visible",
+    "nude"
+   ]
+  },
+  {
+   "n": 10,
+   "y_card": "Y23",
+   "pattern_weaved": "collar opening mid-lean against the rail + the fall of the collar held by one finger + slight low angle",
+   "pattern_source": "collar opening mid-lean against the rail + the fall of the collar held by one finger + slight low angle",
+   "race": "R68",
+   "race_name": "Chinchilla-kin",
+   "clarifiers": [
+    "chinchilla girl, plush grey-cream fur at ears and tail, human face"
+   ],
+   "gimmick": "she dusts herself after every handshake — a hygiene ritual, not an insult",
+   "bodytype": "BT-16",
+   "bodytype_tags": [
+    "slightly plump",
+    "soft belly",
+    "medium breasts",
+    "thick thighs"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-DR-01",
+    "CL-SK-02"
+   ],
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "scene": "street",
+   "palette": "P224_TOOLING_LEATHER",
+   "kinetic": "K379",
+   "hair": "red",
+   "eyes": "pale-blue",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "PROCESS",
+    "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, slight low angle, collar opening mid-lean against the rail + the fall of the collar held by one finger + slight low angle, 1girl, solo,",
+    "red hair, pale-blue eyes, chinchilla girl, plush grey-cream fur at ears and tail, human face, slightly plump, soft belly, medium breasts, thick thighs, mid oni settle,",
+    "silk slip dress, thin straps, bias-cut, hem skating on the hip, dark garment, fabric clinging, nothing underneath, lingerie; panties — the slip dress silk is the claim, Y23-made,",
+    "collar opening mid-lean against the rail + the fall of the collar held by one finger + slight low angle,",
+    "she dusts herself after every handshake — a hygiene ritual, not an insult, a small soft belly that rounds honest when she sits and breathes when she laughs — the frame of someone fed and comfortable,",
+    "her fur holds a matte halo — no specular survives,",
+    "tooled-leather-amber-brown dominant, тиснёная кожа: тёплый воск в узоре седла, кремовая нить шва; свет — жир кожи, не лампа, brass-buckle-dim accent; her colors: Tooled Leather Saddle,",
+    "stylized 2D anime face, anime eyes (pale-blue), small nose, small mouth, red hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 11,
+   "y_card": "Y411",
+   "pattern_weaved": "leaning back against the counter away from the kettle's sunrise, thin chemise backlit through by the spout-light, breakfast tray on palm",
+   "pattern_source": "leaning back against the counter away from the kettle's sunrise, thin chemise backlit through by the spout-light, breakfast tray on palm + CAM02",
+   "race": "R66",
+   "race_name": "Pangolin-kin",
+   "clarifiers": [
+    "pangolin girl, artichoke scale-armor plates from the shoulders down, human face"
+   ],
+   "gimmick": "she curls into a perfect armored ball when the day is done — appointments included",
+   "bodytype": "BT-21",
+   "bodytype_tags": [
+    "hourglass figure",
+    "large breasts",
+    "soft belly",
+    "wide hips",
+    "thick thighs"
+   ],
+   "marks": [
+    "MK-N02"
+   ],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-DR-04",
+    "CL-TS-11",
+    "CL-AC-09"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "street",
+   "palette": "P102_CONFIDANT_BRASS",
+   "kinetic": "K148",
+   "hair": "teal",
+   "eyes": "amber",
+   "predicted": {
+    "tier": "R+",
+    "corridor": "A",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор A + класс экспозиции: объект-прикрытие/состояние несёт заряд"
+   },
+   "signals": [
+    "arms covering chest"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, camera from above looking down, leaning back against the counter away from the kettle's sunrise, 1girl, solo, teal hair, amber eyes,",
+    "pangolin girl, artichoke scale-armor plates from the shoulders down, human face, hourglass figure, large breasts, soft belly, wide hips, thick thighs, mid heat bank,",
+    "cotton sundress with thin straps, sun-washed pattern, hem lifting in the breeze, taped nipples, topless with tape, nothing underneath, arms covering chest — the cover is the claim, Y411-made,",
+    "leaning back against the counter away from the kettle's sunrise, thin chemise backlit through by the spout-light, breakfast tray on palm,",
+    "an old burn patch on the shoulder blade, edges soft as watercolor, she curls into a perfect armored ball when the day is done — appointments included,",
+    "the hourglass one size up — every curve keeps its address, the letters just got rounder, each plate edge takes its own thin specular row,",
+    "night-ink-blue-deep midnight-ledger with office-green-dark secondary, brass-key-bright accent, ribbon-red-small edge, brass-key-bright accent; her colors: Confidant Brass,",
+    "stylized 2D anime face, anime eyes (amber), small nose, small mouth, teal hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples exposed, areola, bra, camisole, bandeau, undershirt"
+   ]
+  },
+  {
+   "n": 12,
+   "y_card": "Y17",
+   "pattern_weaved": "hem lifted where no hand holds it + lower body passing through its own fold + eye-level",
+   "pattern_source": "hem lifted where no hand holds it + lower body passing through its own fold + eye-level",
+   "race": "R12",
+   "race_name": "Bunny-kin",
+   "clarifiers": [
+    "bunny girl, rabbit ears, round cottontail, human face"
+   ],
+   "gimmick": "her nose twitches when she's suspicious — a tiny lie detector",
+   "bodytype": "BT-15",
+   "bodytype_tags": [
+    "huge breasts",
+    "soft body",
+    "wide hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-DR-13",
+    "CL-SW-01"
+   ],
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "scene": "lounge",
+   "palette": "P92_WITCHING_HOUR_KITCHEN",
+   "kinetic": "K115",
+   "hair": "chestnut",
+   "eyes": "hazel",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "PROCESS",
+    "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, eye-level + full/lower body, hem lifted where no hand holds it + lower body passing through its own fold, 1girl, solo, chestnut hair,",
+    "hazel eyes, bunny girl, rabbit ears, round cottontail, human face, huge breasts, soft body, wide hips, mid lean present,",
+    "oversized cardigan worn as a dress, buttons fighting the gap at the thighs, dark garment, fabric clinging, nothing underneath, lingerie; panties — the cardigan-only dress is the claim, Y17-made,",
+    "hem lifted where no hand holds it + lower body passing through its own fold + eye-level,",
+    "her nose twitches when she's suspicious — a tiny lie detector, volume that arrives before she does — every surface she leans on gets the full argument, the inner ear glows pink backlit,",
+    "copper-pot-warm stove-ember-brown with spell-teal-steam secondary, flame-jade-bright accent, jar-amber-deep edge, flame-jade-bright accent; her colors: Witching Hour Kitchen,",
+    "stylized 2D anime face, anime eyes (hazel), small nose, small mouth, chestnut hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 13,
+   "y_card": "Y348",
+   "pattern_weaved": "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust",
+   "pattern_source": "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust",
+   "race": "R66",
+   "race_name": "Pangolin-kin",
+   "clarifiers": [
+    "pangolin girl, artichoke scale-armor plates from the shoulders down, human face"
+   ],
+   "gimmick": "she curls into a perfect armored ball when the day is done — appointments included",
+   "bodytype": "BT-07",
+   "bodytype_tags": [
+    "average build",
+    "medium breasts",
+    "straight waistline",
+    "moderate hips"
+   ],
+   "marks": [
+    "MK-N03"
+   ],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-LG-05",
+    "CL-AC-10",
+    "CL-DR-07"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "intimates",
+   "palette": "P89_THRESHOLD_GOLD",
+   "kinetic": "K179",
+   "hair": "chestnut",
+   "eyes": "pink",
+   "predicted": {
+    "tier": "R",
+    "corridor": "A+B",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, upper body three-quarter, crouched low on the chalk blueprint across the floor, 1girl, solo, chestnut hair, pink eyes, pangolin girl,",
+    "artichoke scale-armor plates from the shoulders down, human face, average build, medium breasts, straight waistline, moderate hips, mid umbrella invert,",
+    "bath towel wrapped and held by its own last tuck, one hand keeping the fold, nothing underneath, lingerie; panties — the bath towel wrap is the claim, Y348-made,",
+    "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust,",
+    "an old scald scar along the hand's edge — a kitchen story she retells with relish, she curls into a perfect armored ball when the day is done — appointments included,",
+    "an even column with a quiet bust line — the calm the outfit gets to argue with, each plate edge takes its own thin specular row,",
+    "honey-domestic-deep lamp-butter-gold with adventurine-green-leak secondary, fairy-gold-bright accent, tea-brown-warm edge, fairy-gold-bright accent; her colors: Threshold Gold,",
+    "stylized 2D anime face, anime eyes (pink), small nose, small mouth, chestnut hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 14,
+   "y_card": "Y5",
+   "pattern_weaved": "straddle-settle over the saddle's pommel + the hem hauled taut across both thighs by the knee spread + three-quarter from below",
+   "pattern_source": "straddle-settle over the saddle's pommel + the hem hauled taut across both thighs by the knee spread + three-quarter from below",
+   "race": "R45",
+   "race_name": "Shadow-kin",
+   "clarifiers": [
+    "shadow girl, depth-black skin with soft star-glow flecks, edges blurring into shade, pale glowing human face"
+   ],
+   "gimmick": "her shadow arrives before she does — and stays a beat after",
+   "bodytype": "BT-10",
+   "bodytype_tags": [
+    "pear figure",
+    "small breasts",
+    "wide hips",
+    "thick thighs"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-FX-07",
+    "CL-DR-03"
+   ],
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "scene": "formal",
+   "palette": "P26_VOID_ECLIPSE",
+   "kinetic": "K283",
+   "hair": "violet",
+   "eyes": "amber",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "CLOTHED-TIGHT",
+    "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, three-quarter from below + cowboy shot, straddle-settle over the saddle's pommel + the hem hauled taut across both thighs by the knee spread,",
+    "1girl, solo, violet hair, amber eyes, shadow girl, depth-black skin with soft star-glow flecks, edges blurring into shade, pale glowing human face, pear figure, small breasts, wide hips, thick thighs,",
+    "mid stake strike,",
+    "cheer crop top and pleated skirt set, team colors saturated, pom-poms optional, dark garment, fabric clinging, nothing underneath, lingerie; panties — the cheer set is the claim, Y5-made,",
+    "straddle-settle over the saddle's pommel + the hem hauled taut across both thighs by the knee spread + three-quarter from below,",
+    "her shadow arrives before she does — and stays a beat after, the story lives below the waist — hips carry the frame, the top half argues politely, light doesn't find her — it negotiates,",
+    "eclipse-black backdrop with white-hot corona ring, deep-violet shadow, pale-gold corona-spill edge, white-hot-corona accent; her colors: Void Eclipse,",
+    "stylized 2D anime face, anime eyes (amber), small nose, small mouth, violet hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 15,
+   "y_card": "Y22",
+   "pattern_weaved": "towel caught mid-dry at the shoulder line + wet hair counting drops down the spine + close insert at eye level",
+   "pattern_source": "towel caught mid-dry at the shoulder line + wet hair counting drops down the spine + close insert at eye level",
+   "race": "R23",
+   "race_name": "Shark-kin",
+   "clarifiers": [
+    "shark girl, dorsal fin at the spine, gill-slits at the ribs, shark tail, human face"
+   ],
+   "gimmick": "too many teeth in the grin when she wins — she knows, she doesn't care",
+   "bodytype": "BT-15",
+   "bodytype_tags": [
+    "huge breasts",
+    "soft body",
+    "wide hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-DR-10",
+    "CL-LG-04"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "specialty",
+   "palette": "P260_AMATE_BARK_FIBER",
+   "kinetic": "K279",
+   "hair": "teal",
+   "eyes": "pearl-grey",
+   "predicted": {
+    "tier": "R+",
+    "corridor": "A",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор A + класс экспозиции: объект-прикрытие/состояние несёт заряд"
+   },
+   "signals": [
+    "arms covering chest"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, close insert at eye level, towel caught mid-dry at the shoulder line + wet hair counting drops down the spine + close insert at eye level,",
+    "1girl, solo, teal hair, pearl-grey eyes, shark girl, dorsal fin at the spine, gill-slits at the ribs, shark tail, human face, huge breasts, soft body, wide hips, mid cage furwall,",
+    "ceremonial dress of sheer veils, three layers of decreasing opacity, taped nipples, topless with tape, nothing underneath, arms covering chest — the cover is the claim, Y22-made,",
+    "towel caught mid-dry at the shoulder line + wet hair counting drops down the spine + close insert at eye level,",
+    "too many teeth in the grin when she wins — she knows, she doesn't care, volume that arrives before she does — every surface she leans on gets the full argument,",
+    "gill-slits catch water-light like vents,",
+    "bark-fiber kraft dominant, волокно коры держит пигмент как ловчая сеть: свет рассеян в фибре, земляные краски сидят глубоко, one wild-cotton white accent; her colors: Amate Bark Fiber,",
+    "stylized 2D anime face, anime eyes (pearl-grey), small nose, small mouth, teal hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples exposed, areola, bra, camisole, bandeau, undershirt"
+   ]
+  },
+  {
+   "n": 16,
+   "y_card": "Y61",
+   "pattern_weaved": "standing, mid-motion removing outer garment, one arm still in a sleeve + upper body three-quarter",
+   "pattern_source": "standing, mid-motion removing outer garment, one arm still in a sleeve + upper body three-quarter",
+   "race": "R56",
+   "race_name": "Rose-glass-kin",
+   "clarifiers": [
+    "stained glass girl, translucent rose-glass body, lead-line seams in art-nouveau curves, human face in a clear pane"
+   ],
+   "gimmick": "her colors shift with what's behind her — she borrows rooms",
+   "bodytype": "BT-11",
+   "bodytype_tags": [
+    "large breasts",
+    "slender waist",
+    "average hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [],
+   "gar_f": null,
+   "scene": "street",
+   "palette": "P143_COIL_VERDIGRIS",
+   "kinetic": "K121",
+   "hair": "ash-brown",
+   "eyes": "copper-green",
+   "predicted": {
+    "tier": "PG-13",
+    "corridor": "—",
+    "class": "—",
+    "channel": null,
+    "why": "нет стака одежды (геометрия/пустой кросс) — честный PG-13"
+   },
+   "signals": [
+    "sexy outfit",
+    "bikini"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, upper body three-quarter, standing, 1girl, solo, ash-brown hair, copper-green eyes, stained glass girl, translucent rose-glass body,",
+    "lead-line seams in art-nouveau curves, human face in a clear pane, large breasts, slender waist, average hips, mid knee part,",
+    "sexy outfit, bikini — the frame is the claim, Y61-made,",
+    "standing, mid-motion removing outer garment, one arm still in a sleeve + upper body three-quarter,",
+    "her colors shift with what's behind her — she borrows rooms, the scale tips forward — the bust leads by a half-beat, the rest of the frame follows,",
+    "she projects — every light behind her lands as a rose window,",
+    "the-tell-she-doesnt-know, tell-eye-gold accent; her colors: Coil Verdigris,",
+    "stylized 2D anime face, anime eyes (copper-green), small nose, small mouth, ash-brown hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, lingerie visible",
+    "nude"
+   ]
+  },
+  {
+   "n": 17,
+   "y_card": "Y348",
+   "pattern_weaved": "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust",
+   "pattern_source": "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust",
+   "race": "R04",
+   "race_name": "Cat-kin",
+   "clarifiers": [
+    "catgirl, cat ears, cat tail, human face"
+   ],
+   "gimmick": "one ear flicks toward any sudden sound before she reacts",
+   "bodytype": "BT-08",
+   "bodytype_tags": [
+    "healthy build",
+    "medium breasts",
+    "flat stomach",
+    "light frame"
+   ],
+   "marks": [
+    "MK-T02"
+   ],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-TS-04",
+    "CL-DR-06"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "street",
+   "palette": "P257_CEL_PAINT_FLAT",
+   "kinetic": "K313",
+   "hair": "white",
+   "eyes": "grey",
+   "predicted": {
+    "tier": "R",
+    "corridor": "A+B",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, upper body three-quarter, crouched low on the chalk blueprint across the floor, 1girl, solo, white hair, grey eyes, catgirl, cat ears, cat tail,",
+    "human face, healthy build, medium breasts, flat stomach, light frame, mid saddle stool,",
+    "thin ribbed tank top, straps honest and narrow, nothing underneath, lingerie; panties — the ribbed tank top is the claim, Y348-made,",
+    "crouched low on the chalk blueprint across the floor, one palm flat on a pine sapling growing along the drawn circle, the crouch's weight on the balls of the feet, the hem pooling in the chalk dust,",
+    "a small script tattoo along the hip bone, the words lost where the waistband starts, one ear flicks toward any sudden sound before she reacts,",
+    "a swimmer's easy tone at most — the body of someone who walks everywhere, definition stays a rumor, pupil-slits widen in dim key light,",
+    "cel-vinyl two-tone flat dominant, аниме-целл: плоские заливки, жёсткая кромка тени, один блик-цветом; никаких градиентов, one highlight-bloom white accent; her colors: Cel Animation Paint,",
+    "stylized 2D anime face, anime eyes (grey), small nose, small mouth, white hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 18,
+   "y_card": "Y11",
+   "pattern_weaved": "kneel-back settle + hem pinned under shin weight + tails fan frames the torso",
+   "pattern_source": "kneel-back settle + hem pinned under shin weight + tails fan frames the torso",
+   "race": "R46",
+   "race_name": "Ink-slime-kin",
+   "clarifiers": [
+    "ink slime girl, glossy black gel body, white ink swirls suspended inside, human face in negative"
+   ],
+   "gimmick": "her thoughts surface as pale swirls in the ink, then sink back",
+   "bodytype": "BT-12",
+   "bodytype_tags": [
+    "small breasts",
+    "high-set chest",
+    "slim waist",
+    "flat stomach"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-SW-05",
+    "CL-TS-04",
+    "CL-SM-06"
+   ],
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "scene": "active",
+   "palette": "P185_SALT_GLASS",
+   "kinetic": "K227",
+   "hair": "lavender",
+   "eyes": "heterochromia",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "PROCESS",
+    "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, slight low angle + upper body (веер-рама), kneel-back settle + hem pinned under shin weight + tails fan frames the torso, 1girl, solo,",
+    "lavender hair, heterochromia eyes, ink slime girl, glossy black gel body, white ink swirls suspended inside, human face in negative, small breasts, high-set chest, slim waist, flat stomach,",
+    "mid tidefloor,",
+    "cropped knit pullover stopping above the navel, midriff bare, dark garment, fabric clinging, nothing underneath, lingerie; panties — the cropped pullover is the claim, Y11-made,",
+    "kneel-back settle + hem pinned under shin weight + tails fan frames the torso,",
+    "her thoughts surface as pale swirls in the ink, then sink back, small and high and unbothered — the line of the chest stays clean in any knit, white swirls read like signatures in the black,",
+    "salt-glass-pale, brine-dark accent; her colors: Salt Glass,",
+    "stylized 2D anime face, anime eyes (heterochromia), small nose, small mouth, lavender hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 19,
+   "y_card": "Y24",
+   "pattern_weaved": "hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body",
+   "pattern_source": "hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body",
+   "race": "R65",
+   "race_name": "Mantis-kin",
+   "clarifiers": [
+    "mantis girl, folded raptorial forearms at rest, triangular eyes, human face"
+   ],
+   "gimmick": "her head-tilt goes further than physics suggests — 180 degrees of consideration",
+   "bodytype": "BT-19",
+   "bodytype_tags": [
+    "soft belly",
+    "stomach fold when sitting",
+    "medium breasts"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-DR-08",
+    "CL-TS-04",
+    "CL-BT-07"
+   ],
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "scene": "street",
+   "palette": "P84_CERULEAN_STILL",
+   "kinetic": "K189",
+   "hair": "burgundy",
+   "eyes": "green",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "CLOTHED-TIGHT",
+    "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, upper body, hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body, 1girl, solo,",
+    "burgundy hair, green eyes, mantis girl, folded raptorial forearms at rest, triangular eyes, human face, soft belly, stomach fold when sitting, medium breasts, mid flame shed,",
+    "long black dress, fitted bodice, heavy skirt with one thigh-slit, dark garment, fabric clinging, nothing underneath, lingerie; panties — the long black dress gothic is the claim, Y24-made,",
+    "hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body,",
+    "her head-tilt goes further than physics suggests — 180 degrees of consideration, standing it's almost flat; sitting,",
+    "the belly folds into one honest crease across the middle — the pose decides the truth, her eyes take triple highlights — a triangle of sparks,",
+    "cerulean flat-calm sky-glass with horizon-pale secondary, one rooftop-amber hour, tide-teal glass edge, rooftop-amber-one accent; her colors: Cerulean Still,",
+    "stylized 2D anime face, anime eyes (green), small nose, small mouth, burgundy hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 20,
+   "y_card": "Y24",
+   "pattern_weaved": "hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body",
+   "pattern_source": "hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body",
+   "race": "R44",
+   "race_name": "Marionette-kin",
+   "clarifiers": [
+    "marionette girl, ball joints at shoulders and hips, tar-black strings from above, human face"
+   ],
+   "gimmick": "her strings slacken when she trusts the room — she can tell, and so can we",
+   "bodytype": "BT-13",
+   "bodytype_tags": [
+    "flat chest",
+    "wide hips",
+    "soft middle"
+   ],
+   "marks": [
+    "MK-E03"
+   ],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-UR-05",
+    "CL-TS-05"
+   ],
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "scene": "lounge",
+   "palette": "P220_JADE_CARVE",
+   "kinetic": "K220",
+   "hair": "golden",
+   "eyes": "per eye-mark",
+   "predicted": {
+    "tier": "R",
+    "corridor": "B",
+    "class": "CLOTHED-TIGHT",
+    "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+    "why": "коридор B: экспозиция заявлена, заряд геометрией слабее"
+   },
+   "signals": [
+    "lingerie",
+    "panties"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, upper body, hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body, 1girl, solo,",
+    "golden hair, pink eyes, marionette girl, ball joints at shoulders and hips, tar-black strings from above, human face, flat chest, wide hips, soft middle, mid selfdeal,",
+    "stretch boyshorts riding low, fabric hugging the hip line, dark garment, fabric clinging, nothing underneath, lingerie; panties — the stretch boyshorts is the claim, Y24-made,",
+    "hoodie half-rolled at the waistband by the wind's pull + fabric stretched taut across the chest map + upper body,",
+    "a healing shiner under the left eye, plum fading to yellow at the rim, her strings slacken when she trusts the room — she can tell, and so can we,",
+    "flat and honest about it — the hips answer for both of them, the strings catch light as thin black highlights,",
+    "jade-green-stone dominant, нефрит: резьба по камню, полоса целадона вместо блика; свет — камень глубокий, не светящийся, bone-white-carve accent; her colors: Jade Stone Carve,",
+    "stylized 2D anime face, anime eyes (a healing shiner under the left eye, plum fading to yellow at the rim), small nose, small mouth, golden hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples, areola, cameltoe",
+    "nude"
+   ]
+  },
+  {
+   "n": 21,
+   "y_card": "Y413",
+   "pattern_weaved": "leaning in from the side a hand-span from the lens, one knee on the seat beside the viewer, weight on the planted palm, lips at the top frame edge mid-whisper, eyes straight into the lens",
+   "pattern_source": "leaning in from the side a hand-span from the lens, one knee on the seat beside the viewer, weight on the planted palm, lips at the top frame edge mid-whisper, eyes straight into the lens + CAM02",
+   "race": "R16",
+   "race_name": "Moth-kin",
+   "clarifiers": [
+    "moth girl, moth antennae, fuzzy moth collar, dust-silver wings, human face"
+   ],
+   "gimmick": "she drifts toward every lamp in the room mid-sentence",
+   "bodytype": "BT-11",
+   "bodytype_tags": [
+    "large breasts",
+    "slender waist",
+    "average hips"
+   ],
+   "marks": [],
+   "oc_hook": null,
+   "cl_codes": [
+    "CL-AC-04",
+    "CL-DR-13"
+   ],
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "scene": "intimates",
+   "palette": "P140_SIMUL_SCHOOLHOUSE",
+   "kinetic": "K231",
+   "hair": "violet",
+   "eyes": "pink",
+   "predicted": {
+    "tier": "R+",
+    "corridor": "A",
+    "class": "COVER",
+    "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+    "why": "коридор A + класс экспозиции: объект-прикрытие/состояние несёт заряд"
+   },
+   "signals": [
+    "arms covering chest"
+   ],
+   "pos": [
+    "masterpiece, best quality, absurdres, intricate details, camera from above looking down, leaning in from the side a hand-span from the lens, 1girl, solo, violet hair, pink eyes, moth girl,",
+    "moth antennae, fuzzy moth collar, dust-silver wings, human face, large breasts, slender waist, average hips, mid dreamfile,",
+    "oversized cardigan worn as a dress, buttons fighting the gap at the thighs, taped nipples, topless with tape, nothing underneath, arms covering chest — the cover is the claim, Y413-made,",
+    "leaning in from the side a hand-span from the lens, one knee on the seat beside the viewer, weight on the planted palm, lips at the top frame edge mid-whisper, eyes straight into the lens,",
+    "she drifts toward every lamp in the room mid-sentence, the scale tips forward — the bust leads by a half-beat, the rest of the frame follows, wing-dust glows rim-lit — she is a lamp's best customer,",
+    "thirty-boards-one-girl, simul-number-red accent; her colors: Simul Schoolhouse,",
+    "stylized 2D anime face, anime eyes (pink), small nose, small mouth, violet hair framing,"
+   ],
+   "neg": [
+    "young girl, immature body, oversized head, loli, shota",
+    "signature, watermark, artist name, logo, 1boy",
+    "photorealistic, 3d face, realistic facial structure, bad anatomy, extra fingers, bad hands",
+    "washed-out, faded colors, low contrast, flat colors, muddy colors, dull, overexposed, underexposed, pastel colors, muted colors, gray palette, pale colors, desaturated, white haze, milky fog, soft focus, hazy",
+    "nipples exposed, areola, bra, camisole, bandeau, undershirt"
+   ]
+  }
+ ]
+}

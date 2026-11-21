@@ -265,10 +265,19 @@ class TestOcCandidatesD(unittest.TestCase):
 
     def test_spec(self):
         d = load("oc-candidates.json")
-        self.assertEqual(d["version"], "1.0.0")
+        # v1.0.0 born-empty (ЦИКЛ 4); v1.1.0 — первый боевой лог: 9 кандидатов
+        # EXP-партии T5-29 (заказ автора «9 кандидатов в ОС»), статус trial
+        self.assertIn(d["version"], ("1.0.0", "1.1.0"))
         self.assertIn("bundle", d)
         self.assertIn("candidates", d)
-        self.assertEqual(d["candidates"], [])
+        if d["version"] == "1.0.0":
+            self.assertEqual(d["candidates"], [])
+        else:
+            # боевой лог: схема бандла bundle.fields у каждой записи
+            fields = set(d["bundle"]["fields"])
+            for c in d["candidates"]:
+                self.assertTrue(fields & set(c), f"кандидат без полей бандла: {c.get('slot')}")
+                self.assertIn(c["status"], ("trial", "taken", "passed"))
 
 
 class TestForgeABG(unittest.TestCase):

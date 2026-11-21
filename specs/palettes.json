@@ -1,5 +1,5 @@
 {
- "version": "1.14.0",
+ "version": "1.15.0",
  "born": "2026-11-18: волна 10 «способы раскраски» P234–P242 (T5-25)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -7762,6 +7762,241 @@
    "family": "exp_color_wave_12",
    "born": "2026-11-20, T5-27 «PREY» — волна 12 «раскраска выживания» (заказ автора)",
    "trial": "trial до вердикта T5-27"
+  },
+  {
+   "id": "P261_AURORA_VEIN",
+   "name": "Aurora Vein",
+   "dominant": [
+    "aurora-green-current",
+    "stone-violet-deep"
+   ],
+   "secondary": [
+    "ribbon-teal"
+   ],
+   "accent1": [
+    "one-vein flash running the ceiling"
+   ],
+   "accent2": "girl-silhouette-grey",
+   "shadow": "current-shadow-green",
+   "forbidden": [
+    "neon",
+    "pure-white",
+    "flat sky"
+   ],
+   "light_type": "сияние — вена неба: ток света прокатывается по своду волной, наклоняется к той, что внизу, и уходит дальше; свет живой, не ламповый",
+   "sd_fragment": "aurora-green-current over stone-violet-deep, ribbon-teal wave at the ceiling's vein, girl-silhouette-grey at the edges",
+   "mood": "the-light-that-chooses-you",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P262_MOSS_LINE",
+   "name": "Moss Line",
+   "dominant": [
+    "moss-lush",
+    "lime-pale"
+   ],
+   "secondary": [
+    "brick-rust"
+   ],
+   "accent1": [
+    "dew-silver"
+   ],
+   "accent2": "stone-cold-grey",
+   "shadow": "moss-shadow-green",
+   "forbidden": [
+    "neon",
+    "desert tones"
+   ],
+   "light_type": "моховая кромка держит воду утра: свет читается по влажной границе камня и мха, роса — линия",
+   "sd_fragment": "moss-lush over lime-pale, dew-silver line at the stone's edge, brick-rust accent",
+   "mood": "the-damp-frontier",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P263_OSSUARY_CHALK",
+   "name": "Ossuary Chalk",
+   "dominant": [
+    "bone-chalk",
+    "umber-shadow"
+   ],
+   "secondary": [
+    "registry-linen"
+   ],
+   "accent1": [
+    "verdict-wine"
+   ],
+   "accent2": "candlewax-pale",
+   "shadow": "shelf-shadow-umber",
+   "forbidden": [
+    "neon",
+    "blood-red"
+   ],
+   "light_type": "мел оссуария: полки держат ровный костяной тон, тень между фолиантами глубже, чем кажется",
+   "sd_fragment": "bone-chalk over umber-shadow, registry-linen pale at the shelves, verdict-wine one accent",
+   "mood": "the-kept-record",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P264_SPORE_GLOW",
+   "name": "Spore Glow",
+   "dominant": [
+    "spore-glow-cream",
+    "gill-umbra"
+   ],
+   "secondary": [
+    "stem-pale"
+   ],
+   "accent1": [
+    "cap-rust"
+   ],
+   "accent2": "mycelium-thread-gold",
+   "shadow": "under-cap-shadow",
+   "forbidden": [
+    "neon",
+    "hard white"
+   ],
+   "light_type": "выращенный свет: споры висят в контражуре медленными созвездиями, свет — урожай, не прибор",
+   "sd_fragment": "spore-glow-cream over gill-umbra, stem-pale at the hem, cap-rust accent, mycelium-gold threads",
+   "mood": "the-light-you-grow",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P265_THREAD_HOARD_SILK",
+   "name": "Thread-Hoard Silk",
+   "dominant": [
+    "thread-silver",
+    "hoard-umber"
+   ],
+   "secondary": [
+    "knit-shadow"
+   ],
+   "accent1": [
+    "knot-copper"
+   ],
+   "accent2": "chitin-blue-black",
+   "shadow": "yarn-shadow-brown",
+   "forbidden": [
+    "neon",
+    "pastel"
+   ],
+   "light_type": "нить ловит блик на сгибе: свет идёт по фактуре пряжи рядами, как спицы считают петли",
+   "sd_fragment": "thread-silver over hoard-umber, knot-copper accents at the crossings, chitin-blue-black specular",
+   "mood": "the-gift-still-warm",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P266_FLOODED_VERDIGRIS",
+   "name": "Flooded Verdigris",
+   "dominant": [
+    "waterline-verdigris",
+    "pool-abyss-teal"
+   ],
+   "secondary": [
+    "basin-bronze"
+   ],
+   "accent1": [
+    "drop-silver"
+   ],
+   "accent2": "gel-core-mint",
+   "shadow": "undertow-shadow",
+   "forbidden": [
+    "neon",
+    "dry earth"
+   ],
+   "light_type": "паводок-патина: вода режет свет на водную линию, всё ниже линии — каустика, всё выше — тёплая медь чаши",
+   "sd_fragment": "waterline-verdigris over pool-abyss-teal, basin-bronze rim, drop-silver beads at the line",
+   "mood": "the-pool-that-keeps",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P267_ARCHIVE_BRASS",
+   "name": "Archive Brass",
+   "dominant": [
+    "archive-brass",
+    "shelf-umber"
+   ],
+   "secondary": [
+    "ledger-cream"
+   ],
+   "accent1": [
+    "rune-glow-amber"
+   ],
+   "accent2": "clay-warm",
+   "shadow": "stack-shadow-brown",
+   "forbidden": [
+    "neon",
+    "cold blue"
+   ],
+   "light_type": "латунь архива: тёплые углы полок собирают свет, руны держат ленивое внутреннее свечение",
+   "sd_fragment": "archive-brass over shelf-umber, ledger-cream pages, rune-glow-amber at the joints",
+   "mood": "the-memory-that-wears",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P268_DUSK_BINDING",
+   "name": "Dusk Binding",
+   "dominant": [
+    "dusk-bind-violet",
+    "corridor-stone"
+   ],
+   "secondary": [
+    "seam-light-teal"
+   ],
+   "accent1": [
+    "star-fleck-pale"
+   ],
+   "accent2": "smoke-depth-black",
+   "shadow": "threshold-shadow",
+   "forbidden": [
+    "hard noon",
+    "neon"
+   ],
+   "light_type": "сумеречная привязь: тьма здесь — материя, свет договаривается с ней по швам; тень носит одежду вместо той, что её носит",
+   "sd_fragment": "dusk-bind-violet over corridor-stone, seam-light-teal at the edges, star-fleck-pale points",
+   "mood": "the-dark-that-fits",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P269_DUNGEON_HEART",
+   "name": "Dungeon Heart",
+   "dominant": [
+    "heart-carmine",
+    "abyss-indigo"
+   ],
+   "secondary": [
+    "throne-stone-grey"
+   ],
+   "accent1": [
+    "pulse-gold"
+   ],
+   "accent2": "tail-rim-gold",
+   "shadow": "depth-shadow-indigo",
+   "forbidden": [
+    "neon",
+    "pastel"
+   ],
+   "light_type": "сердце подземелья: пульс кармина идёт из глубины медленными тактами, тронный камень ловит его отражением",
+   "sd_fragment": "heart-carmine over abyss-indigo, pulse-gold beat at the depth, throne-stone-grey at the seat",
+   "mood": "the-pulse-below",
+   "family": "exp_color_wave_13",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
+   "trial": "trial до вердикта T5-29"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -7789,7 +8024,8 @@
     "P205_TERMINAL_DAWN",
     "P206_TUNNEL_MOSS"
    ],
-   "note": "9 РАЗНЫХ семей поездной линии: steam / rainglass / dining-brass / berth-plum / waycar-oxblood / lamproom-green / ticket-stub / terminal-dawn / tunnel-moss"
+   "note": "9 РАЗНЫХ семей поездной линии: steam / rainglass / dining-brass / berth-plum / waycar-oxblood / lamproom-green / ticket-stub / terminal-dawn / tunnel-moss",
+   "palette_ids": []
   },
   {
    "wave": "exp_color_wave_7",
@@ -7807,7 +8043,8 @@
    ],
    "note": "9 ТИПОВ раскраски: pastel-chalk / pale-watercolor / graphite-mono / sepia-card / riso-duotone / gray-one-red / uv-blacklight / holo-foil / cyanotype; NEG-замена anti-wash юнитов — слотово в своих слотах. ПРОМОЦИЯ вердиктом T5-22: полный зачёт — первый эксперимент раскраски, ушедший в основной пул целиком.. НЕПРЕРЫВНОСТЬ (вердикт T5-23, 2026-11-15): волна 7 НЕ была использована в T5-23 — автор это заметил («забыл про цветовки которые были в прошлом EXP»); впредь одобренные волны обязательны к ротации наравне с новыми.",
    "status": "main_pool (promoted by verdict T5-22 2026-11-14)",
-   "promoted": "2026-11-14, вердикт T5-22: «цветовка хорошо себя показала - забираем в основной пул» — все 9 выходят из trial-статуса в основную ротацию (C066/C067/C071 применяются как обычным палитрам); NEG-замена anti-wash юнитов слотово себя оправдала"
+   "promoted": "2026-11-14, вердикт T5-22: «цветовка хорошо себя показала - забираем в основной пул» — все 9 выходят из trial-статуса в основную ротацию (C066/C067/C071 применяются как обычным палитрам); NEG-замена anti-wash юнитов слотово себя оправдала",
+   "palette_ids": []
   },
   {
    "wave": "exp_color_wave_8",
@@ -7825,7 +8062,8 @@
    ],
    "note": "9 РАЗНЫХ семей материалов отделки: damascene-gold / urushi-lacquer / niello / cloisonne / jade-carve / abalone-nacre / etched-copper / bone-inlay / tooling-leather — материал несёт свет (закон света v2), ни одного прибора. ПРОМОЦИЯ вердиктом T5-23: полный зачёт — «материал несёт свет» сработал; ПРАВИЛО НЕПРЕРЫВНОСТИ (урок того же вердикта: «ты забыл про цветовки, которые были в прошлом EXP — мы пробовали раскраски и я их одобрил»): одобренные волны (7 и 8) — обязательная ротация будущих батчей, новая волна НЕ заменяет старые, а живёт рядом.",
    "status": "main_pool (promoted by verdict T5-23 2026-11-15)",
-   "promoted": "2026-11-15, вердикт T5-23: «Очень понравилась цветовка и то, как ты попытался хорошо проработать девчонок» + EXP «понравилось всё до мельчайшей детали» — все 9 материалов отделки (damascene/urushi/niello/cloisonne/jade/abalone/etched-copper/bone-inlay/tooling-leather) выходят из trial в основную ротацию; материал несёт свет."
+   "promoted": "2026-11-15, вердикт T5-23: «Очень понравилась цветовка и то, как ты попытался хорошо проработать девчонок» + EXP «понравилось всё до мельчайшей детали» — все 9 материалов отделки (damascene/urushi/niello/cloisonne/jade/abalone/etched-copper/bone-inlay/tooling-leather) выходят из trial в основную ротацию; материал несёт свет.",
+   "palette_ids": []
   },
   {
    "wave": "exp_color_wave_9",
@@ -7842,7 +8080,8 @@
     "P233_SALT_SKIN_SUN"
    ],
    "note": "9 СЕМЕЙСТВ «аромат-вкус-кожа»: rouge-pomade / absinthe-sugar / rose-champagne / oiled-silk / sugar-pearl-melt / perfume-smoke / bitten-peach / brulee-crack / salt-skin. Тема SEDUCTION живёт материалом: запах и вкус как свет.",
-   "status": "trial (T5-24, оплата вердиктом T5-24)"
+   "status": "trial (T5-24, оплата вердиктом T5-24)",
+   "palette_ids": []
   },
   {
    "wave": "exp_color_wave_10",
@@ -7859,7 +8098,8 @@
     "P242_OPERATOR_NIGHT_REEL"
    ],
    "note": "9 СПОСОБОВ раскраски: églomisé-золочение сзади стекла / фейграйн под дерево / баллончик-дрипы / витраж-свинец руин / воронение побежалостями / нитяная живопись / гальваническое золото / мастихин-мазки / операторская ночная плёнка с меловой разметкой. Тема «Lullaby of the broken World» живёт ремеслом: мир заново раскрашивают тем, что осталось. Семьи НИ РАЗУ не выходили (проверено против окна T5-22/23/24: pastel-chalk/graphite/sepia/riso-duotone/cyanotype/ink-wash/cloisonné — другие способы).",
-   "status": "trial (T5-25, оплата вердиктом T5-25)"
+   "status": "trial (T5-25, оплата вердиктом T5-25)",
+   "palette_ids": []
   },
   {
    "wave": "exp_color_wave_11",
@@ -7885,7 +8125,8 @@
     "P31",
     "P32",
     "P33"
-   ]
+   ],
+   "palette_ids": []
   },
   {
    "wave": "exp_color_wave_11",
@@ -7911,7 +8152,8 @@
     "P31",
     "P32",
     "P33"
-   ]
+   ],
+   "palette_ids": []
   },
   {
    "wave": "exp_color_wave_12",
@@ -7928,7 +8170,44 @@
     "silverpoint tarnish",
     "amate bark fiber"
    ],
-   "note": "девять РАЗНЫХ механик; семьи ни разу не выходили (волны 1–11 не пересечены); методы читают тему: сопротивление/починка/сохранение/плоскость/минерал/жёсткая кромка/отпечаток/линия/волокно"
+   "note": "девять РАЗНЫХ механик; семьи ни разу не выходили (волны 1–11 не пересечены); методы читают тему: сопротивление/починка/сохранение/плоскость/минерал/жёсткая кромка/отпечаток/линия/волокно",
+   "palette_ids": []
+  },
+  {
+   "wave": "exp_color_wave_13",
+   "name": "свет подземелья",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — заказ автора: «9 новых раскрасок и экспериментальных палитр»",
+   "methods": "жила сияния (aurora as vein) / моховая кромка (moss-edge light) / мел оссуария (chalk pale) / выращенный свет (spore glow backlight) / нить-шёлк (thread sheen) / паводок-патина (flooded waterline) / латунь архива (brass glow) / сумеречная привязь (dusk that clothes) / сердце-пульс (the heart's pulse)",
+   "note": "9 РАЗНЫХ механик света подземелья: свет — поведение, не прибор (закон v2); семьи ни разу не выходили (волны 1–12 не пересекаются)",
+   "palette_ids": [
+    "P261_AURORA_VEIN",
+    "P262_MOSS_LINE",
+    "P263_OSSUARY_CHALK",
+    "P264_SPORE_GLOW",
+    "P265_THREAD_HOARD_SILK",
+    "P266_FLOODED_VERDIGRIS",
+    "P267_ARCHIVE_BRASS",
+    "P268_DUSK_BINDING",
+    "P269_DUNGEON_HEART"
+   ]
+  },
+  {
+   "wave": "exp_color_wave_13",
+   "name": "свет подземелья",
+   "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — заказ автора: «9 новых раскрасок и экспериментальных палитр»",
+   "methods": "жила сияния (aurora as vein) / моховая кромка (moss-edge light) / мел оссуария (chalk pale) / выращенный свет (spore glow backlight) / нить-шёлк (thread sheen) / паводок-патина (flooded waterline) / латунь архива (brass glow) / сумеречная привязь (dusk that clothes) / сердце-пульс (the heart's pulse)",
+   "note": "9 РАЗНЫХ механик света подземелья: свет — поведение, не прибор (закон v2); семьи ни разу не выходили (волны 1–12 не пересекаются)",
+   "palette_ids": [
+    "P261_AURORA_VEIN",
+    "P262_MOSS_LINE",
+    "P263_OSSUARY_CHALK",
+    "P264_SPORE_GLOW",
+    "P265_THREAD_HOARD_SILK",
+    "P266_FLOODED_VERDIGRIS",
+    "P267_ARCHIVE_BRASS",
+    "P268_DUSK_BINDING",
+    "P269_DUNGEON_HEART"
+   ]
   }
  ]
 }
