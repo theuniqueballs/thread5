@@ -125,6 +125,23 @@ corridor карты ≠ полю Corridor:. Exemption'ы эры 1.14.0 снят�
 (stamp_exempt_* = false): вплетение — обычная проза POS (formatGate и
 n-граммы действуют). Ретро: история ≤T5-24 не переписывается.
 
+v1.17.0 (заказ автора 2026-11-21, после вердикта T5-28: «У тебя есть комбо
+Y, но одежда дрессера вообще не стакается с рейтингом. Даже если комбо
+крутое и ёбнутое, неправильная одежда в неправильном состоянии скинет R+
+комбо до PG-13. Надо найти способ стакнуть момент Y и одежду, а как — это
+уже твоя забота»): yStackGate — Y×CLOSET STACK. closet.json v1.1.0 даёт
+каждому CL-коду поле exposure (классы экспозиции Y-карт, которые вещь
+держит честно: COVER|PROCESS|LINGERIE|CLOTHED-TIGHT|SHEER); dresser.json
+v1.2.0 — секцию y_stack (матрица класс → полки-источники ∩ канал-партнёр
+∩ gar_f-состояние ∩ душилки; закон: Y-FIRST сужает кубик ДО броска,
+пустое пересечение → переброс КАРТЫ, не одежды). Гейт: слот с Y-картой
+обязан нести ≥1 CL-код с exposure∋класс карты — иначе WARN «одежда душит
+экспозицию» (R+/R — «слот падает до PG-13»). Парсер слота собирает
+CL-коды-ВЕЩИ из Gar-строки (код + « (»; канон-ССЫЛКИ без скобок — нет).
+Слоты без CL-кодов (ОС-канон VERBATIM, PG-13-выдох) не трогаются.
+Счётчики y_stack — в квитанцию. WARN с T5-29; FAIL — по вердикту автора
+(прецедент yCardGate: WARN с T5-24).
+
 v1.16.0 (инженерный апгрейд 2026-11-20, трек «гейты молча не выключаются»):
 (1) нулевой слот-парсинг = FAIL — батч с дрейфнувшим форматом шапки
 (перенос строки внутри скобок) раньше проходил послотовые проверки НОЛЬ
@@ -210,6 +227,7 @@ class Slot:
         self.channel_mark = ""
         self.corridor = None  # v1.10.0 corridorAudit: A|B|A+B|— (fact ≠ label)
         self.y_card = None    # v1.12.0 Y-first: карта Y## из шапки или поля Y-card
+        self.gar_codes = []   # v1.17.0 yStack: CL-коды-ВЕЩИ из Gar-строки (код + « (»)
         # v1.14.0 Y-STAMP (акт 2, приказ Б): строка клейма в POS
         self.stamp_line = None
         self.stamp_id = None
@@ -297,6 +315,11 @@ def parse_batch(path):
             flush_mode()
             cur.kinetics += re.findall(r"\bK\d{1,3}\b", sm.group(1))
             continue
+        # v1.17.0 yStack: вещи слота — только «CL-XX-NN (описание)»; коды-ССЫЛКИ
+        # («канон-механика CL-TS-13: …») без скобок — не вещи, не собираем
+        gm = re.match(r"^Gar:\s*(.*)$", ln)
+        if gm:
+            cur.gar_codes = re.findall(r"\b(CL-[A-Z]{1,3}-\d{2,3})\s*\(", gm.group(1))
         sm = re.match(r"^Stack:\s*(.*)$", ln)
         if sm:
             flush_mode()
@@ -835,6 +858,20 @@ def check_claimphysics(slots, warns, batch_no=-1):
     return caught + r_caught
 
 
+def load_closet_exposure():
+    """v1.17.0 yStack: closet.json v1.1.0 — код → exposure-классы, которые
+    вещь держит честно (Y×CLOSET STACK, заказ автора 2026-11-21)."""
+    try:
+        data = json.loads((ROOT / "specs" / "closet.json").read_text(encoding="utf-8"))
+        return {
+            it["code"]: list(it.get("exposure", []))
+            for v in (data.get("shelves") or {}).values()
+            for it in v.get("items", [])
+        }
+    except Exception:
+        return {}
+
+
 def load_y_cards():
     """v1.12.0 Y-first: карты из specs/camera.json y_cards (паттерн = pose+camera)."""
     try:
@@ -972,6 +1009,66 @@ def load_prev_y_usage(depth, exclude=None, batch_no=-1):
             if s.y_card:
                 used.setdefault(s.y_card, p.name)
     return used
+
+
+def check_ystack(slots, warns, batch_no=-1):
+    """v1.17.0 yStackGate (Y×CLOSET STACK, заказ автора 2026-11-21 после вердикта
+    T5-28: «У тебя есть комбо Y, но одежда дрессера вообще не стакается с
+    рейтингом. Даже если комбо крутое и ёбнутое, неправильная одежда в
+    неправильном состоянии скинет R+ комбо до PG-13»). Слот с Y-картой обязан
+    нести хотя бы один CL-код, чьё exposure (closet.json v1.1.0) содержит класс
+    экспозиции карты — иначе одежда душит сигнал: WARN «стак пуст». Слоты без
+    CL-кодов (ОС-канон VERBATIM / PG-13-выдох) не трогаются: у канона своя
+    механика прикрытия в Channel-строке. Душилка при живом носителе (носки
+    под PROCESS-платьем и т.п.) — легальный слой-партнёр, не шумим."""
+    cfg = GATES.get("yStack")
+    if not cfg or (0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9))):
+        return {"checked": 0, "stacked": 0, "choked": 0, "canon_without_codes": 0,
+                "geometry_only": 0}
+    ycards = load_y_cards()
+    closet_exp = load_closet_exposure()
+    # смежность (v1.17.0): обтягивающая вещь не прячет геометрию прикрытия —
+    # CLOTHED-TIGHT держит и COVER-карты (душат COVER только «объёмные
+    # закрытые» — oversized/застёгнутые плотные слои без обоих классов);
+    # обратное неверно: COVER-вещь (backless/кроп) не несёт bumps → CLOTHED-TIGHT-карту душит
+    carries = {"COVER": {"COVER", "CLOTHED-TIGHT"}}
+    st = {"checked": 0, "stacked": 0, "choked": 0, "canon_without_codes": 0,
+          "geometry_only": 0}
+    for s in slots:
+        if not s.y_card or s.y_card not in ycards:
+            continue  # карты нет / неизвестна — это территория yCardGate
+        card = ycards[s.y_card]
+        exposure_class = ((card.get("components") or {}).get("exposure") or {}).get("class")
+        if not exposure_class or exposure_class == "—":
+            # класс «—»: интим несёт ГЕОМЕТРИЯ позы (коридор B, «наследуется
+            # от позы») — экспозиционного класса нет, одеждой не душится
+            if s.gar_codes:
+                st["geometry_only"] += 1
+            continue
+        if not s.gar_codes:
+            if s.rating in ("R+", "R"):
+                st["canon_without_codes"] += 1
+            continue  # ОС-канон/PG-13 — не территория стака
+        st["checked"] += 1
+        wanted = carries.get(exposure_class, {exposure_class})
+        known = [c for c in s.gar_codes if c in closet_exp]
+        unknown = [c for c in s.gar_codes if c not in closet_exp]
+        carriers = [c for c in known if wanted & set(closet_exp[c])]
+        if unknown:
+            warns.append((s.sid, "y-stack",
+                          "CL-код(ы) %s не найдены в closet.json (шкаф v1.1.0+) — "
+                          "стак не проверен, проверь код вручную" % ", ".join(unknown)))
+        if carriers:
+            st["stacked"] += 1
+        else:
+            st["choked"] += 1
+            drop = " — R+/R сигнал не прочитается, слот падает до PG-13" if s.rating in ("R+", "R") else ""
+            warns.append((s.sid, "y-stack",
+                          "одежда душит экспозицию карты %s (%s): ни один CL-код "
+                          "%s не держит класс (closet.json exposure) — переброс "
+                          "вещи по матрице dresser.json y_stack%s"
+                          % (s.y_card, exposure_class, ", ".join(s.gar_codes), drop)))
+    return st
 
 
 def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
@@ -2001,6 +2098,7 @@ def main():
     fact_rplus = check_corridor(slots, warns, fails, batch_no)  # v1.10.0 corridorAudit; v1.13.0 В33 failFrom
     physics_caught = check_claimphysics(slots, warns, batch_no)  # v1.11.0 В31
     y_stats = check_ycards(slots, warns, batch_no, ab_pairs)  # v1.12.0 Y-first
+    ystack_stats = check_ystack(slots, warns, batch_no)  # v1.17.0 Y×CLOSET STACK
     retro = "--retro" in sys.argv  # v1.14.0: ретро-режим новых гейтов (WARN)
     ystamp_stats = check_ystamp(batch_path, slots, warns, fails, batch_no, retro)  # v1.14.0 акт 2
     combo_stats = check_combo_pose(slots, warns, batch_no)  # v1.13.0 акт 1
@@ -2058,6 +2156,13 @@ def main():
             "rplus_without_card": y_stats["rplus_without"],
             "pattern_misses": y_stats["pattern_misses"],
             "duplicates": y_stats["duplicates"],
+        },
+        "y_stack": {  # v1.17.0 Y×CLOSET STACK: одежда под класс карты
+            "checked": ystack_stats["checked"],
+            "stacked": ystack_stats["stacked"],
+            "choked": ystack_stats["choked"],
+            "canon_without_codes": ystack_stats["canon_without_codes"],
+            "geometry_only": ystack_stats["geometry_only"],
         },
         "combo_pose": {  # v1.13.0 акт 1: составные позы — от карт-обёрток
             "composite_used": combo_stats["composite_used"],

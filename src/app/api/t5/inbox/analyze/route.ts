@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import {
   applyAnalyzed,
   analyzeItem,
+  effectiveLabel,
   readMeta,
   withMetaLock,
   writeMeta,
