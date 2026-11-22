@@ -46,8 +46,11 @@ local-*
 *.log
 dev.log
 dev.out.log
-test
-prompt
+# 2026-11-23 (хирургия тройного вердикта): голые `test`/`prompt` молча
+# прятали ЛЮБУЮ будущую папку с таким именем (src/test/ и т.п.) — якорим
+# в корень репо, где жили шаблонные артефакты платформы
+/test
+/prompt
 
 server.log
 # Skills directory

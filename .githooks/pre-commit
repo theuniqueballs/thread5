@@ -22,6 +22,10 @@
 #       --md batches/T5-NN.gate-report.md
 #
 # Установка для клона: bash setup.sh   (git config core.hooksPath .githooks)
+# Ревизия 2026-11-23 (хирургия тройного вердикта, 1.13): pre-commit гоняет
+# полный прогон — валидатор, тест-горн, unittest печи, bun test прилавка —
+# раньше только валидатор + testforge (внешний аудит: «молчаливый разлом
+# тестов уезжал в репо под шумок»).
 set -u
 
 # (1.3) спеки валидны — иначе гейты молча выключены
@@ -37,6 +41,25 @@ if ! python3 tools/testforge.py check 2>/dev/null; then
   echo "  ✗ тест-горн: болванки PROTO-2 с нарушениями — коммит заблокирован (ревизия 2026-11-22, 1.12)"
   python3 tools/testforge.py check || true
   exit 1
+fi
+
+# (1.13) ПОЛНЫЙ ПРОГОН ПЕРЕД КОММИТОМ (тройной вердикт 2026-11-22, рекомендация
+# «Расширить pre-commit: добавить unittest и bun test»): молчаливая поломка
+# тестов не может уехать в репо — прогон короткий (печь ~3с, прилавок <1с)
+if ! python3 -m unittest discover -s tests/python > /dev/null 2>&1; then
+  echo "  ✗ юнит-тесты печи FAIL — прогони подробно: python3 -m unittest discover -s tests/python -v (ревизия 2026-11-23, 1.13)"
+  exit 1
+fi
+echo "  ✓ юнит-тесты печи: PASS"
+
+if command -v bun >/dev/null 2>&1 && [ -d node_modules ]; then
+  if ! bun test tests/unit > /dev/null 2>&1; then
+    echo "  ✗ юнит-тесты прилавка FAIL — прогони подробно: bun test tests/unit (ревизия 2026-11-23, 1.13)"
+    exit 1
+  fi
+  echo "  ✓ юнит-тесты прилавка: PASS"
+else
+  echo "  ~ bun/node_modules недоступны — тесты прилавка пропущены (CI поймает)"
 fi
 
 changed=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(batches/T5-[0-9]+R?|special/SO-[0-9]+)\.md$' || true)

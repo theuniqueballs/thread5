@@ -991,14 +991,19 @@ def cmd_check(which: str) -> int:
 
 
 # ── coverage: ничего не забывается (Г) ──────────────────────────────────
-def cmd_coverage() -> int:
+def cmd_coverage(corpus_dir: Path | None = None) -> int:
+    """Аудит покрытия пулов. Фикс 2026-11-23 (внешний аудит, баг №1):
+    ledger ПЕРЕСЧИТЫВАЕТСЯ С НУЛЯ по корпусу — раньше старый файл
+    дочитывался и счётчики копились (+288 за прогон), а тест грязнил
+    боевой ledger. Пересчёт идемпотентен: файл не переписывается, если
+    данные не изменились (no-rewrite-if-equal — git-шум исключён);
+    corpus_dir — временный каталог для тестов."""
     forge = Forge()
-    led_path = CORPUS / "coverage-ledger.json"
+    corpus = CORPUS if corpus_dir is None else Path(corpus_dir)
+    led_path = corpus / "coverage-ledger.json"
     led = {"y_cards": {}, "races": {}, "bodytypes": {}, "marks": {}, "cl_codes": {},
            "palettes": {}, "updated": datetime.now(timezone.utc).isoformat()}
-    if led_path.exists():
-        led = json.loads(led_path.read_text(encoding="utf-8"))
-    tb_files = sorted(CORPUS.glob("TB-*.json"))
+    tb_files = sorted(corpus.glob("TB-*.json"))
     for f in tb_files:
         doc = json.loads(f.read_text(encoding="utf-8"))
         for s in doc["slots"]:
@@ -1009,8 +1014,20 @@ def cmd_coverage() -> int:
                 led["marks"][m] = led["marks"].get(m, 0) + 1
             for c in s["cl_codes"]:
                 led["cl_codes"][c] = led["cl_codes"].get(c, 0) + 1
-    CORPUS.mkdir(parents=True, exist_ok=True)
-    led_path.write_text(json.dumps(led, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    # no-rewrite-if-equal: счётчики не изменились — файл не трогаем
+    same = False
+    if led_path.exists():
+        try:
+            old = json.loads(led_path.read_text(encoding="utf-8"))
+            same = all((old.get(k) or {}) == led[k] for k in
+                       ("y_cards", "races", "bodytypes", "marks", "cl_codes", "palettes"))
+            if same:
+                led = old
+        except Exception:
+            same = False
+    if not same:
+        corpus.mkdir(parents=True, exist_ok=True)
+        led_path.write_text(json.dumps(led, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     pools = {
         "y_cards": set(forge.cards),
         "races": set(forge.races),

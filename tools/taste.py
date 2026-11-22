@@ -32,6 +32,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "docs/LIVING-NOTES.md"
+# 2026-11-23 (Коул §11.6): LIVING-NOTES — индекс, полные записи в
+# archive/living-notes/по-месяцам; фолбэк вкуса читает всё вместе,
+# иначе «Сработало»-квитанции старых батчей молча пропали бы
+NOTES_ARCHIVE = sorted((ROOT / "archive/living-notes").glob("*.md"))
 VERDICTS_DIR = ROOT / "verdicts"
 
 GENRES = {"OC", "NICHE", "VOLT", "EXQUISITE", "EXP"}
@@ -66,8 +70,15 @@ def parse_paren(paren):
 
 
 def parse_loved():
-    """[(batch, sid, meta_dict)] из структурированных квитанций."""
+    """[(batch, sid, meta_dict)] из структурированных квитанций.
+    Читает живой лист + месячные архивы (2026-11-23): секции «Вердикт
+    T5-NN» не должны пропадать из фолбэка после архивации."""
     text = NOTES.read_text(encoding="utf-8")
+    for arch in NOTES_ARCHIVE:
+        try:
+            text += "\n" + arch.read_text(encoding="utf-8")
+        except Exception:
+            continue
     sections = []
     for m in SECTION_RE.finditer(text):
         sections.append((m.start(), m.group(1)))

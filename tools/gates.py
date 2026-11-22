@@ -2516,8 +2516,11 @@ def main():
     print(f"ВЕРДИКТ: {verdict} · FAIL: {len(fails)} · WARN: {len(warns)}")
     if GATES.get("corridorAudit") and (batch_no >= int(GATES["corridorAudit"].get("applyFrom", 10 ** 9))):
         fl = receipt["fact_label"]
+        # Фикс 2026-11-23 (внешний аудит, баг №3): «В33: FAIL» при живом
+        # вердикте PASS выглядел противоречием — это МЕТКА ЭРЫ, не результат;
+        # теперь печатается честно: «режим: FAIL-эра»
         honesty = (
-            " · В33: FAIL"
+            " · В33: режим FAIL-эра"
             if batch_no >= int(GATES["corridorAudit"].get("failFrom", 10 ** 9))
             else " · В33: WARN-старт"
         )
@@ -2543,8 +2546,12 @@ def main():
         batch_no >= int(GATES["yStamp"].get("applyFrom", 10 ** 9)) or retro
     ):
         ys = receipt["y_stamp"]
+        # Фикс 2026-11-23 (внешний аудит, баг №3): «Y-STAMP [FAIL]» при PASS —
+        # метка эры, не результат проверки; честная печать — «режим: FAIL-эра»
+        era = ("FAIL-эра" if ys["mode"] == "FAIL"
+               else "ретро-WARN" if ys["mode"] == "RETRO-WARN" else ys["mode"])
         print(
-            f"Y-STAMP [{ys['mode']}]: слотов с картой {ys['with_card']} · "
+            f"Y-STAMP (режим: {era}): слотов с картой {ys['with_card']} · "
             f"вплетено 1:1 {ys['weaved']} · не вплетено {ys['no_weave']} · "
             f"пересказов {ys['mismatch']} · меток в POS {ys['banned']} · "
             f"R+ от «—» {ys['empty_class_rplus']} · "

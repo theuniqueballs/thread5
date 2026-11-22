@@ -10,7 +10,12 @@
 - MODE: **CLOCK** (стандарт: pre-gate, FURNACE LITE, без новых доктрин) |
   LAB (эксперимент: long tail, новые Y, A/B — только по приказу автора) |
   SURGERY (инженерия по багрепорту) | SPECIAL (комета SO)
-- ACTIVE_Y: window-default (`python3 tools/oracle.py pool --for T5-NN`)
+- MODE дублируется в specs/delivery-index.json (поле mode; счётчик CLOCK
+  подряд — `python3 tools/t5delivery.py status`, Коул §13)
+- ACTIVE_Y: траст-CLOCK (`python3 tools/oracle.py pool --for T5-NN` —
+  активный пул HIGH+MID ≤ 80 + window-eligible; жребий: `oracle.py draw
+  --for T5-NN --trust`; после вердикта — `oracle.py trust --rebuild`)
+- ПРЕ-ГАРДЕРОБ: набор в кулдауне 3 партии (`tools/pregarment.py`, LAWS §22)
 - PRE-GATE: обязателен (04-EARTH §2.9) · FURNACE: LITE / FULL
 
 ## Заказ (солнечный ветер)
@@ -50,6 +55,9 @@
 - Визуальный словарь (6–12 рендерящихся якорей): …
 - Анти-словарь (чего в теме НЕТ): …
 - IP-граница (что не входит в POS, LAWS §6): …
+- **Фасеты до жребия (Коул §8, 2026-11-23):** AXIS (что кадр делает) ·
+  ANTI (чего НЕ будет ×21) · PROMISE (что читается без брифа) ·
+  21 фасет-однострочник, РАЗНЫЕ — ДО жребия оракула
 
 ## Бунты SOL
 

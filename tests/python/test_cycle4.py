@@ -5,7 +5,7 @@
   - marks.json (И): 42 метки, рейтинг-нейтральность, kin_compat
   - races.json v2.7.0 (З): кин-оверхаул — clarifiers/gimmick/skin_type
   - raw-plus v2.3.0 (В): закон тег-порядка
-  - dresser v1.3.0 (Ж): закон пре-гардероба + tools/pregarment.py
+  - dresser v1.4.0 (Ж): закон пре-гардероба (кулдаун набора, ревизия 2026-11-23) + tools/pregarment.py
   - tools/testforge.py (А/Б/Г): ролл/чек/покрытие/сравнение
   - oc-candidates.json (Д): реестр кандидатов
 
@@ -201,7 +201,9 @@ class TestTagOrderV(unittest.TestCase):
 
 
 class TestPregarmentJ(unittest.TestCase):
-    """пункт Ж: пре-гардероб — свежие комбо под жребий, набор не повторяется."""
+    """пункт Ж: пре-гардероб — свежие комбо под жребий, набор в кулдауне
+    (ревизия 2026-11-23: кулдаун 3 партии вместо вечного бана — вердикт
+    автора + Коул R8)."""
 
     def setUp(self):
         self.closet = pg.load_closet()
@@ -253,11 +255,60 @@ class TestPregarmentJ(unittest.TestCase):
                 seen.add(combo["combo_key"])
                 ledger["combos_used"][combo["combo_key"]] = {"batch": "test"}
 
+    def test_cooldown_not_eternal_ban(self):
+        """Ревизия 2026-11-23 (вердикт автора «комбо не должны навсегда
+        баниться» + Коул R8): набор в кулдауне 3 партии, затем СВОБОДЕН."""
+        ledger = {"version": "1.1.0", "combos_used": {
+            "deadbeef": {"batch": "T5-30", "y_card": "Y1", "at": "x"}}}
+        # внутри окна кулдауна (3 партии) — блок
+        for current in (31, 32, 33):
+            self.assertTrue(pg.combo_blocked(ledger, "deadbeef", current),
+                            f"T5-{current}: набор T5-30 обязан сидеть в кулдауне")
+        # окно вышло — набор свободен (вечного бана НЕТ)
+        for current in (34, 40):
+            self.assertFalse(pg.combo_blocked(ledger, "deadbeef", current),
+                             f"T5-{current}: набор T5-30 должен быть свободен")
+        # чужие/новые наборы не блокируются
+        self.assertFalse(pg.combo_blocked(ledger, "cafebabe", 31))
+
+    def test_cooldown_conservative_on_unknown_labels(self):
+        """Мусорная метка партии или вызов без номера — консервативный блок
+        (кубик перебрасывает, не возвращает катаное; прецедент свежести)."""
+        ledger = {"version": "1.1.0", "combos_used": {
+            "deadbeef": {"batch": "test", "y_card": "Y1", "at": "x"}}}
+        self.assertTrue(pg.combo_blocked(ledger, "deadbeef", 31))
+        self.assertTrue(pg.combo_blocked(ledger, "deadbeef", None))
+        led2 = {"version": "1.1.0", "combos_used": {
+            "deadbeef": {"batch": "T5-30", "y_card": "Y1", "at": "x"}}}
+        self.assertTrue(pg.combo_blocked(led2, "deadbeef", None))
+
+    def test_batch_no_of_labels(self):
+        self.assertEqual(pg.batch_no_of("T5-30"), 30)
+        self.assertEqual(pg.batch_no_of("TB-20261122-4242"), 20261122)
+        self.assertIsNone(pg.batch_no_of("test"))
+        self.assertIsNone(pg.batch_no_of(""))
+
+    def test_roll_batch_uses_cooldown_window(self):
+        """Интеграция: roll_batch с номером партии не банит наборы старше
+        окна кулдауна (записи реестра T5-29/30 свободны для T5-34+)."""
+        led = pg.load_ledger()
+        # миграция: файл на диске 1.1.0 с политикой кулдауна
+        self.assertEqual(led["version"], "1.1.0")
+        self.assertEqual(led["policy"]["cooldown_batches"], 3)
+        old = [k for k, v in led["combos_used"].items()
+               if pg.batch_no_of(v.get("batch", "")) in (29, 30)]
+        self.assertTrue(old, "в реестре должны быть записи T5-29/30")
+        # для партии 34+ все они свободны (окно кулдауна 31–33 вышло)
+        for k in old:
+            self.assertFalse(pg.combo_blocked(led, k, 34),
+                             f"набор {k} из T5-29/30 должен быть свободен для T5-34")
+
     def test_dresser_law_section(self):
         d = load("dresser.json")
-        self.assertEqual(d["version"], "1.3.0")
+        self.assertEqual(d["version"], "1.4.0")
         self.assertIn("pregarderobe", d)
-        self.assertIn("реестр", d["pregarderobe"]["law"])
+        self.assertIn("КУЛДАУНЕ", d["pregarderobe"]["law"])
+        self.assertIn("вечного бана нет", d["pregarderobe"]["law"])
 
 
 class TestOcCandidatesD(unittest.TestCase):
@@ -348,16 +399,30 @@ class TestForgeABG(unittest.TestCase):
             self.assertEqual(len(conv["misses"]), 1)
 
     def test_coverage_ledger_counts(self):
+        """Фикс 2026-11-23 (внешний аудит, баг №1): coverage ПЕРЕСЧИТЫВАЕТСЯ
+        с нуля и не копит счётчики; тесты работают во временном корпусе и не
+        трогают боевой tests/test-corpus/coverage-ledger.json."""
         doc = tf.roll(9, 555, Path(self.out) / "TB-TEST5.json")
-        led_path = tf.CORPUS / "coverage-ledger.json"
-        before = json.loads(led_path.read_text(encoding="utf-8")) if led_path.exists() else {}
-        # coverage обновляет ledger из файлов корпуса — после ролла файл на месте
-        tf.cmd_coverage()
-        led = json.loads(led_path.read_text(encoding="utf-8"))
-        total_y = sum(led["y_cards"].values())
-        self.assertGreater(total_y, 0)
-        if before.get("y_cards"):
-            self.assertGreaterEqual(total_y, sum(before["y_cards"].values()))
+        real_ledger = REPO / "tests" / "test-corpus" / "coverage-ledger.json"
+        before_real = real_ledger.read_bytes()
+        with tempfile.TemporaryDirectory() as td:
+            corpus = Path(td)
+            # тот же ролл, но корпус — временный: файлы кладём туда
+            tf.roll(9, 555, corpus / "TB-TEST5.json")
+            rc = tf.cmd_coverage(corpus_dir=corpus)
+            self.assertEqual(rc, 0)
+            led_path = corpus / "coverage-ledger.json"
+            led = json.loads(led_path.read_text(encoding="utf-8"))
+            total_y = sum(led["y_cards"].values())
+            self.assertEqual(total_y, len(doc["slots"]),
+                             "ledger обязан насчитать РОВНО слоты корпуса (без копилки)")
+            # идемпотентность: повторный прогон не растит и не переписывает файл
+            stamp = led_path.read_bytes()
+            tf.cmd_coverage(corpus_dir=corpus)
+            self.assertEqual(led_path.read_bytes(), stamp,
+                             "повторный coverage не должен переписывать неизменные данные")
+        self.assertEqual(real_ledger.read_bytes(), before_real,
+                         "боевой coverage-ledger.json грязнится из теста — запрещено (баг №1)")
 
 
 if __name__ == "__main__":

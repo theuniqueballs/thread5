@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""ПРЕ-ГАРДЕРОБ (пункт Ж, dresser.json v1.3.0): свежие комбо одежды под
+"""ПРЕ-ГАРДЕРОБ (пункт Ж, dresser.json v1.4.0): свежие комбо одежды под
 жребийные Y-карты ПЕРЕД батчем.
 
 Закон (specs/dresser.json → pregarderobe):
@@ -8,8 +8,11 @@
   (2) матрица y_stack: полки-источники + канал-партнёр + gar_f
   (3) кубик по пересечению exposure∋класс ∩ fit∋категория сцены
   (4) 2–3 вещи с РАЗНЫХ полок + аксессуар (AC)
-  (5) реестр наборов (_ledger.json): НАБОР (frozenset CL-кодов) не повторяется
-      никогда; вещь может вернуться в новом наборе
+  (5) реестр наборов (_ledger.json): НАБОР в КУЛДАУНЕ — повтор запрещён
+      3 сданные партии (зеркально окну ротации), затем набор СВОБОДЕН;
+      вечного бана нет (вердикт автора 2026-11-23: «комбо не должны
+      навсегда баниться, это тупость» — аудит Коула R8 «cooldown наборов,
+      не eternal unique»)
   (6) запись specs/pregarderobe/<batch>.json
 
 Использование:
@@ -24,6 +27,7 @@ import argparse
 import hashlib
 import json
 import random
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -32,6 +36,14 @@ ROOT = Path(__file__).resolve().parent.parent
 SPEC = ROOT / "specs"
 PG_DIR = SPEC / "pregarderobe"
 LEDGER = PG_DIR / "_ledger.json"
+
+# Кулдаун набора: сколько СДАННЫХ партий подряд набор не может повториться
+# (зеркально окну ротации LAWS §7). Вечный бан снят вердиктом автора
+# 2026-11-23 («комбо не должны навсегда баниться, это тупость»),
+# лечение по Коулу R8: «cooldown наборов, не eternal unique».
+COOLDOWN_BATCHES = 3
+
+BATCH_NUM_RE = re.compile(r"(?:T5|TB|SO)-(\d+)")
 
 SCENES = ["swim", "lounge", "street", "active", "formal", "specialty", "intimates"]
 
@@ -47,8 +59,18 @@ def load_matrix() -> dict:
 
 def load_ledger() -> dict:
     if LEDGER.exists():
-        return json.loads(LEDGER.read_text(encoding="utf-8"))
-    return {"version": "1.0.0", "combos_used": {}}
+        led = json.loads(LEDGER.read_text(encoding="utf-8"))
+    else:
+        led = {"version": "1.0.0", "combos_used": {}}
+    # миграция 1.0.0 → 1.1.0 (кулдаун вместо вечного бана): старые записи
+    # остаются как есть — их «batch» несёт партию, кулдаун считается от неё
+    led.setdefault("version", "1.0.0")
+    led.setdefault("combos_used", {})
+    led["policy"] = {
+        "cooldown_batches": COOLDOWN_BATCHES,
+        "law": "НАБОР в кулдауне 3 сданные партии (зеркально окну ротации), затем свободен; вечного бана нет (вердикт автора 2026-11-23, Коул R8)",
+    }
+    return led
 
 
 def save_ledger(led: dict) -> None:
@@ -58,6 +80,30 @@ def save_ledger(led: dict) -> None:
 
 def combo_key(codes: list[str]) -> str:
     return hashlib.sha1("|".join(sorted(codes)).encode()).hexdigest()[:16]
+
+
+def batch_no_of(label: str) -> int | None:
+    """Номер партии из метки («T5-30» → 30; «test»/мусор → None)."""
+    m = BATCH_NUM_RE.search(str(label or ""))
+    return int(m.group(1)) if m else None
+
+
+def combo_blocked(ledger: dict, key: str, batch_no: int | None) -> bool:
+    """Кулдаун набора (вместо вечного бана, вердикт автора 2026-11-23).
+
+    Набор заблокирован, если его последнее использование — внутри окна
+    кулдауна (COOLDOWN_BATCHES партий до текущей). Записи без читаемого
+    номера партии (мусорная метка) и вызов без номера партии (batch_no
+    None — прямой вызов roll_combo без контекста партии) блокируются
+    консервативно: свежесть важнее переброса, старший прецедент — кубик
+    перебрасывает, а не возвращает катаное."""
+    entry = (ledger.get("combos_used") or {}).get(key)
+    if not entry:
+        return False
+    last_no = batch_no_of(entry.get("batch", ""))
+    if last_no is None or batch_no is None:
+        return True
+    return 0 < batch_no - last_no <= COOLDOWN_BATCHES
 
 
 def candidates_for(class_: str, scene: str, closet: dict, matrix: dict) -> list[dict]:
@@ -89,8 +135,13 @@ def candidates_for(class_: str, scene: str, closet: dict, matrix: dict) -> list[
 
 
 def roll_combo(rng: random.Random, y_card: dict, scene: str, closet: dict,
-               matrix: dict, ledger: dict, tries: int = 40) -> dict:
-    """Одно свежее комбо под Y-карту. Класс «—» → geometry_only (без стака)."""
+               matrix: dict, ledger: dict, tries: int = 40,
+               batch_no: int | None = None) -> dict:
+    """Одно свежее комбо под Y-карту. Класс «—» → geometry_only (без стака).
+
+    batch_no — номер партии, под которую катаем (кулдаун набора считается
+    от него); None — прямой вызов без контекста партии: катаные наборы
+    блокируются консервативно (прецедент кубика: переброс, не реюз)."""
     comp = y_card.get("components") or {}
     class_ = (comp.get("exposure") or {}).get("class", "—")
     base = {
@@ -127,8 +178,8 @@ def roll_combo(rng: random.Random, y_card: dict, scene: str, closet: dict,
             last_reason = "мало полок в пересечении"
             continue
         codes = [p["code"] for p in picked]
-        if combo_key(codes) in used:
-            last_reason = "набор уже катан — переброс"
+        if combo_blocked(ledger, combo_key(codes), batch_no):
+            last_reason = "набор в кулдауне (последние 3 партии) — переброс"
             continue
         accessory = None
         if acc_pool and rng.random() < 0.6:
@@ -181,7 +232,8 @@ def roll_batch(batch: str, y_ids: list[str], scenes: list[str] | None, seed: int
         if card is None:
             sys.exit(f"нет Y-карты {yid} в camera.json")
         scene = scenes[i] if scenes and i < len(scenes) else SCENES[rng.randrange(len(SCENES))]
-        combo = roll_combo(rng, card, scene, closet, matrix, ledger)
+        combo = roll_combo(rng, card, scene, closet, matrix, ledger,
+                           batch_no=batch_no_of(batch))
         combos.append(combo)
         if "combo_key" in combo and combo.get("combo_key") and not combo.get("note", "").startswith("свежие"):
             ledger["combos_used"][combo["combo_key"]] = {
@@ -190,7 +242,7 @@ def roll_batch(batch: str, y_ids: list[str], scenes: list[str] | None, seed: int
         "batch": batch,
         "born": datetime.now(timezone.utc).isoformat(),
         "seed": seed,
-        "law": "specs/dresser.json v1.3.0 → pregarerobe: свежие комбо под жребий, набор не повторяется (реестр _ledger.json)",
+        "law": "specs/dresser.json v1.4.0 → pregarerobe: свежие комбо под жребий, набор в кулдауне 3 сданные партии (зеркально окну ротации), затем свободен — вечного бана нет (вердикт автора 2026-11-23, Коул R8)",
         "combos": combos,
     }
     if not dry:

@@ -205,3 +205,25 @@ python3 tools/oracle.py draw --for T5-27 --md  # жребий маркдауно
 
 Деплой: `.zscripts/mini-services-build.sh` бандлит сервис вместе с
 импортом движка (bun build инлайнит) — копия работает без исходников.
+
+---
+
+## Траст-слой Y (2026-11-23, Коул §7 + заказ автора)
+
+`specs/y-trust.json` — генерируемый реестр доверия: HIGH (хит в
+JSON-вердикте — loved или подтверждённая гипотеза) / MID (нет улик или
+только ok_with_issues) / LOW (катана мимо loved/ok). Хит сильнее промаха.
+
+```bash
+python3 tools/oracle.py trust --rebuild   # после каждого нового verdicts/*.json
+python3 tools/oracle.py trust             # отчёт: кто HIGH, кто LOW
+python3 tools/oracle.py pool --for T5-31  # активный пул CLOCK + window-eligible
+python3 tools/oracle.py draw --for T5-31 --trust   # жребий только по HIGH+MID ≤ 80
+```
+
+Правила: window-eligible (просто не в окне) — НЕ «активный пул»;
+активный пул CLOCK = HIGH первыми + MID до потолка 80 (приоритет MID:
+никогда не катаны → реже всех → номер карты). LOW сидят до нового хита
+или LAB. Дефолтный жребий без `--trust` — прежняя механика: паритет
+прилавок↔печь↔сервис и золотые вектора нетронуты. Свежесть реестра
+проверяет валидатор (№15).

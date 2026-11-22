@@ -384,6 +384,10 @@ def main():
             if not name or status not in DELIVERY_STATUSES:
                 fail(f"delivery-index.json: битая запись {row!r} — batch обязателен, status ∈ {sorted(DELIVERY_STATUSES)}")
                 continue
+            # 2026-11-23 (Коул §4): mode в записи — из брифа партии; мусор
+            # в mode не молчит (счётчик CLOCK-дисциплины читает его же)
+            if "mode" in row and row["mode"] not in ("CLOCK", "LAB", "SURGERY", "SPECIAL"):
+                fail(f"delivery-index.json: партия «{name}» — битый mode {row['mode']!r} ∈ CLOCK/LAB/SURGERY/SPECIAL (проверка №12)")
             if name in indexed:
                 fail(f"delivery-index.json: партия «{name}» записана дважды")
             indexed[name] = status
@@ -517,6 +521,42 @@ def main():
             f"gate-registry: {len(reg_sections)} секций · прямые тесты {len(tested)} · "
             f"без прямого теста {len(untested)} (долги видимы: {', '.join(untested) or '—'})"
         )
+
+    # ── проверка №15: траст-слой Y (заказ автора 2026-11-23, Коул §7) ────
+    # y-trust.json — сгенерированный реестр (oracle.py trust --rebuild):
+    # после каждого нового verdicts/*.json он обязан быть перестроен, иначе
+    # жребий CLOCK молча ходит по протухшему доверию.
+    vjson = []
+    if (ROOT / "verdicts").exists():
+        for p in sorted((ROOT / "verdicts").glob("*.json")):
+            try:
+                if json.loads(p.read_text(encoding="utf-8")).get("schema") == "t5-verdict/1":
+                    vjson.append(p)
+            except Exception:
+                continue
+    ytrust = data.get("y-trust.json")
+    if vjson and ytrust is None:
+        fail("specs/y-trust.json отсутствует при живых JSON-вердиктах — построй траст-слой: "
+             "python3 tools/oracle.py trust --rebuild (проверка №15, Коул §7)")
+    elif ytrust is not None:
+        src_files = [s.get("file") for s in (ytrust.get("sources") or [])]
+        want = [p.name for p in vjson]
+        if src_files != want:
+            fail(f"y-trust.json отстаёт от verdicts/*.json (в реестре {src_files}, на диске {want}) — "
+                 "перегенерируй: python3 tools/oracle.py trust --rebuild (проверка №15)")
+        cards = ytrust.get("cards") or {}
+        bad_trust = [cid for cid, c in cards.items() if c.get("trust") not in ("HIGH", "MID", "LOW")]
+        if bad_trust:
+            fail(f"y-trust.json: карты с неизвестным уровнем доверия {bad_trust} (проверка №15)")
+        cam = data.get("camera.json") or {}
+        cam_ids = {c.get("id") for c in ((cam.get("y_cards") or {}).get("cards") or [])}
+        ghosts = [cid for cid in cards if cam_ids and cid not in cam_ids]
+        if ghosts:
+            fail(f"y-trust.json: карты не из camera.json {ghosts} (проверка №15)")
+        st = ytrust.get("stats") or {}
+        print(f"y-trust: {ytrust.get('version')} · партий {st.get('judged_batches', 0)} · "
+              f"HIGH {st.get('high', 0)} · MID {st.get('mid', 0)} · LOW {st.get('low', 0)} · "
+              f"потолок CLOCK {int((ytrust.get('policy') or {}).get('ceiling') or 0)}")
 
     # ── вердикт ──────────────────────────────────────────────────────────
     if fails:

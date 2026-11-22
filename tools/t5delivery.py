@@ -55,7 +55,12 @@ def bnum(p):
 
 
 def load_index():
-    """{(stem без .md): статус}. Битый индекс — громкий отказ, не молчание."""
+    """{(stem без .md): статус}. Битый индекс — громкий отказ, не молчание.
+
+    2026-11-23 (Коул §4/§11.3 «MODE counters»): в записи может жить поле
+    mode (CLOCK/LAB/SURGERY/SPECIAL — из брифа партии; у старых партий
+    его нет, история не переписывается). Статусная карта его игнорирует,
+    для счётчика дисциплины есть mode_of()."""
     if not INDEX_PATH.exists():
         return {}
     try:
@@ -72,6 +77,40 @@ def load_index():
             )
         out[name] = status
     return out
+
+
+MODES = ("CLOCK", "LAB", "SURGERY", "SPECIAL")
+
+
+def mode_rows():
+    """[(batch, mode)] записей с полем mode — от старых к новым.
+    Битое значение mode — громкий отказ (мусор в индексе не молчит)."""
+    if not INDEX_PATH.exists():
+        return []
+    raw = json.loads(INDEX_PATH.read_text(encoding="utf-8"))
+    rows = []
+    for row in raw.get("batches", []):
+        if "mode" in row and row.get("batch"):
+            if row["mode"] not in MODES:
+                raise SystemExit(
+                    f"t5delivery: битый mode в записи {row.get('batch')!r}: "
+                    f"{row['mode']!r} ∈ {MODES}"
+                )
+            rows.append((row["batch"], row["mode"]))
+    return rows
+
+
+def clock_streak():
+    """Сколько CLOCK подряд от новейшей записи с mode (Коул §4: 2+ LAB
+    подряд без приказа автора = нарушение CLOCK-дисциплины; счётчик —
+    метрика здоровья №5/№6)."""
+    streak = 0
+    for _batch, mode in reversed(mode_rows()):
+        if mode == "CLOCK":
+            streak += 1
+        else:
+            break
+    return streak
 
 
 def batch_files(batch_dir=None):
@@ -122,15 +161,21 @@ def _cmd(argv):
         return 0
     if argv[:1] == ["status"]:
         idx = load_index()
+        modes = dict(mode_rows())
         rows = batch_files()
         counts = {s: 0 for s in STATUSES}
         for p in rows:
             counts[idx.get(p.name[: -len(".md")], DELIVERED)] += 1
         for p in rows:
             stem = p.name[: -len(".md")]
-            print(f"{stem:<12} {idx.get(stem, DELIVERED + ' (нет записи)')}")
+            mode = f" · {modes[stem]}" if stem in modes else ""
+            print(f"{stem:<12} {idx.get(stem, DELIVERED + ' (нет записи)')}{mode}")
+        streak = clock_streak()
+        zone = ("зелёная зона (≥2 — цех в часах, Коул §13)" if streak >= 2
+                else "меньше 2 — метрика здоровья хромает")
         print(f"— delivered {counts['delivered']} · draft {counts['draft']} · "
               f"ready {counts['ready']} · superseded {counts['superseded']}")
+        print(f"— MODE-дисциплина: CLOCK подряд {streak} — {zone}")
         return 0
     if argv[:1] == ["validate"]:
         idx = load_index()

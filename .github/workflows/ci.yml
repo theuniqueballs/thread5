@@ -49,15 +49,10 @@ jobs:
 
       # Двойной аудит 2026-11-20, P1-06: production build — не разовый
       # ручной прогон, а CI-контракт: сборка падает на PR, а не на проде.
-      - name: Prisma client (генерация типов для сборки)
-        run: bun run db:generate
-        env:
-          DATABASE_URL: "file:/tmp/ci.db"
-
+      # 2026-11-23 (хирургия тройного вердикта): мёртвый Prisma-слой шаблона
+      # вырезан — db:generate/DATABASE_URL больше не нужны (прилавку БД ни к чему).
       - name: Production build (16 роутов)
         run: bun run build
-        env:
-          DATABASE_URL: "file:/tmp/ci.db"
 
   pipeline:
     name: печь (unittest · validate · gates)
@@ -78,7 +73,9 @@ jobs:
       - name: Валидатор спек (CI-режим, без проверки хука)
         run: python3 tools/validate.py --ci
 
-      - name: Гейты на свежайшей сданной партии (двойной аудит P0-06: статус — из индекса сдачи, не ls|sort — черновик не считается сданным)
+      # 2026-11-23 (хирургия тройного вердикта): двоеточие в имени шага ломало YAML —
+      # CI молча не работал с 2026-11-20 (Invalid workflow file на ЛЮБОМ триггере)
+      - name: Гейты на свежайшей сданной партии (двойной аудит P0-06 — статус из индекса сдачи, не ls|sort — черновик не считается сданным)
         run: |
           latest=$(python3 tools/t5delivery.py latest)
           if [ -z "$latest" ]; then
@@ -104,5 +101,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: database-runtime-build (fake-bun, без БД)
-        run: bash tests/database-runtime-build.sh
+      # 2026-11-23: database-runtime-build вырезан вместе с мёртвым Prisma;
+      # smoke теперь гоняет живой python-runtime-build (тот, что в build.sh)
+      - name: python-runtime-build (fake-bun, без venv)
+        run: bash tests/python-runtime-build.sh

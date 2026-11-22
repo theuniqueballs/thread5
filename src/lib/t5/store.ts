@@ -308,7 +308,7 @@ export async function saveVerdict(slug: string, text: string): Promise<StoredVer
 
 const DOC_WHITELIST = [
   'README', 'LAWS', 'TASTE', 'RENDERER_FACTS', 'NICHE', 'LIVING-NOTES',
-  'T5-1-BETA', 'ARS-NOVEAU', 'RENDER-TROUBLES', 'CONSILIUM',
+  'AGENTS', 'ARS-NOVEAU', 'RENDER-TROUBLES', 'CONSILIUM',
   // личные активы автора из specs/ (main — полный кабинет; в friend-pass ветке файлы-заглушки)
   'OC-CANON', 'OC-BODY-ARCHIVE', 'GOLDEN-CORPUS', 'SPECIAL-ROSTER',
   // АРС · ПЛАНЕТЫ — сеансы конвейера (подпуть docs/ars/)

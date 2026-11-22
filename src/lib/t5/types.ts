@@ -51,7 +51,7 @@ export const T5_DOCS: T5DocMeta[] = [
   { name: 'SPECIAL-ROSTER', title: 'РОСТЕР ГОСТЕЙ', hint: 'чужие персонажи Special Orders: канон-раны под рукой', group: 'memory' },
   { name: 'OC-BODY-ARCHIVE', title: 'АРХИВ ТЕЛ', hint: 'личный архив тел OC', group: 'memory' },
   { name: 'GOLDEN-CORPUS', title: 'КОРПУС', hint: 'золотой корпус пар POS/NEG', group: 'memory' },
-  { name: 'T5-1-BETA', title: '5.1 BETA', hint: 'проект нового формата: NL + аниме-теги + PH', group: 'memory' },
+  { name: 'AGENTS', title: 'ПРАВИЛА АГЕНТА', hint: 'что нельзя агенту: запреты, команды перед коммитом, режимы цеха (вместо HANDOVER)', group: 'memory' },
   { name: 'README', title: 'ПЕТЛЯ', hint: 'как работает тред', group: 'memory' },
   // ── АРС · ПЛАНЕТЫ: пять сеансов конвейера + карта системы ──
   { name: 'ARS-00', title: 'ОБЗОР СИСТЕМЫ', hint: 'карта ARS NOVEAU v2: планеты-сеансы конвейера', group: 'ars' },

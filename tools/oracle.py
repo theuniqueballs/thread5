@@ -58,6 +58,8 @@ except (AttributeError, ValueError):
 ROOT = REPO
 DEFAULT_URL = "http://127.0.0.1:3031"
 VECTORS_PATH = REPO / "tests" / "fixtures" / "oracle_vectors.json"
+TRUST_PATH = REPO / "specs" / "y-trust.json"
+TRUST_CEILING = 80  # Коул §7.2: CLOCK — только HIGH+MID, потолок 60–80 карт
 
 U32 = 0xFFFFFFFF
 
@@ -487,6 +489,159 @@ def active_pool(cards, usage, batch_no, window_depth=3, window_poses=None):
     return usable, n_win, n_pose
 
 
+# ════════════════════════ траст-слой Y (заказ автора 2026-11-23, Коул §7) ════════════════════════
+
+def load_trust() -> dict:
+    """Реестр доверия specs/y-trust.json (сгенерирован: oracle.py trust --rebuild).
+    Пустой dict — слой не построен (жребий ходит как раньше, без потолка)."""
+    if TRUST_PATH.exists():
+        try:
+            return json.loads(TRUST_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
+def load_verdict_evidence():
+    """JSON-вердикты (t5-verdict/1) → улики по Y-картам партии.
+
+    Коул §7.1 «hit Y/PL → trust HIGH, miss → LOW»:
+      hit    — слот в loved или подтверждённая гипотеза (hypothesis_hits);
+      neutral— слот в ok_with_issues (не хит, не провал — улика не копится);
+      miss   — катана в вердиктной партии мимо loved/ok (в т.ч. neutral-список).
+    Соответствие слот → карта — канонический парсер печи (gates.parse_batch)."""
+    hits: dict[str, list] = {}
+    neutrals: dict[str, list] = {}
+    misses: dict[str, list] = {}
+    sources = []
+    for vf in sorted((ROOT / "verdicts").glob("*.json")):
+        try:
+            d = json.loads(vf.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if d.get("schema") != "t5-verdict/1" or not d.get("batch"):
+            continue
+        bfile = ROOT / "batches" / f"{d['batch']}.md"
+        if not bfile.exists():
+            continue
+        try:
+            _, _, slots = gates.parse_batch(bfile)
+        except Exception:
+            continue
+        by_sid = {s.sid: s for s in slots if s.y_card}
+        loved = {e.get("slot") for e in (d.get("loved") or []) if e.get("slot")}
+        ok = {e.get("slot") for e in (d.get("ok_with_issues") or []) if e.get("slot")}
+        hyp = {e.get("slot") for e in (d.get("hypothesis_hits") or []) if e.get("slot")}
+        for sid, s in by_sid.items():
+            if sid in loved or sid in hyp:
+                hits.setdefault(s.y_card, []).append(
+                    {"batch": d["batch"], "slot": sid,
+                     "kind": "loved" if sid in loved else "hypothesis"})
+            elif sid in ok:
+                neutrals.setdefault(s.y_card, []).append(
+                    {"batch": d["batch"], "slot": sid, "kind": "ok_with_issues"})
+            else:
+                misses.setdefault(s.y_card, []).append(
+                    {"batch": d["batch"], "slot": sid, "kind": "miss"})
+        sources.append({"file": vf.name, "batch": d["batch"]})
+    return hits, neutrals, misses, sources
+
+
+def build_trust() -> dict:
+    """Реестр доверия Y: HIGH (hit) / MID (нет данных или только ok) / LOW (miss).
+    Hit сильнее miss: карта с хитом — HIGH независимо от старых промахов
+    (искупление хитом; LOW сидит до новой попытки в LAB или хита)."""
+    hits, neutrals, misses, sources = load_verdict_evidence()
+    cards: dict[str, dict] = {}
+    for cid in sorted(set(hits) | set(neutrals) | set(misses), key=card_num):
+        h, m = len(hits.get(cid, [])), len(misses.get(cid, []))
+        trust = "HIGH" if h else ("LOW" if m else "MID")
+        cards[cid] = {
+            "trust": trust, "hits": h, "misses": m,
+            "neutral": len(neutrals.get(cid, [])),
+            "evidence": hits.get(cid, []) + neutrals.get(cid, []) + misses.get(cid, []),
+        }
+    n = {t: sum(1 for c in cards.values() if c["trust"] == t) for t in ("HIGH", "MID", "LOW")}
+    return {
+        "id": "y-trust",
+        "name": "Траст-слой Y: HIGH/MID/LOW по hit/miss из JSON-вердиктов",
+        "version": "1.0.0",
+        "born": "2026-11-23",
+        "born_from": ("Заказ автора 2026-11-23 «Сделай траст-слой Y» + аудит Коула/Grok "
+                       "§7 «ACTIVE POOLS И TRUST — обязательный следующий шаг»: жребий честен, "
+                       "но 400+ window-eligible карт — лотерея, а не выбор; CLOCK ходит по "
+                       "узкому пулу HIGH+MID ≤ 80, LOW (промахи вердиктов) сидят до искупления"),
+        "policy": {
+            "HIGH": "хит в JSON-вердикте (loved или подтверждённая гипотеза) — первыми в пул CLOCK",
+            "MID": "нет улик (не катана в вердиктных партиях) или только ok_with_issues — годна по умолчанию",
+            "LOW": "катана в вердиктной партии мимо loved/ok — miss; сидит до хита или LAB-искупления",
+            "ceiling": TRUST_CEILING,
+            "draw": "CLOCK (жребий --trust): только HIGH+MID, потолок 80; порядок: HIGH → MID (никогда не катаны → реже всех → по номеру)",
+            "note": "Коул §7.4: window-eligible (просто не в окне) — НЕ «активный пул»; в бриф/квитанцию печатаются active_trust_count и window_eligible_count",
+            "regenerate": "python3 tools/oracle.py trust --rebuild (после каждого нового verdicts/*.json; валидатор — проверка №15)",
+        },
+        "sources": sources,
+        "stats": {"high": n["HIGH"], "mid": n["MID"], "low": n["LOW"], "judged_batches": len(sources)},
+        "cards": cards,
+    }
+
+
+def trust_pool(cards, usage, batch_no, window_depth=3, window_poses=None,
+               trust_cards=None, ceiling=None):
+    """Активный пул CLOCK (Коул §7.2): HIGH+MID ≤ потолка, LOW исключены.
+
+    Строится ОТ window-eligible (окно/позы уже съедены): сначала HIGH
+    (доказанные хиты), затем MID до потолка — никогда не катаны раньше,
+    затем реже всех, затем по номеру карты (детерминизм без кубика)."""
+    eligible, n_win, n_pose = active_pool(cards, usage, batch_no, window_depth, window_poses)
+    if trust_cards is None:
+        trust_cards = load_trust().get("cards") or {}
+    if ceiling is None:
+        ceiling = int((load_trust().get("policy") or {}).get("ceiling") or TRUST_CEILING)
+
+    def level(c):
+        return (trust_cards.get(c["id"]) or {}).get("trust", "MID")
+
+    high = [c for c in eligible if level(c) == "HIGH"]
+    mid = [c for c in eligible if level(c) == "MID"]
+    low = [c for c in eligible if level(c) == "LOW"]
+
+    def mid_priority(c):
+        u = usage.get(c["id"]) or {}
+        return (u.get("usedCount") or 0, card_num(c["id"]))
+
+    mid.sort(key=mid_priority)
+    pool = high + mid[: max(0, ceiling - len(high))]
+    stats = {"high": len(high), "mid": len(mid), "low": len(low),
+             "eligible": len(eligible), "window": n_win, "pose": n_pose,
+             "ceiling": ceiling}
+    return pool, stats
+
+
+def cmd_trust(args) -> int:
+    """Траст-слой Y: rebuild из verdicts/*.json или отчёт по реестру."""
+    if args.rebuild:
+        reg = build_trust()
+        TRUST_PATH.write_text(json.dumps(reg, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        st = reg["stats"]
+        print(f"траст-слой Y собран: specs/y-trust.json ({reg['version']})")
+        print(f"  партий с JSON-вердиктами: {st['judged_batches']} · HIGH {st['high']} · MID {st['mid']} · LOW {st['low']}")
+        print(f"  вердиктные файлы: {', '.join(s['file'] for s in reg['sources']) or '—'}")
+        return 0
+    reg = load_trust()
+    if not reg:
+        print("specs/y-trust.json не построен — python3 tools/oracle.py trust --rebuild")
+        return 1
+    st = reg.get("stats") or {}
+    print(f"=== ТРАСТ-СЛОЙ Y · y-trust {reg.get('version')} · Коул §7 ===")
+    print(f"партий с JSON-вердиктами: {st.get('judged_batches', 0)} · HIGH {st.get('high', 0)} · MID {st.get('mid', 0)} · LOW {st.get('low', 0)}")
+    for t in ("HIGH", "LOW"):
+        ids = [cid for cid, c in (reg.get("cards") or {}).items() if c["trust"] == t]
+        print(f"  {t}: {', '.join(ids) or '—'}")
+    print(f"потолок CLOCK: {int((reg.get('policy') or {}).get('ceiling') or TRUST_CEILING)} карт (HIGH+MID; жребий --trust)")
+    return 0
+
+
 def cmd_pool(args) -> int:
     """Активный пул Y-карт для партии: сколько карт РЕАЛЬНО доступно
     жребию после окна ротации и запрета поз (аудит Коула R5 «лотерея из
@@ -510,13 +665,32 @@ def cmd_pool(args) -> int:
     usage = build_usage(batch_no)
     window_poses = build_pose_window(batch_no, args.depth)
     usable, n_win, n_pose = active_pool(cards, usage, batch_no, args.depth, window_poses)
-    health = "ЗДОРОВ" if len(usable) >= target else "ТУГО (окно жрёт много — сигнал SOL'у)"
+    trust = load_trust()
+    trust_cards = trust.get("cards") if trust.get("version") else None
     print(f"=== АКТИВНЫЙ ПУЛ Y · T5-{batch_no} · реестр camera {version} ===")
     print(f"всего карт: {len(cards)} · окно ротации ({args.depth} партий) съело: {n_win} · запрет поз съел: {n_pose}")
-    print(f"АКТИВНО жребию: {len(usable)} карт · target {target} · {health}")
-    if usable and args.ids:
-        print("карты: " + " ".join(c["id"] for c in usable))
-    print("квитанция в бриф: 'Активный пул Y: %d из %d (окно −%d, позы −%d, target %d)'" % (len(usable), len(cards), n_win, n_pose, target))
+    # Коул §7.4 (траст-слой, 2026-11-23): «просто не в окне» — НЕ «активный
+    # пул»; честное имя — window-eligible, активный пул CLOCK = HIGH+MID ≤ потолка
+    print(f"window-eligible (не в окне, не под запретом поз): {len(usable)} карт")
+    if trust_cards:
+        pool, st = trust_pool(cards, usage, batch_no, args.depth, window_poses,
+                              trust_cards=trust_cards)
+        health = "ЗДОРОВ" if len(pool) >= target else f"ТУГО (пул ниже target {target} — сигнал SOL'у)"
+        print(f"траст-слой (y-trust {trust.get('version')}): вне окна HIGH {st['high']} · MID {st['mid']} · LOW {st['low']} (LOW — вне жребия CLOCK)")
+        print(f"АКТИВНЫЙ ПУЛ CLOCK (HIGH+MID, потолок {st['ceiling']}): {len(pool)} карт · {health}")
+        if args.ids:
+            print("карты CLOCK: " + " ".join(c["id"] for c in pool))
+        print("квитанция в бриф: 'Активный пул Y (CLOCK, траст): " + str(len(pool)) + " из " + str(len(cards))
+              + " (HIGH " + str(st["high"]) + " · MID " + str(len(pool) - st["high"])
+              + " · LOW −" + str(st["low"]) + ", потолок " + str(st["ceiling"]) + ")"
+              + " / window-eligible " + str(st["eligible"])
+              + " — active_trust_count " + str(len(pool)) + ", window_eligible_count " + str(st["eligible"]) + "'")
+    else:
+        if usable and args.ids:
+            print("карты: " + " ".join(c["id"] for c in usable))
+        print("траст-слой Y не построен: python3 tools/oracle.py trust --rebuild (заказ автора 2026-11-23, Коул §7)")
+        print("квитанция в бриф (без траста): 'window-eligible Y: " + str(len(usable)) + " из " + str(len(cards))
+              + " (окно −" + str(n_win) + ", позы −" + str(n_pose) + ", target " + str(target) + ")'")
     print("long tail (весь реестр) — только режим LAB по приказу автора (specs/active-pools.json)")
     return 0
 
@@ -532,6 +706,23 @@ def cmd_draw(args) -> int:
         return 3
     usage = build_usage(batch_no)
     window_poses = build_pose_window(batch_no, args.depth)
+    # траст-слой Y (заказ автора 2026-11-23, Коул §7): CLOCK-жребий ходит
+    # только по HIGH+MID ≤ потолка; дефолт без --trust — прежняя механика
+    # (окно/позы): паритет прилавок↔печь↔сервис и золотые вектора нетронуты
+    trust = load_trust()
+    trust_cards = trust.get("cards") if trust.get("version") else None
+    trust_stats = None
+    if args.trust:
+        if not trust_cards:
+            print("траст-слой Y не построен: python3 tools/oracle.py trust --rebuild")
+            return 1
+        pool, trust_stats = trust_pool(cards, usage, batch_no, args.depth,
+                                       window_poses, trust_cards=trust_cards)
+        keep = {c["id"] for c in pool}
+        cards = [c for c in cards if c["id"] in keep]
+    elif trust_cards:
+        _pool, trust_stats = trust_pool(cards, usage, batch_no, args.depth,
+                                        window_poses, trust_cards=trust_cards)
     draw = draw_constellation(batch_no, cards, usage,
                               oc_target=args.oc, main_target=args.main,
                               exp_target=args.exp, window_depth=args.depth,
@@ -540,6 +731,9 @@ def cmd_draw(args) -> int:
         print(f"## Жребий оракула — партия №{batch_no} (seed {draw['seed']})")
         print()
         print(f"Реестр: camera {version} · {len(cards)} карт · окно ротации: {args.depth} партий")
+        if trust_stats:
+            at = trust_stats["high"] + min(trust_stats["mid"], max(0, trust_stats["ceiling"] - trust_stats["high"]))
+            print(f"Траст: активный пул CLOCK {at} карт (HIGH {trust_stats['high']} · потолок {trust_stats['ceiling']}) · window-eligible {trust_stats['eligible']} · active_trust_count {at} / window_eligible_count {trust_stats['eligible']}")
         print()
         for title, group in (("OC-тройка", draw["oc"]), ("Мейн-лента", draw["main"]), ("EXP-волна", draw["exp"])):
             print(f"### {title}")
@@ -549,14 +743,13 @@ def cmd_draw(args) -> int:
         return 0
     print(f"=== ЖРЕБИЙ · T5-{batch_no} · seed {draw['seed']} · реестр camera {version} ===")
     print(f"окно съело: {draw['windowExcluded']} карт · позы окна съели: {draw['windowPosesExcluded']} · пул иссяк на: {draw['shortfall']} слотах")
-    try:
-        pools_spec = json.loads((ROOT / "specs/active-pools.json").read_text(encoding="utf-8"))
-        y_target = int((pools_spec.get("pools") or {}).get("y_cards", {}).get("target") or 0)
-        if y_target:
-            usable, _nw, _np = active_pool(cards, usage, batch_no, args.depth, window_poses)
-            print(f"активный пул Y: {len(usable)} карт (target {y_target}, specs/active-pools.json — аудит Коула R5; детали: oracle.py pool --for T5-{batch_no})")
-    except Exception:
-        pass
+    if trust_stats:
+        st = trust_stats
+        at = st["high"] + min(st["mid"], max(0, st["ceiling"] - st["high"]))
+        mode = ("траст-CLOCK (HIGH+MID ≤ потолка)" if args.trust
+                else "без траст-фильтра (окно/позы; --trust — режим CLOCK)")
+        print(f"траст: активный пул CLOCK {at} карт · window-eligible {st['eligible']} · LOW −{st['low']} · {mode}")
+        print(f"active_trust_count {at} / window_eligible_count {st['eligible']} (в бриф, Коул §7.3)")
     for title, group in (("OC", draw["oc"]), ("МЕЙН", draw["main"]), ("EXP", draw["exp"])):
         ids = " ".join(c["id"] for c in group)
         print(f"{title} ({len(group)}): {ids}")
@@ -694,6 +887,12 @@ def main() -> int:
     p_draw.add_argument("--exp", type=int, default=9)
     p_draw.add_argument("--depth", type=int, default=3)
     p_draw.add_argument("--md", action="store_true", help="маркдауном (вставляется в бриф)")
+    p_draw.add_argument("--trust", action="store_true",
+                        help="режим CLOCK: жребий только по траст-пулу HIGH+MID ≤ 80 (specs/y-trust.json, Коул §7; заказ автора 2026-11-23)")
+
+    p_trust = sub.add_parser("trust", help="траст-слой Y: HIGH/MID/LOW из JSON-вердиктов (Коул §7)")
+    p_trust.add_argument("--rebuild", action="store_true",
+                         help="пересобрать specs/y-trust.json из verdicts/*.json")
 
     p_heat = sub.add_parser("heat", help="жар партии")
     p_heat.add_argument("batch", help="путь до батча (batches/T5-26.md)")
@@ -713,6 +912,8 @@ def main() -> int:
         return cmd_pool(args)
     if args.cmd == "draw":
         return cmd_draw(args)
+    if args.cmd == "trust":
+        return cmd_trust(args)
     if args.cmd == "heat":
         return cmd_heat(args)
     if args.cmd == "audit":
