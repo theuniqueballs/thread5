@@ -64,7 +64,7 @@ Batch-Prompt Conveyer Belt
   oc-class-floor, neg-anchor, header-contract, movesGate, storyCardsGate,
   yCardGate — Y-first, claimPhysics — В31, conceptFlag, negDressGuards,
   detailsGate — В32, **yStamp — вплетение 1:1 В34/В35, paletteSkin — В36**;
-  `--md-from-receipt` — отчёт как производная JSON-квитанции), **`pregarment.py` — пре-гардероб: свежие комбо под жребий, набор не повторяется (LAWS §22)**, **`testforge.py` — тест-горн: болванки tests/test-corpus/ (вне прилавка), roll/check/coverage/compare — петля воспроизводимости А/Б/В/Г (LAWS §23)**,
+  `--md-from-receipt` — отчёт как производная JSON-квитанции), **`pregarment.py` — пре-гардероб: свежие комбо под жребий, набор не повторяется (LAWS §22)**, **`testforge.py` — тест-горн PROTO-2 (протоколы «пробы и ошибки»/«зализывание ран»/«вонючие яйца» 2026-11-22, docs/PROTO-TRIALS-2026-11-22.md): болванки tests/test-corpus/ (вне прилавка), roll/check/coverage/compare — петля воспроизводимости А/Б/В/Г + цель Д: законы В39–В43 в ролле и чеке (жанры Закона 24 с бегом ≤3, кин-кап, EXP-клетки H-XX, предикт ≡ состав POS, окно/дубли/канон-локи), эра-скип proto 1, CI-шаг + pre-commit 1.12, 19 юнит-тестов**,
   `window.py` (станция окна: квитанция ротации — позы/палитры/Y-карты/**
   OC-окно машинно**; `--for T5-NN` — окно задним числом), `taste.py`
   (вкус → план: ВКУС-БРИФ из verdicts/*.json + MD-фолбэк), `validate.py`

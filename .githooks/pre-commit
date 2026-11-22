@@ -30,6 +30,15 @@ if ! python3 tools/validate.py; then
   exit 1
 fi
 
+# (1.12) ПРОТОКОЛ «ПРОБЫ И ОШИБОК» (2026-11-22): болванки PROTO-2 в корпусе
+# обязаны быть законными — FAIL чека блокирует коммит (муха не еблась:
+# битая болванка не может уехать в репо молча)
+if ! python3 tools/testforge.py check 2>/dev/null; then
+  echo "  ✗ тест-горн: болванки PROTO-2 с нарушениями — коммит заблокирован (ревизия 2026-11-22, 1.12)"
+  python3 tools/testforge.py check || true
+  exit 1
+fi
+
 changed=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(batches/T5-[0-9]+R?|special/SO-[0-9]+)\.md$' || true)
 [ -z "$changed" ] && exit 0
 

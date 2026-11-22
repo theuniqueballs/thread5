@@ -90,6 +90,14 @@ jobs:
       - name: Станция окна — дымовой прогон (квитанция в stdout)
         run: python3 tools/window.py --depth 3 > /dev/null && echo "window OK"
 
+      # ПРОТОКОЛ «ПРОБЫ И ОШИБОК» (2026-11-22): тест-горн в CI — болванки
+      # PROTO-2 обязаны рождаться законными (законы В39–В43 инвариантны
+      # в любом окружении); ролл внутри сам гоняет check и падает кодом
+      - name: Тест-горн (roll + check PROTO-2, воспроизводимость)
+        run: |
+          python3 tools/testforge.py roll --n 21 --seed 4242 --exp 9
+          python3 tools/testforge.py check --batch TB-$(date -u +%Y%m%d)-4242
+
   shell-smoke:
     name: сборки рантаймов (smoke)
     runs-on: ubuntu-latest
