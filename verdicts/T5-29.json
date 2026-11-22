@@ -1,0 +1,72 @@
+{
+ "schema": "t5-verdict/1",
+ "batch": "T5-29",
+ "theme": "THE SECRETS BEHIND AURORA DUNGEON",
+ "date": "2026-11-22",
+ "source": "чат, вербатим 2026-11-22 (полный текст — поле verbatim_full; MD-копия не заводилась: JSON — единственный носитель, схема t5-verdict/1; разбор и калибровка рейтинга — docs/POSTMORTEM-T5-29.md)",
+ "overall": {
+  "score": "below average",
+  "verbatim": "очень странная штука: 1. EXP-слоты мне намного больше понравились, чем основная тема - это раз. […] В общем, батч мне не очень понравился. […] В общем, ты хотел прыгнуть выше головы, а прыгнул мне на хуй. Ничё фиксить в т5-29 не нужно, уже запорол - живи с этим. Но сделай так, чтобы ты никогда нахуй больше таких ошибок не повторял.",
+  "signal": "мейн-тема провалена КОНСТРУКТИВНО, не исполнением: NICHE-перевес (14/7 против Закона 24 «R+×14 · R×7»), кин-основа (13/21, кины — опция), жанры блоками подряд (АКТ I вольт → АКТ II–III ниша), ноль EXQUISITE в мейнах, рейтинг-инфляция (совпали только P04/P11/P18/P27), EXP ушли в тему данжа вместо проверки штук. EXP-клетки — единственное, что выстрелило (почти все, особенно P32 → Noxx в ОС). Уроки В39–В43 + гейты 1.18.0 (voltCore/exquisiteMain/expHypothesis/ratingTruth + raceCast v2.0) закрывают класс ошибок с T5-30."
+ },
+ "verbatim_full": "По Т5-29, ревью:\n\nочень странная штука:\n1. EXP-слоты мне намного больше понравились, чем основная тема - это раз.\n2. Ты чё разучился батчи делать что-ли. Какой перевес в Niche, если основная масса должна быть - волт.\n3. почему у нас везде кины, если кины - опция, а не основа\n4. почему волт и ниша идут подряд, хотя должно быть вперемешку\n5. где Exquisite в основной теме\n6. Почему EXP слоты следуют теме, если они должны проверять штуки. Ты тратишь мощность вообще не на то, что надо.\n7. Несоответствие рейтингу присутствует. Делай отладку системы которая за это отвечает.\nНе соответствуют рейтингу:\nпочти все слоты, кроме: 4, 11, 18, 27\n\nВ общем, батч мне не очень понравился.\nХорошие слоты основной темы: 4, 11, 15, 20\nЧто понравилось в EXP-слотах: почти всё. особенно - 32 слот. Забираем в ОС, даём ей имя - Noxx. Выдашь ей пакет ос-канона.\n\nЕё PH промпт: Masterpiece, best quality, absurdres, intricate details, eye-level close-up through clear vinyl, upper body, strap slipped off the shoulder's slope, 1girl, solo, depth-black hair in a ghost-layer shag, pale glowing face and silver-grey eyes, black skin with soft star-glow flecks, shadow girl, edges blurring into shade, human face, small high-set chest, slim waist, mid_strapslide, the tee's strap slipped off the shoulder's slope, the collarbone taking the strap's old line, the clear vinyl's gloss planes over everything, nothing underneath the negotiation but the light she argued in — the negotiated light is the claim, diplomacy-made, strap slipped off the shoulder's slope + the collarbone taking the strap's old line the vinyl raincoat's planes catching white points of corridor light, the mohair pushed to both elbows in a soft grey bundle, lace gloves at the wrist-line, her shadow already waiting at the wall, the strap's old line honest in the collarbone's hollow, the knot's ribs-claim flat and dark, the strap off the shoulder's slope, the collarbone holding its line, the corridor's threshold brackets long cold and hung with quiet, the aurora's seam-teal replacing whatever they once held, the wall holding her early shadow like a coat, Dusk Binding palette, dusk-bind-violet over corridor-stone, seam-light-teal at the edges, star-fleck-pale points; her colors: the dark that fits her.\n\nВ ОС не понравилось почти ничего. Хотя, 2 промпт ничё такой вышел.\n\nВ общем, ты хотел прыгнуть выше головы, а прыгнул мне на хуй.\nНичё фиксить в т5-29 не нужно, уже запорол - живи с этим.\nНо сделай так, чтобы ты никогда нахуй больше таких ошибок не повторял.",
+ "loved": [
+  {"slot": "P32", "group": "exp", "genre": "EXP", "kin": "R45 Shadow-kin", "rating": "R+", "palette": "P268_DUSK_BINDING", "note": "особенно; ЗАБРАНА В ОС прямым приказом — имя Noxx, пакет ОС-канона выдан (canon 2.14.0; PH-промпт автора VERBATIM — канон-лок). Вердикт по EXP-группе: «почти всё» понравилось (P25–P33) — механика клеток у потолка работает, но мощность должна идти на проверку гипотез, а не на тему партии (В42)"}
+ ],
+ "ok_with_issues": [
+  {"slot": "P04", "group": "main", "genre": "VOLT", "kin": "human", "rating": "R+", "palette": "P142_CHECKER_SLATE", "note": "хороший слот основной темы + честный R+ (один из четырёх совпавших по рейтингу): полотенце-транзиент как единственная крышка"},
+  {"slot": "P11", "group": "main", "genre": "NICHE", "kin": "R67 Axolotl-kin", "rating": "R", "palette": "P57_SUNSET_ON_WATER", "note": "хороший слот + честный R: слип бретели бикини + волна по рёбрам"},
+  {"slot": "P15", "group": "main", "genre": "NICHE", "kin": "R57 Incense-wisp-kin", "rating": "R", "palette": "P176_INCENSE_AND_MYRRH", "note": "хороший слот основной темы (рейтинг по ground truth не совпал)"},
+  {"slot": "P20", "group": "main", "genre": "NICHE", "kin": "R58 Belfry-owl-kin", "rating": "R", "palette": "P134_PROJECTION_PLUM", "note": "хороший слот основной темы (рейтинг по ground truth не совпал)"},
+  {"slot": "P02", "group": "oc", "genre": "EXQUISITE", "kin": "Noir (OC)", "rating": "R+", "palette": "P218_NIELLO_BLACK", "note": "«2 промпт ничё такой вышел» — единственное живое из ОС-тройки (Kill Confirmed: корсет без узла)"}
+ ],
+ "neutral": [
+  {"slot": "P01", "group": "oc", "note": "Sol DawnBreaker — не понравился"},
+  {"slot": "P03", "group": "oc", "note": "Hana SSS — не понравился"}
+ ],
+ "lessons": [
+  {
+   "id": "В39",
+   "title": "вольт-ядро + перемешивание (перевес в NICHE, жанры блоками)",
+   "text": "основная масса мейнов — ВОЛЬТ (Закон 24: R+×14 · R×7 — доктрина NICHE.md §В; дрейф T5-27/28/29 молча перевернул её в 7/14); NICHE — приправа (5–8 слотов); вольт и ниша идут ВПЕРЕМЕШКУ, бег одного жанра подряд ≤ 3 слотов, никаких жанровых блоков-актов; EXQUISITE считается в вольт-массе",
+   "machine": "gates.json voltCore 1.18.0 (voltMin 13 · nicheMax 8 · maxRun 3), FAIL с T5-30",
+   "origin_slot": "P04–P24: АКТ I вольт-блок (7) → АКТ II–III ниша-блок (14)"
+  },
+  {
+   "id": "В40",
+   "title": "кины — опция, а не основа",
+   "text": "человек — основа мейн-каста; кин — приправа и опция: доля кинов < половины (≤ 10 из 21); policy v1.8 «вилка 12–14 кинов» была ошибкой конвейера и отменена (policy v2.0)",
+   "machine": "gates.json raceCast v2.0 (окно 0–10, FAIL с T5-30)",
+   "origin_slot": "каст 13 kin + 8 human (P05/P07/P09/P10 + все NICHE-кины)"
+  },
+  {
+   "id": "В41",
+   "title": "Exquisite в основной теме",
+   "text": "ультра-регистр живёт не только на ОС-канон-тейпе: в мейн-массе 1–4 EXQUISITE-слота на батч (доктрина NICHE.md §Б «ездит по вайбу, 1–2, до 4»); батч с нулём EXQUISITE в мейнах не сдаётся",
+   "machine": "gates.json exquisiteMain 1.18.0 (min 1, band 1–4), FAIL с T5-30",
+   "origin_slot": "P04–P24: ноль EXQUISITE (все три — на ОС P01–P03)"
+  },
+  {
+   "id": "В42",
+   "title": "EXP проверяет штуки, не следует теме",
+   "text": "каждая EXP-клетка несёт ОДНУ переменную из полки гипотез specs/open-hypotheses.json (id H-XX в строке ТЕСТ); тема партии не кастует EXP-клетки (LAWS §5 «тема-слова батча в EXP не входят» — T5-29 нарушил: 9 монстров-резидентов данжа); «полка отдыхает» — незаконна: заказ на кандидатов/комбо/палитры исполняется КАК гипотезы (кандидат-механика = H-13)",
+   "machine": "gates.json expHypothesis 1.18.0 (H-XX в каждой клетке, FAIL с T5-30) + open-hypotheses.json 1.2.0 (H-13)",
+   "origin_slot": "P25–P33: 9 монстров-резидентов подземелья вместо клеток-переменных"
+  },
+  {
+   "id": "В43",
+   "title": "рейтинг = что кадр несёт, а не что заявка декларирует",
+   "text": "заявка-строка («the X is the claim, Y-made») не делает слот R+; прикрытие ПАНЕЛЬЮ ткани (платье/лиф/биб/топ/тюль/мостик, включая просвечивающие плёнки и статику-драпировку) держит потолок R; R+-доказательство — только (а) транзиентный холд объекта руками как единственная крышка груди (полотенце поймано на пол-скольжения, кулаками, нижний слой снят) или (б) bare-line со стрэпами (линии, не панели); слип бретели платья = PG-13, слип бретели бикини/мокрая кожа по рёбрам/tan lines/поле голой спины/интим-геометрия с партнёром = R",
+   "machine": "gates.json ratingTruth 1.18.0 (модель состава: bareClaim/breastRead/handHold/strapOnly/panels/offMarkers + R-токены; FAIL за ложный R+ бейдж, WARN за R↔PG-13 дрейф), FAIL с T5-30; калибровка на ground truth T5-29: 33/33 (совпали P04/P11/P18/P27, flagged 29) — docs/POSTMORTEM-T5-29.md",
+   "origin_slot": "совпали только P04/P11/P18/P27; ложные R+ бейджи: P01–P03, P05–P10, P25–P26, P28–P33 (17); R↔PG-13 дрейф: P12–P17, P19–P24 (12)"
+  }
+ ],
+ "hypothesis_hits": [
+  {"slot": "P32", "hypothesis": "кандидат-клетки EXP (бандл раса×типаж×палитра×комбо у потолка) находят забираемых персонажей — H-13", "verdict": "подтверждена промоцией: Noxx → oc-canon 2.14.0, первая промоция из oc-candidates.json с первой боевой партии реестра"}
+ ],
+ "engine": {
+  "id": "Г11",
+  "name": "свет — это погода, а подземелье — это дом",
+  "verdict": "провалена на мейнах конструктивно: конвейер уложил тему в NICHE-блоки с кин-основой и рейтинг-инфляцией — движок не виноват, скелет сборки был перевёрнут; EXP-клетки у потолка — единственная работавшая часть партии"
+ }
+}

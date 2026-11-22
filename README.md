@@ -45,13 +45,13 @@ Batch-Prompt Conveyer Belt
   poses 1.19.0; палитры ×269 — palettes 1.15.0 (волна 13 «свет подземелья»
   P261–P269, trial до вердикта T5-29; волна 12 P252–P260 в основном пуле); **Y-множество ×530 — camera.json
   1.19.0, Y-first + Y-STAMP (вплетение 1:1) + POV-якоря В37**; расы ×74 — races 2.7.0 (кин-оверхаул: clarifiers+gimmick+skin_type, LAWS §21);
-  OC-канон ×29 — canon 2.13.0 (Nier+Noir); CLOSET ×121 предмет на 13 полках — closet 1.1.0 (exposure-классы, yStack; единственный активный каталог одежды, GAR — legacy); **bodytypes.json 1.0.0 — 24 типажа тел (пункт Е)**; **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**; **oc-candidates.json 1.1.0 — кандидаты в ОС: первый боевой лог — 9 trial-кандидатов EXP T5-29, oc_hook (пункт Д)**;
-  `gates.json` 1.17.0 (yStackGate) + `gate-registry.json` 1.0.0 (реестр «гейт → код →
+  OC-канон ×30 — canon 2.14.0 (Noxx: промоция из EXP T5-29 P32, «Дипломатия Света» — Two of Swords/SEAM/Libra, PH-промпт автора VERBATIM; первая промоция из oc-candidates.json); CLOSET ×121 предмет на 13 полках — closet 1.1.0 (exposure-классы, yStack; единственный активный каталог одежды, GAR — legacy); **bodytypes.json 1.0.0 — 24 типажа тел (пункт Е)**; **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**; **oc-candidates.json 1.2.0 — кандидаты в ОС: вердикт T5-29 — ПЕРВАЯ ПРОМОЦИЯ (P32 → Noxx), 8 passed «понравились, не забраны» (пункт Д)**;
+  `gates.json` 1.18.0 (yStackGate + УРОК T5-29: voltCore В39 — вольт-ядро и перемешивание; raceCast v2.0 В40 — кины-опция, окно 0–10; exquisiteMain В41; expHypothesis В42 — H-XX в каждой EXP-клетке; ratingTruth В43 — рейтинг = состав, ложный R+ FAIL; все — FAIL-эра с T5-30) + `gate-registry.json` 1.1.0 (реестр «гейт → код →
   квитанция», 28 секций); `raw-plus.json` 2.3.0 (PROSE PLUS + закон ТЕГ-ПОРЯДКА, LAWS §20);
   `delivery-stats.json` 0.15.0 (99 каналов, волна 15); **`delivery-index.json` 1.0.0 —
   статус сдачи партий draft/ready/delivered/superseded, единственный вход
   окна/жребия/CI**; **`active-pools.json` 1.0.0 — активный пул выбора
-  (аудит Коула R5) + режимы CLOCK/LAB/SURGERY**; `ultimate-dice.json`,
+  (аудит Коула R5) + режимы CLOCK/LAB/SURGERY**; `ultimate-dice.json`, `open-hypotheses.json` 1.2.0 (H-13 кандидат-клетки),
   `dresser.json` 1.3.0 (y_stack + ПРЕ-ГАРДЕРОБ, tools/pregarment.py, LAWS §22); `salon.json`, `furnace-ledger.json`,
   `moves-ledger.json`, …)
 - `verdicts/` — вербатим-вердикты автора по батчам; **новая эра (двойной
@@ -59,7 +59,7 @@ Batch-Prompt Conveyer Belt
   loved/ok_with_issues/lessons/hypothesis_hits) — канонический вход вкуса;
   `taste.py` читает JSON, Markdown — фолбэк** (T5-27 — первый JSON-вердикт)
 - `tools/` — `gates.py` (машинные гейты печи: 28 секций, реестр
-  specs/gate-registry.json «гейт → код → тест → квитанция», валидатор
+  specs/gate-registry.json 1.1.0 (33 секции) «гейт → код → тест → квитанция», валидатор
   сверяет цепочку; флоры, заявка/салиенс, claim-exists, char-spec,
   oc-class-floor, neg-anchor, header-contract, movesGate, storyCardsGate,
   yCardGate — Y-first, claimPhysics — В31, conceptFlag, negDressGuards,
@@ -106,6 +106,7 @@ Batch-Prompt Conveyer Belt
   экспозиция+поза+POV+камера+профайлинг; PL-каталог — слой поддержки;
   В31: коридор = физика в POS, не поле; R-спред несёт класс раскрытия;
   В32: ≥2 фишечки-ФОРМЫ на мейн/EXP
+- **Урок T5-29 (В39–В43, FAIL-эра с T5-30)**: вольт-ядро мейнов (Закон 24: вольт-масса ≥ 13, ниша 5–8, бег жанра ≤ 3 — вперемешку, не блоками); кины — опция (человек — основа, ≤ 10 из 21); EXQUISITE 1–4 в мейнах; EXP = полка гипотез (H-XX в каждой клетке, тема партии их не кастует); рейтинг = что кадр несёт составом (панель ткани = потолок R, ложный R+ = FAIL); калибровка 33/33 — docs/POSTMORTEM-T5-29.md
 - Hard-флоры никогда не расслабляются; X-слоты изъяты по умолчанию
 - Окно ротации: позы/палитры/Y-карты/**OC** последних 3 СДАННЫХ партий
   (статус — specs/delivery-index.json) не повторяются; тема гуглится ДО

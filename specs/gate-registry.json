@@ -1,9 +1,9 @@
 {
  "id": "gate-registry",
  "name": "Реестр гейтов: секция gates.json → реализация в gates.py → поле квитанции",
- "version": "1.0.0",
+ "version": "1.1.0",
  "born": "2026-11-21",
- "born_from": "Двойной аудит 2026-11-20 (внешний P0-05 «нет реестра gate → code → test»; живой прецедент: paletteSkin был объявлен в gates.json v1.16.0, но отсутствовал в обязательном списке валидатора — объявленный гейт ≠ работающий гейт). Реестр замыкает цепочку: валидатор сверяет каждую секцию gates.json с реализацией в tools/gates.py и полем в квитанции; test — прямой юнит-тест (null = долги перечислены явно, не спрятаны); end-to-end страховка всего конвейера — tests/python/test_gate_registry.py (золотой прогон T5-27 PASS 0F/2W + тамперы: изъятая hard-флора → FAIL, изъятое вплетение → FAIL).",
+ "born_from": "Двойной аудит 2026-11-20 (внешний P0-05 «нет реестра gate → code → test»; живой прецедент: paletteSkin был объявлен в gates.json v1.16.0, но отсутствовал в обязательном списке валидатора — объявленный гейт ≠ работающий гейт). Реестр замыкает цепочку: валидатор сверяет каждую секцию gates.json с реализацией в tools/gates.py и полем в квитанции; test — прямой юнит-тест (null = долги перечислены явно, не спрятаны); end-to-end страховка всего конвейера — tests/python/test_gate_registry.py (золотой прогон T5-27 PASS 0F/2W + тамперы: изъятая hard-флора → FAIL, изъятое вплетение → FAIL). · 1.1.0 (2026-11-22, вердикт T5-29): пять секций урока В39–В43 (voltCore/raceCast v2.0/exquisiteMain/expHypothesis/ratingTruth) + закрыта дыра 1.17.0 (yStack жил в gates.json без строки реестра)",
  "rules": {
   "sectionSetMustMatch": "множество секций реестра == REQUIRED_GATES_KEYS валидатора == ключи-секции gates.json — ни одна секция не может появиться/исчезнуть молча",
   "implMustExist": "каждая impl-функция обязана существовать в tools/gates.py (def имя() — иначе секция объявлена, но не исполняется)",
@@ -11,33 +11,339 @@
   "testOrNull": "прямой тест или явный null; null — видимый долг, не молчание"
  },
  "gates": [
-  {"section": "claim", "impl": ["check_salience", "check_format_gate"], "receiptField": null, "test": null, "owner": "EARTH", "note": "заявка ≤ claimMaxToken, салиенс — токен в верхних строках POS; результат в slot_table.claimToken"},
-  {"section": "claimGate", "impl": ["check_claim_exists"], "receiptField": null, "test": null, "owner": "EARTH", "note": "claim-токен существует в POS (FAIL с T5-08)"},
-  {"section": "ocClassGate", "impl": ["check_oc_class_floor"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "OC-слоты класс EXQUISITE не ниже (вердикт T5-09)"},
-  {"section": "charSpecGate", "impl": ["check_char_spec"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "идентичность явно в POS: волосы/глаза/кожа/тело (posFullSpec)"},
-  {"section": "pos", "impl": ["check_pos_budget"], "receiptField": null, "test": null, "owner": "EARTH", "note": "POS-бюджет снят (unlimited), счёт слов в slot_table.posWords"},
-  {"section": "neg", "impl": ["check_neg_linter"], "receiptField": null, "test": null, "owner": "EARTH", "note": "NEG-линтер: якорные стили X gone/off/intact, юниты по словам"},
-  {"section": "negBase", "impl": ["neg_v3_active", "check_neg_hygiene"], "receiptField": null, "test": null, "owner": "EARTH", "note": "эра NEG v3: removed-классы + гигиена гардов"},
-  {"section": "copypaste", "impl": ["check_copypaste"], "receiptField": "copypasteCanonExempt", "test": null, "owner": "FURNACE", "note": "n-граммы внутри батча; канон-вербатим ОС гасится с прозрачным счётчиком"},
-  {"section": "crossBatch", "impl": ["check_cross_batch"], "receiptField": "crossBatchShared", "test": null, "owner": "FURNACE", "note": "6-граммы против prevDepth предыдущих СДАННЫХ партий (через t5delivery)"},
-  {"section": "channels", "impl": ["check_channels"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "каналы доставки: статус/квоты/burn-пересечения; результат в slot_table.channelStatus"},
-  {"section": "registry", "impl": ["check_registry"], "receiptField": null, "test": null, "owner": "FURNACE", "note": "коды палитр/поз/кинетик/носителей существуют в реестрах"},
-  {"section": "posFloors", "impl": ["check_pos_floors"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "имена OC и флоры POS по реестру oc-canon"},
-  {"section": "raceCast", "impl": ["check_race_cast"], "receiptField": null, "test": null, "owner": "MERCURY", "note": "расовый каст 12–14/21, карантин согласован с races.json"},
-  {"section": "burn", "impl": ["check_burn"], "receiptField": null, "test": null, "owner": "FURNACE", "note": "сожжённые коды не назначаются (burned.json)"},
-  {"section": "header", "impl": ["check_floors", "check_header"], "receiptField": null, "test": "tests/python/test_gate_registry.py", "owner": "FURNACE", "note": "hard-флоры/анти-ваша/candle в NEG + декларации шапки; тампер-тест: изъятая флора → FAIL"},
-  {"section": "headerContract", "impl": ["check_header_contract"], "receiptField": null, "test": null, "owner": "FURNACE", "note": "applyFrom-декларации шапки (ГИПОТЕЗА ДВИЖКА, ХОДЫ)"},
-  {"section": "movesGate", "impl": ["check_moves_gate"], "receiptField": "movesDeclared", "test": null, "owner": "FURNACE", "note": "ходы против moves-ledger.json: M-id/износ/отставка"},
-  {"section": "storyCardsGate", "impl": ["check_story_cards"], "receiptField": "storyCards", "test": "tests/python/test_gates.py", "owner": "SOL", "note": "карточки историй batches/T5-NN/stories.md"},
-  {"section": "formatGate", "impl": ["check_format_gate"], "receiptField": null, "test": null, "owner": "EARTH", "note": "В32: башенки-строки POS, капы длины"},
-  {"section": "corridorAudit", "impl": ["check_corridor"], "receiptField": "fact_label", "test": null, "owner": "FURNACE", "note": "fact_R+ ≠ label_R+ (В33, FAIL-эра)"},
-  {"section": "claimPhysics", "impl": ["check_claimphysics"], "receiptField": "claim_physics", "test": null, "owner": "VENUS", "note": "В31: коридор = физика в POS, не самосертификация поля"},
-  {"section": "yCards", "impl": ["check_ycards"], "receiptField": "y_cards", "test": null, "owner": "VENUS", "note": "Y-first: R+ слоты собираются от карт, паттерн доехал, дублей нет"},
-  {"section": "yStamp", "impl": ["check_ystamp"], "receiptField": "y_stamp", "test": "tests/python/test_gate_registry.py", "owner": "EARTH", "note": "В34/В35: вплетение 1:1, метки изъяты; тампер-тест: изъятое вплетение → FAIL; окно — load_prev_y_usage (test_gates.py)"},
-  {"section": "comboPose", "impl": ["check_combo_pose"], "receiptField": "combo_pose", "test": null, "owner": "VENUS", "note": "акт 1: составные позы от карт-обёрток"},
-  {"section": "conceptFlag", "impl": ["check_concept_flag"], "receiptField": "buffs.concept_flagged", "test": null, "owner": "SOL", "note": "концепт-визитка без механизма — WARN"},
-  {"section": "negDressGuards", "impl": ["check_neg_dress_guards"], "receiptField": "buffs.neg_dress_guards", "test": null, "owner": "MERCURY", "note": "NEG-гарды одежды против канала доставки"},
-  {"section": "detailsGate", "impl": ["check_details_layer"], "receiptField": null, "test": null, "owner": "EARTH", "note": "В32: ≥2 фишечки-формы на мейн/EXP"},
-  {"section": "paletteSkin", "impl": ["check_palette_skin"], "receiptField": "palette_skin", "test": "tests/python/test_gates.py", "owner": "MERCURY", "note": "В36: палитра ≠ кожа, token bleed"}
+  {
+   "section": "claim",
+   "impl": [
+    "check_salience",
+    "check_format_gate"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "EARTH",
+   "note": "заявка ≤ claimMaxToken, салиенс — токен в верхних строках POS; результат в slot_table.claimToken"
+  },
+  {
+   "section": "claimGate",
+   "impl": [
+    "check_claim_exists"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "EARTH",
+   "note": "claim-токен существует в POS (FAIL с T5-08)"
+  },
+  {
+   "section": "ocClassGate",
+   "impl": [
+    "check_oc_class_floor"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "MERCURY",
+   "note": "OC-слоты класс EXQUISITE не ниже (вердикт T5-09)"
+  },
+  {
+   "section": "charSpecGate",
+   "impl": [
+    "check_char_spec"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "MERCURY",
+   "note": "идентичность явно в POS: волосы/глаза/кожа/тело (posFullSpec)"
+  },
+  {
+   "section": "pos",
+   "impl": [
+    "check_pos_budget"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "EARTH",
+   "note": "POS-бюджет снят (unlimited), счёт слов в slot_table.posWords"
+  },
+  {
+   "section": "neg",
+   "impl": [
+    "check_neg_linter"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "EARTH",
+   "note": "NEG-линтер: якорные стили X gone/off/intact, юниты по словам"
+  },
+  {
+   "section": "negBase",
+   "impl": [
+    "neg_v3_active",
+    "check_neg_hygiene"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "EARTH",
+   "note": "эра NEG v3: removed-классы + гигиена гардов"
+  },
+  {
+   "section": "copypaste",
+   "impl": [
+    "check_copypaste"
+   ],
+   "receiptField": "copypasteCanonExempt",
+   "test": null,
+   "owner": "FURNACE",
+   "note": "n-граммы внутри батча; канон-вербатим ОС гасится с прозрачным счётчиком"
+  },
+  {
+   "section": "crossBatch",
+   "impl": [
+    "check_cross_batch"
+   ],
+   "receiptField": "crossBatchShared",
+   "test": null,
+   "owner": "FURNACE",
+   "note": "6-граммы против prevDepth предыдущих СДАННЫХ партий (через t5delivery)"
+  },
+  {
+   "section": "channels",
+   "impl": [
+    "check_channels"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "MERCURY",
+   "note": "каналы доставки: статус/квоты/burn-пересечения; результат в slot_table.channelStatus"
+  },
+  {
+   "section": "registry",
+   "impl": [
+    "check_registry"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "FURNACE",
+   "note": "коды палитр/поз/кинетик/носителей существуют в реестрах"
+  },
+  {
+   "section": "posFloors",
+   "impl": [
+    "check_pos_floors"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "MERCURY",
+   "note": "имена OC и флоры POS по реестру oc-canon"
+  },
+  {
+   "section": "raceCast",
+   "impl": [
+    "check_race_cast"
+   ],
+   "receiptField": "race_cast",
+   "test": "tests/python/test_t529_lessons.py",
+   "owner": "MERCURY",
+   "note": "v1.18.0 policy v2.0 (В40, вердикт T5-29 п.3 «кины - опция, а не основа»): человек — основа каста, кин — опция, окно 0–10 из 21 (вилка 12–14 policy v1.8 отменена); карантин/RF как были; FAIL с T5-30; тампер-тест: кин 13/21 → FAIL"
+  },
+  {
+   "section": "burn",
+   "impl": [
+    "check_burn"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "FURNACE",
+   "note": "сожжённые коды не назначаются (burned.json)"
+  },
+  {
+   "section": "header",
+   "impl": [
+    "check_floors",
+    "check_header"
+   ],
+   "receiptField": null,
+   "test": "tests/python/test_gate_registry.py",
+   "owner": "FURNACE",
+   "note": "hard-флоры/анти-ваша/candle в NEG + декларации шапки; тампер-тест: изъятая флора → FAIL"
+  },
+  {
+   "section": "headerContract",
+   "impl": [
+    "check_header_contract"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "FURNACE",
+   "note": "applyFrom-декларации шапки (ГИПОТЕЗА ДВИЖКА, ХОДЫ)"
+  },
+  {
+   "section": "movesGate",
+   "impl": [
+    "check_moves_gate"
+   ],
+   "receiptField": "movesDeclared",
+   "test": null,
+   "owner": "FURNACE",
+   "note": "ходы против moves-ledger.json: M-id/износ/отставка"
+  },
+  {
+   "section": "storyCardsGate",
+   "impl": [
+    "check_story_cards"
+   ],
+   "receiptField": "storyCards",
+   "test": "tests/python/test_gates.py",
+   "owner": "SOL",
+   "note": "карточки историй batches/T5-NN/stories.md"
+  },
+  {
+   "section": "formatGate",
+   "impl": [
+    "check_format_gate"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "EARTH",
+   "note": "В32: башенки-строки POS, капы длины"
+  },
+  {
+   "section": "corridorAudit",
+   "impl": [
+    "check_corridor"
+   ],
+   "receiptField": "fact_label",
+   "test": null,
+   "owner": "FURNACE",
+   "note": "fact_R+ ≠ label_R+ (В33, FAIL-эра)"
+  },
+  {
+   "section": "claimPhysics",
+   "impl": [
+    "check_claimphysics"
+   ],
+   "receiptField": "claim_physics",
+   "test": null,
+   "owner": "VENUS",
+   "note": "В31: коридор = физика в POS, не самосертификация поля"
+  },
+  {
+   "section": "yCards",
+   "impl": [
+    "check_ycards"
+   ],
+   "receiptField": "y_cards",
+   "test": null,
+   "owner": "VENUS",
+   "note": "Y-first: R+ слоты собираются от карт, паттерн доехал, дублей нет"
+  },
+  {
+   "section": "yStamp",
+   "impl": [
+    "check_ystamp"
+   ],
+   "receiptField": "y_stamp",
+   "test": "tests/python/test_gate_registry.py",
+   "owner": "EARTH",
+   "note": "В34/В35: вплетение 1:1, метки изъяты; тампер-тест: изъятое вплетение → FAIL; окно — load_prev_y_usage (test_gates.py)"
+  },
+  {
+   "section": "comboPose",
+   "impl": [
+    "check_combo_pose"
+   ],
+   "receiptField": "combo_pose",
+   "test": null,
+   "owner": "VENUS",
+   "note": "акт 1: составные позы от карт-обёрток"
+  },
+  {
+   "section": "conceptFlag",
+   "impl": [
+    "check_concept_flag"
+   ],
+   "receiptField": "buffs.concept_flagged",
+   "test": null,
+   "owner": "SOL",
+   "note": "концепт-визитка без механизма — WARN"
+  },
+  {
+   "section": "negDressGuards",
+   "impl": [
+    "check_neg_dress_guards"
+   ],
+   "receiptField": "buffs.neg_dress_guards",
+   "test": null,
+   "owner": "MERCURY",
+   "note": "NEG-гарды одежды против канала доставки"
+  },
+  {
+   "section": "detailsGate",
+   "impl": [
+    "check_details_layer"
+   ],
+   "receiptField": null,
+   "test": null,
+   "owner": "EARTH",
+   "note": "В32: ≥2 фишечки-формы на мейн/EXP"
+  },
+  {
+   "section": "paletteSkin",
+   "impl": [
+    "check_palette_skin"
+   ],
+   "receiptField": "palette_skin",
+   "test": "tests/python/test_gates.py",
+   "owner": "MERCURY",
+   "note": "В36: палитра ≠ кожа, token bleed"
+  },
+  {
+   "section": "yStack",
+   "impl": [
+    "check_ystack"
+   ],
+   "receiptField": "y_stack",
+   "test": null,
+   "owner": "VENUS",
+   "note": "1.17.0 Y×CLOSET STACK (заказ 2026-11-21 после вердикта T5-28): одежда держит класс карты; между 1.17.0 и 1.1.0 реестра секция жила в gates.json БЕЗ строки реестра — дыра закрыта 2026-11-22 при внесении урока T5-29; прямой тест — видимый долг (null), эра проверяется живым прогоном T5-29"
+  },
+  {
+   "section": "voltCore",
+   "impl": [
+    "check_volt_core"
+   ],
+   "receiptField": "volt_core",
+   "test": "tests/python/test_t529_lessons.py",
+   "owner": "SOL",
+   "note": "В39 (вердикт T5-29 п.2+4): вольт-ядро мейнов по Закону 24 (вольт-масса VOLT+EXQUISITE ≥ 13, ниша 5–8) + перемешивание (бег жанра ≤ 3, блоки-акты запрещены); FAIL с T5-30; тампер-тест: T5-29 (7/14, бег 14) ловится в retro"
+  },
+  {
+   "section": "exquisiteMain",
+   "impl": [
+    "check_exquisite_main"
+   ],
+   "receiptField": "exquisite_main",
+   "test": "tests/python/test_t529_lessons.py",
+   "owner": "SOL",
+   "note": "В41 (вердикт T5-29 п.5 «где Exquisite в основной теме»): 1–4 EXQUISITE-слота в мейн-массе, не только на ОС-тейпе; FAIL с T5-30; тампер-тест: T5-29 (0) ловится в retro"
+  },
+  {
+   "section": "expHypothesis",
+   "impl": [
+    "check_exp_hypothesis"
+   ],
+   "receiptField": "exp_hypothesis",
+   "test": "tests/python/test_t529_lessons.py",
+   "owner": "FURNACE",
+   "note": "В42 (вердикт T5-29 п.6 «EXP должны проверять штуки»): каждая EXP-клетка несёт H-XX из specs/open-hypotheses.json в строке ТЕСТ; «полка отдыхает» незаконна, тема партии клетки не кастует; одна гипотеза ≤ 2 клеток (A/B); FAIL с T5-30; тампер-тест: T5-29 (9 клеток без H-XX) ловится в retro"
+  },
+  {
+   "section": "ratingTruth",
+   "impl": [
+    "check_rating_truth",
+    "rating_implied"
+   ],
+   "receiptField": "rating_truth",
+   "test": "tests/python/test_t529_lessons.py",
+   "owner": "FURNACE",
+   "note": "В43 (вердикт T5-29 п.7 «отладка системы рейтинга»): модель состава rating_implied() — bareClaim/strapOnly/handHold/panels/offMarkers/rTokens из gates.json; ложный R+ бейдж = FAIL (наследие В33), R↔PG-13 дрейф = WARN; калибровка ground truth T5-29: 33/33 (совпали P04/P11/P18/P27, помечены 29); FAIL с T5-30"
+  }
  ]
 }

@@ -157,6 +157,21 @@ FAIL), битые --json/--md = exit 2 без трейсбека, stdout не п
 кириллице в cp1251-пайпе; (7) квитанция пишет batch-путь относительно
 корня репо + mkdir для --md — sha-замок хука не слепнет от чужого CWD.
 
+v1.18.0 (вердикт T5-29, 2026-11-22, уроки В39–В43: «сделай так, чтобы ты
+никогда нахуй больше таких ошибок не повторял»): (В39) voltCore — вольт-ядро
+мейнов по Закону 24 (вольт-масса ≥ 13, ниша 5–8) + перемешивание (бег жанра
+≤ 3 слота, блоки-акты запрещены); (В40) raceCast policy v2.0 — человек основа,
+кин опция: окно 0–10 вместо вилки 12–14; (В41) exquisiteMain — EXQUISITE в
+мейн-массе 1–4 (не только на ОС-тейпе); (В42) expHypothesis — каждая EXP-
+клетка несёт H-XX из specs/open-hypotheses.json («полка отдыхает» незаконна,
+тема партии клетки не кастует); (В43) ratingTruth — рейтинг = что кадр несёт
+составом: панель ткани на груди держит потолок R, R+ = транзиентный холд
+объекта руками (единственная крышка) или bare-line со стрэпами; калибровка
+на ground truth T5-29 — 33/33 (совпали P04/P11/P18/P27). Все пять — эра
+applyFrom 30: FAIL с T5-30, T5-29 и старшие задним числом не бьются (--retro
+показывает WARN-ами, прецедент yStamp/paletteSkin). Разбор:
+docs/POSTMORTEM-T5-29.md.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -1427,6 +1442,253 @@ def check_palette_skin(slots, warns, batch_no=-1, retro=False):
     return caught
 
 
+# ── v1.18.0: уроки T5-29 (В39–В43) ─────────────────────────────────────
+# Вердикт 2026-11-22: «Но сделай так, чтобы ты никогда нахуй больше таких
+# ошибок не повторял». Все пять проверок — applyFrom 30 (FAIL-эра с T5-30;
+# T5-29 и старшие задним числом не бьются, квитанции заперты; --retro
+# показывает пробелы WARN-ами, прецедент yStamp/paletteSkin).
+
+
+def _mains(slots, oc_names=()):
+    """Мейны = не-EXP и не-OC слоты (в порядке следования в батче)."""
+    return [
+        s for s in slots
+        if s.genre != "EXP" and not is_oc_slot(s, oc_names)
+    ]
+
+
+def check_volt_core(slots, warns, fails, batch_no=-1, oc_names=(), retro=False):
+    """v1.18.0 voltCore — В39 «вольт-ядро + перемешивание» (вердикт T5-29,
+    пункты 2 и 4). Закон 24 / NICHE.md §В всегда требовал R+×14 · R×7 —
+    дрейф T5-27/28/29 молча перевернул массу в 7/14, и ни один гейт этого
+    не видел: жанровые токены читались, баланс — нет. Теперь: вольт-масса
+    (VOLT + EXQUISITE) ≥ voltMin, ниша 5–8, бег одного класса ≤ maxRun —
+    жанровые блоки-акты («АКТ I вольт, АКТ II ниша») запрещены."""
+    cfg = GATES.get("voltCore")
+    if not cfg:
+        return {}
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return {}
+    hard = batch_no >= int(cfg.get("failFrom", 10 ** 9))
+    mains = _mains(slots, oc_names)
+    seq = []
+    for s in mains:
+        if s.genre in ("VOLT", "EXQUISITE"):
+            seq.append("HOT")
+        elif s.genre == "NICHE":
+            seq.append("SPICE")
+        else:
+            seq.append("OTHER")
+    volt = seq.count("HOT")
+    niche = seq.count("SPICE")
+    max_run, cur, prev = 0, 0, None
+    for cls in seq:
+        if cls in ("HOT", "SPICE"):
+            cur = cur + 1 if cls == prev else 1
+            max_run = max(max_run, cur)
+        else:
+            cur = 0
+        prev = cls
+    problems = []
+    if volt < int(cfg.get("voltMin", 13)):
+        problems.append(
+            f"вольт-масса {volt} < {cfg.get('voltMin')} (Закон 24: R+×14 · R×7 — "
+            f"вольт основа, ниша приправа)")
+    if niche > int(cfg.get("nicheMax", 8)):
+        problems.append(
+            f"ниша {niche} > {cfg.get('nicheMax')} — перевес в NICHE (вердикт "
+            f"T5-29, пункт 2)")
+    if niche < int(cfg.get("nicheMin", 5)):
+        problems.append(
+            f"ниша {niche} < {cfg.get('nicheMin')} — чудо обязано присутствовать "
+            f"(density floor, NICHE.md §5)")
+    if max_run > int(cfg.get("maxRun", 3)):
+        problems.append(
+            f"жанровый бег {max_run} подряд > {cfg.get('maxRun')} — вольт и ниша "
+            f"идут ВПЕРЕМЕШКУ, не блоками (вердикт T5-29, пункт 4)")
+    if problems:
+        entry = (
+            "BATCH", "volt-core",
+            "ВОЛЬТ-ЯДРО: " + "; ".join(problems) + " (В39, вердикт T5-29)")
+        (fails if hard else warns).append(entry)
+    return {
+        "mains": len(mains), "volt": volt, "niche": niche,
+        "other": seq.count("OTHER"), "max_run": max_run,
+    }
+
+
+def check_exquisite_main(slots, warns, fails, batch_no=-1, oc_names=(), retro=False):
+    """v1.18.0 exquisiteMain — В41 «Exquisite в основной теме» (вердикт
+    T5-29, пункт 5: «где Exquisite в основной теме»). Доктрина NICHE.md §Б
+    всегда говорила «1–2 слота на батч, до 4» — T5-29 сдал ноль: ультра-
+    регистр жил только на ОС-тейпе. Мейны без EXQUISITE не сдаются."""
+    cfg = GATES.get("exquisiteMain")
+    if not cfg:
+        return {}
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return {}
+    hard = batch_no >= int(cfg.get("failFrom", 10 ** 9))
+    mains = _mains(slots, oc_names)
+    count = sum(1 for s in mains if s.genre == "EXQUISITE")
+    if count < int(cfg.get("min", 1)):
+        entry = (
+            "BATCH", "exquisite-main",
+            f"EXQUISITE в мейнах {count} < {cfg.get('min')} — ультра-регистр "
+            f"живёт не только на ОС-тейпе: 1–4 слота в мейн-массе (В41, "
+            f"вердикт T5-29, пункт 5)")
+        (fails if hard else warns).append(entry)
+    elif count > int(cfg.get("max", 4)):
+        warns.append(
+            ("BATCH", "exquisite-main",
+             f"EXQUISITE в мейнах {count} > {cfg.get('max')} — ультра-регистр "
+             f"теряет ультра-ность (доктрина: «до 4, когда тема богата»)"))
+    return {"mains": len(mains), "exquisite": count}
+
+
+def check_exp_hypothesis(slots, warns, fails, batch_no=-1, retro=False):
+    """v1.18.0 expHypothesis — В42 «EXP проверяет штуки, не следует теме»
+    (вердикт T5-29, пункт 6). LAWS §5 всегда требовал «тема-слова батча в
+    EXP не входят» — T5-29 кастовал клетки в монстров-резидентов данжа.
+    Зуб: каждая EXP-клетка несёт id H-XX из specs/open-hypotheses.json в
+    строке «ТЕСТ (⚗ …)»; «полка отдыхает» незаконна — заказ на кандидатов
+    исполняется КАК гипотезы (кандидат-механика = H-13)."""
+    cfg = GATES.get("expHypothesis")
+    if not cfg:
+        return {}
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return {}
+    hard = batch_no >= int(cfg.get("failFrom", 10 ** 9))
+    hyp_re = re.compile(str(cfg.get("hypIdRe", r"H-\d{2}")))
+    exp = [s for s in slots if s.genre == "EXP"]
+    per_hyp = {}
+    without = []
+    for s in exp:
+        body = "\n".join(s.body_lines or [])
+        ids = sorted(set(hyp_re.findall(body)))
+        if not ids:
+            without.append(s.sid)
+            entry = (
+                s.sid, "exp-hypothesis",
+                "EXP-клетка без переменной из полки гипотез (нет H-XX в строке "
+                "ТЕСТ) — EXP проверяет штуки, а не следует теме партии; "
+                "«полка отдыхает» незаконна (В42, вердикт T5-29, пункт 6)")
+            (fails if hard else warns).append(entry)
+        for h in ids:
+            per_hyp[h] = per_hyp.get(h, 0) + 1
+    for h, n in sorted(per_hyp.items()):
+        if n > int(cfg.get("maxPerHyp", 2)):
+            warns.append(
+                ("BATCH", "exp-hypothesis",
+                 f"гипотеза {h} на {n} клетках > {cfg.get('maxPerHyp')} — "
+                 f"A/B-пара несёт ОДНУ переменную, не три-четыре (LAWS §5)"))
+    return {
+        "cells": len(exp), "with_h": len(exp) - len(without),
+        "without": without, "hyps_used": sorted(per_hyp),
+    }
+
+
+def rating_implied(pos, cfg):
+    """v1.18.0 ratingTruth — модель состава: что кадр несёт по токенам POS.
+
+    R+   : bareClaim («nothing underneath») И (strapOnly — линии, не панели
+           ИЛИ (ни одной панели на груди И handHold — транзиентный холд
+           объекта руками, как у P04 «both fists' haul of the towel»)).
+    R    : bareClaim / breastRead (чтение формы через что угодно) / R-токены
+           (мокрая кожа по рёбрам, tan lines, голая спина, интим-геометрия
+           с партнёром, ноги-демонстрация).
+    PG-13: всё остальное (мидрифф/плечи/бёдра сквозь ткань/слип бретели
+           платья).
+    Калибровка на ground truth T5-29: 33/33 (совпали P04/P11/P18/P27) —
+    docs/POSTMORTEM-T5-29.md."""
+    pos_l = (pos or "").lower()
+    has_bare = any(t in pos_l for t in cfg.get("bareClaim", []))
+    has_read = any(t in pos_l for t in cfg.get("breastRead", []))
+    has_hold = any(t in pos_l for t in cfg.get("handHold", []))
+    strap_only = any(t in pos_l for t in cfg.get("strapOnly", []))
+    win = int(cfg.get("window", 100))
+    panel_on = False
+    for p in cfg.get("panels", []):
+        for m in re.finditer(r"\b" + re.escape(p) + r"\b", pos_l):
+            w0, w1 = max(0, m.start() - win), min(len(pos_l), m.end() + win)
+            if not any(off in pos_l[w0:w1] for off in cfg.get("offMarkers", [])):
+                panel_on = True
+                break
+        if panel_on:
+            break
+    r_evidence = any(
+        t in pos_l
+        for toks in (cfg.get("rTokens") or {}).values()
+        for t in toks
+    )
+    if has_bare and (strap_only or (not panel_on and has_hold)):
+        return "R+"
+    if has_bare or has_read or r_evidence:
+        return "R"
+    return "PG-13"
+
+
+def check_rating_truth(slots, warns, fails, batch_no=-1, retro=False):
+    """v1.18.0 ratingTruth — В43 «рейтинг = что кадр несёт» (вердикт T5-29,
+    пункт 7: «Несоответствие рейтингу… Делай отладку системы которая за это
+    отвечает»). Предыдущая система (corridorAudit В33 + claimPhysics В31)
+    проверяла только «R+ бейдж → есть заявка и прикрытие» — и проморгала
+    инфляцию: 17 ложных R+ (заявка-строка есть, а состав несёт R: панель
+    ткани на груди), 12 R↔PG-13 дрейфов. Модель rating_implied() сверяет
+    бейдж с составом; ложный R+ = FAIL (наследие В33), мягкий дрейф = WARN.
+    X-слоты вне модели (hard-флоры §2)."""
+    cfg = GATES.get("ratingTruth")
+    if not cfg:
+        return {}
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return {}
+    hard = batch_no >= int(cfg.get("failFrom", 10 ** 9))
+    stats = {
+        "checked": 0, "implied_rplus": 0, "false_rplus": 0,
+        "soft_drift": 0, "table": [],
+    }
+    for s in slots:
+        if s.rating not in ("R+", "R", "PG-13"):
+            continue
+        implied = rating_implied(s.pos, cfg)
+        stats["checked"] += 1
+        stats["table"].append(
+            {"slot": s.sid, "slug": s.slug, "declared": s.rating,
+             "implied": implied})
+        if implied == "R+":
+            stats["implied_rplus"] += 1
+        if s.rating == "R+" and implied != "R+":
+            stats["false_rplus"] += 1
+            entry = (
+                s.sid, "rating-truth",
+                f"ложный R+ бейдж: состав несёт {implied} — панель ткани на "
+                f"груди держит потолок R; заявка-строка не делает слот R+. "
+                f"R+-доказательство: транзиентный холд объекта руками "
+                f"(единственная крышка, нижний слой снят) или bare-line со "
+                f"стрэпами (В43, вердикт T5-29, пункт 7)")
+            (fails if hard else warns).append(entry)
+        elif s.rating == "R" and implied == "PG-13":
+            stats["soft_drift"] += 1
+            warns.append(
+                (s.sid, "rating-truth",
+                 "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь "
+                 "ткань): вшить R-токен (слип бельевой бретели / мокрая кожа "
+                 "по рёбрам / tan lines / поле голой спины / интим-геометрия) "
+                 "или писать честный PG-13 (В43)"))
+        elif s.rating == "PG-13" and implied != "PG-13":
+            stats["soft_drift"] += 1
+            warns.append(
+                (s.sid, "rating-truth",
+                 f"PG-13-бейдж холоднее состава (несёт {implied}): либо убрать "
+                 f"токен, либо поднять бейдж (В43)"))
+        elif s.rating == "R" and implied == "R+":
+            stats["soft_drift"] += 1
+            warns.append(
+                (s.sid, "rating-truth",
+                 "состав горячее заявленного R (несёт R+-доказательство): "
+                 "поднять бейдж или ослабить состав (В43)"))
+    return stats
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -1831,8 +2093,10 @@ def check_pos_floors(slots, text, oc_names, warns):
                  f"титул темы «{title}» целиком в POS — тема живёт тегами по делу (LAWS §6)"))
 
 
-def check_race_cast(header, slots, statuses, warns, oc_names=()):
-    """Аудит 2026-10-31, §8: каст кинов против races.json и шапки."""
+def check_race_cast(header, slots, statuses, warns, fails, batch_no=-1, oc_names=(), retro=False):
+    """Аудит 2026-10-31, §8: каст кинов против races.json и шапки.
+    v1.18.0: policy v2.0 (В40, вердикт T5-29, пункт 3) — человек основа,
+    кин опция: окно 0–10 вместо вилки 12–14; с failFrom — FAIL."""
     cfg = GATES["raceCast"]
     # Ревизия 2026-11-01, 1.7: is_oc-фильтр вместо жанрового — миграция
     # ocClassGate (T5-10: жанр OC → EXQUISITE) не разваливает каст.
@@ -1863,10 +2127,30 @@ def check_race_cast(header, slots, statuses, warns, oc_names=()):
         warns.append(
             ("BATCH", "race-cast",
              f"шапка заявляет каст {declared.group(1)}/{declared.group(2)}, по факту {fact} (аудит 2026-10-31, F5)"))
-    if fact < cfg["min"] or fact > cfg["max"]:
-        warns.append(
-            ("BATCH", "race-cast",
-             f"каст {fact}/{len(mains)} вне вилки {cfg['min']}–{cfg['max']} (policy v1.8)"))
+    # v1.18.0 raceCast policy v2.0 (В40, вердикт T5-29 п.3 «кины - опция,
+    # а не основа»): человек — основа, кин — опция; окно 0–10 вместо вилки
+    # 12–14. ЭРА ЧЕСТНА (прецедент yStack «задним числом не бьют — золотой
+    # корпус цел»): до applyFrom свежие прогоны старых партий держат
+    # ЛЕГАСИ-окно v1.8 и не дрейфуют от запертых квитанций; v2.0 включается
+    # с эры 30 (FAIL с failFrom) и в --retro (видимая история).
+    era = batch_no >= int(cfg.get("applyFrom", 10 ** 9))
+    if era or retro:
+        lo, hi = cfg["min"], cfg["max"]
+        policy = (f"policy v2.0: человек — основа, кин — опция, "
+                  f"В40 вердикта T5-29")
+    else:
+        lo, hi = 12, 14  # легаси-окно v1.8 (аудит 2026-10-31 §8)
+        policy = "policy v1.8 (легаси-окно до эры В40)"
+    if fact < lo or fact > hi:
+        entry = (
+            "BATCH", "race-cast",
+            f"каст {fact}/{len(mains)} вне окна {lo}–{hi} ({policy})")
+        if era and batch_no >= int(cfg.get("failFrom", 10 ** 9)):
+            fails.append(entry)
+        else:
+            warns.append(entry)
+    return {"kin": fact, "human": len(mains) - fact,
+            "window": [lo, hi], "policy": "v2.0" if (era or retro) else "v1.8"}
 
 
 def check_slot_format(slots, warns):
@@ -2005,7 +2289,7 @@ def main():
         print(__doc__)
         sys.exit(0 if argv else 2)
     if argv[0] in ("-v", "--version"):
-        print(f"tools/gates.py v1.16.0 · specs/gates.json v{GATES.get('version', '?')}")
+        print(f"tools/gates.py v1.18.0 · specs/gates.json v{GATES.get('version', '?')}")
         sys.exit(0)
 
     # 2026-11-21: отчёт ИЗ квитанции — MD не перегоняет батч заново (это
@@ -2111,10 +2395,16 @@ def main():
     moves_declared = check_moves_gate(header, warns, batch_no)
     story_cards_ok = check_story_cards(batch_path, warns, batch_no)
     check_pos_floors(slots, text, oc_names, warns)
-    check_race_cast(header, slots, race_statuses, warns, oc_names)
+    race_stats = check_race_cast(header, slots, race_statuses, warns, fails, batch_no, oc_names, retro)  # v1.18.0: v2.0 + В40
     check_slot_format(slots, warns)
     check_oc_class_floor(slots, fails, warns, batch_no, oc_names)
     check_char_spec(slots, fails, warns, batch_no)
+    # v1.18.0: уроки T5-29 (В39–В43) — FAIL-эра с T5-30, T5-29 и старше
+    # задним числом не бьются (эра applyFrom 30); --retro показывает WARN-ами
+    volt_stats = check_volt_core(slots, warns, fails, batch_no, oc_names, retro)  # В39
+    exq_stats = check_exquisite_main(slots, warns, fails, batch_no, oc_names, retro)  # В41
+    exp_hyp_stats = check_exp_hypothesis(slots, warns, fails, batch_no, retro)  # В42
+    rating_stats = check_rating_truth(slots, warns, fails, batch_no, retro)  # В43
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -2189,6 +2479,37 @@ def main():
             "token_bleed": palette_bleed,
             "retro": bool(retro),
         },
+        "race_cast": {  # v1.18.0 В40: кины — опция (policy v2.0, окно 0–10)
+            "kin": race_stats["kin"], "human": race_stats["human"],
+            "window": race_stats["window"],
+            "policy": race_stats.get("policy", "v1.8"),
+        },
+        "volt_core": {  # v1.18.0 В39: вольт-ядро + перемешивание
+            "mains": volt_stats.get("mains"),
+            "volt": volt_stats.get("volt"),
+            "niche": volt_stats.get("niche"),
+            "max_run": volt_stats.get("max_run"),
+            "retro": bool(retro),
+        },
+        "exquisite_main": {  # v1.18.0 В41: EXQUISITE в мейнах
+            "mains": exq_stats.get("mains"),
+            "exquisite": exq_stats.get("exquisite"),
+            "retro": bool(retro),
+        },
+        "exp_hypothesis": {  # v1.18.0 В42: EXP = полка гипотез
+            "cells": exp_hyp_stats.get("cells"),
+            "with_h": exp_hyp_stats.get("with_h"),
+            "without": exp_hyp_stats.get("without"),
+            "hyps_used": exp_hyp_stats.get("hyps_used"),
+            "retro": bool(retro),
+        },
+        "rating_truth": {  # v1.18.0 В43: рейтинг = состав, не заявка
+            "checked": rating_stats.get("checked"),
+            "implied_rplus": rating_stats.get("implied_rplus"),
+            "false_rplus": rating_stats.get("false_rplus"),
+            "soft_drift": rating_stats.get("soft_drift"),
+            "retro": bool(retro),
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -2237,6 +2558,44 @@ def main():
         print(
             f"paletteSkin [В36]: перетёков цвета в кожу {receipt['palette_skin']['token_bleed']} "
             f"(палитра красит предмет/свет, кожа — канон вида)"
+        )
+    # v1.18.0: печать урока T5-29 только в его эре (или retro)
+    if GATES.get("voltCore") and (
+        batch_no >= int(GATES["voltCore"].get("applyFrom", 10 ** 9)) or retro
+    ) and receipt["volt_core"].get("mains") is not None:
+        vc = receipt["volt_core"]
+        print(
+            f"voltCore [В39]: мейнов {vc['mains']} · вольт-масса {vc['volt']} · "
+            f"ниша {vc['niche']} · макс бег {vc['max_run']}"
+        )
+    if GATES.get("exquisiteMain") and (
+        batch_no >= int(GATES["exquisiteMain"].get("applyFrom", 10 ** 9)) or retro
+    ) and receipt["exquisite_main"].get("mains") is not None:
+        em = receipt["exquisite_main"]
+        print(f"exquisiteMain [В41]: EXQUISITE в мейнах {em['exquisite']}")
+    if GATES.get("expHypothesis") and (
+        batch_no >= int(GATES["expHypothesis"].get("applyFrom", 10 ** 9)) or retro
+    ) and receipt["exp_hypothesis"].get("cells") is not None:
+        eh = receipt["exp_hypothesis"]
+        print(
+            f"expHypothesis [В42]: клеток {eh['cells']} · с H-XX {eh['with_h']} · "
+            f"без {len(eh['without'])} · полка: {', '.join(eh['hyps_used']) or '—'}"
+        )
+    if GATES.get("ratingTruth") and (
+        batch_no >= int(GATES["ratingTruth"].get("applyFrom", 10 ** 9)) or retro
+    ) and receipt["rating_truth"].get("checked") is not None:
+        rt = receipt["rating_truth"]
+        print(
+            f"ratingTruth [В43]: проверено {rt['checked']} · ложных R+ "
+            f"{rt['false_rplus']} · мягкий дрейф {rt['soft_drift']} · "
+            f"состав-R+ {rt['implied_rplus']} (рейтинг = что кадр несёт)"
+        )
+    if receipt["race_cast"].get("kin") is not None:
+        rc = receipt["race_cast"]
+        print(
+            f"raceCast [В40]: кин {rc['kin']} · human {rc['human']} · "
+            f"окно {rc['policy']} {rc['window'][0]}–{rc['window'][1]}"
+            + (" (человек — основа)" if rc.get("policy") == "v2.0" else "")
         )
     for a, b, c in fails:
         print(f"  FAIL [{a}] {b}: {c}")

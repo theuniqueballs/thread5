@@ -79,6 +79,10 @@ REQUIRED_GATES_KEYS = [
     "negBase", "formatGate", "corridorAudit", "claimPhysics", "yCards",
     "yStamp", "comboPose", "conceptFlag", "negDressGuards", "detailsGate",
     "paletteSkin",
+    # эра 1.17.0 (дыра закрыта 2026-11-22: жил в gates.json без реестра)
+    "yStack",
+    # эра 1.18.0 — уроки T5-29 (В39–В43)
+    "voltCore", "exquisiteMain", "expHypothesis", "ratingTruth",
 ]
 
 # режим CI: без проверки хука (в раннере хука нет — проверка №8 не про него)
