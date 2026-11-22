@@ -30,11 +30,15 @@ bun run test:py       # = python3 -m unittest discover -s tests/python -v
   story-cards exempt для SO;
 - `test_window_taste.py` — порядок партии по номеру (mtime не врёт),
   take_recent (последние вердикт-секции, не первые).
+- `test_ci_workflow.py` — страж CI: main в push-фильтре ci.yml, «: » в
+  именах шагов (класс 2026-11-20, Invalid workflow file), джобы
+  web/pipeline/shell-smoke на месте, тамперы.
 
 ## Сборки рантаймов (shell)
 
-- `database-runtime-build.sh` — самодостаточный (fake-bun), runnable в CI;
-- `python-runtime-build.sh` — требует `uv` на PATH;
+- `python-runtime-build.sh` — гоняет живой .zscripts/python-runtime-build.sh
+  по трём сценариям (requirements.txt / pyproject.toml / node-only);
+  требует `uv` на PATH (CI ставит через astral-sh/setup-uv);
 - `python-runtime-container.sh` — требует локальный Docker + приватный
   runner-образ (внешний запуск, не CI).
 
