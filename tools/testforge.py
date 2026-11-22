@@ -402,13 +402,17 @@ class Forge:
             return pick
 
         def pick_scene() -> str:
+            # T5-30 (2026-11-22): после 20 попыток берём НАИМЕНЕЕ загруженную
+            # сцену, а не случайную — рост пулов (палитры 269→278) сдвинул rng-
+            # последовательность и вскрыл флейк: «любая сцена» рвала кап, когда
+            # математика ещё позволяла его держать (N слотов ≤ N_сцен × кап)
             cap = scene_cap()
             for _ in range(20):
                 s = rng.choice(SCENES)
                 if used["scene"].get(s, 0) < cap:
                     used["scene"][s] = used["scene"].get(s, 0) + 1
                     return s
-            s = rng.choice(SCENES)
+            s = min(SCENES, key=lambda x: (used["scene"].get(x, 0), x))
             used["scene"][s] = used["scene"].get(s, 0) + 1
             return s
 

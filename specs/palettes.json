@@ -1,5 +1,5 @@
 {
- "version": "1.15.0",
+ "version": "1.16.0",
  "born": "2026-11-18: волна 10 «способы раскраски» P234–P242 (T5-25)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -7997,6 +7997,240 @@
    "family": "exp_color_wave_13",
    "born": "2026-11-22, T5-29 «THE SECRETS BEHIND AURORA DUNGEON» — волна 13 «свет подземелья»",
    "trial": "trial до вердикта T5-29"
+  },
+  {
+   "id": "P270_GLASSBITE_MINT",
+   "name": "Glassbite Mint",
+   "dominant": [
+    "cold-mint-glass",
+    "frost-steel"
+   ],
+   "secondary": [
+    "breath-warm-fog"
+   ],
+   "accent1": [
+    "one copper flake at the rim"
+   ],
+   "accent2": "ice-shadow-teal",
+   "shadow": "freezer-shadow-green",
+   "forbidden": [
+    "neon",
+    "pure-white"
+   ],
+   "light_type": "стекло-укус: холодный мятный воздух с одной тёплой точкой — дыхание против мороза, свет идёт изнутри стекла",
+   "sd_fragment": "cold-mint-glass over frost-steel, breath-warm-fog at the lips' edge, one copper flake at the rim",
+   "mood": "the-cold-that-flirts",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P271_WAX_SEAL_OXBLOOD",
+   "name": "Wax Seal Oxblood",
+   "dominant": [
+    "wax-oxblood",
+    "parchment-cream"
+   ],
+   "secondary": [
+    "wax-warm-amber"
+   ],
+   "accent1": [
+    "a single unbroken seal"
+   ],
+   "accent2": "thread-twined-red",
+   "shadow": "ink-pool-brown",
+   "forbidden": [
+    "neon",
+    "pastel"
+   ],
+   "light_type": "печать воском: тёплый оксблад ложится плотным слоем на пергамент — свет от воска, не от прибора",
+   "sd_fragment": "wax-oxblood over parchment-cream, wax-warm-amber at the pour's edge, thread-twined-red accent",
+   "mood": "the-seal-not-yet-broken",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P272_STATIC_LILAC",
+   "name": "Static Lilac",
+   "dominant": [
+    "static-lilac-grey",
+    "screen-off-indigo"
+   ],
+   "secondary": [
+    "signal-pink-flicker"
+   ],
+   "accent1": [
+    "one scan-line of gold"
+   ],
+   "accent2": "hush-violet",
+   "shadow": "off-shadow-plum",
+   "forbidden": [
+    "pure-white",
+    "flat sky"
+   ],
+   "light_type": "статика сирени: воздух звенит розовым шумом, свет мерцает строками — живой экран без прибора",
+   "sd_fragment": "static-lilac-grey over screen-off-indigo, signal-pink-flicker across the frame, one scan-line of gold",
+   "mood": "the-channel-between",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P273_FOIL_BALLOON_COPPER",
+   "name": "Foil Balloon Copper",
+   "dominant": [
+    "balloon-copper-foil",
+    "party-teal"
+   ],
+   "secondary": [
+    "crepe-paper-red"
+   ],
+   "accent1": [
+    "one hard crease of light"
+   ],
+   "accent2": "string-shadow-blue",
+   "shadow": "under-table-shadow",
+   "forbidden": [
+    "neon",
+    "muted"
+   ],
+   "light_type": "фольга-шар: медная плёнка натянута туго, свет скользит складкой — праздник как физика",
+   "sd_fragment": "balloon-copper-foil over party-teal, crepe-paper-red drift, one hard crease of light",
+   "mood": "the-party-still-up",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P274_TIDEPOOL_MIRROR",
+   "name": "Tidepool Mirror",
+   "dominant": [
+    "tidepool-teal-deep",
+    "wet-sand-bronze"
+   ],
+   "secondary": [
+    "anemone-pink-frill"
+   ],
+   "accent1": [
+    "one sky-drop caught mid-drip"
+   ],
+   "accent2": "shell-nacre-edge",
+   "shadow": "undertow-shadow-blue",
+   "forbidden": [
+    "neon",
+    "pure-white"
+   ],
+   "light_type": "зеркало лужи: лужа держит небо целиком — отражение глубже самого неба, свет приходит снизу",
+   "sd_fragment": "tidepool-teal-deep over wet-sand-bronze, anemone-pink-frill at the rim, one sky-drop caught mid-drip",
+   "mood": "the-sky-in-a-puddle",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P275_URANIUM_GLASS_GLOW",
+   "name": "Uranium Glass Glow",
+   "dominant": [
+    "uranium-green-glass",
+    "cabinet-oak-dark"
+   ],
+   "secondary": [
+    "shelf-dust-gold"
+   ],
+   "accent1": [
+    "edge-glow where the light passes"
+   ],
+   "accent2": "stem-etched-white",
+   "shadow": "cupboard-shadow-umber",
+   "forbidden": [
+    "neon",
+    "pastel"
+   ],
+   "light_type": "урановое стекло: зелёное свечение живёт В веществе — свет проходит сквозь и зеленеет на выходе",
+   "sd_fragment": "uranium-green-glass over cabinet-oak-dark, shelf-dust-gold motes, edge-glow where the light passes",
+   "mood": "the-glow-inside-things",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P276_POCKET_DENIM_DUSK",
+   "name": "Pocket Denim Dusk",
+   "dominant": [
+    "denim-dusk-indigo",
+    "coin-worn-copper"
+   ],
+   "secondary": [
+    "lint-fleck-white"
+   ],
+   "accent1": [
+    "one ticket-stub red"
+   ],
+   "accent2": "seam-gold-thread",
+   "shadow": "pocket-lining-shadow",
+   "forbidden": [
+    "neon",
+    "pure-white"
+   ],
+   "light_type": "карманный деним: индиго вытерто до меди на сгибах — свет находит только края, центр держит сумрак",
+   "sd_fragment": "denim-dusk-indigo over coin-worn-copper, lint-flecks adrift, one ticket-stub red accent",
+   "mood": "what-the-pocket-keeps",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P277_SORBET_STAIN",
+   "name": "Sorbet Stain",
+   "dominant": [
+    "sorbet-mango",
+    "raspberry-drip"
+   ],
+   "secondary": [
+    "waffle-cone-gold"
+   ],
+   "accent1": [
+    "one drip caught mid-fall"
+   ],
+   "accent2": "paper-straw-red",
+   "shadow": "melon-shadow-orange",
+   "forbidden": [
+    "neon",
+    "muted"
+   ],
+   "light_type": "след щербета: тёплые пятна соков на светлом — цвет как случайность, которую решили не отстирывать",
+   "sd_fragment": "sorbet-mango over raspberry-drip, waffle-cone-gold base, one drip caught mid-fall",
+   "mood": "the-stain-you-keep",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P278_LEDGER_GREEN",
+   "name": "Ledger Green",
+   "dominant": [
+    "ledger-green-ink",
+    "banknote-cream"
+   ],
+   "secondary": [
+    "rubber-band-amber"
+   ],
+   "accent1": [
+    "one column summed in red"
+   ],
+   "accent2": "fountain-pen-navy",
+   "shadow": "drawer-shadow-brown",
+   "forbidden": [
+    "neon",
+    "pastel"
+   ],
+   "light_type": "бумага-гроссбух: зелень чернил на кремовой строке — бухгалтерия как погода, свет ровный канцелярский",
+   "sd_fragment": "ledger-green-ink over banknote-cream, rubber-band-amber strap, one column summed in red",
+   "mood": "the-count-that-comes-out",
+   "family": "exp_color_wave_14",
+   "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
+   "trial": "trial до вердикта T5-30"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -8207,6 +8441,23 @@
     "P267_ARCHIVE_BRASS",
     "P268_DUSK_BINDING",
     "P269_DUNGEON_HEART"
+   ]
+  },
+  {
+   "wave": 14,
+   "name": "покрытия-настроения",
+   "batch": "T5-30",
+   "born": "2026-11-22, заказ автора «9 новых раскрасок и экспериментальных палитр»",
+   "ids": [
+    "P270_GLASSBITE_MINT",
+    "P271_WAX_SEAL_OXBLOOD",
+    "P272_STATIC_LILAC",
+    "P273_FOIL_BALLOON_COPPER",
+    "P274_TIDEPOOL_MIRROR",
+    "P275_URANIUM_GLASS_GLOW",
+    "P276_POCKET_DENIM_DUSK",
+    "P277_SORBET_STAIN",
+    "P278_LEDGER_GREEN"
    ]
   }
  ]

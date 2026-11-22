@@ -1,0 +1,644 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.18.0)",
+ "batch": "batches/T5-30.md",
+ "sha256": "0cc82bee340eee88eac3b62142e8d62cddf204c0622672672da7e3694ab88c50",
+ "utc": "2026-11-22T16:37:48+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "noxx-ero-intro-flame-curtain",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 271
+  },
+  {
+   "id": "P02",
+   "slug": "ama-blurry-dreams-towel",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 253
+  },
+  {
+   "id": "P03",
+   "slug": "dove-dirty-whore-showcase-jamb",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 28,
+   "posWords": 247
+  },
+  {
+   "id": "P04",
+   "slug": "mouse-wellsight",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": 24,
+   "posWords": 234
+  },
+  {
+   "id": "P05",
+   "slug": "jelly-cloud-bath",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 262
+  },
+  {
+   "id": "P06",
+   "slug": "seasonpane-warden",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 25,
+   "posWords": 230
+  },
+  {
+   "id": "P07",
+   "slug": "light-handover-stairs",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 244
+  },
+  {
+   "id": "P08",
+   "slug": "shadow-hammock-prone",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 251
+  },
+  {
+   "id": "P09",
+   "slug": "windspirit-aercrawl",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 29,
+   "posWords": 265
+  },
+  {
+   "id": "P10",
+   "slug": "salamander-weatherstake",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 265
+  },
+  {
+   "id": "P11",
+   "slug": "twoworlds-fare-count",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 253
+  },
+  {
+   "id": "P12",
+   "slug": "clockwind-tape-x",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 255
+  },
+  {
+   "id": "P13",
+   "slug": "lostproperty-collarfall",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "tape-only",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 27,
+   "posWords": 259
+  },
+  {
+   "id": "P14",
+   "slug": "crane-liftlibrary",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 254
+  },
+  {
+   "id": "P15",
+   "slug": "rainwall-neon-cami",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 248
+  },
+  {
+   "id": "P16",
+   "slug": "tanuki-mobius-waistband",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "strap-line-hold",
+   "channelStatus": "candidate",
+   "corridor": "B",
+   "claimToken": 27,
+   "posWords": 266
+  },
+  {
+   "id": "P17",
+   "slug": "bedmemory-crawl",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 236
+  },
+  {
+   "id": "P18",
+   "slug": "kettlesunrise-counter",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 28,
+   "posWords": 262
+  },
+  {
+   "id": "P19",
+   "slug": "phoenix-firedoor",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "element-linen",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 25,
+   "posWords": 266
+  },
+  {
+   "id": "P20",
+   "slug": "headwind-private",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": 33,
+   "posWords": 244
+  },
+  {
+   "id": "P21",
+   "slug": "medusa-organpipe",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A+B",
+   "claimToken": 28,
+   "posWords": 283
+  },
+  {
+   "id": "P22",
+   "slug": "memorial-warmth-slide",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 279
+  },
+  {
+   "id": "P23",
+   "slug": "goat-oneskate",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 260
+  },
+  {
+   "id": "P24",
+   "slug": "rooftop-invisible-steps",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 25,
+   "posWords": 259
+  },
+  {
+   "id": "P25",
+   "slug": "porcelain-tailgate-dusk",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 265
+  },
+  {
+   "id": "P26",
+   "slug": "moth-bededge-lookdown",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 28,
+   "posWords": 266
+  },
+  {
+   "id": "P27",
+   "slug": "oni-panel-overtime",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 29,
+   "posWords": 249
+  },
+  {
+   "id": "P28",
+   "slug": "bee-mossring-count",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 28,
+   "posWords": 265
+  },
+  {
+   "id": "P29",
+   "slug": "cow-crossdraft-robe",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 260
+  },
+  {
+   "id": "P30",
+   "slug": "flower-mortar-kneel",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A+B",
+   "claimToken": 23,
+   "posWords": 297
+  },
+  {
+   "id": "P31",
+   "slug": "shark-surf-hemline",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": 23,
+   "posWords": 281
+  },
+  {
+   "id": "P32",
+   "slug": "skunk-iceline-caustic",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": 27,
+   "posWords": 303
+  },
+  {
+   "id": "P33",
+   "slug": "fennec-winddome-midtone",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": 24,
+   "posWords": 278
+  }
+ ],
+ "crossBatchShared": [],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "depth black hair in a ghost",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "black hair in a ghost layer",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "hair in a ghost layer shag",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "in a ghost layer shag pale",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "a ghost layer shag pale glowing",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "ghost layer shag pale glowing face",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "silver grey eyes black skin with",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "grey eyes black skin with soft",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "eyes black skin with soft star",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "black skin with soft star glow",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "skin with soft star glow flecks",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "edges blurring into shade human face",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "blurring into shade human face small",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "into shade human face small high",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "shade human face small high set",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "human face small high set chest",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "face small high set chest slim",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "small high set chest slim waist",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "mohair pushed to both elbows in",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  },
+  {
+   "gram": "pushed to both elbows in a",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-29.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 26,
+  "fact_R+": 26
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y375",
+   "Y388",
+   "Y446",
+   "Y69",
+   "Y89",
+   "Y320",
+   "Y246",
+   "Y168",
+   "Y359",
+   "Y452",
+   "Y250",
+   "Y334",
+   "Y23",
+   "Y287",
+   "Y82",
+   "Y6",
+   "Y93",
+   "Y411",
+   "Y366",
+   "Y85",
+   "Y451",
+   "Y480",
+   "Y173",
+   "Y363",
+   "Y147",
+   "Y209",
+   "Y342",
+   "Y428",
+   "Y492",
+   "Y356",
+   "Y30",
+   "Y32",
+   "Y33"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "y_stack": {
+  "checked": 23,
+  "stacked": 23,
+  "choked": 0,
+  "canon_without_codes": 4,
+  "geometry_only": 0
+ },
+ "combo_pose": {
+  "composite_used": 0,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 33,
+  "weaved": 33,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
+ },
+ "race_cast": {
+  "kin": 9,
+  "human": 12,
+  "window": [
+   0,
+   10
+  ],
+  "policy": "v2.0"
+ },
+ "volt_core": {
+  "mains": 21,
+  "volt": 14,
+  "niche": 7,
+  "max_run": 3,
+  "retro": false
+ },
+ "exquisite_main": {
+  "mains": 21,
+  "exquisite": 2,
+  "retro": false
+ },
+ "exp_hypothesis": {
+  "cells": 9,
+  "with_h": 9,
+  "without": [],
+  "hyps_used": [
+   "H-03",
+   "H-07",
+   "H-08",
+   "H-09",
+   "H-10",
+   "H-11",
+   "H-12",
+   "H-13"
+  ],
+  "retro": false
+ },
+ "rating_truth": {
+  "checked": 33,
+  "implied_rplus": 26,
+  "false_rplus": 0,
+  "soft_drift": 0,
+  "retro": false
+ }
+}

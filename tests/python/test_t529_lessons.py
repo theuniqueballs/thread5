@@ -240,7 +240,7 @@ class TestNoxxCanon(unittest.TestCase):
         self.assertIn("Noxx", birth)
 
     def test_candidate_promoted(self):
-        p32 = [c for c in self.candidates["candidates"] if c["slot"] == "P32"]
+        p32 = [c for c in self.candidates["candidates"] if c["slot"] == "P32" and c["batch"] == "T5-29"]
         self.assertEqual(len(p32), 1)
         self.assertEqual(p32[0]["status"], "promoted")
         self.assertIn("Noxx", p32[0].get("promoted_to", ""))
