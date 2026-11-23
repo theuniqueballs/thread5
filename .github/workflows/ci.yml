@@ -105,7 +105,9 @@ jobs:
       # python-runtime-build.sh требует uv (uv pip install/compile/export),
       # а в ubuntu-latest его нет (скрипт честно выходит с «构建环境中没有 uv»).
       # Ставим uv официальным экшеном; web/pipeline при этом зелёные.
-      - uses: astral-sh/setup-uv@v10
+      # ПИН v10.4.0 (не «v10»): у astral-sh/setup-uv нет тега-алиаса мажора —
+      # только полные v10.x.x (прогон #17: unable to find version `v10`).
+      - uses: astral-sh/setup-uv@v10.4.0
 
       # 2026-11-23: database-runtime-build вырезан вместе с мёртвым Prisma;
       # smoke теперь гоняет живой python-runtime-build (тот, что в build.sh)
