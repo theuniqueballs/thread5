@@ -135,7 +135,7 @@ camera.json — y_cards непуст и id в форме Y{1,3}; `--ci` /
 
 ```
 bun run test        # tests/unit — 113 тестов: parse/ystamp/inbox/store/oracle
-bun run test:py     # tests/python — 160 тестов: gates/window/taste/oracle/ytrust/cycle4/era
+bun run test:py     # tests/python — 170 тестов: gates/window/taste/oracle/ytrust/cycle4/era/ci_workflow
 bun run typecheck && bun run lint
 python3 tools/validate.py --ci
 ```
@@ -664,3 +664,37 @@ PROMISE + 21 разных фасетов ДО жребия).
   coverage: 288 = ровно слоты, идемпотентно · pool T5-31: window-eligible
   445 / активный пул CLOCK 80 (HIGH вне окна 0 — loved-карты сидят в
   окне ротации, выйдут через 3 партии).
+### SURGERY 2026-11-24: CI красный с рождения — shell-smoke без uv
+
+Живой контроль после хирургии: история Actions — 14/14 прогонов FAILED.
+На свежем aeac4ca (прогон #14) web и pipeline ЗЕЛЁНЫЕ (install/tsc/
+eslint/тесты/build; unittest/selftest/валидатор/гейты/окно/горн) —
+красная только shell-smoke, 2 секунды, exit 1. Причина:
+.zscripts/python-runtime-build.sh требует uv (uv pip install/compile/
+export), а в ubuntu-latest его нет — скрипт честно выходил с
+«检测到 Python 项目，但构建环境中没有 uv». Локальная песочница с uv,
+потому и не ловилось. Запись хирургии «CI починено» была правдой только
+про YAML-синтаксис, не про джобы.
+
+Фикс: ci.yml — шаг astral-sh/setup-uv@v10 в shell-smoke; имя шага
+честно «(uv, без venv)» вместо «(fake-bun, без venv)». Страж:
+tests/python/test_ci_workflow.py (10 тестов) — main в push-фильтре ·
+«: »/хвостовое «:» в именах шагов запрещены (класс 2026-11-20,
+кавычные имена легальны) · джобы web/pipeline/shell-smoke на месте ·
+табы запрещены · тамперы ловятся. tests/README: мёртвая строка
+database-runtime-build.sh (файл удалён хирургией) вычищена, описание
+python-runtime-build исправлено — uv требуется, CI его ставит.
+Урок: «YAML валиден» ≠ «джоба живая» — после правки workflows смотри
+прогон в Actions, а не только парсер.
+
+Прогон: python 170/170 (+10 страж CI) · bun 113/113 · валидатор PASS ·
+YAML safe_load OK · smoke-скрипт локально PASS (uv в песочнице).
+Финальное доказательство фикса — сам CI: зелёный прогон на этом
+коммите закрывает 14-красную серию.
+
+Доставка на GitHub (2026-11-24): страж, tests/README и бортжурнал — в
+main; сам ci.yml — файл воркфлоу, интеграция GitHub без workflows-права
+его не пишет (403 на contents/trees API). Правка в двух строках —
+`- uses: astral-sh/setup-uv@v10` перед шагом python-runtime-build и имя
+шага «(uv, без venv)» — ждёт workflows-права у приложения или веб-правки
+автора; страж в main уже зелёный на обоих вариантах ci.yml.
