@@ -6,7 +6,7 @@
 #              и production build (сборка падает на PR, не на проде);
 #   pipeline — печь: юнит-тесты инструментов, валидатор спек (--ci),
 #              гейты на свежайшей сданной партии (индекс сдачи, PASS обязателен);
-#   shell    — smoke тестов сборок рантаймов (fake-bun, без uv/docker).
+#   shell    — smoke тестов сборок рантаймов (uv, без venv/docker).
 #
 # Философия та же, что у pre-commit: молчание гейтов исключено — но здесь
 # проверяется ещё и то, что сами инструменты не сломались молча.
@@ -101,7 +101,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # 2026-11-24 (SURGERY): smoke красная на всех прогонах CI с рождения —
+      # python-runtime-build.sh требует uv (uv pip install/compile/export),
+      # а в ubuntu-latest его нет (скрипт честно выходит с «构建环境中没有 uv»).
+      # Ставим uv официальным экшеном; web/pipeline при этом зелёные.
+      - uses: astral-sh/setup-uv@v10
+
       # 2026-11-23: database-runtime-build вырезан вместе с мёртвым Prisma;
       # smoke теперь гоняет живой python-runtime-build (тот, что в build.sh)
-      - name: python-runtime-build (fake-bun, без venv)
+      # 2026-11-24: имя честно про uv (было «fake-bun, без venv» — uv нужен
+      # всегда, когда скрипт видит Python-источник или манифест)
+      - name: python-runtime-build (uv, без venv)
         run: bash tests/python-runtime-build.sh
