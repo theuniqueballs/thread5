@@ -10,17 +10,22 @@ import {
   writeMeta,
 } from '@/lib/t5/inbox';
 import { writeAllowed, writeDenied } from '@/lib/t5/guard';
+import { readSdkConfigState } from '@/lib/t5/sdk-config';
 import type { InboxItem } from '@/lib/t5/inbox';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-/** GET /api/t5/inbox — журнал инбокса (без содержимого файлов), батч ↓ слот ↑. */
+/** GET /api/t5/inbox — журнал инбокса (без содержимого файлов), батч ↓ слот ↑.
+ *  sdk — само-проверка SDK-конфига (урок 2026-11-24 про 401 missing X-Token):
+ *  клиент показывает красный баннер ДО того, как очередь карантинится,
+ *  и автотриаж при неготовом конфиге не стартует. Значений секретов нет. */
 export async function GET() {
   try {
     const items = sortItems(await readMeta());
-    return NextResponse.json({ items });
+    const sdk = await readSdkConfigState();
+    return NextResponse.json({ items, sdk });
   } catch (err) {
     return NextResponse.json({ error: String(err instanceof Error ? err.message : err) }, { status: 500 });
   }

@@ -34,6 +34,7 @@ import path from 'node:path';
 import { randomBytes } from 'node:crypto';
 import { parseBatch } from '@/lib/t5/parse';
 import { T5_ROOT } from '@/lib/t5/store';
+import { SdkConfigError, assertSdkVisionReady } from './sdk-config';
 
 const INBOX_DIR = path.join(T5_ROOT, 'inbox');
 const UPLOADS_DIR = path.join(INBOX_DIR, 'uploads');
@@ -282,6 +283,9 @@ async function visionJsonRetry(args: VisionArgs): Promise<string | null> {
     try {
       return await visionJson(rest);
     } catch (err) {
+      // конфиг SDK без token — это НЕ временный сбой: паузы не лечат файл
+      // конфига (урок 2026-11-24 про 401 missing X-Token), падаем сразу
+      if (err instanceof SdkConfigError) throw err;
       lastErr = err;
       const msg = String(err instanceof Error ? err.message : err);
       // 429 — рейт-лимит; 401/403/token — временные сбои конфига шлюза
@@ -332,6 +336,9 @@ interface TriageOut { label: string; reason?: string }
 
 export async function triageImage(mime: string, buf: Buffer): Promise<{ label: TriageLabel; reason: string }> {
   try {
+    // гвард конфига ДО звонка: SDK без token = 100% 401 на всю пачку
+    // (урок 2026-11-24) — падаем быстро с внятной причиной, звонки не жжём
+    await assertSdkVisionReady();
     const raw = await visionJsonRetry({
       waits: RETRY_WAITS_HTTP,
       messages: [{
@@ -370,6 +377,15 @@ export async function triageImage(mime: string, buf: Buffer): Promise<{ label: T
       return {
         label: 'x',
         reason: 'контент-фильтр зрения отклонил кадр (1301) — вероятный X, вердикт фильтра (не сбой)',
+      };
+    }
+    // конфиг SDK не готов (нет token / нет файла) — причина матчит
+    // RETRIAGE_RE («карантин»): после починки конфига «Перетриажнуть
+    // карантин» пересматривает всё одним нажатием (урок 2026-11-24)
+    if (err instanceof SdkConfigError) {
+      return {
+        label: 'x',
+        reason: `SDK-конфиг не готов (${msg.slice(0, 160)}) — карантин (fail-closed)`,
       };
     }
     return {
@@ -522,6 +538,8 @@ export async function analyzeItem(item: InboxItem, batchHint?: string | null): P
   const context = await slotContext(batch, slot);
   const needSlot = !slot && batch ? await slotCandidates(batch) : null;
   try {
+    // гвард конфига ДО звонка — как в triageImage (урок 2026-11-24)
+    await assertSdkVisionReady();
     const buf = await fs.readFile(path.join(UPLOADS_DIR, item.file));
     const jsonShape =
       '{"severity":"clean|minor|major",' +
@@ -602,13 +620,16 @@ export async function analyzeItem(item: InboxItem, batchHint?: string | null): P
     // 1301 — детерминированный отказ фильтра: ретраи бессмысленны, честно
     // говорим автору, что разбор недоступен (урок живого прогона 2026-11-21)
     const filterRefused = /contentFilter|1301|unsafe|sensitive/iu.test(msg);
+    const sdkCfgBroken = err instanceof SdkConfigError;
     item.analysis = {
       at: new Date().toISOString(),
       severity: 'minor',
       findings: [],
       note: filterRefused
         ? 'контент-фильтр зрения отклонил кадр (1301) — авто-разбор недоступен, оцени глазами'
-        : `авто-разбор не удался: ${msg.slice(0, 120)}`,
+        : sdkCfgBroken
+          ? `авто-разбор недоступен: SDK-конфиг не готов (${msg.slice(0, 140)}) — почини конфиг и жми ещё раз`
+          : `авто-разбор не удался: ${msg.slice(0, 120)}`,
     };
     item.status = 'error';
   }

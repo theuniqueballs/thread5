@@ -77,3 +77,6 @@ mini-services/ecchi-oracle/eval/
 
 # сборка мини-сервисов
 mini-services-dist/
+
+# песочница: одноразовые диагностические скрипты (sdk-ping и пр.)
+scripts/

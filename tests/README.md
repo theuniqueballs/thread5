@@ -16,6 +16,9 @@ bun run lint          # eslint
 - `ystamp.test.ts` — контракт В34: weave (легален в POS) vs stamp (метаданные);
 - `inbox.test.ts` — слот-маппинг P999, порядок батчей по номеру, защита
   путей от «..», fail-closed перетриаж;
+- `sdk-config.test.ts` — само-проверка SDK-конфига: порядок поиска как у SDK
+  (cwd → home → /etc), конфиг без token = ок:false с диагнозом, секреты не
+  текут наружу, assertSdkVisionReady падает ДО vision-звонка;
 - `store.test.ts` — естественный порядок полки (T5-9 < T5-10 < T5-100),
   безопасность слагов, резолвер T5_ROOT.
 
@@ -32,7 +35,12 @@ bun run test:py       # = python3 -m unittest discover -s tests/python -v
   take_recent (последние вердикт-секции, не первые).
 - `test_ci_workflow.py` — страж CI: main в push-фильтре ci.yml, «: » в
   именах шагов (класс 2026-11-20, Invalid workflow file), джобы
-  web/pipeline/shell-smoke на месте, тамперы.
+  web/pipeline/shell-smoke на месте, тамперы;
+- `test_inbox_stop_and_sdk.py` — страж инбокса (2026-11-24): гвард
+  SDK-конфига ДО vision-звонка в триаже/разборе, карантин от конфига
+  матчит RETRIAGE_RE (после починки — «Перетриажнуть карантин»), 1301-
+  вердикт остаётся неперетриаживаемым, GET отдаёт sdk-стейт, СТОП-кнопка
+  обрывает циклы и глушит автотриаж до явного нажатия.
 
 ## Сборки рантаймов (shell)
 

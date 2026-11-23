@@ -12,6 +12,7 @@ import {
   ListOrdered,
   Loader2,
   Maximize2,
+  OctagonX,
   RefreshCcw,
   ScanSearch,
   SearchX,
@@ -40,6 +41,15 @@ import type { InboxItem } from '@/lib/t5/inbox';
  *
  * Урок T5-19 (401 «missing X-Token»): триаж, оборванный сбоем шлюза, остаётся
  * в очереди — поэтому инбокс ДОГОНЯЕТ триаж сам при открытии, без кнопки.
+ *
+ * 2026-11-24 (два заказа автора):
+ * 1) 401 «missing X-Token» лечится в корне: GET отдаёт само-проверку SDK-конфига
+ *    (sdk-config.ts — тот же порядок поиска, что у SDK, без секретов наружу);
+ *    при неготовом конфиге — красный баннер с диагнозом, автотриаж НЕ стартует
+ *    (иначе вся пачка 401-ами уезжает в fail-closed карантин).
+ * 2) СТОП-кнопка в рабочей полосе: обрывает все циклы (автотриаж/заливка/разбор)
+ *    в любой момент; после ручного стопа автотриаж сам не перезапускается —
+ *    снёс инбокс, залил новую пачку, машина молчит до явного нажатия.
  *
  * Архитектура против «Unexpected token '<'»: загрузка, триаж и разбор —
  * короткие порционные запросы (шлюз не успевает уйти в HTML-таймаут),
@@ -177,11 +187,17 @@ export function InboxView() {
   const [dragOver, setDragOver] = useState(false);
   const [picked, setPicked] = useState<PickedFile[]>([]);
   const [wipeArmed, setWipeArmed] = useState(false);
+  /** Диагноз SDK-конфига (2026-11-24): не null — красный баннер + блок автотриажа. */
+  const [sdkProblem, setSdkProblem] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [lightbox, setLightbox] = useState<number | null>(null); // индекс в visibleItems
   const fileRef = useRef<HTMLInputElement>(null);
   const wipeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoTriageRef = useRef(false);
+  /* СТОП авторской рукой (2026-11-24): после ручного стопа автотриаж молчит,
+   * даже если очередь снова набежала — пока автор не нажмёт явное действие
+ * (закинуть/триаж/перетриаж/разбор). Реф, не стейт: не ререндерит. */
+  const manualStopRef = useRef(false);
   /* отмена циклов: ушли со вкладки — все порционные циклы (триаж/разбор/
      загрузка) обрываются, на повторном монтировании не начинается второй
      параллельный цикл поверх старого */
@@ -199,11 +215,23 @@ export function InboxView() {
     return ac.signal;
   }, []);
 
+  /** СТОП в любой момент (заказ автора 2026-11-24): обрывает ВСЕ порционные
+   *  циклы — автотриаж/заливка/разбор — одним нажатием. Незакрытые файлы
+   *  остаются queued/unknown (очередь цела), влётный запрос доклеится сам.
+   *  Автотриаж после этого сам не перезапускается (manualStopRef) — можно
+   *  спокойно снести инбокс и залить всё по новой. */
+  const stopLoops = useCallback(() => {
+    manualStopRef.current = true;
+    loopsAbort.current?.abort();
+    setMessage('Остановлено рукой — очередь цела. Дальше сам: «Очистить инбокс», «Прогнать X-триаж» или закидывай новую пачку.');
+  }, []);
+
   const load = useCallback(async () => {
     try {
       const res = await fetch('/api/t5/inbox');
-      const data = await readJson<{ items?: InboxItem[]; error?: string }>(res);
+      const data = await readJson<{ items?: InboxItem[]; sdk?: { ok: boolean; problem: string | null }; error?: string }>(res);
       setItems(data.items ?? []);
+      setSdkProblem(data.sdk && !data.sdk.ok ? (data.sdk.problem ?? 'SDK-конфиг не готов') : null);
     } catch (err) {
       setMessage(`Журнал не прочитался: ${String(err instanceof Error ? err.message : err)}`);
     } finally {
@@ -341,6 +369,7 @@ export function InboxView() {
      «Закинуть» доедет только остаток, дублей на диске нет. ── */
   const upload = useCallback(async () => {
     if (picked.length === 0 || busy) return;
+    manualStopRef.current = false; // явное действие автора — машина снова живёт
     setMessage(null);
     const signal = beginLoops();
     const list = picked; // снимок: чанки режем от него, список живёт своей жизнью
@@ -416,6 +445,7 @@ export function InboxView() {
 
   const triageQueue = useCallback(async () => {
     if (busy) return;
+    manualStopRef.current = false; // явное нажатие — автотриаж снова разрешён
     setMessage(null);
     const signal = beginLoops();
     try {
@@ -441,9 +471,14 @@ export function InboxView() {
 
   /* ── автотриаж: инбокс открыт, а очередь осталась (урок T5-19 про 401).
      Триггер — общий needsTriageLike: аварийные карантины прошлых сессий
-     догоняются тем же проходом (один раз на каждый файл, не циклом). ── */
+     догоняются тем же проходом (один раз на каждый файл, не циклом).
+     НЕ стартует, если: автор руками нажал СТОП (manualStopRef — не
+     перезапускаемся против воли, заказ 2026-11-24) или конфиг SDK без
+     token (sdkProblem — иначе вся пачка 401-ами уезжает в карантин). ── */
   useEffect(() => {
     if (loading || autoTriageRef.current || busy) return;
+    if (manualStopRef.current) return;
+    if (sdkProblem) return;
     const queued = items.filter(needsTriageLike).length;
     if (queued === 0) return;
     autoTriageRef.current = true;
@@ -470,7 +505,7 @@ export function InboxView() {
         setBusy(null);
       }
     })();
-  }, [items, loading, busy, runTriage, beginLoops]);
+  }, [items, loading, busy, runTriage, beginLoops, sdkProblem]);
 
   const retriageQuarantine = useCallback(async () => {
     if (busy) return;
@@ -478,6 +513,7 @@ export function InboxView() {
       .filter((i) => !i.authorOverride && i.triage.label === 'x' && RETRIAGE_RE.test(i.triage.reason))
       .map((i) => i.id);
     if (ids.length === 0) return;
+    manualStopRef.current = false; // явное нажатие — машина снова живёт
     setMessage(null);
     const signal = beginLoops();
     try {
@@ -504,6 +540,7 @@ export function InboxView() {
   const analyze = useCallback(
     async (ids?: string[]) => {
       if (busy) return;
+      manualStopRef.current = false; // явное нажатие — машина снова живёт
       setMessage(null);
       const signal = beginLoops();
       const batchHint = batch.trim() || undefined;
@@ -898,11 +935,32 @@ export function InboxView() {
         </div>
       </section>
 
+      {sdkProblem && (
+        <div
+          className="flex items-start gap-2.5 rounded-xl border border-t5-red/30 bg-t5-red/[0.06] px-4 py-3 text-sm text-zinc-200"
+          role="alert"
+        >
+          <FileWarning className="mt-0.5 size-4 shrink-0 text-t5-red" aria-hidden />
+          <span className="min-w-0 flex-1">
+            <strong className="font-semibold text-t5-red">SDK-конфиг не готов.</strong> X-триаж и разбор упадут в
+            карантин (fail-closed), автотриаж стоит. {sdkProblem}
+          </span>
+        </div>
+      )}
       {busy && (
         <div className="flex items-center gap-2.5 rounded-xl border border-t5-mint/20 bg-t5-mint/[0.05] px-4 py-3 text-sm text-zinc-200">
           <Loader2 className="size-4 animate-spin text-t5-mint" aria-hidden />
-          {busy}
-          <span className="text-xs text-zinc-500">иду порциями — даже если оборвётся, очередь сохранится</span>
+          <span className="min-w-0 flex-1">{busy}</span>
+          <button
+            type="button"
+            onClick={stopLoops}
+            title="СТОП: обрываю все циклы прямо сейчас — очередь сохранится, дальше решаешь сам"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-t5-red/50 bg-t5-red/[0.08] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-t5-red transition-colors hover:border-t5-red/80 hover:bg-t5-red/[0.15] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-t5-red"
+          >
+            <OctagonX className="size-3.5" aria-hidden />
+            Стоп
+          </button>
+          <span className="shrink-0 text-xs text-zinc-500">иду порциями — даже если оборвётся, очередь сохранится</span>
         </div>
       )}
       {message && !busy && (
