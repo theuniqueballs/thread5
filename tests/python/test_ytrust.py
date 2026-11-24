@@ -167,11 +167,19 @@ class TestTrustPool(unittest.TestCase):
         reg = load("y-trust.json")
         lvl = oracle.trust_pool  # smoke: функция доступна
         self.assertTrue(callable(lvl))
-        # карты вне реестра ведут себя как MID: в пуле, не LOW
+        # карты вне реестра ведут себя как MID: в пуле, не LOW.
+        # Предусловие честное: живой реестр траста учит вердикты и может
+        # содержать Y1–Y4 (урок T5-31: Y2 ушёл в LOW после промаха P01) —
+        # поэтому тестируем строго «вне реестра», отфильтровав id тестовых карт.
         cards = self._cards(4)
         usage = {}
+        trust_cards = {
+            k: v
+            for k, v in reg.get("cards", {}).items()
+            if k not in {c["id"] for c in cards}
+        }
         pool, st = oracle.trust_pool(cards, usage, 99, 0, None,
-                                     trust_cards=reg.get("cards", {}), ceiling=10)
+                                     trust_cards=trust_cards, ceiling=10)
         self.assertEqual(len(pool), 4)
 
 

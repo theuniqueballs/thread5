@@ -1,0 +1,504 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.18.0)",
+ "batch": "batches/T5-31.md",
+ "sha256": "84c4f2f1bdb963413cca7af1dc15aff38253545b2d97d47b387989e8e11714d1",
+ "utc": "2026-11-24T18:34:25+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "sue-velvet-present-bow",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 41,
+   "posWords": 285
+  },
+  {
+   "id": "P02",
+   "slug": "zia-floral-attack-vines",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 58,
+   "posWords": 372
+  },
+  {
+   "id": "P03",
+   "slug": "lua-nine-minutes-closet",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 59,
+   "posWords": 336
+  },
+  {
+   "id": "P04",
+   "slug": "dream-courier-strap-torque",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 33,
+   "posWords": 261
+  },
+  {
+   "id": "P05",
+   "slug": "fog-gymnast-sheet-hills",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 270
+  },
+  {
+   "id": "P06",
+   "slug": "kitsune-hem-pinned-tailfan",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 49,
+   "posWords": 291
+  },
+  {
+   "id": "P07",
+   "slug": "bath-pond-halfway",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 270
+  },
+  {
+   "id": "P08",
+   "slug": "vent-updraft-skirt-argument",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 55,
+   "posWords": 285
+  },
+  {
+   "id": "P09",
+   "slug": "dress-walks-itself-hemlift",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 45,
+   "posWords": 271
+  },
+  {
+   "id": "P10",
+   "slug": "dream-door-bedroom-center",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 259
+  },
+  {
+   "id": "P11",
+   "slug": "kitchen-3am-counter-lean",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 59,
+   "posWords": 315
+  },
+  {
+   "id": "P12",
+   "slug": "dress-half-stuck-snap",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 295
+  },
+  {
+   "id": "P13",
+   "slug": "dragon-bath-arch-aerial",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 60,
+   "posWords": 306
+  },
+  {
+   "id": "P14",
+   "slug": "shelf-above-ceiling-tiptoes",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 254
+  },
+  {
+   "id": "P15",
+   "slug": "apron-corner-elbow-catch",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 46,
+   "posWords": 271
+  },
+  {
+   "id": "P16",
+   "slug": "headboard-delivery-brace",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 295
+  },
+  {
+   "id": "P17",
+   "slug": "windowsill-ledge-diagonal",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 269
+  },
+  {
+   "id": "P18",
+   "slug": "towel-flip-mid-flight",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "towel-clamp-stand",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 28,
+   "posWords": 248
+  },
+  {
+   "id": "P19",
+   "slug": "mirror-lag-half-second",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "mirror-fog-rehearse",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 259
+  },
+  {
+   "id": "P20",
+   "slug": "moonrabbit-carrot-wash",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 55,
+   "posWords": 292
+  },
+  {
+   "id": "P21",
+   "slug": "tray-save-sleep-inertia",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 262
+  },
+  {
+   "id": "P22",
+   "slug": "tatami-zipper-half-glance",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 50,
+   "posWords": 272
+  },
+  {
+   "id": "P23",
+   "slug": "wall-cool-palms-flat",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 60,
+   "posWords": 310
+  },
+  {
+   "id": "P24",
+   "slug": "exit-dream-strap-rehook",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 53,
+   "posWords": 291
+  },
+  {
+   "id": "P25",
+   "slug": "wolf-night-delivery-hoodie",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 260
+  },
+  {
+   "id": "P26",
+   "slug": "vampire-silk-slip-spin",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 273
+  },
+  {
+   "id": "P27",
+   "slug": "bat-buckle-half-decision",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 288
+  },
+  {
+   "id": "P28",
+   "slug": "mermaid-ribbon-frame-bow",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 272
+  },
+  {
+   "id": "P29",
+   "slug": "dryad-greenhouse-towel-catch",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A+B",
+   "claimToken": "—",
+   "posWords": 298
+  },
+  {
+   "id": "P30",
+   "slug": "cecaelia-decanter-chest-hold",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": 114,
+   "posWords": 292
+  },
+  {
+   "id": "P31",
+   "slug": "harpy-net-rope-chest",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 297
+  },
+  {
+   "id": "P32",
+   "slug": "weasel-gust-knot-name-lining",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 300
+  },
+  {
+   "id": "P33",
+   "slug": "bunny-corset-lace-haul",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 275
+  }
+ ],
+ "crossBatchShared": [],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 26,
+  "fact_R+": 26
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y2",
+   "Y92",
+   "Y98",
+   "Y10",
+   "Y110",
+   "Y11",
+   "Y111",
+   "Y81",
+   "Y17",
+   "Y60",
+   "Y127",
+   "Y97",
+   "Y47",
+   "Y94",
+   "Y13",
+   "Y442",
+   "Y62",
+   "Y302",
+   "Y227",
+   "Y361",
+   "Y119",
+   "Y29",
+   "Y237",
+   "Y7",
+   "Y24",
+   "Y21",
+   "Y25",
+   "Y498",
+   "Y293",
+   "Y488",
+   "Y515",
+   "Y496",
+   "Y521"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "y_stack": {
+  "checked": 23,
+  "stacked": 23,
+  "choked": 0,
+  "canon_without_codes": 3,
+  "geometry_only": 7
+ },
+ "combo_pose": {
+  "composite_used": 0,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 33,
+  "weaved": 33,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
+ },
+ "race_cast": {
+  "kin": 3,
+  "human": 18,
+  "window": [
+   0,
+   10
+  ],
+  "policy": "v2.0"
+ },
+ "volt_core": {
+  "mains": 21,
+  "volt": 14,
+  "niche": 7,
+  "max_run": 3,
+  "retro": false
+ },
+ "exquisite_main": {
+  "mains": 21,
+  "exquisite": 2,
+  "retro": false
+ },
+ "exp_hypothesis": {
+  "cells": 9,
+  "with_h": 9,
+  "without": [],
+  "hyps_used": [
+   "H-01",
+   "H-03",
+   "H-07",
+   "H-08",
+   "H-09",
+   "H-10",
+   "H-11",
+   "H-12",
+   "H-13"
+  ],
+  "retro": false
+ },
+ "rating_truth": {
+  "checked": 33,
+  "implied_rplus": 26,
+  "false_rplus": 0,
+  "soft_drift": 0,
+  "retro": false
+ }
+}
