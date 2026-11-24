@@ -8231,6 +8231,250 @@
    "family": "exp_color_wave_14",
    "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
    "trial": "trial до вердикта T5-30"
+  },
+  {
+   "id": "P279_CELLOPHANE_DEW",
+   "name": "Cellophane Dew",
+   "dominant": [
+    "clear-cellophane-mint",
+    "dew-silver"
+   ],
+   "secondary": [
+    "wrapper-crease-white"
+   ],
+   "accent1": [
+    "one cherry-gum bead"
+   ],
+   "accent2": "petal-shadow-pink",
+   "shadow": "morning-shade-sage",
+   "forbidden": [
+    "neon",
+    "pure-white",
+    "heavy-saturation"
+   ],
+   "light_type": "плёнка-роса: прозрачная обёрточная плёнка утра, свет проходит сквозь и ловится каплей",
+   "sd_fragment": "clear-cellophane-mint with dew-silver, wrapper-crease-white folds, one cherry-gum bead of color",
+   "mood": "the-morning-still-wrapped",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P280_MATCHSTRIKE_AMBER",
+   "name": "Matchstrike Amber",
+   "dominant": [
+    "sulfur-amber",
+    "burnt-edge-charcoal"
+   ],
+   "secondary": [
+    "papery-cream"
+   ],
+   "accent1": [
+    "one blue-sulphur spark"
+   ],
+   "accent2": "matchbox-stripe-red",
+   "shadow": "charred-brown",
+   "forbidden": [
+    "neon-pink",
+    "pastel-wash"
+   ],
+   "light_type": "спичка: короткий удар света из головки, тепло на секунду дольше пламени",
+   "sd_fragment": "sulfur-amber heat against burnt-edge-charcoal, papery-cream card grain, one blue-sulphur spark",
+   "mood": "the-second-heat-stays",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P281_TINSEL_STEEL",
+   "name": "Tinsel Steel",
+   "dominant": [
+    "cold-steel-blue",
+    "tinsel-silver-glitter"
+   ],
+   "secondary": [
+    "window-draft-grey"
+   ],
+   "accent1": [
+    "one cranberry strand"
+   ],
+   "accent2": "tin-shadow-slate",
+   "shadow": "cellar-blue-dark",
+   "forbidden": [
+    "warm-gold",
+    "neon-green"
+   ],
+   "light_type": "мишура на стали: холодный блеск с одним тёплым ручейком, свет трётся о грань",
+   "sd_fragment": "cold-steel-blue with tinsel-silver-glitter strands, one cranberry strand of warmth, tin-shadow-slate depth",
+   "mood": "the-holiday-left-behind",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P282_POWDER_VELLUM",
+   "name": "Powder Vellum",
+   "dominant": [
+    "vellum-cream",
+    "powder-rose"
+   ],
+   "secondary": [
+    "ink-plum-line"
+   ],
+   "accent1": [
+    "one gilt-edged brushstroke"
+   ],
+   "accent2": "vellum-shadow-taupe",
+   "shadow": "sepia-drawer-brown",
+   "forbidden": [
+    "neon",
+    "acid-green"
+   ],
+   "light_type": "пудра по веленевой бумаге: мягкий рассеянный свет, тень как линия пера",
+   "sd_fragment": "vellum-cream with powder-rose, ink-plum line accents, one gilt-edged brushstroke",
+   "mood": "the-page-that-kept-breathing",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P283_NIGHT_VENDING_GLOW",
+   "name": "Night Vending Glow",
+   "dominant": [
+    "glass-green-glow",
+    "coin-brass"
+   ],
+   "secondary": [
+    "machine-hum-shadow"
+   ],
+   "accent1": [
+    "one strawberry-sign pink"
+   ],
+   "accent2": "asphalt-wet-black",
+   "shadow": "curb-shadow-ink",
+   "forbidden": [
+    "daylight-white",
+    "pastel-wash"
+   ],
+   "light_type": "автомат ночью: внутренняя витрина светит в темноту, отражение едет по мокрому асфальту",
+   "sd_fragment": "glass-green-glow from the machine's face, coin-brass details, one strawberry-sign pink against wet asphalt-black",
+   "mood": "the-lit-box-at-3am",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P284_SUGAR_CRUST_JAM",
+   "name": "Sugar Crust Jam",
+   "dominant": [
+    "sugar-white-crust",
+    "jam-rose-core"
+   ],
+   "secondary": [
+    "toasted-edge-amber"
+   ],
+   "accent1": [
+    "one drip of jam-red"
+   ],
+   "accent2": "crumb-shadow-brown",
+   "shadow": "oven-warm-dark",
+   "forbidden": [
+    "neon",
+    "cold-blue"
+   ],
+   "light_type": "сахарная корка: сухая белизна сверху, живой цвет под ней, тёплая тень у кромки",
+   "sd_fragment": "sugar-white-crust over jam-rose-core, toasted-edge-amber, one drip of jam-red",
+   "mood": "the-sweet-cracked-open",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P285_GREENHOUSE_RUST",
+   "name": "Greenhouse Rust",
+   "dominant": [
+    "greenhouse-glass-green",
+    "rust-iron-frame"
+   ],
+   "secondary": [
+    "condensation-silver"
+   ],
+   "accent1": [
+    "one orchid-magenta bloom"
+   ],
+   "accent2": "soil-shadow-brown",
+   "shadow": "panes-shade-moss",
+   "forbidden": [
+    "neon-lime",
+    "pure-white"
+   ],
+   "light_type": "оранжерея: свет сквозь запотевшее стекло, рамы ржавеют, конденсат ведёт свой счёт",
+   "sd_fragment": "greenhouse-glass-green through rust-iron frames, condensation-silver beading, one orchid-magenta bloom",
+   "mood": "the-room-that-grows-overnight",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P286_CHALK_CLIFF_ROBIN",
+   "name": "Chalk Cliff Robin",
+   "dominant": [
+    "chalk-white-cliff",
+    "robin-egg-blue"
+   ],
+   "secondary": [
+    "grass-green-base-line"
+   ],
+   "accent1": [
+    "one rust-lichen spot"
+   ],
+   "accent2": "chalk-dust-shadow",
+   "shadow": "cliff-shade-limestone",
+   "forbidden": [
+    "neon",
+    "muddy-brown"
+   ],
+   "light_type": "меловой утёс: ровный высокий свет, синь гнезда как единственный голос",
+   "sd_fragment": "chalk-white-cliff against robin-egg-blue, grass-green base line, one rust-lichen spot",
+   "mood": "the-edge-that-holds-a-nest",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P287_SODIUM_HIVE",
+   "name": "Sodium Hive",
+   "dominant": [
+    "sodium-amber-pool",
+    "moth-grey-halo"
+   ],
+   "secondary": [
+    "lamp-post-iron"
+   ],
+   "accent1": [
+    "one cool-mint shadow"
+   ],
+   "accent2": "asphalt-warm-dark",
+   "shadow": "street-shade-brown",
+   "forbidden": [
+    "cold-blue-flood",
+    "neon-purple"
+   ],
+   "light_type": "натриевый фонарь: тёплый пул в холодной ночи, мотыльки держат калибр света",
+   "sd_fragment": "sodium-amber-pool under moth-grey-halo, one cool-mint shadow, iron lamp-post silhouette",
+   "mood": "the-warm-circle-that-gathers-wings",
+   "family": "exp_color_wave_15",
+   "legacy_3slot": false,
+   "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
+   "trial": "trial до вердикта T5-31"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -8459,6 +8703,24 @@
     "P277_SORBET_STAIN",
     "P278_LEDGER_GREEN"
    ]
+  },
+  {
+   "wave": 15,
+   "name": "утро сбывшегося сна",
+   "batch": "T5-31",
+   "born": "2026-11-24, заказ автора «9 новых раскрасок и экспериментальных палитр» (преемство волны 14)",
+   "ids": [
+    "P279_CELLOPHANE_DEW",
+    "P280_MATCHSTRIKE_AMBER",
+    "P281_TINSEL_STEEL",
+    "P282_POWDER_VELLUM",
+    "P283_NIGHT_VENDING_GLOW",
+    "P284_SUGAR_CRUST_JAM",
+    "P285_GREENHOUSE_RUST",
+    "P286_CHALK_CLIFF_ROBIN",
+    "P287_SODIUM_HIVE"
+   ],
+   "note": "9 РАЗНЫХ семей: cellophane dew / matchstrike / tinsel steel / powder vellum / night vending / sugar crust / greenhouse rust / chalk cliff / sodium hive — материалы утра, где сон дошёл до вещи"
   }
  ]
 }
