@@ -1,5 +1,5 @@
 {
- "version": "1.16.0",
+ "version": "1.17.0",
  "born": "2026-11-18: волна 10 «способы раскраски» P234–P242 (T5-25)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150)",
  "palettes": [
@@ -8475,6 +8475,249 @@
    "legacy_3slot": false,
    "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
    "trial": "trial до вердикта T5-31"
+  },
+  {
+   "id": "P288_PHOSPHOR_GRADE",
+   "name": "Phosphor Grade",
+   "dominant": [
+    "ink-black-depth",
+    "phosphor-green-glow"
+   ],
+   "secondary": [
+    "deep-water-teal"
+   ],
+   "accent1": [
+    "one plankton-cyan spark"
+   ],
+   "accent2": "bone-pale drift",
+   "shadow": "abyss-shadow-green-black",
+   "forbidden": [
+    "warm-amber-flood",
+    "surface-daylight"
+   ],
+   "light_type": "самосвечение фосфора: глубина светится сама, шкала яркости = шкала глубины (стихия, не прибор)",
+   "sd_fragment": "ink-black-depth with phosphor-green-glow, deep-water-teal undertow, one plankton-cyan spark",
+   "mood": "the-depth-that-answers-with-its-own-light",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P289_CANARY_SIGNAL",
+   "name": "Canary Signal",
+   "dominant": [
+    "shaft-dark-brown",
+    "canary-amber-glow"
+   ],
+   "secondary": [
+    "timber-grey"
+   ],
+   "accent1": [
+    "one coal-black seam"
+   ],
+   "accent2": "quartz-pale vein",
+   "shadow": "ore-shadow-umber",
+   "forbidden": [
+    "cold-blue-flood",
+    "neon-green"
+   ],
+   "light_type": "канареечный сигнал: одно тёплое пятно предупреждения в древесной темноте (цвет-знак, не источник)",
+   "sd_fragment": "shaft-dark-brown with canary-amber-glow, timber-grey secondary, one coal-black seam accent",
+   "mood": "the-warm-note-the-dark-waits-for",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P290_VANTABLACK_RIBBON",
+   "name": "Vantablack Ribbon",
+   "dominant": [
+    "vantablack-void",
+    "silk-ribbon-midnight"
+   ],
+   "secondary": [
+    "chalk-line-white"
+   ],
+   "accent1": [
+    "one seam-graphite stroke"
+   ],
+   "accent2": "ash-grey edge",
+   "shadow": "light-eating-black",
+   "forbidden": [
+    "bright-saturation",
+    "warm-flood"
+   ],
+   "light_type": "свет глотается: работает только кромка — меловая линия и графитовый шов читаются там, где чёрное сдалось",
+   "sd_fragment": "vantablack-void with silk-ribbon-midnight, chalk-line-white trace, one seam-graphite stroke",
+   "mood": "the-dark-that-keeps-only-edges",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P291_TILE_OXIDE_RED",
+   "name": "Tile Oxide Red",
+   "dominant": [
+    "oxide-red-tile",
+    "grout-white-line"
+   ],
+   "secondary": [
+    "clay-cold-grey"
+   ],
+   "accent1": [
+    "one rust-drip streak"
+   ],
+   "accent2": "underpass-damp",
+   "shadow": "tile-shadow-red-brown",
+   "forbidden": [
+    "daylight-white",
+    "mint-green"
+   ],
+   "light_type": "оксидный подземный: красный кафель держит собственный тон в темноте, швы считают сетку кадра",
+   "sd_fragment": "oxide-red-tile with grout-white-line grid, clay-cold-grey secondary, one rust-drip streak",
+   "mood": "the-grid-that-remembers-the-station",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P292_LICHEN_PALE",
+   "name": "Lichen Pale",
+   "dominant": [
+    "stone-grey-deep",
+    "lichen-pale-green"
+   ],
+   "secondary": [
+    "bone-dust-cream"
+   ],
+   "accent1": [
+    "one dew-silver spot"
+   ],
+   "accent2": "crypt-cold shadow",
+   "shadow": "catacomb-grey-green",
+   "forbidden": [
+    "warm-gold",
+    "neon"
+   ],
+   "light_type": "лишайниковый бледный: камень светится ровесником темноты — палеозой-глоу без источника",
+   "sd_fragment": "stone-grey-deep with lichen-pale-green patches, bone-dust-cream, one dew-silver spot",
+   "mood": "the-palest-life-the-dark-allows",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P293_WELL_MIRROR_TEAL",
+   "name": "Well Mirror Teal",
+   "dominant": [
+    "well-water-teal",
+    "stone-rim-grey"
+   ],
+   "secondary": [
+    "rope-jute-brown"
+   ],
+   "accent1": [
+    "one sky-coin reflection"
+   ],
+   "accent2": "damp-moss dark",
+   "shadow": "water-shadow-teal-black",
+   "forbidden": [
+    "open-sky-blue",
+    "sandy-warm"
+   ],
+   "light_type": "колодезное зеркало: вода в глубине несёт единственную монету неба — точка света, подаренная сверху (стихия)",
+   "sd_fragment": "well-water-teal with stone-rim-grey, rope-jute-brown, one sky-coin reflection",
+   "mood": "the-sky-a-round-coin-fell-into",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P294_BLACKOUT_LACE_NOIR",
+   "name": "Blackout Lace Noir",
+   "dominant": [
+    "blackout-cloth-black",
+    "lace-shadow-graphite"
+   ],
+   "secondary": [
+    "moonline-silver"
+   ],
+   "accent1": [
+    "one lip-red thread"
+   ],
+   "accent2": "velvet-fold dark",
+   "shadow": "curtain-shadow-ink",
+   "forbidden": [
+    "room-lamp-warm",
+    "day-glow"
+   ],
+   "light_type": "блэкаут-штора: единственная линия лунного серебра по кромке ткани — свет живёт на границе занавеса",
+   "sd_fragment": "blackout-cloth-black with lace-shadow-graphite, moonline-silver edge, one lip-red thread",
+   "mood": "the-lace-that-keeps-the-night-out",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P295_GLOWWORM_THREAD",
+   "name": "Glowworm Thread",
+   "dominant": [
+    "cave-dark-blue",
+    "glowworm-blue-green"
+   ],
+   "secondary": [
+    "damp-stone-grey"
+   ],
+   "accent1": [
+    "one root-brown line"
+   ],
+   "accent2": "deep-earth black",
+   "shadow": "cave-shadow-blue-black",
+   "forbidden": [
+    "torch-amber",
+    "sun-glow"
+   ],
+   "light_type": "нити светлячков: пунктир сине-зелёных точек вешает собственные созвездия под сводом (живой свет)",
+   "sd_fragment": "cave-dark-blue with glowworm-blue-green dot-threads, damp-stone-grey, one root-brown line",
+   "mood": "the-constellations-that-live-lower",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
+  },
+  {
+   "id": "P296_TAR_GLASS_SILVER",
+   "name": "Tar Glass Silver",
+   "dominant": [
+    "tar-glass-black",
+    "mercury-silver-sheen"
+   ],
+   "secondary": [
+    "smoke-quartz-grey"
+   ],
+   "accent1": [
+    "one cold-cyan glint"
+   ],
+   "accent2": "bitumen-brown deep",
+   "shadow": "viscous-shadow-black",
+   "forbidden": [
+    "warm-honey",
+    "day-white"
+   ],
+   "light_type": "смоляное стекло: вязкий чёрный держит жидкое серебро на поверхности — свет-осадок, не источник",
+   "sd_fragment": "tar-glass-black with mercury-silver-sheen, smoke-quartz-grey, one cold-cyan glint",
+   "mood": "the-black-that-pays-in-silver",
+   "family": "exp_color_wave_16",
+   "legacy_3slot": false,
+   "born": "2026-11-25, T5-32 «DEEPER AND DARKER» — волна 16 «глубже и темнее»",
+   "trial": "trial до вердикта T5-32"
   }
  ],
  "saturation_doctrine": "Five Locks (RULES §51, binding from N21): (1) DEEP-ANCHOR — dominant anchored as DEPTH, never pallor; (2) SATURATED ANCHOR — one full-saturation element per prompt named in POS; (3) CONTRAST CARRIER — >=1 light-contrast carrier (rim/specular/hard shadow/caustic); (4) ANTI-WASH NEG — 'washed-out, faded colors, low contrast' always in scene-block; (5) COLOR GATE — per-prompt DESAT/SAT <= 1.2 with SAT >= 3 unless MUTED-BY-ORDER.",
@@ -8721,6 +8964,24 @@
     "P287_SODIUM_HIVE"
    ],
    "note": "9 РАЗНЫХ семей: cellophane dew / matchstrike / tinsel steel / powder vellum / night vending / sugar crust / greenhouse rust / chalk cliff / sodium hive — материалы утра, где сон дошёл до вещи"
+  },
+  {
+   "wave": 16,
+   "name": "глубже и темнее",
+   "batch": "T5-32",
+   "born": "2026-11-25, заказ автора «9 новых раскрасок и экспериментальных палитр» (преемство волны 15)",
+   "ids": [
+    "P288_PHOSPHOR_GRADE",
+    "P289_CANARY_SIGNAL",
+    "P290_VANTABLACK_RIBBON",
+    "P291_TILE_OXIDE_RED",
+    "P292_LICHEN_PALE",
+    "P293_WELL_MIRROR_TEAL",
+    "P294_BLACKOUT_LACE_NOIR",
+    "P295_GLOWWORM_THREAD",
+    "P296_TAR_GLASS_SILVER"
+   ],
+   "note": "9 РАЗНЫХ тёмных семей: phosphor grade / canary signal / vantablack ribbon / tile oxide red / lichen pale / well mirror teal / blackout lace noir / glowworm thread / tar glass silver — свет живёт стихией (самосвечение/кромка/осадок), приборов в волне 0; метал-слова (brass) в волне 0 — урок В24 вшит в рождение волны"
   }
  ]
 }

@@ -163,13 +163,30 @@ class TestT530Registries(unittest.TestCase):
 
     def test_wave14_palettes(self):
         pal = load("specs/palettes.json")
-        self.assertEqual(pal["version"], "1.16.0")
+        # v1.16.0 — волна 15 (T5-31); v1.17.0 — волна 16 (T5-32, заказ автора
+        # «9 новых раскрасок и экспериментальных палитр»): пин синхронен живому
+        # реестру (правило голых счётчиков: рассинхрон = баг)
+        self.assertEqual(pal["version"], "1.17.0")
         ids = {p["id"] for p in pal["palettes"]}
         wave14 = [f"P2{i}_" for i in range(70, 79)]  # P270–P278
         for pref in wave14:
             self.assertTrue(any(i.startswith(pref) for i in ids), pref)
         used_in_batch = set(re.findall(r"P27\d_[A-Z_]+", BATCH.read_text(encoding="utf-8")))
         self.assertEqual(len(used_in_batch), 9)  # все девять — в EXP-клетках
+
+    def test_wave16_palettes_t532(self):
+        """Волна 16 (T5-32 «DEEPER AND DARKER»): 9 новых тёмных семей
+        P288–P296, все девять — в EXP-клетках T5-32, trial до вердикта."""
+        pal = load("specs/palettes.json")
+        ids = {p["id"] for p in pal["palettes"]}
+        wave16 = [f"P2{i}_" for i in range(88, 97)]  # P288–P296
+        for pref in wave16:
+            self.assertTrue(any(i.startswith(pref) for i in ids), pref)
+        batch32 = (ROOT / "batches" / "T5-32.md").read_text(encoding="utf-8")
+        used = set(re.findall(r"P28[89]_[A-Z_]+|P29\d_[A-Z_]+", batch32))
+        self.assertEqual(len(used), 9, used)
+        waves = pal.get("exp_color_waves", [])
+        self.assertTrue(any(w.get("wave") == 16 for w in waves), "волна 16 не записана")
 
     def test_wave16_channels(self):
         ds = load("specs/delivery-stats.json")

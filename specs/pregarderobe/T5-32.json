@@ -1,0 +1,249 @@
+{
+ "batch": "T5-32",
+ "born": "2026-11-24T20:53:13.664446+00:00",
+ "seed": 3337565728,
+ "law": "specs/dresser.json v1.4.0 → pregarerobe: свежие комбо под жребий, набор в кулдауне 3 сданные партии (зеркально окну ротации), затем свободен — вечного бана нет (вердикт автора 2026-11-23, Коул R8)",
+ "combos": [
+  {
+   "y_card": "Y19",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "active",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-SM-07",
+     "name": "Half-Peeled Wetsuit",
+     "pos": "wetsuit peeled to the waist, arms out of the sleeves, neoprene folded at the hips",
+     "shelf": "SM",
+     "hook": "снятый верх = сурф-финал; неопрен блестит"
+    },
+    {
+     "code": "CL-TS-03",
+     "name": "Knotted Slim Tee",
+     "pos": "slim cotton tee knotted at the ribs, hem gone",
+     "shelf": "TS",
+     "hook": "узел поднимает низ — живот в кадре"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "86433fa65b8948ec"
+  },
+  {
+   "y_card": "Y217",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "formal",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-DR-09",
+     "name": "Tulle Petticoat Dress",
+     "pos": "layered tulle petticoat dress, tiers hazing the light like waterfalls",
+     "shelf": "DR",
+     "hook": "слои мутят свет — тело в глубине слоёв"
+    },
+    {
+     "code": "CL-AC-01",
+     "name": "Velvet Choker",
+     "pos": "thin velvet choker, neck accent, collarbone shadow",
+     "shelf": "AC",
+     "hook": "поясок на шее — горизонт кадра"
+    }
+   ],
+   "accessory": "CL-AC-10",
+   "combo_key": "740ef97a8b40b5da"
+  },
+  {
+   "y_card": "Y333",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "specialty",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-DR-09",
+     "name": "Tulle Petticoat Dress",
+     "pos": "layered tulle petticoat dress, tiers hazing the light like waterfalls",
+     "shelf": "DR",
+     "hook": "слои мутят свет — тело в глубине слоёв"
+    },
+    {
+     "code": "CL-TS-14",
+     "name": "Bandage Wrap Top",
+     "pos": "elastic bandage wrapped as a top, spiral of shadows, body reading through",
+     "shelf": "TS",
+     "hook": "спираль обёртки — тело читается между витками"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "ff6c5844fb755e47"
+  },
+  {
+   "y_card": "Y15",
+   "class": "PROCESS",
+   "corridor": "B",
+   "scene": "street",
+   "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "codes": [
+    {
+     "code": "CL-OU-04",
+     "name": "Belted Trench",
+     "pos": "belted trench coat, collar up, one lapel dragged open by the wind",
+     "shelf": "OU",
+     "hook": "ветер против лацкана"
+    },
+    {
+     "code": "CL-AC-09",
+     "name": "Loose Suspenders",
+     "pos": "suspenders hanging loose from the waistband, straps swinging",
+     "shelf": "AC",
+     "hook": "подтяжки без дела — расхлябанность честная"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "dcc4eec52dcf9e7c"
+  },
+  {
+   "y_card": "Y36",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "swim",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-AC-03",
+     "name": "Gold Body Chain",
+     "pos": "gold chain draped in the valley between, links drinking the key light",
+     "shelf": "AC",
+     "hook": "цепь на коже — свет пьёт звено за звеном"
+    },
+    {
+     "code": "CL-SM-07",
+     "name": "Half-Peeled Wetsuit",
+     "pos": "wetsuit peeled to the waist, arms out of the sleeves, neoprene folded at the hips",
+     "shelf": "SM",
+     "hook": "снятый верх = сурф-финал; неопрен блестит"
+    }
+   ],
+   "accessory": "CL-AC-10",
+   "combo_key": "eb3b03c3dd208af7"
+  },
+  {
+   "y_card": "Y316",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "intimates",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-AC-03",
+     "name": "Gold Body Chain",
+     "pos": "gold chain draped in the valley between, links drinking the key light",
+     "shelf": "AC",
+     "hook": "цепь на коже — свет пьёт звено за звеном"
+    },
+    {
+     "code": "CL-LG-05",
+     "name": "Bath Towel Wrap",
+     "pos": "bath towel wrapped and held by its own last tuck, one hand keeping the fold",
+     "shelf": "LG",
+     "hook": "полотенце держится на честном слове (towel_last_grip)"
+    },
+    {
+     "code": "CL-DR-13",
+     "name": "Cardigan-Only Dress",
+     "pos": "oversized cardigan worn as a dress, buttons fighting the gap at the thighs",
+     "shelf": "DR",
+     "hook": "канал-aware: с nothing underneath — заявка на нижней границе"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "b56506c173fe4a74"
+  },
+  {
+   "y_card": "Y524",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "active",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-TS-04",
+     "name": "Ribbed Tank Top",
+     "pos": "thin ribbed tank top, straps honest and narrow",
+     "shelf": "TS",
+     "hook": "узкие бретели — линия плеч голая"
+    },
+    {
+     "code": "CL-SM-06",
+     "name": "Zip Rash Guard Surf Set",
+     "pos": "half-zipped rash guard over swim bottoms, zipper frozen mid-descent",
+     "shelf": "SM",
+     "hook": "замок на полдороге — gar_f frozen_fastener"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "1b81fb19d36f73ce"
+  },
+  {
+   "y_card": "Y450",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "swim",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-SM-09",
+     "name": "Bikini + Sarong",
+     "pos": "bikini with a sarong knotted at the hip, slit to the thigh",
+     "shelf": "SM",
+     "hook": "парео — ткань-соучастник (cover-abandoned hook)"
+    },
+    {
+     "code": "CL-AC-03",
+     "name": "Gold Body Chain",
+     "pos": "gold chain draped in the valley between, links drinking the key light",
+     "shelf": "AC",
+     "hook": "цепь на коже — свет пьёт звено за звеном"
+    }
+   ],
+   "accessory": "CL-AC-04",
+   "combo_key": "59429d66cd78f40e"
+  },
+  {
+   "y_card": "Y445",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "street",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-AC-09",
+     "name": "Loose Suspenders",
+     "pos": "suspenders hanging loose from the waistband, straps swinging",
+     "shelf": "AC",
+     "hook": "подтяжки без дела — расхлябанность честная"
+    },
+    {
+     "code": "CL-DR-07",
+     "name": "Jersey Wrap Dress",
+     "pos": "jersey wrap dress with a deep V, wrap-knot riding loose at the ribs",
+     "shelf": "DR",
+     "hook": "завязка-узел = единственное, что держит интригу"
+    }
+   ],
+   "accessory": "CL-AC-02",
+   "combo_key": "c398eaab1793fa2b"
+  }
+ ]
+}
