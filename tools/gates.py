@@ -172,6 +172,13 @@ applyFrom 30: FAIL с T5-30, T5-29 и старшие задним числом �
 показывает WARN-ами, прецедент yStamp/paletteSkin). Разбор:
 docs/POSTMORTEM-T5-29.md.
 
+v1.18.1 (горячий фикс по рендеру T5-31, 2026-11-25): negBase.always расширен
+41-м юнитом — джанк-баны В24 (whistle/keychain/keyring/charm: свистки и
+связки ключей спавнились из POS-реквизита, каталог RENDER-TROUBLES В24) +
+цвет-гард приёма «проступающие сосочки» (areola/pink nipples — NEG закрывает
+ЦВЕТ, слой жив, §14.1 RATING-REPAIR). perSlotGuardsMax не тронут (4): новые
+юниты — boilerplate, не «война». T5-31: PASS 0F/0W (квитанция v3).
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \

@@ -8,6 +8,8 @@
  * карты» — фикс 2026-11-20, до этого заявленный фикс в репо не доехал).
  */
 import { describe, expect, test } from 'bun:test';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { parseBatch, parseSlotHeader } from '../../src/lib/t5/parse';
 
 const FIXTURE = `# Batch T5-99 «Фикстура теста» — (RAW+ / данбуру-формат)
@@ -174,5 +176,66 @@ describe('parseSlotHeader — чистая функция меты', () => {
 
   test('2-значная Y-карта жива (обратная совместимость)', () => {
     expect(parseSlotHeader('OC · Sol · Y14').yCard).toBe('Y14');
+  });
+});
+
+describe('делители с текстом — граница секции, не контент поля (урок T5-31 P24)', () => {
+  const DIVIDER_FIXTURE = `# Batch T5-98 «Делитель» — (RAW+ / данбуру-формат)
+
+ТЕМА-СЛОВА: делитель, регресс
+
+══════════════════════════════ СЛОТЫ ══════════════════════════
+
+P01 — alpha-end (VOLT · human · R+ · Y10 · P52_X)
+POS: strap honest across the chest
+NEG: strap off, door wide, night gone
+════════════════════════ EXP-ОВЕРЛЕЙ (P02–P03) ════════════════════════
+
+P02 — beta-next (EXP · R05 · R+ · Y24 · P53_Y)
+POS: hoodie up honest
+NEG: hoodie down, wind dead
+P03 — gamma-tail (EXP · R07 · R+ · Y25 · P54_Z)
+POS: lace taut honest
+NEG: lace slack, ears down
+══════════════════════════════ КОНЕЦ СЛОТОВ ═══════════════════════════════
+Футер батча: гейты PASS 0F/0W, квитанция заперта, палитры волны 15 в запрет ротации.
+`;
+
+  test('NEG ласт слота секции не глотает именованный делитель', () => {
+    const b = parseBatch(DIVIDER_FIXTURE);
+    expect(b.slots.length).toBe(3);
+    const p01 = b.slots.find((s) => s.id === 'P01')!;
+    expect(p01.neg).toBe('strap off, door wide, night gone');
+    expect(p01.neg).not.toContain('═');
+    expect(p01.neg).not.toContain('EXP-ОВЕРЛЕЙ');
+  });
+
+  test('NEG последнего слота батча не глотает «КОНЕЦ СЛОТОВ» и футер', () => {
+    const b = parseBatch(DIVIDER_FIXTURE);
+    const p03 = b.slots.find((s) => s.id === 'P03')!;
+    expect(p03.neg).toBe('lace slack, ears down');
+    expect(p03.neg).not.toContain('КОНЕЦ');
+    expect(p03.neg).not.toContain('квитанция');
+  });
+
+  test('именованный делитель создаёт акт с его заголовком', () => {
+    const b = parseBatch(DIVIDER_FIXTURE);
+    const titles = b.acts.map((a) => a.title);
+    expect(titles).toContain('СЛОТЫ');
+    expect(titles).toContain('EXP-ОВЕРЛЕЙ (P02–P03)');
+    expect(titles).toContain('КОНЕЦ СЛОТОВ');
+  });
+
+  test('корпус: ни один слот реальных батчей не тащит ═-делители в POS/NEG', () => {
+    const dir = join(import.meta.dir, '..', '..', 'batches');
+    const files = readdirSync(dir).filter((f) => f.endsWith('.md')).sort();
+    expect(files.length).toBeGreaterThan(20);
+    for (const f of files) {
+      const b = parseBatch(readFileSync(join(dir, f), 'utf8'));
+      for (const s of b.slots) {
+        expect(s.pos.includes('═'), `${f} ${s.id} POS тащит делитель`).toBe(false);
+        expect(s.neg.includes('═'), `${f} ${s.id} NEG тащит делитель`).toBe(false);
+      }
+    }
   });
 });

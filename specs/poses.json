@@ -1,7 +1,7 @@
 {
- "version": "1.19.0",
+ "version": "1.19.1",
  "born": "2026-09-19\n2026-11-08 — T5-17: +PL367–PL399 (ОС 3, мейны 21, EXP-семья X2 in-trail 9)\n2026-11-10 — T5-19: +PL436–PL456 (мейны 21, family greed_*), PL457–PL465 (EXP-семья X4 cage-lean 9), PL466–PL468 (canon-OS P01–P03)\n2026-11-20 — T5-27 «PREY»: +PL578–PL586 (EXP-семья prey_survival, обёртки Y522–Y530, заказ «новенькие Y которых ещё не создавали»)",
- "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах)",
+ "source": "3.2 POSE_LIBRARY v3.0.0 (base v1 + erotic v2.0 2026-09-10 + ×4 expansion 2026-09-14) | 1.8.1: +PL433–435 (canon-OS P01–P03, вето 2026-11-09: темы ОС → канон-ОС слоты; PL400–402 остаются в ledger на срезанных слотах) | 2026-11-25 (v1.19.1) — PL517 sd: bell-charms → ribbon ends (джанк-пропсы В24, синхрон с Y498 camera 1.19.1).",
  "poses": [
   {
    "id": "PL01",
@@ -9236,7 +9236,7 @@
   {
    "id": "PL517",
    "name": "Ribbon-Cross Offer (OC_T5-22)",
-   "sd": "bare underneath a single silk ribbon crossing her chest in a bow, one end offered forward into the frame, bell-charms holding their quiet count",
+   "sd": "bare underneath a single silk ribbon crossing her chest in a bow, one end offered forward into the frame, the ribbon's ends holding their quiet count",
    "category": "VERTICAL",
    "risk": "LOW",
    "family": "OC_T5-22",

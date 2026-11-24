@@ -75,6 +75,20 @@ function isActDelimiter(line: string): boolean {
   return t.length >= 10 && /^═+$/u.test(t);
 }
 
+/** Делитель-строка с текстом между пробегами ═ («═══ EXP-ОВЕРЛЕЙ (P25–P33) ═══»,
+ *  «═══ КОНЕЦ СЛОТОВ ═══») — граница секции, НЕ контент поля. Урок T5-31:
+ *  такая строка не матчилась ни делителем (текст между ═), ни заголовком акта
+ *  (нет префикса ACT/EXP OVERLAY) и молча приклеивалась к NEG последнего слота
+ *  перед секцией — кнопка NEG копировала мусор: «═══ EXP-ОВЕРЛЕЙ (P25–P33) ═══»
+ *  в P24 T5-31 (ласт слот мейна), весь футер батча в P33 T5-20…T5-30
+ *  («КОНЕЦ СЛОТОВ» + хвосты квитанций). Возвращает '' для чистого делителя,
+ *  текст заголовка для именованного, null — не делитель. */
+function dividerTitle(line: string | undefined): string | null {
+  if (!line) return null;
+  if (!/═{3,}/u.test(line)) return null;
+  return line.replace(/═{3,}/gu, ' ').trim();
+}
+
 function isActTitle(lines: string[], i: number): boolean {
   const t = lines[i].trim();
   if (t.length === 0) return false;
@@ -179,7 +193,7 @@ export function parseBatch(raw: string): T5Batch {
   let metaSeen = false;
   for (let i = titleIdx + 1; i < lines.length; i++) {
     const line = lines[i];
-    if (isActDelimiter(line)) break;
+    if (isActDelimiter(line) || dividerTitle(line) !== null) break;
     const t = line.trim();
     if (t.startsWith('ТЕМА-СЛОВА')) {
       themeWords = t
@@ -229,6 +243,18 @@ export function parseBatch(raw: string): T5Batch {
 
     if (isActDelimiter(line)) {
       currentField = null;
+      continue;
+    }
+    // делитель с текстом («═══ EXP-ОВЕРЛЕЙ (P25–P33) ═══») — граница секции;
+    // именованный делитель создаёт акт (урок T5-31: раньше строка глоталась
+    // в NEG последнего слота секции — мусор в кнопке NEG)
+    const divTitle = dividerTitle(line);
+    if (divTitle !== null) {
+      currentField = null;
+      if (divTitle !== '') {
+        currentAct = { title: divTitle, slots: [] };
+        acts.push(currentAct);
+      }
       continue;
     }
     if (isActTitle(lines, i)) {
@@ -311,14 +337,14 @@ export function parseBatch(raw: string): T5Batch {
             let k = j + 1;
             while (k < lines.length && lines[k].trim() === '') k++;
             const ahead = (lines[k] ?? '').trim();
-            if (FIELD_RE.test(ahead) || BODY_FIELD_RE.test(ahead) || SLOT_RE.test(ahead) || isActTitle(lines, k) || isActDelimiter(lines[k] ?? '')) {
+            if (FIELD_RE.test(ahead) || BODY_FIELD_RE.test(ahead) || SLOT_RE.test(ahead) || isActTitle(lines, k) || dividerTitle(lines[k]) !== null) {
               j = k;
               break;
             }
             j = k;
             continue;
           }
-          if (FIELD_RE.test(nt) || BODY_FIELD_RE.test(nt) || SLOT_RE.test(nt) || isActTitle(lines, j) || isActDelimiter(rawLine)) break;
+          if (FIELD_RE.test(nt) || BODY_FIELD_RE.test(nt) || SLOT_RE.test(nt) || isActTitle(lines, j) || dividerTitle(rawLine) !== null) break;
           thesisText += `\n${nt}`;
           j++;
         }
