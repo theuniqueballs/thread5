@@ -150,11 +150,23 @@ trial-волны старше 2 партий (сейчас 27 палитр во�
 одно репо, contents-only, 30 дней). Тесты: tests/python/
 test_t5delivery_ghost.py — 18 стражей; печь 205/205, прилавок 124/124.
 
+**Волна 1 аудита 5.3 (2026-11-25, готовность к вечернему рендеру T5-32):**
+калибровочный мост `oracle.py rating-delta` (аудит §3.1, решения автора
+№2/№3): машинный тир слота из slot_table квитанции против послотовых меток
+автора — новое ОПЦИОНАЛЬНОЕ поле `rating_truth_delta` в схеме
+t5-verdict/1 (старые вердикты живы: taste читает только свои поля,
+валидатор №15 — schema/batch); классификация сошлось/ложные R+/пропущенные
+R+/дрейф + группировка ложных по каналам delivery; LAB — ничего не правит,
+правка словарей ratingTruth по слову автора «калибровка принята», затем
+калибровка В43 (test_t529_lessons); дока — docs/ORACLE.md; точка входа
+контура обучения оракула (решение №6). Тесты: tests/python/
+test_rating_delta.py — 7; печь 212/212.
+
 ## 4. Тесты и CI
 
 ```
 bun run test        # tests/unit — 124 теста: parse/ystamp/inbox/store/oracle
-bun run test:py     # tests/python — 205 тестов: gates/window/taste/oracle/ytrust/cycle4/era/ci_workflow/ghost
+bun run test:py     # tests/python — 212 тестов: gates/window/taste/oracle/ytrust/cycle4/era/ci_workflow/ghost/rating_delta
 bun run typecheck && bun run lint
 python3 tools/validate.py --ci
 ```

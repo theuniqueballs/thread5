@@ -863,6 +863,148 @@ def cmd_selftest(_args) -> int:
 
 # ════════════════════════ main ════════════════════════
 
+# ══════════════ калибровочный мост (аудит 5.3 §3.1, волна 1) ══════════════
+# Решения автора №2/№3 (2026-11-25): после рендера — послотовые метки сразу,
+# мост запускаем «как только, так сразу». Рейтинг — домен №1 по жалобам
+# (T5-29: 17 ложных R+; T5-31: «много где», урок В44) — получает 2-батчевый
+# цикл честности вместо «отложено навсегда». Схема t5-verdict/1 дополнена
+# ОПЦИОНАЛЬНЫМ полем rating_truth_delta — taste.py читает только известные
+# поля, валидатор №15 читает schema/batch, так что старые вердикты живы.
+
+TIER_RANK = {"PG-13": 0, "R": 1, "R+": 2}
+
+
+def find_latest_receipt(batch, receipts_dir=None):
+    """Новейшая гейт-квитанция партии по (дата, версия) из ИМЕНИ файла.
+    mtime не участвует (аудит 2026-10-31, F2) — та же дисциплина дат, что
+    в t5delivery.receipt_dates; receipts_dir — для тестов."""
+    d = Path(receipts_dir) if receipts_dir else REPO / "specs" / "gate-receipts"
+    stem = Path(batch).name
+    if stem.endswith(".md"):
+        stem = stem[: -len(".md")]
+    best_key, best_path = None, None
+    for p in d.glob("*.json"):
+        m = t5delivery.RECEIPT_RE.match(p.name)
+        if m and m.group(2) == stem:
+            key = (m.group(1), int(m.group(3) or 0))
+            if best_key is None or key > best_key:
+                best_key, best_path = key, p
+    return best_path
+
+
+def cmd_rating_delta(args) -> int:
+    """КАЛИБРОВОЧНЫЙ МОСТ: машинный тир слота (slot_table новейшей квитанции)
+    против послотовых меток автора (verdicts/T5-NN.json → rating_truth_delta).
+
+    Схема t5-verdict/1, опциональное поле (заполняет автор после рендера
+    одним взглядом — по СПОРНЫМ слотам, не по всем 33):
+      "rating_truth_delta": [
+        {"slot": "P07", "truth": "R+", "note": "почему"}
+      ]                truth ∈ R+ / R / PG-13
+
+    Инструмент — LAB-отчёт: НИЧЕГО не переписывает. Правка словарей
+    ratingTruth (specs/gates.json) — только по слову автора «калибровка
+    принята»; после правки перезапинить калибровку В43
+    (tests/python/test_t529_lessons.py на живом T5-29)."""
+    stem = Path(args.batch).name
+    if stem.endswith(".md"):
+        stem = stem[: -len(".md")]
+    rec_path = (Path(args.receipt) if args.receipt
+                else find_latest_receipt(stem))
+    if rec_path is None or not rec_path.exists():
+        print(f"rating-delta: квитанция партии {stem} не найдена — "
+              f"сначала прогони гейты (tools/gates.py)")
+        return 1
+    try:
+        rec = json.loads(rec_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"rating-delta: квитанция {rec_path.name} не читается — {e}")
+        return 1
+    table = {r.get("id"): r for r in rec.get("slot_table") or [] if r.get("id")}
+    if not table:
+        print("rating-delta: в квитанции пуст slot_table — нечем калибровать")
+        return 1
+    vpath = (Path(args.verdict) if args.verdict
+             else REPO / "verdicts" / f"{stem}.json")
+    if not vpath.exists():
+        print(f"rating-delta: вердикта нет (verdicts/{stem}.json) — метки "
+              f"автора придут с рендером; сравнивать не с чем (это не FAIL)")
+        return 0
+    try:
+        verdict = json.loads(vpath.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"rating-delta: вердикт {vpath.name} не читается — {e}")
+        return 1
+    marks = verdict.get("rating_truth_delta") or []
+    if not marks:
+        print(f"rating-delta: в вердикте {vpath.name} нет rating_truth_delta — "
+              f"послотовых меток автора не было; сравнивать не с чем")
+        print('  схема (опционально в t5-verdict/1): "rating_truth_delta": '
+              '[{"slot": "P07", "truth": "R+", "note": "почему"}]')
+        return 0
+
+    agree, false_rplus, missed_rplus, drift, unknown, illegal = [], [], [], [], [], []
+    for m in marks:
+        slot, truth = str(m.get("slot", "")), str(m.get("truth", ""))
+        row = table.get(slot)
+        if row is None:
+            unknown.append(slot)
+            continue
+        mach = row.get("rating") or ""
+        if truth not in TIER_RANK or mach not in TIER_RANK:
+            illegal.append((slot, mach, truth, m.get("note")))
+            continue
+        if mach == truth:
+            agree.append(slot)
+        elif mach == "R+":
+            false_rplus.append((slot, mach, truth,
+                                row.get("channel") or "—", m.get("note")))
+        elif truth == "R+":
+            missed_rplus.append((slot, mach, truth,
+                                 row.get("channel") or "—", m.get("note")))
+        else:
+            drift.append((slot, mach, truth,
+                          row.get("channel") or "—", m.get("note")))
+
+    print(f"rating-delta {stem}: квитанция {rec_path.name} · "
+          f"вердикт {vpath.name} (машинный тир = slot_table квитанции)")
+    print(f"— меток автора {len(marks)} · сошлось {len(agree)} · "
+          f"ложных R+ {len(false_rplus)} · пропущенных R+ {len(missed_rplus)} · "
+          f"дрейф {len(drift)}"
+          + (f" · слот не найден {unknown}" if unknown else "")
+          + (f" · нелегальный тир {len(illegal)}" if illegal else ""))
+
+    def _rows(title, rows):
+        if not rows:
+            return
+        print(f"— {title}:")
+        for slot, mach, truth, extra, note in rows:
+            line = f"    {slot}: машина {mach} → автор {truth} ({extra})"
+            if note:
+                line += f" — {note}"
+            print(line)
+
+    _rows("ЛОЖНЫЕ R+ (машина завысила — словари пропускают)", false_rplus)
+    _rows("ПРОПУЩЕННЫЕ R+ (машина занизила — словари не видят)", missed_rplus)
+    _rows("ДРЕЙФ (R↔PG-13 и прочее)", drift)
+    if illegal:
+        print("— нелегальные метки (ожидаю truth ∈ R+/R/PG-13):")
+        for slot, mach, truth, note in illegal:
+            print(f"    {slot}: машина {mach} → автор {truth!r}"
+                  + (f" — {note}" if note else ""))
+    if false_rplus:
+        chans = {}
+        for _slot, _m, _t, ch, _n in false_rplus:
+            chans[ch] = chans.get(ch, 0) + 1
+        print("— где смотреть в словарях ratingTruth (gates.json): каналы "
+              "ложных — " + ", ".join(
+                  f"{c}×{n}" for c, n in sorted(chans.items(), key=lambda kv: -kv[1])))
+    print("— LAB: словари не тронуты; правка по слову автора «калибровка "
+          "принята», после — перезапинить калибровку В43 "
+          "(tests/python/test_t529_lessons.py)")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(prog="oracle.py", description="ECCHI-ORACLE CLI печи (эра ORACLE-2)")
     parser.add_argument("--url", default=DEFAULT_URL, help=f"oracle-service URL (по умолчанию {DEFAULT_URL})")
@@ -903,6 +1045,13 @@ def main() -> int:
     p_audit.add_argument("batch", help="путь до батча")
     p_audit.add_argument("--url", default=DEFAULT_URL)
 
+    p_delta = sub.add_parser(
+        "rating-delta",
+        help="калибровочный мост: машинный тир (квитанция) vs послотовые метки автора (rating_truth_delta) — LAB, ничего не правит")
+    p_delta.add_argument("--batch", required=True, help="партия: T5-32 или batches/T5-32.md")
+    p_delta.add_argument("--verdict", default="", help="путь к вердикту (по умолчанию verdicts/<партия>.json)")
+    p_delta.add_argument("--receipt", default="", help="путь к квитанции (по умолчанию новейшая по имени)")
+
     args = parser.parse_args()
     if args.cmd == "status":
         return cmd_status(args)
@@ -918,6 +1067,8 @@ def main() -> int:
         return cmd_heat(args)
     if args.cmd == "audit":
         return cmd_audit(args)
+    if args.cmd == "rating-delta":
+        return cmd_rating_delta(args)
     if args.cmd == "selftest":
         return cmd_selftest(args)
     parser.error(f"неизвестная команда: {args.cmd}")
