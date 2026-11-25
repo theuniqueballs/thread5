@@ -318,7 +318,7 @@ class TestOcCandidatesD(unittest.TestCase):
         d = load("oc-candidates.json")
         # v1.0.0 born-empty (ЦИКЛ 4); v1.1.0 — первый боевой лог: 9 кандидатов
         # EXP-партии T5-29 (заказ автора «9 кандидатов в ОС»), статус trial
-        self.assertIn(d["version"], ("1.0.0", "1.1.0", "1.2.0", "1.3.0"))  # 1.3.0 — девятка кандидатов T5-30
+        self.assertIn(d["version"], ("1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0"))  # 1.4.0 — девятка T5-32 + промоция Nun Harrow
         self.assertIn("bundle", d)
         self.assertIn("candidates", d)
         if d["version"] == "1.0.0":
@@ -328,7 +328,7 @@ class TestOcCandidatesD(unittest.TestCase):
             fields = set(d["bundle"]["fields"])
             for c in d["candidates"]:
                 self.assertTrue(fields & set(c), f"кандидат без полей бандла: {c.get('slot')}")
-                self.assertIn(c["status"], ("trial", "taken", "promoted", "passed"))
+                self.assertIn(c["status"], ("trial", "taken", "promoted", "passed", "pending"))  # pending — вердикт был, не в любимых (T5-32)
         # promoted — канонический статус промоции по закону реестра
         # (oc-candidates.json law: «строка здесь получает статус promoted»);
         # первая промоция: T5-29 P32 → Noxx (canon 2.14.0)

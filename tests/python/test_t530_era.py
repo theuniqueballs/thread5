@@ -199,7 +199,7 @@ class TestT530Registries(unittest.TestCase):
 
     def test_oc_candidates_13(self):
         oc = load("specs/oc-candidates.json")
-        self.assertEqual(oc["version"], "1.3.0")
+        self.assertEqual(oc["version"], "1.4.0")  # 1.4.0 — T5-32 кандидаты + промоция Nun Harrow
         t30 = [c for c in oc["candidates"] if c["batch"] == "T5-30"]
         self.assertEqual(len(t30), 9)
         for c in t30:

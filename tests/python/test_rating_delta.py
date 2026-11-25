@@ -87,9 +87,11 @@ class RatingDeltaTest(unittest.TestCase):
         self.assertIn("не найдена", out)
 
     def test_no_verdict_is_soft_zero(self):
-        # метки приходят с рендером — их отсутствие НЕ FAIL
-        rec = self.receipt("2026-11-25-T5-32-v1.json", {"P01": "R"})
-        rc, out = self.run_delta("T5-32", receipt=rec)
+        # метки приходят с рендером — их отсутствие НЕ FAIL.
+        # Т5-32 вердиктирован 2026-11-25 (verdicts/T5-32.json есть) —
+        # пример «вердикта нет» переехал на следующий батч.
+        rec = self.receipt("2026-11-25-T5-33-v1.json", {"P01": "R"})
+        rc, out = self.run_delta("T5-33", receipt=rec)
         self.assertEqual(rc, 0)
         self.assertIn("вердикта нет", out)
 

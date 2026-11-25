@@ -29,25 +29,34 @@
   {
    "file": "T5-31.json",
    "batch": "T5-31"
+  },
+  {
+   "file": "T5-32.json",
+   "batch": "T5-32"
   }
  ],
  "stats": {
-  "high": 25,
-  "mid": 8,
-  "low": 99,
-  "judged_batches": 4
+  "high": 35,
+  "mid": 9,
+  "low": 107,
+  "judged_batches": 5
  },
  "cards": {
   "Y1": {
    "trust": "HIGH",
    "hits": 1,
-   "misses": 0,
+   "misses": 1,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P05",
      "kind": "loved"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P01",
+     "kind": "miss"
     }
    ]
   },
@@ -67,13 +76,18 @@
   "Y3": {
    "trust": "HIGH",
    "hits": 1,
-   "misses": 0,
+   "misses": 1,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P16",
      "kind": "loved"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P06",
+     "kind": "miss"
     }
    ]
   },
@@ -221,11 +235,16 @@
    ]
   },
   "Y15": {
-   "trust": "LOW",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 1,
    "neutral": 0,
    "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P29",
+     "kind": "loved"
+    },
     {
      "batch": "T5-27",
      "slot": "P13",
@@ -269,6 +288,19 @@
      "batch": "T5-29",
      "slot": "P29",
      "kind": "miss"
+    }
+   ]
+  },
+  "Y19": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P25",
+     "kind": "loved"
     }
    ]
   },
@@ -480,6 +512,19 @@
     }
    ]
   },
+  "Y36": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P26",
+     "kind": "loved"
+    }
+   ]
+  },
   "Y37": {
    "trust": "MID",
    "hits": 0,
@@ -497,8 +542,13 @@
    "trust": "LOW",
    "hits": 0,
    "misses": 1,
-   "neutral": 0,
+   "neutral": 1,
    "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P07",
+     "kind": "ok_with_issues"
+    },
     {
      "batch": "T5-27",
      "slot": "P04",
@@ -515,6 +565,19 @@
     {
      "batch": "T5-31",
      "slot": "P13",
+     "kind": "loved"
+    }
+   ]
+  },
+  "Y53": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P18",
      "kind": "loved"
     }
    ]
@@ -584,6 +647,19 @@
     }
    ]
   },
+  "Y70": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P21",
+     "kind": "loved"
+    }
+   ]
+  },
   "Y71": {
    "trust": "LOW",
    "hits": 0,
@@ -593,6 +669,19 @@
     {
      "batch": "T5-27",
      "slot": "P22",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y72": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P16",
      "kind": "miss"
     }
    ]
@@ -740,6 +829,19 @@
     }
    ]
   },
+  "Y105": {
+   "trust": "MID",
+   "hits": 0,
+   "misses": 0,
+   "neutral": 1,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P05",
+     "kind": "ok_with_issues"
+    }
+   ]
+  },
   "Y110": {
    "trust": "LOW",
    "hits": 0,
@@ -766,6 +868,19 @@
     }
    ]
   },
+  "Y112": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P10",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y113": {
    "trust": "LOW",
    "hits": 0,
@@ -776,6 +891,32 @@
      "batch": "T5-29",
      "slot": "P18",
      "kind": "miss"
+    }
+   ]
+  },
+  "Y114": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P13",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y117": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P08",
+     "kind": "loved"
     }
    ]
   },
@@ -990,13 +1131,18 @@
   "Y258": {
    "trust": "HIGH",
    "hits": 1,
-   "misses": 0,
+   "misses": 1,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P06",
      "kind": "loved"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P02",
+     "kind": "miss"
     }
    ]
   },
@@ -1029,12 +1175,17 @@
   "Y265": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P07",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P22",
      "kind": "miss"
     }
    ]
@@ -1130,6 +1281,19 @@
     }
    ]
   },
+  "Y316": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P30",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y320": {
    "trust": "LOW",
    "hits": 0,
@@ -1143,12 +1307,30 @@
     }
    ]
   },
+  "Y328": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P03",
+     "kind": "loved"
+    }
+   ]
+  },
   "Y333": {
-   "trust": "LOW",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 1,
    "neutral": 0,
    "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P28",
+     "kind": "loved"
+    },
     {
      "batch": "T5-27",
      "slot": "P09",
@@ -1208,15 +1390,33 @@
     }
    ]
   },
-  "Y351": {
+  "Y348": {
    "trust": "LOW",
    "hits": 0,
    "misses": 1,
    "neutral": 0,
    "evidence": [
     {
+     "batch": "T5-32",
+     "slot": "P32",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y351": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 2,
+   "neutral": 0,
+   "evidence": [
+    {
      "batch": "T5-27",
      "slot": "P02",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P20",
      "kind": "miss"
     }
    ]
@@ -1321,6 +1521,19 @@
     {
      "batch": "T5-30",
      "slot": "P19",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y370": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P33",
      "kind": "miss"
     }
    ]
@@ -1430,11 +1643,16 @@
    ]
   },
   "Y443": {
-   "trust": "MID",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 0,
    "neutral": 1,
    "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P04",
+     "kind": "loved"
+    },
     {
      "batch": "T5-27",
      "slot": "P01",
@@ -1536,12 +1754,17 @@
   "Y486": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P03",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P23",
      "kind": "miss"
     }
    ]
@@ -1611,6 +1834,32 @@
     }
    ]
   },
+  "Y513": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P09",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y514": {
+   "trust": "MID",
+   "hits": 0,
+   "misses": 0,
+   "neutral": 1,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P17",
+     "kind": "ok_with_issues"
+    }
+   ]
+  },
   "Y515": {
    "trust": "LOW",
    "hits": 0,
@@ -1620,6 +1869,58 @@
     {
      "batch": "T5-31",
      "slot": "P31",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y516": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P12",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y517": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P15",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y519": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P14",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y520": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P27",
      "kind": "miss"
     }
    ]
@@ -1651,11 +1952,16 @@
    ]
   },
   "Y523": {
-   "trust": "LOW",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 1,
    "neutral": 0,
    "evidence": [
+    {
+     "batch": "T5-32",
+     "slot": "P24",
+     "kind": "loved"
+    },
     {
      "batch": "T5-27",
      "slot": "P26",
@@ -1666,12 +1972,17 @@
   "Y524": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P27",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P31",
      "kind": "miss"
     }
    ]
@@ -1691,13 +2002,18 @@
   },
   "Y526": {
    "trust": "HIGH",
-   "hits": 1,
+   "hits": 2,
    "misses": 0,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P29",
+     "kind": "loved"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P19",
      "kind": "loved"
     }
    ]
@@ -1743,13 +2059,18 @@
   },
   "Y530": {
    "trust": "HIGH",
-   "hits": 1,
+   "hits": 2,
    "misses": 0,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P33",
+     "kind": "loved"
+    },
+    {
+     "batch": "T5-32",
+     "slot": "P11",
      "kind": "loved"
     }
    ]

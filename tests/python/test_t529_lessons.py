@@ -244,7 +244,12 @@ class TestNoxxCanon(unittest.TestCase):
         self.assertEqual(len(p32), 1)
         self.assertEqual(p32[0]["status"], "promoted")
         self.assertIn("Noxx", p32[0].get("promoted_to", ""))
-        self.assertEqual(self.candidates["stats"]["promoted"], 1)
+        # вторая промоция: T5-32 P29 → Nun Harrow (canon 2.15.0, вердикт 2026-11-25)
+        p29 = [c for c in self.candidates["candidates"] if c["slot"] == "P29" and c["batch"] == "T5-32"]
+        self.assertEqual(len(p29), 1)
+        self.assertEqual(p29[0]["status"], "promoted")
+        self.assertIn("Nun Harrow", p29[0].get("promoted_to", ""))
+        self.assertEqual(self.candidates["stats"]["promoted"], 2)
 
     def test_oracle_sees_noxx(self):
         """Окно/жребий знают новую ОС: load_oc_names отдаёт 30 имён."""
