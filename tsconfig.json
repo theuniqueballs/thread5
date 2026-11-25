@@ -41,6 +41,7 @@
     "examples",
     "mini-services",
     "tests",
-    "skills"
+    "skills",
+    "bot-forge"
   ]
 }
