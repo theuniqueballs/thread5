@@ -166,7 +166,7 @@ class TestT530Registries(unittest.TestCase):
         # v1.16.0 — волна 15 (T5-31); v1.17.0 — волна 16 (T5-32, заказ автора
         # «9 новых раскрасок и экспериментальных палитр»): пин синхронен живому
         # реестру (правило голых счётчиков: рассинхрон = баг)
-        self.assertEqual(pal["version"], "1.17.0")
+        self.assertEqual(pal["version"], "1.19.0")  # 1.19.0 — волна 17 (T5-33 LAB, P297–P305)
         ids = {p["id"] for p in pal["palettes"]}
         wave14 = [f"P2{i}_" for i in range(70, 79)]  # P270–P278
         for pref in wave14:

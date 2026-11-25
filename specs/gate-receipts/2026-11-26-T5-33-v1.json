@@ -1,0 +1,966 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.19.0)",
+ "batch": "batches/T5-33.md",
+ "sha256": "df35982fea22b6aa8426c428a7862412197e68812e39d4c4df5f949d2b7b0fc5",
+ "utc": "2026-11-25T18:59:05+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P33",
+   "gate": "format",
+   "msg": "POS-строка 212 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P03",
+   "gate": "y-stamp",
+   "msg": "карта Y496 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P04",
+   "gate": "y-stamp",
+   "msg": "карта Y34 в окне ротации (использована в T5-29.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P05",
+   "gate": "y-stamp",
+   "msg": "карта Y93 в окне ротации (использована в T5-30.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P06",
+   "gate": "y-stamp",
+   "msg": "карта Y29 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P10",
+   "gate": "y-stamp",
+   "msg": "карта Y47 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P11",
+   "gate": "y-stamp",
+   "msg": "карта Y97 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P13",
+   "gate": "y-stamp",
+   "msg": "карта Y30 в окне ротации (использована в T5-30.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P14",
+   "gate": "y-stamp",
+   "msg": "карта Y37 в окне ротации (использована в T5-29.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P16",
+   "gate": "y-stamp",
+   "msg": "карта Y263 в окне ротации (использована в T5-29.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P17",
+   "gate": "y-stamp",
+   "msg": "карта Y442 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P18",
+   "gate": "y-stamp",
+   "msg": "карта Y302 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P19",
+   "gate": "y-stamp",
+   "msg": "карта Y11 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P21",
+   "gate": "y-stamp",
+   "msg": "карта Y92 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P23",
+   "gate": "y-stamp",
+   "msg": "карта Y342 в окне ротации (использована в T5-30.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P24",
+   "gate": "y-stamp",
+   "msg": "карта Y60 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P28",
+   "gate": "y-stamp",
+   "msg": "карта Y9 в окне ротации (использована в T5-29.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P30",
+   "gate": "y-stamp",
+   "msg": "карта Y25 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P31",
+   "gate": "y-stamp",
+   "msg": "карта Y81 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P32",
+   "gate": "y-stamp",
+   "msg": "карта Y195 в окне ротации (использована в T5-29.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "P33",
+   "gate": "y-stamp",
+   "msg": "карта Y227 в окне ротации (использована в T5-31.md, окно 3 батчей, y_assembly.window) — неизбежный повтор — ⚗ + объявление в чате"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "266 общих 6-грамм с предыдущими партиями (T5-30.md, T5-31.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "noxx-ruuj-breast-offer",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 39,
+   "posWords": 303
+  },
+  {
+   "id": "P02",
+   "slug": "rin-lua-kitchen-back-hold",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "B",
+   "claimToken": 51,
+   "posWords": 338
+  },
+  {
+   "id": "P03",
+   "slug": "ama-wrap-knot-gust",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 52,
+   "posWords": 243
+  },
+  {
+   "id": "P04",
+   "slug": "alcove-corseteer-lacing",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 47,
+   "posWords": 223
+  },
+  {
+   "id": "P05",
+   "slug": "midnight-sheet-crawl",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 169
+  },
+  {
+   "id": "P06",
+   "slug": "spine-zipper-halfdown",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 44,
+   "posWords": 239
+  },
+  {
+   "id": "P07",
+   "slug": "kitchen-bench-kiss-thread",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 42,
+   "posWords": 306
+  },
+  {
+   "id": "P08",
+   "slug": "scarf-wind-rooftop",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 155
+  },
+  {
+   "id": "P09",
+   "slug": "couch-suckle-ceiling",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 43,
+   "posWords": 290
+  },
+  {
+   "id": "P10",
+   "slug": "hayloft-arch-dawn",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 45,
+   "posWords": 211
+  },
+  {
+   "id": "P11",
+   "slug": "fitting-freeze-halfin",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 181
+  },
+  {
+   "id": "P12",
+   "slug": "windowseat-lap-warp",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 52,
+   "posWords": 252
+  },
+  {
+   "id": "P13",
+   "slug": "surf-runup-knit-sheer",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 27,
+   "posWords": 223
+  },
+  {
+   "id": "P14",
+   "slug": "latebath-sand-lean",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 215
+  },
+  {
+   "id": "P15",
+   "slug": "stove-spine-seat",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 59,
+   "posWords": 279
+  },
+  {
+   "id": "P16",
+   "slug": "linen-closet-honest-cover",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": 19,
+   "posWords": 133
+  },
+  {
+   "id": "P17",
+   "slug": "attic-headboard-brace",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 45,
+   "posWords": 193
+  },
+  {
+   "id": "P18",
+   "slug": "rooftop-towel-flip",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 39,
+   "posWords": 194
+  },
+  {
+   "id": "P19",
+   "slug": "shrine-tailfan-kneel",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 188
+  },
+  {
+   "id": "P20",
+   "slug": "doorway-saliva-macro",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 48,
+   "posWords": 267
+  },
+  {
+   "id": "P21",
+   "slug": "kettle-crossleg-tea",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 138
+  },
+  {
+   "id": "P22",
+   "slug": "wardrobe-mirror-pair",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 42,
+   "posWords": 261
+  },
+  {
+   "id": "P23",
+   "slug": "pantry-wiring-panel",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 45,
+   "posWords": 187
+  },
+  {
+   "id": "P24",
+   "slug": "doorway-starlight-lean",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "—",
+   "claimToken": "—",
+   "posWords": 151
+  },
+  {
+   "id": "P25",
+   "slug": "moth-latch-caustics",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 270
+  },
+  {
+   "id": "P26",
+   "slug": "oni-cage-lean-grip",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 180
+  },
+  {
+   "id": "P27",
+   "slug": "ninetails-groom-mid",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": 59,
+   "posWords": 268
+  },
+  {
+   "id": "P28",
+   "slug": "arachne-plate-shift",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 205
+  },
+  {
+   "id": "P29",
+   "slug": "flower-ribbed-bloom",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 255
+  },
+  {
+   "id": "P30",
+   "slug": "goat-shelf-frame",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 192
+  },
+  {
+   "id": "P31",
+   "slug": "snowleopard-tail-wet",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 166
+  },
+  {
+   "id": "P32",
+   "slug": "incense-ember-relief",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 196
+  },
+  {
+   "id": "P33",
+   "slug": "dullahan-lace-seam-mirror",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 228
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "layer shag pale glowing face silver",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "shag pale glowing face silver grey",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "pale glowing face silver grey eyes",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md",
+   "slotsThere": [
+    "P01"
+   ]
+  },
+  {
+   "gram": "side swept bangs pale icy grey",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "swept bangs pale icy grey almond",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "bangs pale icy grey almond eyes",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "fair cream skin with light freckles",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "mark on the right cheek slender",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "on the right cheek slender womanly",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "the right cheek slender womanly body",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "right cheek slender womanly body soft",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "cheek slender womanly body soft settled",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "slender womanly body soft settled breasts",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "catching the defeated knot's slipped edge",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "the defeated knot's slipped edge with",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "defeated knot's slipped edge with one",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "knot's slipped edge with one flat",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "slipped edge with one flat palm",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "edge with one flat palm at",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P32"
+   ]
+  },
+  {
+   "gram": "with one flat palm at the",
+   "slotsHere": [
+    "P03"
+   ],
+   "sourceBatch": "T5-31.md",
+   "slotsThere": [
+    "P32"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "depth black hair in a ghost",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "black hair in a ghost layer",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "hair in a ghost layer shag",
+   "slotsHere": [
+    "P01",
+    "P20"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "in a ghost layer shag pale",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "a ghost layer shag pale glowing",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "ghost layer shag pale glowing face",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "black skin with soft star glow",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "skin with soft star glow flecks",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "small high set chest slim waist",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-30.md"
+  },
+  {
+   "gram": "very long straight obsidian black hair",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "long straight obsidian black hair with",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "straight obsidian black hair with a",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "obsidian black hair with a faint",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "black hair with a faint purple",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "hair with a faint purple sheen",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "pale icy grey almond eyes half",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "icy grey almond eyes half lidded",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "small beauty mark on the right",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "beauty mark on the right cheek",
+   "slotsHere": [
+    "P02"
+   ],
+   "sourceBatch": "T5-31.md"
+  },
+  {
+   "gram": "kneel back settle hem pinned under",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-31.md"
+  }
+ ],
+ "copypasteCanonExempt": [
+  {
+   "gram": "hair in a ghost layer shag",
+   "slots": [
+    "P01",
+    "P20"
+   ]
+  }
+ ],
+ "movesDeclared": [],
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 21,
+  "fact_R+": 21
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y532",
+   "Y534",
+   "Y496",
+   "Y34",
+   "Y93",
+   "Y29",
+   "Y531",
+   "Y306",
+   "Y533",
+   "Y47",
+   "Y97",
+   "Y535",
+   "Y30",
+   "Y37",
+   "Y536",
+   "Y263",
+   "Y442",
+   "Y302",
+   "Y11",
+   "Y538",
+   "Y92",
+   "Y537",
+   "Y342",
+   "Y60",
+   "Y533",
+   "Y8",
+   "Y536",
+   "Y9",
+   "Y538",
+   "Y25",
+   "Y81",
+   "Y195",
+   "Y227"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "y_stack": {
+  "checked": 0,
+  "stacked": 0,
+  "choked": 0,
+  "canon_without_codes": 26,
+  "geometry_only": 0
+ },
+ "combo_pose": {
+  "composite_used": 0,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 33,
+  "weaved": 33,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 20,
+  "corridor_warn": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
+ },
+ "race_cast": {
+  "kin": 3,
+  "human": 18,
+  "window": [
+   0,
+   10
+  ],
+  "policy": "v2.0"
+ },
+ "volt_core": {
+  "mains": 21,
+  "volt": 13,
+  "niche": 8,
+  "max_run": 2,
+  "retro": false
+ },
+ "exquisite_main": {
+  "mains": 21,
+  "exquisite": 1,
+  "retro": false
+ },
+ "exp_hypothesis": {
+  "cells": 9,
+  "with_h": 9,
+  "without": [],
+  "hyps_used": [
+   "H-02",
+   "H-03",
+   "H-07",
+   "H-08",
+   "H-10",
+   "H-11",
+   "H-12",
+   "H-13",
+   "H-14"
+  ],
+  "retro": false
+ },
+ "rating_truth": {
+  "checked": 33,
+  "implied_rplus": 21,
+  "false_rplus": 0,
+  "soft_drift": 0,
+  "retro": false
+ }
+}

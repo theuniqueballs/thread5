@@ -305,7 +305,7 @@ class TestPregarmentJ(unittest.TestCase):
 
     def test_dresser_law_section(self):
         d = load("dresser.json")
-        self.assertEqual(d["version"], "1.4.0")
+        self.assertEqual(d["version"], "1.5.0")
         self.assertIn("pregarderobe", d)
         self.assertIn("КУЛДАУНЕ", d["pregarderobe"]["law"])
         self.assertIn("вечного бана нет", d["pregarderobe"]["law"])

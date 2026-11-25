@@ -1595,23 +1595,39 @@ def check_exp_hypothesis(slots, warns, fails, batch_no=-1, retro=False):
 
 
 def rating_implied(pos, cfg):
-    """v1.18.0 ratingTruth — модель состава: что кадр несёт по токенам POS.
+    """v1.19.0 ratingTruth — модель состава: что кадр несёт по токенам POS.
 
-    R+   : bareClaim («nothing underneath») И (strapOnly — линии, не панели
-           ИЛИ (ни одной панели на груди И handHold — транзиентный холд
-           объекта руками, как у P04 «both fists' haul of the towel»)).
-    R    : bareClaim / breastRead (чтение формы через что угодно) / R-токены
-           (мокрая кожа по рёбрам, tan lines, голая спина, интим-геометрия
-           с партнёром, ноги-демонстрация).
+    R+   : ЗАКОНЫ АВТОРА 2026-11-26 (калибровка T5-32 принята, В45/В47) —
+           tapeEvidence (топлес+тейп в любой позе) или crotchFocus (фокус-зона/
+           намёк cameltoe/pantyline/between-knees в любой одежде) —
+           независимо от остального состава; ИЛИ bareClaim + pointRead
+           (бугорки читаются сквозь ткань, P07-класс); ИЛИ bareClaim +
+           strapOnly (честные стрэпы на голой груди, T5-29 P27); ИЛИ
+           bareClaim + (ни одной панели на груди И handHold — транзиентный
+           холд объекта руками).
+    R    : bareClaim / breastRead (+bareLineRead — «линия груди» как декор,
+           T5-32 P06-класс: отстрелен от R+) / R-токены (мокрая кожа по
+           рёбрам, tan lines, голая спина, интим-геометрия с партнёром,
+           ноги-демонстрация).
     PG-13: всё остальное (мидрифф/плечи/бёдра сквозь ткань/слип бретели
            платья).
-    Калибровка на ground truth T5-29: 33/33 (совпали P04/P11/P18/P27) —
-    docs/POSTMORTEM-T5-29.md."""
+    Калибровки: T5-29 ground truth 33/33 (docs/POSTMORTEM-T5-29.md) +
+    законы автора 2026-11-26 («снижаешь тиры того что увидел»). Модель —
+    пол состава, не оракул: последний судья — вердикт автора (В45)."""
     pos_l = (pos or "").lower()
     has_bare = any(t in pos_l for t in cfg.get("bareClaim", []))
-    has_read = any(t in pos_l for t in cfg.get("breastRead", []))
+    read_tokens = list(cfg.get("breastRead", [])) + list(cfg.get("bareLineRead", []))
+    has_read = any(t in pos_l for t in read_tokens)
     has_hold = any(t in pos_l for t in cfg.get("handHold", []))
     strap_only = any(t in pos_l for t in cfg.get("strapOnly", []))
+    # законы автора 2026-11-26: HARD-носители R+ (калибровка T5-32 принята)
+    has_tape = any(t in pos_l for t in cfg.get("tapeEvidence", []))
+    has_crotch = any(t in pos_l for t in cfg.get("crotchFocus", []))
+    has_points = any(t in pos_l for t in cfg.get("pointRead", []))
+    # юри-домен В47: контакт-геометрия пары = носитель (2girls в POS)
+    is_pair = "2girls" in pos_l or "yuri" in pos_l
+    has_pair = is_pair and any(
+        t in pos_l for t in cfg.get("pairContact", []))
     win = int(cfg.get("window", 100))
     panel_on = False
     for p in cfg.get("panels", []):
@@ -1627,6 +1643,12 @@ def rating_implied(pos, cfg):
         for toks in (cfg.get("rTokens") or {}).values()
         for t in toks
     )
+    if has_tape or has_crotch:
+        return "R+"
+    if has_pair:
+        return "R+"
+    if has_bare and has_points:
+        return "R+"
     if has_bare and (strap_only or (not panel_on and has_hold)):
         return "R+"
     if has_bare or has_read or r_evidence:

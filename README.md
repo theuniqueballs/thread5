@@ -31,7 +31,8 @@ Batch-Prompt Conveyer Belt
 - `batches/` — батчи T5-NN (RAW+ / данбуру-формат);
   рабочие артефакты сеансов — `batches/T5-NN/00-brief, 01-sol … 05-furnace`
   (бриф — по `_BRIEF-TEMPLATE.md`, с обязательным MODE: CLOCK/LAB/SURGERY/SPECIAL)
-- `special/` — SPECIAL ORDERS: штучки вне цикла (заказы автора: подарки, приколы, одна сцена) — SO-NN.md, тот же RAW+ формат, без раскрытия темы
+- `special/` — SPECIAL ORDERS: штучки вне цикла (заказы автора: подарки, приколы, одна сцена) — SO-NN.md, тот же RAW+ формат, без раскрытия темы; SO-13…SO-18 — синк заказов ботов FORGE (нумерация с конца наших)
+- `bot-forge/` — **FORGE: конвейер ботов Yodayo Tavern** (ростер, копировалки `tools/tokens.mjs`/`render-preview.ts`, шаблоны); вход и статус — `bot-forge/INDEX.md`
 - `docs/ars/` — **ARS NOVEAU v2, солнечная система**: `00-OVERVIEW` (карта),
   `01-SOL` (ядро: идея, HEAT, истории, ЛУНА, фасеты до жребия) → `02-MERCURY` (каст, ULTIMATE
   DICE, Дрессер) → `03-VENUS` (сцена) → `04-EARTH` (сборка POS/NEG, slot budget) →
@@ -46,17 +47,22 @@ Batch-Prompt Conveyer Belt
   включая тройной 2026-11-22)
 - `archive/` — гигиена 2026-11-02 (винтаж T4, старые аудиты) и 2026-11-23
   (living-notes по месяцам)
-- `specs/` — данные-активы (счётчики — из живых JSON, 2026-11-23: позы ×586 —
-  poses 1.19.0; палитры ×278 — palettes 1.16.0 (волна 14 «дым и латунь»
-  P270–P278, боевой ввод с T5-30); **Y-множество ×530 — camera.json
-  1.19.0, Y-first + Y-STAMP (вплетение 1:1) + POV-якоря В37 + траст-слой**;
+- `specs/` — данные-активы (счётчики — из живых JSON, 2026-11-26: позы ×586 —
+  poses 1.19.0; палитры ×305 — palettes 1.19.0 (волны 11–13 приняты автором в
+  canon 2026-11-26 «Да забери ты уже эти палитры ебаные»; волна 17 «носители»
+  P297–P305, trial до вердикта T5-33); **Y-множество ×538 — camera.json
+  1.20.0, Y-first + Y-STAMP (вплетение 1:1) + POV-якоря В37 + траст-слой +
+  юри-домен Y531–Y538 (пара-геометрия, garment_pair)**;
   расы ×74 — races 2.7.0 (кин-оверхаул: clarifiers+gimmick+skin_type, LAWS §21);
-  OC-канон ×30 — canon 2.14.0 (Noxx: промоция из EXP T5-29 P32, первая из
-  oc-candidates.json); CLOSET ×121 предмет на 13 полках — closet 1.1.0
+  OC-канон ×31 — canon 2.16.0 (Nun Harrow: вторая промоция из EXP T5-32 P29;
+  Doe очки-пенсне закреплены по треду 4, 2026-11-26);
+  CLOSET ×121 предмет на 13 полках — closet 1.1.0
   (exposure-классы, yStack); **bodytypes.json 1.0.0 — 24 типажа тел (пункт Е)**;
   **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**;
-  **oc-candidates.json 1.3.0 — кандидаты в ОС: 9 trial с T5-30, вердикт
-  только автора (пункт Д)**; `gates.json` 1.18.0 (yStackGate + урок T5-29:
+  **oc-candidates.json 1.4.0 — кандидаты в ОС: 27 trial (статусы
+  passed/promoted/pending), вердикт только автора (пункт Д)**; `gates.json`
+  1.19.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
+  pointRead/pairContact = HARD R+; «chest's bare line» отстрелен от R+;
   voltCore В39, raceCast v2.0 В40, exquisiteMain В41, expHypothesis В42,
   ratingTruth В43 — все FAIL-эра с T5-30) + `gate-registry.json` 1.1.0
   (реестр «гейт → код → тест → квитанция», 33 секции); `raw-plus.json` 2.3.0
@@ -66,8 +72,13 @@ Batch-Prompt Conveyer Belt
   единственный вход окна/жребия/CI**; **`active-pools.json` 1.0.0 — режимы
   CLOCK/LAB/SURGERY + активный пул**; **`y-trust.json` 1.0.0 — траст-слой Y
   (HIGH/MID/LOW из JSON-вердиктов, Коул §7; draw --trust — CLOCK-жребий по
-  HIGH+MID ≤ 80)**; `ultimate-dice.json`, `open-hypotheses.json` 1.2.0,
-  `dresser.json` 1.4.0 (y_stack + ПРЕ-ГАРДЕРОБ с кулдауном наборов 3 партии —
+  HIGH+MID ≤ 80)**; `ultimate-dice.json`, `open-hypotheses.json` 1.3.0
+  (+H-14 СБОРЩИК-ЧЕРНОВИКА, testing на T5-33),
+  `rating-techniques.json` 1.4.0 — 161 приём (импорт из базового таксонома
+  эччи-оракла + законы автора 2026-11-26 в principle.laws_author,
+  sum_rules.hard_carriers),
+  `dresser.json` 1.5.0 (y_stack + **carrier-first В47** + ПРЕ-ГАРДЕРОБ с
+  кулдауном наборов 3 партии —
   вердикт автора 2026-11-23 «комбо не должны навсегда баниться», LAWS §22);
   `salon.json`, `furnace-ledger.json`, `moves-ledger.json`, …)
 - `verdicts/` — вербатим-вердикты автора по батчам; **новая эра (двойной

@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.16.0",
   "born": "2026-09-19",
   "source": "3.2 OC_CANON.yaml (THREAD 3.0 format, canon v1.7.1)",
   "canon_version": "2.15.0",
@@ -109,7 +109,7 @@
       "skin": "soft fair porcelain (author-fixed 2026-09-08 — promoted from the OC_ORDERS_N18 SET3 file-only flag; never tan, never golden — the fawn-storm girl keeps her pale glass skin)",
       "body_type": "thick toned thighs, soft mid frame, FAM-B (B3-B4): medium soft breasts",
       "signature_marks": [
-        "round glasses",
+        "round glasses (тонкие круглые очки пенсне-класса; канон подтверждён автором 2026-11-26 «Это канон... очки-пенсне круглые» по треду 4 — theuniqueballs/thread4, oc-canon round glasses + anti_shield no glasses; POS-токен render-проверенный: round glasses; в парных промптах ехать VERBATIM у лица — урок SO-12 рендера: «пропали круглые очки у Doe»)",
         "band-aid on the bridge of the nose",
         "single small hoop earring in the left ear (asymmetric)",
         "small soft purple scales on the cheeks",
@@ -811,7 +811,7 @@
     "2026-11-22 v2.14.0 — NOXX PROMOTED from T5-29 P32 'shadow-strap-slide' (вердикт: «особенно - 32 слот. Забираем в ОС, даём ей имя - Noxx. Выдашь ей пакет ос-канона.»); R45 Shadow-kin, BT-12/FAM-C pending veto; Two of Swords / SEAM / Libra (SHARED Lyn+Una, flagged) assistant-assigned; канон = PH-промпт автора VERBATIM (винил-просвет, дипломатия света, Dusk Binding); первая промоция из oc-candidates.json (пункт Д) — с первой боевой партии реестра.",
     "2026-11-25 canon 2.15.0 — NUN HARROW promoted from T5-32 P29 (R41 Witch-kin; рендер-лок: монашеское облачение + круглые дымчатые очки + чёрный полумесяц + алый псалтырь); аркана VIII Cups (седьмая младшая, все старшие 22/22 заняты), element SIGNAL, zodiac Virgo — assistant-assigned, вето автора открыто; ВТОРАЯ промоция из oc-candidates.json."
   ],
-  "note_on_status": "ACTIVE: 29 (25 прежних включая Dove/Ruuj/Qwen + Nier и Noir с промоции 2026-11-15; Noxx с промоции 2026-11-22 (T5-29, из oc-candidates); Nun Harrow с промоции 2026-11-25 (T5-32, из oc-candidates); Ama и Ila спят — active=null). 3 drawn per session by author vibe/theme fit, no forced rotation. Rae and Iya are INACTIVE RESERVE (added accidentally, never used, bios retained). SP-registry characters (Nicole, Puppet/Valentine, Ereshkigal/Tito_Lopes) live in download/SP_ORDERS.md, never in OC canon.",
+  "note_on_status": "ACTIVE: 29 (25 прежних включая Dove/Ruuj/Qwen + Nier и Noir с промоции 2026-11-15; Noxx с промоции 2026-11-22 (T5-29, из oc-candidates); Nun Harrow с промоции 2026-11-25 (T5-32, из oc-candidates); Ama и Ila спят — active=null). 3 drawn per session by author vibe/theme fit, no forced rotation. Rae and Iya are INACTIVE RESERVE (added accidentally, never used, bios retained). SP-registry characters (Nicole, Puppet/Valentine, Ereshkigal/Tito_Lopes) live in download/SP_ORDERS.md, never in OC canon. | 2026-11-26: Doe glasses-канон закреплён по треду 4 (очки-пенсне круглые, автор); 2.16.0.",
   "fam_scale": {
     "source": "pools.json b_fam (semейства неизменны)",
     "FAM-A": "B5-B7 LARGE — full/heavy/generous",

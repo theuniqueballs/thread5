@@ -1,6 +1,6 @@
 {
  "tool": "tools/gates.py (specs/gates.json v1.9.0)",
- "batch": "special/SO-11.md",
+ "batch": "special/SO-16.md",
  "sha256": "5e275c4c6faae3f714807b29e4cb07f6807542910d55d837f91bd356e2bcfad2",
  "utc": "2026-11-05T18:51:06+00:00",
  "verdict": "PASS",

@@ -94,6 +94,7 @@ MODE пишется в бриф (`batches/T5-NN/00-brief.md`) и в запись
 | Тест-горн | `tools/testforge.py` (ролл/чек/coverage — LAB-инструмент) |
 | Статус сдачи | `tools/t5delivery.py` (единственный «кто сдан»; там же страж призраков и hotfix-KPI) |
 | Oracle-service | `mini-services/oracle-service/` — `bun index.ts` (порт 3031): rate/audit/volt; запуск только по задаче интеграции, прилавок без него живёт на встроенном паритете `src/lib/t5/oracle-engine.ts` |
+| FORGE (боты) | `bot-forge/` — конвейер ботов Yodayo Tavern; вход и ростер — `bot-forge/INDEX.md` (статус «на тормозах», слово автора 2026-11-26) |
 
 ## Дисциплина слота (CLOCK, кратко)
 
