@@ -1,0 +1,153 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.9.0)",
+ "batch": "special/SO-06.md",
+ "sha256": "f0fed83dcab6bc88effa31cd964632c20a51ccc5ccef764f58c4a4556dd8144b",
+ "utc": "2026-11-05T18:51:06+00:00",
+ "verdict": "PASS",
+ "slots": 1,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«exposed genitals» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«vulva» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«pubic hair» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«child» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«children» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«childish» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«chibi» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«milf» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«mature female» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«male» — класс «solo-extra» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«man» — класс «solo-extra» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "гард «2girls» без референса в POS (нужен: mirror|reflection|twin|double|second girl) — паразит-NEG (negBase v3, смежно закону №14)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "гард «multiple girls» без референса в POS (нужен: mirror|reflection|twin|double|second girl) — паразит-NEG (negBase v3, смежно закону №14)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "гард «topless» без референса в POS (нужен: bare breasts|topless|tape|handbra) — паразит-NEG (negBase v3, смежно закону №14)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 84 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "приборных юнитов 8 > 2 — база v3 держит только candle, lamp (закон света v2: POS без приборов)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "цветовые гарды волос (pubic hair, black hair, brown hair, blonde hair, pink hair, green hair, red hair) — только canon-lock ОС; у рандомных девиц цвет пишет POS VERBATIM (negBase v3)"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "POS собран в 1 строку(и) — башенка: разбросай по семантическим строкам (≥4)"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "POS-строка 1306 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: спред мейнов «R+×N · R×N» — проверка «spread» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: EXP-оверлей (N…) — проверка «expOverlay» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: расовый каст N/M — проверка «cast» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: HEAT-оплата разнообразия — проверка «heat» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "story-cards",
+   "msg": "special/SO-06/stories.md не найден — карточки историй отсутствуют, бюджет мысли не проверяем пост-фактум (директива роста 2026-11-01, идея 1; пилот — мейн-пул)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "каст 0/1 вне вилки 12–14 (policy v1.8)"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "mora-denied-form-avatar",
+   "genre": "ICON",
+   "rating": "",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 220
+  }
+ ],
+ "crossBatchShared": [],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": false
+}

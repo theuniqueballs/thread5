@@ -1,0 +1,138 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.9.0)",
+ "batch": "special/SO-13.md",
+ "sha256": "fe9795ac6eead02585d2a52e4d87fa62b693eaf713ff70d82cb25496609b988a",
+ "utc": "2026-11-21T15:39:50+00:00",
+ "verdict": "PASS",
+ "slots": 1,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«exposed genitals» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«vulva» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«pubic hair» — класс «genitals» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«child» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«children» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«childish» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«chibi» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«milf» — класс «age-stack» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«male» — класс «solo-extra» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "«man» — класс «solo-extra» изъят из NEG (negBase v3): никогда не рисовался бы и без нас"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "гард «2girls» без референса в POS (нужен: mirror|reflection|twin|double|second girl) — паразит-NEG (negBase v3, смежно закону №14)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "гард «multiple girls» без референса в POS (нужен: mirror|reflection|twin|double|second girl) — паразит-NEG (negBase v3, смежно закону №14)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "семантических гардов 101 > 4 — NEG собрался на войну (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "P01",
+   "gate": "neg-hygiene",
+   "msg": "цветовые гарды волос (pubic hair, blonde hair, ash-blonde hair, brown hair, red hair, ginger hair, pink hair, purple hair, blue hair, green hair, orange hair) — только canon-lock ОС; у рандомных девиц цвет пишет POS VERBATIM (negBase v3)"
+  },
+  {
+   "slot": "P01",
+   "gate": "format",
+   "msg": "NEG в 21 строках > 3 — лишние абзацы ни к чему (вердикт 2026-11-03)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: спред мейнов «R+×N · R×N» — проверка «spread» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: EXP-оверлей (N…) — проверка «expOverlay» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: расовый каст N/M — проверка «cast» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "header-contract",
+   "msg": "декларация не найдена: HEAT-оплата разнообразия — проверка «heat» пропущена, шапка неполная (ревизия 2026-11-01, 1.2)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "story-cards",
+   "msg": "special/SO-13/stories.md не найден — карточки историй отсутствуют, бюджет мысли не проверяем пост-фактум (директива роста 2026-11-01, идея 1; пилот — мейн-пул)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "race-cast",
+   "msg": "каст 0/1 вне вилки 12–14 (policy v1.8)"
+  },
+  {
+   "slot": "P01",
+   "gate": "char-spec",
+   "msg": "POS без цвет глаз — параметр не задан, рендерер импровизирует (F-016, директива «ВЕЗДЕ ВСЁ» 2026-11-01; WARN-эра: FAIL с T5-10)"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "ophelia-doorway-avatar",
+   "genre": "ICON",
+   "rating": "",
+   "channel": "",
+   "channelStatus": "",
+   "claimToken": null,
+   "posWords": 147
+  }
+ ],
+ "crossBatchShared": [],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": false
+}
