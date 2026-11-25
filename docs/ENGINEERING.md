@@ -131,11 +131,30 @@ camera.json — y_cards непуст и id в форме Y{1,3}; `--ci` /
 `T5_VALIDATE_CI=1` — без проверки хука; pre-commit: квитанция по имени
 (sort -V), чтение с encoding='utf-8', путь через sys.argv.
 
+**Волна 0 аудита 5.3 (2026-11-25, гигиена и честность):** T5-28
+«LIMERENCE» архивирован (archive/2026-11-25-hygiene/, статус
+`archived` в delivery-index 1.2.0 — прецедент класса: рендер и уроки
+были, формальный вердикт и статус залипли на 4 дня); t5delivery.py
+получил страж призраков (ready старше 3 дней, delivered без JSON-вердикта
+старше 2 дней — классы T5-28/T5-30) и hotfix-KPI (после-вердиктные
+квитанции: честная мера пре-рендерной слепоты; квитанции только дня
+вердикта без предыстории не считаются — из имени файла не отличить
+сборочный прогон от правки, честное «недостаточно данных»); валидатор —
+проверка №12 допускает archived без файла, №16 (режим «пробуем») печатает
+trial-волны старше 2 партий (сейчас 27 палитр волн T5-26/27/29 — бэклог
+реестровой диеты); AGENTS — фраза-дисциплина (№8: «муха не еблась» только
+после вердикта, до рендера — «гейты чисты»), поправка закона коммитов
+(батч и его уроки — одна задача), ритуал «status в начало сеанса»,
+строка oracle-service (закрыт долг AUDIT-5.4 §2.5 «объявлено ≠ исполнено»);
+протокол доставки — docs/PAT-PROTOCOL.md (fine-grained PAT, радиус:
+одно репо, contents-only, 30 дней). Тесты: tests/python/
+test_t5delivery_ghost.py — 18 стражей; печь 205/205, прилавок 124/124.
+
 ## 4. Тесты и CI
 
 ```
-bun run test        # tests/unit — 113 тестов: parse/ystamp/inbox/store/oracle
-bun run test:py     # tests/python — 170 тестов: gates/window/taste/oracle/ytrust/cycle4/era/ci_workflow
+bun run test        # tests/unit — 124 теста: parse/ystamp/inbox/store/oracle
+bun run test:py     # tests/python — 205 тестов: gates/window/taste/oracle/ytrust/cycle4/era/ci_workflow/ghost
 bun run typecheck && bun run lint
 python3 tools/validate.py --ci
 ```

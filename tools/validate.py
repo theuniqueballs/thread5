@@ -35,8 +35,9 @@ THREAD 5 — валидатор спек (ревизия 2026-11-01, docs/THREAD
  10. header-contract: applyFrom — int, паттерны компилируются (v1.7.0);
  11. PL-ссылки в batches/**/*.md существуют в poses.json (находка T5-16);
  12. delivery-index.json (двойной аудит 2026-11-20, P0-06): каждая партия
-     T5-*.md имеет явный статус draft/ready/delivered/superseded; записи
-     без файла и файлы без записи — FAIL; окно/жребий/CI читают только
+     T5-*.md имеет явный статус draft/ready/delivered/superseded/archived;
+     записи без файла (кроме archived — файлы в archive/, аудит 5.3 волна 0)
+     и файлы без записи — FAIL; окно/жребий/CI читают только
      delivered (tools/t5delivery.py — единственный модуль сдачи);
  13. gate-report.md ≡ новейшей JSON-квитанции той же партии (P0-04):
      версия гейтов / sha256 / вердикт / счётчики FAIL-WARN совпадают;
@@ -45,6 +46,12 @@ THREAD 5 — валидатор спек (ревизия 2026-11-01, docs/THREAD
      impl-функцию в gates.py и поле в квитанции; множество секций ==
      REQUIRED-списку; прямые тесты считаются, долги без теста — видимый
      список, не молчание.
+ 15. y-trust.json свеж (не отстаёт от verdicts/*.json) — жребий CLOCK не
+     ходит по протухшему доверию (Коул §7).
+ 16. жизненный цикл волн палитр (аудит 5.3, волна 1 — режим «пробуем»):
+     trial-палитра «trial до вердикта T5-NN», после которой сдано ≥2 партий,
+     а судьба волны не решена — печатается видимым списком (FAIL включится
+     словом автора после разбора бэклога).
 
 Прогон:
     python3 tools/validate.py           # рабочая станция (хук проверяется)
@@ -372,7 +379,7 @@ def main():
     #  молча считался «сданным» — лез в окно ротации, жребий и CI; теперь
     #  specs/delivery-index.json — единственный источник, tools/t5delivery.py
     #  — единственный читатель для окна/жребия/гейтов/CI)
-    DELIVERY_STATUSES = {"draft", "ready", "delivered", "superseded"}
+    DELIVERY_STATUSES = {"draft", "ready", "delivered", "superseded", "archived"}
     di = data.get("delivery-index.json")
     if di is None:
         fail("specs/delivery-index.json отсутствует — статус сдачи партий живёт мимо системы (проверка №12, аудит P0-06)")
@@ -396,8 +403,10 @@ def main():
                 continue
             stem = md.name[: -len(".md")]
             if stem not in indexed:
-                fail(f"delivery-index.json: нет записи для «{stem}» — впиши статус (draft/ready/delivered/superseded), черновик без записи считается сданным (проверка №12)")
-        for stem in indexed:
+                fail(f"delivery-index.json: нет записи для «{stem}» — впиши статус (draft/ready/delivered/superseded/archived), черновик без записи считается сданным (проверка №12)")
+        for stem, st in indexed.items():
+            if st == "archived":
+                continue  # файлы живут в archive/ (T5-28, аудит 5.3 волна 0)
             if not (ROOT / "batches" / f"{stem}.md").exists():
                 fail(f"delivery-index.json: запись «{stem}» без файла batches/{stem}.md")
 
@@ -557,6 +566,42 @@ def main():
         print(f"y-trust: {ytrust.get('version')} · партий {st.get('judged_batches', 0)} · "
               f"HIGH {st.get('high', 0)} · MID {st.get('mid', 0)} · LOW {st.get('low', 0)} · "
               f"потолок CLOCK {int((ytrust.get('policy') or {}).get('ceiling') or 0)}")
+
+    # ── №16 (аудит 5.3, волна 1 — решение автора №4 «пробуем»): волны палитр
+    # trial-палитра «trial до вердикта T5-NN»: после NN сдано ≥2 партий, а
+    # судьба волны не решена (поле trial не снято) — правило промоции
+    # (слово автора «волна принята» → trial снят = canon; непринятая волна
+    # старше 2 партий не перекатывается). Режим «пробуем»: список виден
+    # на каждом прогоне/pre-commit, FAIL включится словом автора после
+    # разбора бэклога — машина не решает судьбу волн сама.
+    pal = data.get("palettes.json")
+    if pal and di is not None:
+        delivered_nums = [
+            int(re.match(r"T5-(\d+)R?$", s).group(1))
+            for s, st in indexed.items()
+            if st == "delivered" and re.match(r"T5-(\d+)R?$", s)
+        ]
+        newest_del = max(delivered_nums) if delivered_nums else None
+        trial_re = re.compile(r"до вердикта (T5-\d+)")
+        stale = []
+        for p in pal.get("palettes") or []:
+            tr = p.get("trial")
+            if not tr or newest_del is None:
+                continue
+            m = trial_re.search(str(tr))
+            if not m:
+                continue
+            if newest_del - int(m.group(1)[3:]) >= 2:
+                stale.append((p.get("id"), str(tr)))
+        waves = sorted({t.split()[-1] for _i, t in stale})
+        if stale:
+            print(
+                f"волны (№16, WARN «пробуем»): trial-палитр {len(stale)} старше "
+                f"2 партий от своего вердикта ({', '.join(waves)}) — реши судьбу "
+                f"(canon → снять trial / снятие с ротации), правило промоции"
+            )
+        else:
+            print("волны (№16): trial-протухших 0 — правило промоции соблюдено")
 
     # ── вердикт ──────────────────────────────────────────────────────────
     if fails:
