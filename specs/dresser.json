@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "born": "2026-10-14 · вердикт T4-31, приказ автора дословно: «Предлагаю систему Дрессер, которая уже решит проблемы и с сосками и с прозрачностью и с прочей хуйнёй. …Какая-то понял, дресс-код политика должна присутствовать всё-таки»",
   "doctrine": "АУТФИТ СОБИРАЕТСЯ ПО ПОЛИТИКЕ, А НЕ СЛУЧАЙНЫМИ ПРЕДМЕТАМИ: категория сцены → семейство вещей; канал тира → тон/состояние/подслой; конфликты категорий — запрещены до рендера. Дрессер решает структурно то, что теги решали по одному: соски (№28: канал-тон-состояние), прозрачность (sheer только в X-канале), слои (§7-бис как матрица), реквизит (легибильность действия). v1.1.0: вещи адресуются КОДАМИ CLOSET (CL-XX-NN), полка = гардеробная полка; состояния ткани — слой gar_f поверх кода. | 1.5.0 (2026-11-26): carrier-first — R+ собирается от видимого носителя, не от названия канала (В45/В47, разбор T5-32). | 1.7.0 (2026-11-27): y_stack.carrier_matrix — носитель×одежда: 14 классов CARRIER_LIBRARY × полки CLOSET (заказ автора чатом: «добавить комбо, сопоставить с одеждой и на нахуй!»); G/H — усилители 0.5x, партнёр-core обязателен.",
   "channels": {
@@ -362,7 +362,7 @@
   "y_stack": {
     "born": "2026-11-21, заказ автора (чат, после вердикта T5-28): «У тебя есть комбо Y, но одежда дрессера вообще не стакается с рейтингом. Даже если комбо крутое и ёбнутое, неправильная одежда в неправильном состоянии скинет R+ комбо до PG-13. Надо найти способ стакнуть момент Y и одежду, а как — это уже твоя забота»",
     "law": "Y-FIRST СУЖАЕТ КУБИК: слот с заявкой собирается ОТ Y-КАРТЫ (y_assembly, camera.json), и её класс экспозиции — ПРЕДФИЛЬТР Дрессера. Кубик кидает по пересечению (категория сцены ∩ коды, чьё exposure содержит класс карты — closet.json v1.1.0). Пустое пересечение → перебрасывается КАРТА (карта не для этой сцены), а НЕ одежда: вещь не подгоняется под карту силой. Канал тира = канал-партнёр класса карты; gar_f-состояние ткани = из строки класса матрицы. Душилки (вещь без класса карты в ЭТОМ кадре) запрещены в R+-слоте: экспозиция задушена — слот честно падает до PG-13 (гейт yStack, tools/gates.py, WARN с T5-29). Канон-VERBATIM ОС-тем (плагсьют, мантия и т.п.) сильнее кода: слот без CL-кодов гейтом не трогается — у ОС своя механика прикрытия, заявленная в Channel-строке.",
-    "order": "порядок стака: (1) класс экспозиции Y-карты (components.exposure.class) → (2) матрица ниже: полки-источники ∩ категория сцены → (3) кубик по кодам с exposure∋класс (per-код поле, не полка целиком) → (4) канал-партнёр класса объявляется в шапке слота → (5) gar_f-состояние из строки класса → (6) душилка в кадре = переброс вещи с записанной причиной",
+    "order": "(0) комбо-книга y_stack.combo_book: тир-группа и коридор выбраны заранее, комбо под сцену и одежду — по книге (core первым, rare как специя; ANTI-стоп-лист пройден; pose_coverage strained/hard — контакт-геометрия каждого якоря или привязанный носитель прикрытия) → порядок стака: (1) класс экспозиции Y-карты (components.exposure.class) → (2) матрица ниже: полки-источники ∩ категория сцены → (3) кубик по кодам с exposure∋класс (per-код поле, не полка целиком) → (4) канал-партнёр класса объявляется в шапке слота → (5) gar_f-состояние из строки класса → (6) душилка в кадре = переброс вещи с записанной причиной",
     "matrix": {
       "COVER": {
         "name": "прикрытие объектом/ладонью (объект-прикрытие карты)",
@@ -696,6 +696,845 @@
         ],
         "chokers": "реакция вместо носителя = самосертификация (В33); blush/дрожь без физической вещи в кадре рейтинг не несёт"
       }
+    },
+    "combo_book": {
+      "born": "2026-11-27, заказ автора (чат): «чекни датасет эччи оракла и забери всё. там есть устаревшее, но нам это надо. заберёшь, посмотришь, разовьёшь, вольёшь в течение проекта, комбо и прочее. так же, разберёшь комбо по рейтингу, сопоставишь с одеждой, подберёшь хорошие и правильные, выделишь повторяющиеся, сложные - снабдишь нужными тегами. Вообще, всё надо снабжать тегами и слегка ужирнять, но постарайся не борщить особо... учитывай, что для R+ достаточно просто прикрыть соски, а конкретно в позе - этого добиться сложней. сильно сложней»",
+      "law": "КОМБО-КНИГА ПО РЕЙТИНГУ — прайс-лист сборки, НЕ новый словарь: словари уже есть (rating-techniques 1.6.0, carriers.json, camera.json), книга РАЗБИРАЕТ готовое комбо по тиру заявки и одежде. Каждая позиция = откуренное из датасета ecchi-oracle (509 QA: volt ×71, techniques ×71, carriers ×46, combo-doctrine ×12, y-stamp ×32, laws-tier ×9, influence ×9...) комбо: тир-группа (R+ коридорная грань / R честный / PG-13 tease / ANTI отстрел fake-high-tier), коридор, классы носителей (14 CARRIER_LIBRARY — это КЛАССЫ, не коридоры), полки одежды (внутри объединения carrier_matrix — книга не воюет с матрицей), повторяемость (core/rare), сложность, ПОКРЫТИЕ-В-ПОЗЕ (закон автора 2026-11-27, теги easy/strained/hard), контролируемые теги (4-6, не борщить), juice-якорь (готовая claim-строка из вербатим-сборок датасета ≤200 знаков) и NEG-зеркало. Порядок применения: сцена → группа тира → комбо из книги (core первым, rare как специя) → Y-карта/оси → одежда по closet-кодам через carrier_matrix → сборка от носителя (carrier_first) → pregarment-гейт. ANTI-группа — стоп-лист: перед сдачей слот пробегает 7 паттернов, попал — сборка по fix.",
+      "source": "mini-services/ecchi-oracle/dataset (train+val 509 QA, born 2026-11-20) — вычерпано полностью scripts/dump_oracle_dataset.py → scripts/oracle-dump/ (15 категорий md); таксоном оракула уже импортирован в rating-techniques 1.4.0/1.5.0, carrier_library синкнут specs/carriers.json 1.0.0 — книга добирает ПРИМЕНЕНИЕ: готовые сборки, честные тиры и стоп-лист",
+      "pose_coverage_law": {
+        "born": "2026-11-27, заказ автора (чат): «для R+ достаточно просто прикрыть соски, а конкретно в позе - этого добиться сложней. сильно сложней»",
+        "law": "ЗАКОН ПОКРЫТИЯ-В-ПОЗЕ: прикрытие сосков для R+ дёшево само по себе (ЗАКОН 1: тейп — R+ в любой позе). Дорого оно В РАБОЧЕЙ ПОЗЕ: прикрытие бывает ПРИВЯЗАННОЕ (тейп, фартук-фронт, панель вещи — живёт с телом, поза его не двигает) и СВОБОДНОЕ (ладонь, жгут ткани, полотенце в руках — объект прикрытия занят позой: держит проп/опору И закрывает, а тяга ткани едет с движением). В позе свободное прикрытие конкурирует с геометрией. Отсюда тег pose_coverage каждой позиции книги: easy / strained / hard. strained — прикрытие называть контакт-геометрией КАЖДОГО якоря; hard — либо второй ПРИВЯЗАННЫЙ носитель прикрытия, либо честное понижение тира (В33). Тейп-исключение (ЗАКОН 1) остаётся абсолютным и в позе.",
+        "gradations": {
+          "easy": "прикрытие привязанное (тейп/фартук/панель вещи — живёт с телом) или руки/ткань свободны от позы: поза не конкурирует с прикрытием сосков",
+          "strained": "прикрытие свободное и делает двойную работу (держит проп/опору И закрывает): контакт-геометрия каждого якоря обязательна, свет и движение координировать",
+          "hard": "геометрия позы прямо конкурирует с прикрытием (опора/проп съедает руки, тяга двигает ткань, каждый толчок сдвигает грань): нужен второй привязанный носитель прикрытия или честное понижение тира (В33)"
+        }
+      },
+      "complexity_def": {
+        "simple": "1 класс носителей — одна механика несёт заявку",
+        "composite": "2 класса носителей — механика + усилитель",
+        "span": "3+ класса носителей / кросс-групповое комбо (мех-группы ≥3)"
+      },
+      "repeats_def": {
+        "core": "повторяющееся ядро: работало в вербатим-сборках датасета и в сданных батчах, доверие накопленное — брать первым",
+        "rare": "редкое/одно-штучное: специя, не масса — под конкретную сцену, не строить из него стену"
+      },
+      "juice_doctrine": {
+        "born": "2026-11-27, заказ автора (чат): «всё надо снабжать тегами и слегка ужирнять, но постарайся не борщить особо» — дисциплина сочности из датасета оракула (категория influence, genE-080..089, модель воздействия акта 7 T5-24)",
+        "law": "УЖИРНЕНИЕ = четыре слоя модели воздействия, вшитые в слот; сок НЕ заменяет заявку, он ВЫБИРАЕТ якорную строку комбо. Слои: (1) ОБЕЩАНИЕ — GEOMETRY-обещание: конструкция сулит (процесс-на-середине, узел-опора, веер-полурешение); one-minute test: прикрой окружение рукой — верх заряжен телом и заявкой; (2) ПОЛУРЕШЕНИЕ — half/mid/traveling: исход не показан, мозг достраивает; (3) ПАУЗА — единственная кинетика тела осмыслена (всё уже случилось / вот-вот случится); (4) НАСЛОЖЕНИЕ — сенсорика ТОЛЬКО через рисуемые источники (пар над чашкой, конденсат, капля на губе, вибрирующая поверхность) — «аромат весны» и «вкус страсти» = флор. Посредник: ОДИН объект-посредник на слот, назван в CLAIM, исполнен контакт-геометрией, виден в первых двух строках (claimVisibility). АНТИ-БОРЩ: один канал-токен, одна строка мира, сок не в POS вместо тегов — juice-строка комбо-книги и есть дозированный сок (готовая формула из вербатим-сборок датасета).",
+        "mediator": "узел парео (P23), молния на середине (P08), веер-полурешение (P24), застёжка-стоп (Y29), подол-в-руках (Y1) — посредник держит ОБЕЩАНИЕ через состояние (half-down, mid-catch, still traveling)",
+        "anti_fake": "catalog standing, веер-декорация, посредник-фон, чешуя-ярлык — обещания не держат: fake mediator"
+      },
+      "tag_vocab": [
+        "aftermath",
+        "air-caliber",
+        "bare-under",
+        "behavior-light",
+        "both-sides-named",
+        "clinging",
+        "close-insert",
+        "closed-state",
+        "contact-geometry",
+        "counter-neg",
+        "damp-not-soaked",
+        "dark-dry",
+        "fabric-bridge",
+        "fabric-event",
+        "framing-gap",
+        "gaze-down",
+        "gaze-over-shoulder",
+        "gaze-vector",
+        "hard-signal",
+        "hem-frame",
+        "hem-pinned",
+        "inch-process",
+        "kinetic",
+        "light-off-zone",
+        "light-through",
+        "mid-action",
+        "neg-mirror",
+        "no-rating-words",
+        "on-skin-tape",
+        "one-channel",
+        "portrait-face",
+        "press",
+        "process-half",
+        "seat-edge",
+        "second-signal",
+        "sheer-panel",
+        "sheer-quota",
+        "skin-framing",
+        "state-nouns",
+        "support-caliber",
+        "taut",
+        "ultra",
+        "underlayer-lock",
+        "upgrade-path",
+        "weight-anchor",
+        "weight-verbs",
+        "wind-event",
+        "x-risk"
+      ],
+      "groups": {
+        "R_PLUS": {
+          "name": "коридорная грань",
+          "law": "R+ легален ТОЛЬКО при A (объект-прикрытие у груди) или B (геометрия позы+камеры), или A+B — corridor law; бейдж поверх стойки = самосертификация (T5-23). Каждый slot собирается от НОСИТЕЛЯ (carrier_first), канал-токен ≤60, один канал на слот.",
+          "combos": [
+            {
+              "id": "CB-RP-01",
+              "name": "MID-LIFT COVER",
+              "source": "Y1 × genC-001, genA-070",
+              "corridor": "A+B",
+              "mech_groups": [
+                "E",
+                "W",
+                "M"
+              ],
+              "closet": [
+                "TS",
+                "OU"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "strained",
+              "tags": [
+                "mid-action",
+                "bare-under",
+                "one-channel",
+                "contact-geometry",
+                "light-off-zone"
+              ],
+              "juice": "the bunched hem pressed flat over her chest by both folded arms, nothing underneath, one wrist hooked in the collar",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "ядро VOLT (trust HIGH по списку Коула). A — сведённый в жгут подол прижат руками (объект-прикрытие = сама ткань в руках); B — slight from below + mid-action. Мокрую вещь не писать: стирка живёт средой."
+            },
+            {
+              "id": "CB-RP-02",
+              "name": "PALMS-FLAT COVER",
+              "source": "Y2 × seed-019, seed-023, genA-008",
+              "corridor": "A",
+              "mech_groups": [
+                "M",
+                "L"
+              ],
+              "closet": [
+                "TS",
+                "OU"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "press",
+                "bare-under",
+                "contact-geometry",
+                "one-channel"
+              ],
+              "juice": "oversized button-up worn as the only shirt, hands pressed flat against her own chest line, nothing underneath",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "эталон T5-23 P22 («его рубашка наутро»). Руки прижаты к груди — прикрытие НЕ занято позой, потому easy. Контраст: та же рубашка + руки по швам + улыбка = каталог-стойка."
+            },
+            {
+              "id": "CB-RP-03",
+              "name": "TOWEL MID-CATCH",
+              "source": "Y4 × genC-019, genC-032, genA-059",
+              "corridor": "A",
+              "mech_groups": [
+                "U",
+                "M"
+              ],
+              "closet": [
+                "TS",
+                "DR",
+                "LG"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "strained",
+              "tags": [
+                "mid-action",
+                "contact-geometry",
+                "light-off-zone",
+                "neg-mirror"
+              ],
+              "juice": "both fists knuckle-deep in the terry, knuckles white, the towel's bundled weight dragging her fists to the collarbone",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "trust HIGH. Обе руки в ловле И в прикрытии — двойная работа (strained). Рендер роняет полотенце = слабая контакт-геометрия: усилить пальцы и вес-анкор, не NEG. Дождь живёт за перилами, вещь под полотенцем сухая."
+            },
+            {
+              "id": "CB-RP-04",
+              "name": "ZIPPER HALF-DOWN + PALM",
+              "source": "Y29 × genE-002, genE-016",
+              "corridor": "A",
+              "mech_groups": [
+                "E"
+              ],
+              "closet": [
+                "DR",
+                "OU"
+              ],
+              "repeats": "core",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "process-half",
+                "bare-under",
+                "one-channel",
+                "gaze-over-shoulder"
+              ],
+              "juice": "dress zipper caught half-down at the spine, the palm pressed flat holding the dress front, glance back over the shoulder",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "эталон клейма акта 2 (Y-STAMP печать 1:1). Ладонь свободна от позы — easy. Молния на середине = ПОЛУРЕШЕНИЕ слоя обещания."
+            },
+            {
+              "id": "CB-RP-05",
+              "name": "SLEEVE-CAUGHT SLIDE",
+              "source": "Y12 × genC-009, genC-023",
+              "corridor": "A",
+              "mech_groups": [
+                "E",
+                "L"
+              ],
+              "closet": [
+                "OU",
+                "DR"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "process-half",
+                "contact-geometry",
+                "portrait-face",
+                "bare-under"
+              ],
+              "juice": "blazer slid off one shoulder, the sleeve caught at the elbow fold, fingers hooked in the fallen lapel",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "вещь застряла на локте — привязанное прикрытие, поза его не двигает. Оси Y12 = OC-интро-семейство (genC-023: канон-цвета VERBATIM в первые ~10 токенов, имя OC в POS не пишется)."
+            },
+            {
+              "id": "CB-RP-06",
+              "name": "APRON ONLY",
+              "source": "T113 × genA-007, genC-010",
+              "corridor": "A",
+              "mech_groups": [
+                "L",
+                "E"
+              ],
+              "closet": [
+                "FX",
+                "TS"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "bare-under",
+                "contact-geometry",
+                "gaze-over-shoulder",
+                "one-channel"
+              ],
+              "juice": "apron, apron only, nothing underneath, bare back, looking back over shoulder",
+              "anti_neg": "bra, camisole, bandeau, undershirt, nipples, exposed breasts, catalog standing",
+              "note": "идеальный коридор A: фартук физически закрывает фронт, спина открыта. Фартук привязан — easy. Процесс-вариант: Y13 apron wrap mid-turn + corner caught in the elbow bend (коридор B). bare-under ПОЗИТИВОМ (RF06)."
+            },
+            {
+              "id": "CB-RP-07",
+              "name": "DARK-DRY BUMPS (№28)",
+              "source": "закон №28 × genC-017, genA-017, genC-043",
+              "corridor": "B",
+              "mech_groups": [
+                "W",
+                "B",
+                "H"
+              ],
+              "closet": [
+                "TS",
+                "BT"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "strained",
+              "tags": [
+                "dark-dry",
+                "clinging",
+                "damp-not-soaked",
+                "light-off-zone",
+                "underlayer-lock"
+              ],
+              "juice": "dry black tank plastered by rehearsal sweat, the knit clinging taut, nothing underneath",
+              "anti_neg": "wet clothes, see-through, bra, camisole, bandeau, undershirt, nipples, exposed breasts",
+              "note": "единственный живой через-ткань канал: DRY тёмная вещь + clothed/covered nipples ПЕРВЫМИ в блоке груди + clinging + sweat glistening (испарина, НЕ soaked). Свет НЕ на зоне — призма-риск (P04). Светлый/средний верх канал убивает — менять вещь (genC-043)."
+            },
+            {
+              "id": "CB-RP-08",
+              "name": "SHEER-PANEL MID-TURN",
+              "source": "T305 × genC-029, genA-027",
+              "corridor": "B",
+              "mech_groups": [
+                "W",
+                "E"
+              ],
+              "closet": [
+                "TS",
+                "DR"
+              ],
+              "repeats": "rare",
+              "complexity": "composite",
+              "pose_coverage": "strained",
+              "tags": [
+                "sheer-panel",
+                "bare-under",
+                "light-through",
+                "x-risk",
+                "sheer-quota",
+                "mid-action"
+              ],
+              "juice": "sheer side panel in the festival dress, nothing underneath, the panel breathing with her step",
+              "anti_neg": "bra, camisole, bandeau, undershirt, wet clothes",
+              "note": "sheer в одиночку слаб — комбо pose × camera × exposure × pov. Три условия T301/305: состояние ткани названо, подслой-лок в NEG, bare-under позитивом. LT03 свет сквозь панель — самый откровенный световой тип. Квота: sheer ≤25% высокотирных. Поворот качает панель — strained."
+            },
+            {
+              "id": "CB-RP-09",
+              "name": "TAPE ON-SKIN",
+              "source": "ЗАКОН 1 × genC-030, seed-023",
+              "corridor": "A",
+              "mech_groups": [
+                "M",
+                "B"
+              ],
+              "closet": [
+                "TS",
+                "SW",
+                "BT"
+              ],
+              "repeats": "core",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "on-skin-tape",
+                "hard-signal",
+                "neg-mirror",
+                "no-rating-words"
+              ],
+              "juice": "crossed tape strips flat over the nipples, arms free, jaw set",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "ЗАКОН 1 автора: топлесс с заклеенными сосками = R+ В ЛЮБОЙ ПОЗЕ — тейп привязан к телу, единственное прикрытие, которое поза не двигает (контрастный якорь закона покрытия-в-позе). Надёжность на рендере: tape ≈ arm bra > handbra. Слово topless в NEG не писать (№25: rating-слова в NEG — паразиты)."
+            },
+            {
+              "id": "CB-RP-10",
+              "name": "BETWEEN-KNEES HEM-FRAME",
+              "source": "Y3 × genC-002, genA-032",
+              "corridor": "B",
+              "mech_groups": [
+                "G",
+                "S",
+                "W"
+              ],
+              "closet": [
+                "SK",
+                "HK"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "framing-gap",
+                "gaze-down",
+                "hem-frame",
+                "neg-mirror"
+              ],
+              "juice": "skirt hem lifted by the lean, framing her thighs above the stockings' grip",
+              "anti_neg": "panties, pantyshot, spread knees, catalog sitting",
+              "note": "камера-участник между колен, она смотрит вниз мимо объектива (взгляд-вектор). Рамка подола без pantyshot — грань несёт геометрия, НЕ факт (NEG-зеркало держит мелькание). Зона низа — грудь вне конкуренции, easy."
+            },
+            {
+              "id": "CB-RP-11",
+              "name": "WAISTBAND/BELT MID-PULL",
+              "source": "Y6+Y15 × genC-004, genC-011, genA-043",
+              "corridor": "B",
+              "mech_groups": [
+                "E",
+                "C",
+                "G"
+              ],
+              "closet": [
+                "BT",
+                "SK",
+                "TS"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "mid-action",
+                "inch-process",
+                "seat-edge",
+                "weight-anchor"
+              ],
+              "juice": "thumbs hooked in the waistband, the shorts peeled one inch off her hips; belt cinch stalled mid-pull against the stool's lean",
+              "anti_neg": "nude lower body, spread legs, catalog sitting",
+              "note": "дюйм процесса, не оголос. Y15: вес честно на краю сиденья (C-класс) + ремень в середине затяжки (RF16 «имба»-серия P25-P33). Ткань — твил/живая, НЕ джинса (T313). Верх не блокировать — зона заявки низ (семантические гарды ≤4/слот)."
+            },
+            {
+              "id": "CB-RP-12",
+              "name": "STRADDLE HEM-PULL",
+              "source": "Y5 × genC-003, genA-039, genA-060",
+              "corridor": "B",
+              "mech_groups": [
+                "F",
+                "W",
+                "D"
+              ],
+              "closet": [
+                "SK",
+                "SM"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "strained",
+              "tags": [
+                "mid-action",
+                "taut",
+                "weight-verbs",
+                "hem-frame",
+                "gaze-vector"
+              ],
+              "juice": "settling astride the saddle mid-sit, the skirt hem pulled taut across her thighs by the straddle, thigh grip on the tank",
+              "anti_neg": "panties, upskirt, spread legs, catalog standing",
+              "note": "посадка сама тащит подол — заявка рождается позой, а не словом. F-класс (предъявление) —HIGH-риск позы: R+ только на LOW/MID-вариантах (T516). Тяга ткани движется с посадкой — strained."
+            },
+            {
+              "id": "CB-RP-13",
+              "name": "KNEEL-BACK SHIN-WEIGHT",
+              "source": "Y11 × genC-008, genA-040",
+              "corridor": "B",
+              "mech_groups": [
+                "D",
+                "W"
+              ],
+              "closet": [
+                "DR",
+                "LG"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "weight-verbs",
+                "hem-pinned",
+                "fabric-event",
+                "hem-frame"
+              ],
+              "juice": "the hakama hem pinned under her shin weight, the tails fanning open to frame her hips",
+              "anti_neg": "panties, upskirt, catalog sitting",
+              "note": "физика тканевых событий — «имба лютая» (RF16, EXP P25-P33). Подол зажат весом голени = именованный контакт-анкор ткань↔тело. Ракурс eye-level честный — вес работает без нижнего угла."
+            },
+            {
+              "id": "CB-RP-14",
+              "name": "LEAN-BACK BRIDGE",
+              "source": "Y14 × genA-042, genA-070",
+              "corridor": "A+B",
+              "mech_groups": [
+                "D",
+                "E",
+                "W"
+              ],
+              "closet": [
+                "TS",
+                "DR"
+              ],
+              "repeats": "rare",
+              "complexity": "span",
+              "pose_coverage": "hard",
+              "tags": [
+                "bare-under",
+                "fabric-bridge",
+                "weight-verbs",
+                "ultra",
+                "one-channel"
+              ],
+              "juice": "leaning back on both palms, collar opens by the lean, fabric bridges taut across the ribs",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "супер R+ для EXP. Ворот раскрывается НАКЛОНОМ сам (событие без рук); руки заняты опорой — прикрытие только тканью-мостом (hard: второй привязанный носитель или честное понижение). Канал-токен ОДИН; экстремальный угол — вторая переменная после стабильной камеры."
+            },
+            {
+              "id": "CB-RP-15",
+              "name": "STRAP-TORQUE CROOKED-ARM",
+              "source": "Y10 × genC-007",
+              "corridor": "A",
+              "mech_groups": [
+                "E",
+                "M"
+              ],
+              "closet": [
+                "OU",
+                "AC"
+              ],
+              "repeats": "rare",
+              "complexity": "composite",
+              "pose_coverage": "hard",
+              "tags": [
+                "weight-anchor",
+                "contact-geometry",
+                "one-channel",
+                "no-rating-words"
+              ],
+              "juice": "crossbow strap torqued across her chest by the shoulder turn, the crooked arm covering where the strap bites",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "оружие — канал, не тема: якорь один и он работает; тема-реквизит ПОСЛЕ заявки одним-тремя якорями (theme_rule). Поворот тела поглощает прикрытие — hard. Тон тела firm tone — мускульные слова запрещены (muscle law)."
+            },
+            {
+              "id": "CB-RP-16",
+              "name": "GLOVE-PEEL LAYERED",
+              "source": "Y18 × genC-013",
+              "corridor": "A",
+              "mech_groups": [
+                "E",
+                "L"
+              ],
+              "closet": [
+                "OU",
+                "AC"
+              ],
+              "repeats": "rare",
+              "complexity": "composite",
+              "pose_coverage": "strained",
+              "tags": [
+                "mid-action",
+                "contact-geometry",
+                "close-insert",
+                "process-half"
+              ],
+              "juice": "peeling the opera glove off one finger at a time, the other hand catching the slack above her elbow, gown strap slipped loose on that side",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "layered undress: стопка процессов (перчатка за палец + вторая рука ловит провис + лямка сползла той же стороной), не оголос. Две конечности — два контакт-анкора. Стак процессов конкурирует с прикрытием — strained."
+            },
+            {
+              "id": "CB-RP-17",
+              "name": "KINETIC SWAY (ULTRA-VOLT)",
+              "source": "genC-024, seed-058",
+              "corridor": "B",
+              "mech_groups": [
+                "D",
+                "E"
+              ],
+              "closet": [
+                "TS"
+              ],
+              "repeats": "rare",
+              "complexity": "composite",
+              "pose_coverage": "hard",
+              "tags": [
+                "kinetic",
+                "mid-action",
+                "ultra",
+                "weight-verbs",
+                "behavior-light"
+              ],
+              "juice": "the last tram's lurch swinging her weight into the strap, the shirt hem riding up with each jolt, one hand white-knuckled on the loop",
+              "anti_neg": "nipples, exposed breasts, bra, catalog standing",
+              "note": "EXQUISITE ультра-VOLT, 1-2 слота на батч. Толчок вагона качает тело и ткань каждый раз — прикрытие в вечном движении (hard). Тряска несёт тело = среда-актёр. «White-knuckled» — контакт-геометрия кисти. Каждый толчок сдвигает грань — lawful hard по закону покрытия-в-позе."
+            }
+          ]
+        },
+        "R": {
+          "name": "честный бельевой/дыхательный",
+          "law": "Honest R без коридора: бельевой тир сам несёт тир (state nouns ≥3, бельё названо ЯВНО) или air-калибр — бытовая поза без заявки. Дыхание батча после cannon-слота: «все R+» = смерть разнообразия (T5-06).",
+          "combos": [
+            {
+              "id": "CB-R-01",
+              "name": "LINGERIE MID-CLASP",
+              "source": "genC-028, genA-005, genA-006",
+              "corridor": "NONE",
+              "mech_groups": [
+                "L"
+              ],
+              "closet": [
+                "UR"
+              ],
+              "repeats": "core",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "state-nouns",
+                "mid-action",
+                "counter-neg",
+                "behavior-light"
+              ],
+              "juice": "matching lingerie set, garter belt, stockings, one hand still at the clasp behind her, turning to the mirror mid-clasp",
+              "anti_neg": "nipples, areola, cameltoe",
+              "note": "бельевой тир сам несёт R: state nouns ≥3, бельё названо ЯВНО (never намёком). НИКАКОЙ коридорной физики — это и есть дыхание батча. Апгрейд до R+ — коридором (руки поверх = A; край + низкий ракурс = B), не бейджем."
+            },
+            {
+              "id": "CB-R-02",
+              "name": "FRIDGE AIR",
+              "source": "genC-025",
+              "corridor": "NONE",
+              "mech_groups": [
+                "L"
+              ],
+              "closet": [
+                "UR"
+              ],
+              "repeats": "core",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "air-caliber",
+                "state-nouns",
+                "counter-neg",
+                "behavior-light"
+              ],
+              "juice": "sports bra, boyshorts, bare feet, sleep-mussed hair, standing in the fridge's open door, mid-sip from a carton",
+              "anti_neg": "nipples, areola, cameltoe",
+              "note": "honest R air-калибр: бытовая поза без заявки, один пул света от открытой дверцы (behavior-свет без приборов). После cannon-слота нужен выдох — это он."
+            },
+            {
+              "id": "CB-R-03",
+              "name": "MORNING STRETCH",
+              "source": "genC-026",
+              "corridor": "NONE",
+              "mech_groups": [
+                "E"
+              ],
+              "closet": [
+                "LG",
+                "TS"
+              ],
+              "repeats": "core",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "air-caliber",
+                "state-nouns",
+                "underlayer-lock",
+                "counter-neg"
+              ],
+              "juice": "stretched sleep tee riding up her ribs, boyshorts, crew socks, mid-stretch on the berth, arms overhead, back arching off the pillow",
+              "anti_neg": "nipples, areola, cameltoe, bra",
+              "note": "stretch — НЕ erotic pose (потягивание после сна, не позирование): 1 сигнал = R по закону слоёв. bra в NEG — подслой-лок (майка на голое)."
+            },
+            {
+              "id": "CB-R-04",
+              "name": "SLEEP-SHIRT HELD",
+              "source": "genD-065",
+              "corridor": "NONE",
+              "mech_groups": [
+                "U"
+              ],
+              "closet": [
+                "LG",
+                "TS"
+              ],
+              "repeats": "rare",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "closed-state",
+                "state-nouns",
+                "air-caliber",
+                "behavior-light"
+              ],
+              "juice": "oversized sleep shirt held closed with one hand at the collar, pajama shorts, folding her day dress over the seat-back rail",
+              "anti_neg": "nipples, areola, cameltoe",
+              "note": "situational undress (U) ЗАКРЫТЫМ состоянием: сорочка держится рукой — закрытое состояние, НЕ mid-catch заявка. Слои 2-3 несут настроение (ритм поезда, свет из окон). One-minute test: верх заряжен тихим бытовым моментом — by design."
+            },
+            {
+              "id": "CB-R-05",
+              "name": "AFTERMATH I-CLASS",
+              "source": "genA-011, seed-024, seed-109",
+              "corridor": "NONE",
+              "mech_groups": [
+                "I"
+              ],
+              "closet": [
+                "HK"
+              ],
+              "repeats": "rare",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "aftermath",
+                "support-caliber",
+                "second-signal",
+                "no-rating-words"
+              ],
+              "juice": "torn pantyhose, the run stopping mid-thigh — the event is off-frame, the trace is in frame",
+              "anti_neg": "nipples, areola, cameltoe",
+              "note": "след слабее события: I-класс редко тянет R+ в одиночку (кроме visible pantyline — HARD R+, рендер-доказанная форма v1.2.0). Каноничное применение — ВТОРОЙ сигнал через другой слой в сумме закона слоёв. Грань без тела: предмет-свидетель, эхо-одежда, почти-жест (seed-109)."
+            },
+            {
+              "id": "CB-R-06",
+              "name": "ZR FRAME (S-CLASS)",
+              "source": "seed-021, genA-056",
+              "corridor": "NONE",
+              "mech_groups": [
+                "S"
+              ],
+              "closet": [
+                "HK",
+                "SK"
+              ],
+              "repeats": "core",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "skin-framing",
+                "both-sides-named",
+                "support-caliber",
+                "second-signal"
+              ],
+              "juice": "thighhighs, miniskirt, zettai ryouiki — triple tag, the band framed by the stocking's grip below and the hem above",
+              "anti_neg": "nipples, areola, cameltoe",
+              "note": "рамка работает, когда ОБЕ стороны названы (чулок И юбка). На R+ — только в ансамбле: ZR + Y3 (камера между колен) = геометрия коридора B. Сам — SUPPORT-пул."
+            }
+          ]
+        },
+        "PG13": {
+          "name": "tease-пул",
+          "law": "Сигналов ≥2 (signal_min), обнажённого белья в кадре нет, counter_neg держит тир. Слабая пятёрка сама не поднимается; апгрейд-путь — коридором, не бейджем.",
+          "combos": [
+            {
+              "id": "CB-PG-01",
+              "name": "BEACH BREATHE",
+              "source": "genC-027, genA-050",
+              "corridor": "NONE",
+              "mech_groups": [
+                "S",
+                "W"
+              ],
+              "closet": [
+                "SM",
+                "TS"
+              ],
+              "repeats": "core",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "wind-event",
+                "state-nouns",
+                "counter-neg",
+                "support-caliber"
+              ],
+              "juice": "bikini top, pareo knotted low, bare shoulders, mid-stride along the foam line, pareo tails snapping in the wind",
+              "anti_neg": "nipples, areola, lingerie visible, see-through",
+              "note": "outfit IS the claim: сигналов ≥2 (bikini + pareo + bare shoulders). Полный кадр дыхания между пушками. Пляж = витрина fake high tier: улыбающиеся ковбои гнать в NEG. see-through в NEG — парео на просвет не должен стать каналом."
+            },
+            {
+              "id": "CB-PG-02",
+              "name": "PAREO KNOT-HOP",
+              "source": "genC-018, genE-085 (P23-золото)",
+              "corridor": "NONE",
+              "mech_groups": [
+                "S",
+                "W"
+              ],
+              "closet": [
+                "SM"
+              ],
+              "repeats": "rare",
+              "complexity": "composite",
+              "pose_coverage": "easy",
+              "tags": [
+                "upgrade-path",
+                "wind-event",
+                "state-nouns",
+                "counter-neg"
+              ],
+              "juice": "pareo knotted low on her hips, hands re-tying the knot mid-turn, the knot holding the whole garment",
+              "anti_neg": "nipples, areola, lingerie visible, see-through",
+              "note": "узел-как-опора (P23 «суперово»): вся одежда на одном узле — ОБЕЩАНИЕ развязывания вшито в конструкцию. Апгрейд-путь к честному R+: развязать узел mid-tie (mid-action → B) или обмотать края крестом на груди, руки заняты тканью (объект → A)."
+            },
+            {
+              "id": "CB-PG-03",
+              "name": "WEAK-FIVE SUPPORT",
+              "source": "genA-013, genA-018",
+              "corridor": "NONE",
+              "mech_groups": [
+                "S"
+              ],
+              "closet": [
+                "TS",
+                "AC"
+              ],
+              "repeats": "core",
+              "complexity": "simple",
+              "pose_coverage": "easy",
+              "tags": [
+                "support-caliber",
+                "state-nouns",
+                "counter-neg"
+              ],
+              "juice": "off-shoulder knit, hugging a soft pillow at her side, weight easy on one hip",
+              "anti_neg": "nipples, areola, lingerie visible",
+              "note": "слабая пятёрка tease-тира (off-shoulder, midriff, bare thighs, pareo, hugging object): один сигнал = PG-13/R-грань, стена из слабых сигналов всё равно читается PG-13. Проверка фансервис-кадра T711: убери тему — кадр всё ещё заряжен? Это фон для сильной заявки, не сама заявка."
+            }
+          ]
+        },
+        "ANTI": {
+          "name": "отстрел fake high tier",
+          "law": "Стоп-лист перед сдачей: слот пробегает 7 паттернов; попал — сборка по fix, бейдж не клеится. Паттерны из постмортема T5-23 и рендер-квитанций (RF01/RF03/RF17/T516).",
+          "patterns": [
+            {
+              "id": "CB-AN-01",
+              "name": "КАТАЛОГ-СТОЙКА С БЕЙДЖЕМ",
+              "source": "genC-033, genC-035, genA-034, genA-009",
+              "pattern": "sheer + eye-level cowboy + smile / catalog standing + smile + бейдж R+",
+              "why": "ни коридора A (нет объекта у груди), ни B (ракурс ровный, поза статична); рендер рисует то, что написано (RF01) — каталог, бейдж остаётся бейджем (RF17, T5-23: 8/18)",
+              "fix": "процесс (mid-lift/mid-catch) + slight from below + состояние ткани или cover-объект; catalog standing/smile at viewer — в NEG"
+            },
+            {
+              "id": "CB-AN-02",
+              "name": "БЕЛЬЁ + ФОРМАЛЬНАЯ ПОСАДКА",
+              "source": "genC-034, genA-045",
+              "pattern": "lingerie, garter belt, formal sitting, hands folded, tea room + бейдж R+",
+              "why": "жест вежливости — не заявка (T513/T514: выше PG-13 никогда); рендер честно нарисует даму с чаем",
+              "fix": "путь 1: честный R (бельевой тир сам по себе, бытовая поза); путь 2: R+ с коридором (край chaise + колено + камера от колена = B; руки на поясе чулка = A). НЕ клеить R+ поверх formal sit, НЕ писать «sexy» в POS, НЕ ставить «formal» в NEG (NEG не поднимает тир)"
+            },
+            {
+              "id": "CB-AN-03",
+              "name": "РЕЙТИНГ-СЛОВО БЕЗ ГЕОМЕТРИИ",
+              "source": "genC-037, seed-011, laws-tier seed-002",
+              "pattern": "бейдж/слово R+ (или «ecchi anime style») поверх сцены без коридора",
+              "why": "рейтинг-слово геометрию не заменяет (RF17); тег «Ecchi anime style» проверен автором (T5-05) — ничего не делает, съедает салиенс заявки",
+              "fix": "рейтинг доставляется механизмами: коридор A/B, канал-токен ≤60, состояние ткани; слово-ярлык снять, место отдать заявке"
+            },
+            {
+              "id": "CB-AN-04",
+              "name": "МОКРЫЙ СВЕТ / WET-КАНАЛ НА ОДЕЖДЕ",
+              "source": "genA-003, genC-040, seed-075, genA-028",
+              "pattern": "wet clothes + светлая тонкая ткань + свет на зоне (формула «wet light covered»)",
+              "why": "рендерер НЕ симулирует ткань: мокрое+светлое печатает просвет С ЦВЕТОМ = X-драйвер №1 (27 X-квитанций T4-28/29/30/31; P09 цветной сосок сквозь свитер; P04 призма-свет)",
+              "fix": "№28: сухая тёмная вещь + clothed nipples + clinging + sweat glistening, свет НЕ на зоне; либо мокрое исключение P21 — wet one-piece (единственное мокрое золото); rain-sag = вода меняет посадку, не прозрачность; wet hemline — влага внизу, грудь сухая"
+            },
+            {
+              "id": "CB-AN-05",
+              "name": "ТЕМА СЪЕЛА VOLT",
+              "source": "genC-036",
+              "pattern": "POS начинается с «storm halberd, battle-worn armor plating, banner crests», девушка на 60-м токене",
+              "why": "первый чанк CLIP ~77 токенов потрачен на реквизит — заявка не влезает в салиенс-окно (≤60); one-minute test FAIL",
+              "fix": "theme_rule: первые строки — камера + тело + заявка; оружие/тема одним-тремя якорями ПОСЛЕ заявки и только если несёт её (ремень/вес = заявка; «эпичная оружка» — в утиль); тема доезжает также физикой движка, палитрой, объектами сцены"
+            },
+            {
+              "id": "CB-AN-06",
+              "name": "HIGH-ПОЗА × ГРАНЬ",
+              "source": "genC-054, genA-046, seed-058",
+              "pattern": "мостик назад / акробатика / сложная геометрия тела + R+-заявка на грудь",
+              "why": "T516: HIGH-поза × edge = амплификатор мутаций анатомии — рендер занят разрешением геометрии, зона заявки дорисовывается по остаточному принципу; руки заняты опорой — прикрытия нет (закон покрытия-в-позе)",
+              "fix": "срезать к MID-позе (прогиб в стойке, руки свободны) или перенести заявку на корпус (PROCESS: ткань уехала вверх прогибом); акробатика принципиальна → это SFW/PG-13 слот, тир не гонится"
+            },
+            {
+              "id": "CB-AN-07",
+              "name": "ТЕМА-ЯРЛЫК ВМЕСТО ВОЗДЕЙСТВИЯ",
+              "source": "genE-081, genE-088, genE-086",
+              "pattern": "тема = список слов-ярлыков (SIREN: чешуя, волны, мокрые пряди, красное) — каталог-костюм",
+              "why": "«слабовато для соблазна» (вердикт T5-24): словарь-ярлык не строит ни обещания, ни посредника; EXP-вариант: 1 взаимодействие + цветная палитра = «простоватое комбо»",
+              "fix": "модель воздействия 4 слоями (см. juice_doctrine): ОБЕЩАНИЕ в геометрии, ПОЛУРЕШЕНИЕ (линия воды на бедре), ПАУЗА (инверсия взгляда), НАСЛОЖЕНИЕ (запах соли через рисуемые источники), ОДИН объект-посредник (гребень в песке); EXP: минимум 2 скоординированных взаимодействия, палитра двигает геометрию"
+            }
+          ]
+        }
+      }
     }
   },
   "pregarderobe": {
@@ -704,5 +1543,6 @@
     "order": "(1) жребий партии → список Y-карт → (2) класс каждой карты → (3) матрица y_stack: полки-источники + канал + gar_f → (4) кубик по exposure∩fit → 2–3 вещи с разных полок + аксессуар → (5) проверка по реестру наборов: набор в кулдауне (последние 3 партии) = переброс, старше — свободен → (6) запись в specs/pregarderobe/<batch>.json + реестр → (7) сборка слотов от готовых комбо (Дрессер читает комбо, не катает на месте)",
     "why": "не «наебашить всего заранее»: пре-гардероб СВЕЖИЙ каждую партию — кубик над одним и тем же CLOSET (121 код) даёт новые наборы бесконечно; «потом юзать одно и то же» исключено КУЛДАУНОМ (3 партии), а не вечным баном — реестр не растёт в бесконечный чёрный список, пространство комбо не ссыхается (вердикт автора 2026-11-23, Коул R8)",
     "gate": "yStackGate остаётся финальной страховкой (вещь в слоте обязана держать класс карты); пре-гардероб — стадия ДО сборки, гейт — стадия ПОСЛЕ"
-  }
+  },
+  "source": " | 2026-11-27 (v1.8.0) — y_stack.combo_book «КОМБО-КНИГА ПО РЕЙТИНГУ»: датасет ecchi-oracle вычерпан и влит (17 R+ · 6 R · 3 PG-13 · 7 ANTI); закон покрытия-в-позе автора (тег pose_coverage easy/strained/hard); juice_doctrine (4 слоя модели воздействия + анти-борщ); порядок стака получил шаг 0."
 }

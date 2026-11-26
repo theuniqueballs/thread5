@@ -8,7 +8,7 @@
    specs/carriers.json 1.0.0 — 462 носителя, синк эччи-оракула); каждая карта
    = 2 вербатим-носителя разных классов × камерный кластер × коридор; все 14
    классов носителей покрыты; волна НЕ юри (В49).
-2. dresser.json 1.7.0: y_stack.carrier_matrix «носитель × одежда» — 14
+2. dresser.json 1.8.0: y_stack.combo_book — комбо-книга по рейтингу (33 позиции) + carrier_matrix 1.7.0 «носитель × одежда» — 14
    классов × полки CLOSET; G/H — усилители 0.5x (core4_law), партнёр-core
    обязателен; полки-коды существуют в closet.json; CR-примеры существуют.
 3. Совместимость с гейтами: yStack/yStamp читают новые карты (exposure
@@ -70,7 +70,7 @@ class TestCarrierWave(unittest.TestCase):
     # ------------------------------------------------------------ версии
     def test_versions(self):
         self.assertEqual(self.cam["version"], "1.21.0")
-        self.assertEqual(self.dr["version"], "1.7.0")
+        self.assertEqual(self.dr["version"], "1.8.0")  # 1.8.0 — combo_book комбо-книга по рейтингу
 
     def test_registry_size_and_law_note(self):
         self.assertEqual(len(self.cam["y_cards"]["cards"]), 554)
