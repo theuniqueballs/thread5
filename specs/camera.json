@@ -1,7 +1,7 @@
 {
   "id": "camera",
   "name": "CAMERA-FIRST — камера как половина работы",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "born": "2026-11-03, вердикт-директива автора на язык T5-11: «разнообразие поз сильно мнимое и на саму позу очень воздействует камера... именно положение где ты камеру ставишь - сильно влияет на конечный результат... по ракурсам тоже понятно, хотелось бы и поближе и подальше и на личико может быть как-нибудь или что-то околопортретное... Просто в Вольте поза делает половину работы, а не твои вот эти соски через ткань»",
   "law": "КАМЕРА-ПЕРВАЯ (вердикт 2026-11-03) + ревизия 2026-11-05 (вердикт автора чатом): «всё чё он говорит тру инфа, камера - одно из важных частей композиции. если посмотришь официальный гайд по тсубаки 2, там так и написано» → §13.0 LAWS: камерный кластер (D+A+F) — первые 10–20 токенов POS (Cole-B9 принят, кадровая строка у face-блока отменена); дисциплина дистанций D1–D8 «ближе/дальше» (ковбой — признанный доминант рендера, кап снят); dutch A09 ≤10%/батч — закон («закон!»); Combo:/Package: в теле слота с T5-13 («yes»); A/B insert→payoff 1–2 пары/батч («наверное да», пробно).",
   "distance_ladder": {
@@ -542,7 +542,7 @@
   },
   "y_cards": {
     "born": "2026-11-13, применён аплоад автора «T5-YODAYO-RATING-REPAIR-MERGED» (Cole/Grok §2.4)",
-    "law": "Y-карты — ПАТТЕРНЫ сборки высокотирного слота (копировать паттерн, не эссе): экспозиция × поза × POV × положение камеры × профайлинг. Отличие от клеток X: X — константы комбо-тестов (⚗, вердикт решает), Y — рабочие шаблоны мейнов/VOLT/ОС. Exposure-классы: COVER | PROCESS | LINGERIE | CLOTHED-TIGHT | SHEER; SHEER сам по себе слаб на площадке. Коридор обязателен: без A/B слот собирается как честный R. (1.9.0: Y9 — продолжение серии по приказу автора «Y1-Y8, продолжение»; процесс-паттерн, честный R-совместим — без тир-токена заявка читается процессом.) (1.11.0: Y10–Y18 — продолжение серии по повторному приказу автора; физические якоря В27 вшиты в паттерн после провала Y1–Y9 на T5-22.) (1.12.0, вердикт T5-23: Y1–Y9 REBUILT по В27, Y10–Y18 HIGH, Y-комбо легальны в мейнах и ОС-темах.) (1.13.0, поручение автора 2026-11-16 «Y-позы вместо поз и положений камеры»): Y-СБОРКА (Y-first) — слот собирается ОТ КАРТЫ, см. y_assembly. (1.14.0, заказ автора 2026-11-17 «батч SEDUCTION: 9 слотов EXP — в каждом одна новая Y для R+»): Y19–Y27 — продолжение серии для EXP T5-24; Y28–Y36 — карты Y-first для R+ мейнов и ОС-тем того же батча (гейт yCard: каждый R+ слот несёт карту); все новые — В27-физика в паттерне, окно Y-карт 3 батча. (1.15.0, акт 1 2026-11-17): все составные позы poses.json получили карты-обёртки (поля combo+card на позе, built_from на карте); карта с «В27 ПУСТО» не выходит в R+ до пересборки печью — честная метка вместо фиктивного тира. ЗАНЯТОСТЬ РУК (пересмотр 2026-11-21, вердикт T5-28 P04: «лицом к зрителю, руки прижаты к стене за ней — пересмотреть эту хуйню с занятостью рук»): контакт рук с поверхностью обязан нести ОРИЕНТАЦИОННЫЙ ЯКОРЬ — ЧТО камера видит относительно поверхности, позитивной геометрией в POS-опенере («profile at the wall» / «back to the wall, chest to the lens» / «toward the viewer, palms on the near edge»). (1) Тело к поверхности + камера на лицо = якорь «камера сбоку от контакта, профиль у поверхности» — иначе рендерер чинит конфликт фокус-разворотом: лицо к зрителю, ладони остаются на стене ЗА СПИНОЙ (физический абсурд, живой случай Y237+CAM02 в P04). (2) Опора ладонями ПОЗАДИ корпуса = якорь «торс/грудь к камере, руки ПО БОКАМ корпуса видимы» — руки за спиной у вертикальной поверхности запрещены, если корпус не повёрнут к ней спиной. (3) NEG «facing away» НЕ заменяет якорь: негатив не рисует геометрию, позитивная строка обязана. POV компоненты контактных карт несут якорь (v1.19.0: Y237, Y351, Y208, Y149 — профиль у поверхности; Y82, Y14, Y37, Y63, Y127, Y203, Y217, Y268, Y480 — торс к камере, руки по бокам).",
+    "law": "Y-карты — ПАТТЕРНЫ сборки высокотирного слота (копировать паттерн, не эссе): экспозиция × поза × POV × положение камеры × профайлинг. Отличие от клеток X: X — константы комбо-тестов (⚗, вердикт решает), Y — рабочие шаблоны мейнов/VOLT/ОС. Exposure-классы: COVER | PROCESS | LINGERIE | CLOTHED-TIGHT | SHEER; SHEER сам по себе слаб на площадке. Коридор обязателен: без A/B слот собирается как честный R. (1.9.0: Y9 — продолжение серии по приказу автора «Y1-Y8, продолжение»; процесс-паттерн, честный R-совместим — без тир-токена заявка читается процессом.) (1.11.0: Y10–Y18 — продолжение серии по повторному приказу автора; физические якоря В27 вшиты в паттерн после провала Y1–Y9 на T5-22.) (1.12.0, вердикт T5-23: Y1–Y9 REBUILT по В27, Y10–Y18 HIGH, Y-комбо легальны в мейнах и ОС-темах.) (1.13.0, поручение автора 2026-11-16 «Y-позы вместо поз и положений камеры»): Y-СБОРКА (Y-first) — слот собирается ОТ КАРТЫ, см. y_assembly. (1.14.0, заказ автора 2026-11-17 «батч SEDUCTION: 9 слотов EXP — в каждом одна новая Y для R+»): Y19–Y27 — продолжение серии для EXP T5-24; Y28–Y36 — карты Y-first для R+ мейнов и ОС-тем того же батча (гейт yCard: каждый R+ слот несёт карту); все новые — В27-физика в паттерне, окно Y-карт 3 батча. (1.15.0, акт 1 2026-11-17): все составные позы poses.json получили карты-обёртки (поля combo+card на позе, built_from на карте); карта с «В27 ПУСТО» не выходит в R+ до пересборки печью — честная метка вместо фиктивного тира. ЗАНЯТОСТЬ РУК (пересмотр 2026-11-21, вердикт T5-28 P04: «лицом к зрителю, руки прижаты к стене за ней — пересмотреть эту хуйню с занятостью рук»): контакт рук с поверхностью обязан нести ОРИЕНТАЦИОННЫЙ ЯКОРЬ — ЧТО камера видит относительно поверхности, позитивной геометрией в POS-опенере («profile at the wall» / «back to the wall, chest to the lens» / «toward the viewer, palms on the near edge»). (1) Тело к поверхности + камера на лицо = якорь «камера сбоку от контакта, профиль у поверхности» — иначе рендерер чинит конфликт фокус-разворотом: лицо к зрителю, ладони остаются на стене ЗА СПИНОЙ (физический абсурд, живой случай Y237+CAM02 в P04). (2) Опора ладонями ПОЗАДИ корпуса = якорь «торс/грудь к камере, руки ПО БОКАМ корпуса видимы» — руки за спиной у вертикальной поверхности запрещены, если корпус не повёрнут к ней спиной. (3) NEG «facing away» НЕ заменяет якорь: негатив не рисует геометрию, позитивная строка обязана. POV компоненты контактных карт несут якорь (v1.19.0: Y237, Y351, Y208, Y149 — профиль у поверхности; Y82, Y14, Y37, Y63, Y127, Y203, Y217, Y268, Y480 — торс к камере, руки по бокам). (1.21.0, 2026-11-27, заказ автора чатом «разгреби оракла, добавь комбо, сопоставь с одеждой»: волна носитель-комбо Y539–Y554 — 16 карт из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула), каждая = 2 вербатим-носителя разных классов × камера × коридор; все 14 классов носителей покрыты; волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49); LAB до первого рендера, тир решает вердикт; носитель×одежда стак — dresser.json y_stack.carrier_matrix.)",
     "cards": [
       {
         "id": "Y1",
@@ -10744,6 +10744,310 @@
         },
         "garment_pair": "прегармент за кадром (upper-body crop): любое; тир несёт крупный план",
         "verdict_t533": "T5-33 P20 (doorway-saliva-macro): «net, R» и слот любим — saliva-macro читается, R+ не дотянул; P29 (flower, A/B) просел до R: как Y533 — человеческая пара сильнее EXP-пары на этой карте"
+      },
+      {
+        "id": "Y539",
+        "pattern": "the taut weave of her shirt across the chest + the knit's ribbing stretched into pale bands across the bust + upper body + slight low angle",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс W Fabric State: рельеф через СУХУЮ ткань (T213 shape telegraph) — натяжение и полосы-стрессы несут R+ без цвета; ткань на зоне = носитель коридора A. Рельсы: свет НЕ на зоне (RF04/RF08), цвет через ткань = X (RF07). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-W01 Taut Weave + CR-W04 Ribbing Stress-Bands (specs/carriers.json 1.0.0 ← эччи-оракул taxonomy/source/carriers.json)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "ткань на зоне сама носитель (taut weave) — прикрытия нет, заряд в натяжении",
+            "read": "состояние ткани как событие: weave натянут, вязка в полосах-стрессах — форма читается сухой тканью"
+          },
+          "pose": "taut weave across the chest + ribbing stress-bands",
+          "pov": "верхний корпус чуть снизу: натяжение ткани читается по полосам",
+          "camera": "upper body + slight low angle",
+          "profiling": "VOLT/OC-интро R+ (A); сухой телеграф без мокроты (X-безопасно); LAB"
+        }
+      },
+      {
+        "id": "Y540",
+        "pattern": "the gown's zipper open to the small of her back, its own decision + the tank's strap fallen off her shoulder, the armhole wide by design + upper body + over-the-shoulder glance",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс E Garment Displacement: вещь смещается САМА («its own decision») — GEOMETRY-обещание пойманного процесса (T911); пара смещений спина+плечо усиливает носитель (В45: вторым носителем). Родство с Y29 (молния-позвоночник) — здесь процесс-пара, не процесс-одиночка. носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-E04 Back Zipper + CR-E01 Tank Strap Fallen (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "спина открыта молнией — процесс-носитель, лямка ушла сама",
+            "read": "два смещения одной вещи: молния до поясницы + лямка с плеча — вещь-актёр"
+          },
+          "pose": "zipper open to the small of the back + strap fallen off shoulder",
+          "pov": "взгляд через плечо: смещения видны сзади-сбоку",
+          "camera": "upper body + over-the-shoulder glance",
+          "profiling": "VOLT/OC-интро R+ (A); вечернее платье/плоский верх; LAB"
+        }
+      },
+      {
+        "id": "Y541",
+        "pattern": "the full drop of her breasts mid-sway at the turn + the last aftershock of the bounce as she stops at the door + three-quarter body + the turn's freeze",
+        "corridor": "B",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс D Kinetic Weight: вес груди как движение (T214 breast weight — проза контакт-геометрии, тег-кластер мёртв); дроп-на-повороте + эхо-послесвечение = второй носитель (В45). Коридор B: камера-фриз ловит движение. носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-D01 Full Drop Mid-Sway + CR-D08 Aftershock (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "прикрытия нет — заряд в кинетике веса",
+            "read": "кинетический вес: полный дроп на повороте, остановка у двери несёт эхо-качок"
+          },
+          "pose": "full drop mid-sway + aftershock at the stop",
+          "pov": "три четверти корпуса: дроп читается фризом движения",
+          "camera": "three-quarter body + the turn's freeze",
+          "profiling": "VOLT R+ (B); движение в кадре обязательно (статика гасит класс); LAB"
+        }
+      },
+      {
+        "id": "Y542",
+        "pattern": "the thin cotton's honest print of the mound, dry and undeniable + the shorts' line drawn taut over the mound by the straddle's spread + low camera between the knees + look down",
+        "corridor": "B",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс A Cleft & Mound: сухой честный принт + натяжение стрэддлом — закон автора 2026-11-26 crotchFocus («даже в шортиках, но фокус на её crotch где намёк на camel toe - уже R+»): fabric-print физика, НЕ рендер-мёртвый тег cameltoe (T210 — флейвор). Между колен = HARD R+ носитель (T402). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-A05 Dry Cotton Print + CR-A04 Straddle Taut (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "ткань низа сама носитель (dry print)",
+            "read": "честная сухая печать формы через тонкий хлопок; стрэддл натягивает линию"
+          },
+          "pose": "dry cotton print + straddle taut line",
+          "pov": "камера между колен, взгляд вниз: линия читается целиком",
+          "camera": "low camera between the knees + look down",
+          "profiling": "VOLT R+ (B); закон crotchFocus; NEG-щит против сдвига в X; LAB"
+        }
+      },
+      {
+        "id": "Y543",
+        "pattern": "the cheeks claiming the denim's whole back, pocket to pocket + the jeans' back pockets framing the full round, stitch by stitch + from behind + slight low angle",
+        "corridor": "B",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс C Seat & Cheek: посадка-контакт ягодиц с денимом — КОНТАКТ-носитель (легален: T313 мёртвые ткани бьют через-ткань заявки, не контакт-геометрию); карманы-рамка = второй носитель. носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-C01 Denim Claim + CR-C09 Pocket Frame (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "деним-контакт сам носитель",
+            "read": "посадка заявляет форму целиком: от кармана до кармана, стежок к стежку"
+          },
+          "pose": "denim claim pocket to pocket + pocket frame",
+          "pov": "сзади чуть снизу: контакт и рамка карманов читаются вместе",
+          "camera": "from behind + slight low angle",
+          "profiling": "VOLT R+ (B); street/active; джинса легальна ТОЛЬКО контакт-носителем; LAB"
+        }
+      },
+      {
+        "id": "Y544",
+        "pattern": "the zettai ryouiki's band of bare thigh between sock-top and skirt's hem + the soft inner band of the thigh visible at the stride's widest step + full body + slight low angle",
+        "corridor": "B",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс S Skin Framing: кожа как кадр — абсолютная территория + внутренняя полоса бедра на широком шаге; двойная рамка усиливает зону (T101 zettai ryouiki — платформ-нативный тег, тройной тег устойчив). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-S01 Zettai Ryouiki + CR-S09 Inner Thigh Band (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "полоса кожи = рамка (чулок+подол)",
+            "read": "зонная рамка: полоса между чулком и подолом + внутренняя мягкость бедра на шаге"
+          },
+          "pose": "zettai ryouiki band + inner thigh band at the stride",
+          "pov": "фуллбоди чуть снизу: обе полосы читаются геометрией ног",
+          "camera": "full body + slight low angle",
+          "profiling": "VOLT R+ (B); школьная/street геометрия; дистанция объявлена явно (RF13); LAB"
+        }
+      },
+      {
+        "id": "Y545",
+        "pattern": "one arm in the sleeve, the other out, the shirt caught mid-change by the clock's argument + the boyfriend tee's hemline at mid-thigh, nothing beneath but the morning + upper body + honest room light",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс U Situational Undress: mid-change процесс (одна рука в рукаве, рубашка поймана на середине смены) + bare-under маркер «nothing beneath but the morning» позитивом (T315 — подслой в NEG, маркер в POS). Утренняя сцена = честность момента (T606 candid-семейство). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-U01 Mid-Change + CR-U16 Boyfriend Tee (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "рукав/пола частично прикрывают — процесс-прикрытие",
+            "read": "недоодетость как процесс: рукав не надет, пола на середине бедра"
+          },
+          "pose": "mid-change one arm in sleeve + boyfriend tee hemline",
+          "pov": "верхний корпус, свет комнаты честный (без театра)",
+          "camera": "upper body + honest room light",
+          "profiling": "VOLT R+ (A); lounge/morning; bare-under маркер обязателен; LAB"
+        }
+      },
+      {
+        "id": "Y546",
+        "pattern": "the bra's band reading through the tight white tee at the spine + the cutout tank and the sports bra beneath, the cutout's whole engineering + close insert at the spine + upper body",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс L Layer Interplay: игра слоёв — бандаж читается сквозь тайт-ти и вырез со спорт-бра; слой-под-слоем = носитель (RF06: подслой ЛОЧИТСЯ в NEG — T314 underlayer lock, здесь подслой и есть носитель). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-L01 Band Through White Tee + CR-L18 Cutout's Whole Point (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "ткань верха на зоне; подслой назван в POS",
+            "read": "два слоя в одной зоне: бандаж через тий + инженерия выреза"
+          },
+          "pose": "band through tee at the spine + cutout with sports bra",
+          "pov": "инсерт на спину: слои читаются на натяжении",
+          "camera": "close insert at the spine + upper body",
+          "profiling": "VOLT R+ (A); sport/street; NEG: bra... как подслой-только не блокируется при named-underlayer; LAB"
+        }
+      },
+      {
+        "id": "Y547",
+        "pattern": "the straddle of the chair, back to the room, chin over the shoulder + the line where the bust's weight meets the ribcage, read through the bodice + from behind + slight low angle",
+        "corridor": "B",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс F Presenting & Spread: стрэддл-предъявление спиной к комнате + линия веса груди через лиф (B-телеграф партнёр) — ткань НАТЯНУТА, не открыта: F держит R+ только при честной ткани (upskirt-full = X-граница). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-F05 Chair Straddle + CR-B08 Weight-Line (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "ткань топа/лифа натянута — не открыта",
+            "read": "посадка верхом с разворотом подбородка через плечо; линия веса читается"
+          },
+          "pose": "chair straddle, chin over shoulder + bodice weight-line",
+          "pov": "сзади чуть снизу: стрэддл-геометрия + линия груди в профиль",
+          "camera": "from behind + slight low angle",
+          "profiling": "VOLT R+ (B); lounge/stage; NEG: skirt lifted beyond taut, no upskirt-full; LAB"
+        }
+      },
+      {
+        "id": "Y548",
+        "pattern": "the seatbelt's diagonal bisecting the chest's full line at the clunk + the seatbelt's sleep-crease across the chest's slope after the long haul + upper body + passenger-side daylight",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "пара-комбо PHYSICS (M+I): жёсткий объект-посредник (ремень) прижимает и печатает — событие «clunk» + след «после долгой дороги» = носитель настоящего + носитель свершившегося. Объект-посредник и есть эротика кадра (influence_layers.mediator_object). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-M01 Seatbelt Diagonal + CR-I15 Seatbelt Sleep-Crease (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "ремень = объект-посредник на зоне",
+            "read": "диагональ ремня делит линию груди; sleep-crease несёт свершившееся"
+          },
+          "pose": "seatbelt diagonal + sleep-crease",
+          "pov": "пассажирский свет: прижатие и след читаются вместе",
+          "camera": "upper body + passenger-side daylight",
+          "profiling": "VOLT R+ (A); travel-сцена; объект-посредник назван в CLAIM-строке (T918); LAB"
+        }
+      },
+      {
+        "id": "Y549",
+        "pattern": "the bra's release lines pressed red across the swell, minutes old + the garter's soft dents above and below the band, an hour's evidence + close insert on the marks + upper body",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс I Imprint & Aftermath: след как видимый носитель — release-lines «minutes old» + garter-dents «an hour's evidence»: два срока давности = два носителя; след несёт свершившееся событие без наготы (честный R+ по В44-эталону). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-I01 Bra Release Lines + CR-I16 Garter Dents (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "следы = видимый носитель (release lines + dents)",
+            "read": "после-состояние: снятый лиф и часовой корсет оставили честные метки"
+          },
+          "pose": "release lines minutes old + garter dents hour's evidence",
+          "pov": "инсерт на метки: давность читается цветом следов",
+          "camera": "close insert on the marks + upper body",
+          "profiling": "VOLT/OC R+ (A); intimates/boudoir; след-носитель виден глазами (claimVisibility); LAB"
+        }
+      },
+      {
+        "id": "Y550",
+        "pattern": "two dark points pressed against the weave of her top + the full shape of her breasts against the cold cloth + upper body close + the light held off the zone",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс B Shape Telegraph: доминантная форма корпуса (C072-safe) — точки против плетения + форма на холодной ткани; закон №28: DRY тёмная вещь, свет НЕ на зоне (RF04); цвет через ткань = X (RF07). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-B01 Points Against Weave + CR-B02 Shape Through Cold Cloth (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "ткань верха на зоне",
+            "read": "силуэтный телеграф: две точки + полная форма сквозь холодную ткань"
+          },
+          "pose": "points against weave + shape through cold cloth",
+          "pov": "верхний корпус близко: телеграф читается контуром",
+          "camera": "upper body close + the light held off the zone",
+          "profiling": "VOLT R+ (A); cold-room/dark-garment; NEG: colored nipples, light on chest; LAB"
+        }
+      },
+      {
+        "id": "Y551",
+        "pattern": "the shot up the staircase under the hem's shadow + the miniskirt's coverage arithmetic lost to the staircase behind her + low camera under the hem + look down",
+        "corridor": "B",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс G Aggressive Framing — УСИЛИТЕЛЬ 0.5x (core4_law: G/H не считаются в CORE-4): партнёр-core обязателен — C06 Staircase Arithmetic несёт класс C. Подглядывание-геометрия (T406 между-колен семья; HARD R+ при честной ткани подола). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-G06 Staircase Under-Hem + CR-C06 Staircase Arithmetic (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "подол/тень лестницы — геометрия подглядывания",
+            "read": "рамка-агрессор: съёмка из-под подола; арифметика покрытия проиграна лестнице"
+          },
+          "pose": "staircase under-hem shot + coverage arithmetic lost",
+          "pov": "камера под подолом, взгляд вниз: геометрия лестницы как рама",
+          "camera": "low camera under the hem + look down",
+          "profiling": "VOLT R+ (B); G-усилитель + C-core (CORE-4 честный); NEG: no visible panties beyond taut; LAB"
+        }
+      },
+      {
+        "id": "Y552",
+        "pattern": "the robe's belt gone, the lapels drifting apart at the steam's push + the blush flooding down past the collarbones' line + upper body + steam-side light",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "класс H Reaction & Physiology — УСИЛИТЕЛЬ 0.5x (core4_law): партнёр-core обязателен — E07 Robe Drift несёт класс E; румянец-волна = реакция на свершающееся (реакция НЕ носитель — В33: самосертификация реакцией запрещена, физику несёт халат). носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-E07 Robe Drift + CR-H01 Blush Flood (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "лапели халата — процесс прикрытия",
+            "read": "халат расходится сам (пар толкает), румянец читается как реакция"
+          },
+          "pose": "robe lapels drifting apart + blush flood",
+          "pov": "верхний корпус: дрейф лапелей и волна румянца в одном кадре",
+          "camera": "upper body + steam-side light",
+          "profiling": "VOLT/OC R+ (A); lounge/bath-side; H-усилитель + E-core; LAB"
+        }
+      },
+      {
+        "id": "Y553",
+        "pattern": "the post-competition jacket over the leotard, the zipper's slow ride a concession to the heat + the leotard's leg-line riding at the hip's crease after the floor routine + upper body + slight low angle",
+        "corridor": "A",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "пара-комбо POSITION (U×E): процесс-куртка раздевания (куртка поверх комбинезона, молния едет сама) + лег-лайн комбинезона после выступа — сцена после-выступления цельная, оба носителя одной сцены. носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-U20 Post-Comp Jacket + CR-E20 Leotard Leg-Line (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "PROCESS",
+            "cover_object": "куртка поверх — процесс",
+            "read": "после-выступление: молния куртки уступает жаре, лег-лайн читается на бедре"
+          },
+          "pose": "post-comp jacket zipper ride + leotard leg-line",
+          "pov": "верхний корпус чуть снизу: молния и лег-лайн в одной геометрии",
+          "camera": "upper body + slight low angle",
+          "profiling": "VOLT R+ (A); gym/stage-side; span-комбо двух POSITION-классов; LAB"
+        }
+      },
+      {
+        "id": "Y554",
+        "pattern": "the wind pressing the whole dress against her front, one gust's honest account + the gust bellying the skirt into a held dome + full body + the street's cross-light",
+        "corridor": "A+B",
+        "trust": "LAB, T5-34 (2026-11-27): носитель-комбо волна, sd до первого рендера; заказ автора (чат 2026-11-27): «сосредоточься на изучении эччи-оракула, там столько всякой полезной хуйни... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!» — карты собраны из CARRIER_LIBRARY (specs/carriers.json, 462 носителя, синк эччи-оракула); до вердикта — LAB (урок Y531–Y538: карты входят LAB, тир решает вердикт)",
+        "verdict": "span-комбо W×D (FABRIC×PHYSICS, разные мех-группы): ветер-актёр (T910 environment-as-actor — среда делает половину позы): порыв прижимает платье к телу (A: ткань на зоне) + купол юбки (B: геометрия) — единственный A+B коридор волны. Среда-актёр легальна: gust's honest account = честная физика. носитель-комбо волна T5-34 (Y539–Y554): каждая карта = 2 вербатим-носителя CARRIER_LIBRARY × камерный кластер × коридор; волна покрывает все 14 классов носителей (FABRIC W / BODY A-B-C-S / POSITION E-L-U-F / PHYSICS D-M-I / AMPLIFIER G-H); волна НЕ юри — парный реестр Y531–Y538 не расширяется (В49: «шесть юри в основной теме - многовато», юри в ОС/EXP только по просьбе); no new registries — карты живут в существующем y_cards (реестровая диета 5.3)",
+        "built_from": "CARRIER_LIBRARY: CR-W26 Wind-Press + CR-D57 Gust-Bell Skirt (specs/carriers.json 1.0.0 ← эччи-оракул)",
+        "components": {
+          "exposure": {
+            "class": "CLOTHED-TIGHT",
+            "cover_object": "ткань прижата ветром к телу (платье = носитель)",
+            "read": "один порыв несёт обе геометрии: прижатие к груди + купол подола"
+          },
+          "pose": "wind-press against the front + gust bell of the skirt",
+          "pov": "фуллбоди в перекрёстном свете улицы: обе геометрии видны",
+          "camera": "full body + the street's cross-light",
+          "profiling": "VOLT R+ (A+B); street/windy; среда-актёр названа в CLAIM-строке; LAB"
+        }
       }
     ],
     "avoid_as_fake_high_tier": [
@@ -10791,6 +11095,7 @@
     "1.17.0 (2026-11-20, T5-27 «PREY»): +Y522–Y530 — девять НОВЫХ карт по заказу «новенькие Y которых ещё не создавали» (обёртки PL578–PL586, В27-физика с рождения: вес/тяга/зацеп/финал); В27-пересборка акта 3, волна 1 — 10 карт жребия T5-27 (Y443/Y351/Y486/Y333/Y1/Y427/Y265/Y8/Y45/Y258) получили физику в паттерне, клеймо переродилось само (LAWS §17.4)",
     "1.19.0 (2026-11-21, пересмотр по вердикту T5-28): ЗАНЯТОСТЬ РУК — ориентационные якоря в POV 13 контактных карт (Y237/Y351/Y208/Y149 «профиль у поверхности»; Y82/Y14/Y37/Y63/Y127/Y203/Y217/Y268/Y480 «торс к камере, руки по бокам корпуса»); закон в y_cards.law: контакт×ориентация×камера, якорь только позитивной геометрией, NEG «facing away» якорем не считается. Живой урок P04: Y237 (лоб к стене, ладони к поверхности) + three-quarter без якоря → рендерер развернул лицо к зрителю, ладони остались на стене ЗА СПИНОЙ. POV — сервисное поле: копипаст-юнит и вплетения старых слотов не тронуты (закон непрозы).",
     "1.19.1 (2026-11-25, горячий фикс по рендеру T5-31): Y498 вербатим «bell-charms holding their quiet count» → «the ribbon's ends holding their quiet count» — колокольчики-брелоки спавнили джанк-пропсы на рендере (В24, джанк-реквизит). exposure/POV/camera не тронуты; вплетение P28 T5-31 переписано на новый вербатим, штамп 1:1 восстановлен.",
-    "1.20.0 (2026-11-25, приказ автора из вердикта T5-32): ЮРИ-ДОМЕН — Y531–Y538, первые пара-геометрические карты (2girls, контакт-репертуар: KISS-THREAD/BREAST-OFFER/SUCKLE-OVER-SHOULDER/BACK-HOLD/LAP-WARP/SPINE-SEAT/MIRROR-PAIR/SALIVA-CLOSE); LAB до первого рендера, тир решает вердикт; юри-тема — в каждом батче с 5.3; без новых реестров — карты живут в существующем y_cards, пре-гармент-пары в поле garment_pair."
+    "1.20.0 (2026-11-25, приказ автора из вердикта T5-32): ЮРИ-ДОМЕН — Y531–Y538, первые пара-геометрические карты (2girls, контакт-репертуар: KISS-THREAD/BREAST-OFFER/SUCKLE-OVER-SHOULDER/BACK-HOLD/LAP-WARP/SPINE-SEAT/MIRROR-PAIR/SALIVA-CLOSE); LAB до первого рендера, тир решает вердикт; юри-тема — в каждом батче с 5.3; без новых реестров — карты живут в существующем y_cards, пре-гармент-пары в поле garment_pair.",
+    "1.21.0 (2026-11-27, заказ автора чатом после вердикта T5-33: «сосредоточься на изучении эччи-оракула... тебе буквально блять приготовили все возможные Y, надо только разгрести, добавить комбо, сопоставить с одеждой и на нахуй!»): ВОЛНА НОСИТЕЛЬ-КОМБО — Y539–Y554 (16 карт), собраны из CARRIER_LIBRARY (462 носителя, 14 классов — specs/carriers.json 1.0.0, синк эччи-оракула mini-services/ecchi-oracle/taxonomy/source/carriers.json): W=Y539 (taut weave + ribbing bands), E=Y540 (back zipper + tank strap), D=Y541 (full drop + aftershock), A=Y542 (dry cotton print + straddle taut — закон crotchFocus), C=Y543 (denim claim + pocket frame), S=Y544 (zettai ryouiki + inner thigh band), U=Y545 (mid-change + boyfriend tee), L=Y546 (band through tee + cutout engineering), F=Y547 (chair straddle + bodice weight-line), M=Y548 (seatbelt diagonal + sleep-crease, M+I span), I=Y549 (release lines + garter dents), B=Y550 (points against weave + shape through cold cloth), G=Y551 (staircase under-hem + coverage arithmetic, G-усилитель + C-core), H=Y552 (robe drift + blush flood, H-усилитель + E-core), U×E=Y553 (post-comp jacket + leotard leg-line), W×D=Y554 (wind-press + gust-bell skirt — единственный A+B коридор волны). Каждая карта: 2 вербатим-носителя × камера × коридор, класс экспозиции, рельсы RF/законы в verdict. Все 14 классов покрыты. Волна НЕ юри (В49). LAB до первого рендера. носитель×одежда — dresser 1.7.0 carrier_matrix."
   ]
 }
