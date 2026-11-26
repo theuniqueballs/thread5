@@ -166,7 +166,7 @@ class TestT530Registries(unittest.TestCase):
         # v1.16.0 — волна 15 (T5-31); v1.17.0 — волна 16 (T5-32, заказ автора
         # «9 новых раскрасок и экспериментальных палитр»): пин синхронен живому
         # реестру (правило голых счётчиков: рассинхрон = баг)
-        self.assertEqual(pal["version"], "1.19.0")  # 1.19.0 — волна 17 (T5-33 LAB, P297–P305)
+        self.assertEqual(pal["version"], "1.20.0")  # 1.20.0 — волна 17 (T5-33 LAB, P297–P305) + canon волн T5-30/31 (№16)
         ids = {p["id"] for p in pal["palettes"]}
         wave14 = [f"P2{i}_" for i in range(70, 79)]  # P270–P278
         for pref in wave14:
@@ -199,7 +199,7 @@ class TestT530Registries(unittest.TestCase):
 
     def test_oc_candidates_13(self):
         oc = load("specs/oc-candidates.json")
-        self.assertEqual(oc["version"], "1.4.0")  # 1.4.0 — T5-32 кандидаты + промоция Nun Harrow
+        self.assertEqual(oc["version"], "1.5.0")  # 1.5.0 — T5-33 кандидаты (passed 4 / pending 8)
         t30 = [c for c in oc["candidates"] if c["batch"] == "T5-30"]
         self.assertEqual(len(t30), 9)
         for c in t30:

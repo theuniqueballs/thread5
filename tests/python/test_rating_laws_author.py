@@ -8,14 +8,15 @@
 Плюс: «батчи переделывать - хуйня идея... Снижаешь тиры того что увидел».
 
 Гейты:
-1. rating_implied() (specs/gates.json 1.19.0): tapeEvidence/crotchFocus —
+1. rating_implied() (specs/gates.json 1.20.0): tapeEvidence/crotchFocus —
    HARD R+ независимо от остального состава; bareClaim+pointRead — R+;
    bareLineRead («chest's bare line» как декор, P06-класс T5-32) больше НЕ
    даёт R+.
 2. T5-29 ground truth В43 не сдвинулся: matched {P04,P11,P18,P27},
    17 ложных R+, 12 дрейфов (test_t529_lessons.py — дубль-страховка здесь).
-3. Словари: rating-techniques 1.4.0 (hard_carriers), dresser 1.5.0
-   (y_stack.carrier_first), gates.json 1.19.0.
+3. Словари: rating-techniques 1.5.0 (hard_carriers + импорт «копай оракла»),
+   dresser 1.6.0 (y_stack.carrier_first + yuri_quota В49), gates.json 1.20.0
+   (negBase += yellow skin/sallow skin, skinCast В48 — вердикт T5-33).
 """
 import json
 import sys
@@ -26,6 +27,14 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
 import gates  # noqa: E402
+
+
+def _slot(num, pos, genre="VOLT"):
+    """Слот-болванка для skinCast-тестов (реальный конструктор Slot)."""
+    s = gates.Slot(num, "slug", "", "(VOLT · human · R+)")
+    s.pos = pos
+    s.genre = genre
+    return s
 
 
 class TestAuthorRatingLaws(unittest.TestCase):
@@ -104,9 +113,9 @@ class TestCalibrationRegistryPins(unittest.TestCase):
         self.gt = json.loads((ROOT / "specs" / "gates.json").read_text(encoding="utf-8"))
 
     def test_versions(self):
-        self.assertEqual(self.rt["version"], "1.4.0")
-        self.assertEqual(self.dr["version"], "1.5.0")
-        self.assertEqual(self.gt["version"], "1.19.0")
+        self.assertEqual(self.rt["version"], "1.5.0")
+        self.assertEqual(self.dr["version"], "1.6.0")
+        self.assertEqual(self.gt["version"], "1.20.0")
 
     def test_hard_carriers_present(self):
         hc = self.rt["sum_rules"]["hard_carriers"]
@@ -127,8 +136,55 @@ class TestCalibrationRegistryPins(unittest.TestCase):
         self.assertIn("очги" if False else "очки у Doe", cf["pair_slots"])
 
     def test_base_taxonomy_import_count(self):
-        """Импорт из базового таксонома эччи-оракла: словарь вырос до 161."""
-        self.assertEqual(len(self.rt["techniques"]), 161)
+        """Импорт из базового таксонома эччи-оракла: 161 (1.4.0) → 166 (1.5.0,
+        «копай оракла на приёмы… больше эротики в волт», вердикт T5-33)."""
+        self.assertEqual(len(self.rt["techniques"]), 166)
+        tags = " ".join(t["tag"] for t in self.rt["techniques"])
+        for frag in ("shape telegraph", "weight contact-geometry",
+                     "fanservice framing", "dead fabrics", "catalog-calm"):
+            self.assertIn(frag, tags)
+
+    def test_dresser_yuri_quota_v49(self):
+        """В49: юри-квота — мейн ≤2, ОС/EXP по прямому заказу (вердикт T5-33)."""
+        yq = self.dr["y_stack"]["yuri_quota"]
+        self.assertIn("≤ 2", yq["law"])
+        self.assertIn("по прямому заказу", yq["law"])
+        self.assertIn("НЕ ВСЁ ЗАБИВАЙ ЮРИ СЛОТАМИ", yq["law"])
+
+    def test_gates_yellow_guard_v48(self):
+        """В48: против-жёлтые токены в NEG-базе всегда + гейт skinCast на месте."""
+        for tok in ("yellow skin", "sallow skin"):
+            self.assertIn(tok, self.gt["negBase"]["always"])
+        sc = self.gt["skinCast"]
+        self.assertEqual(sc["mode"], "WARN")
+        self.assertEqual(sc["applyFrom"], 34)
+        self.assertTrue(sc["warmSkin"] and sc["warmPalette"])
+
+    def test_skin_cast_catches_warm_skin_x_warm_palette(self):
+        """skinCast ловит совместность тёплая кожа × тёплая палитра (В48)."""
+        slots = [_slot(1, "warm ivory skin, honey hair, "
+                      "Dawn Amber palette, deep amber light")]
+        warns = []
+        caught = gates.check_skin_cast(slots, warns, batch_no=34)
+        self.assertEqual(caught, 1)
+        self.assertEqual(warns[0][1], "skin-cast")
+
+    def test_skin_cast_silent_on_cool_skin(self):
+        """Холодная кожа при тёплой палитре — правило сборки В48, без WARN."""
+        slots = [_slot(2, "cool fair skin, pale porcelain, "
+                      "Dawn Amber palette")]
+        warns = []
+        caught = gates.check_skin_cast(slots, warns, batch_no=34)
+        self.assertEqual(caught, 0)
+
+    def test_skin_cast_silent_on_amber_eyes_cool_palette(self):
+        """«amber eyes» при холодной палитре не шумит: палитра ищется только
+        в строке палитры POS."""
+        slots = [_slot(3, "warm ivory skin, amber eyes, "
+                      "Arctic White palette, pale blue snow")]
+        warns = []
+        caught = gates.check_skin_cast(slots, warns, batch_no=34)
+        self.assertEqual(caught, 0)
 
     def test_gates_rating_truth_groups(self):
         rt = self.gt["ratingTruth"]

@@ -1,7 +1,7 @@
 {
-  "version": "1.19.0",
+  "version": "1.20.0",
   "born": "2026-11-18: волна 10 «способы раскраски» P234–P242 (T5-25)",
-  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150) | 2026-11-26: волны T5-26/27/29 (27 палитр) приняты автором в canon — «Да забери ты уже эти палитры ебаные»; поле trial снято, правило промоции волн №16 закрыто для этих волн. Волны T5-30/31/32 — trial до порога.",
+  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150) | 2026-11-26: волны T5-26/27/29 (27 палитр) приняты автором в canon — «Да забери ты уже эти палитры ебаные»; поле trial снято, правило промоции волн №16 закрыто для этих волн. 2026-11-26 (1.20.0): волны T5-30 (P270–P279) и T5-31 (P279–P288) — canon: вердикты T5-30/T5-31 записаны, порог №16 (2 партии) пройден, прецедент стоящего распоряжения «Да забери ты уже эти палитры ебаные». Волна T5-32 (P288–P296) — trial до порога (после вердикта T5-32 сдана только T5-33).",
   "palettes": [
     {
       "id": "P01_NOIR_VELVET",
@@ -7995,7 +7995,7 @@
       "mood": "the-cold-that-flirts",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P271_WAX_SEAL_OXBLOOD",
@@ -8021,7 +8021,7 @@
       "mood": "the-seal-not-yet-broken",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P272_STATIC_LILAC",
@@ -8047,7 +8047,7 @@
       "mood": "the-channel-between",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P273_FOIL_BALLOON_COPPER",
@@ -8073,7 +8073,7 @@
       "mood": "the-party-still-up",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P274_TIDEPOOL_MIRROR",
@@ -8099,7 +8099,7 @@
       "mood": "the-sky-in-a-puddle",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P275_URANIUM_GLASS_GLOW",
@@ -8125,7 +8125,7 @@
       "mood": "the-glow-inside-things",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P276_POCKET_DENIM_DUSK",
@@ -8151,7 +8151,7 @@
       "mood": "what-the-pocket-keeps",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P277_SORBET_STAIN",
@@ -8177,7 +8177,7 @@
       "mood": "the-stain-you-keep",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P278_LEDGER_GREEN",
@@ -8203,7 +8203,7 @@
       "mood": "the-count-that-comes-out",
       "family": "exp_color_wave_14",
       "born": "2026-11-22, T5-30 «WHAT THE FUCK IS THAT?!» — волна 14 «покрытия-настроения»",
-      "trial": "trial до вердикта T5-30"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P279_CELLOPHANE_DEW",
@@ -8231,7 +8231,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P280_MATCHSTRIKE_AMBER",
@@ -8258,7 +8258,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P281_TINSEL_STEEL",
@@ -8285,7 +8285,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P282_POWDER_VELLUM",
@@ -8312,7 +8312,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P283_NIGHT_VENDING_GLOW",
@@ -8339,7 +8339,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P284_SUGAR_CRUST_JAM",
@@ -8366,7 +8366,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P285_GREENHOUSE_RUST",
@@ -8393,7 +8393,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P286_CHALK_CLIFF_ROBIN",
@@ -8420,7 +8420,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P287_SODIUM_HIVE",
@@ -8447,7 +8447,7 @@
       "family": "exp_color_wave_15",
       "legacy_3slot": false,
       "born": "2026-11-24, T5-31 «WHEN WET DREAMS COME TRUE» — волна 15 «утро сбывшегося сна»",
-      "trial": "trial до вердикта T5-31"
+      "source": " | canon 2026-11-26 (волна пережила вердикт, правило №16; прецедент «забери ты уже эти палитры»)"
     },
     {
       "id": "P288_PHOSPHOR_GRADE",

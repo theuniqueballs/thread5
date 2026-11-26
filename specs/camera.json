@@ -10595,7 +10595,8 @@
           "camera": "CAM05_over_shoulder у принимающей + D2 на нити слюны",
           "profiling": "yuri_contact · KISS · use: main-yuri/EXP"
         },
-        "garment_pair": "оба в распахнутых рубашках (worn open) или: у одной топ снят до талии (topless + arms covering честно)"
+        "garment_pair": "оба в распахнутых рубашках (worn open) или: у одной топ снят до талии (topless + arms covering честно)",
+        "verdict_t533": "T5-33 P07 (kitchen-bench-kiss-thread): «da» — R+ доставлен; геометрия поцелуя v2 («двое слипшихся губ» закрыто) работает в мейне — карта из LAB в доверие"
       },
       {
         "id": "Y532",
@@ -10615,7 +10616,8 @@
           "camera": "CAM06_side + D3 полуплан: обе ладони и оба лица",
           "profiling": "yuri_contact · TOUCH · use: main-yuri/EXP"
         },
-        "garment_pair": "тонкий топ (ribbed/silk, сдвинутая бретель) + свободная рубашка старшей пары (worn open)"
+        "garment_pair": "тонкий топ (ribbed/silk, сдвинутая бретель) + свободная рубашка старшей пары (worn open)",
+        "verdict_t533": "T5-33 P01 (noxx-ruuj-breast-offer): слот любим, тир просел до R — карта «охуенно» (SO-12) держит узнаваемость, R+ не дотянут: носитель «ладонь поверх груди» слабоват без второго носителя (В50.1)"
       },
       {
         "id": "Y533",
@@ -10635,7 +10637,8 @@
           "camera": "CAM05_over_shoulder у дающей + D2 на прикладе",
           "profiling": "yuri_contact · SUCKLE · use: EXP (потолок)"
         },
-        "garment_pair": "у дающей топ сдвинут одной грудью (top pulled aside, одна линия открыта), у принимающей открытое декольте рубашки"
+        "garment_pair": "у дающей топ сдвинут одной грудью (top pulled aside, одна линия открыта), у принимающей открытое декольте рубашки",
+        "verdict_t533": "T5-33 P09 (couch-suckle-ceiling): «da» R+ — latch-геометрия v2 доставила; P25 (moth EXP-пара, A/B) просела до R: карта работает на человеческих парах, EXP-носитель слабее — на EXP-парах усиливать носитель"
       },
       {
         "id": "Y534",
@@ -10655,7 +10658,8 @@
           "camera": "CAM08_back_to_camera у обнимающей + D3",
           "profiling": "yuri_contact · HOLD · use: main-yuri/EXP"
         },
-        "garment_pair": "у держащей — свободная майка; у держимой — тонкий топ (top riding up = носитель «проступающих сосочков» P12 T5-32)"
+        "garment_pair": "у держащей — свободная майка; у держимой — тонкий топ (top riding up = носитель «проступающих сосочков» P12 T5-32)",
+        "verdict_t533": "T5-33 P02 (rin-lua-kitchen-back-hold): «да, R+» — back-hold доставил R+ в ОС; карта из LAB в доверие"
       },
       {
         "id": "Y535",
@@ -10675,7 +10679,8 @@
           "camera": "CAM07_front close + D2: лбы и руки в одном кадре",
           "profiling": "yuri_contact · WARP · use: main-yuri/EXP"
         },
-        "garment_pair": "у одной — топ-сползшая бретель (off-shoulder), у другой — юбка поверх бёдер сидящей (skirt draping over the lap)"
+        "garment_pair": "у одной — топ-сползшая бретель (off-shoulder), у другой — юбка поверх бёдер сидящей (skirt draping over the lap)",
+        "verdict_t533": "T5-33 P12 (windowseat-lap-warp): файл съеден контент-фильтром 1301 — тир без вердикта; карта ждёт следующего рендера"
       },
       {
         "id": "Y536",
@@ -10695,7 +10700,8 @@
           "camera": "CAM01_front full + D4: вся пара, лица и линия рук",
           "profiling": "yuri_contact · SEAT · use: main-yuri"
         },
-        "garment_pair": "у сзади-сидящей — открытый халат/рубашка; у передней — тонкая майка (line читается сквозь)"
+        "garment_pair": "у сзади-сидящей — открытый халат/рубашка; у передней — тонкая майка (line читается сквозь)",
+        "verdict_t533": "T5-33 P15 (stove-spine-seat) просел до R и P27 (ninetails, A/B) до R: две просадки на двух носителях; P27 при этом любим («получилось трое, но это охуенно») — авария-тройка зашла, тир карта не удержала; пересбор носителей"
       },
       {
         "id": "Y537",
@@ -10715,7 +10721,8 @@
           "camera": "CAM09_mirror_face + D3: оба лица в отражении",
           "profiling": "yuri_contact · MIRROR · use: main-yuri/EXP"
         },
-        "garment_pair": "примерка на двоих: у одной недостроенный комплект на теле (unfastened), у другой — одета и обнимает"
+        "garment_pair": "примерка на двоих: у одной недостроенный комплект на теле (unfastened), у другой — одета и обнимает",
+        "verdict_t533": "T5-33 P22 (wardrobe-mirror-pair): PG-13 — стабилизация (одна пара + одно отражение) дублей убрала, но зеркало съело регистр тира; карте нужен носитель вне отражения (в-кадре, не в-зеркале)"
       },
       {
         "id": "Y538",
@@ -10735,7 +10742,8 @@
           "camera": "CAM10_macro D1: нить и рот-углы, лица вплотную",
           "profiling": "yuri_contact · KISS-CAM · use: EXP (потолок)"
         },
-        "garment_pair": "прегармент за кадром (upper-body crop): любое; тир несёт крупный план"
+        "garment_pair": "прегармент за кадром (upper-body crop): любое; тир несёт крупный план",
+        "verdict_t533": "T5-33 P20 (doorway-saliva-macro): «net, R» и слот любим — saliva-macro читается, R+ не дотянул; P29 (flower, A/B) просел до R: как Y533 — человеческая пара сильнее EXP-пары на этой карте"
       }
     ],
     "avoid_as_fake_high_tier": [

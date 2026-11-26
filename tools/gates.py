@@ -1449,6 +1449,51 @@ def check_palette_skin(slots, warns, batch_no=-1, retro=False):
     return caught
 
 
+def check_skin_cast(slots, warns, batch_no=-1, retro=False):
+    """v1.20.0 skinCast — В48 «жёлть T5-33» (вердикт 2026-11-26: «какая-то у
+    них у всех странная желтизна, на лицах… Не очень вайбит»). Совместность
+    «тёплое семейство кожи × тёплая палитра» рендерится золотым кастом:
+    доля таких слотов росла 4→3→8→13 (T5-30→33), 13/33 — максимум корпуса.
+    Палитра ищется ТОЛЬКО в строке палитры POS («… palette, …») — «amber
+    eyes» при арктической палитре не шумит. Правило сборки: warm/tan/gold
+    кожу не ставить в тёплый слот — холодная кожа (ivory/cool fair/
+    porcelain) читает палитру контрастом (В36 дополнена: кожа ≠ под цвет
+    палитры). WARN с T5-34 (--retro показывает, что поймал бы)."""
+    cfg = GATES.get("skinCast")
+    if not cfg:
+        return 0
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return 0
+    warm_skin = [t.lower() for t in cfg.get("warmSkin", [])]
+    warm_pal = {t.lower() for t in cfg.get("warmPalette", [])}
+    caught = 0
+    for s in slots:
+        pos_l = norm_ws(s.pos or "").lower()
+        skin_hit = next((t for t in warm_skin if t in pos_l), None)
+        if not skin_hit:
+            continue
+        # зона палитры: ≤4 слова ПЕРЕД «palette» (имя: Dawn Amber palette) +
+        # хвост акцентов до «;»/«.» (with gold-sand accents). Слова вне зоны
+        # («amber eyes» в фейс-локе) не шумят — урок T5-33 P14
+        m = re.search(r"([a-z0-9_'-]+(?: [a-z0-9_'-]+){0,3})\s+palette\b", pos_l)
+        if not m:
+            continue
+        after = pos_l[m.end():m.end() + 160].split(";")[0].split(".")[0]
+        zone_words = set(re.findall(r"[a-z]+", m.group(1) + " " + after))
+        pal_hit = next((w for w in zone_words if w in warm_pal), None)
+        if not pal_hit:
+            continue
+        caught += 1
+        warns.append(
+            (s.sid, "skin-cast",
+             f"тёплая кожа «{skin_hit}» при тёплом токене палитры «{pal_hit}»: "
+             f"совместность даёт жёлть на лицах (В48, вердикт T5-33 — желтизна "
+             f"у всех, максимум корпуса 13/33); холодная кожа (ivory/cool fair/"
+             f"porcelain) читает палитру контрастом — заменить семейство кожи")
+        )
+    return caught
+
+
 # ── v1.18.0: уроки T5-29 (В39–В43) ─────────────────────────────────────
 # Вердикт 2026-11-22: «Но сделай так, чтобы ты никогда нахуй больше таких
 # ошибок не повторял». Все пять проверок — applyFrom 30 (FAIL-эра с T5-30;
@@ -2419,6 +2464,7 @@ def main():
     dress_caught = check_neg_dress_guards(slots, warns, batch_no)  # v1.12.0
     check_details_layer(slots, warns, batch_no, oc_names)  # v1.12.0 В32
     palette_bleed = check_palette_skin(slots, warns, batch_no, retro)  # v1.16.0 В36
+    skin_cast = check_skin_cast(slots, warns, batch_no, retro)  # v1.20.0 В48 жёлть
     check_header(text, header, slots, fails, warns, oc_names)
     check_header_contract(header, warns, batch_no)
     moves_declared = check_moves_gate(header, warns, batch_no)
@@ -2506,6 +2552,10 @@ def main():
         },
         "palette_skin": {  # v1.16.0 В36: палитра ≠ кожа (token bleed)
             "token_bleed": palette_bleed,
+            "retro": bool(retro),
+        },
+        "skin_cast": {  # v1.20.0 В48: жёлть — тёплая кожа × тёплая палитра
+            "caught": skin_cast,
             "retro": bool(retro),
         },
         "race_cast": {  # v1.18.0 В40: кины — опция (policy v2.0, окно 0–10)
