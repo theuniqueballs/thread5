@@ -1,0 +1,689 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.20.0)",
+ "batch": "batches/T5-34.md",
+ "sha256": "744e364e917141654d91e4cd1684be4e00951f087e13c0f1f3956b47b3fd36a5",
+ "utc": "2026-11-26T20:37:50+00:00",
+ "verdict": "PASS",
+ "slots": 30,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P08",
+   "gate": "format",
+   "msg": "POS-строка 202 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P26",
+   "gate": "format",
+   "msg": "POS-строка 210 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P27",
+   "gate": "format",
+   "msg": "POS-строка 211 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P28",
+   "gate": "format",
+   "msg": "POS-строка 225 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P29",
+   "gate": "format",
+   "msg": "POS-строка 215 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P05+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «elbow folds eye level close breast»"
+  },
+  {
+   "slot": "P05+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «eye level close breast shape honest»"
+  },
+  {
+   "slot": "P05+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «folds eye level close breast shape»"
+  },
+  {
+   "slot": "P05+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the elbow folds eye level close»"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "17 общих 6-грамм с предыдущими партиями (T5-32.md, T5-33.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "miyu-tendency-flicker",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 29,
+   "posWords": 219
+  },
+  {
+   "id": "P02",
+   "slug": "rue-ink-tentacle-sheet",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 48,
+   "posWords": 240
+  },
+  {
+   "id": "P03",
+   "slug": "yui-dirty-shift-roll",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "B",
+   "claimToken": 32,
+   "posWords": 240
+  },
+  {
+   "id": "P04",
+   "slug": "slimegirl-greenhouse-melt",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 58,
+   "posWords": 256
+  },
+  {
+   "id": "P05",
+   "slug": "mushroom-spore-draft",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 31,
+   "posWords": 237
+  },
+  {
+   "id": "P06",
+   "slug": "stairs-prism-landing",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 208
+  },
+  {
+   "id": "P07",
+   "slug": "doorway-solar-bleed",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 41,
+   "posWords": 229
+  },
+  {
+   "id": "P08",
+   "slug": "checker-wind-give",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 32,
+   "posWords": 229
+  },
+  {
+   "id": "P09",
+   "slug": "checker-acid-walk",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 194
+  },
+  {
+   "id": "P10",
+   "slug": "sugar-hem-tuck",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 33,
+   "posWords": 207
+  },
+  {
+   "id": "P11",
+   "slug": "sill-two-lights",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 193
+  },
+  {
+   "id": "P12",
+   "slug": "collar-argue-sky",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A+B",
+   "claimToken": 35,
+   "posWords": 207
+  },
+  {
+   "id": "P13",
+   "slug": "blacklight-fingerprint",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 31,
+   "posWords": 193
+  },
+  {
+   "id": "P14",
+   "slug": "tile-tide-hall",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 218
+  },
+  {
+   "id": "P15",
+   "slug": "bier-melt-milk",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 50,
+   "posWords": 244
+  },
+  {
+   "id": "P16",
+   "slug": "hem-rise-fruit",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 194
+  },
+  {
+   "id": "P17",
+   "slug": "wallpaper-breath-blue",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 43,
+   "posWords": 229
+  },
+  {
+   "id": "P18",
+   "slug": "puddle-rainbow-oil",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 181
+  },
+  {
+   "id": "P19",
+   "slug": "towel-line-steam",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 37,
+   "posWords": 234
+  },
+  {
+   "id": "P20",
+   "slug": "cape-pool-slow",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 36,
+   "posWords": 206
+  },
+  {
+   "id": "P21",
+   "slug": "halftone-slide-halves",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 193
+  },
+  {
+   "id": "P22",
+   "slug": "throne-melt-pulse",
+   "genre": "EXQUISITE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 184
+  },
+  {
+   "id": "P23",
+   "slug": "waistband-count-blue",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": 24,
+   "posWords": 193
+  },
+  {
+   "id": "P24",
+   "slug": "banister-slide-joy",
+   "genre": "NICHE",
+   "rating": "PG-13",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 196
+  },
+  {
+   "id": "P25",
+   "slug": "oni-crotch-taut-test",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 214
+  },
+  {
+   "id": "P26",
+   "slug": "lynx-pedal-edge",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 292
+  },
+  {
+   "id": "P27",
+   "slug": "harlequin-invert-fold",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "A",
+   "claimToken": "—",
+   "posWords": 268
+  },
+  {
+   "id": "P28",
+   "slug": "marionette-oversplit-line",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 292
+  },
+  {
+   "id": "P29",
+   "slug": "serpent-coil-below",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 286
+  },
+  {
+   "id": "P30",
+   "slug": "elf-mirror-floor",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "B",
+   "claimToken": "—",
+   "posWords": 276
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "hair in a hip length straight",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P21"
+   ]
+  },
+  {
+   "gram": "in a hip length straight sheet",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P21"
+   ]
+  },
+  {
+   "gram": "two soft points reading against the",
+   "slotsHere": [
+    "P08"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "glass line build small soft set",
+   "slotsHere": [
+    "P17"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "line build small soft set breasts",
+   "slotsHere": [
+    "P17"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P09"
+   ]
+  },
+  {
+   "gram": "one stray drip at the nape",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P20"
+   ]
+  },
+  {
+   "gram": "the thin cotton's honest print of",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P14"
+   ]
+  },
+  {
+   "gram": "thin cotton's honest print of the",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P14"
+   ]
+  },
+  {
+   "gram": "cotton's honest print of the mound",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P14"
+   ]
+  },
+  {
+   "gram": "the shorts' line drawn taut over",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P27"
+   ]
+  },
+  {
+   "gram": "shorts' line drawn taut over the",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P27"
+   ]
+  },
+  {
+   "gram": "line drawn taut over the mound",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P27"
+   ]
+  },
+  {
+   "gram": "drawn taut over the mound by",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P27"
+   ]
+  },
+  {
+   "gram": "taut over the mound by the",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-32.md",
+   "slotsThere": [
+    "P27"
+   ]
+  },
+  {
+   "gram": "light active frame small firm bust",
+   "slotsHere": [
+    "P26"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P31"
+   ]
+  },
+  {
+   "gram": "skin dancer line build small firm",
+   "slotsHere": [
+    "P28"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P06"
+   ]
+  },
+  {
+   "gram": "two soft crests reading through the",
+   "slotsHere": [
+    "P29"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P25"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": null,
+ "storyCards": true,
+ "fact_label": {
+  "label_R+": 20,
+  "fact_R+": 20
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 0
+ },
+ "y_cards": {
+  "used": [
+   "Y12",
+   "Y89",
+   "Y6",
+   "Y32",
+   "Y26",
+   "Y246",
+   "Y28",
+   "Y33",
+   "Y261",
+   "Y16",
+   "Y244",
+   "Y14",
+   "Y18",
+   "Y310",
+   "Y35",
+   "Y312",
+   "Y82",
+   "Y248",
+   "Y22",
+   "Y31",
+   "Y264",
+   "Y74",
+   "Y269",
+   "Y129",
+   "Y542",
+   "Y555",
+   "Y556",
+   "Y557",
+   "Y558",
+   "Y559"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "y_stack": {
+  "checked": 15,
+  "stacked": 15,
+  "choked": 0,
+  "canon_without_codes": 5,
+  "geometry_only": 10
+ },
+ "combo_pose": {
+  "composite_used": 0,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 30,
+  "weaved": 30,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
+ },
+ "skin_cast": {
+  "caught": 0,
+  "retro": false
+ },
+ "race_cast": {
+  "kin": 3,
+  "human": 18,
+  "window": [
+   0,
+   10
+  ],
+  "policy": "v2.0"
+ },
+ "volt_core": {
+  "mains": 21,
+  "volt": 13,
+  "niche": 8,
+  "max_run": 2,
+  "retro": false
+ },
+ "exquisite_main": {
+  "mains": 21,
+  "exquisite": 2,
+  "retro": false
+ },
+ "exp_hypothesis": {
+  "cells": 6,
+  "with_h": 6,
+  "without": [],
+  "hyps_used": [
+   "H-01",
+   "H-10",
+   "H-11",
+   "H-15"
+  ],
+  "retro": false
+ },
+ "rating_truth": {
+  "checked": 30,
+  "implied_rplus": 20,
+  "false_rplus": 0,
+  "soft_drift": 0,
+  "retro": false
+ }
+}

@@ -166,7 +166,7 @@ class TestT530Registries(unittest.TestCase):
         # v1.16.0 — волна 15 (T5-31); v1.17.0 — волна 16 (T5-32, заказ автора
         # «9 новых раскрасок и экспериментальных палитр»): пин синхронен живому
         # реестру (правило голых счётчиков: рассинхрон = баг)
-        self.assertEqual(pal["version"], "1.20.0")  # 1.20.0 — волна 17 (T5-33 LAB, P297–P305) + canon волн T5-30/31 (№16)
+        self.assertEqual(pal["version"], "1.21.0")  # 1.21.0 — волна 18 «кислота» T5-34 (P306–P335, trial); 1.20.0 — волна 17 + canon №16
         ids = {p["id"] for p in pal["palettes"]}
         wave14 = [f"P2{i}_" for i in range(70, 79)]  # P270–P278
         for pref in wave14:
@@ -199,7 +199,7 @@ class TestT530Registries(unittest.TestCase):
 
     def test_oc_candidates_13(self):
         oc = load("specs/oc-candidates.json")
-        self.assertEqual(oc["version"], "1.5.0")  # 1.5.0 — T5-33 кандидаты (passed 4 / pending 8)
+        self.assertEqual(oc["version"], "1.6.0")  # 1.6.0 — шестёрка грань-X T5-34 (1.5.0 — T5-33: passed 4 / pending 8)
         t30 = [c for c in oc["candidates"] if c["batch"] == "T5-30"]
         self.assertEqual(len(t30), 9)
         for c in t30:
@@ -208,7 +208,7 @@ class TestT530Registries(unittest.TestCase):
 
     def test_furnace_f026(self):
         fl = load("specs/furnace-ledger.json")
-        self.assertEqual(fl["version"], "1.8.0")
+        self.assertEqual(fl["version"], "1.9.0")  # 1.9.0 — +F-028 грань-X (T5-34)
         self.assertTrue(any(e.get("id") == "F-026" for e in fl["entries"]))
 
     def test_delivery_index_t530(self):

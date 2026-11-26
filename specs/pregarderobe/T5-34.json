@@ -1,0 +1,650 @@
+{
+ "batch": "T5-34",
+ "born": "2026-11-26T19:51:35.950890+00:00",
+ "seed": 3427,
+ "law": "specs/dresser.json v1.4.0 → pregarerobe: свежие комбо под жребий, набор в кулдауне 3 сданные партии (зеркально окну ротации), затем свободен — вечного бана нет (вердикт автора 2026-11-23, Коул R8)",
+ "combos": [
+  {
+   "y_card": "Y12",
+   "class": "PROCESS",
+   "corridor": "A",
+   "scene": "specialty",
+   "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "codes": [
+    {
+     "code": "CL-LG-04",
+     "name": "Open Silk Kimono",
+     "pos": "silk kimono worn open, sleeves wings of light, obi loose",
+     "shelf": "LG",
+     "hook": "рукава-крылья; оби не держит ничего"
+    },
+    {
+     "code": "CL-FX-08",
+     "name": "Bunny Suit",
+     "pos": "bunny girl outfit: strapless leotard, collar with a bow, wrist cuffs, sheer tights",
+     "shelf": "FX",
+     "hook": "классика; кину с ушами — ободок не носить (уши уже есть)"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "53e74bfc118b169e"
+  },
+  {
+   "y_card": "Y89",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "specialty",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-UR-10",
+     "name": "Leather Harness",
+     "pos": "leather harness of straps, geometry of shadows, skin between as negative space",
+     "shelf": "UR",
+     "hook": "геометрия ремней — кожа как негативное пространство"
+    },
+    {
+     "code": "CL-LG-04",
+     "name": "Open Silk Kimono",
+     "pos": "silk kimono worn open, sleeves wings of light, obi loose",
+     "shelf": "LG",
+     "hook": "рукава-крылья; оби не держит ничего"
+    }
+   ],
+   "accessory": "CL-AC-01",
+   "combo_key": "362496a779b7110b"
+  },
+  {
+   "y_card": "Y6",
+   "class": "PROCESS",
+   "corridor": "B",
+   "scene": "street",
+   "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "codes": [
+    {
+     "code": "CL-SK-05",
+     "name": "Plaid Pleated Skirt",
+     "pos": "pleated plaid skirt, tartan shading the pleats",
+     "shelf": "SK",
+     "hook": "клетка рисует складки сама"
+    },
+    {
+     "code": "CL-BT-01",
+     "name": "Cutoff Denim Shorts",
+     "pos": "cutoff denim shorts, frayed hems, pockets as ballast",
+     "shelf": "BT",
+     "hook": "бахрома-кромка ловит свет бахромой"
+    }
+   ],
+   "accessory": "CL-AC-07",
+   "combo_key": "e0793a692a345de7"
+  },
+  {
+   "y_card": "Y32",
+   "class": "PROCESS",
+   "corridor": "B",
+   "scene": "lounge",
+   "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "codes": [
+    {
+     "code": "CL-LG-04",
+     "name": "Open Silk Kimono",
+     "pos": "silk kimono worn open, sleeves wings of light, obi loose",
+     "shelf": "LG",
+     "hook": "рукава-крылья; оби не держит ничего"
+    },
+    {
+     "code": "CL-OU-06",
+     "name": "Long Duster Cardigan",
+     "pos": "long duster cardigan to the calves, open front pouring verticals of knit",
+     "shelf": "OU",
+     "hook": "вертикали вязи — колонны по бокам"
+    },
+    {
+     "code": "CL-SK-08",
+     "name": "Sarong Wrap",
+     "pos": "sarong wrapped low on the hips, diagonal folds, accidental geometry",
+     "shelf": "SK",
+     "hook": "случайная геометрия обёртки — пляж/онсэн"
+    }
+   ],
+   "accessory": "CL-AC-05",
+   "combo_key": "d1460527425d465b"
+  },
+  {
+   "y_card": "Y26",
+   "class": "PROCESS",
+   "corridor": "A",
+   "scene": "lounge",
+   "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "codes": [
+    {
+     "code": "CL-DR-01",
+     "name": "Slip Dress Silk",
+     "pos": "silk slip dress, thin straps, bias-cut, hem skating on the hip",
+     "shelf": "DR",
+     "hook": "ткань отражает и просвечивает на просвет — носитель wet-sheer"
+    },
+    {
+     "code": "CL-TS-07",
+     "name": "Off-Shoulder Top",
+     "pos": "off-shoulder top, neckline a soft horizon across the upper arms",
+     "shelf": "TS",
+     "hook": "горизонт выреза — плечи/ключицы играют"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "1770fd93f8cc8c4f"
+  },
+  {
+   "y_card": "Y246",
+   "class": "—",
+   "corridor": "B",
+   "scene": "lounge",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y28",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "street",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-TS-01",
+     "name": "Tie-Collar Blouse",
+     "pos": "cotton blouse with a ribbon tie at the collar, collar points catching light",
+     "shelf": "TS",
+     "hook": "развязанный = свет на горле; завязанный = дисциплина"
+    },
+    {
+     "code": "CL-DR-11",
+     "name": "Linen Pinafore Dress",
+     "pos": "linen pinafore dress, bib flat-lit, bare shoulders above",
+     "shelf": "DR",
+     "hook": "над голое или поверх блузы — та же вещь, другой тир"
+    }
+   ],
+   "accessory": "CL-AC-10",
+   "combo_key": "ed94cd155b9a4ba1"
+  },
+  {
+   "y_card": "Y33",
+   "class": "CLOTHED-TIGHT",
+   "corridor": "B",
+   "scene": "street",
+   "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "codes": [
+    {
+     "code": "CL-TS-04",
+     "name": "Ribbed Tank Top",
+     "pos": "thin ribbed tank top, straps honest and narrow",
+     "shelf": "TS",
+     "hook": "узкие бретели — линия плеч голая"
+    },
+    {
+     "code": "CL-DR-14",
+     "name": "Cheongsam-Inspired Mini",
+     "pos": "miniature cheongsam-cut dress, frog buttons, hem two spans below the hips",
+     "shelf": "DR",
+     "hook": "фрог-пуговицы — лесенка света по животу"
+    },
+    {
+     "code": "CL-BT-07",
+     "name": "Tailored Slacks",
+     "pos": "tailored wool slacks, flat front, crease a vertical of light",
+     "shelf": "BT",
+     "hook": "стрелка = вертикаль света"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "95114a5096368adb"
+  },
+  {
+   "y_card": "Y261",
+   "class": "—",
+   "corridor": "B",
+   "scene": "lounge",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y16",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "lounge",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-DR-13",
+     "name": "Cardigan-Only Dress",
+     "pos": "oversized cardigan worn as a dress, buttons fighting the gap at the thighs",
+     "shelf": "DR",
+     "hook": "канал-aware: с nothing underneath — заявка на нижней границе"
+    },
+    {
+     "code": "CL-AC-10",
+     "name": "Thigh Garter Band",
+     "pos": "single garter band around one thigh, elastic biting soft",
+     "shelf": "AC",
+     "hook": "одна лента на бедре — точечная заявка (не пояс!)"
+    }
+   ],
+   "accessory": "CL-AC-02",
+   "combo_key": "a36438b50d54d8a9"
+  },
+  {
+   "y_card": "Y244",
+   "class": "—",
+   "corridor": "B",
+   "scene": "lounge",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y14",
+   "class": "COVER",
+   "corridor": "A+B",
+   "scene": "lounge",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-AC-01",
+     "name": "Velvet Choker",
+     "pos": "thin velvet choker, neck accent, collarbone shadow",
+     "shelf": "AC",
+     "hook": "поясок на шее — горизонт кадра"
+    },
+    {
+     "code": "CL-DR-06",
+     "name": "Strapless Sun Dress",
+     "pos": "strapless bandeau-neck sun dress, bare shoulders and collarbones in the light",
+     "shelf": "DR",
+     "hook": "открытые плечи = зона заявки; держится честно или падает по каналу"
+    },
+    {
+     "code": "CL-LG-01",
+     "name": "Oversized Sleep Shirt",
+     "pos": "oversized sleep shirt, hem at the thighs, collar slipping off one shoulder",
+     "shelf": "LG",
+     "hook": "одна футболка = весь аутфит"
+    }
+   ],
+   "accessory": "CL-AC-04",
+   "combo_key": "692f75933c18c021"
+  },
+  {
+   "y_card": "Y18",
+   "class": "PROCESS",
+   "corridor": "A",
+   "scene": "specialty",
+   "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "codes": [
+    {
+     "code": "CL-LG-04",
+     "name": "Open Silk Kimono",
+     "pos": "silk kimono worn open, sleeves wings of light, obi loose",
+     "shelf": "LG",
+     "hook": "рукава-крылья; оби не держит ничего"
+    },
+    {
+     "code": "CL-SK-07",
+     "name": "Layered Tulle Skirt",
+     "pos": "layered tulle skirt, each tier a translucent edge",
+     "shelf": "SK",
+     "hook": "мутные слои — ноги в глубине"
+    },
+    {
+     "code": "CL-UR-09",
+     "name": "Latex Bodysuit",
+     "pos": "latex bodysuit, mirror finish, every fold a highlight",
+     "shelf": "UR",
+     "hook": "максимум блика на квадратный сантиметр"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "7c944df3512fea5a"
+  },
+  {
+   "y_card": "Y310",
+   "class": "—",
+   "corridor": "B",
+   "scene": "lounge",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y35",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "formal",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-AC-04",
+     "name": "Lace Elbow Gloves",
+     "pos": "lace elbow gloves, skin patterned through the lace",
+     "shelf": "AC",
+     "hook": "кружево-рукав; кожа сквозь узор"
+    },
+    {
+     "code": "CL-DR-09",
+     "name": "Tulle Petticoat Dress",
+     "pos": "layered tulle petticoat dress, tiers hazing the light like waterfalls",
+     "shelf": "DR",
+     "hook": "слои мутят свет — тело в глубине слоёв"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "bee498f808963e79"
+  },
+  {
+   "y_card": "Y312",
+   "class": "—",
+   "corridor": "B",
+   "scene": "street",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y82",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "lounge",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-DR-06",
+     "name": "Strapless Sun Dress",
+     "pos": "strapless bandeau-neck sun dress, bare shoulders and collarbones in the light",
+     "shelf": "DR",
+     "hook": "открытые плечи = зона заявки; держится честно или падает по каналу"
+    },
+    {
+     "code": "CL-LG-05",
+     "name": "Bath Towel Wrap",
+     "pos": "bath towel wrapped and held by its own last tuck, one hand keeping the fold",
+     "shelf": "LG",
+     "hook": "полотенце держится на честном слове (towel_last_grip)"
+    }
+   ],
+   "accessory": "CL-AC-10",
+   "combo_key": "1fe9224f6f83b119"
+  },
+  {
+   "y_card": "Y248",
+   "class": "—",
+   "corridor": "B",
+   "scene": "street",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y22",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "lounge",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-LG-01",
+     "name": "Oversized Sleep Shirt",
+     "pos": "oversized sleep shirt, hem at the thighs, collar slipping off one shoulder",
+     "shelf": "LG",
+     "hook": "одна футболка = весь аутфит"
+    },
+    {
+     "code": "CL-DR-06",
+     "name": "Strapless Sun Dress",
+     "pos": "strapless bandeau-neck sun dress, bare shoulders and collarbones in the light",
+     "shelf": "DR",
+     "hook": "открытые плечи = зона заявки; держится честно или падает по каналу"
+    }
+   ],
+   "accessory": "CL-AC-09",
+   "combo_key": "b9c72a7d164776ed"
+  },
+  {
+   "y_card": "Y31",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "formal",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-DR-12",
+     "name": "Backless Sequin Party Dress",
+     "pos": "backless sequin party dress, open back field of skin, sequins a coin-shower of light",
+     "shelf": "DR",
+     "hook": "спина — главный носитель; блёстки = крапанье света"
+    },
+    {
+     "code": "CL-TS-01",
+     "name": "Tie-Collar Blouse",
+     "pos": "cotton blouse with a ribbon tie at the collar, collar points catching light",
+     "shelf": "TS",
+     "hook": "развязанный = свет на горле; завязанный = дисциплина"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "41cf4bdaf055a005"
+  },
+  {
+   "y_card": "Y264",
+   "class": "—",
+   "corridor": "B",
+   "scene": "street",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y74",
+   "class": "—",
+   "corridor": "B",
+   "scene": "specialty",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y269",
+   "class": "—",
+   "corridor": "B",
+   "scene": "intimates",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y129",
+   "class": "—",
+   "corridor": "B",
+   "scene": "lounge",
+   "geometry_only": true,
+   "note": "класс «—»: геометрия позы несёт кадр, стак одежды не нужен (yStack skip)"
+  },
+  {
+   "y_card": "Y542",
+   "class": "CLOTHED-TIGHT",
+   "corridor": "B",
+   "scene": "street",
+   "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "codes": [
+    {
+     "code": "CL-TS-04",
+     "name": "Ribbed Tank Top",
+     "pos": "thin ribbed tank top, straps honest and narrow",
+     "shelf": "TS",
+     "hook": "узкие бретели — линия плеч голая"
+    },
+    {
+     "code": "CL-DR-07",
+     "name": "Jersey Wrap Dress",
+     "pos": "jersey wrap dress with a deep V, wrap-knot riding loose at the ribs",
+     "shelf": "DR",
+     "hook": "завязка-узел = единственное, что держит интригу"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "f30abd999cb2f212"
+  },
+  {
+   "y_card": "Y555",
+   "class": "PROCESS",
+   "corridor": "B",
+   "scene": "street",
+   "channel": "bumps / pantyline — по ЗОНЕ процесса (грудь → bumps, бёдра/низ → pantyline)",
+   "gar_f": "состояние процесса в кадре обязательно: mid-lift / half-off / pooled / unzipped / knot ridden up / strap fallen — процесс описан физикой В27 (вес/тяга/зацеп), не словом «undressing»",
+   "codes": [
+    {
+     "code": "CL-SW-03",
+     "name": "Wool Turtleneck",
+     "pos": "dense wool turtleneck, matte light-eater, throat framed",
+     "shelf": "SW",
+     "hook": "поглощает свет — контраст-носитель"
+    },
+    {
+     "code": "CL-OU-03",
+     "name": "Hooded Wool Cloak",
+     "pos": "hooded wool cloak, face in shadow, silhouette a standing mass",
+     "shelf": "OU",
+     "hook": "капюшон-пещера; силуэт как масса"
+    },
+    {
+     "code": "CL-SK-02",
+     "name": "Satin Skirt Flowing",
+     "pos": "flowing satin skirt, waves of light running the folds",
+     "shelf": "SK",
+     "hook": "свет катается по ткани волнами"
+    }
+   ],
+   "accessory": "CL-AC-04",
+   "combo_key": "3d8eb36f010f03af"
+  },
+  {
+   "y_card": "Y556",
+   "class": "COVER",
+   "corridor": "A",
+   "scene": "specialty",
+   "channel": "on_skin (tape / handbra / palm-cover; dresser v1.1.0)",
+   "gar_f": "ткань НЕ мешает контакту прикрытия: тонкая (cotton/ribbed/silk), сдвинутая (off-shoulder, сползшая бретель), открытая зона (backless, strapless) либо сама объект-прикрытие (полотенце, лацканы, полы). Контакт-глагол из карты обязателен (palm flat / held / pinned)",
+   "codes": [
+    {
+     "code": "CL-DR-09",
+     "name": "Tulle Petticoat Dress",
+     "pos": "layered tulle petticoat dress, tiers hazing the light like waterfalls",
+     "shelf": "DR",
+     "hook": "слои мутят свет — тело в глубине слоёв"
+    },
+    {
+     "code": "CL-UR-10",
+     "name": "Leather Harness",
+     "pos": "leather harness of straps, geometry of shadows, skin between as negative space",
+     "shelf": "UR",
+     "hook": "геометрия ремней — кожа как негативное пространство"
+    },
+    {
+     "code": "CL-TS-14",
+     "name": "Bandage Wrap Top",
+     "pos": "elastic bandage wrapped as a top, spiral of shadows, body reading through",
+     "shelf": "TS",
+     "hook": "спираль обёртки — тело читается между витками"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "01f4070f095e25eb"
+  },
+  {
+   "y_card": "Y557",
+   "class": "CLOTHED-TIGHT",
+   "corridor": "B",
+   "scene": "specialty",
+   "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "codes": [
+    {
+     "code": "CL-UR-08",
+     "name": "Leather Corset",
+     "pos": "leather corset, specular shine, sharp shadow at every seam",
+     "shelf": "UR",
+     "hook": "жёсткий блеск — свет режется по швам"
+    },
+    {
+     "code": "CL-FX-08",
+     "name": "Bunny Suit",
+     "pos": "bunny girl outfit: strapless leotard, collar with a bow, wrist cuffs, sheer tights",
+     "shelf": "FX",
+     "hook": "классика; кину с ушами — ободок не носить (уши уже есть)"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "6d8a0caaf2f7e2e7"
+  },
+  {
+   "y_card": "Y558",
+   "class": "CLOTHED-TIGHT",
+   "corridor": "B",
+   "scene": "specialty",
+   "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "codes": [
+    {
+     "code": "CL-FX-08",
+     "name": "Bunny Suit",
+     "pos": "bunny girl outfit: strapless leotard, collar with a bow, wrist cuffs, sheer tights",
+     "shelf": "FX",
+     "hook": "классика; кину с ушами — ободок не носить (уши уже есть)"
+    },
+    {
+     "code": "CL-TS-13",
+     "name": "Wet-Look Vinyl Top",
+     "pos": "wet-look vinyl top, mirror shine on every curve",
+     "shelf": "TS",
+     "hook": "зеркальные блики — контровой живёт на ткани"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "bb9829197399b112"
+  },
+  {
+   "y_card": "Y559",
+   "class": "CLOTHED-TIGHT",
+   "corridor": "B",
+   "scene": "lounge",
+   "channel": "bumps (грудь) / pantyline (низ) — №28: канал бугорков без цвета",
+   "gar_f": "DRY тёмная (или честно-матовая) вещь + covered/clothed nipples первыми в блоке груди + fabric clinging + sweat glistening; ничего под низом (позитивно в тег-ране); cameltoe/pantyline для низа — та же дисциплина. Свет НЕ на зоне (урок P04: призма-свет осветлил чёрное → белый → X)",
+   "codes": [
+    {
+     "code": "CL-DR-07",
+     "name": "Jersey Wrap Dress",
+     "pos": "jersey wrap dress with a deep V, wrap-knot riding loose at the ribs",
+     "shelf": "DR",
+     "hook": "завязка-узел = единственное, что держит интригу"
+    },
+    {
+     "code": "CL-TS-04",
+     "name": "Ribbed Tank Top",
+     "pos": "thin ribbed tank top, straps honest and narrow",
+     "shelf": "TS",
+     "hook": "узкие бретели — линия плеч голая"
+    }
+   ],
+   "accessory": null,
+   "combo_key": "f30abd999cb2f212"
+  }
+ ]
+}

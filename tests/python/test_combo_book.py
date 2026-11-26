@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Тесты КОМБО-КНИГИ ПО РЕЙТИНГУ (dresser.json 1.8.0 y_stack.combo_book)
+"""Тесты КОМБО-КНИГИ ПО РЕЙТИНГУ (dresser.json 1.9.0 y_stack.combo_book)
 + ЗАКОНА 3 «покрытие-в-позе» (rating-techniques.json 1.6.0).
 
 Заказ автора 2026-11-27: «чекни датасет эччи оракла и забери всё... разберёшь комбо
@@ -9,7 +9,8 @@
 
 Пины:
 1. rating-techniques.json 1.6.0 — ЗАКОН 3 (законы автора 1-2 не тронуты);
-2. dresser.json 1.8.0 — y_stack.combo_book (третий стак после matrix и carrier_matrix);
+2. dresser.json 1.9.0 — y_stack.combo_book (третий стак после matrix и carrier_matrix;
+   1.9.0 — добор старой 512-волны, диета 33→40 ровно);
 3. порядок стака y_stack.order получил шаг 0 — комбо-книга до матрицы;
 4. слаженность: Y-ссылки в camera.json, записи-источники в датасете оракула,
    полки в closet.json ∩ carrier_matrix, теги в словаре, диета ≤40 позиций.
@@ -35,7 +36,7 @@ ANTI = GROUPS["ANTI"]["patterns"]
 
 class TestPins(unittest.TestCase):
     def test_versions(self):
-        self.assertEqual(DR["version"], "1.8.0")
+        self.assertEqual(DR["version"], "1.9.0")
         self.assertEqual(RT["version"], "1.6.0")
         self.assertIn("combo_book", DR["y_stack"])
         self.assertIn("combo_book", DR["y_stack"]["order"][:200])  # шаг 0 стака
@@ -72,9 +73,9 @@ class TestBookStructure(unittest.TestCase):
         self.assertEqual(set(GROUPS.keys()), {"R_PLUS", "R", "PG13", "ANTI"})
         total = len(ALL_COMBOS) + len(ANTI)
         self.assertLessEqual(total, 40, "снежный ком: книга распухла")
-        self.assertEqual(len(GROUPS["R_PLUS"]["combos"]), 17)
-        self.assertEqual(len(GROUPS["R"]["combos"]), 6)
-        self.assertEqual(len(GROUPS["PG13"]["combos"]), 3)
+        self.assertEqual(len(GROUPS["R_PLUS"]["combos"]), 21)  # 17 + добор старой 512-волны ×4
+        self.assertEqual(len(GROUPS["R"]["combos"]), 8)      # 6 + ×2
+        self.assertEqual(len(GROUPS["PG13"]["combos"]), 4)  # 3 + ×1
         self.assertEqual(len(ANTI), 7)
 
     def test_combo_fields_complete(self):
@@ -189,7 +190,7 @@ class TestCoherence(unittest.TestCase):
         self.assertEqual(len(DR["y_stack"]["carrier_matrix"]), 16)  # born+law+14 классов
         self.assertIn("yuri_quota", DR["y_stack"])              # В49 цела
         self.assertIn("carrier_first", DR["y_stack"])           # В45 цела
-        self.assertEqual(len(CAM["y_cards"]["cards"]), 554)     # camera.json не тронут
+        self.assertEqual(len(CAM["y_cards"]["cards"]), 559)     # camera.json: 554 + волна «грань-X» Y555–Y559
 
     def test_anti_patterns_complete(self):
         for p in ANTI:

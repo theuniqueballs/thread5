@@ -305,7 +305,7 @@ class TestPregarmentJ(unittest.TestCase):
 
     def test_dresser_law_section(self):
         d = load("dresser.json")
-        self.assertEqual(d["version"], "1.8.0")  # 1.8.0 — combo_book (T5-34 вторая волна); carrier_matrix носитель×одежда с 1.7.0
+        self.assertEqual(d["version"], "1.9.0")  # 1.9.0 — комбо-книга добрала старые 512 Y (диета 40); carrier_matrix носитель×одежда с 1.7.0
         self.assertIn("pregarderobe", d)
         self.assertIn("КУЛДАУНЕ", d["pregarderobe"]["law"])
         self.assertIn("вечного бана нет", d["pregarderobe"]["law"])
@@ -318,7 +318,7 @@ class TestOcCandidatesD(unittest.TestCase):
         d = load("oc-candidates.json")
         # v1.0.0 born-empty (ЦИКЛ 4); v1.1.0 — первый боевой лог: 9 кандидатов
         # EXP-партии T5-29 (заказ автора «9 кандидатов в ОС»), статус trial
-        self.assertIn(d["version"], ("1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0"))  # 1.5.0 — двенадцатка T5-33 (EXP ×9 + киновые мейны ×3)
+        self.assertIn(d["version"], ("1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0"))  # 1.6.0 — шестёрка грань-X T5-34 (5 любимых + арлекин-конторшн)
         self.assertIn("bundle", d)
         self.assertIn("candidates", d)
         if d["version"] == "1.0.0":

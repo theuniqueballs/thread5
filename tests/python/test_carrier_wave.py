@@ -4,11 +4,11 @@
 сопоставить с одеждой и на нахуй!»).
 
 Что проверяем:
-1. camera.json 1.21.0: волна Y539–Y554 (16 карт из CARRIER_LIBRARY,
+1. camera.json 1.22.0: разбор старых 512 Y (combo-блоки ×512) + волна Y539–Y554 (16 карт из CARRIER_LIBRARY,
    specs/carriers.json 1.0.0 — 462 носителя, синк эччи-оракула); каждая карта
    = 2 вербатим-носителя разных классов × камерный кластер × коридор; все 14
    классов носителей покрыты; волна НЕ юри (В49).
-2. dresser.json 1.8.0: y_stack.combo_book — комбо-книга по рейтингу (33 позиции) + carrier_matrix 1.7.0 «носитель × одежда» — 14
+2. dresser.json 1.9.0: y_stack.combo_book — комбо-книга по рейтингу (40 позиций: 33 + 7 старой 512-волны) + carrier_matrix 1.7.0 «носитель × одежда» — 14
    классов × полки CLOSET; G/H — усилители 0.5x (core4_law), партнёр-core
    обязателен; полки-коды существуют в closet.json; CR-примеры существуют.
 3. Совместимость с гейтами: yStack/yStamp читают новые карты (exposure
@@ -69,12 +69,12 @@ class TestCarrierWave(unittest.TestCase):
 
     # ------------------------------------------------------------ версии
     def test_versions(self):
-        self.assertEqual(self.cam["version"], "1.21.0")
-        self.assertEqual(self.dr["version"], "1.8.0")  # 1.8.0 — combo_book комбо-книга по рейтингу
+        self.assertEqual(self.cam["version"], "1.22.0")
+        self.assertEqual(self.dr["version"], "1.9.0")  # 1.9.0 — комбо-книга добрала старые 512 Y
 
     def test_registry_size_and_law_note(self):
-        self.assertEqual(len(self.cam["y_cards"]["cards"]), 554)
-        self.assertIn("1.21.0", self.cam["y_cards"]["law"])
+        self.assertEqual(len(self.cam["y_cards"]["cards"]), 559)  # 554 + волна «грань-X» Y555–Y559
+        self.assertIn("1.22.0", self.cam["y_cards"]["law"])
         self.assertIn("CARRIER_LIBRARY", self.cam["y_cards"]["law"])
 
     def test_wave_ids_sequential_unique(self):
@@ -213,9 +213,10 @@ class TestCarrierWave(unittest.TestCase):
     # ---------------------------------------------------- совместимость
     def test_gates_load_new_cards(self):
         ycards = gates.load_y_cards()
-        self.assertEqual(len(ycards), 554)
+        self.assertEqual(len(ycards), 559)
         self.assertEqual(ycards["Y539"]["components"]["exposure"]["class"], "CLOTHED-TIGHT")
         self.assertEqual(ycards["Y554"]["components"]["exposure"]["class"], "CLOTHED-TIGHT")
+        self.assertEqual(ycards["Y559"]["components"]["exposure"]["class"], "CLOTHED-TIGHT")
         self.assertEqual(ycards["Y554"]["corridor"], "A+B")
 
     def test_ystack_gate_matrix_still_intact(self):
