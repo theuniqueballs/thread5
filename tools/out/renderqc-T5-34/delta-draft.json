@@ -1,0 +1,362 @@
+{
+ "batch": "T5-34",
+ "source": "tools/out/t534-render-qc",
+ "rows": [
+  {
+   "file": "P01-OS-Miyu-Tendencies.json",
+   "slot": "P01",
+   "pin_reason": "имя файла",
+   "claim": "R+",
+   "canon_locks": [],
+   "theme_echo": true,
+   "note": "RATING VERDICT: R — covered chest but sensual emphasis (tight top, waistband-tugging pose, grin), no expli",
+   "truth": null
+  },
+  {
+   "file": "P02-OS-Rue-Tentacles.json",
+   "slot": "P02",
+   "pin_reason": "имя файла",
+   "claim": "R+",
+   "canon_locks": [
+    "stran"
+   ],
+   "theme_echo": true,
+   "note": "RATING VERDICT: R+ — chest covered by fabric but extreme emphasis: sheer thin transparent fabric with clea",
+   "truth": null
+  },
+  {
+   "file": "P03-OS-Yui-DirtyB.json",
+   "slot": "P03",
+   "pin_reason": "имя файла",
+   "claim": "R+",
+   "canon_locks": [
+    "fangs",
+    "light"
+   ],
+   "theme_echo": true,
+   "note": "RATING VERDICT: PG-13 — chest fully covered by opaque fabric, no erotic emphasis or suggestive framing.",
+   "truth": null
+  },
+  {
+   "file": "P07-MAIN-strapfall-Rplus.json",
+   "slot": "P07",
+   "pin_reason": "имя файла",
+   "claim": "R+",
+   "canon_locks": [],
+   "theme_echo": true,
+   "note": "RATING VERDICT: PG-13 — chest and hips fully covered by loose casual clothing, relaxed mundane pose, no er",
+   "truth": null
+  },
+  {
+   "file": "P16-MAIN-niche.json",
+   "slot": "P16",
+   "pin_reason": "имя файла",
+   "claim": "R",
+   "canon_locks": [],
+   "theme_echo": true,
+   "note": "RATING VERDICT: PG-13 — chest and hips fully covered by solid opaque garments, no fabric transparency or u",
+   "truth": null
+  },
+  {
+   "file": "P22-MAIN-exq.json",
+   "slot": "P22",
+   "pin_reason": "имя файла",
+   "claim": "R",
+   "canon_locks": [],
+   "theme_echo": true,
+   "note": "RATING VERDICT: PG-13 — fully covered chest and hips, dynamic action pose, no erotic emphasis.",
+   "truth": null
+  },
+  {
+   "file": "P25-EXP-crotch-Oni.json",
+   "slot": "P25",
+   "pin_reason": "имя файла",
+   "claim": "R+",
+   "canon_locks": [],
+   "theme_echo": true,
+   "note": "RATING VERDICT: R — leotard-clad, chest covered, emphasis on flexible pose and body lines rather than expo",
+   "truth": null
+  },
+  {
+   "file": "single-1608ead0780b.json",
+   "slot": "P01",
+   "pin_reason": "канон-локи Miyu (4 стемов)",
+   "claim": "R+",
+   "canon_locks": [
+    "bangs",
+    "heter",
+    "light",
+    "strai"
+   ],
+   "theme_echo": false,
+   "note": "GARMENT: Strapless ruffled sundress + open shirt; chest/torso covered, shoulders/arms bare; no tran",
+   "truth": null
+  },
+  {
+   "file": "single-cac333df0491.json",
+   "slot": "P03",
+   "pin_reason": "канон-локи Yui (4 стемов)",
+   "claim": "R+",
+   "canon_locks": [
+    "pupil",
+    "shape"
+   ],
+   "theme_echo": false,
+   "note": "GARMENT: Black long-sleeve dress with ribbon collar, wet/semi-sheer at skirt hem; torso/legs mostly",
+   "truth": null
+  }
+ ],
+ "unknown": [
+  {
+   "file": "P31-unknown-last.json",
+   "slot": "unknown",
+   "pin_reason": "слабый пин (лучший Miramme 14 стемов)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": true,
+   "note": "RATING VERDICT: PG-13 — chest covered, bare shoulders only, no erotic emphasis or fabric tease.",
+   "truth": null
+  },
+  {
+   "file": "id-batch-1.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "id-batch-2.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "id-batch-3.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-016d8c62ae99.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-028937449f35.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-0ce59e585810.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-1cae69b1801f.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-2168cbfc1b3f.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-256afd0a05d9.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-342929a24f03.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-3a796259b0fe.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-417d7b3c6426.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-49347b863c70.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-513673f30eb5.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-66337038d2b4.json",
+   "slot": "unknown",
+   "pin_reason": "слабый пин (лучший Lyn 6 стемов)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "GARMENT: white/ivory strapless gown + lace elbow gloves + necklace; covered: chest, torso, arms (gl",
+   "truth": null
+  },
+  {
+   "file": "single-875e7b800ece.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-93b4a4d0b701.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-ba5c9c542cdd.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-c74406f374c5.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-de75c7878d2b.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-e07bae32b665.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-e52dec75943c.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-e71cde3c4dac.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  },
+  {
+   "file": "single-ed09abacb148.json",
+   "slot": "unknown",
+   "pin_reason": "не VLM-ответ (манифест/битый)",
+   "claim": null,
+   "canon_locks": [],
+   "theme_echo": false,
+   "note": "",
+   "truth": null
+  }
+ ],
+ "law": "truth: null — тир решает автор (LAWS §9); канон-локи и эхо — факты пикселей от VLM, дельта собирается вручную поверх этого драфта (renderqc не вердиктит)"
+}

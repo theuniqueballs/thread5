@@ -90,6 +90,7 @@ MODE пишется в бриф (`batches/T5-NN/00-brief.md`) и в запись
 | Жребий и траст Y | `tools/oracle.py` (pool / draw --trust / trust --rebuild) |
 | Траст-реестр | `specs/y-trust.json` (после нового verdicts/*.json — rebuild!) |
 | Пре-гардероб | `tools/pregarment.py` (кулдаун наборов, LAWS §22) |
+| RENDER-QC (fact-слой) | `tools/renderqc.py` — инбокс-рендеры → VLM-разбор → таблица «слот/заявка/канон-локи/эхо» + драфт rating_truth_delta; прогонять ДО вердикта (В56: гейты мерили бумагу; `slots`/`prompt`/`table`) |
 | Вердикты | `verdicts/*.json` (t5-verdict/1 — канон вкуса) |
 | Тест-горн | `tools/testforge.py` (ролл/чек/coverage — LAB-инструмент) |
 | Статус сдачи | `tools/t5delivery.py` (единственный «кто сдан»; там же страж призраков и hotfix-KPI) |
