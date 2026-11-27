@@ -1,5 +1,5 @@
 {
- "version": "1.21.0",
+ "version": "1.21.1",
  "born": "2026-11-18: волна 10 «способы раскраски» P234–P242 (T5-25)",
  "source": "3.2 PALETTE_LIBRARY v1.0.0 (P21-P105, 6-slot) + ONTOLOGY P01-P20 (legacy 3-slot) + PALETTE_EXTENSION_v5 (P106-P120, 15 новых: окно EXP-бюджета 9 слотов не голодает даже при нулевом перекрытии окна из 3 батчей) + NIGHT-CITY_EXTENSION_v6 (2026-10-26, батч T5-04 EDGERUNNERS) + QUEENSGAMBIT_EXTENSION_v7 (2026-10-28, батч T5-05 Queen's Gambit: P132-P150) | 2026-11-26: волны T5-26/27/29 (27 палитр) приняты автором в canon — «Да забери ты уже эти палитры ебаные»; поле trial снято, правило промоции волн №16 закрыто для этих волн. 2026-11-26 (1.20.0): волны T5-30 (P270–P279) и T5-31 (P279–P288) — canon: вердикты T5-30/T5-31 записаны, порог №16 (2 партии) пройден, прецедент стоящего распоряжения «Да забери ты уже эти палитры ебаные». Волна T5-32 (P288–P296) — trial до порога (после вердикта T5-32 сдана только T5-33).",
  "palettes": [
@@ -8926,7 +8926,6 @@
    "accent2": null,
    "shadow": "rack-room dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -8951,7 +8950,6 @@
    "accent2": null,
    "shadow": "vat-room violet",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -8976,7 +8974,6 @@
    "accent2": null,
    "shadow": "engine-grey",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9001,7 +8998,6 @@
    "accent2": null,
    "shadow": "glass-green",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9026,7 +9022,6 @@
    "accent2": null,
    "shadow": "draft-grey",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9051,7 +9046,6 @@
    "accent2": null,
    "shadow": "landing shade",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9076,7 +9070,6 @@
    "accent2": null,
    "shadow": "hall-depth navy",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9101,7 +9094,6 @@
    "accent2": null,
    "shadow": "floor-checker grey",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9126,7 +9118,6 @@
    "accent2": null,
    "shadow": "under-floor dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9151,7 +9142,6 @@
    "accent2": null,
    "shadow": "porcelain shade",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9176,7 +9166,6 @@
    "accent2": null,
    "shadow": "threshold grey",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9201,7 +9190,6 @@
    "accent2": null,
    "shadow": "sky-bend grey",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9226,7 +9214,6 @@
    "accent2": null,
    "shadow": "print-dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9251,7 +9238,6 @@
    "accent2": null,
    "shadow": "corridor navy",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9276,7 +9262,6 @@
    "accent2": null,
    "shadow": "museum-dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9301,7 +9286,6 @@
    "accent2": null,
    "shadow": "undershirt dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9326,7 +9310,6 @@
    "accent2": null,
    "shadow": "pattern-dusk",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9351,7 +9334,6 @@
    "accent2": null,
    "shadow": "asphalt dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9376,7 +9358,6 @@
    "accent2": null,
    "shadow": "tile-steam grey",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9401,7 +9382,6 @@
    "accent2": null,
    "shadow": "pooled dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9426,7 +9406,6 @@
    "accent2": null,
    "shadow": "two-tone shade",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9451,7 +9430,6 @@
    "accent2": null,
    "shadow": "melting-room dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9476,7 +9454,6 @@
    "accent2": null,
    "shadow": "countdown shade",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9501,7 +9478,6 @@
    "accent2": null,
    "shadow": "stairwell warm",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9526,7 +9502,6 @@
    "accent2": null,
    "shadow": "garage-floor dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9551,7 +9526,6 @@
    "accent2": null,
    "shadow": "street-level dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9576,7 +9550,6 @@
    "accent2": null,
    "shadow": "circus-dusk violet",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9601,7 +9574,6 @@
    "accent2": null,
    "shadow": "fly-floor dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9626,7 +9598,6 @@
    "accent2": null,
    "shadow": "pole-room dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9651,7 +9622,6 @@
    "accent2": null,
    "shadow": "mirror-back dark",
    "forbidden": [
-    "neon",
     "muddy colors",
     "photo color"
    ],
@@ -9947,6 +9917,11 @@
    "version": "1.21.0",
    "date": "2026-11-27",
    "note": "волна 18 «кислота» T5-34 «L$D»: +30 палитр (P306–P335: 21 мейн + 3 ОС-темы + 6 EXP-граней-X), все — без метал-слов (В24) и приборных слов (закон света v2); кислотный свет — поведение (течёт, дышит, спорит о цвете); trial до вердикта T5-34; warm-семейства (P312/P316/P329/P321/P330) — под холодную кожу (гейт skinCast applyFrom 34, В48)"
+  },
+  {
+   "version": "1.21.1",
+   "date": "2026-11-28",
+   "note": "тикет #3 — решение автора 2026-11-27: «неон не виноват — тему хуёво раскрыл писец» (не устный вердикт по волне, а приговор способу лечения): самозапрет 'neon' снят у всех 30 палитр lsd_wave_18 (P306–P335) — палитра не запрещает то, чем она является; 'muddy colors'/'photo color' остаются (защита палитры, не бан темы); enforcement темы — THEME-SPEC/themeEcho (В54), не баны слов; класс «тематическая волна не наследует forbidden из словаря мёртвой темы» закрыт тестом test_palette_selfban"
   }
  ]
 }

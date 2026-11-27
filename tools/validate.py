@@ -144,6 +144,27 @@ def _walk_regexes(node, path="gates.json"):
             _walk_regexes(v, f"{path}[{i}]")
 
 
+def palette_selfbans(palettes):
+    """№17 (тикет #3): палитра не запрещает собственную суть. Возвращает
+    список (id, forbidden, причина) — кислотная семья (acid|lsd|neon в
+    id/family) не может держать 'neon'/'vivid colors'/'saturated colors'
+    в forbidden. Чистая функция — тест класса живёт в
+    tests/python/test_palette_selfban.py (класс не вернётся в волну 19)."""
+    out = []
+    for p in palettes or []:
+        pid = str(p.get("id") or "")
+        fam = str(p.get("family") or "")
+        acid_wave = re.search(r"acid|lsd|neon", (pid + " " + fam), re.I)
+        if not acid_wave:
+            continue  # оплаченный класс — суть волны, не любые цвета
+        for f in p.get("forbidden") or []:
+            fl = str(f).strip().lower()
+            if fl in ("neon", "vivid colors", "saturated colors"):
+                out.append((pid, f, "суть волны"))
+                break
+    return out
+
+
 def main():
     # ── 1. все specs/*.json парсятся ─────────────────────────────────────
     spec_files = sorted(SPEC.glob("*.json"))
@@ -622,27 +643,19 @@ def main():
         else:
             print("волны (№16): trial-протухших 0 — правило промоции соблюдено")
 
-    # ── №17 (вердикт T5-34 §2.2, ПЛАН 5.5 T4.3): палитра не запрещает
-    # собственную суть. Волна-18 «кислота» несла тему именами, а содержимое
-    # гасила собственным forbidden («neon» в кислотной палитре = класс
-    # ошибки: палитра запрещает то, чем она является). Режим «пробую» как
-    # у №16: судьба волны-18 — решение автора (ПЛАН T4.4: пересборка
-    # содержимого ИЛИ отставка), список виден на каждом прогоне; FAIL
-    # включится словом автора после решения — машина не решает судьбу
-    # волн сама (прецедент №16).
+    # ── №17 (вердикт T5-34 §2.2, ПЛАН 5.5 T4.3; тикет #3): палитра не
+    # запрещает собственную суть. Волна-18 «кислота» несла тему именами, а
+    # содержимое гасила собственным forbidden («neon» в кислотной палитре =
+    # класс ошибки: палитра запрещает то, чем она является). Решение автора
+    # 2026-11-27 (тикет #3): «неон не виноват — тему хуёво раскрыл писец» —
+    # 30 самозапретов lsd_wave_18 сняты (palettes 1.21.1), волна жива в
+    # каноне; 'muddy colors'/'photo color' остались (защита палитры).
+    # Проверка живёт дальше: класс «тематическая волна не наследует
+    # forbidden из словаря мёртвой темы» не должен вернуться в волну 19 —
+    # тест tests/python/test_palette_selfban.py тамперит кислотную палиту
+    # с 'neon' и требует ловлю.
     if pal:
-        self_ban = []
-        for p in pal.get("palettes") or []:
-            pid = str(p.get("id") or "")
-            fam = str(p.get("family") or "")
-            acid_wave = bool(re.search(r"acid|lsd|neon", (pid + " " + fam), re.I))
-            if not acid_wave:
-                continue  # оплаченный класс — суть волны, не любые цвета
-            for f in p.get("forbidden") or []:
-                fl = str(f).strip().lower()
-                if fl in ("neon", "vivid colors", "saturated colors"):
-                    self_ban.append((pid, f, "суть волны"))
-                    break
+        self_ban = palette_selfbans(pal.get("palettes"))
         if self_ban:
             fams = sorted({str(p.get("family")) for p in pal.get("palettes") or []
                            if any(b[0] == p.get("id") for b in self_ban)})
