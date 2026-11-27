@@ -1,11 +1,11 @@
 {
  "id": "y-trust",
  "name": "Траст-слой Y: HIGH/MID/LOW по hit/miss из JSON-вердиктов",
- "version": "1.0.0",
+ "version": "1.1.0",
  "born": "2026-11-23",
- "born_from": "Заказ автора 2026-11-23 «Сделай траст-слой Y» + аудит Коула/Grok §7 «ACTIVE POOLS И TRUST — обязательный следующий шаг»: жребий честен, но 400+ window-eligible карт — лотерея, а не выбор; CLOCK ходит по узкому пулу HIGH+MID ≤ 80, LOW (промахи вердиктов) сидят до искупления",
+ "born_from": "Заказ автора 2026-11-23 «Сделай траст-слой Y» + аудит Коула/Grok §7 «ACTIVE POOLS И TRUST — обязательный следующий шаг»: жребий честен, но 400+ window-eligible карт — лотерея, а не выбор; CLOCK ходит по узкому пулу HIGH+MID ≤ 80, LOW (промахи вердиктов) сидят до искупления. v1.1.0 (2026-11-28, ПЛАН 5.5 T2.3/T1.4, волна 2): fact-слой — тир берётся и из rating_truth_delta (truth == declared — fact_hit улика карте, развалившаяся заявка — fact_drift miss); loved остаётся сильнейшей уликой вкуса, fact — улика delivery",
  "policy": {
-  "HIGH": "хит в JSON-вердикте (loved или подтверждённая гипотеза) — первыми в пул CLOCK",
+  "HIGH": "хит в JSON-вердикте (loved, подтверждённая гипотеза или fact-хит: заявленный тир доехал до рендера) — первыми в пул CLOCK",
   "MID": "нет улик (не катана в вердиктных партиях) или только ok_with_issues — годна по умолчанию",
   "LOW": "катана в вердиктной партии мимо loved/ok — miss; сидит до хита или LAB-искупления",
   "ceiling": 80,
@@ -44,10 +44,12 @@
   }
  ],
  "stats": {
-  "high": 47,
-  "mid": 5,
-  "low": 120,
-  "judged_batches": 7
+  "high": 65,
+  "mid": 3,
+  "low": 104,
+  "judged_batches": 7,
+  "fact_hits": 28,
+  "fact_drifts": 61
  },
  "cards": {
   "Y1": {
@@ -55,6 +57,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -73,6 +77,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -86,6 +92,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-27",
@@ -95,7 +103,8 @@
     {
      "batch": "T5-32",
      "slot": "P06",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -104,6 +113,8 @@
    "hits": 0,
    "misses": 0,
    "neutral": 1,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -117,6 +128,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -130,6 +143,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-30",
@@ -139,7 +154,8 @@
     {
      "batch": "T5-34",
      "slot": "P03",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -148,6 +164,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -161,6 +179,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-27",
@@ -170,7 +190,8 @@
     {
      "batch": "T5-33",
      "slot": "P26",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -179,6 +200,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -188,7 +211,8 @@
     {
      "batch": "T5-33",
      "slot": "P28",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -197,6 +221,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -210,6 +236,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -219,7 +247,8 @@
     {
      "batch": "T5-33",
      "slot": "P19",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -228,6 +257,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -246,6 +277,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -259,6 +292,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -268,7 +303,8 @@
     {
      "batch": "T5-34",
      "slot": "P12",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -277,11 +313,14 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P29",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     },
     {
      "batch": "T5-27",
@@ -295,6 +334,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -304,7 +345,8 @@
     {
      "batch": "T5-34",
      "slot": "P10",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -313,6 +355,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -322,15 +366,18 @@
    ]
   },
   "Y18": {
-   "trust": "LOW",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 1,
-   "neutral": 1,
+   "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P13",
-     "kind": "ok_with_issues"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     },
     {
      "batch": "T5-29",
@@ -344,11 +391,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P25",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -357,6 +407,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -370,6 +422,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -383,6 +437,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -392,7 +448,8 @@
     {
      "batch": "T5-34",
      "slot": "P19",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -401,6 +458,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -414,6 +473,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -427,6 +488,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -436,7 +499,8 @@
     {
      "batch": "T5-33",
      "slot": "P30",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -445,6 +509,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -454,7 +520,8 @@
     {
      "batch": "T5-34",
      "slot": "P05",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -463,6 +530,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -476,6 +545,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -485,7 +556,8 @@
     {
      "batch": "T5-34",
      "slot": "P07",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -494,6 +566,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -503,7 +577,8 @@
     {
      "batch": "T5-33",
      "slot": "P06",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -512,6 +587,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -521,7 +598,8 @@
     {
      "batch": "T5-33",
      "slot": "P13",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -530,6 +608,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -539,20 +619,24 @@
     {
      "batch": "T5-34",
      "slot": "P20",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
   "Y32": {
-   "trust": "LOW",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 1,
-   "neutral": 1,
+   "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P04",
-     "kind": "ok_with_issues"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     },
     {
      "batch": "T5-30",
@@ -566,6 +650,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-30",
@@ -575,7 +661,8 @@
     {
      "batch": "T5-34",
      "slot": "P08",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -584,6 +671,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 1,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -593,7 +682,8 @@
     {
      "batch": "T5-33",
      "slot": "P04",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -602,6 +692,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -611,7 +703,8 @@
     {
      "batch": "T5-34",
      "slot": "P15",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -620,11 +713,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P26",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -633,11 +729,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 1,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P14",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     },
     {
      "batch": "T5-29",
@@ -647,15 +746,18 @@
    ]
   },
   "Y45": {
-   "trust": "LOW",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 1,
-   "neutral": 1,
+   "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P07",
-     "kind": "ok_with_issues"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     },
     {
      "batch": "T5-27",
@@ -669,6 +771,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -678,7 +782,8 @@
     {
      "batch": "T5-33",
      "slot": "P10",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -687,11 +792,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P18",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -700,6 +808,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -710,9 +820,11 @@
   },
   "Y60": {
    "trust": "HIGH",
-   "hits": 1,
-   "misses": 1,
+   "hits": 2,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -722,7 +834,8 @@
     {
      "batch": "T5-33",
      "slot": "P24",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -731,6 +844,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -744,6 +859,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -757,6 +874,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -770,11 +889,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P21",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -783,6 +905,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -796,27 +920,33 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P16",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
   "Y74": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 2,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 1,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
-     "batch": "T5-29",
+     "batch": "T5-34",
      "slot": "P22",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     },
     {
-     "batch": "T5-34",
+     "batch": "T5-29",
      "slot": "P22",
      "kind": "miss"
     }
@@ -827,6 +957,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -836,7 +968,8 @@
     {
      "batch": "T5-33",
      "slot": "P31",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -845,6 +978,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-30",
@@ -854,7 +989,8 @@
     {
      "batch": "T5-34",
      "slot": "P17",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -863,6 +999,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -876,6 +1014,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -890,28 +1030,33 @@
    ]
   },
   "Y92": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 1,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
+    {
+     "batch": "T5-33",
+     "slot": "P21",
+     "kind": "fact_hit",
+     "fact": "fact_ok"
+    },
     {
      "batch": "T5-31",
      "slot": "P02",
      "kind": "ok_with_issues"
-    },
-    {
-     "batch": "T5-33",
-     "slot": "P21",
-     "kind": "miss"
     }
    ]
   },
   "Y93": {
    "trust": "HIGH",
-   "hits": 1,
-   "misses": 1,
+   "hits": 2,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -921,7 +1066,8 @@
     {
      "batch": "T5-33",
      "slot": "P05",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -930,6 +1076,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -943,6 +1091,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -952,7 +1102,8 @@
     {
      "batch": "T5-33",
      "slot": "P11",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -961,6 +1112,8 @@
    "hits": 0,
    "misses": 0,
    "neutral": 1,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -974,6 +1127,8 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -983,15 +1138,18 @@
    ]
   },
   "Y105": {
-   "trust": "MID",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 0,
-   "neutral": 1,
+   "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P05",
-     "kind": "ok_with_issues"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -1000,6 +1158,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1013,6 +1173,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1026,11 +1188,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P10",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1039,6 +1204,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1052,6 +1219,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
@@ -1065,11 +1234,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P08",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1078,6 +1250,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1091,6 +1265,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1104,6 +1280,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1113,15 +1291,18 @@
    ]
   },
   "Y129": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P24",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -1130,6 +1311,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1143,6 +1326,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1156,6 +1341,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1169,6 +1356,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 1,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1178,7 +1367,8 @@
     {
      "batch": "T5-33",
      "slot": "P32",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1187,6 +1377,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1200,6 +1392,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1209,7 +1403,8 @@
     {
      "batch": "T5-33",
      "slot": "P33",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1218,6 +1413,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1231,6 +1428,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1244,6 +1443,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1253,15 +1454,18 @@
    ]
   },
   "Y244": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P11",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -1270,6 +1474,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1283,6 +1489,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1292,20 +1500,24 @@
     {
      "batch": "T5-34",
      "slot": "P06",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
   "Y248": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P18",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -1314,6 +1526,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1327,6 +1541,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1340,6 +1556,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1354,38 +1572,44 @@
    ]
   },
   "Y261": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 2,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 1,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
-    {
-     "batch": "T5-27",
-     "slot": "P11",
-     "kind": "miss"
-    },
     {
      "batch": "T5-34",
      "slot": "P09",
+     "kind": "fact_hit",
+     "fact": "fact_ok"
+    },
+    {
+     "batch": "T5-27",
+     "slot": "P11",
      "kind": "miss"
     }
    ]
   },
   "Y263": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 1,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
+    {
+     "batch": "T5-33",
+     "slot": "P16",
+     "kind": "fact_hit",
+     "fact": "fact_ok"
+    },
     {
      "batch": "T5-29",
      "slot": "P15",
      "kind": "ok_with_issues"
-    },
-    {
-     "batch": "T5-33",
-     "slot": "P16",
-     "kind": "miss"
     }
    ]
   },
@@ -1394,11 +1618,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P21",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1407,6 +1634,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1416,20 +1645,24 @@
     {
      "batch": "T5-32",
      "slot": "P22",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
   "Y269": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P23",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -1438,6 +1671,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1451,6 +1686,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1464,6 +1701,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1477,6 +1716,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1490,6 +1731,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1499,7 +1742,8 @@
     {
      "batch": "T5-33",
      "slot": "P18",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1508,6 +1752,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1521,6 +1767,8 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1530,33 +1778,40 @@
     {
      "batch": "T5-33",
      "slot": "P08",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
   "Y310": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P14",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
   "Y312": {
-   "trust": "MID",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 0,
-   "neutral": 1,
+   "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P16",
-     "kind": "ok_with_issues"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -1565,11 +1820,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P30",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1578,6 +1836,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1591,11 +1851,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P03",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1604,11 +1867,14 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P28",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     },
     {
      "batch": "T5-27",
@@ -1622,6 +1888,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1635,6 +1903,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1648,6 +1918,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1661,6 +1933,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1670,7 +1944,8 @@
     {
      "batch": "T5-33",
      "slot": "P23",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1679,28 +1954,34 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P32",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
   "Y351": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 2,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 1,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
-    {
-     "batch": "T5-27",
-     "slot": "P02",
-     "kind": "miss"
-    },
     {
      "batch": "T5-32",
      "slot": "P20",
+     "kind": "fact_hit",
+     "fact": "fact_ok"
+    },
+    {
+     "batch": "T5-27",
+     "slot": "P02",
      "kind": "miss"
     }
    ]
@@ -1710,6 +1991,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1723,6 +2006,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1736,6 +2021,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1749,6 +2036,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1762,6 +2051,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1775,6 +2066,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1788,6 +2081,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1801,6 +2096,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1814,11 +2111,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P33",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1827,6 +2127,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1840,6 +2142,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1853,6 +2157,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1866,6 +2172,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1879,6 +2187,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1892,6 +2202,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1905,6 +2217,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1918,6 +2232,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1927,7 +2243,8 @@
     {
      "batch": "T5-33",
      "slot": "P17",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1936,6 +2253,8 @@
    "hits": 1,
    "misses": 0,
    "neutral": 1,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
@@ -1954,6 +2273,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1967,6 +2288,8 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1980,6 +2303,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1993,6 +2318,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -2006,6 +2333,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2019,6 +2348,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -2032,6 +2363,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -2045,6 +2378,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2054,7 +2389,8 @@
     {
      "batch": "T5-32",
      "slot": "P23",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2063,6 +2399,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -2076,6 +2414,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -2089,6 +2429,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-31",
@@ -2098,7 +2440,8 @@
     {
      "batch": "T5-33",
      "slot": "P03",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2107,6 +2450,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -2120,6 +2465,8 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -2129,15 +2476,18 @@
    ]
   },
   "Y513": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P09",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -2146,11 +2496,14 @@
    "hits": 0,
    "misses": 0,
    "neutral": 1,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P17",
-     "kind": "ok_with_issues"
+     "kind": "ok_with_issues",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2159,6 +2512,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -2168,15 +2523,18 @@
    ]
   },
   "Y516": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P12",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -2185,11 +2543,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P15",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2198,11 +2559,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P14",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2211,11 +2575,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P27",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2224,6 +2591,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -2237,6 +2606,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2250,11 +2621,14 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P24",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     },
     {
      "batch": "T5-27",
@@ -2268,6 +2642,8 @@
    "hits": 0,
    "misses": 2,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2277,7 +2653,8 @@
     {
      "batch": "T5-32",
      "slot": "P31",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2286,6 +2663,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2299,6 +2678,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2308,7 +2689,8 @@
     {
      "batch": "T5-32",
      "slot": "P19",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -2317,6 +2699,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2330,6 +2714,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2343,6 +2729,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2356,6 +2744,8 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -2365,20 +2755,24 @@
     {
      "batch": "T5-32",
      "slot": "P11",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     }
    ]
   },
   "Y531": {
-   "trust": "LOW",
-   "hits": 0,
-   "misses": 1,
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P07",
-     "kind": "miss"
+     "kind": "fact_hit",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -2387,11 +2781,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P01",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2400,16 +2797,20 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P09",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     },
     {
      "batch": "T5-33",
      "slot": "P25",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2418,11 +2819,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P02",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -2431,6 +2835,8 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-33",
@@ -2444,16 +2850,20 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 2,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P27",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     },
     {
      "batch": "T5-33",
      "slot": "P15",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2462,11 +2872,14 @@
    "hits": 0,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P22",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2475,16 +2888,20 @@
    "hits": 1,
    "misses": 1,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 2,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P20",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     },
     {
      "batch": "T5-33",
      "slot": "P29",
-     "kind": "miss"
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2493,11 +2910,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P25",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2506,11 +2926,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P26",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2519,11 +2942,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P27",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2532,11 +2958,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P28",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2545,11 +2974,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P29",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2558,11 +2990,14 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P30",
-     "kind": "loved"
+     "kind": "loved",
+     "fact": "fact_drift"
     }
    ]
   }

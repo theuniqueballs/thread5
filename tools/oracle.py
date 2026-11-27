@@ -510,7 +510,14 @@ def load_verdict_evidence():
       hit    — слот в loved или подтверждённая гипотеза (hypothesis_hits);
       neutral— слот в ok_with_issues (не хит, не провал — улика не копится);
       miss   — катана в вердиктной партии мимо loved/ok (в т.ч. neutral-список).
-    Соответствие слот → карта — канонический парсер печи (gates.parse_batch)."""
+    Соответствие слот → карта — канонический парсер печи (gates.parse_batch).
+
+    v1.1.0 (ПЛАН 5.5 T2.3/1.4, волна 2): fact-слой — тир берётся и из
+    rating_truth_delta, не только из loved: слот, чей ЗАЯВЛЕННЫЙ тир
+    доехал до рендера (truth == declared), — hit-улика карте (kind
+    fact_hit) даже если автор его не залюбил; заявка, развалившаяся на
+    рендере (truth ≠ declared), — miss-улика (kind fact_drift). Loved
+    остаётся сильнейшей уликой вкуса; fact — улика delivery карты."""
     hits: dict[str, list] = {}
     neutrals: dict[str, list] = {}
     misses: dict[str, list] = {}
@@ -533,17 +540,27 @@ def load_verdict_evidence():
         loved = {e.get("slot") for e in (d.get("loved") or []) if e.get("slot")}
         ok = {e.get("slot") for e in (d.get("ok_with_issues") or []) if e.get("slot")}
         hyp = {e.get("slot") for e in (d.get("hypothesis_hits") or []) if e.get("slot")}
+        delta = {r.get("slot"): r.get("truth") for r in (d.get("rating_truth_delta") or [])
+                 if r.get("slot") and r.get("truth")}
         for sid, s in by_sid.items():
-            if sid in loved or sid in hyp:
+            truth = delta.get(sid)
+            fact_ok = truth is not None and truth == s.rating
+            fact_tag = ("fact_ok" if fact_ok else "fact_drift") if truth else None
+            if sid in loved or sid in hyp or fact_ok:
+                kind = ("loved" if sid in loved
+                        else "hypothesis" if sid in hyp else "fact_hit")
                 hits.setdefault(s.y_card, []).append(
-                    {"batch": d["batch"], "slot": sid,
-                     "kind": "loved" if sid in loved else "hypothesis"})
+                    {"batch": d["batch"], "slot": sid, "kind": kind,
+                     **({"fact": fact_tag} if fact_tag else {})})
             elif sid in ok:
                 neutrals.setdefault(s.y_card, []).append(
-                    {"batch": d["batch"], "slot": sid, "kind": "ok_with_issues"})
+                    {"batch": d["batch"], "slot": sid, "kind": "ok_with_issues",
+                     **({"fact": fact_tag} if fact_tag else {})})
             else:
                 misses.setdefault(s.y_card, []).append(
-                    {"batch": d["batch"], "slot": sid, "kind": "miss"})
+                    {"batch": d["batch"], "slot": sid,
+                     "kind": "fact_drift" if truth else "miss",
+                     **({"fact": fact_tag} if fact_tag else {})})
         sources.append({"file": vf.name, "batch": d["batch"]})
     return hits, neutrals, misses, sources
 
@@ -557,23 +574,34 @@ def build_trust() -> dict:
     for cid in sorted(set(hits) | set(neutrals) | set(misses), key=card_num):
         h, m = len(hits.get(cid, [])), len(misses.get(cid, []))
         trust = "HIGH" if h else ("LOW" if m else "MID")
+        ev = hits.get(cid, []) + neutrals.get(cid, []) + misses.get(cid, [])
         cards[cid] = {
             "trust": trust, "hits": h, "misses": m,
             "neutral": len(neutrals.get(cid, [])),
-            "evidence": hits.get(cid, []) + neutrals.get(cid, []) + misses.get(cid, []),
+            # v1.1.0 (T2.3/1.4): fact-слой — доехал ли ЗАЯВЛЕННЫЙ тир до
+            # рендера; тёплые на бумаге и холодные в пикселях видны в цифрах
+            "fact_hits": sum(1 for e in ev if e.get("fact") == "fact_ok"),
+            "fact_drifts": sum(1 for e in ev if e.get("fact") == "fact_drift"),
+            "evidence": ev,
         }
     n = {t: sum(1 for c in cards.values() if c["trust"] == t) for t in ("HIGH", "MID", "LOW")}
+    fact_h = sum(c["fact_hits"] for c in cards.values())
+    fact_d = sum(c["fact_drifts"] for c in cards.values())
     return {
         "id": "y-trust",
         "name": "Траст-слой Y: HIGH/MID/LOW по hit/miss из JSON-вердиктов",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "born": "2026-11-23",
         "born_from": ("Заказ автора 2026-11-23 «Сделай траст-слой Y» + аудит Коула/Grok "
                        "§7 «ACTIVE POOLS И TRUST — обязательный следующий шаг»: жребий честен, "
                        "но 400+ window-eligible карт — лотерея, а не выбор; CLOCK ходит по "
-                       "узкому пулу HIGH+MID ≤ 80, LOW (промахи вердиктов) сидят до искупления"),
+                       "узкому пулу HIGH+MID ≤ 80, LOW (промахи вердиктов) сидят до искупления. "
+                       "v1.1.0 (2026-11-28, ПЛАН 5.5 T2.3/T1.4, волна 2): fact-слой — "
+                       "тир берётся и из rating_truth_delta (truth == declared — fact_hit "
+                       "улика карте, развалившаяся заявка — fact_drift miss); loved остаётся "
+                       "сильнейшей уликой вкуса, fact — улика delivery"),
         "policy": {
-            "HIGH": "хит в JSON-вердикте (loved или подтверждённая гипотеза) — первыми в пул CLOCK",
+            "HIGH": "хит в JSON-вердикте (loved, подтверждённая гипотеза или fact-хит: заявленный тир доехал до рендера) — первыми в пул CLOCK",
             "MID": "нет улик (не катана в вердиктных партиях) или только ok_with_issues — годна по умолчанию",
             "LOW": "катана в вердиктной партии мимо loved/ok — miss; сидит до хита или LAB-искупления",
             "ceiling": TRUST_CEILING,
@@ -582,7 +610,9 @@ def build_trust() -> dict:
             "regenerate": "python3 tools/oracle.py trust --rebuild (после каждого нового verdicts/*.json; валидатор — проверка №15)",
         },
         "sources": sources,
-        "stats": {"high": n["HIGH"], "mid": n["MID"], "low": n["LOW"], "judged_batches": len(sources)},
+        "stats": {"high": n["HIGH"], "mid": n["MID"], "low": n["LOW"],
+                  "judged_batches": len(sources),
+                  "fact_hits": fact_h, "fact_drifts": fact_d},
         "cards": cards,
     }
 

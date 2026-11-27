@@ -43,7 +43,7 @@ class TestTrustRegistry(unittest.TestCase):
 
     def test_registry_shape(self):
         self.assertEqual(self.reg["id"], "y-trust")
-        self.assertEqual(self.reg["version"], "1.0.0")
+        self.assertEqual(self.reg["version"], "1.1.0")  # 1.1.0 — fact-слой (T2.3/1.4): тир из rating_truth_delta
         self.assertIn("ceiling", self.reg["policy"])
         self.assertLessEqual(self.reg["policy"]["ceiling"], 80)
         self.assertIn("regenerate", self.reg["policy"])
@@ -52,7 +52,8 @@ class TestTrustRegistry(unittest.TestCase):
             self.assertIsInstance(c["hits"], int)
             self.assertIsInstance(c["misses"], int)
             for ev in c["evidence"]:
-                self.assertIn(ev["kind"], ("loved", "hypothesis", "ok_with_issues", "miss"))
+                self.assertIn(ev["kind"], ("loved", "hypothesis", "ok_with_issues", "miss",
+                                    "fact_hit", "fact_drift"))
                 self.assertTrue(ev["slot"].startswith("P"), ev)
 
     def test_sources_cover_json_verdicts(self):
