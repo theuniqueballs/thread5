@@ -24,6 +24,8 @@ rating_truth_delta в прилавок вердикта. Автор арбитр
   table  --qc-dir tools/out/t534-render-qc --batch T5-34
                                   таблица table.md + дельта-драфт
                                   delta-draft.json (truth: null — автор)
+  oc-fidelity [--out DIR]         дрифт-таблица канон-локов по девицам
+                                  партия за партией (ПЛАН 5.5 T6.3)
 Выход: 0 = ок · 1 = аргументы · 3 = краш.
 """
 from __future__ import annotations
@@ -250,6 +252,87 @@ def cmd_table(qc_dir, batch, out_dir=None):
     return 0
 
 
+def cmd_oc_fidelity(out_dir=None):
+    """6.3 (ПЛАН 5.5): OC-FIDELITY дрифт-таблица — канон-локи каждой канонной
+    девицы на каждом рендере, партия за партией (источник — delta-draft.json
+    всех RENDER-QC прогонов: tools/out/*/delta-draft.json). Боль (вердикт
+    T5-34: OC-fidelity 1/3 — катка SO-19 потеряна, очки SO-20 в NEG):
+    дрифт по девицам обязан быть виден трендом, а не «лучший/худший батч»;
+    урок T5-17/T5-33 — спорные файлы (unknown) не карантинятся, просто не
+    входят в таблицу."""
+    sys.path.insert(0, str(ROOT / "tools"))
+    import gates
+    srcs = canon_sources()
+    oc_names = gates.load_oc_names()
+    per_oc: dict[str, dict] = {}
+    parties = []
+    for p in sorted(ROOT.glob("tools/out/*/delta-draft.json")):
+        try:
+            d = load_json(p)
+        except Exception:
+            continue
+        batch = d.get("batch")
+        if not batch or (ROOT / "batches" / f"{batch}.md").exists() is False:
+            continue
+        if batch in parties:
+            continue
+        parties.append(batch)
+        try:
+            _, _, slots = gates.parse_batch(str(ROOT / "batches" / f"{batch}.md"))
+        except Exception:
+            continue
+        by_sid = {}
+        for s in slots:
+            name = next((n for n in list(oc_names) + list(srcs)
+                         if n in {t.strip() for t in s.paren.split("·")}), None)
+            if name:
+                by_sid[s.sid] = name
+        for r in d.get("rows") or []:
+            sid = r.get("slot")
+            name = by_sid.get(sid)
+            if not name or name not in srcs:
+                continue
+            ctoks = canon_tokens(srcs.get(name, ""))
+            hits = set(r.get("canon_locks") or [])
+            rec = per_oc.setdefault(name, {
+                "renders": 0, "hit_tokens": 0, "expected_tokens": 0,
+                "missing": {}, "batches": []})
+            rec["renders"] += 1
+            rec["hit_tokens"] += len(hits & ctoks)
+            rec["expected_tokens"] += len(ctoks)
+            for tok in sorted(ctoks - hits):
+                rec["missing"][tok] = rec["missing"].get(tok, 0) + 1
+            if batch not in rec["batches"]:
+                rec["batches"].append(batch)
+
+    out = Path(out_dir) if out_dir else ROOT / "tools" / "out"
+    out.mkdir(parents=True, exist_ok=True)
+    lines = ["# OC-FIDELITY — дрифт канон-локов по девицам (партия за партией)", "",
+             f"Источник: RENDER-QC дельта-драфты ({', '.join(parties) or '—'}). "
+             "Спорные файлы (unknown) не входят — урок T5-17/T5-33.", "",
+             "| Девица | Партий | Рендеров | Локи: доехало/ожидалось | Верность | Топ потерянных локов |",
+             "|---|---|---|---|---|---|"]
+    for name in sorted(per_oc, key=lambda n: -per_oc[n]["renders"]):
+        r = per_oc[name]
+        fid = (f"{r['hit_tokens'] / r['expected_tokens']:.0%}"
+               if r["expected_tokens"] else "—")
+        lost = ", ".join(f"{t}×{n}" for t, n in
+                         sorted(r["missing"].items(), key=lambda kv: -kv[1])[:4]) or "—"
+        lines.append(
+            f"| {name} | {len(r['batches'])} | {r['renders']} | "
+            f"{r['hit_tokens']}/{r['expected_tokens']} | {fid} | {lost} |")
+    if not per_oc:
+        lines.append("| — | — | — | — | — | RENDER-QC дельт ещё нет |")
+    (out / "oc-fidelity.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    total_h = sum(r["hit_tokens"] for r in per_oc.values())
+    total_e = sum(r["expected_tokens"] for r in per_oc.values())
+    print(f"OC-FIDELITY: девиц {len(per_oc)} · партий {len(parties)} · "
+          f"локов {total_h}/{total_e}"
+          + (f" ({total_h / total_e:.0%})" if total_e else "")
+          + f" · {out / 'oc-fidelity.md'}")
+    return 0
+
+
 def main():
     args = sys.argv[1:]
     try:
@@ -263,6 +346,10 @@ def main():
             out = (args[args.index("--out") + 1]
                    if "--out" in args else None)
             return cmd_table(args[i + 1], args[b + 1], out)
+        if args and args[0] == "oc-fidelity":
+            out = (args[args.index("--out") + 1]
+                   if "--out" in args else None)
+            return cmd_oc_fidelity(out)
     except Exception as e:  # краш инструмента — не FAIL батча
         print(f"RENDER-QC КРАШ: {e}", file=sys.stderr)
         return 3
