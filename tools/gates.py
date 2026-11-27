@@ -2066,6 +2066,66 @@ def check_volt_run(slots, warns, fails, batch_no=-1, oc_names=(), retro=False):
     return st
 
 
+def check_theme_echo(batch_path, slots, warns, fails, batch_no=-1,
+                     oc_names=(), retro=False):
+    """v1.25.0 themeEcho — В54 «тема = визуальная система» (вердикт T5-34
+    «худший по раскрытию темы»: тема читалась в 1/31 рендера — лексемы
+    запрещены в POS, волна-18 несла тему именами палитр, а не содержимым;
+    ПЛАН 5.5 T4.2). THEME-SPEC в брифе партии объявляет ≥3 рендеримых
+    аксиомы (поведение света · насыщение/цвет-поведение · мотив-предмет)
+    и машиностроку «THEME-ECHO (словарь эха): …». Гейт считает мейны,
+    чей POS несёт ≥1 стем словаря; доля < mainsShareMin → WARN «тема —
+    гарнир». Нет брифа/строки → WARN «тема не специфицирована» (тема без
+    аксиом нерендрима по конструкции). WARN-старт с T5-35 (закон 8.6);
+    ретро — WARN, история не переписывается."""
+    cfg = GATES.get("themeEcho")
+    zero = {"mode": "silent", "mains": 0, "with_echo": 0, "share": None,
+            "dict_size": 0, "brief": None}
+    if not cfg:
+        return zero
+    if not retro and not (0 <= batch_no >= int(cfg.get("applyFrom", 10 ** 9))):
+        return zero
+    zero["mode"] = "WARN" if not retro else "RETRO-WARN"
+    st = dict(zero)
+    p = Path(batch_path)
+    brief = p.parent / p.stem / "00-brief.md"
+    st["brief"] = str(brief) if brief.exists() else None
+    tokens = []
+    if brief.exists():
+        m = re.search(r"THEME-ECHO[^:\n]*:\s*([^\n]+)",
+                      brief.read_text(encoding="utf-8"))
+        if m:
+            tokens = [t.strip() for t in m.group(1).split(",") if t.strip()]
+    st["dict_size"] = len(tokens)
+    if not tokens:
+        warns.append(
+            ("BATCH", "theme-echo",
+             "тема не специфицирована — нет THEME-ECHO словаря в "
+             f"{str(brief) if brief.exists() else 'брифе'} — В54: "
+             "тема = визуальная система, ≥3 рендеримых аксиомы (поведение "
+             "света · насыщение · мотив-предмет) + машинострока THEME-ECHO "
+             "(словарь эха 6–12 токенов); тема без аксиом нерендрима по "
+             "конструкции (вердикт T5-34: 1/31 рендера)"))
+        return st
+    estems = {w[:5] for t in tokens for w in words(t) if len(w) >= 5}
+    mains = _mains(slots, oc_names)
+    st["mains"] = len(mains)
+    for s in mains:
+        ps = {w[:5] for w in words(s.pos) if len(w) >= 5}
+        if estems & ps:
+            st["with_echo"] += 1
+    if st["mains"]:
+        st["share"] = round(st["with_echo"] / st["mains"], 3)
+    if st["share"] is not None and st["share"] < float(cfg.get("mainsShareMin", 0.6)):
+        warns.append(
+            ("BATCH", "theme-echo",
+             f"тема — гарнир: эхо несут {st['with_echo']} из {st['mains']} "
+             f"мейнов ({st['share']:.0%} < {int(cfg.get('mainsShareMin', 0.6) * 100)}%) — "
+             "В54: аксиомы темы осмечены в ≥60% мейнов предметами и светом, "
+             "не именами; «предмет в углу» = не тема (вердикт T5-34)"))
+    return st
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -2787,6 +2847,7 @@ def main():
     negcanon_stats = check_neg_canon_guard(slots, warns, fails, batch_no, oc_names, retro)  # В55
     negcanon_stats.update(check_special_neg_canon(batch_path, warns, fails, retro))  # В55: SO-файлы — без эры
     voltrun_stats = check_volt_run(slots, warns, fails, batch_no, oc_names, retro)  # В45
+    themeecho_stats = check_theme_echo(batch_path, slots, warns, fails, batch_no, oc_names, retro)  # В54
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -2925,6 +2986,15 @@ def main():
             "groups": voltrun_stats.get("groups", {}),
             "retro": bool(retro),
         },
+        "theme_echo": {  # v1.25.0 В54: тема = визуальная система
+            "mode": themeecho_stats.get("mode", "silent"),
+            "brief": themeecho_stats.get("brief"),
+            "dict_size": themeecho_stats.get("dict_size", 0),
+            "mains": themeecho_stats.get("mains", 0),
+            "with_echo": themeecho_stats.get("with_echo", 0),
+            "share": themeecho_stats.get("share"),
+            "retro": bool(retro),
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -3038,6 +3108,16 @@ def main():
         print(
             f"voltRun [В45]: R+-мейнов {vr['rplus_mains']} · с раном "
             f"{vr['with_run']} · сухих {vr['thin']} (группы: {gs or '—'})"
+        )
+    # v1.25.0: печать В54 только в его эре (или retro)
+    if GATES.get("themeEcho") and (
+        batch_no >= int(GATES["themeEcho"].get("applyFrom", 10 ** 9)) or retro
+    ):
+        te = receipt["theme_echo"]
+        share = f"{te['share']:.0%}" if te.get("share") is not None else "—"
+        print(
+            f"themeEcho [В54]: бриф {te.get('brief') or 'нет'} · словарь "
+            f"{te['dict_size']} · эхо {te['with_echo']}/{te['mains']} ({share})"
         )
     if GATES.get("ratingTruth") and (
         batch_no >= int(GATES["ratingTruth"].get("applyFrom", 10 ** 9)) or retro
