@@ -2008,6 +2008,64 @@ def check_special_neg_canon(path, warns, fails, retro=False):
     return st
 
 
+def _load_rating_techniques():
+    try:
+        return json.loads(
+            (ROOT / "specs/rating-techniques.json").read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def check_volt_run(slots, warns, fails, batch_no=-1, oc_names=(), retro=False):
+    """v1.24.0 voltRun — В45 «машина горячее глаза» (постмортем T5-34
+    §2.1/§2.3, ПЛАН 5.5 T1.2): 15 ложных R+ из 17 — R+-бейдж при плоском
+    рендере. ВТОРОЙ ТЕГ-РАН: R+ мейн несёт в POS volt-run помимо claim —
+    грудь (форма+состояние) · руки (что ДЕЛАЮТ) · бёдра/попа/кожа (словарь
+    specs/rating-techniques.json 1.7.0 volt_run). Норма: ≥groupMin стемов
+    одной группы И ≥minStems суммарно; нет — WARN «машина горячее глаза»
+    (закон 8.6: WARN-старт, FAIL — по вердикту при рецидиве). Ретро — WARN,
+    история не переписывается."""
+    cfg = GATES.get("voltRun")
+    zero = {"mode": "silent", "rplus_mains": 0, "with_run": 0,
+            "thin": 0, "groups": {}}
+    if not cfg:
+        return zero
+    if not retro and not (0 <= batch_no >= int(cfg.get("applyFrom", 10 ** 9))):
+        return zero
+    zero["mode"] = "WARN" if not retro else "RETRO-WARN"
+    rt = _load_rating_techniques()
+    groups = ((rt.get("volt_run") or {}).get("groups")) or {}
+    gstems = {g: {w[:5] for w in ws if len(w) >= 5}
+              for g, ws in groups.items()}
+    min_stems = int(cfg.get("minStems", 3))
+    group_min = int(cfg.get("groupMin", 2))
+    st = dict(zero)
+    st["groups"] = {g: 0 for g in gstems}
+    for s in _mains(slots, oc_names):
+        if s.rating != "R+":
+            continue
+        st["rplus_mains"] += 1
+        pos_stems = {w[:5] for w in words(s.pos) if len(w) >= 5}
+        hits = {g: len(v & pos_stems) for g, v in gstems.items()}
+        total = sum(hits.values())
+        best = max(hits.values()) if hits else 0
+        for g, n in hits.items():
+            if n:
+                st["groups"][g] += 1
+        if total >= min_stems and best >= group_min:
+            st["with_run"] += 1
+        else:
+            st["thin"] += 1
+            warns.append(
+                (s.sid, "volt-run",
+                 f"второй тег-ран отсутствует (стемов {total} суммарно, лучшая "
+                 f"группа {best}; норма ≥{min_stems} и ≥{group_min} в группе) — "
+                 "В45 «машина горячее глаза»: бейдж R+, кадр выходит плоским; "
+                 "добавить volt-run: грудь форма+состояние · руки-что-ДЕЛАЮТ · "
+                 "бёдра/попа/кожа (словарь rating-techniques 1.7.0 volt_run)"))
+    return st
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -2728,6 +2786,7 @@ def main():
     rating_mass_stats = check_rating_mass(slots, warns, fails, batch_no, oc_names, retro)  # В51
     negcanon_stats = check_neg_canon_guard(slots, warns, fails, batch_no, oc_names, retro)  # В55
     negcanon_stats.update(check_special_neg_canon(batch_path, warns, fails, retro))  # В55: SO-файлы — без эры
+    voltrun_stats = check_volt_run(slots, warns, fails, batch_no, oc_names, retro)  # В45
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -2858,6 +2917,14 @@ def main():
             "invariant_hits": negcanon_stats.get("invariant_hits", 0),
             "retro": bool(retro),
         },
+        "volt_run": {  # v1.24.0 В45: второй тег-ран R+-мейна
+            "mode": voltrun_stats.get("mode", "silent"),
+            "rplus_mains": voltrun_stats.get("rplus_mains", 0),
+            "with_run": voltrun_stats.get("with_run", 0),
+            "thin": voltrun_stats.get("thin", 0),
+            "groups": voltrun_stats.get("groups", {}),
+            "retro": bool(retro),
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -2962,6 +3029,16 @@ def main():
                          f"{ncg['invariant_hits']} · канон-локов в NEG "
                          f"{ncg['canon_hits']}")
         print("negCanonGuard [В55]: " + " · ".join(parts))
+    # v1.24.0: печать В45 только в его эре (или retro)
+    if GATES.get("voltRun") and (
+        batch_no >= int(GATES["voltRun"].get("applyFrom", 10 ** 9)) or retro
+    ) and receipt["volt_run"].get("rplus_mains"):
+        vr = receipt["volt_run"]
+        gs = " · ".join(f"{g} {n}" for g, n in (vr.get("groups") or {}).items())
+        print(
+            f"voltRun [В45]: R+-мейнов {vr['rplus_mains']} · с раном "
+            f"{vr['with_run']} · сухих {vr['thin']} (группы: {gs or '—'})"
+        )
     if GATES.get("ratingTruth") and (
         batch_no >= int(GATES["ratingTruth"].get("applyFrom", 10 ** 9)) or retro
     ) and receipt["rating_truth"].get("checked") is not None:

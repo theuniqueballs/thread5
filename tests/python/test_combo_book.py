@@ -41,7 +41,7 @@ ANTI = GROUPS["ANTI"]["patterns"]
 class TestPins(unittest.TestCase):
     def test_versions(self):
         self.assertEqual(DR["version"], "1.9.0")
-        self.assertEqual(RT["version"], "1.6.0")
+        self.assertEqual(RT["version"], "1.7.0")  # 1.7.0 — volt_run (В45)
         self.assertIn("combo_book", DR["y_stack"])
         self.assertIn("combo_book", DR["y_stack"]["order"][:200])  # шаг 0 стака
 

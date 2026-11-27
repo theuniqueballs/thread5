@@ -61,16 +61,17 @@ Batch-Prompt Conveyer Belt
   **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**;
   **oc-candidates.json 1.4.0 — кандидаты в ОС: 27 trial (статусы
   passed/promoted/pending), вердикт только автора (пункт Д)**; `gates.json`
-  1.23.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
+  1.24.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
   pointRead/pairContact = HARD R+; «chest's bare line» отстрелен от R+;
   voltCore В39, raceCast v2.0 В40, exquisiteMain В41, expHypothesis В42,
   ratingTruth В43 — все FAIL-эра с T5-30; skinCast В48; **ratingMass В51 —
   R+-масса мейнов ≥ 14 / PG-13 = 0, FAIL с T5-35, вердикт T5-34; yStamp
   eraGuard В52 — клеймо 1:1 только modern, legacy = материал, вербатим
   legacy под R+ = FAIL с T5-35; **negCanonGuard В55 — именные фишки заказа
-  и канон-локи никогда в NEG, FAIL с T5-35, special/SO — всегда**)
-  + `gate-registry.json` 1.3.0
-  (реестр «гейт → код → тест → квитанция», 35 секций); `raw-plus.json` 2.3.0
+  и канон-локи никогда в NEG, FAIL с T5-35, special/SO — всегда; **voltRun В45 — второй тег-ран R+-слота (грудь/
+  руки-что-ДЕЛАЮТ/бёдра-кожа), WARN с T5-35**)
+  + `gate-registry.json` 1.4.0
+  (реестр «гейт → код → тест → квитанция», 36 секций); `raw-plus.json` 2.3.0
   (PROSE PLUS + закон ТЕГ-ПОРЯДКА, LAWS §20); `delivery-stats.json` 0.16.0
   (101 канал, волна 16); **`delivery-index.json` 1.1.0 — статус сдачи
   draft/ready/delivered/superseded + поле mode (CLOCK-дисциплина Коула §4),
@@ -79,7 +80,7 @@ Batch-Prompt Conveyer Belt
   (HIGH/MID/LOW из JSON-вердиктов, Коул §7; draw --trust — CLOCK-жребий по
   HIGH+MID ≤ 80)**; `ultimate-dice.json`, `open-hypotheses.json` 1.3.0
   (+H-14 СБОРЩИК-ЧЕРНОВИКА, testing на T5-33),
-  `rating-techniques.json` 1.4.0 — 161 приём (импорт из базового таксонома
+  `rating-techniques.json` 1.7.0 — 161 приём (импорт из базового таксонома
   эччи-оракла + законы автора 2026-11-26 в principle.laws_author,
   sum_rules.hard_carriers),
   `dresser.json` 1.5.0 (y_stack + **carrier-first В47** + ПРЕ-ГАРДЕРОБ с
@@ -100,7 +101,8 @@ Batch-Prompt Conveyer Belt
   заново; вердикт T5-34)**, paletteSkin — В36,
   ratingMass — В51 (R+-масса мейнов, вердикт T5-34), **negCanonGuard —
   В55 (именные фишки/канон-локи не в NEG: очки SO-20 больше не теряются;
-  special/SO-парсер POS:/NEG:)**;
+  special/SO-парсер POS:/NEG:), voltRun — В45 (второй тег-ран
+  R+-слота, WARN)**;
   `--md-from-receipt` — отчёт как производная JSON-квитанции), **`pregarment.py` —
   пре-гардероб: свежие комбо под жребий, набор в кулдауне 3 сданные партии,
   затем свободен (LAWS §22, ревизия 2026-11-23)**, **`testforge.py` — тест-горн

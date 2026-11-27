@@ -113,7 +113,7 @@ class TestEraGuardConfig(unittest.TestCase):
         cls.gt = load("gates.json")
 
     def test_version(self):
-        self.assertEqual(self.gt["version"], "1.23.0")  # 1.23.0 — negCanonGuard В55
+        self.assertEqual(self.gt["version"], "1.24.0")  # 1.24.0 — voltRun В45
         self.assertIn("v1.22.0", (REPO / "tools/gates.py").read_text(encoding="utf-8"))
 
     def test_era_guard_config(self):
