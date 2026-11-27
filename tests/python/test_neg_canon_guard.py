@@ -54,7 +54,7 @@ class TestNegCanonSpec(unittest.TestCase):
         cls.reg = load("gate-registry.json")
 
     def test_gate_config(self):
-        self.assertEqual(self.gt["version"], "1.26.0")  # 1.26.0 — k1Sense (тикет #2)
+        self.assertEqual(self.gt["version"], "1.27.0")  # 1.27.0 — claimFact (тикет #5)
         g = self.gt["negCanonGuard"]
         self.assertEqual(g["applyFrom"], 35)
         self.assertEqual(g["failFrom"], 35)
@@ -69,8 +69,8 @@ class TestNegCanonSpec(unittest.TestCase):
         self.assertEqual(er["order_invariants"], {"SO-09": ["pink glasses"]})
 
     def test_registry_chain(self):
-        self.assertEqual(self.reg["version"], "1.6.0")
-        self.assertEqual(len(self.reg["gates"]), 38)
+        self.assertEqual(self.reg["version"], "1.7.0")
+        self.assertEqual(len(self.reg["gates"]), 39)
         row = next(g for g in self.reg["gates"]
                    if g["section"] == "negCanonGuard")
         self.assertEqual(row["impl"],

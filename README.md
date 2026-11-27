@@ -61,7 +61,7 @@ Batch-Prompt Conveyer Belt
   **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**;
   **oc-candidates.json 1.4.0 — кандидаты в ОС: 27 trial (статусы
   passed/promoted/pending), вердикт только автора (пункт Д)**; `gates.json`
-  1.26.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
+  1.27.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
   pointRead/pairContact = HARD R+; «chest's bare line» отстрелен от R+;
   voltCore В39, raceCast v2.0 В40, exquisiteMain В41, expHypothesis В42,
   ratingTruth В43 — все FAIL-эра с T5-30; skinCast В48; **ratingMass В51 —
@@ -73,9 +73,12 @@ Batch-Prompt Conveyer Belt
   рендеримых аксиомы + машинострока THEME-ECHO), доля мейнов с эхом < 60%
   → WARN «тема — гарнир»; **k1Sense — смысл-поле К-1 в каждой карточке
   stories.md обязательно с T5-35 (тикет #2: «объявлено ≠ исполнено»
-  исправлено — форма+гейт+реестр+тесты)**)
-  + `gate-registry.json` 1.6.0
-  (реестр «гейт → код → тест → квитанция», 38 секций); `raw-plus.json` 2.3.0
+  исправлено — форма+гейт+реестр+тесты); **claimFact В56 — fact-слой заявки
+  R+: named object в тег-ране + зона грудь/низ + материал/холд носитель,
+  процесс — только второй (two-carrier), WARN с T5-35; калибровка: ретро
+  T5-34 ловит 13 из 15 ложных R+, P04/P13 чисто (тикет #5)**)
+  + `gate-registry.json` 1.7.0
+  (реестр «гейт → код → тест → квитанция», 39 секций); `raw-plus.json` 2.3.0
   (PROSE PLUS + закон ТЕГ-ПОРЯДКА, LAWS §20); `delivery-stats.json` 0.16.0
   (101 канал, волна 16); **`delivery-index.json` 1.1.0 — статус сдачи
   draft/ready/delivered/superseded + поле mode (CLOCK-дисциплина Коула §4),
@@ -95,8 +98,8 @@ Batch-Prompt Conveyer Belt
   аудит P1-02): структурированные `verdicts/T5-NN.json` (схема t5-verdict/1:
   loved/ok_with_issues/lessons/hypothesis_hits) — канонический вход вкуса;
   `taste.py` читает JSON, Markdown — фолбэк** (T5-27 — первый JSON-вердикт)
-- `tools/` — `gates.py` (машинные гейты печи: 38 секций, реестр
-  specs/gate-registry.json 1.6.0 «гейт → код → тест → квитанция», валидатор
+- `tools/` — `gates.py` (машинные гейты печи: 39 секций, реестр
+  specs/gate-registry.json 1.7.0 «гейт → код → тест → квитанция», валидатор
   сверяет цепочку; флоры, заявка/салиенс, claim-exists, char-spec,
   oc-class-floor, neg-anchor, header-contract, movesGate, storyCardsGate,
   yCardGate — Y-first, claimPhysics — В31, conceptFlag, negDressGuards,
@@ -108,7 +111,9 @@ Batch-Prompt Conveyer Belt
   special/SO-парсер POS:/NEG:), voltRun — В45 (второй тег-ран
   R+-слота, WARN), themeEcho — В54 (тема = визуальная система,
   THEME-ECHO-словарь брифа, WARN), **k1Sense — К-1: смысл-поле каждой
-  карточки stories.md с T5-35 (тикет #2, WARN)**;
+  карточки stories.md с T5-35 (тикет #2, WARN)**, **claimFact — В56: fact-слой
+  заявки R+ (named object + зона + материал/холд носитель; процесс — только
+  второй носитель, ⚗ не освобождает), WARN с T5-35 (тикет #5)**;
   `--md-from-receipt` — отчёт как производная JSON-квитанции), **`spec_io.py`
   + `commit_hygiene.py` — тикет #4: единый канон сериализации specs/*.json
   (ensure_ascii=False, формат-паспорт indent, round-trip идемпотентен) +

@@ -186,6 +186,14 @@ v1.26.0 (тикет #2, 2026-11-28, класс «объявлено ≠ испо
 до T5-35 молчит (форма новая, история не переписывается); нет stories.md —
 молчит (за это отвечает storyCardsGate).
 
+v1.27.0 (тикет #5, 2026-11-28, В56 «гейты мерили бумагу»): claimFact —
+fact-слой заявки R+: named object в тег-ране + зона грудь/низ (плечо =
+PG-13-парковка) + нет второй панели на зоне + носитель состояния — материал
+вещи или транзиентный холд (процесс — только второй носитель, two-carrier
+В52/В53). WARN с T5-35, ретро — WARN, ⚗ не освобождает. Калибровка на
+крови T5-34: ретро ловит 13 из 15 ложных R+ (P25/P26 с материальным
+носителем проходят честно), P04/P13 (материальные попадания) — чисто.
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -2136,6 +2144,165 @@ def check_theme_echo(batch_path, slots, warns, fails, batch_no=-1,
     return st
 
 
+def _cf_word_re(noun):
+    """v1.27.0 claimFact: слово-граница + множественное + дефис-страж
+    («set» ≠ «sunset» и ≠ «natural-set»: дефисное соединение — не вещь)."""
+    return re.compile(
+        r"(?<![\w-])" + re.escape(noun) + r"(?:s|es)?(?![\w-])", re.I)
+
+
+def _cf_stem_re(stem):
+    """v1.27.0 claimFact: материал-стем с левой границей и открытым правым
+    («thin» → thin/thinned/thinnest, но НЕ «nothing» — урок живой калибровки:
+    подстрочный матч чуть не легализовал ложный R+ через «nothing»)."""
+    return re.compile(r"(?<![\w-])" + re.escape(stem), re.I)
+
+
+def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
+    """v1.27.0 claimFact — тикет #5 (В56, постмортем T5-34 §4.5): гейт-отчёт
+    заявлял «ложных R+ 0» при 15 ложных на рендере — ratingTruth сверял
+    токены POS (которые писец сам и написал), voltCore — жанровые метки.
+    FACT-СЛОЙ ЗАЯВКИ: R+ слот несёт заявку на ИМЕНОВАННОМ объекте с ОТКРЫТОЙ
+    зоной и СОСТОЯНИЕМ вещи:
+      (а) claim-токен рендер-доказанного класса (hard-носители ratingTruth +
+          материальные попадания T5-34: print-лексика crotch-зоны, тело);
+      (б) named object в том же тег-ране (garment/bottom/материал; холд
+          несёт свой объект — руки/тейп);
+      (в) зона — грудь или низ (плечо = PG-13-парковка), на зоне нет второй
+          панели, носитель состояния — материал вещи или транзиентный холд;
+          процесс-событие — только второй носитель, никогда единственный
+          (two-carrier В52/В53: 15 ложных R+ из 17 — процесс-носители).
+    WARN с T5-35 (закон 8.6), FAIL — словом автора; ретро — WARN. ⚗ НЕ
+    освобождает: EXP-клетка с ложным R+ — тот же ложный ярлык (калибровка
+    тикета: ретро T5-34 ловит ≥13 из 15; P25/P26 с материальным носителем
+    проходят честно)."""
+    cfg = GATES.get("claimFact")
+    zero = {"mode": "silent", "rplus_slots": 0, "passing": 0,
+            "caught": [], "reasons": {}}
+    if not cfg:
+        return zero
+    if not retro and not (0 <= batch_no >= int(cfg.get("applyFrom", 10 ** 9))):
+        return zero
+    zero["mode"] = "WARN" if not retro else "RETRO-WARN"
+    rt = GATES.get("ratingTruth") or {}
+    tz = cfg.get("tokenZones") or {}
+    chest_toks = [t for t in (
+        list(rt.get("tapeEvidence", [])) + list(rt.get("pointRead", []))
+        + list(rt.get("strapOnly", [])) + list(rt.get("pairContact", []))
+        + list(tz.get("chest", []))) if t]
+    bottom_toks = [t for t in (
+        list(rt.get("crotchFocus", [])) + list(tz.get("bottom", []))) if t]
+    body_toks = [t for t in list(tz.get("bodyMaterial", [])) if t]
+    bare_toks = [t for t in list(rt.get("bareClaim", [])) if t]
+    tape_toks = [t for t in list(rt.get("tapeEvidence", [])) if t]
+    hold_toks = [t for t in (
+        list(rt.get("handHold", [])) + list(cfg.get("holdTokens", []))) if t]
+    obj_res = [_cf_word_re(n) for n in cfg.get("objectNouns", [])]
+    mat_res = [_cf_stem_re(m) for m in cfg.get("materialStates", [])]
+    chest_zone = cfg.get("zoneChest", [])
+    bottom_zone = cfg.get("zoneBottom", [])
+    shoulder_zone = cfg.get("zoneShoulder", [])
+    mat_stems = cfg.get("materialStates", [])
+    max_panels = int(cfg.get("maxPanelsOnZone", 2))
+
+    def _has(line, toks):
+        return any(t in line for t in toks)
+
+    st = dict(zero)
+    st["reasons"] = {"no_claim": 0, "no_object": 0, "zone": 0,
+                     "panel": 0, "carrier": 0}
+    for s in slots:
+        if s.rating != "R+":
+            continue
+        st["rplus_slots"] += 1
+        lines = [l for l in getattr(s, "pos_lines", []) if l]
+        if not lines and s.pos:
+            lines = [s.pos]
+        pos_text = " ".join(lines).lower()
+        chest_panels = {n for n in cfg.get("chestPanels", [])
+                        if _cf_word_re(n).search(pos_text)}
+        bottom_panels = {n for n in cfg.get("bottomPanels", [])
+                         if _cf_word_re(n).search(pos_text)}
+        any_claim = False
+        best_reason = None
+        for ln in lines:
+            lnl = ln.lower()
+            is_chest = _has(lnl, chest_toks)
+            is_bottom = _has(lnl, bottom_toks)
+            is_body = _has(lnl, body_toks)
+            is_bare = _has(lnl, bare_toks)
+            is_hold = _has(lnl, hold_toks) or _has(lnl, tape_toks)  # тейп = транзиентный холд (В43)
+            if not (is_chest or is_bottom or is_body or is_bare or is_hold):
+                continue
+            any_claim = True
+            obj_hit = is_hold or any(rx.search(lnl) for rx in obj_res)
+            if not obj_hit:
+                best_reason = best_reason or "no_object"
+                continue
+            # зона: тело-материал — exempt; иначе плечо-маркер глушит
+            # токен-зону (заявка уехала на PG-13-парковку), bare —
+            # зоной правилит строка
+            if is_body:
+                zone = "body"
+            elif _has(lnl, shoulder_zone):
+                zone = "shoulder"
+            elif is_chest or is_hold:
+                zone = "chest"
+            elif is_bottom:
+                zone = "bottom"
+            else:
+                zone = "chest" if _has(lnl, chest_zone) else (
+                    "bottom" if _has(lnl, bottom_zone) else None)
+            if zone not in ("chest", "bottom", "body"):
+                best_reason = best_reason or "zone"
+                continue
+            if zone in ("chest", "body"):
+                panels = chest_panels
+            else:
+                panels = bottom_panels
+            if len(panels) >= max_panels:
+                best_reason = best_reason or "panel"
+                continue
+            if any(rx.search(lnl) for rx in mat_res) or is_hold:
+                best_reason = None  # заявка прошла все слои fact-проверки
+                break
+            best_reason = best_reason or "carrier"
+        if best_reason is None and any_claim:
+            st["passing"] += 1
+            continue
+        if not any_claim:
+            best_reason = "no_claim"
+        st["reasons"][best_reason] = st["reasons"].get(best_reason, 0) + 1
+        st["caught"].append(s.sid)
+        reasons_txt = {
+            "no_claim": "нет claim-токена рендер-доказанного класса "
+                        "(hard-носители ratingTruth: tape / crotch-фокус / "
+                        "pointRead / pairContact / стрэпы / холд) — В56: "
+                        "гейты мерили бумагу, R+ без заявки на физике кадра",
+            "no_object": "заявка не привязана к named object в тег-ране "
+                         "(garment/bottom/материал) — «мост из ткани», "
+                         "«натянутый пролёт», «складка» — процесс-геометрия, "
+                         "не вещь с состоянием",
+            "zone": "заявка запаркована на PG-13-зоне: плечо/ключица держат "
+                    "потолок PG-13, R+ живёт на груди и низу (P05/P07/P17/"
+                    "P19/P20 — весь ложный фронт T5-34 стоял здесь)",
+            "panel": f"на зоне заявки ≥{max_panels} панели одежды — вторая "
+                     f"панель глушит чтение (панель ткани держит потолок R, "
+                     f"В43): заявка обязана указывать ЕДИНСТВЕННУЮ вещь-носитель",
+            "carrier": "процесс-носитель в одиночку: в тег-ране нет ни "
+                       "материала вещи (sheer/thin/lace/translucent/wet), ни "
+                       "транзиентного холда (tape/hands) — two-carrier "
+                       "В52/В53: процесс (wind-pressed / by-the-straddle / "
+                       "pinned) — только ВТОРОЙ носитель, никогда единственный",
+        }
+        warns.append(
+            (s.sid, "claim-fact",
+             f"{reasons_txt.get(best_reason, best_reason)} (В56, тикет #5: "
+             "гейты больше не меряют бумагу — заявка привязана к физике кадра; "
+             "WARN-эра, FAIL — словом автора после первого рендера)"))
+    return st
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -2788,7 +2955,7 @@ def main():
         print(__doc__)
         sys.exit(0 if argv else 2)
     if argv[0] in ("-v", "--version"):
-        print(f"tools/gates.py v1.26.0 · specs/gates.json v{GATES.get('version', '?')}")
+        print(f"tools/gates.py v1.27.0 · specs/gates.json v{GATES.get('version', '?')}")
         sys.exit(0)
 
     # 2026-11-21: отчёт ИЗ квитанции — MD не перегоняет батч заново (это
@@ -2911,6 +3078,7 @@ def main():
     negcanon_stats.update(check_special_neg_canon(batch_path, warns, fails, retro))  # В55: SO-файлы — без эры
     voltrun_stats = check_volt_run(slots, warns, fails, batch_no, oc_names, retro)  # В45
     themeecho_stats = check_theme_echo(batch_path, slots, warns, fails, batch_no, oc_names, retro)  # В54
+    claimfact_stats = check_claim_fact(slots, warns, fails, batch_no, retro)  # тикет #5: В56 fact-слой
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -3070,6 +3238,14 @@ def main():
             "share": themeecho_stats.get("share"),
             "retro": bool(retro),
         },
+        "claim_fact": {  # v1.27.0 тикет #5 (В56): fact-слой заявки R+
+            "mode": claimfact_stats.get("mode", "silent"),
+            "rplus_slots": claimfact_stats.get("rplus_slots", 0),
+            "passing": claimfact_stats.get("passing", 0),
+            "caught": claimfact_stats.get("caught", []),
+            "reasons": claimfact_stats.get("reasons", {}),
+            "retro": bool(retro),
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -3211,6 +3387,16 @@ def main():
         print(
             f"k1Sense [К-1]: карточек {k1['cards']} · со смысл-полем "
             f"{k1['with_k1']} · без {len(k1['without'])}"
+        )
+    # v1.27.0: печать fact-слоя в его эре (или retro) — тикет #5
+    if GATES.get("claimFact") and (
+        batch_no >= int(GATES["claimFact"].get("applyFrom", 10 ** 9)) or retro
+    ) and receipt["claim_fact"].get("rplus_slots"):
+        cf = receipt["claim_fact"]
+        print(
+            f"claimFact [В56]: R+-слотов {cf['rplus_slots']} · с заявкой на "
+            f"физике кадра {cf['passing']} · ложных по fact-слою "
+            f"{len(cf['caught'])} {cf['caught'][:8]}"
         )
     if receipt["race_cast"].get("kin") is not None:
         rc = receipt["race_cast"]

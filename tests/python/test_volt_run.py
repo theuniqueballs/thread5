@@ -70,7 +70,7 @@ class TestVoltRunSpec(unittest.TestCase):
         self.assertIn("В45", vr["born"])
 
     def test_gate_config(self):
-        self.assertEqual(self.gt["version"], "1.26.0")  # 1.26.0 — k1Sense (тикет #2)
+        self.assertEqual(self.gt["version"], "1.27.0")  # 1.27.0 — claimFact (тикет #5)
         g = self.gt["voltRun"]
         self.assertEqual(g["applyFrom"], 35)
         self.assertEqual(g["mode"], "WARN")
@@ -78,8 +78,8 @@ class TestVoltRunSpec(unittest.TestCase):
         self.assertEqual(g["groupMin"], 2)
 
     def test_registry(self):
-        self.assertEqual(self.reg["version"], "1.6.0")
-        self.assertEqual(len(self.reg["gates"]), 38)
+        self.assertEqual(self.reg["version"], "1.7.0")
+        self.assertEqual(len(self.reg["gates"]), 39)
         row = next(g for g in self.reg["gates"] if g["section"] == "voltRun")
         self.assertEqual(row["impl"], ["check_volt_run"])
         self.assertEqual(row["receiptField"], "volt_run")
