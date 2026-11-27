@@ -114,7 +114,7 @@ class TestCalibrationRegistryPins(unittest.TestCase):
 
     def test_versions(self):
         self.assertEqual(self.rt["version"], "1.7.0")
-        self.assertEqual(self.dr["version"], "1.10.0")
+        self.assertEqual(self.dr["version"], "1.11.0")  # 1.11.0 — niche_volt (T5.2)
         self.assertEqual(self.gt["version"], "1.27.0")  # 1.27.0 — claimFact (тикет #5)
 
     def test_hard_carriers_present(self):

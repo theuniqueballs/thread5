@@ -70,7 +70,7 @@ class TestCarrierWave(unittest.TestCase):
     # ------------------------------------------------------------ версии
     def test_versions(self):
         self.assertEqual(self.cam["version"], "1.23.0")  # 1.23.0 — era-сплит (В52)
-        self.assertEqual(self.dr["version"], "1.10.0")  # 1.10.0 — two_carrier (В52/В53); 1.9.0 — комбо-книга
+        self.assertEqual(self.dr["version"], "1.11.0")  # 1.11.0 — niche_volt (ПЛАН 5.5 T5.2); 1.10.0 — two_carrier (В52/В53)
 
     def test_registry_size_and_law_note(self):
         self.assertEqual(len(self.cam["y_cards"]["cards"]), 559)  # 554 + волна «грань-X» Y555–Y559
