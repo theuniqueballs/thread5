@@ -1,9 +1,9 @@
 {
  "id": "gate-registry",
  "name": "Реестр гейтов: секция gates.json → реализация в gates.py → поле квитанции",
- "version": "1.1.0",
+ "version": "1.2.0",
  "born": "2026-11-21",
- "born_from": "Двойной аудит 2026-11-20 (внешний P0-05 «нет реестра gate → code → test»; живой прецедент: paletteSkin был объявлен в gates.json v1.16.0, но отсутствовал в обязательном списке валидатора — объявленный гейт ≠ работающий гейт). Реестр замыкает цепочку: валидатор сверяет каждую секцию gates.json с реализацией в tools/gates.py и полем в квитанции; test — прямой юнит-тест (null = долги перечислены явно, не спрятаны); end-to-end страховка всего конвейера — tests/python/test_gate_registry.py (золотой прогон T5-27 PASS 0F/2W + тамперы: изъятая hard-флора → FAIL, изъятое вплетение → FAIL). · 1.1.0 (2026-11-22, вердикт T5-29): пять секций урока В39–В43 (voltCore/raceCast v2.0/exquisiteMain/expHypothesis/ratingTruth) + закрыта дыра 1.17.0 (yStack жил в gates.json без строки реестра)",
+ "born_from": "Двойной аудит 2026-11-20 (внешний P0-05 «нет реестра gate → code → test»; живой прецедент: paletteSkin был объявлен в gates.json v1.16.0, но отсутствовал в обязательном списке валидатора — объявленный гейт ≠ работающий гейт). Реестр замыкает цепочку: валидатор сверяет каждую секцию gates.json с реализацией в tools/gates.py и полем в квитанции; test — прямой юнит-тест (null = долги перечислены явно, не спрятаны); end-to-end страховка всего конвейера — tests/python/test_gate_registry.py (золотой прогон T5-27 PASS 0F/2W + тамперы: изъятая hard-флора → FAIL, изъятое вплетение → FAIL). · 1.1.0 (2026-11-22, вердикт T5-29): пять секций урока В39–В43 (voltCore/raceCast v2.0/exquisiteMain/expHypothesis/ratingTruth) + закрыта дыра 1.17.0 (yStack жил в gates.json без строки реестра) · 1.2.0 (2026-11-27, вердикт T5-34): секция В51 ratingMass (R+-масса мейнов ≥ 14, PG-13 = 0, FAIL с T5-35) — 34 секции",
  "rules": {
   "sectionSetMustMatch": "множество секций реестра == REQUIRED_GATES_KEYS валидатора == ключи-секции gates.json — ни одна секция не может появиться/исчезнуть молча",
   "implMustExist": "каждая impl-функция обязана существовать в tools/gates.py (def имя() — иначе секция объявлена, но не исполняется)",
@@ -344,6 +344,16 @@
    "test": "tests/python/test_t529_lessons.py",
    "owner": "FURNACE",
    "note": "В43 (вердикт T5-29 п.7 «отладка системы рейтинга»): модель состава rating_implied() — bareClaim/strapOnly/handHold/panels/offMarkers/rTokens из gates.json; ложный R+ бейдж = FAIL (наследие В33), R↔PG-13 дрейф = WARN; калибровка ground truth T5-29: 33/33 (совпали P04/P11/P18/P27, помечены 29); FAIL с T5-30"
+  },
+  {
+   "section": "ratingMass",
+   "impl": [
+    "check_rating_mass"
+   ],
+   "receiptField": "rating_mass",
+   "test": "tests/python/test_rating_mass.py",
+   "owner": "FURNACE",
+   "note": "В51 (вердикт T5-34 «ты нигде рейтингом не попал»): R+-заявок в мейнах ≥ 14, PG-13 в мейнах = 0 — спред-дрейф, убитый В39, больше не проходит молча (voltCore меряет жанровые метки, не R+-массу; T5-34 собрал «вольт-ядро 13» из R-слотов с жанром VOLT); FAIL с T5-35 без WARN-эры (класс оплачен дважды: В39 + вердикт T5-34); тампер-тест: T5-34 (R+×11 · PG-13×3) ловится в retro"
   }
  ]
 }

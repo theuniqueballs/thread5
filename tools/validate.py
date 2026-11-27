@@ -90,6 +90,8 @@ REQUIRED_GATES_KEYS = [
     "yStack",
     # эра 1.18.0 — уроки T5-29 (В39–В43)
     "voltCore", "exquisiteMain", "expHypothesis", "ratingTruth",
+    # эра 1.21.0 — урок T5-34 (В51)
+    "ratingMass",
 ]
 
 # режим CI: без проверки хука (в раннере хука нет — проверка №8 не про него)

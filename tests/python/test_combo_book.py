@@ -12,7 +12,7 @@
 2. dresser.json 1.9.0 — y_stack.combo_book (третий стак после matrix и carrier_matrix;
    1.9.0 — добор старой 512-волны, диета 33→40 ровно);
 3. порядок стака y_stack.order получил шаг 0 — комбо-книга до матрицы;
-4. слаженность: Y-ссылки в camera.json, записи-источники в датасете оракла,
+4. слаженность: Y-ссылки в camera.json, записи-источники в датасете оракула,
    полки в closet.json ∩ carrier_matrix, теги в словаре, диета ≤40 позиций.
 """
 import json
@@ -68,7 +68,7 @@ class TestPins(unittest.TestCase):
         self.assertIn("ОБЕЩАНИЕ", jd["law"])
         self.assertIn("ПОЛУРЕШЕНИЕ", jd["law"])
         self.assertIn("ПАУЗА", jd["law"])
-        self.assertIn("НАСЛОЖДЕНИЕ", jd["law"])
+        self.assertIn("НАСЛОЖЕНИЕ", jd["law"])
         self.assertIn("АНТИ-БОРЩ", jd["law"])  # не борщить — заказ автора
 
 

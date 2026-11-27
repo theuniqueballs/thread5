@@ -61,11 +61,13 @@ Batch-Prompt Conveyer Belt
   **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**;
   **oc-candidates.json 1.4.0 — кандидаты в ОС: 27 trial (статусы
   passed/promoted/pending), вердикт только автора (пункт Д)**; `gates.json`
-  1.19.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
+  1.21.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
   pointRead/pairContact = HARD R+; «chest's bare line» отстрелен от R+;
   voltCore В39, raceCast v2.0 В40, exquisiteMain В41, expHypothesis В42,
-  ratingTruth В43 — все FAIL-эра с T5-30) + `gate-registry.json` 1.1.0
-  (реестр «гейт → код → тест → квитанция», 33 секции); `raw-plus.json` 2.3.0
+  ratingTruth В43 — все FAIL-эра с T5-30; skinCast В48; **ratingMass В51 —
+  R+-масса мейнов ≥ 14 / PG-13 = 0, FAIL с T5-35, вердикт T5-34**) +
+  `gate-registry.json` 1.2.0
+  (реестр «гейт → код → тест → квитанция», 34 секции); `raw-plus.json` 2.3.0
   (PROSE PLUS + закон ТЕГ-ПОРЯДКА, LAWS §20); `delivery-stats.json` 0.16.0
   (101 канал, волна 16); **`delivery-index.json` 1.1.0 — статус сдачи
   draft/ready/delivered/superseded + поле mode (CLOCK-дисциплина Коула §4),
@@ -85,12 +87,13 @@ Batch-Prompt Conveyer Belt
   аудит P1-02): структурированные `verdicts/T5-NN.json` (схема t5-verdict/1:
   loved/ok_with_issues/lessons/hypothesis_hits) — канонический вход вкуса;
   `taste.py` читает JSON, Markdown — фолбэк** (T5-27 — первый JSON-вердикт)
-- `tools/` — `gates.py` (машинные гейты печи: 33 секции, реестр
-  specs/gate-registry.json 1.1.0 «гейт → код → тест → квитанция», валидатор
+- `tools/` — `gates.py` (машинные гейты печи: 34 секции, реестр
+  specs/gate-registry.json 1.2.0 «гейт → код → тест → квитанция», валидатор
   сверяет цепочку; флоры, заявка/салиенс, claim-exists, char-spec,
   oc-class-floor, neg-anchor, header-contract, movesGate, storyCardsGate,
   yCardGate — Y-first, claimPhysics — В31, conceptFlag, negDressGuards,
-  detailsGate — В32, **yStamp — вплетение 1:1 В34/В35, paletteSkin — В36**;
+  detailsGate — В32, **yStamp — вплетение 1:1 В34/В35, paletteSkin — В36,
+  ratingMass — В51 (R+-масса мейнов, вердикт T5-34)**;
   `--md-from-receipt` — отчёт как производная JSON-квитанции), **`pregarment.py` —
   пре-гардероб: свежие комбо под жребий, набор в кулдауне 3 сданные партии,
   затем свободен (LAWS §22, ревизия 2026-11-23)**, **`testforge.py` — тест-горн

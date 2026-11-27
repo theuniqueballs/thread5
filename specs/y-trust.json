@@ -37,13 +37,17 @@
   {
    "file": "T5-33.json",
    "batch": "T5-33"
+  },
+  {
+   "file": "T5-34.json",
+   "batch": "T5-34"
   }
  ],
  "stats": {
-  "high": 41,
-  "mid": 4,
-  "low": 114,
-  "judged_batches": 6
+  "high": 47,
+  "mid": 5,
+  "low": 120,
+  "judged_batches": 7
  },
  "cards": {
   "Y1": {
@@ -124,12 +128,17 @@
   "Y6": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-30",
      "slot": "P16",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P03",
      "kind": "miss"
     }
    ]
@@ -217,12 +226,17 @@
   "Y12": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P25",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P01",
      "kind": "miss"
     }
    ]
@@ -243,12 +257,17 @@
   "Y14": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P05",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P12",
      "kind": "miss"
     }
    ]
@@ -274,12 +293,17 @@
   "Y16": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P28",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P10",
      "kind": "miss"
     }
    ]
@@ -301,8 +325,13 @@
    "trust": "LOW",
    "hits": 0,
    "misses": 1,
-   "neutral": 0,
+   "neutral": 1,
    "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P13",
+     "kind": "ok_with_issues"
+    },
     {
      "batch": "T5-29",
      "slot": "P29",
@@ -352,12 +381,17 @@
   "Y22": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P30",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P19",
      "kind": "miss"
     }
    ]
@@ -409,12 +443,17 @@
   "Y26": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P01",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P05",
      "kind": "miss"
     }
    ]
@@ -435,12 +474,17 @@
   "Y28": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P31",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P07",
      "kind": "miss"
     }
    ]
@@ -484,12 +528,17 @@
   "Y31": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P07",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P20",
      "kind": "miss"
     }
    ]
@@ -498,8 +547,13 @@
    "trust": "LOW",
    "hits": 0,
    "misses": 1,
-   "neutral": 0,
+   "neutral": 1,
    "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P04",
+     "kind": "ok_with_issues"
+    },
     {
      "batch": "T5-30",
      "slot": "P32",
@@ -510,12 +564,17 @@
   "Y33": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-30",
      "slot": "P33",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P08",
      "kind": "miss"
     }
    ]
@@ -541,12 +600,17 @@
   "Y35": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P08",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P15",
      "kind": "miss"
     }
    ]
@@ -743,11 +807,16 @@
   "Y74": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-29",
+     "slot": "P22",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
      "slot": "P22",
      "kind": "miss"
     }
@@ -774,12 +843,17 @@
   "Y82": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-30",
      "slot": "P15",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P17",
      "kind": "miss"
     }
    ]
@@ -800,12 +874,17 @@
   "Y89": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-30",
      "slot": "P05",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P02",
      "kind": "miss"
     }
    ]
@@ -1033,6 +1112,19 @@
     }
    ]
   },
+  "Y129": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P24",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y147": {
    "trust": "LOW",
    "hits": 0,
@@ -1160,6 +1252,19 @@
     }
    ]
   },
+  "Y244": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P11",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y245": {
    "trust": "LOW",
    "hits": 0,
@@ -1176,12 +1281,30 @@
   "Y246": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-30",
      "slot": "P07",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P06",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y248": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P18",
      "kind": "miss"
     }
    ]
@@ -1233,12 +1356,17 @@
   "Y261": {
    "trust": "LOW",
    "hits": 0,
-   "misses": 1,
+   "misses": 2,
    "neutral": 0,
    "evidence": [
     {
      "batch": "T5-27",
      "slot": "P11",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P09",
      "kind": "miss"
     }
    ]
@@ -1261,6 +1389,19 @@
     }
    ]
   },
+  "Y264": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P21",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y265": {
    "trust": "LOW",
    "hits": 0,
@@ -1275,6 +1416,19 @@
     {
      "batch": "T5-32",
      "slot": "P22",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y269": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P23",
      "kind": "miss"
     }
    ]
@@ -1377,6 +1531,32 @@
      "batch": "T5-33",
      "slot": "P08",
      "kind": "miss"
+    }
+   ]
+  },
+  "Y310": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P14",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y312": {
+   "trust": "MID",
+   "hits": 0,
+   "misses": 0,
+   "neutral": 1,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P16",
+     "kind": "ok_with_issues"
     }
    ]
   },
@@ -2305,6 +2485,84 @@
      "batch": "T5-33",
      "slot": "P29",
      "kind": "miss"
+    }
+   ]
+  },
+  "Y542": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P25",
+     "kind": "loved"
+    }
+   ]
+  },
+  "Y555": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P26",
+     "kind": "loved"
+    }
+   ]
+  },
+  "Y556": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P27",
+     "kind": "loved"
+    }
+   ]
+  },
+  "Y557": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P28",
+     "kind": "loved"
+    }
+   ]
+  },
+  "Y558": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P29",
+     "kind": "loved"
+    }
+   ]
+  },
+  "Y559": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "evidence": [
+    {
+     "batch": "T5-34",
+     "slot": "P30",
+     "kind": "loved"
     }
    ]
   }

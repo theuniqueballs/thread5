@@ -1763,6 +1763,46 @@ def check_rating_truth(slots, warns, fails, batch_no=-1, retro=False):
     return stats
 
 
+def check_rating_mass(slots, warns, fails, batch_no=-1, oc_names=(), retro=False):
+    """v1.21.0 ratingMass — В51 «спред-дрейф вернулся» (вердикт T5-34:
+    «ты нигде рейтингом не попал»). Канон В39 всегда требовал R+×14 · R×7
+    при PG-13 в мейнах = 0 — T5-34 сдал R+×11 · PG-13×3, и voltCore это
+    ПРОПУСТИЛ: он меряет жанровые метки (VOLT+EXQUISITE), а не R+-массу —
+    «вольт-ядро 13» собралось из R-слотов с жанром VOLT. Гейт считает
+    ЗАЯВЛЕННЫЕ тиры мейнов: R+ ≥ rplusMin, PG-13 = pg13Max (дрейф,
+    убитый В39, больше не проходит молча)."""
+    cfg = GATES.get("ratingMass")
+    if not cfg:
+        return {}
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return {}
+    hard = batch_no >= int(cfg.get("failFrom", 10 ** 9))
+    mains = _mains(slots, oc_names)
+    rplus = sum(1 for s in mains if s.rating == "R+")
+    r = sum(1 for s in mains if s.rating == "R")
+    pg13 = sum(1 for s in mains if s.rating == "PG-13")
+    problems = []
+    if rplus < int(cfg.get("rplusMin", 14)):
+        problems.append(
+            f"R+-масса мейнов {rplus} < {cfg.get('rplusMin')} (канон В39: "
+            f"R+×14 · R×7 — Закон 24; T5-34 ушёл в 11 и это был худший батч "
+            f"по рейтингу)")
+    if pg13 > int(cfg.get("pg13Max", 0)):
+        problems.append(
+            f"PG-13 в мейнах {pg13} > {cfg.get('pg13Max')} — дрейф, убитый "
+            f"В39 (2026-11-22), вернулся через шесть дней (T5-34)")
+    if problems:
+        entry = (
+            "BATCH", "rating-mass",
+            "РЕЙТИНГ-МАССА: " + "; ".join(problems) + " (В51, вердикт T5-34; "
+            "voltCore остаётся за жанровой вперемешкой — массу тиров держит "
+            "этот гейт)")
+        (fails if hard else warns).append(entry)
+    return {
+        "mains": len(mains), "rplus": rplus, "r": r, "pg13": pg13,
+    }
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -2480,6 +2520,7 @@ def main():
     exq_stats = check_exquisite_main(slots, warns, fails, batch_no, oc_names, retro)  # В41
     exp_hyp_stats = check_exp_hypothesis(slots, warns, fails, batch_no, retro)  # В42
     rating_stats = check_rating_truth(slots, warns, fails, batch_no, retro)  # В43
+    rating_mass_stats = check_rating_mass(slots, warns, fails, batch_no, oc_names, retro)  # В51
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -2589,6 +2630,13 @@ def main():
             "soft_drift": rating_stats.get("soft_drift"),
             "retro": bool(retro),
         },
+        "rating_mass": {  # v1.21.0 В51: R+-масса мейнов (спред, не жанры)
+            "mains": rating_mass_stats.get("mains"),
+            "rplus": rating_mass_stats.get("rplus"),
+            "r": rating_mass_stats.get("r"),
+            "pg13": rating_mass_stats.get("pg13"),
+            "retro": bool(retro),
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -2666,6 +2714,15 @@ def main():
         print(
             f"expHypothesis [В42]: клеток {eh['cells']} · с H-XX {eh['with_h']} · "
             f"без {len(eh['without'])} · полка: {', '.join(eh['hyps_used']) or '—'}"
+        )
+    # v1.21.0: печать В51 только в его эре (или retro)
+    if GATES.get("ratingMass") and (
+        batch_no >= int(GATES["ratingMass"].get("applyFrom", 10 ** 9)) or retro
+    ) and receipt["rating_mass"].get("mains") is not None:
+        rm = receipt["rating_mass"]
+        print(
+            f"ratingMass [В51]: мейнов {rm['mains']} · R+ {rm['rplus']} · "
+            f"R {rm['r']} · PG-13 {rm['pg13']}"
         )
     if GATES.get("ratingTruth") and (
         batch_no >= int(GATES["ratingTruth"].get("applyFrom", 10 ** 9)) or retro
