@@ -179,6 +179,13 @@ v1.18.1 (горячий фикс по рендеру T5-31, 2026-11-25): negBase
 ЦВЕТ, слой жив, §14.1 RATING-REPAIR). perSlotGuardsMax не тронут (4): новые
 юниты — boilerplate, не «война». T5-31: PASS 0F/0W (квитанция v3).
 
+v1.26.0 (тикет #2, 2026-11-28, класс «объявлено ≠ исполнено»): k1Sense —
+смысл-поле К-1 («что кадр говорит про её мир одним предложением») в каждой
+карточке stories.md обязательно с T5-35 (AGENTS «Квитанции конвейера
+гипотез» объявил его волной 1д без enforcement); карточка без поля → WARN,
+до T5-35 молчит (форма новая, история не переписывается); нет stories.md —
+молчит (за это отвечает storyCardsGate).
+
 Прогон:
     python3 tools/gates.py batches/T5-08.md \
         --json specs/gate-receipts/2026-10-30-T5-08-v12.json \
@@ -2273,6 +2280,58 @@ def check_story_cards(batch_path, warns, batch_no=-1):
     return True
 
 
+def check_k1_sense(batch_path, warns, batch_no=-1):
+    """v1.26.0 k1Sense — тикет #2 (класс «объявлено ≠ исполнено»): AGENTS
+    «Квитанции конвейера гипотез» объявил смысл-поле К-1 («что кадр говорит
+    про её мир одним предложением», обязательное с T5-35) волной 1д — без
+    формы, гейта, реестра и теста. Вариант А тикета: исполнить. Карточка =
+    ##-секция stories.md (сегмент или слот — формат выбирает писец, поле
+    обязательно в обоих); карточка без строки «К-1: …» на батче ≥ applyFrom
+    → WARN «смысл не записан». До T5-35 — молчит: форма рождается этой
+    эрой, история не переписывается (урок F2). Нет stories.md — молчит:
+    за отсутствие карточек отвечает storyCardsGate, не дублируем."""
+    cfg = GATES.get("k1Sense") or {}
+    zero = {"mode": "silent", "cards": 0, "with_k1": 0, "without": []}
+    if not cfg:
+        return zero
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)):
+        return zero
+    zero["mode"] = "WARN"
+    p = Path(batch_path)
+    if not p.is_absolute():
+        p = ROOT / p
+    cards = p.with_suffix("") / "stories.md"
+    if not cards.exists():
+        return zero  # storyCardsGate уже шумит за отсутствие карточек
+    try:
+        text = cards.read_text(encoding="utf-8")
+    except Exception:
+        return zero
+    field_re = re.compile(str(cfg.get("pattern", r"^\s*[-*]?\s*К-1\s*[:：]")), re.M)
+    # карточка = ##-секция (заголовок и тело до следующей ##)
+    sections = re.split(r"^##\s+", text, flags=re.M)[1:]
+    st = dict(zero)
+    st["without"] = []
+    for sec in sections:
+        header = sec.splitlines()[0].strip() if sec.splitlines() else "?"
+        body = "\n".join(sec.splitlines()[1:])
+        st["cards"] += 1
+        if field_re.search(body) or field_re.search(header):
+            st["with_k1"] += 1
+        else:
+            st["without"].append(header)
+    if st["without"]:
+        shown = ", ".join(st["without"][:5]) + (" …" if len(st["without"]) > 5 else "")
+        warns.append(
+            ("BATCH", "k1-sense",
+             f"смысл не записан: карточек без поля К-1 — {len(st['without'])} из "
+             f"{st['cards']} ({shown}) — К-1: что кадр говорит про её мир одним "
+             "предложением, строка «- К-1: …» в каждой карточке (AGENTS «Квитанции "
+             "конвейера гипотез», обязательное с T5-35; тикет #2: объявлено ≠ "
+             "исполнено — теперь исполняется машиной)"))
+    return st
+
+
 def load_oc_names():
     data = json.loads(
         (ROOT / GATES["posFloors"]["ocNamesRegistry"]).read_text(encoding="utf-8")
@@ -2728,7 +2787,7 @@ def main():
         print(__doc__)
         sys.exit(0 if argv else 2)
     if argv[0] in ("-v", "--version"):
-        print(f"tools/gates.py v1.18.0 · specs/gates.json v{GATES.get('version', '?')}")
+        print(f"tools/gates.py v1.26.0 · specs/gates.json v{GATES.get('version', '?')}")
         sys.exit(0)
 
     # 2026-11-21: отчёт ИЗ квитанции — MD не перегоняет батч заново (это
@@ -2834,6 +2893,7 @@ def main():
     check_header_contract(header, warns, batch_no)
     moves_declared = check_moves_gate(header, warns, batch_no)
     story_cards_ok = check_story_cards(batch_path, warns, batch_no)
+    k1_stats = check_k1_sense(batch_path, warns, batch_no)  # тикет #2: К-1 машинно
     check_pos_floors(slots, text, oc_names, warns)
     race_stats = check_race_cast(header, slots, race_statuses, warns, fails, batch_no, oc_names, retro)  # v1.18.0: v2.0 + В40
     check_slot_format(slots, warns)
@@ -2885,6 +2945,12 @@ def main():
         "copypasteCanonExempt": cp_canon_exempt,
         "movesDeclared": moves_declared,
         "storyCards": story_cards_ok,
+        "k1_sense": {  # v1.26.0 тикет #2: смысл-поле К-1 в карточках stories.md
+            "mode": k1_stats.get("mode", "silent"),
+            "cards": k1_stats.get("cards", 0),
+            "with_k1": k1_stats.get("with_k1", 0),
+            "without": k1_stats.get("without", []),
+        },
         "fact_label": {  # v1.10.0 corridorAudit: fact ≠ label
             "label_R+": sum(1 for s in slots if s.rating == "R+"),
             "fact_R+": fact_rplus,
@@ -3135,6 +3201,15 @@ def main():
             f"ratingTruth [В43]: проверено {rt['checked']} · ложных R+ "
             f"{rt['false_rplus']} · мягкий дрейф {rt['soft_drift']} · "
             f"состав-R+ {rt['implied_rplus']} (рейтинг = что кадр несёт)"
+        )
+    # v1.26.0: печать К-1 только в его эре (тикет #2)
+    if GATES.get("k1Sense") and (
+        batch_no >= int(GATES["k1Sense"].get("applyFrom", 10 ** 9))
+    ) and receipt["k1_sense"].get("cards"):
+        k1 = receipt["k1_sense"]
+        print(
+            f"k1Sense [К-1]: карточек {k1['cards']} · со смысл-полем "
+            f"{k1['with_k1']} · без {len(k1['without'])}"
         )
     if receipt["race_cast"].get("kin") is not None:
         rc = receipt["race_cast"]
