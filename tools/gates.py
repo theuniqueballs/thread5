@@ -1123,11 +1123,24 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
     Эры: партия < applyFrom без --retro молчит (объявленная эра, история
     не переписывается); с --retro все находки — WARN (ретро-демонстрация
     эпохи 1.14.0: метки-паспорта в POS были легальны до T5-25).
-    В33-честность: паспорт не самосертифицирует рейтинг."""
+    В33-честность: паспорт не самосертифицирует рейтинг.
+
+    v1.22.0 eraGuard (вердикт T5-34 В52 «старые Y = материал не слот",
+    ПЛАН 5.5 T3.2; era-сплит camera.json 1.23.0): клеймо 1:1 — только
+    modern. legacy-карта (Y1–Y512) = МАТЕРИАЛ: отдаёт скелет (позу/
+    мех-группы/камерный кластер), джус пишется заново (В53: геометрия
+    позы + состояние вещи). Вербатим-вплетение legacy-паттерна: под R+/X
+    — FAIL (класс оплачен: 15 ложных R+ из 17 в T5-34), иначе WARN.
+    Скелет-режим: стемы паттерна в POS < skeletonFloor — WARN «скелет не
+    читается». Эра eraGuard: applyFrom/failFrom 35; до T5-35 и в --retro
+    находки — WARN-ами, золотой T5-27 не задет (история не
+    переписывается)."""
     cfg = GATES.get("yStamp") or {}
     zero = {"mode": "silent", "with_card": 0, "weaved": 0, "no_weave": 0,
             "mismatch": 0, "banned": 0, "empty_class_rplus": 0,
-            "not_executed": 0, "window_hits": 0, "corridor_warn": 0}
+            "not_executed": 0, "window_hits": 0, "corridor_warn": 0,
+            "legacy_used": 0, "legacy_material": 0, "legacy_verbatim": 0,
+            "legacy_skeleton_miss": 0}
     if not cfg:
         return zero
     applied = 0 <= batch_no >= int(cfg.get("applyFrom", 10 ** 9))
@@ -1188,6 +1201,14 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
         corr = card.get("corridor", "—") or "—"
         pose_stems = _card_pose_stems(card)
         pose_n = norm_ws(pose).lower()
+        # v1.22.0 eraGuard (В52): эра сплита — живая с T5-35, ретро — WARN;
+        # до эры поведение прежнее (weave обязателен всем) — золотые прогоны
+        # старых партий не сдвигаются
+        guard = cfg.get("eraGuard") or {}
+        guard_from = int(guard.get("applyFrom", 10 ** 9))
+        guard_live = (not retro) and (0 <= batch_no >= guard_from)
+        era = str(card.get("era") or "modern")
+        era_mode = era == "legacy" and (guard_live or retro)
         # (2) вплетение: ПЕРВИЧНЫЙ детектор — копипаст-юнит 1:1 подстрокой
         # (LAWS §17.2); стемы — только диагностика «пересказа» (короткие
         # паттерны стем-порог ложно роняют — урок P28/Y320)
@@ -1202,7 +1223,42 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
             hits = len(pose_stems & {w[:5] for w in words(l) if len(w) >= 5})
             if hits > best_hits:
                 best_hits, best_idx = hits, i
-        if weave_idx < 0 and best_hits < min_weave:
+        if era_mode:
+            # ── В52: legacy = материал, не слот ────────────────────────
+            st["legacy_used"] += 1
+            if weave_idx >= 0:
+                st["legacy_verbatim"] += 1
+                hard = (guard_live and s.rating in ("R+", "X")
+                        and guard.get("legacyVerbatim") == "fail_rplus")
+                emit(
+                    (s.sid, "y-stamp",
+                     f"клеймо 1:1 на legacy-карте {s.y_card} отменено (В52) — "
+                     f"карта = материал: скелет (поза/мех-группы/камерный "
+                     f"кластер), джус пишется заново (В53: геометрия позы + "
+                     f"состояние вещи); процесс-носители старой концепции "
+                     f"рендером как эротика не читаются (T5-34: 15 ложных "
+                     f"R+ из 17)"
+                     + (" — под R+ класс оплачен вердиктом T5-34"
+                        if hard else "")),
+                    hard,
+                )
+            else:
+                floor = int(guard.get("skeletonFloor", min_exec))
+                all_stems = {w[:5] for l in s.pos_lines
+                             for w in words(l) if len(w) >= 5}
+                skel = len(pose_stems & all_stems)
+                if skel < floor:
+                    st["legacy_skeleton_miss"] += 1
+                    warns.append(
+                        (s.sid, "y-stamp",
+                         f"legacy-карта {s.y_card} как материал: скелет не "
+                         f"читается ({skel} стемов позы в POS, нужно "
+                         f"≥{floor}) — карта отдаёт позу/мех-группы/"
+                         f"камерный кластер, джус пишется заново (В52/В53: "
+                         "геометрия + состояние вещи, не «процесс»)"))
+                else:
+                    st["legacy_material"] += 1
+        elif weave_idx < 0 and best_hits < min_weave:
             st["no_weave"] += 1
             emit(
                 (s.sid, "y-stamp",
@@ -2586,6 +2642,11 @@ def main():
             "not_executed": ystamp_stats["not_executed"],
             "window_hits": ystamp_stats["window_hits"],
             "corridor_warn": ystamp_stats["corridor_warn"],
+            # v1.22.0 eraGuard (В52): legacy = материал, не слот
+            "legacy_used": ystamp_stats["legacy_used"],
+            "legacy_material": ystamp_stats["legacy_material"],
+            "legacy_verbatim": ystamp_stats["legacy_verbatim"],
+            "legacy_skeleton_miss": ystamp_stats["legacy_skeleton_miss"],
         },
         "buffs": {  # v1.12.0: квитанция баффа промпт-составляющей
             "concept_flagged": concept_caught,
@@ -2684,7 +2745,9 @@ def main():
             f"R+ от «—» {ys['empty_class_rplus']} · "
             f"не исполнено телом POS {ys['not_executed']} · "
             f"в окне ротации {ys['window_hits']} · "
-            f"corridor-разносов {ys['corridor_warn']}"
+            f"corridor-разносов {ys['corridor_warn']} · "
+            f"legacy-материал {ys['legacy_material']} (вербатимов {ys['legacy_verbatim']}, "
+            f"скелет не читается {ys['legacy_skeleton_miss']})"
         )
     if GATES.get("paletteSkin") and (
         batch_no >= int(GATES["paletteSkin"].get("applyFrom", 10 ** 9)) or retro

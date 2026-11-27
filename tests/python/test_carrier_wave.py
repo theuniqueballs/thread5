@@ -69,7 +69,7 @@ class TestCarrierWave(unittest.TestCase):
 
     # ------------------------------------------------------------ версии
     def test_versions(self):
-        self.assertEqual(self.cam["version"], "1.22.0")
+        self.assertEqual(self.cam["version"], "1.23.0")  # 1.23.0 — era-сплит (В52)
         self.assertEqual(self.dr["version"], "1.9.0")  # 1.9.0 — комбо-книга добрала старые 512 Y
 
     def test_registry_size_and_law_note(self):

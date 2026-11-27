@@ -47,11 +47,12 @@ class TestOldYCombo(unittest.TestCase):
         cls.old = {f"Y{i}": cls.cards[f"Y{i}"] for i in range(1, 513)}
 
     def test_versions(self):
-        self.assertEqual(self.cam["version"], "1.22.0")
+        self.assertEqual(self.cam["version"], "1.23.0")
         self.assertIn("1.22.0", self.cam["y_cards"]["law"])
+        self.assertIn("1.23.0", self.cam["y_cards"]["law"])  # era-сплит (В52)
         notes = " ".join(str(e) for e in self.cam.get("changelog", []))
         self.assertIn("1.22.0", notes)
-        self.assertIn("1.22.0", json.dumps(self.cam["changelog"][0]))
+        self.assertIn("1.23.0", json.dumps(self.cam["changelog"][0]))
 
     def test_all_512_have_combo(self):
         """Каждая старая карта разобрана на составляющие — не выборочно."""

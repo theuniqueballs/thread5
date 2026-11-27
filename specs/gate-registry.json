@@ -242,7 +242,7 @@
    "receiptField": "y_stamp",
    "test": "tests/python/test_gate_registry.py",
    "owner": "EARTH",
-   "note": "В34/В35: вплетение 1:1, метки изъяты; тампер-тест: изъятое вплетение → FAIL; окно — load_prev_y_usage (test_gates.py)"
+   "note": "В34/В35: вплетение 1:1, метки изъяты; тампер-тест: изъятое вплетение → FAIL; окно — load_prev_y_usage (test_gates.py) В52-эра (v1.22.0): eraGuard — вербатим legacy под R+ = FAIL с T5-35, ретро WARN (тесты tests/python/test_era_split.py ×16: сплит-спека + функциональные кейсы); штамп era — tools/stamp_era.py --check."
   },
   {
    "section": "comboPose",
