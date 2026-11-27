@@ -1859,6 +1859,155 @@ def check_rating_mass(slots, warns, fails, batch_no=-1, oc_names=(), retro=False
     }
 
 
+def _ncg_norm(w):
+    """v1.23.0 negCanonGuard: нормализация токена (мн. число снято)."""
+    n = w.strip("'\"()[]").lower()
+    if len(n) >= 5 and n.endswith("s"):
+        n = n[:-1]
+    return n
+
+
+def _ncg_tokens(*texts):
+    """v1.23.0 negCanonGuard: объектные токены именной фишки/канона —
+    ≥4 знаков, без generic-слов (skin/hair/…) и цветов (сцена переиспользует
+    цвета законно: «black background» ≠ бан чёрных лент)."""
+    cfg = GATES.get("negCanonGuard") or {}
+    generic = set(cfg.get("genericStop", []))
+    colors = set(cfg.get("colorStop", []))
+    out = set()
+    for t in texts:
+        for w in words(t or ""):
+            n = _ncg_norm(w)
+            if len(n) < 4 or n in generic or n in colors or n.isdigit():
+                continue
+            out.add(n)
+    return out
+
+
+def _ncg_negwords(neg_text):
+    return {_ncg_norm(w) for w in words(neg_text or "")
+            if len(_ncg_norm(w)) >= 4}
+
+
+def check_neg_canon_guard(slots, warns, fails, batch_no=-1, oc_names=(), retro=False):
+    """v1.23.0 negCanonGuard — В55 «именные фишки никогда в NEG» (вердикт
+    T5-34, finding named_feature_in_neg: розовые очки SO-20 — инвариант
+    заказа SO-09 — посажены в NEG гард-формой «glasses covering eyes,
+    glasses removed» и потеряны на рендере; тем же классом потеряны
+    канон-локи SO-19 катка-2). Мейн-слоты: канон-локи именного OC
+    (oc-canon.json: hair/eyes/skin/signature_marks) против NEG того же
+    слота — объектный токен в NEG = FAIL (класс оплачен вердиктом,
+    эра 35; ретро — WARN, история не переписывается). Гард-форма фишку
+    не спасает — рендерер глушит токен; держать фишку — позитивной
+    строкой POS (ОС-протокол В55: тема автора в полную силу)."""
+    cfg = GATES.get("negCanonGuard")
+    zero = {"mode": "silent", "oc_slots": 0, "canon_hits": 0}
+    if not cfg:
+        return zero
+    live = (not retro) and (0 <= batch_no >= int(cfg.get("applyFrom", 10 ** 9)))
+    if not live and not retro:
+        return zero
+    zero["mode"] = "FAIL" if live else "RETRO-WARN"
+    st = dict(zero)
+    occ = None
+    for s in slots:
+        if not s.neg:
+            continue
+        tokens = {t.strip() for t in s.paren.split("·")}
+        name = next((n for n in oc_names if n in tokens), None)
+        if not name:
+            continue
+        st["oc_slots"] += 1
+        if occ is None:
+            try:
+                occ = json.loads(
+                    (ROOT / "specs/oc-canon.json").read_text(encoding="utf-8")
+                ).get("ocs", {})
+            except Exception:
+                occ = {}
+        canon = occ.get(name) or {}
+        feats = [str(canon.get(k) or "") for k in ("hair", "eyes", "skin")]
+        feats += [str(m) for m in (canon.get("signature_marks") or [])]
+        ftoks = _ncg_tokens(*feats)
+        if not ftoks:
+            continue
+        hits = sorted(ftoks & _ncg_negwords(s.neg))
+        if hits:
+            st["canon_hits"] += 1
+            (fails if live else warns).append(
+                (s.sid, "neg-canon",
+                 f"канон-лок {name} в NEG: {', '.join(hits)} — В55: именные "
+                 "фишки и канон-локи никогда в NEG (гейт negCanonGuard, "
+                 "вердикт T5-34: очки SO-20 потеряны гард-формой «glasses "
+                 "removed»); держать фишку — позитивной строкой POS"))
+    return st
+
+
+def check_special_neg_canon(path, warns, fails, retro=False):
+    """v1.23.0 negCanonGuard — special/SO-файлы: живые заказы, эры нет
+    (каждый SO рождается готовым). Гость из «Canon: NAME», токены —
+    canon_run ростера + order_invariants всех заказов гостя (инвариант
+    заказа переносится производными сценами: SO-09 очки → SO-20).
+    Послотовые гейты на special исторически исполнялись 0 раз (формат
+    без P-слотов, живой пример SO-06) — этот гейт парсит POS:/NEG:
+    блоки сам, вслепую больше не сидим."""
+    zero = {"special": False, "guest": None, "invariant_hits": 0,
+            "canon_hits": 0}
+    cfg = GATES.get("negCanonGuard")
+    if not cfg:
+        return zero
+    p = Path(path)
+    if not (p.parent.name == "special" and re.match(r"SO-\d+$", p.stem)):
+        return zero
+    st = dict(zero)
+    st["special"] = True
+    try:
+        text = p.read_text(encoding="utf-8")
+    except Exception:
+        return st
+    m = re.search(r"^Canon:\s*([A-Za-z][\w-]*)", text, flags=re.M)
+    if not m:
+        return st
+    st["guest"] = m.group(1)
+    try:
+        roster = json.loads(
+            (ROOT / "specs/special-roster.json").read_text(encoding="utf-8"))
+    except Exception:
+        return st
+    entry = next((g for g in roster.get("guests", [])
+                  if g.get("name") == st["guest"]), None)
+    if not entry:
+        return st
+    nm = re.search(r"^NEG:\s*\n(.*?)(?=^\s*═|^ПЕЧЬ|^##|^---|\Z)",
+                   text, flags=re.M | re.S)
+    neg_text = nm.group(1) if nm else ""
+    if not neg_text.strip():
+        return st
+    invars = []
+    for lst in (entry.get("order_invariants") or {}).values():
+        invars.extend(lst or [])
+    negtoks = _ncg_negwords(neg_text)
+    hard = not retro
+    inv_hits = sorted(_ncg_tokens(*invars) & negtoks) if invars else []
+    canon_hits = sorted(_ncg_tokens(entry.get("canon_run") or "") & negtoks)
+    if inv_hits:
+        st["invariant_hits"] = len(inv_hits)
+        (fails if hard else warns).append(
+            ("SO", "neg-canon",
+             f"инвариант заказа {st['guest']} в NEG: {', '.join(inv_hits)} — "
+             "В55: розовые очки больше не теряются; гард-форма («X removed») "
+             "фишку не спасает — рендерер глушит токен; держать фишку — "
+             "позитивной строкой POS (гейт negCanonGuard, вердикт T5-34)"))
+    if canon_hits:
+        st["canon_hits"] = len(canon_hits)
+        (fails if hard else warns).append(
+            ("SO", "neg-canon",
+             f"канон-лок {st['guest']} в NEG: {', '.join(canon_hits)} — В55: "
+             "канон-локи никогда в NEG; держать лок — позитивной строкой POS "
+             "(гейт negCanonGuard, вердикт T5-34)"))
+    return st
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -2577,6 +2726,8 @@ def main():
     exp_hyp_stats = check_exp_hypothesis(slots, warns, fails, batch_no, retro)  # В42
     rating_stats = check_rating_truth(slots, warns, fails, batch_no, retro)  # В43
     rating_mass_stats = check_rating_mass(slots, warns, fails, batch_no, oc_names, retro)  # В51
+    negcanon_stats = check_neg_canon_guard(slots, warns, fails, batch_no, oc_names, retro)  # В55
+    negcanon_stats.update(check_special_neg_canon(batch_path, warns, fails, retro))  # В55: SO-файлы — без эры
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -2698,6 +2849,15 @@ def main():
             "pg13": rating_mass_stats.get("pg13"),
             "retro": bool(retro),
         },
+        "neg_canon_guard": {  # v1.23.0 В55: именные фишки/канон-локи не в NEG
+            "mode": negcanon_stats.get("mode", "silent"),
+            "oc_slots": negcanon_stats.get("oc_slots", 0),
+            "canon_hits": negcanon_stats.get("canon_hits", 0),
+            "special": bool(negcanon_stats.get("special")),
+            "guest": negcanon_stats.get("guest"),
+            "invariant_hits": negcanon_stats.get("invariant_hits", 0),
+            "retro": bool(retro),
+        },
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
@@ -2787,6 +2947,21 @@ def main():
             f"ratingMass [В51]: мейнов {rm['mains']} · R+ {rm['rplus']} · "
             f"R {rm['r']} · PG-13 {rm['pg13']}"
         )
+    # v1.23.0: печать В55 — мейн-эры 35+ (или retro) и special-файлы всегда
+    ncg = receipt["neg_canon_guard"]
+    if GATES.get("negCanonGuard") and (
+        batch_no >= int(GATES["negCanonGuard"].get("applyFrom", 10 ** 9))
+        or retro or ncg.get("special")
+    ) and (ncg.get("oc_slots") or ncg.get("special")):
+        parts = []
+        if ncg.get("oc_slots"):
+            parts.append(f"OC-слотов {ncg['oc_slots']} · канон-локов в NEG "
+                         f"{ncg['canon_hits']}")
+        if ncg.get("special"):
+            parts.append(f"SO {ncg.get('guest')}: инвариантов в NEG "
+                         f"{ncg['invariant_hits']} · канон-локов в NEG "
+                         f"{ncg['canon_hits']}")
+        print("negCanonGuard [В55]: " + " · ".join(parts))
     if GATES.get("ratingTruth") and (
         batch_no >= int(GATES["ratingTruth"].get("applyFrom", 10 ** 9)) or retro
     ) and receipt["rating_truth"].get("checked") is not None:

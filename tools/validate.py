@@ -92,6 +92,8 @@ REQUIRED_GATES_KEYS = [
     "voltCore", "exquisiteMain", "expHypothesis", "ratingTruth",
     # эра 1.21.0 — урок T5-34 (В51)
     "ratingMass",
+    # эра 1.23.0 — урок T5-34 (В55, ПЛАН 5.5 T6.2)
+    "negCanonGuard",
 ]
 
 # режим CI: без проверки хука (в раннере хука нет — проверка №8 не про него)

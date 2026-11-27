@@ -15,8 +15,8 @@
 2. T5-29 ground truth В43 не сдвинулся: matched {P04,P11,P18,P27},
    17 ложных R+, 12 дрейфов (test_t529_lessons.py — дубль-страховка здесь).
 3. Словари: rating-techniques 1.6.0 (hard_carriers + импорт «копай оракла» + ЗАКОН 3 покрытия-в-позе),
-   dresser 1.9.0 (carrier_first + yuri_quota В49 + carrier_matrix + combo_book), gates.json 1.22.0
-   (negBase += yellow skin/sallow skin, skinCast В48 — вердикт T5-33; yStamp eraGuard В52 — вердикт T5-34).
+   dresser 1.9.0 (carrier_first + yuri_quota В49 + carrier_matrix + combo_book), gates.json 1.23.0
+   (negBase += yellow skin/sallow skin, skinCast В48 — вердикт T5-33; yStamp eraGuard В52 + negCanonGuard В55 — вердикт T5-34).
 """
 import json
 import sys
@@ -115,7 +115,7 @@ class TestCalibrationRegistryPins(unittest.TestCase):
     def test_versions(self):
         self.assertEqual(self.rt["version"], "1.6.0")
         self.assertEqual(self.dr["version"], "1.9.0")
-        self.assertEqual(self.gt["version"], "1.22.0")
+        self.assertEqual(self.gt["version"], "1.23.0")
 
     def test_hard_carriers_present(self):
         hc = self.rt["sum_rules"]["hard_carriers"]
