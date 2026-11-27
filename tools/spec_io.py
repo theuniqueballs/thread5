@@ -49,6 +49,10 @@ SPEC_INDENT = {
     "specs/open-hypotheses.json": 1,
     "specs/pregarerobe/_ledger.json": 1,
     "specs/gate-receipts/*.json": 1,
+    # тикет #6: gates.json — ручной справочник на indent 2; без паспорта
+    # dump_spec без явного indent чуть не переформатировал его в 1 (класс
+    # волны 1в / тикета #4 — пойман живым прогоном правки claimFact)
+    "specs/gates.json": 2,
 }
 
 

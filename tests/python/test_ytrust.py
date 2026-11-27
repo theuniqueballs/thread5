@@ -43,7 +43,7 @@ class TestTrustRegistry(unittest.TestCase):
 
     def test_registry_shape(self):
         self.assertEqual(self.reg["id"], "y-trust")
-        self.assertEqual(self.reg["version"], "1.1.0")  # 1.1.0 — fact-слой (T2.3/1.4): тир из rating_truth_delta
+        self.assertEqual(self.reg["version"], "1.1.1")  # 1.1.1 — пул CLOCK не заливается «—»-картами (сборка T5-35); 1.1.0 — fact-слой (T2.3/1.4): тир из rating_truth_delta
         self.assertIn("ceiling", self.reg["policy"])
         self.assertLessEqual(self.reg["policy"]["ceiling"], 80)
         self.assertIn("regenerate", self.reg["policy"])

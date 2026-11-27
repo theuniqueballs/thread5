@@ -2145,17 +2145,23 @@ def check_theme_echo(batch_path, slots, warns, fails, batch_no=-1,
 
 
 def _cf_word_re(noun):
-    """v1.27.0 claimFact: слово-граница + множественное + дефис-страж
-    («set» ≠ «sunset» и ≠ «natural-set»: дефисное соединение — не вещь)."""
+    """v1.28.0 claimFact (тикет #6): слово-граница + множественное,
+    дефис-стражи с обеих сторон («set» ≠ «sunset»/«natural-set»,
+    «top» ≠ «top-heavy» — живой урок правки: открытый правый дефис
+    легализовал «top-heavy build» как панель груди). Дефис-компаунды-вещи
+    PROSE PLUS (dress-front, corset-back, shirt-front) ездят в
+    objectNouns ЯВНЫМИ записями — прецедент skin-tight/painted-on."""
     return re.compile(
         r"(?<![\w-])" + re.escape(noun) + r"(?:s|es)?(?![\w-])", re.I)
 
 
 def _cf_stem_re(stem):
-    """v1.27.0 claimFact: материал-стем с левой границей и открытым правым
-    («thin» → thin/thinned/thinnest, но НЕ «nothing» — урок живой калибровки:
-    подстрочный матч чуть не легализовал ложный R+ через «nothing»)."""
-    return re.compile(r"(?<![\w-])" + re.escape(stem), re.I)
+    """v1.28.0 claimFact (тикет #6): материал-стем с границей слова СЛЕВА
+    и открытым правым («thin» → thin/thinned/thinnest, но НЕ «nothing» —
+    урок живой калибровки) + дефис-хвост слева РАЗРЕШЁН: rain-wet,
+    sheer-lined, water-pooled — легитимные состояния-компаунды PROSE
+    PLUS (прецедент списка: skin-tight, painted-on живут целиком)."""
+    return re.compile(r"(?<!\w)" + re.escape(stem), re.I)
 
 
 def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
@@ -2175,7 +2181,21 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
     WARN с T5-35 (закон 8.6), FAIL — словом автора; ретро — WARN. ⚗ НЕ
     освобождает: EXP-клетка с ложным R+ — тот же ложный ярлык (калибровка
     тикета: ретро T5-34 ловит ≥13 из 15; P25/P26 с материальным носителем
-    проходят честно)."""
+    проходят честно).
+
+    v1.28.0 (тикет #6, Чарли P1 — «claimFact ловит своих»): живой прогон
+    T5-35 дал 5+ ложных WARN из 8. Чинится: (1) objectNouns +shirt/knit/
+    ribbed knit/cloth; (2) дефис-хвосты: правая граница noun и левая
+    стема разрешают компаунды PROSE PLUS (dress-front, rain-wet,
+    sheer-lined), левые хвосты-модификаторы noun по-прежнему блокированы
+    (natural-set ≠ set), «thin» ⊄ «nothing» жив; (3) окно носителя ±1
+    строка (строка = кадр-аспект); (4) openModifiers — раскрытая панель
+    не глушит (worn open/unzipped/fallen off/open back/zipper ride);
+    (5) panelSynonymGroups — corset+bodice+bustier одна вещь; (6)
+    geometryClaims (В53/H-15) — геометрия-заявка токенизирована, несёт
+    себя сама; (7) зона: chest/bottom-токены весят больше плеча-инцидента
+    («chin over shoulder» в позе — не парковка груди). Приёмка: перегон
+    T5-35 → v2, ретро T5-34 ≥13/15, T5-27 молчит."""
     cfg = GATES.get("claimFact")
     zero = {"mode": "silent", "rplus_slots": 0, "passing": 0,
             "caught": [], "reasons": {}}
@@ -2204,9 +2224,39 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
     shoulder_zone = cfg.get("zoneShoulder", [])
     mat_stems = cfg.get("materialStates", [])
     max_panels = int(cfg.get("maxPanelsOnZone", 2))
+    # v1.28.0 (тикет #6): геометрия-заявка (В53/H-15) + панель-модификаторы
+    # раскрытия + синоним-панели + окно носителя ±1 строка (PROSE PLUS:
+    # строка = кадр-аспект, носитель имеет право жить на соседней)
+    geom_toks = [t for t in (cfg.get("geometryClaims") or []) if t]
+    open_mods = [m for m in (cfg.get("openModifiers") or []) if m]
+    panel_groups = [list(g) for g in (cfg.get("panelSynonymGroups") or [])]
+    shoulder_anchors = [a for a in (cfg.get("shoulderAnchors") or []) if a]
 
     def _has(line, toks):
         return any(t in line for t in toks)
+
+    def _zone_panels(lines_lower, panel_list):
+        """Панели зоны: имя считается, если хоть одно его вхождение
+        живёт в строке БЕЗ модификатора раскрытия (worn open / unzipped /
+        fallen off — раскрытая панель не глушит чтение, прецедент
+        калибровки «denim-модификатор ≠ панель»); синоним-группы
+        (corset+bodice+bustier) — одна вещь несколькими именами."""
+        found = set()
+        for n in panel_list:
+            rx = _cf_word_re(n)
+            for lnl in lines_lower:
+                if rx.search(lnl) and not any(m in lnl for m in open_mods):
+                    found.add(n)
+                    break
+        collapsed = set()
+        for n in found:
+            gid = n
+            for grp in panel_groups:
+                if n in grp:
+                    gid = grp[0]
+                    break
+            collapsed.add(gid)
+        return collapsed
 
     st = dict(zero)
     st["reasons"] = {"no_claim": 0, "no_object": 0, "zone": 0,
@@ -2218,17 +2268,16 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
         lines = [l for l in getattr(s, "pos_lines", []) if l]
         if not lines and s.pos:
             lines = [s.pos]
-        pos_text = " ".join(lines).lower()
-        chest_panels = {n for n in cfg.get("chestPanels", [])
-                        if _cf_word_re(n).search(pos_text)}
-        bottom_panels = {n for n in cfg.get("bottomPanels", [])
-                         if _cf_word_re(n).search(pos_text)}
+        lines_lower = [ln.lower() for ln in lines]
+        chest_panels = _zone_panels(lines_lower, cfg.get("chestPanels", []))
+        bottom_panels = _zone_panels(lines_lower, cfg.get("bottomPanels", []))
         any_claim = False
         best_reason = None
-        for ln in lines:
+        for i, ln in enumerate(lines):
             lnl = ln.lower()
             is_chest = _has(lnl, chest_toks)
-            is_bottom = _has(lnl, bottom_toks)
+            is_geom = _has(lnl, geom_toks)
+            is_bottom = _has(lnl, bottom_toks) or is_geom
             is_body = _has(lnl, body_toks)
             is_bare = _has(lnl, bare_toks)
             is_hold = _has(lnl, hold_toks) or _has(lnl, tape_toks)  # тейп = транзиентный холд (В43)
@@ -2239,20 +2288,28 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
             if not obj_hit:
                 best_reason = best_reason or "no_object"
                 continue
-            # зона: тело-материал — exempt; иначе плечо-маркер глушит
-            # токен-зону (заявка уехала на PG-13-парковку), bare —
-            # зоной правилит строка
+            # зона: тело-материал — exempt; ЯКОРЬ-ФРАЗА плеча демотирует
+            # до PG-13-парковки ДО chest-токенов (v1.28.0, живой урок P17
+            # T5-34: «see-through at the shoulder line» — материал
+            # прикуркован к плечу самим текстом), но инцидент позы («chin
+            # over shoulder», «back over the shoulder») грудь не паркует;
+            # дальше — chest/bottom-токены, потом зоны по словам строки
             if is_body:
                 zone = "body"
-            elif _has(lnl, shoulder_zone):
+            elif _has(lnl, shoulder_anchors):
                 zone = "shoulder"
             elif is_chest or is_hold:
                 zone = "chest"
             elif is_bottom:
                 zone = "bottom"
+            elif _has(lnl, chest_zone):
+                zone = "chest"
+            elif _has(lnl, bottom_zone):
+                zone = "bottom"
+            elif _has(lnl, shoulder_zone):
+                zone = "shoulder"
             else:
-                zone = "chest" if _has(lnl, chest_zone) else (
-                    "bottom" if _has(lnl, bottom_zone) else None)
+                zone = None
             if zone not in ("chest", "bottom", "body"):
                 best_reason = best_reason or "zone"
                 continue
@@ -2263,7 +2320,13 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
             if len(panels) >= max_panels:
                 best_reason = best_reason or "panel"
                 continue
-            if any(rx.search(lnl) for rx in mat_res) or is_hold:
+            # окно носителя ±1 строка вокруг claim-строки (тикет #6, корень 3:
+            # PROSE PLUS — строка = кадр-аспект, состояние вещи имеет право
+            # жить на соседней: «sheer-lined corset's weave» отдельной строкой);
+            # геометрия-заявка (В53/H-15, X-слип 0/6) несёт себя сама — как холд
+            win = " ".join(lines_lower[max(0, i - 1):i + 2])
+            if (any(rx.search(win) for rx in mat_res)
+                    or is_hold or is_geom):
                 best_reason = None  # заявка прошла все слои fact-проверки
                 break
             best_reason = best_reason or "carrier"
@@ -2290,8 +2353,9 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
                      f"панель глушит чтение (панель ткани держит потолок R, "
                      f"В43): заявка обязана указывать ЕДИНСТВЕННУЮ вещь-носитель",
             "carrier": "процесс-носитель в одиночку: в тег-ране нет ни "
-                       "материала вещи (sheer/thin/lace/translucent/wet), ни "
-                       "транзиентного холда (tape/hands) — two-carrier "
+                       "материала вещи (sheer/thin/lace/translucent/wet/tight), ни "
+                       "транзиентного холда (tape/hands), ни геометрии-заявки "
+                       "(В53/H-15: camera-between/под-подол) в окне ±1 строка — two-carrier "
                        "В52/В53: процесс (wind-pressed / by-the-straddle / "
                        "pinned) — только ВТОРОЙ носитель, никогда единственный",
         }
@@ -2299,7 +2363,8 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
             (s.sid, "claim-fact",
              f"{reasons_txt.get(best_reason, best_reason)} (В56, тикет #5: "
              "гейты больше не меряют бумагу — заявка привязана к физике кадра; "
-             "WARN-эра, FAIL — словом автора после первого рендера)"))
+             "WARN-эра, FAIL — словом автора после первого рендера; чинено "
+             "тикетом #6 — дефис-хвосты/окно ±1/панель-модификаторы)"))
     return st
 
 

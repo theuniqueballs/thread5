@@ -57,6 +57,7 @@ class TestLiveRoundtrip(unittest.TestCase):
         "specs/dresser.json",
         "specs/oc-candidates.json",
         "specs/races.json",
+        "specs/gates.json",
     )
 
     def test_machine_specs_in_canon(self):

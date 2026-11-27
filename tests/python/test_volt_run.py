@@ -70,7 +70,7 @@ class TestVoltRunSpec(unittest.TestCase):
         self.assertIn("В45", vr["born"])
 
     def test_gate_config(self):
-        self.assertEqual(self.gt["version"], "1.27.0")  # 1.27.0 — claimFact (тикет #5)
+        self.assertEqual(self.gt["version"], "1.28.0")  # 1.27.0 — claimFact (тикет #5)
         g = self.gt["voltRun"]
         self.assertEqual(g["applyFrom"], 35)
         self.assertEqual(g["mode"], "WARN")

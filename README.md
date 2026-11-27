@@ -61,7 +61,10 @@ Batch-Prompt Conveyer Belt
   **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**;
   **oc-candidates.json 1.4.0 — кандидаты в ОС: 27 trial (статусы
   passed/promoted/pending), вердикт только автора (пункт Д)**; `gates.json`
-  1.27.0 (ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
+  1.28.0 (тикет #6: claimFact чинит ложные WARN живого T5-35 —
+  shirt/knit/cloth + дефис-хвосты состояний + окно носителя ±1 строка +
+  панель-модификаторы раскрытия + геометрия-заявки H-15/В53 +
+  якорь-фразы плеча; ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
   pointRead/pairContact = HARD R+; «chest's bare line» отстрелен от R+;
   voltCore В39, raceCast v2.0 В40, exquisiteMain В41, expHypothesis В42,
   ratingTruth В43 — все FAIL-эра с T5-30; skinCast В48; **ratingMass В51 —

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Юнит-тесты гейта claimFact (тикет #5, gates.json 1.27.0) — FACT-СЛОЙ ЗАЯВКИ
+Юнит-тесты гейта claimFact (тикет #5 → #6, gates.json 1.28.0) — FACT-СЛОЙ ЗАЯВКИ
 R+ (В56 «гейты мерили бумагу»): named object в тег-ране + зона грудь/низ +
 нет второй панели + носитель состояния (материал/холд); процесс — только
 второй носитель (two-carrier В52/В53).
@@ -49,7 +49,16 @@ class TestClaimFactSpecs(unittest.TestCase):
                     "zoneShoulder", "chestPanels", "bottomPanels",
                     "materialStates", "holdTokens"):
             self.assertTrue(cfg.get(key), f"словарь {key} пуст")
-        self.assertEqual(gates.GATES.get("version"), "1.27.0")
+        # тикет #6: новые словари правки
+        for key in ("openModifiers", "geometryClaims", "panelSynonymGroups",
+                    "shoulderAnchors"):
+            self.assertTrue(cfg.get(key), f"словарь {key} пуст")
+        for noun in ("shirt", "knit", "ribbed knit", "cloth", "dress-front"):
+            self.assertIn(noun, cfg["objectNouns"], f"тикет #6: {noun} забыт")
+        self.assertIn("tight", cfg["materialStates"], "тикет #6: tight забыт")
+        self.assertNotIn("bib", cfg["chestPanels"],
+                         "тикет #6: номер-нагрудник не глушит чтение")
+        self.assertEqual(gates.GATES.get("version"), "1.28.0")
 
     def test_registry_row(self):
         reg = json.loads((REPO / "specs" / "gate-registry.json").read_text(encoding="utf-8"))
@@ -156,6 +165,96 @@ class TestClaimFactBehavior(unittest.TestCase):
                          "«nothing» не считается материалом thin — носителя нет")
 
 
+class TestTicket6Fixes(unittest.TestCase):
+    """Приёмка тикета #6: живой прогон T5-35 вскрыл ложные WARN — чинится."""
+
+    def _run(self, slots, batch_no=35):
+        warns, fails = [], []
+        st = gates.check_claim_fact(slots, warns, fails, batch_no=batch_no)
+        return st, warns, fails
+
+    def test_shirt_and_knit_are_objects(self):
+        """Корень 1: plain shirt/knit — носители (P11/P13/P04 T5-35),
+        nightshirt был, shirt забыли; knit — вязание P04/P14."""
+        for word in ("thin opened shirt", "rain-wet ribbed knit"):
+            s = make_slot("P01", "R+", "VOLT", [
+                f"two soft points reading against the {word} at the chest, "
+                "nothing underneath the wet cloth but steam,",
+            ])
+            st, warns, _ = self._run([s])
+            self.assertEqual(st["caught"], [], f"{word} — named object")
+
+    def test_hyphen_state_compounds_match(self):
+        """Корень 2: rain-wet / sheer-lined — состояния-компаунды PROSE
+        PLUS матчатся стемом (левая граница слова, не дефис)."""
+        s = make_slot("P01", "R+", "VOLT", [
+            "breast shape held high in the corset's tight weave at the chest,",
+            "two soft crests across the sheer-lined corset's weave under the lamp,",
+        ])
+        st, _, _ = self._run([s])
+        self.assertEqual(st["caught"], [], "sheer-lined на соседней строке — носитель")
+
+    def test_carrier_window_plus_minus_one_line(self):
+        """Корень 3: окно носителя ±1 строка вокруг claim-строки (PROSE
+        PLUS: строка = кадр-аспект — P10-паттерн T5-35)."""
+        s = make_slot("P01", "R+", "VOLT", [
+            "breast shape held high in the corset's tight weave, nothing underneath,",
+            "mid-flip of wet hair, arms up, the room's steam rising,",
+        ])
+        st, warns, _ = self._run([s])
+        self.assertEqual(st["caught"], [], "wet на ±1 строке — носитель")
+
+    def test_open_modifier_voids_panel(self):
+        """Корень 4: worn open / zipper ride / fallen off — раскрытая
+        панель не глушит заявку (P15-паттерн T5-35)."""
+        s = make_slot("P01", "R+", "VOLT", [
+            "post-comp jacket zipper ride + leotard leg-line, breast shape riding "
+            "the zipper's track, nothing underneath the leotard but the race's heat,",
+            "two soft crests through the leotard's tight weave at the chest,",
+        ])
+        st, warns, _ = self._run([s])
+        self.assertEqual(st["caught"], [], "раскрытая панель не считается")
+
+    def test_geometry_claim_carries_itself(self):
+        """Корень 5: H-15/В53 — геометрия-заявка (camera between / под-
+        подолом) токенизирована и несёт себя сама, как холд."""
+        s = make_slot("P01", "R+", "VOLT", [
+            "staircase under-hem shot, the camera between her knees one flight "
+            "below her climb, the skirt's hem living its own polygon,",
+        ])
+        st, warns, _ = self._run([s])
+        self.assertEqual(st["caught"], [], "геометрия = носитель (X-слип 0/6)")
+
+    def test_shoulder_incident_not_parking(self):
+        """Плечо-инцидент позы («chin over shoulder») не паркует заявку
+        груди (P10 T5-35); якорь-фраза («at the shoulder line») паркует
+        (P17 T5-34 — живой урок разводки)."""
+        incident = make_slot("P01", "R+", "VOLT", [
+            "chair straddle, chin over shoulder, breast shape held high in the "
+            "corset's tight weave at the chest, nothing underneath the sheer corset,",
+        ])
+        st, _, _ = self._run([incident])
+        self.assertEqual(st["caught"], [], "инцидент позы ≠ парковка")
+        anchor = make_slot("P02", "R+", "VOLT", [
+            "a sheer organza blouse, see-through at the shoulder line with "
+            "nothing underneath the film but the room's held breath, "
+            "two soft crests across the film's pale field,",
+        ])
+        st, warns, _ = self._run([anchor])
+        self.assertEqual(st["caught"], ["P02"], "якорь-фраза = PG-13-парковка")
+
+    def test_top_heavy_not_a_panel(self):
+        """Живой урок правки: правый дефис-страж noun удержан — «top-heavy
+        build» не панель груди (P04/P11/P27 T5-35 чуть не поймались)."""
+        s = make_slot("P01", "R+", "VOLT", [
+            "two soft points reading against the thin opened shirt at the chest, "
+            "nothing underneath the wet cloth but steam,",
+            "full top-heavy build settled into the saddle,",
+        ])
+        st, _, _ = self._run([s])
+        self.assertEqual(st["caught"], [], "top-heavy — телосложение, не вещь")
+
+
 class TestLiveCalibration(unittest.TestCase):
     """Приёмка тикета на живом дереве: числа, не обещания."""
 
@@ -175,6 +274,18 @@ class TestLiveCalibration(unittest.TestCase):
         self.assertNotIn("P04", caught, "P04 (translucent gel) — материальное попадание, не ложь")
         self.assertNotIn("P13", caught, "P13 (wine-dark lace) — материальное попадание, не ложь")
         self.assertEqual(fails, [], "ретро — WARN, история не переписывается")
+
+    def test_t5_35_rerun_caught_empty(self):
+        """Тикет #6, приёмка: перегон живой T5-35 исправленным гейтом —
+        ложные WARN схлопнулись (v1: 8 пойманных из 20, 5+ ложных по
+        разбору Чарли; v2: заявки на физике кадра у всех 20 R+)."""
+        _, _, slots = gates.parse_batch(REPO / "batches" / "T5-35.md")
+        warns, fails = [], []
+        st = gates.check_claim_fact(slots, warns, fails, batch_no=35)
+        self.assertEqual(st["caught"], [],
+                         f"ложные WARN живы: {st['caught']}")
+        self.assertEqual(st["passing"], 20)
+        self.assertEqual(fails, [])
 
     def test_golden_t5_27_untouched(self):
         """Золотой T5-27: гейт молчит до эры — вердикт PASS 0F/2W не

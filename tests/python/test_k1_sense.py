@@ -67,7 +67,7 @@ class TestK1Specs(unittest.TestCase):
         self.assertEqual(cfg.get("applyFrom"), 35, "К-1 обязателен с T5-35 (AGENTS:137)")
         self.assertEqual(cfg.get("mode"), "WARN", "закон 8.6: WARN-старт")
         re.compile(cfg.get("pattern", ""))
-        self.assertEqual(gates.GATES.get("version"), "1.27.0")  # 1.27.0 — claimFact (тикет #5); 1.26.0 — k1Sense
+        self.assertEqual(gates.GATES.get("version"), "1.28.0")  # 1.27.0 — claimFact (тикет #5); 1.26.0 — k1Sense
 
     def test_registry_row(self):
         reg = json.loads((REPO / "specs" / "gate-registry.json").read_text(encoding="utf-8"))
