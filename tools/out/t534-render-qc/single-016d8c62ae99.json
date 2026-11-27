@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Long ash-blonde/light brown hair, straight with bangs.\n2) Gray-brown eyes; no heterochromia; no ring pupils.\n3) Long pointed elf ears (with leaf/earring ornaments).\n4) White ribbed knit tank top + blue plaid skirt + silver heels; torso, pelvis, legs covered to knee; shoulders/arms bare; no transparency, no nipple bumps.\n5) Sitting with knees drawn up, resting chin on hand, reading an open book.\n6) Full/three-quarter body, slightly low front angle.\n7) Library with mirror and camera.\n8) PG-13 — fully clothed, no erotic emphasis.\n9) No — cool blue tones and mirror reflection, not psychedelic.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792608,
+  "id": "20261127231643026a4350566c4d5d",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231643026a4350566c4d5d",
+  "usage": {
+    "completion_tokens": 155,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1684
+  }
+}

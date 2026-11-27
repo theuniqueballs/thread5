@@ -1,0 +1,29 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "IMG 1:\n- hair: blonde with pink tips, messy side bun\n- markers: human\n- garment: black tank top + unbuttoned jeans, fully covered, midriff exposed\n- pose: leaning forward, thumbs hooked in waistband, grinning\n- scene: garage motorcycle workshop\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 2:\n- hair: mint-green translucent, long flowing\n- markers: slime body — translucent gel skin, melting drips\n- garment: slime film top + fingerless gloves, sheer translucent coverage\n- pose: arms raised, head tilted back, hands against glass\n- scene: sunlit greenhouse, water droplets\n- rating: R+ — translucent slime body, chest shape visible through sheer gel\n- acid: no\n\nIMG 3:\n- hair: dark brown short bob\n- markers: human\n- garment: blue oversized cropped sweater + jeans, fully covered\n- pose: standing on stairs, holding cup, profile view\n- scene: staircase, cool night lighting\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 4:\n- hair: light brown low bun with hairpin\n- markers: none human; mushroom-covered witch hat (garment, not body)\n- garment: purple off-shoulder dress slipping, bare shoulders/chest above neckline\n- pose: gentle smile, slight forward lean\n- scene: rainy cabin, constellation lights\n- rating: PG-13 — covered chest, calm whimsical mood\n- acid: yes — glowing constellation lines, bioluminescent mushrooms, dreamlike hues\n\nIMG 5:\n- hair: light brown/auburn, very long straight\n- markers: human\n- garment: cream camisole dress + open shirt, fully covered\n- pose: hand in hair, glancing sideways at door\n- scene: doorway golden sunset backlight\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 6:\n- hair: honey blonde short wavy\n- markers: human\n- garment: white wrapped blouse/skirt with hood-scarf, fully covered, chest wrap emphasis\n- pose: standing at railing, facing viewer\n- scene: ship deck open sea\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 7:\n- hair: dark green/black messy bun\n- markers: human\n- garment: lime camisole + shorts, bare shoulders/legs, covered chest\n- pose: sitting slumped on washing machine edge\n- scene: laundromat daytime\n- rating: R — erotic emphasis, calm; legs and shoulders framed\n- acid: no\n\nIMG 8:\n- hair: blonde updo bun, loose strands\n- markers: human\n- garment: yellow cardigan + apron dress, fully covered\n- pose: pouring teapot, other hand at chest ribbon\n- scene: kitchen warm sunlight\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 9:\n- hair: light brown long straight, bangs\n- markers: human\n- garment: tank top + shorts + knee sock, covered chest, bare legs\n- pose: crouched by windowsill, arms on knees\n- scene: rooftop night city, coffee\n- rating: R — erotic emphasis, calm; leg/hip framing\n- acid: no\n\nIMG 10:\n- hair: dark navy long wavy\n- markers: human\n- garment: light blue shirt dress + choker, fully covered\n- pose: leaning on balustrade, gazing upward\n- scene: balcony twilight with dove\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 11:\n- hair: black long wavy, purple highlights\n- markers: human\n- garment: black lace evening gown, sheer lace panels over chest, lace glove\n- pose: side profile, gloved hand raised to glowing wall\n- scene: neon cyberpunk corridor\n- rating: R+ — sheer lace bodice, cleavage emphasis through translucent fabric\n- acid: yes — glowing pink fingerprint spiral, magenta/cyan neon haze",
+        "reasoning_content": "Image 2 is a slime/transparent body — borderline; chest visible through translucent slime body... Rating: covered chest but translucent? Chest shape visible through translucent body — I'd call R+ (sheer/translucent). Actually bare? Nipples not distinctly drawn; call R+.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792096,
+  "id": "20261127230754b3cd4804614b41ad",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230754b3cd4804614b41ad",
+  "usage": {
+    "completion_tokens": 951,
+    "completion_tokens_details": {
+      "reasoning_tokens": 56
+    },
+    "prompt_tokens": 14436,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 15387
+  }
+}

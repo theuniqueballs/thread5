@@ -1,0 +1,29 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "IMG 1:\n- hair: auburn, messy bun with hairpin sticks\n- markers: human\n- garment: glossy teal robe, loose, thigh exposed, chest covered\n- pose: leaning on hallway wall, biting phone card, backside angled\n- scene: dormitory hallway morning light\n- rating: R — bare thigh and clingy fabric tease\n- acid: no\n\nIMG 2:\n- hair: golden blonde, long curly waves\n- markers: human\n- garment: white wedding dress, satin gloves, fully covered\n- pose: lying serenely in open coffin\n- scene: mausoleum statues rose petals\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 3:\n- hair: black, side ponytail with clip\n- markers: human\n- garment: sheer white t-shirt with cherry print, underboob sliver visible, shorts\n- pose: reaching across cherry crates, lifting shirt\n- scene: grocery fruit stand cherries\n- rating: R+ — sheer fabric and underboob emphasis\n- acid: no\n\nIMG 4:\n- hair: silver-white, very long straight\n- markers: human\n- garment: sheer lace-trimmed blue top over camisole, skirt, covered\n- pose: standing, downcast wistful gaze\n- scene: blue floral room sunlight\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 5:\n- hair: dark brown, long with hairpins\n- markers: human\n- garment: crop tank top, denim shorts, sneakers, midriff exposed\n- pose: crouched touching puddle, reflection below\n- scene: rainy street puddle reflection rainbow\n- rating: PG-13 — casual wear, no erotic emphasis\n- acid: mild — rainbow prism sheen in puddle reflection\n\nIMG 6:\n- hair: dark brown, elegant updo\n- markers: human\n- garment: golden cape, white blouse, fully covered\n- pose: profile turn looking down\n- scene: theater balconies warm gold\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no\n\nIMG 7:\n- hair: brown, wet messy bun with pin\n- markers: human\n- garment: towel held against chest, bare back and shoulder visible\n- pose: back turned over shoulder, water dripping\n- scene: bathroom steam post-shower\n- rating: R — post-shower tease, calm\n- acid: no\n\nIMG 8:\n- hair: brown, long wavy, red-blue cap\n- markers: human\n- garment: denim crop overall top, tiny frayed shorts, ass emphasis\n- pose: rear view on stairs glancing back\n- scene: neon red-blue tiled stairwell\n- rating: R — strong rear emphasis, clothed\n- acid: yes — psychedelic red-blue split lighting, halftone dot gradients, kaleidoscope tile glow\n\nIMG 9:\n- hair: black with red streak, messy bun\n- markers: human\n- garment: strapless white tube top, black pants, shoulders bare\n- pose: seated sideways on throne, smoking\n- scene: dark theater magenta throne\n- rating: R — moody tease, clothed\n- acid: no\n\nIMG 10:\n- hair: brown, braided updo\n- markers: human\n- garment: blue floral lace bra and panties, adjusting waistband\n- pose: standing in doorway looking down\n- scene: kitchen window cityscape teapot steam\n- rating: R — lingerie showcase, strong cleavage\n- acid: no\n\nIMG 11:\n- hair: ginger-orange, double buns, freckles\n- markers: human\n- garment: crop tank top, plaid pleated skirt, knee socks\n- pose: leaping down stairs waving, cat below\n- scene: sunlit staircase halftone pop\n- rating: PG-13 — fully covered, no erotic emphasis\n- acid: no",
+        "reasoning_content": "Output blocks.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792115,
+  "id": "202611272308176f9e3cf7fe864d74",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "202611272308176f9e3cf7fe864d74",
+  "usage": {
+    "completion_tokens": 855,
+    "completion_tokens_details": {
+      "reasoning_tokens": 3
+    },
+    "prompt_tokens": 14436,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 15291
+  }
+}

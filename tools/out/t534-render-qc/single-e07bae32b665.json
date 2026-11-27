@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Brown, messy low bun with loose wet strands, hairpin.\n2) Dark brown; no heterochromia; no ring pupils.\n3) Human.\n4) White towel wrapped chest-down; back, shoulders, neck, side cleavage exposed; slight fabric sheen but no transparency, no nipple bumps.\n5) Standing, back/side to viewer, hand gripping towel at chest, water droplets on skin.\n6) Waist-up close-up, low-side three-quarter angle.\n7) Bathroom, tiled wall, steamy.\n8) R — bare back, wet skin, intimate.\n9) No — chromatic edge fringing only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792560,
+  "id": "202611272315573dcabdd2d3a0494b",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "202611272315573dcabdd2d3a0494b",
+  "usage": {
+    "completion_tokens": 135,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1664
+  }
+}

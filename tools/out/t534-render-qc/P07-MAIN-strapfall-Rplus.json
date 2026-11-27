@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Dark green/black hair in messy bun with loose strands and long side locks; dark brown eyes; slender/petite build; no fangs/marks; small dark ear studs, possibly a ring on left hand.\n2) CLOTHING STATE: Lime-green spaghetti-strap camisole tank + matching green shorts with white drawstring/trim; covered: chest, stomach (midriff sliver exposed at waist), hips; uncovered: shoulders, arms, thighs (bare from mid-thigh down); subtle breast shape visible under fabric, no nipple pokes/bumps.\n3) POSE: Seated, torso hunched forward, head tilted down in profile; arms extended down between legs, hands clasped resting near knees; legs bent, knees together, feet out of frame.\n4) CAMERA: Upper-body/three-quarter (head to knees), eye level, slight side angle, no dutch.\n5) SCENE: Laundromat; open front-load washer with foam/laundry visible behind her, green/yellow machine panels, checkered lime-green tile floor, pink paw-print sticker, bright daylight window light, soft high-key lighting with green ambient bounce.\n6) RATING VERDICT: PG-13 — chest and hips fully covered by loose casual clothing, relaxed mundane pose, no erotic emphasis.\n7) ACID/LSD THEME: No — saturated green palette is stylized but there are no kaleidoscope patterns, prisms, melting colors, or hallucination elements.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791816,
+  "id": "20261127230327cee522dfd5ce4cc4",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230327cee522dfd5ce4cc4",
+  "usage": {
+    "completion_tokens": 310,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1904
+  }
+}

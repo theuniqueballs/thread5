@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Black/dark brown, long side ponytail with bangs, hair clip.\n2) Red; no heterochromia; no ring pupils.\n3) Human.\n4) White t-shirt + jeans; shirt lifted exposing underboob and midriff; chest covered by raised arm/shirt; no transparency; no nipple bumps.\n5) Reaching up across body, one arm raised, lifting hem slightly.\n6) Close-up torso/face framing, slight high angle.\n7) Fruit market, produce crates.\n8) R — lifted shirt, underboob emphasis, blushing.\n9) No — bright saturated lighting only, no psychedelic elements.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792547,
+  "id": "2026112723154393d36555346b4cb5",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "2026112723154393d36555346b4cb5",
+  "usage": {
+    "completion_tokens": 136,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1665
+  }
+}

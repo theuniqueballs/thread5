@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: dark brown short bob, messy, with ahoge strands.\n2) Eyes: green; no heterochromia; no ring pupils.\n3) Markers: large animal ears, bushy tail.\n4) Garment: ribbed tank top + pleated skirt; torso covered, thighs/lower glutes exposed; fabric opaque, no nipple bumps.\n5) Pose: bent forward over motorcycle, hips raised.\n6) Camera: medium shot from behind, slightly low angle.\n7) Scene: rainy night urban street.\n8) R+ — strong underboob/sideboob, raised hips.\n9) Acid: no; moody neon realism only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792582,
+  "id": "2026112723161931070a3d6f864113",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "2026112723161931070a3d6f864113",
+  "usage": {
+    "completion_tokens": 141,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1670
+  }
+}

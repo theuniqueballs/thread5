@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: long light-brown/auburn hair, hime-cut bangs, hairpins.\n2) Eyes: green; no heterochromia; no ring pupils.\n3) Markers: human (visible pointed ear tip only).\n4) Garment: ribbed tank top + loose shorts, one knee sock; chest/torso/thighs covered, shoulders/arms/lower legs bare; opaque fabric, no nipple bumps.\n5) Pose: sitting on windowsill, knees drawn up, arms resting on knee.\n6) Camera: medium shot, slightly high side angle.\n7) Scene: night city view, steamy coffee.\n8) Rating: PG-13 — fully clothed, no erotic emphasis.\n9) Acid: no; warm natural sunset-city lighting only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792514,
+  "id": "20261127231510ab8e158f17d94753",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231510ab8e158f17d94753",
+  "usage": {
+    "completion_tokens": 164,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1693
+  }
+}

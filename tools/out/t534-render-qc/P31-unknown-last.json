@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Long silver/white hair, straight bangs, pale skin; crimson/red eyes, half-lidded gaze; slim build; large dark ribbed ram horns wrapped with red ribbon; no visible fangs/marks.\n\n2) CLOTHING STATE: Dark ribbed/knit garment (dark blue-black), off-shoulder; covers chest and torso; shoulders, collarbones, neck fully bare; one shoulder strap slipped down arm; no thigh/hip/stomach visible (submerged). No discernible nipple shape or under-fabric detail.\n\n3) POSE: Reclining in water, head tilted up and back; right arm raised, hand gloved/sleeved covering mouth/chin area; left arm submerged/obscured; legs not visible (underwater).\n\n4) CAMERA: Upper-body/portrait framing, slight face emphasis; low-ish angle near water level, roughly eye-level to tilted face; slight tilt but no pronounced dutch.\n\n5) SCENE: Nighttime outdoor pool or hot-spring at a rooftop/edge with city lights bokeh in background; glowing blue water, caustic light patterns; strong blue rim/key lighting with warm accents on skin and red glowing eye highlight.\n\n6) RATING VERDICT: PG-13 — chest covered, bare shoulders only, no erotic emphasis or fabric tease.\n\n7) ACID/LSD THEME: No — lighting is bioluminescent/night-pool aesthetic; no kaleidoscope, prisms, rainbow oil slicks, or melting/hallucinatory patterns.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791775,
+  "id": "20261127230246b456fb919ab4401d",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230246b456fb919ab4401d",
+  "usage": {
+    "completion_tokens": 323,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1917
+  }
+}

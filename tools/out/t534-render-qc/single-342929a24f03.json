@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Light brown/blonde, short messy bob with windblown strands.\n2) Blue-gray; no heterochromia; no ring pupils.\n3) Human.\n4) White buttoned shirt + long flowing skirt + sheer veil/scarf over head/neck; torso, chest, legs covered; face/hands uncovered; fabric semi-sheer at veil, clingy over bust with fabric folds but no explicit nipple bumps.\n5) Standing at railing, body angled, head turned toward viewer.\n6) Vertical, mid-shot from slightly above chest level.\n7) Ship deck, bright sea, sunny.\n8) PG-13 — fully clothed, no erotic emphasis.\n9) No — monochromatic cyan palette only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792506,
+  "id": "20261127231502be55045b603b4dd7",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231502be55045b603b4dd7",
+  "usage": {
+    "completion_tokens": 152,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1681
+  }
+}

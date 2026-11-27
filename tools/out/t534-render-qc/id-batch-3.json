@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "IMG 1:\n- hair: brown short bob, white streak\n- markers: animal ears, fluffy tail\n- garment: ribbed tank top + pleated skirt, fully covered, skirt riding up\n- pose: straddling motorcycle, leaning forward, rear emphasized\n- scene: rainy night city street\n- rating: R — underboob-adjacent fit, rear emphasis, calm\n- acid: no\n\nIMG 2:\n- hair: black jagged bob, medium\n- markers: small orange horns\n- garment: white tank top + cutoff denim shorts, covered, shorts very frayed/high\n- pose: slouched in chair, legs spread toward viewer, hand on thigh\n- scene: sunlit warehouse interior\n- rating: R+ — thigh spread, cameltoe shadow, blush\n- acid: no\n\nIMG 3:\n- hair: platinum blonde bun\n- markers: doll joints (ball-jointed limbs), puppet strings\n- garment: blue-floral leotard, full torso coverage\n- pose: aerial split leap, leg raised vertical\n- scene: dark stage, spotlight dust\n- rating: R — leotard butt/emphasis but calm\n- acid: no\n\nIMG 4:\n- hair: blonde drill curls, long\n- markers: human\n- garment: voluminous white gown + checkered bodysuit, dress flipped over head\n- pose: inverted backbend on stage\n- scene: circus spotlight, wooden floor\n- rating: R+ — dress-over-head expose, legs fully bare, suggestive drip\n- acid: no\n\nIMG 5:\n- hair: ash blonde long, low twin tails\n- markers: long elf ears\n- garment: knit tank top + plaid skirt, fully covered\n- pose: sitting hugging knees, reading book, chin on hand\n- scene: blue-toned library mirror\n- rating: PG-13 — fully covered, calm pose, no emphasis\n- acid: no\n\nIMG 6:\n- hair: black-green long, straight\n- markers: snake tail, scaled green hands, fangs\n- garment: off-shoulder sweater + bike shorts, lifting hem slightly\n- pose: coiled on stripper pole, one leg raised\n- scene: dark green smoky void\n- rating: R — shirt lift, pole pose, calm\n- acid: no\n\nIMG 7:\n- hair: black-red streaked messy bob\n- markers: curled horns, bat wings, spade tail, fangs, elf ears, cracked skin\n- garment: lace bra-style top + hotpants, cleavage emphasized, harness straps\n- pose: crouched leaning forward, hands on knees, grin\n- scene: blue magic-circle dungeon glow\n- rating: R — cleavage emphasis, erotic outfit, covered chest\n- acid: no\n\nIMG 8:\n- hair: blonde twin tails, black ribbons\n- markers: fang, red eyes (human otherwise)\n- garment: soaked black dress, sheer-when-wet cling, fully covered\n- pose: wading up pool ladder, lifting leg\n- scene: bright swimming pool\n- rating: R — wet fabric cling, teasing smile, covered\n- acid: no\n\nIMG 9:\n- hair: white long flowing, wet\n- markers: large curled ram horns\n- garment: black off-shoulder knit, shoulder bare, chest covered/submerged\n- pose: reclining in water, resting cheek on shoulder\n- scene: night pool city lights\n- rating: R — bare shoulder, wet look, calm\n- acid: no",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792135,
+  "id": "20261127230836370d76646e454067",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230836370d76646e454067",
+  "usage": {
+    "completion_tokens": 752,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 11856,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 12608
+  }
+}

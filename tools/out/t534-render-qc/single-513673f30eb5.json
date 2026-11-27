@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Black/dark navy, short tousled bob with long side strands.\n2) Amber/gold; no heterochromia; no ring pupils.\n3) Horns (small orange gradient), multiple ear piercings; tail/wings absent.\n4) White ribbed tank top (chest, torso, navel covered; shoulders/arms bare) + frayed denim shorts (hips/groin/thighs covered, thighs bare from mid-thigh); fabric opaque; no nipple bumps visible.\n5) Seated leaning back, knees spread toward viewer, one arm resting on knee.\n6) Low-angle, slightly wide, waist-up framing from below.\n7) Industrial interior, teal-lit warehouse ceiling.\n8) R — legs spread, flushed face, provocative angle, but fully clothed and calm.\n9) No — naturalistic palette; only teal/orange color contrast, no psychedelic distortion.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792592,
+  "id": "20261127231623854f0f02eac741ff",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231623854f0f02eac741ff",
+  "usage": {
+    "completion_tokens": 187,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1716
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Orange/copper hair in messy double buns with loose strands and hairpins; brown eyes; fair skin; freckle-like marks on cheeks; open smiling mouth; slender athletic build; braided bracelet on left wrist.\n2) CLOTHING STATE: Light blue/white colorblock tank top (chest and stomach covered), orange-green plaid pleated skirt (hips/thighs covered), knee-high white sock with teal stripe on one leg, strappy brown sandals. Chest fully covered, no visible shape/nipple detail under fabric; skirt flares with pose but no clear upskirt exposure; arms and shoulders bare.\n3) POSE: Dynamic descending/crouching motion on stairs; left arm extended back and up (hand open), right arm reaching forward/down; one leg bent high on a step, other leg extended lower; energetic, mid-movement.\n4) CAMERA: Upper-body-to-cowboy framing (head to mid-calf), high diagonal angle, tilted/dutch composition following staircase line, character viewed from above.\n5) SCENE: Indoor staircase with wooden handrail and vertical balusters; props: calico cat walking down stairs below; strong warm golden/orange backlighting with halftone dot texture, sun-drenched high-contrast glow.\n6) RATING VERDICT: PG-13 — fully covered chest and hips, dynamic action pose, no erotic emphasis.\n7) ACID/LSD THEME: No — warm golden palette with halftone print texture only; no kaleidoscopes, prisms, rainbow oil slicks, or melting/hallucinatory patterns.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791785,
+  "id": "2026112723025501cd4e13b89a40b6",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "2026112723025501cd4e13b89a40b6",
+  "usage": {
+    "completion_tokens": 335,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1929
+  }
+}

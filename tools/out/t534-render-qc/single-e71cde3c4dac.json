@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Light blonde/beige twin-drill curls, side-parted, hanging downward (inverted pose).\n2) Closed eyes; color not visible; no heterochromia; no ring pupils.\n3) Human.\n4) White layered frilled gown/dress (hanging down past waist due to inversion), checkerboard-pattern bodysuit/leotard underneath, blue-red sash at waist; torso/legs covered, no exposed chest zones; fabric mostly opaque with sheer translucent frill edges; no nipple bumps visible.\n5) Deep backbend/arched inverted pose, head down near floor, arms raised gripping dress.\n6) Full-body vertical framing, slightly low angle, centered.\n7) Dark stage, spotlight, falling liquid.\n8) PG-13 — fully covered, no erotic emphasis.\n9) No — only surreal dramatic lighting/checkered motif, not psychedelic.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792597,
+  "id": "202611272316320a2dc2dba22c4328",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "202611272316320a2dc2dba22c4328",
+  "usage": {
+    "completion_tokens": 182,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1711
+  }
+}

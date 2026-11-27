@@ -1,0 +1,29 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Long teal/mint-green hair, wavy, wet-look strands framing face; blue eyes with dark lashes, looking up/side; slender youthful female build; no fangs/marks; ear visible, no jewelry; small ice cube resting on upper chest; water droplets across skin and hair.\n\n2) CLOTHING STATE: Sheer/semi-translucent wet green garment (tank/strap top) over chest and torso; chest covered but fabric transparent — breast shapes and shading clearly visible through material, including distinct rounded breast contours and nipple-region bumps under fabric; one strap slipping off shoulder; stomach/upper chest partially visible through translucency; thighs/hips out of frame; dark green fingerless gloves on both hands; bow/knot fabric at bottom edge near hips.\n\n3) POSE: Standing, torso angled, head tilted back and up; right arm raised with open spread hand toward viewer (foreshortened fingers); left arm bent up near shoulder gripping strap/shoulder area; legs not visible.\n\n4) CAMERA: Upper-body framing (chest-up, near cowboy), slight low angle, tilted orientation, no dutch spin beyond crop tilt.\n\n5) SCENE: Bright greenhouse/sunlit window with glass panes; large green leaves overhead; dripping water droplet; strong backlight/backlit rim light, cool green-teal color grade, high bloom/wet-gloss lighting.\n\n6) RATING VERDICT: R+ — chest covered by fabric but extreme emphasis: sheer thin transparent fabric with clearly readable breast shapes and nipple-region pokes/bumps through the material.\n\n7) ACID/LSD THEME: No — aesthetic is wet/ice/backlight rendering with chromatic water refraction; no kaleidoscope, rainbow oil-slick, melting-color, or hallucination motifs.",
+        "reasoning_content": "Water/ice elemental girl. Rating: R+.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791807,
+  "id": "202611272303160383714db88747ee",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "202611272303160383714db88747ee",
+  "usage": {
+    "completion_tokens": 382,
+    "completion_tokens_details": {
+      "reasoning_tokens": 10
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1976
+  }
+}

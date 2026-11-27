@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Dark brown/black messy bob with bangs, translucent iridescent strands.\n2) Amber/golden-brown; no heterochromia; no ring pupils.\n3) Human (small ear piercing only).\n4) Blue oversized cropped sweater + black high-waist bottoms; chest/torso/arms covered, midriff sliver exposed at hem; opaque fabric, no transparency, no nipple bumps.\n5) Standing on stairs, hand raised touching stair rail/wall, profile view.\n6) Medium close-up, slight low angle, side profile.\n7) Sunlit indoor stairwell, evening blue tones.\n8) PG-13 — fully clothed, no erotic emphasis, calm slice-of-life mood.\n9) No — only subtle colorful light refractions on stairs, not psychedelic.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792497,
+  "id": "20261127231452e3b522d9360344c7",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231452e3b522d9360344c7",
+  "usage": {
+    "completion_tokens": 165,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1694
+  }
+}

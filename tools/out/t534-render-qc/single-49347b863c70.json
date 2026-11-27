@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: long wavy brown, over shoulder.\n2) Eyes: gray-blue; no heterochromia; no ring pupils; blue streak accent.\n3) Markers: human (ear piercing only).\n4) Garment: red/blue cap, denim crop top + frayed half-red denim shorts; back, midriff, lower buttocks exposed; opaque fabric; no nipple bumps.\n5) Pose: standing on stairs, looking back over shoulder, hand tugging shorts hem.\n6) Camera: three-quarter rear, low-medium angle, waist-up-to-thigh framing.\n7) Scene: neon-lit tiled stairwell.\n8) R+: extreme lower-body tease emphasis, buttock exposure.\n9) Acid: yes — saturated dual red/blue neon glow, graffiti-like color bleeding.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792566,
+  "id": "20261127231600f7a5a6d662874db2",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231600f7a5a6d662874db2",
+  "usage": {
+    "completion_tokens": 164,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1693
+  }
+}

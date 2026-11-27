@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) HAIR: Light brown/amber, long straight with bangs, shell hairpin.\n2) EYES: Gray-brown; no heterochromia; no ring pupils.\n3) MARKERS: human.\n4) GARMENT: Strapless ruffled sundress + open shirt; chest/torso covered, shoulders/arms bare; no transparency, no nipple bumps.\n5) POSE: Hand raised to hair, looking back over shoulder.\n6) CAMERA: Medium close-up, slight low angle, three-quarter.\n7) SCENE: Sunlit doorway, warm indoor light.\n8) RATING: PG-13 — fully clothed, no erotic emphasis.\n9) ACID: No; warm golden lighting, minor lens flare only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792501,
+  "id": "20261127231457c280fba177e14d3a",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231457c280fba177e14d3a",
+  "usage": {
+    "completion_tokens": 156,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1685
+  }
+}

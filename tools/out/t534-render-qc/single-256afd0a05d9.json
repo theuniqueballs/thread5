@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: black/very dark purple, long wavy with drill-curl sections at ends, hime-cut bangs, pink-purple rim lighting.\n2) Eyes: purple/violet; no heterochromia; no ring-shaped pupils.\n3) Markers: human (lace glove only, no non-human traits).\n4) Garment: sheer black lace top over chest — shoulders/arms/back uncovered, cleavage and upper chest clearly visible through transparent lace, black opaque bodice below; no visible nipple bumps.\n5) Pose: standing in profile, palm raised to glowing wall.\n6) Camera: close-up 3/4 body, slightly low side angle.\n7) Scene: neon cyberpunk corridor, glowing wall.\n8) R+ — sheer lace chest, strong cleavage tease.\n9) Acid: no; neon glow, not psychedelic.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792532,
+  "id": "20261127231519a8e554e328a74f33",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231519a8e554e328a74f33",
+  "usage": {
+    "completion_tokens": 178,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1707
+  }
+}

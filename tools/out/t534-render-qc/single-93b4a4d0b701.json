@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: pale silver-blue, very long straight with bangs and side hairpin.\n2) Eyes: light blue-grey, downcast; no heterochromia; no ring pupils.\n3) Markers: human (earring only).\n4) Garment: white sheer lace-trimmed blouse over camisole + light blue skirt; chest/waist covered, shoulders/arms/neck bare; sleeves and upper chest semi-transparent lace; no nipple bumps visible.\n5) Pose: standing, head tilted down, arms at sides.\n6) Camera: waist-up, slightly low/close angle.\n7) Scene: sunlit room, blue floral wallpaper.\n8) Rating: R — covered, soft erotic lighting/mood only.\n9) Acid: no; only prismatic light streak, normal palette.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792552,
+  "id": "20261127231547cea53b0c24284732",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231547cea53b0c24284732",
+  "usage": {
+    "completion_tokens": 168,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1697
+  }
+}

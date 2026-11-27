@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) HAIR: Blonde, long twin-tails with black ribbons.\n2) EYES: Red; no heterochromia; no ring-shaped pupils.\n3) MARKERS: Human (red eyes cosmetic only).\n4) GARMENT: Black long-sleeve dress with ribbon collar, wet/semi-sheer at skirt hem; torso/legs mostly covered, legs exposed below hem; no nipple bumps; no visible underboob/sideboob.\n5) POSE: Crouching at pool ladder, lifting sunglasses, smiling.\n6) CAMERA: Medium close-up, slightly high angle.\n7) SCENE: Bright swimming pool, sunny water.\n8) RATING: PG-13 — fully clothed, no erotic emphasis.\n9) ACID: No; standard bright summer lighting, wet reflections only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792618,
+  "id": "20261127231653616f57723ab94347",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231653616f57723ab94347",
+  "usage": {
+    "completion_tokens": 172,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1701
+  }
+}

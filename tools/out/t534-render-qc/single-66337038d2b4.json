@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) HAIR: blonde (golden), long wavy/curly with drills, bangs.\n2) EYES: gray-blue; no heterochromia; no ring pupils.\n3) MARKERS: human.\n4) GARMENT: white/ivory strapless gown + lace elbow gloves + necklace; covered: chest, torso, arms (gloves), legs (skirt); uncovered: shoulders, upper chest/cleavage zone, neck; fabric opaque, no nipple bumps.\n5) POSE: lying in coffin, arms crossed over chest holding rosemary sprig.\n6) CAMERA: high-angle top-down, vertical full-body framing.\n7) SCENE: crypt/tomb with statues, rose petals.\n8) RATING: PG-13 — fully covered, mournful composition, no erotic emphasis.\n9) ACID: no — somber muted palette, only faint chromatic aberration on petals.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792543,
+  "id": "202611272315389a90c45404bf462f",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "202611272315389a90c45404bf462f",
+  "usage": {
+    "completion_tokens": 192,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1721
+  }
+}

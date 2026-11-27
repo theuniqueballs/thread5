@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Black/dark-blue updo bun with long fringe, magenta-pink inner highlights.\n2) Red/crimson; no heterochromia; no ring pupils.\n3) Human (small fang tip visible; otherwise human).\n4) White strapless bandeau top + black high-waist pants/skirt; shoulders, back, arms fully bare; chest/pelvis/legs covered; fabric opaque; no nipple bumps; slight sheen only.\n5) Seated sideways on throne, leaning forward on armrest, looking back over shoulder, exhaling smoke.\n6) Side profile, medium shot, slightly low angle.\n7) Dark gothic throne hall.\n8) R — bare back/shoulders, moody tease, nothing explicit.\n9) No — only neon magenta/black contrast lighting, no psychedelic distortion.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792575,
+  "id": "20261127231606c048ffd9ffc24328",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231606c048ffd9ffc24328",
+  "usage": {
+    "completion_tokens": 175,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1704
+  }
+}

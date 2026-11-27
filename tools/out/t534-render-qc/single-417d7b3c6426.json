@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: dark brown, elegant updo bun with loose strands framing face.\n2) Eyes: amber/golden-brown; no heterochromia; no ring pupils.\n3) Markers: human.\n4) Garment: golden cape/shawl + white blouse with gold ribbon and bell; covered chest/shoulders; slight sheer sheen on blouse but opaque; no nipple bumps.\n5) Pose: standing, head turned in profile, gaze downward.\n6) Camera: close-up bust shot, slight high angle, side profile view.\n7) Scene: theater auditorium, audience seats behind.\n8) Rating: PG-13 — fully covered, no erotic emphasis.\n9) Acid: no — warm golden glow only, no psychedelic distortion.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792556,
+  "id": "20261127231552776b5cdda8cc4ada",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231552776b5cdda8cc4ada",
+  "usage": {
+    "completion_tokens": 157,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1686
+  }
+}

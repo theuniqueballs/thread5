@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: blonde, messy bun with loose strands.\n2) Eyes: brown; no heterochromia; no ring pupils.\n3) Markers: human.\n4) Garment: yellow cardigan + light apron/dress; chest, torso, arms covered; no transparency, no nipple bumps.\n5) Pose: pouring kettle with one arm raised, other hand at chest hem.\n6) Camera: medium shot, slightly high angle.\n7) Scene: sunlit kitchen, washing dishes.\n8) Rating: PG-13 — fully covered, domestic, no erotic emphasis.\n9) Acid: no — warm natural tones only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792510,
+  "id": "2026112723150768dc8f150763405c",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "2026112723150768dc8f150763405c",
+  "usage": {
+    "completion_tokens": 133,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1662
+  }
+}

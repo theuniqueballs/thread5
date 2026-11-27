@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Brown, messy bun with loose strands and side braid.\n2) Brown, downcast; no heterochromia; no ring pupils.\n3) Human.\n4) Blue floral lace bra and matching panties; chest/hips covered, shoulders, midriff, navel, arms uncovered; opaque fabric; no nipple bumps.\n5) Standing, head tilted down, thumbs hooked in waistband adjusting panties.\n6) Waist-up tilted high-angle, close framing.\n7) Sunlit apartment kitchen, teapot steaming.\n8) R — covered, lingerie emphasis, calm mood, soft lighting.\n9) No — realistic lighting only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792579,
+  "id": "202611272316151bc30a9ae43a4d4e",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "202611272316151bc30a9ae43a4d4e",
+  "usage": {
+    "completion_tokens": 132,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1661
+  }
+}

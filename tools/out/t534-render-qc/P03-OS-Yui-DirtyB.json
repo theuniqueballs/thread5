@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Light-brown ash-blonde hair in loose low bun with wooden hair stick, long face-framing strands; gray-hazel eyes; fair skin; freckles across nose/cheeks and upper chest/shoulders; small smile, no fangs; no visible marks beyond freckles and green moss-like smudges.\n2) CLOTHING STATE: Purple loose off-shoulder dress (neckline at mid-chest, sleeves slipped off shoulders) + dark purple shawl/robe draped over both arms/shoulders + large mushroom-covered witch hat + green beaded choker. Covered: chest, stomach, hips, thighs (mostly out of frame). Uncovered: shoulders, upper chest/collarbone, neck, arms below shoulder. No nipple shapes or under-fabric detail visible; fabric is opaque.\n3) POSE: Standing, torso angled slightly, head tilted down-left toward viewer's right. Arms lowered, forearms/hands not visible (out of frame at bottom). Legs not visible.\n4) CAMERA: Upper-body/portrait crop (hat to mid-torso); slightly low angle, mild clockwise tilt (subtle dutch); subject faces viewer right of center.\n5) SCENE: Interior with large round window behind, rain streaks outside; constellation line-and-dot graphics overlaid; mushrooms growing on hat/shawl; soft cool blue-violet ambient light, rim/backlight from window, glowing cyan accent lights.\n6) RATING VERDICT: PG-13 — chest fully covered by opaque fabric, no erotic emphasis or suggestive framing.\n7) ACID/LSD THEME: Yes — hallucinogenic-forest motif: luminous mushrooms covering hat and garment, floating constellation nodes, bioluminescent cyan glow, moss smudges on skin/fabric; but no kaleidoscope/prism/melting-color effects; reads \"enchanted/mystic\" more than explicit acid-trip.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791765,
+  "id": "20261127230235d4f84f97532d427f",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230235d4f84f97532d427f",
+  "usage": {
+    "completion_tokens": 400,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1994
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Long dark brown/black hair with lighter teal-green ends, damp/strandy; teal-green eyes; slim/toned build; small ear piercings (multiple studs/rings on visible ear); two pink rings on right hand fingers; two black hairpins/clips.\n\n2) CLOTHING STATE: Light blue/white cropped sports tank top (with black bra/bandage visible at chest edge, orange trim at hem), frayed denim shorts (yellow trim detail), chunky white sneakers. Covered: chest, hips, pelvis. Uncovered: stomach/midriff (fully exposed), shoulders/arms, thighs (fully exposed by short shorts). No nipple shape visible through fabric; bra edge visible as flat band only.\n\n3) POSE: Deep squat/crouch on curb edge, torso bent forward, knees drawn up high; right arm extended down, index finger touching puddle surface creating ripples; left arm bent with hand near chin/face; feet flat in sneakers, weight on toes.\n\n4) CAMERA: Full body (subject fully in frame with environment), slightly elevated/high angle looking down at subject; mild tilt from subject's orientation but no dutch roll.\n\n5) SCENE: Rainy urban street/sidewalk at dusk, large reflective puddle showing mirror image of the girl; neon signage, storefronts, blurred city bokeh background; falling rain streaks, wet reflective ground; lighting is cool blue ambient with warm backlight/rim from upper right.\n\n6) RATING VERDICT: PG-13 — chest and hips fully covered by solid opaque garments, no fabric transparency or underboob/sideboob emphasis; exposure limited to midriff and thighs in a non-sexualized contemplative pose.\n\n7) ACID/LSD THEME: No — single rainbow lens-prism streak across the puddle reflection is the only prismatic element; no kaleidoscope patterns, melting colors, oil slicks, or hallucinatory distortion; overall palette is naturalistic rainy blues.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791796,
+  "id": "20261127230305ad225eff1e964692",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230305ad225eff1e964692",
+  "usage": {
+    "completion_tokens": 414,
+    "completion_tokens_details": {
+      "reasoning_tokens": 413
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2008
+  }
+}

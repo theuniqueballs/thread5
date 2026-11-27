@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Auburn/copper-brown hair, messy low bun with hair stick, loose face-framing strands.\n2) Light teal/gray-blue eyes; no heterochromia; no ring pupils.\n3) Human.\n4) Loose short green yukata/robe with obi; covers torso and chest; bare thighs/hip side exposed via thigh slit, no legwear; fabric glossy/wet-looking but opaque; no nipple bumps.\n5) Leaning against doorframe, profile view, holding phone/ID card near mouth, back arched.\n6) Vertical full/three-quarter body shot, slightly low side angle.\n7) Dorm hallway, doors, slippers.\n8) R — suggestive pose, wet fabric cling, no coverage breach.\n9) No; clean anime render, only teal color grading, no psychedelic elements.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792538,
+  "id": "20261127231532c8bc2d09f01040eb",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231532c8bc2d09f01040eb",
+  "usage": {
+    "completion_tokens": 172,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1701
+  }
+}

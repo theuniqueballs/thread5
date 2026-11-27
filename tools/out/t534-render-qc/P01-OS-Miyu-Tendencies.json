@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Blonde hair with pink underlayer/tips, messy side bun with white ribbon + hairclips; golden/yellow eyes with slit-like highlights; slim-curvy build; small fang visible in grin; black liquid smear/drip mark from mouth down chin/neck; white work gloves.\n2) CLOTHING STATE: Black ribbed tank top (chest covered) and blue plaid skirt/shorts being tugged open at waistband; shoulders, collarbones, and upper chest above neckline exposed; stomach covered by fabric but midriff stretch visible through taut cloth; fabric fits tightly — breast shape clearly defined through top, including a subtle fold/crease under bust; no nipple detail visible.\n3) POSE: Standing, torso leaning slightly toward viewer; left hand pulling skirt waistband down/open at hip, right hand gripping fabric at opposite hip; legs not visible below frame.\n4) CAMERA: Upper-body/cowboy-ish framing cut off at hips; low angle, slight upward tilt; no dutch tilt.\n5) SCENE: Garage/workshop; motorcycle with rainbow prism reflection on headlight (left), hanging fluorescent tube light (top right), toolbox with wrenches (bottom right); moody dark-blue ambient lighting with warm key on character.\n6) RATING VERDICT: R — covered chest but sensual emphasis (tight top, waistband-tugging pose, grin), no explicit or maximal tease elements.\n7) ACID/LSD THEME: No — only trace is the small rainbow prism flare on the motorcycle headlight; no kaleidoscope patterns, melting colors, or hallucination aesthetic.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791747,
+  "id": "20261127230217bb27b73ae7a64a6d",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230217bb27b73ae7a64a6d",
+  "usage": {
+    "completion_tokens": 333,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1927
+  }
+}

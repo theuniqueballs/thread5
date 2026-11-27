@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: black with green inner highlights, long, side-parted, loose waves.\n2) Eyes: green; no heterochromia; no ring pupils (normal slit-less irises).\n3) Markers: snake tail coiled around body/leg; scaled green hands; snake on pole; else human.\n4) Garment: white off-shoulder cropped sweater + black biker shorts; chest/shoulders/torso and hips/thighs covered; one shoulder and midriff sliver exposed; fabric opaque, no nipple bumps.\n5) Pose: seated on pole, one leg raised high, hand tugging hem.\n6) Camera: full-body vertical framing, slight low-frontal angle.\n7) Scene: dark smoky void, green haze.\n8) Rating: R — covered, calm erotic emphasis, no sheer/bumps.\n9) Acid: no — saturated green palette only, no psychedelic distortion.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792603,
+  "id": "20261127231637b4444a48ebd9404e",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231637b4444a48ebd9404e",
+  "usage": {
+    "completion_tokens": 192,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1721
+  }
+}

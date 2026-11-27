@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Hair: dark navy/black, long wavy, loose with side-swept bangs.\n2) Eyes: light blue; no heterochromia; no ring-shaped pupils.\n3) Markers: human.\n4) Garment: white long-sleeve shirt + long blue skirt; chest/torso/arms/legs fully covered; collarbone visible; fabric slightly thin at chest but opaque, no nipple bumps, no transparency.\n5) Pose: standing, leaning both hands back on railing, gazing up.\n6) Camera: waist-up portrait, low angle.\n7) Scene: rooftop/balcony at dusk, pigeon nearby.\n8) Rating: PG-13 — fully covered, no erotic emphasis.\n9) Acid: no — vivid dusk sky only.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792519,
+  "id": "20261127231515cbdbef7b9e1d4eae",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127231515cbdbef7b9e1d4eae",
+  "usage": {
+    "completion_tokens": 161,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1690
+  }
+}

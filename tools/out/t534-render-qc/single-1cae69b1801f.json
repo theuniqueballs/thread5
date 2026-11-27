@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) Black with red inner streaks; short messy bob, long side strand, one eye covered.\n2) Glowing red visible eye; no heterochromia; no ring pupils.\n3) Horns, pointed ears, bat wings, spade tail, fangs — demon markers.\n4) Black/red lace bra top, glossy jacket off-shoulder, shorts, garter strap; covered chest/pelvis, cleavage/shoulders/midriff/thighs exposed; fabric opaque, no nipple bumps.\n5) Leaning forward over altar, knees together, hands planted.\n6) Medium close shot, slightly high angle looking down.\n7) Occult altar, glowing summoning circle.\n8) R+ — cleavage-focused demonic tease, covered.\n9) No — dark occult neon, not psychedelic.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795792613,
+  "id": "202611272316489ecfd374c69f4d36",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "202611272316489ecfd374c69f4d36",
+  "usage": {
+    "completion_tokens": 170,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1529,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1699
+  }
+}

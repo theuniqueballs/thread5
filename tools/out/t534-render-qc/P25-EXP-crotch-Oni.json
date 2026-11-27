@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "1) CHARACTER: Ash-blonde/platinum hair in a messy high bun with loose framing strands; reddish-brown eyes, downward gaze; slender/petite doll-like build; visible ball-jointed doll seams at shoulders, elbows, hip, and knee; small blue anchor tattoo on upper chest; thin necklace.\n\n2) CLOTHING STATE: White one-piece leotard with blue baroque/floral print and anchor emblem; covers chest, stomach, hips, crotch; legs and arms fully bare; pink ribboned ballet pointe shoes on both feet; under-fabric shape: subtle soft chest contour only, no explicit detail.\n\n3) POSE: Airborne suspended aerialist/doll pose — one leg extended straight up high, other leg bent beneath; one arm raised overhead holding a wire/rope, other arm extended out; graceful balletic tension.\n\n4) CAMERA: Full body, slight low-to-eye-level angle, mild dynamic tilt; character centered.\n\n5) SCENE: Dark stage void with floating dust/particles; suspension wires; wooden stage floor edge lower-left; warm key lighting from upper left, strong rim light.\n\n6) RATING VERDICT: R — leotard-clad, chest covered, emphasis on flexible pose and body lines rather than exposed or teased anatomy.\n\n7) ACID/LSD THEME: No — palette and composition are realistic stage lighting; no kaleidoscope, prism, rainbow oil, or melting-color elements.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1795791755,
+  "id": "20261127230227646db66ecad54730",
+  "model": "glm-5.3-flash",
+  "object": "chat.completion",
+  "request_id": "20261127230227646db66ecad54730",
+  "usage": {
+    "completion_tokens": 302,
+    "completion_tokens_details": {
+      "reasoning_tokens": 301
+    },
+    "prompt_tokens": 1594,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1896
+  }
+}
