@@ -12,14 +12,18 @@
 2. dresser.json 1.9.0 — y_stack.combo_book (третий стак после matrix и carrier_matrix;
    1.9.0 — добор старой 512-волны, диета 33→40 ровно);
 3. порядок стака y_stack.order получил шаг 0 — комбо-книга до матрицы;
-4. слаженность: Y-ссылки в camera.json, записи-источники в датасете оракула,
+4. слаженность: Y-ссылки в camera.json, записи-источники в датасете оракла,
    полки в closet.json ∩ carrier_matrix, теги в словаре, диета ≤40 позиций.
 """
 import json
 import re
 import unittest
 
-ROOT = "/home/z/my-project"
+# 2026-11-27: абсолютный путь песочницы ("/home/z/my-project") убит — на CI/чужом
+# клоне его нет, тест падал ImportError вне песочницы (найден внешним аудитором
+# при прогоне полного сьюта). Тот же корень, но от файла — переносимо.
+from pathlib import Path as _P
+ROOT = str(_P(__file__).resolve().parents[2])
 SPECS = f"{ROOT}/specs"
 DATASET = f"{ROOT}/mini-services/ecchi-oracle/dataset"
 
@@ -64,7 +68,7 @@ class TestPins(unittest.TestCase):
         self.assertIn("ОБЕЩАНИЕ", jd["law"])
         self.assertIn("ПОЛУРЕШЕНИЕ", jd["law"])
         self.assertIn("ПАУЗА", jd["law"])
-        self.assertIn("НАСЛОЖЕНИЕ", jd["law"])
+        self.assertIn("НАСЛОЖДЕНИЕ", jd["law"])
         self.assertIn("АНТИ-БОРЩ", jd["law"])  # не борщить — заказ автора
 
 
