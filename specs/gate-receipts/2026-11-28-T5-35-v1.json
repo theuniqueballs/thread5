@@ -1,0 +1,1192 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.27.0)",
+ "batch": "batches/T5-35.md",
+ "sha256": "2ed613bae8f891833905c1b1d5c9d188448b61d5249c2dccdec6e234dee0357c",
+ "utc": "2026-11-27T19:37:46+00:00",
+ "verdict": "PASS",
+ "slots": 30,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P05",
+   "gate": "neg-anchor",
+   "msg": "якорь-юнит «bra visible» (visible) не ссылается ни на один элемент POS — паразит-NEG? намеренный якорь пометь [NEG-ANCHOR] (ревизия 2026-11-01, 1.1)"
+  },
+  {
+   "slot": "P26",
+   "gate": "format",
+   "msg": "POS-строка 204 знаков > 200 — башенка, читается по вертикали, а не разом"
+  },
+  {
+   "slot": "P02+P11",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «two soft points reading against the»"
+  },
+  {
+   "slot": "P03+P10",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «two soft crests across the sheer»"
+  },
+  {
+   "slot": "P07+P27",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «light striking hard edges on the»"
+  },
+  {
+   "slot": "P08+P10",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «into the inner thigh's soft the»"
+  },
+  {
+   "slot": "P08+P10",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «printed into the inner thigh's soft»"
+  },
+  {
+   "slot": "P08+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «accents one amber line her colors»"
+  },
+  {
+   "slot": "P08+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «amber accents one amber line her»"
+  },
+  {
+   "slot": "P08+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «one amber line her colors the»"
+  },
+  {
+   "slot": "P08+P20",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «warm amber accents one amber line»"
+  },
+  {
+   "slot": "P09+P12",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «accents one lacquer line her colors»"
+  },
+  {
+   "slot": "P09+P12",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «one lacquer line her colors the»"
+  },
+  {
+   "slot": "P09+P12",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «two soft crests reading through the»"
+  },
+  {
+   "slot": "P10+P23",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «her colors the seat she takes»"
+  },
+  {
+   "slot": "P10+P23",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «line her colors the seat she»"
+  },
+  {
+   "slot": "P13+P15",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «light cutting hard edges on the»"
+  },
+  {
+   "slot": "P18+P22",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «light printing hard edges on the»"
+  },
+  {
+   "slot": "P01",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P02",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P03",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P05",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P08",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет геометрии позы/камеры (коридор B)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P09",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P11",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A); нет класса раскрытия) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P12",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P13",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P14",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет геометрии позы/камеры (коридор B)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P15",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A); нет класса раскрытия) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P16",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P18",
+   "gate": "claim-physics-r",
+   "msg": "R-бейдж без класса раскрытия — тело не разоблачено ни одним токеном (exposure_r): вшить состояние ткани/зону/процесс или писать PG-13 (В31 на спред R, поручение автора 2026-11-16)"
+  },
+  {
+   "slot": "P19",
+   "gate": "claim-physics-r",
+   "msg": "R-бейдж без класса раскрытия — тело не разоблачено ни одним токеном (exposure_r): вшить состояние ткани/зону/процесс или писать PG-13 (В31 на спред R, поручение автора 2026-11-16)"
+  },
+  {
+   "slot": "P20",
+   "gate": "claim-physics-r",
+   "msg": "R-бейдж без класса раскрытия — тело не разоблачено ни одним токеном (exposure_r): вшить состояние ткани/зону/процесс или писать PG-13 (В31 на спред R, поручение автора 2026-11-16)"
+  },
+  {
+   "slot": "P21",
+   "gate": "claim-physics-r",
+   "msg": "R-бейдж без класса раскрытия — тело не разоблачено ни одним токеном (exposure_r): вшить состояние ткани/зону/процесс или писать PG-13 (В31 на спред R, поручение автора 2026-11-16)"
+  },
+  {
+   "slot": "P25",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет класса раскрытия) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P26",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет класса раскрытия) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P28",
+   "gate": "claim-physics-r",
+   "msg": "R-бейдж без класса раскрытия — тело не разоблачено ни одним токеном (exposure_r): вшить состояние ткани/зону/процесс или писать PG-13 (В31 на спред R, поручение автора 2026-11-16)"
+  },
+  {
+   "slot": "P08",
+   "gate": "y-stack",
+   "msg": "одежда душит экспозицию карты Y544 (CLOTHED-TIGHT): ни один CL-код CL-SK-05, CL-LG-01 не держит класс (closet.json exposure) — переброс вещи по матрице dresser.json y_stack — R+/R сигнал не прочитается, слот падает до PG-13"
+  },
+  {
+   "slot": "P11",
+   "gate": "y-stack",
+   "msg": "одежда душит экспозицию карты Y548 (CLOTHED-TIGHT): ни один CL-код CL-DR-05 не держит класс (closet.json exposure) — переброс вещи по матрице dresser.json y_stack — R+/R сигнал не прочитается, слот падает до PG-13"
+  },
+  {
+   "slot": "P13",
+   "gate": "y-stack",
+   "msg": "одежда душит экспозицию карты Y550 (CLOTHED-TIGHT): ни один CL-код CL-TS-02 не держит класс (closet.json exposure) — переброс вещи по матрице dresser.json y_stack — R+/R сигнал не прочитается, слот падает до PG-13"
+  },
+  {
+   "slot": "P17",
+   "gate": "y-stack",
+   "msg": "одежда душит экспозицию карты Y4 (COVER): ни один CL-код CL-HK-01 не держит класс (closet.json exposure) — переброс вещи по матрице dresser.json y_stack — R+/R сигнал не прочитается, слот падает до PG-13"
+  },
+  {
+   "slot": "P05",
+   "gate": "neg-dress",
+   "msg": "гарды одетости в R+ NEG (bra visible) — добивают заявку (постмортем §4.4): NEG R+ — не война, гарды одетости запрещены, кроме X-доставки"
+  },
+  {
+   "slot": "P11",
+   "gate": "neg-dress",
+   "msg": "гарды одетости в R+ NEG (buttoned up) — добивают заявку (постмортем §4.4): NEG R+ — не война, гарды одетости запрещены, кроме X-доставки"
+  },
+  {
+   "slot": "P04",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P05",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P06",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P07",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P08",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P09",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P10",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P11",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P14",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P15",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P16",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P17",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P18",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P19",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P20",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P21",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P22",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P23",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P24",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P25",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P27",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P28",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P29",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P30",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 0 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P02",
+   "gate": "skin-cast",
+   "msg": "тёплая кожа «bronze skin» при тёплом токене палитры «warm»: совместность даёт жёлть на лицах (В48, вердикт T5-33 — желтизна у всех, максимум корпуса 13/33); холодная кожа (ivory/cool fair/porcelain) читает палитру контрастом — заменить семейство кожи"
+  },
+  {
+   "slot": "P06",
+   "gate": "skin-cast",
+   "msg": "тёплая кожа «warm ivory skin» при тёплом токене палитры «ember»: совместность даёт жёлть на лицах (В48, вердикт T5-33 — желтизна у всех, максимум корпуса 13/33); холодная кожа (ivory/cool fair/porcelain) читает палитру контрастом — заменить семейство кожи"
+  },
+  {
+   "slot": "P17",
+   "gate": "skin-cast",
+   "msg": "тёплая кожа «warm ivory skin» при тёплом токене палитры «warm»: совместность даёт жёлть на лицах (В48, вердикт T5-33 — желтизна у всех, максимум корпуса 13/33); холодная кожа (ivory/cool fair/porcelain) читает палитру контрастом — заменить семейство кожи"
+  },
+  {
+   "slot": "P01",
+   "gate": "pos-floors",
+   "msg": "приборное слово «lamp» в POS — закон света v2: свет поведением, прибор только по [INTENTIONAL] (T5-06)"
+  },
+  {
+   "slot": "P03",
+   "gate": "pos-floors",
+   "msg": "приборное слово «candle» в POS — закон света v2: свет поведением, прибор только по [INTENTIONAL] (T5-06)"
+  },
+  {
+   "slot": "P06",
+   "gate": "pos-floors",
+   "msg": "имя OC «Ash» в POS — имена OC никогда не в POS (LAWS §2.4)"
+  },
+  {
+   "slot": "P10",
+   "gate": "pos-floors",
+   "msg": "приборное слово «lamp» в POS — закон света v2: свет поведением, прибор только по [INTENTIONAL] (T5-06)"
+  },
+  {
+   "slot": "P10",
+   "gate": "pos-floors",
+   "msg": "имя OC «Ash» в POS — имена OC никогда не в POS (LAWS §2.4)"
+  },
+  {
+   "slot": "P11",
+   "gate": "pos-floors",
+   "msg": "имя OC «Noir» в POS — имена OC никогда не в POS (LAWS §2.4)"
+  },
+  {
+   "slot": "P17",
+   "gate": "pos-floors",
+   "msg": "приборное слово «candle» в POS — закон света v2: свет поведением, прибор только по [INTENTIONAL] (T5-06)"
+  },
+  {
+   "slot": "P20",
+   "gate": "pos-floors",
+   "msg": "имя OC «Ash» в POS — имена OC никогда не в POS (LAWS §2.4)"
+  },
+  {
+   "slot": "P18",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P19",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P20",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P21",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P22",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P23",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P24",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P28",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P29",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P30",
+   "gate": "rating-truth",
+   "msg": "R-бейдж не подтверждён составом (мидрифф/плечи/бёдра сквозь ткань): вшить R-токен (слип бельевой бретели / мокрая кожа по рёбрам / tan lines / поле голой спины / интим-геометрия) или писать честный PG-13 (В43)"
+  },
+  {
+   "slot": "P04",
+   "gate": "claim-fact",
+   "msg": "заявка не привязана к named object в тег-ране (garment/bottom/материал) — «мост из ткани», «натянутый пролёт», «складка» — процесс-геометрия, не вещь с состоянием (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "P05",
+   "gate": "claim-fact",
+   "msg": "заявка не привязана к named object в тег-ране (garment/bottom/материал) — «мост из ткани», «натянутый пролёт», «складка» — процесс-геометрия, не вещь с состоянием (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "P10",
+   "gate": "claim-fact",
+   "msg": "заявка запаркована на PG-13-зоне: плечо/ключица держат потолок PG-13, R+ живёт на груди и низу (P05/P07/P17/P19/P20 — весь ложный фронт T5-34 стоял здесь) (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "P11",
+   "gate": "claim-fact",
+   "msg": "заявка не привязана к named object в тег-ране (garment/bottom/материал) — «мост из ткани», «натянутый пролёт», «складка» — процесс-геометрия, не вещь с состоянием (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "P13",
+   "gate": "claim-fact",
+   "msg": "заявка не привязана к named object в тег-ране (garment/bottom/материал) — «мост из ткани», «натянутый пролёт», «складка» — процесс-геометрия, не вещь с состоянием (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "P14",
+   "gate": "claim-fact",
+   "msg": "процесс-носитель в одиночку: в тег-ране нет ни материала вещи (sheer/thin/lace/translucent/wet), ни транзиентного холда (tape/hands) — two-carrier В52/В53: процесс (wind-pressed / by-the-straddle / pinned) — только ВТОРОЙ носитель, никогда единственный (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "P15",
+   "gate": "claim-fact",
+   "msg": "на зоне заявки ≥2 панели одежды — вторая панель глушит чтение (панель ткани держит потолок R, В43): заявка обязана указывать ЕДИНСТВЕННУЮ вещь-носитель (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "P27",
+   "gate": "claim-fact",
+   "msg": "заявка запаркована на PG-13-зоне: плечо/ключица держат потолок PG-13, R+ живёт на груди и низу (P05/P07/P17/P19/P20 — весь ложный фронт T5-34 стоял здесь) (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "16 общих 6-грамм с предыдущими партиями (T5-33.md, T5-34.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "doe-ribbon-untying-press",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 19,
+   "posWords": 187
+  },
+  {
+   "id": "P02",
+   "slug": "sol-organ-dawn-palm",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A+B",
+   "claimToken": 20,
+   "posWords": 186
+  },
+  {
+   "id": "P03",
+   "slug": "harrow-habit-tide",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 193
+  },
+  {
+   "id": "P04",
+   "slug": "ribbing-print-hold",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 178
+  },
+  {
+   "id": "P05",
+   "slug": "zipper-to-lumbar-arc",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 34,
+   "posWords": 183
+  },
+  {
+   "id": "P06",
+   "slug": "table-lean-gravity-drop",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 29,
+   "posWords": 194
+  },
+  {
+   "id": "P07",
+   "slug": "denim-pocket-focus",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 43,
+   "posWords": 180
+  },
+  {
+   "id": "P08",
+   "slug": "zettai-thigh-band",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 29,
+   "posWords": 179
+  },
+  {
+   "id": "P09",
+   "slug": "spine-cutout-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 30,
+   "posWords": 178
+  },
+  {
+   "id": "P10",
+   "slug": "chair-straddle-weight",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 30,
+   "posWords": 192
+  },
+  {
+   "id": "P11",
+   "slug": "seatbelt-diagonal-dent",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 171
+  },
+  {
+   "id": "P12",
+   "slug": "garter-dent-hours",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 29,
+   "posWords": 189
+  },
+  {
+   "id": "P13",
+   "slug": "points-against-cold-cloth",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 29,
+   "posWords": 168
+  },
+  {
+   "id": "P14",
+   "slug": "under-hem-staircase",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 41,
+   "posWords": 192
+  },
+  {
+   "id": "P15",
+   "slug": "post-comp-zipper-ride",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 30,
+   "posWords": 169
+  },
+  {
+   "id": "P16",
+   "slug": "gust-bell-front",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A+B",
+   "claimToken": 31,
+   "posWords": 182
+  },
+  {
+   "id": "P17",
+   "slug": "towel-fists-haul-back",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 175
+  },
+  {
+   "id": "P18",
+   "slug": "s-curve-shawl-drape",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 137
+  },
+  {
+   "id": "P19",
+   "slug": "doorframe-wrist-stack",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 140
+  },
+  {
+   "id": "P20",
+   "slug": "vault-rail-moment",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 133
+  },
+  {
+   "id": "P21",
+   "slug": "bedsheets-tangle-walk",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 148
+  },
+  {
+   "id": "P22",
+   "slug": "tub-rim-perch",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 153
+  },
+  {
+   "id": "P23",
+   "slug": "bike-sidesaddle-lean",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 129
+  },
+  {
+   "id": "P24",
+   "slug": "chin-over-shoulder-buckle",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 143
+  },
+  {
+   "id": "P25",
+   "slug": "inverted-split-overhead",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 196
+  },
+  {
+   "id": "P26",
+   "slug": "cross-legged-palms-behind",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "handbra-open-palms",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 20,
+   "posWords": 170
+  },
+  {
+   "id": "P27",
+   "slug": "glass-partition-press",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 20,
+   "posWords": 185
+  },
+  {
+   "id": "P28",
+   "slug": "seamstress-thimble-tiara",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 158
+  },
+  {
+   "id": "P29",
+   "slug": "ledger-fold-reach",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 143
+  },
+  {
+   "id": "P30",
+   "slug": "lantern-moth-flicker",
+   "genre": "EXP",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 151
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "hush soft crests reading through the",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P15"
+   ]
+  },
+  {
+   "gram": "two soft points reading against the",
+   "slotsHere": [
+    "P02",
+    "P11"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P08"
+   ]
+  },
+  {
+   "gram": "both soft crests printing through the",
+   "slotsHere": [
+    "P06"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "amber eyes level over the spread",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "eyes level over the spread cool",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "level over the spread cool fair",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "over the spread cool fair skin",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "two soft crests reading through the",
+   "slotsHere": [
+    "P09",
+    "P12"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P29"
+   ]
+  },
+  {
+   "gram": "green eyes back over the shoulder",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P26"
+   ]
+  },
+  {
+   "gram": "at the lens warm ivory skin",
+   "slotsHere": [
+    "P10"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P15"
+   ]
+  },
+  {
+   "gram": "air two soft crests reading through",
+   "slotsHere": [
+    "P12"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "line her colors the wind she",
+   "slotsHere": [
+    "P16"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P31"
+   ]
+  },
+  {
+   "gram": "her colors the middle of the",
+   "slotsHere": [
+    "P20"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P11"
+   ]
+  },
+  {
+   "gram": "black with ivory bone accents one",
+   "slotsHere": [
+    "P24"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P04"
+   ]
+  },
+  {
+   "gram": "with both palms flat on the",
+   "slotsHere": [
+    "P26"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P10"
+   ]
+  },
+  {
+   "gram": "both palms flat on the ground",
+   "slotsHere": [
+    "P26"
+   ],
+   "sourceBatch": "T5-33.md",
+   "slotsThere": [
+    "P10"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [],
+ "storyCards": true,
+ "k1_sense": {
+  "mode": "WARN",
+  "cards": 3,
+  "with_k1": 3,
+  "without": []
+ },
+ "fact_label": {
+  "label_R+": 20,
+  "fact_R+": 20
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 19
+ },
+ "y_cards": {
+  "used": [
+   "Y498",
+   "Y451",
+   "Y552",
+   "Y539",
+   "Y540",
+   "Y98",
+   "Y543",
+   "Y544",
+   "Y546",
+   "Y547",
+   "Y548",
+   "Y549",
+   "Y550",
+   "Y551",
+   "Y553",
+   "Y554",
+   "Y4",
+   "Y41",
+   "Y87",
+   "Y104",
+   "Y136",
+   "Y90",
+   "Y143",
+   "Y79",
+   "Y109",
+   "Y217",
+   "Y445",
+   "Y133",
+   "Y52",
+   "Y122"
+  ],
+  "rplus_without_card": 0,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "y_stack": {
+  "checked": 20,
+  "stacked": 16,
+  "choked": 4,
+  "canon_without_codes": 0,
+  "geometry_only": 10
+ },
+ "combo_pose": {
+  "composite_used": 0,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 30,
+  "weaved": 13,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0,
+  "legacy_used": 17,
+  "legacy_material": 17,
+  "legacy_verbatim": 0,
+  "legacy_skeleton_miss": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 2
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
+ },
+ "skin_cast": {
+  "caught": 3,
+  "retro": false
+ },
+ "race_cast": {
+  "kin": 3,
+  "human": 18,
+  "window": [
+   0,
+   10
+  ],
+  "policy": "v2.0"
+ },
+ "volt_core": {
+  "mains": 21,
+  "volt": 13,
+  "niche": 8,
+  "max_run": 3,
+  "retro": false
+ },
+ "exquisite_main": {
+  "mains": 21,
+  "exquisite": 2,
+  "retro": false
+ },
+ "exp_hypothesis": {
+  "cells": 6,
+  "with_h": 6,
+  "without": [],
+  "hyps_used": [
+   "H-10",
+   "H-11",
+   "H-12",
+   "H-13",
+   "H-14"
+  ],
+  "retro": false
+ },
+ "rating_truth": {
+  "checked": 30,
+  "implied_rplus": 20,
+  "false_rplus": 0,
+  "soft_drift": 10,
+  "retro": false
+ },
+ "rating_mass": {
+  "mains": 21,
+  "rplus": 14,
+  "r": 7,
+  "pg13": 0,
+  "retro": false
+ },
+ "neg_canon_guard": {
+  "mode": "FAIL",
+  "oc_slots": 3,
+  "canon_hits": 0,
+  "special": false,
+  "guest": null,
+  "invariant_hits": 0,
+  "retro": false
+ },
+ "volt_run": {
+  "mode": "WARN",
+  "rplus_mains": 14,
+  "with_run": 14,
+  "thin": 0,
+  "groups": {
+   "breast": 14,
+   "hands": 13,
+   "hips_ass_skin": 13
+  },
+  "retro": false
+ },
+ "theme_echo": {
+  "mode": "WARN",
+  "brief": "batches/T5-35/00-brief.md",
+  "dict_size": 10,
+  "mains": 21,
+  "with_echo": 21,
+  "share": 1.0,
+  "retro": false
+ },
+ "claim_fact": {
+  "mode": "WARN",
+  "rplus_slots": 20,
+  "passing": 12,
+  "caught": [
+   "P04",
+   "P05",
+   "P10",
+   "P11",
+   "P13",
+   "P14",
+   "P15",
+   "P27"
+  ],
+  "reasons": {
+   "no_claim": 0,
+   "no_object": 4,
+   "zone": 2,
+   "panel": 1,
+   "carrier": 1
+  },
+  "retro": false
+ },
+ "complexity_budget": {
+  "active": 40,
+  "total": 40,
+  "pending": []
+ }
+}

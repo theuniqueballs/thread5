@@ -513,11 +513,15 @@ def load_verdict_evidence():
     Соответствие слот → карта — канонический парсер печи (gates.parse_batch).
 
     v1.1.0 (ПЛАН 5.5 T2.3/1.4, волна 2): fact-слой — тир берётся и из
-    rating_truth_delta, не только из loved: слот, чей ЗАЯВЛЕННЫЙ тир
+    rating_truth_delta, не только из loved: R+-слот, чей ЗАЯВЛЕННЫЙ тир
     доехал до рендера (truth == declared), — hit-улика карте (kind
-    fact_hit) даже если автор его не залюбил; заявка, развалившаяся на
-    рендере (truth ≠ declared), — miss-улика (kind fact_drift). Loved
-    остаётся сильнейшей уликой вкуса; fact — улика delivery карты."""
+    fact_hit) даже если автор его не залюбил; развалившаяся R+-заявка —
+    miss-улика (kind fact_drift). Уточнение v1.1.1 (живой урок волны 2,
+    сборка T5-35): fact-улика считается ТОЛЬКО по слотам-заявкам (R+) —
+    R/PG-13 слоты живут прежней семантикой loved/ok/miss, иначе пул CLOCK
+    заливается «—»-картами, честно доставившими свой floor-тир, и жребий
+    перестаёт видеть класс-карты для R+-мейнов (empty_class_rplus).
+    Loved остаётся сильнейшей уликой вкуса; fact — улика delivery заявки."""
     hits: dict[str, list] = {}
     neutrals: dict[str, list] = {}
     misses: dict[str, list] = {}
@@ -544,8 +548,14 @@ def load_verdict_evidence():
                  if r.get("slot") and r.get("truth")}
         for sid, s in by_sid.items():
             truth = delta.get(sid)
-            fact_ok = truth is not None and truth == s.rating
-            fact_tag = ("fact_ok" if fact_ok else "fact_drift") if truth else None
+            # v1.1.1: fact-улика — только по слотам-заявкам (R+); R/PG-13
+            # живут loved/ok/miss — иначе «—»-карты заливают пул CLOCK
+            fact_ok = (truth is not None and truth == s.rating
+                       and s.rating == "R+")
+            fact_drift = (truth is not None and truth != s.rating
+                          and s.rating == "R+")
+            fact_tag = (("fact_ok" if fact_ok else "fact_drift")
+                        if (truth is not None and s.rating == "R+") else None)
             if sid in loved or sid in hyp or fact_ok:
                 kind = ("loved" if sid in loved
                         else "hypothesis" if sid in hyp else "fact_hit")
@@ -559,7 +569,7 @@ def load_verdict_evidence():
             else:
                 misses.setdefault(s.y_card, []).append(
                     {"batch": d["batch"], "slot": sid,
-                     "kind": "fact_drift" if truth else "miss",
+                     "kind": "fact_drift" if fact_drift else "miss",
                      **({"fact": fact_tag} if fact_tag else {})})
         sources.append({"file": vf.name, "batch": d["batch"]})
     return hits, neutrals, misses, sources
@@ -590,7 +600,7 @@ def build_trust() -> dict:
     return {
         "id": "y-trust",
         "name": "Траст-слой Y: HIGH/MID/LOW по hit/miss из JSON-вердиктов",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "born": "2026-11-23",
         "born_from": ("Заказ автора 2026-11-23 «Сделай траст-слой Y» + аудит Коула/Grok "
                        "§7 «ACTIVE POOLS И TRUST — обязательный следующий шаг»: жребий честен, "

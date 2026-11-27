@@ -1237,7 +1237,10 @@
       "full",
       "multiple",
       "finger",
-      "fingers"
+      "fingers",
+      "girl",
+      "head",
+      "ears"
     ],
     "colorStop": [
       "black",
@@ -1398,7 +1401,13 @@
       "camisole",
       "negligee",
       "gel",
-      "slime"
+      "slime",
+      "ribbon",
+      "gown",
+      "tights",
+      "leggings",
+      "stockings",
+      "jumpsuit"
     ],
     "zoneChest": [
       "breast",

@@ -1,7 +1,7 @@
 {
  "id": "y-trust",
  "name": "Траст-слой Y: HIGH/MID/LOW по hit/miss из JSON-вердиктов",
- "version": "1.1.0",
+ "version": "1.1.1",
  "born": "2026-11-23",
  "born_from": "Заказ автора 2026-11-23 «Сделай траст-слой Y» + аудит Коула/Grok §7 «ACTIVE POOLS И TRUST — обязательный следующий шаг»: жребий честен, но 400+ window-eligible карт — лотерея, а не выбор; CLOCK ходит по узкому пулу HIGH+MID ≤ 80, LOW (промахи вердиктов) сидят до искупления. v1.1.0 (2026-11-28, ПЛАН 5.5 T2.3/T1.4, волна 2): fact-слой — тир берётся и из rating_truth_delta (truth == declared — fact_hit улика карте, развалившаяся заявка — fact_drift miss); loved остаётся сильнейшей уликой вкуса, fact — улика delivery",
  "policy": {
@@ -44,12 +44,12 @@
   }
  ],
  "stats": {
-  "high": 65,
-  "mid": 3,
-  "low": 104,
+  "high": 54,
+  "mid": 5,
+  "low": 113,
   "judged_batches": 7,
-  "fact_hits": 28,
-  "fact_drifts": 61
+  "fact_hits": 13,
+  "fact_drifts": 48
  },
  "cards": {
   "Y1": {
@@ -237,7 +237,7 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -247,8 +247,7 @@
     {
      "batch": "T5-33",
      "slot": "P19",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
@@ -489,7 +488,7 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -499,8 +498,7 @@
     {
      "batch": "T5-33",
      "slot": "P30",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
@@ -730,13 +728,12 @@
    "misses": 0,
    "neutral": 1,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-33",
      "slot": "P14",
-     "kind": "loved",
-     "fact": "fact_drift"
+     "kind": "loved"
     },
     {
      "batch": "T5-29",
@@ -793,13 +790,12 @@
    "misses": 0,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P18",
-     "kind": "loved",
-     "fact": "fact_drift"
+     "kind": "loved"
     }
    ]
   },
@@ -820,10 +816,10 @@
   },
   "Y60": {
    "trust": "HIGH",
-   "hits": 2,
-   "misses": 0,
+   "hits": 1,
+   "misses": 1,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
@@ -834,8 +830,7 @@
     {
      "batch": "T5-33",
      "slot": "P24",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     }
    ]
   },
@@ -889,14 +884,13 @@
    "hits": 1,
    "misses": 0,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P21",
-     "kind": "loved",
-     "fact": "fact_ok"
+     "kind": "loved"
     }
    ]
   },
@@ -921,32 +915,30 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P16",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
   "Y74": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 1,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 2,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
-     "batch": "T5-34",
+     "batch": "T5-29",
      "slot": "P22",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     },
     {
-     "batch": "T5-29",
+     "batch": "T5-34",
      "slot": "P22",
      "kind": "miss"
     }
@@ -958,7 +950,7 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -968,8 +960,7 @@
     {
      "batch": "T5-33",
      "slot": "P31",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
@@ -1030,32 +1021,31 @@
    ]
   },
   "Y92": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 0,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
    "neutral": 1,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
-    {
-     "batch": "T5-33",
-     "slot": "P21",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
-    },
     {
      "batch": "T5-31",
      "slot": "P02",
      "kind": "ok_with_issues"
+    },
+    {
+     "batch": "T5-33",
+     "slot": "P21",
+     "kind": "miss"
     }
    ]
   },
   "Y93": {
    "trust": "HIGH",
-   "hits": 2,
-   "misses": 0,
+   "hits": 1,
+   "misses": 1,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
@@ -1066,8 +1056,7 @@
     {
      "batch": "T5-33",
      "slot": "P05",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     }
    ]
   },
@@ -1091,7 +1080,7 @@
    "hits": 2,
    "misses": 0,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
@@ -1102,8 +1091,7 @@
     {
      "batch": "T5-33",
      "slot": "P11",
-     "kind": "loved",
-     "fact": "fact_ok"
+     "kind": "loved"
     }
    ]
   },
@@ -1138,18 +1126,17 @@
    ]
   },
   "Y105": {
-   "trust": "HIGH",
-   "hits": 1,
+   "trust": "MID",
+   "hits": 0,
    "misses": 0,
-   "neutral": 0,
-   "fact_hits": 1,
+   "neutral": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P05",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "ok_with_issues"
     }
    ]
   },
@@ -1189,13 +1176,12 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P10",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
@@ -1235,13 +1221,12 @@
    "misses": 0,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-32",
      "slot": "P08",
-     "kind": "loved",
-     "fact": "fact_drift"
+     "kind": "loved"
     }
    ]
   },
@@ -1291,18 +1276,17 @@
    ]
   },
   "Y129": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 0,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P24",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     }
    ]
   },
@@ -1357,7 +1341,7 @@
    "misses": 1,
    "neutral": 1,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-29",
@@ -1367,8 +1351,7 @@
     {
      "batch": "T5-33",
      "slot": "P32",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
@@ -1393,7 +1376,7 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
@@ -1403,8 +1386,7 @@
     {
      "batch": "T5-33",
      "slot": "P33",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
@@ -1454,18 +1436,17 @@
    ]
   },
   "Y244": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 0,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P11",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     }
    ]
   },
@@ -1490,7 +1471,7 @@
    "misses": 2,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-30",
@@ -1500,24 +1481,22 @@
     {
      "batch": "T5-34",
      "slot": "P06",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
   "Y248": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 0,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P18",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     }
    ]
   },
@@ -1572,44 +1551,42 @@
    ]
   },
   "Y261": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 1,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 2,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
-     "batch": "T5-34",
-     "slot": "P09",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
-    },
-    {
      "batch": "T5-27",
      "slot": "P11",
+     "kind": "miss"
+    },
+    {
+     "batch": "T5-34",
+     "slot": "P09",
      "kind": "miss"
     }
    ]
   },
   "Y263": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 0,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
    "neutral": 1,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
-    {
-     "batch": "T5-33",
-     "slot": "P16",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
-    },
     {
      "batch": "T5-29",
      "slot": "P15",
      "kind": "ok_with_issues"
+    },
+    {
+     "batch": "T5-33",
+     "slot": "P16",
+     "kind": "miss"
     }
    ]
   },
@@ -1619,13 +1596,12 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P21",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
@@ -1651,18 +1627,17 @@
    ]
   },
   "Y269": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 0,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P23",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     }
    ]
   },
@@ -1768,7 +1743,7 @@
    "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 1,
+   "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-27",
@@ -1778,40 +1753,37 @@
     {
      "batch": "T5-33",
      "slot": "P08",
-     "kind": "fact_drift",
-     "fact": "fact_drift"
+     "kind": "miss"
     }
    ]
   },
   "Y310": {
-   "trust": "HIGH",
-   "hits": 1,
-   "misses": 0,
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
    "neutral": 0,
-   "fact_hits": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P14",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "miss"
     }
    ]
   },
   "Y312": {
-   "trust": "HIGH",
-   "hits": 1,
+   "trust": "MID",
+   "hits": 0,
    "misses": 0,
-   "neutral": 0,
-   "fact_hits": 1,
+   "neutral": 1,
+   "fact_hits": 0,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-34",
      "slot": "P16",
-     "kind": "fact_hit",
-     "fact": "fact_ok"
+     "kind": "ok_with_issues"
     }
    ]
   },
