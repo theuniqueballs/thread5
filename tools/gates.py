@@ -224,6 +224,7 @@ GATES = json.loads((ROOT / "specs/gates.json").read_text(encoding="utf-8"))
 # самодостаточен, но держим порядок для читаемости трейсов.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import t5delivery  # noqa: E402
+import spec_io  # noqa: E402  (тикет #4: единый канон сериализации specs/*.json)
 
 SLOT_RE = re.compile(
     r"^P(\d{2,3})\s+—\s+(\S+)\s+\((.+?)\)\s*[⚗☠]?\s*$"
@@ -3225,9 +3226,9 @@ def main():
 
     if out_json:
         out_json.parent.mkdir(parents=True, exist_ok=True)
-        out_json.write_text(
-            json.dumps(receipt, ensure_ascii=False, indent=1), encoding="utf-8"
-        )
+        # тикет #4: квитанция — specs-артефакт, сериализация через единый
+        # канон spec_io (indent 1, ensure_ascii=False, trailing newline)
+        spec_io.dump_spec(out_json, receipt)
         print(f"квитанция: {out_json}")
 
     if out_md:

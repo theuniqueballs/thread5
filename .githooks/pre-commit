@@ -62,6 +62,15 @@ else
   echo "  ~ bun/node_modules недоступны — тесты прилавка пропущены (CI поймает)"
 fi
 
+# (1.14, тикет #4) ГИГИЕНА КОММИТОВ СПЕК: пробельный чурн в индексе кратно
+# больше контента (git -w) — full-file реформат едет в фичевый коммит.
+# Ревью/блейм убиты классом волны 1в (7162 строк диффа на 67 контента).
+if ! python3 tools/commit_hygiene.py --staged; then
+  echo "  ✗ гигиена коммитов: реформат-чурн в specs/ — вынеси в отдельный коммит «format:» (тикет #4)"
+  exit 1
+fi
+echo "  ✓ гигиена коммитов спек: чисто"
+
 changed=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(batches/T5-[0-9]+R?|special/SO-[0-9]+)\.md$' || true)
 [ -z "$changed" ] && exit 0
 

@@ -47,6 +47,7 @@ sys.path.insert(0, str(REPO / "tools"))
 
 import gates  # noqa: E402  (канонический парсер батчей печи)
 import t5delivery  # noqa: E402  (единый индекс сдачи — аудит 2026-11-20 P0-06)
+import spec_io  # noqa: E402  (тикет #4: единый канон сериализации specs/*.json)
 
 # кириллица в cp1251-пайпе (Windows-консоль) не должна ронять печать — как gates.py
 try:
@@ -622,7 +623,7 @@ def cmd_trust(args) -> int:
     """Траст-слой Y: rebuild из verdicts/*.json или отчёт по реестру."""
     if args.rebuild:
         reg = build_trust()
-        TRUST_PATH.write_text(json.dumps(reg, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        spec_io.dump_spec(TRUST_PATH, reg)  # тикет #4: единый канон сериализации
         st = reg["stats"]
         print(f"траст-слой Y собран: specs/y-trust.json ({reg['version']})")
         print(f"  партий с JSON-вердиктами: {st['judged_batches']} · HIGH {st['high']} · MID {st['mid']} · LOW {st['low']}")

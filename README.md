@@ -109,7 +109,12 @@ Batch-Prompt Conveyer Belt
   R+-слота, WARN), themeEcho — В54 (тема = визуальная система,
   THEME-ECHO-словарь брифа, WARN), **k1Sense — К-1: смысл-поле каждой
   карточки stories.md с T5-35 (тикет #2, WARN)**;
-  `--md-from-receipt` — отчёт как производная JSON-квитанции), **`renderqc.py` —
+  `--md-from-receipt` — отчёт как производная JSON-квитанции), **`spec_io.py`
+  + `commit_hygiene.py` — тикет #4: единый канон сериализации specs/*.json
+  (ensure_ascii=False, формат-паспорт indent, round-trip идемпотентен) +
+  ловушка реформат-чурна: полный дифф vs `git -w` > 5× = WARN, pre-commit
+  1.14 гоняет по индексу; закон AGENTS №9 «format: — отдельный коммит»**,
+  **`renderqc.py` —
   RENDER-QC fact-слой (В56): слоты/промпт/таблица из VLM-разбора инбокса,
   драфт rating_truth_delta, спорные файлы — автору (T2.1)**, **`pregarment.py` —
   пре-гардероб: свежие комбо под жребий, набор в кулдауне 3 сданные партии,

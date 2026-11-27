@@ -130,8 +130,9 @@ def main() -> int:
     if do_check:
         return check(data)
     legacy, modern, changed = stamp(data, force_modern)
-    text = json.dumps(data, ensure_ascii=False, indent=1) + "\n"
-    CAM.write_text(text, encoding="utf-8")
+    # тикет #4: сериализация спек — только через единый канон spec_io
+    import spec_io
+    spec_io.dump_spec(CAM, data)
     print(f"ERA-ШТАМП: legacy {legacy} · modern {modern} · перемечено {len(changed)}"
           + (f" → modern: {sorted(force_modern)}" if force_modern else ""))
     if changed:

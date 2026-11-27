@@ -37,6 +37,8 @@ SPEC = ROOT / "specs"
 PG_DIR = SPEC / "pregarderobe"
 LEDGER = PG_DIR / "_ledger.json"
 
+import spec_io  # noqa: E402  (тикет #4: единый канон сериализации specs/*.json)
+
 # Кулдаун набора: сколько СДАННЫХ партий подряд набор не может повториться
 # (зеркально окну ротации LAWS §7). Вечный бан снят вердиктом автора
 # 2026-11-23 («комбо не должны навсегда баниться, это тупость»),
@@ -75,7 +77,7 @@ def load_ledger() -> dict:
 
 def save_ledger(led: dict) -> None:
     PG_DIR.mkdir(parents=True, exist_ok=True)
-    LEDGER.write_text(json.dumps(led, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    spec_io.dump_spec(LEDGER, led)  # тикет #4: единый канон сериализации
 
 
 def combo_key(codes: list[str]) -> str:
@@ -247,8 +249,7 @@ def roll_batch(batch: str, y_ids: list[str], scenes: list[str] | None, seed: int
     }
     if not dry:
         PG_DIR.mkdir(parents=True, exist_ok=True)
-        (PG_DIR / f"{batch}.json").write_text(
-            json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        spec_io.dump_spec(PG_DIR / f"{batch}.json", out)  # тикет #4: канон
         save_ledger(ledger)
     return out
 
