@@ -66,6 +66,15 @@ import subprocess
 import sys
 from pathlib import Path
 
+# тикет #1 (2026-11-28, платформенная честность): валидатор гоняется в
+# pre-commit и вручную на каждой платформе — cp1251-консоль не роняет
+# печать ×/§/→ (строки FAIL-причин несут их постоянно)
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass  # python < 3.7 или экзотика — работаем как работали
+
 ROOT = Path(__file__).resolve().parent.parent
 SPEC = ROOT / "specs"
 

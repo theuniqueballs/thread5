@@ -199,10 +199,12 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-# кириллица + ⚗/☠ в cp1251-пайпе (Windows-консоль) не должны ронять печать
+# кириллица + ⚗/☠ в cp1251-консоли (Windows) не должны ронять печать;
+# тикет #1 (2026-11-28): encoding=utf-8 — ежедневный ритуал (status/validate)
+# обязан жить и на машине автора, а не только в LF-песочнице CI
 try:
-    sys.stdout.reconfigure(errors="replace")
-    sys.stderr.reconfigure(errors="replace")
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 except Exception:
     pass  # python < 3.7 или экзотика — работаем как работали
 
@@ -2859,7 +2861,13 @@ def main():
     except ValueError:
         batch_rel = str(batch_path)
     verdict = "FAIL" if fails else "PASS"
-    sha = hashlib.sha256(batch_path.read_bytes()).hexdigest()
+    # тикет #1 (платформенная честность): sha — по LF-канону. CRLF-чекаут
+    # (Windows, autocrlf) не роняет sha-замок: запертые квитанции считаны
+    # по LF и задним числом НЕ пересчитываются — сравнение ведётся в одном
+    # каноне на любой платформе.
+    sha = hashlib.sha256(
+        batch_path.read_bytes().replace(b"\r\n", b"\n")
+    ).hexdigest()
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     receipt = {

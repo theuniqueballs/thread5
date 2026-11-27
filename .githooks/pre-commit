@@ -83,7 +83,9 @@ while IFS= read -r f; do
     rc=1
     continue
   fi
-  sha=$(sha256sum "$f" | cut -d' ' -f1)
+  sha=$(python3 -c 'import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],"rb").read().replace(b"\r\n",b"\n")).hexdigest())' "$f")
+  # (тикет #1, 2026-11-28): sha — по LF-канону, как в gates.py; CRLF-чекаут
+  # (Windows, autocrlf) не роняет замок — квитанции заперты по LF-канону
   # (d) свежая квитанция — по имени (дата-версия), mtime не участвует
   latest=$(grep -rl "\"batch\": \"$f\"" specs/gate-receipts --include='*.json' 2>/dev/null | sort -V | tail -1)
   if [ -n "$latest" ]; then

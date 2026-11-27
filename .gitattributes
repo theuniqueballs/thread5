@@ -1,0 +1,29 @@
+# Платформенная честность батареи (тикет #1, внешний аудит 2026-11-27):
+# рабочий файл в чекауте — LF на всех платформах. До этого Windows-чекеут с
+# core.autocrlf=true получал CRLF-файлы, sha-замок считал сырые байты — и
+# золотой T5-27 падал по sha без единого изменения контента (345/346).
+# Правило: репо-канон — LF; с двойной страховкой (второй слой — gates.py
+# считает sha по нормализованному \r\n → \n, запертые квитанции не
+# пересчитываются — их sha и есть LF-канон).
+* text=auto
+
+# текстовые семейства цеха — LF в чекауте всегда (md/спеки/код/ямы CI)
+*.md    text eol=lf
+*.json  text eol=lf
+*.py    text eol=lf
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.mjs   text eol=lf
+*.js    text eol=lf
+*.css   text eol=lf
+*.sh    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.svg   text eol=lf
+*.txt   text eol=lf
+*.lock  text eol=lf
+*.toml  text eol=lf
+
+# референсы автора (upload/, форс-адд мимо .gitignore) — замороженные
+# артефакты: никакой конвертации концов строк, байты как есть
+upload/** -text

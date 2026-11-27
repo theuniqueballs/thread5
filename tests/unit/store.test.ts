@@ -5,6 +5,7 @@
  * показывал бы хаос, а [ ] ходил бы не туда.
  */
 import { describe, expect, test } from 'bun:test';
+import * as path from 'node:path';
 import { batchKey, isDeliveredBatch, isSafeSlug, resolveT5Root, shelfOrder } from '../../src/lib/t5/store';
 
 describe('shelfOrder — естественный порядок полки', () => {
@@ -61,7 +62,10 @@ describe('resolveT5Root — раскладки контента', () => {
     const prev = process.env.T5_ROOT;
     process.env.T5_ROOT = '/tmp/t5-content-override';
     try {
-      expect(resolveT5Root()).toBe('/tmp/t5-content-override');
+      // тикет #1 (платформенная честность): store.ts делает path.resolve(env)
+      // — на Windows это C:\tmp\...; ожидание живёт в той же арифметике,
+      // а не в POSIX-литерале
+      expect(resolveT5Root()).toBe(path.resolve('/tmp/t5-content-override'));
     } finally {
       if (prev === undefined) delete process.env.T5_ROOT;
       else process.env.T5_ROOT = prev;

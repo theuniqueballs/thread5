@@ -48,6 +48,15 @@ import re
 import sys
 from pathlib import Path
 
+# тикет #1 (2026-11-28, платформенная честность): статус сдачи — первый
+# прогон всякого сеанса (AGENTS «Начало сеанса»), обязан жить на Windows:
+# cp1251-консоль не роняет печать ×/§/→ на UnicodeEncodeError
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass  # python < 3.7 или экзотика — работаем как работали
+
 ROOT = Path(__file__).resolve().parent.parent
 INDEX_PATH = ROOT / "specs" / "delivery-index.json"
 BATCH_DIR = ROOT / "batches"
