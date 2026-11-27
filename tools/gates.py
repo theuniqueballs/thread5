@@ -2819,6 +2819,29 @@ def check_race_cast(header, slots, statuses, warns, fails, batch_no=-1, oc_names
             "window": [lo, hi], "policy": "v2.0" if (era or retro) else "v1.8"}
 
 
+def complexity_budget(batch_no):
+    """v1.27.0 (тикет-волна 9.3, ПЛАН 5.5): СЛОЖНОСТЬ-БЮДЖЕТ ПАРТИИ — число
+    активных секций гейтов на партию печатается числом, рост сложности
+    виден (T4-тревога: «машина научилась проходить собственные гейты»).
+    Счётчик в квитанции — НЕ новый реестр и НЕ новая доктрина (план §5,
+    риск «сложность-бюджет сам станет сложностью»). Активная секция =
+    exists в gates.json и её эра наступила (applyFrom ≤ номера партии,
+    без applyFrom — всегда). Порог тревоги — решение автора, не машины."""
+    total = 0
+    active = 0
+    pending = []
+    for sec, cfg in GATES.items():
+        if not isinstance(cfg, dict):
+            continue
+        total += 1
+        af = cfg.get("applyFrom")
+        if af is None or (0 <= batch_no >= int(af)):
+            active += 1
+        else:
+            pending.append(f"{sec}·T5-{int(af):02d}")
+    return {"active": active, "total": total, "pending": pending}
+
+
 def check_slot_format(slots, warns):
     """Аудит 2026-10-31, F3/рек.3: метки ⚗/☠ — только за закрывающей скобкой."""
     for s in slots:
@@ -3246,10 +3269,17 @@ def main():
             "reasons": claimfact_stats.get("reasons", {}),
             "retro": bool(retro),
         },
+        "complexity_budget": dict(complexity_budget(batch_no)),  # 9.3: T4-тревога числом
     }
     print(f"=== ГЕЙТЫ {batch_path} ===")
     print(f"слотов: {len(slots)} · sha256: {sha[:12]}…")
     print(f"ВЕРДИКТ: {verdict} · FAIL: {len(fails)} · WARN: {len(warns)}")
+    # 9.3 (ПЛАН 5.5): сложность-бюджет партии — рост виден числом
+    cb = receipt["complexity_budget"]
+    print(
+        f"сложность-бюджет [9.3]: активно секций {cb['active']}/{cb['total']}"
+        + (f" · эры на подходе: {', '.join(cb['pending'][:6])}" if cb["pending"] else "")
+    )
     if GATES.get("corridorAudit") and (batch_no >= int(GATES["corridorAudit"].get("applyFrom", 10 ** 9))):
         fl = receipt["fact_label"]
         # Фикс 2026-11-23 (внешний аудит, баг №3): «В33: FAIL» при живом
