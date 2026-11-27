@@ -199,7 +199,7 @@ class TestT530Registries(unittest.TestCase):
 
     def test_oc_candidates_13(self):
         oc = load("specs/oc-candidates.json")
-        self.assertEqual(oc["version"], "1.6.0")  # 1.6.0 — шестёрка грань-X T5-34 (1.5.0 — T5-33: passed 4 / pending 8)
+        self.assertEqual(oc["version"], "1.7.0")  # 1.7.0 — квитанция вердикта T5-34: шестёрка passed; 1.5.0 — T5-33
         t30 = [c for c in oc["candidates"] if c["batch"] == "T5-30"]
         self.assertEqual(len(t30), 9)
         for c in t30:

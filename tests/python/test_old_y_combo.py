@@ -195,7 +195,7 @@ class TestComboBookOldYDobor(unittest.TestCase):
         cls.card_ids = {c["id"] for c in cls.cam["y_cards"]["cards"]}
 
     def test_versions(self):
-        self.assertEqual(self.dr["version"], "1.9.0")
+        self.assertEqual(self.dr["version"], "1.10.0")  # 1.10.0 — two_carrier
         self.assertIn("1.9.0", " ".join(self.dr.get("changelog", {}).keys())
                       if isinstance(self.dr.get("changelog"), dict) else "1.9.0")
         self.assertIn("диета ≤40", self.cb["born"])  # добор 1.9.0 держит диету
