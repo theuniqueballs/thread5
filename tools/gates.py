@@ -1303,12 +1303,18 @@ def check_ystamp(batch_path, slots, warns, fails, batch_no=-1, retro=False):
                             if i != weave_idx)
             body_stems = {w[:5] for w in words(body) if len(w) >= 5}
             hits = len(pose_stems & body_stems)
-            if hits < min_exec:
+            # v1.28.1 (сборка T5-36, живой урок Y541): порог исполнения не
+            # выше пула стемов позы — поза из коротких слов («full drop
+            # mid-sway + aftershock at the stop») даёт 1 стем, требование 2
+            # неисполнимо в принципе; cap сохраняет смысл проверки (эхо
+            # физики вне клейма) без запрета коротких карт
+            need_exec = min(min_exec, len(pose_stems))
+            if hits < need_exec:
                 st["not_executed"] += 1
                 emit(
                     (s.sid, "y-stamp",
                      f"вплетение {s.y_card} не исполняется телом POS ({hits} "
-                     f"стемов паттерна вне вплетения, нужно ≥{min_exec}) — "
+                     f"стемов паттерна вне вплетения, нужно ≥{need_exec}) — "
                      "паттерн живёт дважды: камерный кластер OPENER + строка 3 "
                      "(LAWS §17.3)"),
                     True,

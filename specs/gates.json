@@ -1240,7 +1240,8 @@
       "fingers",
       "girl",
       "head",
-      "ears"
+      "ears",
+      "signature"
     ],
     "colorStop": [
       "black",
@@ -1565,6 +1566,14 @@
         "corset",
         "bodice",
         "bustier"
+      ],
+      [
+        "knit",
+        "wrap"
+      ],
+      [
+        "shirt",
+        "tee"
       ]
     ],
     "shoulderAnchors": [
@@ -1582,6 +1591,6 @@
     ]
   },
   "changelog": {
-    "1.28.0": "2026-11-28, тикет #6 (Чарли, P1): claimFact ловил своих на живом T5-35 (5 ложных WARN из 8). +objectNouns shirt/knit/ribbed knit/cloth; материал-стемы матчат дефис-хвосты (rain-wet, sheer-lined); +materialStates tight; окно носителя ±1 строка; openModifiers; panelSynonymGroups; chestPanels +shirt/knit; geometryClaims (В53/H-15); зона: chest/bottom токены весят больше плеча-инцидента. Перегон T5-35 → v2; ретро T5-34 ≥13/15; T5-27 молчит. Живой урок правки: правый дефис-страж noun возвращён на место — открытый хвост легализовал «top-heavy build» как панель груди (P04/P11/P27); дефис-компаунды-вещи (dress-front/corset-back/shirt-front) едут явными записями objectNouns; «bib» изъят из chestPanels — номер-нагрудник (number bib) не глушит чтение, пинья-фамилию несут apron/pinafore. Зона-разводка (живой урок P17 T5-34): якорь-фразы плеча (at/on the shoulder, shoulder line…) прикурковывают заявку к  PG-13-парковке ДО chest-токенов — а инциденты позы (chin over  shoulder) не паркуют грудь; ретро 13/15 держится."
+    "1.28.0": "2026-11-28, тикет #6 (Чарли, P1): claimFact ловил своих на живом T5-35 (5 ложных WARN из 8). +objectNouns shirt/knit/ribbed knit/cloth; материал-стемы матчат дефис-хвосты (rain-wet, sheer-lined); +materialStates tight; окно носителя ±1 строка; openModifiers; panelSynonymGroups; chestPanels +shirt/knit; geometryClaims (В53/H-15); зона: chest/bottom токены весят больше плеча-инцидента. Перегон T5-35 → v2; ретро T5-34 ≥13/15; T5-27 молчит. Живой урок правки: правый дефис-страж noun возвращён на место — открытый хвост легализовал «top-heavy build» как панель груди (P04/P11/P27); дефис-компаунды-вещи (dress-front/corset-back/shirt-front) едут явными записями objectNouns; «bib» изъят из chestPanels — номер-нагрудник (number bib) не глушит чтение, пинья-фамилию несут apron/pinafore. Зона-разводка (живой урок P17 T5-34): якорь-фразы плеча (at/on the shoulder, shoulder line…) прикурковывают заявку к  PG-13-парковке ДО chest-токенов — а инциденты позы (chin over  shoulder) не паркуют грудь; ретро 13/15 держится. Сборка T5-36, живые уроки: (а) exec-порог вне вплетения не выше пула стемов позы (Y541 — поза из коротких слов, 1 стем, требование 2 неисполнимо); (б) negCanonGuard genericStop +signature — watermark-гарда бойлерплейта NEG не именная фишка (коллизия с канон-прозой Ila «signature inverted framing», класс girl/head/ears). panelSynonymGroups +[knit,wrap] (клеймо Y526 называет одну вещь «knit wrap») и +[shirt,tee] (клеймо Y545 — «boyfriend tee… the shirt»): корпус карт сам именует одну вещь дважды — счётчик панелей не должен глушить слот за язык карты."
   }
 }

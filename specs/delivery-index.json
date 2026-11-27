@@ -169,6 +169,11 @@
    "batch": "T5-35",
    "status": "delivered",
    "mode": "CLOCK"
+  },
+  {
+   "batch": "T5-36",
+   "status": "delivered",
+   "mode": "CLOCK"
   }
  ],
  "modes_note": "поле mode (CLOCK/LAB/SURGERY/SPECIAL) — из брифа партии (Коул §4 «объявление в brief обязательно»); счётчик CLOCK подряд — tools/t5delivery.py status (метрика здоровья §13). Старые партии без mode — история не переписывается; новейшая запись с mode начинает счёт"
