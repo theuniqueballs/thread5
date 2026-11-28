@@ -58,7 +58,7 @@ class TestClaimFactSpecs(unittest.TestCase):
         self.assertIn("tight", cfg["materialStates"], "тикет #6: tight забыт")
         self.assertNotIn("bib", cfg["chestPanels"],
                          "тикет #6: номер-нагрудник не глушит чтение")
-        self.assertEqual(gates.GATES.get("version"), "1.28.0")
+        self.assertEqual(gates.GATES.get("version"), "1.29.0")
 
     def test_registry_row(self):
         reg = json.loads((REPO / "specs" / "gate-registry.json").read_text(encoding="utf-8"))

@@ -46,7 +46,7 @@ class TestThemeEchoSpec(unittest.TestCase):
         cls.reg = load("gate-registry.json")
 
     def test_gate_config(self):
-        self.assertEqual(self.gt["version"], "1.28.0")  # 1.27.0 — claimFact (тикет #5)
+        self.assertEqual(self.gt["version"], "1.29.0")  # 1.28.0 — claimFact (тикет #6); 1.29.0 — nudeTruth (вердикт T5-35)
         g = self.gt["themeEcho"]
         self.assertEqual(g["applyFrom"], 35)
         self.assertEqual(g["mode"], "WARN")
@@ -54,8 +54,8 @@ class TestThemeEchoSpec(unittest.TestCase):
         self.assertIn("В54", g["born"])
 
     def test_registry(self):
-        self.assertEqual(self.reg["version"], "1.7.0")
-        self.assertEqual(len(self.reg["gates"]), 39)
+        self.assertEqual(self.reg["version"], "1.8.0")  # 1.8.0 — секция nudeTruth (вердикт T5-35)
+        self.assertEqual(len(self.reg["gates"]), 40)  # 40 — +nudeTruth (вердикт T5-35)
         row = next(g for g in self.reg["gates"] if g["section"] == "themeEcho")
         self.assertEqual(row["impl"], ["check_theme_echo"])
         self.assertEqual(row["receiptField"], "theme_echo")

@@ -318,7 +318,7 @@ class TestOcCandidatesD(unittest.TestCase):
         d = load("oc-candidates.json")
         # v1.0.0 born-empty (ЦИКЛ 4); v1.1.0 — первый боевой лог: 9 кандидатов
         # EXP-партии T5-29 (заказ автора «9 кандидатов в ОС»), статус trial
-        self.assertIn(d["version"], ("1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0"))  # 1.7.0 — квитанция T5-34: шестёрка passed (вердикт loved)
+        self.assertIn(d["version"], ("1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.8.0"))  # 1.8.0 — nude_truth (вердикт T5-35)
         self.assertIn("bundle", d)
         self.assertIn("candidates", d)
         if d["version"] == "1.0.0":

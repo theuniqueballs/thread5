@@ -41,15 +41,19 @@
   {
    "file": "T5-34.json",
    "batch": "T5-34"
+  },
+  {
+   "file": "T5-35.json",
+   "batch": "T5-35"
   }
  ],
  "stats": {
-  "high": 54,
-  "mid": 5,
-  "low": 113,
-  "judged_batches": 7,
-  "fact_hits": 13,
-  "fact_drifts": 48
+  "high": 61,
+  "mid": 3,
+  "low": 134,
+  "judged_batches": 8,
+  "fact_hits": 15,
+  "fact_drifts": 66
  },
  "cards": {
   "Y1": {
@@ -109,17 +113,23 @@
    ]
   },
   "Y4": {
-   "trust": "MID",
+   "trust": "LOW",
    "hits": 0,
-   "misses": 0,
+   "misses": 1,
    "neutral": 1,
    "fact_hits": 0,
-   "fact_drifts": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-29",
      "slot": "P04",
      "kind": "ok_with_issues"
+    },
+    {
+     "batch": "T5-35",
+     "slot": "P17",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -742,6 +752,21 @@
     }
    ]
   },
+  "Y41": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P18",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y45": {
    "trust": "HIGH",
    "hits": 1,
@@ -781,6 +806,21 @@
      "slot": "P10",
      "kind": "fact_drift",
      "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y52": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P29",
+     "kind": "hypothesis"
     }
    ]
   },
@@ -944,6 +984,21 @@
     }
    ]
   },
+  "Y79": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P24",
+     "kind": "loved"
+    }
+   ]
+  },
   "Y81": {
    "trust": "HIGH",
    "hits": 1,
@@ -1000,6 +1055,21 @@
     }
    ]
   },
+  "Y87": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P19",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y89": {
    "trust": "LOW",
    "hits": 0,
@@ -1017,6 +1087,21 @@
      "batch": "T5-34",
      "slot": "P02",
      "kind": "miss"
+    }
+   ]
+  },
+  "Y90": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P22",
+     "kind": "loved"
     }
    ]
   },
@@ -1096,13 +1181,19 @@
    ]
   },
   "Y98": {
-   "trust": "MID",
-   "hits": 0,
+   "trust": "HIGH",
+   "hits": 1,
    "misses": 0,
    "neutral": 1,
-   "fact_hits": 0,
+   "fact_hits": 1,
    "fact_drifts": 0,
    "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P06",
+     "kind": "fact_hit",
+     "fact": "fact_ok"
+    },
     {
      "batch": "T5-31",
      "slot": "P03",
@@ -1125,6 +1216,21 @@
     }
    ]
   },
+  "Y104": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P20",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y105": {
    "trust": "MID",
    "hits": 0,
@@ -1137,6 +1243,22 @@
      "batch": "T5-32",
      "slot": "P05",
      "kind": "ok_with_issues"
+    }
+   ]
+  },
+  "Y109": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P25",
+     "kind": "hypothesis",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -1260,6 +1382,21 @@
     }
    ]
   },
+  "Y122": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P30",
+     "kind": "miss"
+    }
+   ]
+  },
   "Y127": {
    "trust": "LOW",
    "hits": 0,
@@ -1286,6 +1423,51 @@
     {
      "batch": "T5-34",
      "slot": "P24",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y133": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P28",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y136": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P21",
+     "kind": "miss"
+    }
+   ]
+  },
+  "Y143": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 0,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P23",
      "kind": "miss"
     }
    ]
@@ -1367,6 +1549,22 @@
      "batch": "T5-30",
      "slot": "P26",
      "kind": "miss"
+    }
+   ]
+  },
+  "Y217": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P26",
+     "kind": "hypothesis",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2240,6 +2438,22 @@
     }
    ]
   },
+  "Y445": {
+   "trust": "HIGH",
+   "hits": 1,
+   "misses": 0,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P27",
+     "kind": "hypothesis",
+     "fact": "fact_drift"
+    }
+   ]
+  },
   "Y446": {
    "trust": "LOW",
    "hits": 0,
@@ -2258,15 +2472,21 @@
   "Y451": {
    "trust": "HIGH",
    "hits": 1,
-   "misses": 0,
+   "misses": 1,
    "neutral": 0,
    "fact_hits": 0,
-   "fact_drifts": 0,
+   "fact_drifts": 1,
    "evidence": [
     {
      "batch": "T5-30",
      "slot": "P21",
      "kind": "loved"
+    },
+    {
+     "batch": "T5-35",
+     "slot": "P02",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
     }
    ]
   },
@@ -2434,16 +2654,22 @@
   },
   "Y498": {
    "trust": "HIGH",
-   "hits": 1,
+   "hits": 2,
    "misses": 0,
    "neutral": 0,
-   "fact_hits": 0,
+   "fact_hits": 1,
    "fact_drifts": 0,
    "evidence": [
     {
      "batch": "T5-31",
      "slot": "P28",
      "kind": "loved"
+    },
+    {
+     "batch": "T5-35",
+     "slot": "P01",
+     "kind": "loved",
+     "fact": "fact_ok"
     }
    ]
   },
@@ -2877,6 +3103,38 @@
     }
    ]
   },
+  "Y539": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P04",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y540": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P05",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
   "Y542": {
    "trust": "HIGH",
    "hits": 1,
@@ -2889,6 +3147,182 @@
      "batch": "T5-34",
      "slot": "P25",
      "kind": "loved",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y543": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P07",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y544": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P08",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y546": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P09",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y547": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P10",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y548": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P11",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y549": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P12",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y550": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P13",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y551": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P14",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y552": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P03",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y553": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P15",
+     "kind": "fact_drift",
+     "fact": "fact_drift"
+    }
+   ]
+  },
+  "Y554": {
+   "trust": "LOW",
+   "hits": 0,
+   "misses": 1,
+   "neutral": 0,
+   "fact_hits": 0,
+   "fact_drifts": 1,
+   "evidence": [
+    {
+     "batch": "T5-35",
+     "slot": "P16",
+     "kind": "fact_drift",
      "fact": "fact_drift"
     }
    ]

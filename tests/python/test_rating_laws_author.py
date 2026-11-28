@@ -14,7 +14,7 @@
    даёт R+.
 2. T5-29 ground truth В43 не сдвинулся: matched {P04,P11,P18,P27},
    17 ложных R+, 12 дрейфов (test_t529_lessons.py — дубль-страховка здесь).
-3. Словари: rating-techniques 1.7.0 (hard_carriers + volt_run В45 + импорт «копай оракла» + ЗАКОН 3 покрытия-в-позе),
+3. Словари: rating-techniques 1.8.0 (hard_carriers + volt_run В45 + nude_truth В57–В60 + импорт «копай оракла» + ЗАКОН 3 покрытия-в-позе),
    dresser 1.10.0 (carrier_first + two_carrier В52/В53 + yuri_quota В49 + carrier_matrix + combo_book), gates.json 1.25.0
    (negBase += yellow skin/sallow skin, skinCast В48 — вердикт T5-33; yStamp eraGuard В52 + negCanonGuard В55 + voltRun В45 + themeEcho В54 — вердикт T5-34).
 """
@@ -113,9 +113,9 @@ class TestCalibrationRegistryPins(unittest.TestCase):
         self.gt = json.loads((ROOT / "specs" / "gates.json").read_text(encoding="utf-8"))
 
     def test_versions(self):
-        self.assertEqual(self.rt["version"], "1.7.0")
+        self.assertEqual(self.rt["version"], "1.8.0")  # 1.8.0 — nude_truth В57–В60 (вердикт T5-35)
         self.assertEqual(self.dr["version"], "1.11.0")  # 1.11.0 — niche_volt (T5.2)
-        self.assertEqual(self.gt["version"], "1.28.0")  # 1.27.0 — claimFact (тикет #5)
+        self.assertEqual(self.gt["version"], "1.29.0")  # 1.28.0 — claimFact (тикет #6); 1.29.0 — nudeTruth (вердикт T5-35)
 
     def test_hard_carriers_present(self):
         hc = self.rt["sum_rules"]["hard_carriers"]

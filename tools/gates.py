@@ -2374,6 +2374,113 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
     return st
 
 
+def check_nude_truth(slots, warns, fails, batch_no=-1, oc_names=(), retro=False):
+    """v1.29.0 nudeTruth — В57/В58 (вердикт T5-35: «всё обучение по эччи
+    почему-то не особо сработало»; fact-hit 1 чистый + 1 грань из 17 R+).
+
+    В57 ПРЯМОЙ НЮ-ТОКЕН: ню-состояние R+ слота обязано быть заявлено
+    literal-токенами (nude/naked/topless/bare chest/bare underneath/covered
+    only by…), hard-якорем автора (тейп/пастис — Закон 1, crotch-фокус —
+    Закон 2, handbra-холд — В43) или wet-sheer-материалом на голой коже
+    (P06-класс). Поэтическое отрицание «nothing underneath X but Y» носителем
+    НЕ считается: рендерер (Tsubaki.2 Pro → Yodayo) читает literal-токены,
+    поэзию игнорирует — 15 из 17 R+ T5-35 с «nothing underneath» не доехали,
+    а единственный чистый R+ (P01) дрейфовал одеждой: приказ автора —
+    «уточняй, что она под лентами — голая».
+
+    В58 COLLISION: bare-зона POS-заявки не глушится bare-зоной той же группы
+    в NEG того же слота (P08: «bare thigh-strip» в POS при «bare legs»
+    в NEG → PG-13). X-гварды (areola/pink nipples в NEG) не трогаются —
+    bare-слова в таких строках нет.
+
+    Эра: applyFrom 37 (T5-36 контрольная, сдана до вердикта — AGENTS №3,
+    не бьётся), failFrom 37 — FAIL сразу: два батча подряд 12% fact-hit."""
+    cfg = GATES.get("nudeTruth")
+    if not cfg:
+        return {}
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return {"mode": "silent"}
+    hard_era = batch_no >= int(cfg.get("failFrom", 10 ** 9))
+    direct = [t.lower() for t in cfg.get("directNude", [])]
+    wet = [t.lower() for t in cfg.get("wetSheerSkin", [])]
+    hold = [t.lower() for t in cfg.get("handbra", [])]
+    poetic = [t.lower() for t in cfg.get("poeticOnly", [])]
+    rt = GATES.get("ratingTruth") or {}
+    tape = [t.lower() for t in rt.get("tapeEvidence", [])]
+    crotch = [t.lower() for t in rt.get("crotchFocus", [])]
+    zone_groups = {
+        g: [z.lower() for z in zs]
+        for g, zs in (cfg.get("zoneGroups") or {}).items()
+    }
+    bare_words = [w.lower() for w in cfg.get("bareWords",
+                                              ["bare", "nude", "naked"])]
+    st = {
+        "mode": "on", "rplus_slots": 0, "passing": 0,
+        "no_nude_state": [], "poetic_only": 0, "collisions": 0,
+    }
+    for s in slots:
+        if s.rating != "R+":
+            continue
+        st["rplus_slots"] += 1
+        pos_l = (s.pos or "").lower()
+        # В57: живой ню-слой — прямой токен / wet-sheer-на-коже / hard-якорь
+        has_direct = any(t in pos_l for t in direct)
+        has_wet = any(t in pos_l for t in wet)
+        has_anchor = (any(t in pos_l for t in hold)
+                      or any(t in pos_l for t in tape)
+                      or any(t in pos_l for t in crotch))
+        if not (has_direct or has_wet or has_anchor):
+            st["no_nude_state"].append(s.sid)
+            if any(t in pos_l for t in poetic):
+                st["poetic_only"] += 1
+            entry = (
+                s.sid, "nude-truth",
+                "ню-состояние не заявлено literal-токеном: рендерер читает "
+                "nude/naked/bare chest/bare underneath, а не поэтическое "
+                "«nothing underneath X but Y» (В57, вердикт T5-35: 15 ложных "
+                "R+ из 17, приказ автора «уточняй, что она под лентами — "
+                "голая»; живые слои — прямой токен, hard-якорь автора "
+                "(тейп/crotch-фокус/handbra-холд) или wet-sheer на голой коже)")
+            (fails if hard_era else warns).append(entry)
+        else:
+            st["passing"] += 1
+        # В58: bare-зона POS против bare-зоны NEG той же группы
+        claimed = set()
+        for line in (s.pos_lines or [s.pos or ""]):
+            low = line.lower()
+            if not any(re.search(r"\b" + re.escape(w) + r"\b", low)
+                       for w in bare_words):
+                continue
+            for g, zones in zone_groups.items():
+                if any(re.search(r"\b" + re.escape(z) + r"\b", low)
+                       for z in zones):
+                    claimed.add(g)
+        if claimed:
+            for line in (s.neg_lines or [s.neg or ""]):
+                low = line.lower()
+                if not any(re.search(r"\b" + re.escape(w) + r"\b", low)
+                           for w in bare_words):
+                    continue
+                hit = next(
+                    (g for g in sorted(claimed)
+                     if any(re.search(r"\b" + re.escape(z) + r"\b", low)
+                            for z in zone_groups[g])),
+                    None,
+                )
+                if hit:
+                    st["collisions"] += 1
+                    entry = (
+                        s.sid, "nude-truth",
+                        f"В58 коллизия: NEG глушит bare-зону «{hit}», "
+                        f"заявленную в POS того же слота (урок P08: "
+                        f"«bare thigh-strip» в POS против «bare legs» в NEG "
+                        f"— носитель умер, слот упал в PG-13) — убрать "
+                        f"bare-зону из NEG или переформулировать строку")
+                    (fails if hard_era else warns).append(entry)
+                    break
+    return st
+
+
 def check_header(text, header, slots, fails, warns, oc_names=()):
     if GATES["header"]["ecchiKeyForbidden"]:
         for s in slots:
@@ -3173,6 +3280,7 @@ def main():
     voltrun_stats = check_volt_run(slots, warns, fails, batch_no, oc_names, retro)  # В45
     themeecho_stats = check_theme_echo(batch_path, slots, warns, fails, batch_no, oc_names, retro)  # В54
     claimfact_stats = check_claim_fact(slots, warns, fails, batch_no, retro)  # тикет #5: В56 fact-слой
+    nudetruth_stats = check_nude_truth(slots, warns, fails, batch_no, oc_names, retro)  # В57/В58 вердикт T5-35
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -3338,6 +3446,15 @@ def main():
             "passing": claimfact_stats.get("passing", 0),
             "caught": claimfact_stats.get("caught", []),
             "reasons": claimfact_stats.get("reasons", {}),
+            "retro": bool(retro),
+        },
+        "nude_truth": {  # v1.29.0 В57/В58 (вердикт T5-35): literal-ню-слой R+
+            "mode": nudetruth_stats.get("mode", "silent"),
+            "rplus_slots": nudetruth_stats.get("rplus_slots", 0),
+            "passing": nudetruth_stats.get("passing", 0),
+            "no_nude_state": nudetruth_stats.get("no_nude_state", []),
+            "poetic_only": nudetruth_stats.get("poetic_only", 0),
+            "collisions": nudetruth_stats.get("collisions", 0),
             "retro": bool(retro),
         },
         "complexity_budget": dict(complexity_budget(batch_no)),  # 9.3: T4-тревога числом

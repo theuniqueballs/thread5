@@ -61,7 +61,7 @@ class TestVoltRunSpec(unittest.TestCase):
         cls.reg = load("gate-registry.json")
 
     def test_dictionary(self):
-        self.assertEqual(self.rt["version"], "1.7.0")
+        self.assertEqual(self.rt["version"], "1.8.0")  # 1.8.0 — nude_truth (В57–В60); volt_run-группы не тронуты
         vr = self.rt["volt_run"]
         self.assertEqual(set(vr["groups"]),
                          {"breast", "hands", "hips_ass_skin"})
@@ -70,7 +70,7 @@ class TestVoltRunSpec(unittest.TestCase):
         self.assertIn("В45", vr["born"])
 
     def test_gate_config(self):
-        self.assertEqual(self.gt["version"], "1.28.0")  # 1.27.0 — claimFact (тикет #5)
+        self.assertEqual(self.gt["version"], "1.29.0")  # 1.28.0 — claimFact (тикет #6); 1.29.0 — nudeTruth (вердикт T5-35)
         g = self.gt["voltRun"]
         self.assertEqual(g["applyFrom"], 35)
         self.assertEqual(g["mode"], "WARN")
@@ -78,8 +78,8 @@ class TestVoltRunSpec(unittest.TestCase):
         self.assertEqual(g["groupMin"], 2)
 
     def test_registry(self):
-        self.assertEqual(self.reg["version"], "1.7.0")
-        self.assertEqual(len(self.reg["gates"]), 39)
+        self.assertEqual(self.reg["version"], "1.8.0")  # 1.8.0 — секция nudeTruth (вердикт T5-35)
+        self.assertEqual(len(self.reg["gates"]), 40)  # 40 — +nudeTruth (вердикт T5-35)
         row = next(g for g in self.reg["gates"] if g["section"] == "voltRun")
         self.assertEqual(row["impl"], ["check_volt_run"])
         self.assertEqual(row["receiptField"], "volt_run")

@@ -61,10 +61,10 @@ Batch-Prompt Conveyer Belt
   **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**;
   **oc-candidates.json 1.4.0 — кандидаты в ОС: 27 trial (статусы
   passed/promoted/pending), вердикт только автора (пункт Д)**; `gates.json`
-  1.28.0 (тикет #6: claimFact чинит ложные WARN живого T5-35 —
-  shirt/knit/cloth + дефис-хвосты состояний + окно носителя ±1 строка +
-  панель-модификаторы раскрытия + геометрия-заявки H-15/В53 +
-  якорь-фразы плеча; ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
+  1.29.0 (вердикт T5-35: nudeTruth В57/В58 — прямой ню-токен обязателен
+  в R+ POS, поэтическое «nothing underneath» носителем не считается,
+  collisionGuard bare-зон POS/NEG; applyFrom 37 — T5-36 контрольная не
+  бьётся, FAIL с T5-37; предыдущее — тикет #6, claimFact: ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
   pointRead/pairContact = HARD R+; «chest's bare line» отстрелен от R+;
   voltCore В39, raceCast v2.0 В40, exquisiteMain В41, expHypothesis В42,
   ratingTruth В43 — все FAIL-эра с T5-30; skinCast В48; **ratingMass В51 —
@@ -90,7 +90,9 @@ Batch-Prompt Conveyer Belt
   (HIGH/MID/LOW из JSON-вердиктов, Коул §7; draw --trust — CLOCK-жребий по
   HIGH+MID ≤ 80)**; `ultimate-dice.json`, `open-hypotheses.json` 1.3.0
   (+H-14 СБОРЩИК-ЧЕРНОВИКА, testing на T5-33),
-  `rating-techniques.json` 1.7.0 — 161 приём (импорт из базового таксонома
+  `rating-techniques.json` 1.8.0 — 166 приёмов + nude_truth-блок (В57
+  прямые ню-токены · В58 коллизия POS/NEG · В59 гравитационный якорь ·
+  В60 лестница носителей — вердикт T5-35; импорт из базового таксонома
   эччи-оракла + законы автора 2026-11-26 в principle.laws_author,
   sum_rules.hard_carriers),
   `dresser.json` 1.5.0 (y_stack + **carrier-first В47** + ПРЕ-ГАРДЕРОБ с

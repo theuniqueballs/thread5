@@ -1,7 +1,7 @@
 {
  "id": "gate-registry",
  "name": "Реестр гейтов: секция gates.json → реализация в gates.py → поле квитанции",
- "version": "1.7.0",
+ "version": "1.8.0",
  "born": "2026-11-21",
  "born_from": "Двойной аудит 2026-11-20 (внешний P0-05 «нет реестра gate → code → test»; живой прецедент: paletteSkin был объявлен в gates.json v1.16.0, но отсутствовал в обязательном списке валидатора — объявленный гейт ≠ работающий гейт). Реестр замыкает цепочку: валидатор сверяет каждую секцию gates.json с реализацией в tools/gates.py и полем в квитанции; test — прямой юнит-тест (null = долги перечислены явно, не спрятаны); end-to-end страховка всего конвейера — tests/python/test_gate_registry.py (золотой прогон T5-27 PASS 0F/2W + тамперы: изъятая hard-флора → FAIL, изъятое вплетение → FAIL). · 1.1.0 (2026-11-22, вердикт T5-29): пять секций урока В39–В43 (voltCore/raceCast v2.0/exquisiteMain/expHypothesis/ratingTruth) + закрыта дыра 1.17.0 (yStack жил в gates.json без строки реестра) · 1.2.0 (2026-11-27, вердикт T5-34): секция В51 ratingMass (R+-масса мейнов ≥ 14, PG-13 = 0, FAIL с T5-35) — 34 секции",
  "rules": {
@@ -405,6 +405,16 @@
    "test": "tests/python/test_claim_fact.py",
    "owner": "EARTH",
    "note": "Тикет #5 (В56): fact-слой заявки R+ — named object + зона грудь/низ + материал/холд носитель, процесс — только второй; калибровка: ретро T5-34 ловит ≥13 из 15 ложных R+, P04/P13 чисто, золотой T5-27 не дрейфует; ⚗ не освобождает"
+  },
+  {
+   "section": "nudeTruth",
+   "impl": [
+    "check_nude_truth"
+   ],
+   "receiptField": "nude_truth",
+   "test": "tests/python/test_nude_truth.py",
+   "owner": "EARTH",
+   "note": "Вердикт T5-35 (В57/В58): literal-ню-слой R+ — прямой ню-токен (nude/naked/topless/bare underneath/covered only by), hard-якорь автора (tapeEvidence/crotchFocus + handbra-холд) или wet-sheer-на-коже обязателен; поэтическое «nothing underneath» носителем не считается (15 ложных R+ из 17, второй батч подряд); collisionGuard bare-зон POS/NEG (P08 bare thigh × bare legs). applyFrom 37 (T5-36 контрольная, сдана до вердикта — не бьётся), FAIL с T5-37. Калибровка: ретро T5-35 — 17 ню-флагов + 1 коллизия, P06/P14/P17 проходят; T5-36 в живом прогоне молчит"
   }
  ]
 }
