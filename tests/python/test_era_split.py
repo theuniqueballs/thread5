@@ -113,7 +113,7 @@ class TestEraGuardConfig(unittest.TestCase):
         cls.gt = load("gates.json")
 
     def test_version(self):
-        self.assertEqual(self.gt["version"], "1.29.0")  # 1.28.0 — claimFact (тикет #6); 1.29.0 — nudeTruth (вердикт T5-35) (тикет #2)
+        self.assertEqual(self.gt["version"], "1.30.0")  # 1.29.0 — nudeTruth (вердикт T5-35); 1.30.0 — carrierTruth (тикет #7/В61) (тикет #2)
         self.assertIn("v1.22.0", (REPO / "tools/gates.py").read_text(encoding="utf-8"))
 
     def test_era_guard_config(self):

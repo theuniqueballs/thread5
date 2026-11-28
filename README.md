@@ -61,10 +61,17 @@ Batch-Prompt Conveyer Belt
   **marks.json 1.0.0 — 42 метки, рейтинг-нейтральные (пункт И)**;
   **oc-candidates.json 1.4.0 — кандидаты в ОС: 27 trial (статусы
   passed/promoted/pending), вердикт только автора (пункт Д)**; `gates.json`
-  1.29.0 (вердикт T5-35: nudeTruth В57/В58 — прямой ню-токен обязателен
-  в R+ POS, поэтическое «nothing underneath» носителем не считается,
-  collisionGuard bare-зон POS/NEG; applyFrom 37 — T5-36 контрольная не
-  бьётся, FAIL с T5-37; предыдущее — тикет #6, claimFact: ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
+  1.30.0 (тикет #7 + приказ автора: carrierTruth В61 — заявка R+ живёт в
+  каноничных данбоору-носителях, ≥2 в POS каждого R+ слота (≥1
+  тела/прикрытия), бельё-импакт только вторым+; приватный диалект
+  («breast shape»/«nothing underneath»/«soft crests») носителем не
+  считается; канон-просвет: see-through = R+ носитель; носитель в своём
+  NEG мёртв; nudeTruth.directNude += covered nipples/clothed nipples/
+  pasties/nipple tape; wetSheerSkin вычищен от фраз-фрагментов; applyFrom
+  36 — T5-36 пересобрана danbooru-first приказом автора, контроль отменён,
+  FAIL с T5-36; предыдущее — 1.29.0 вердикт T5-35: nudeTruth В57/В58 —
+  прямой ню-токен обязателен в R+ POS, поэтическое «nothing underneath»
+  носителем не считается, collisionGuard bare-зон POS/NEG; ratingTruth 1.19.0 — законы автора 2026-11-26: тейп/cameltoe-фокус/
   pointRead/pairContact = HARD R+; «chest's bare line» отстрелен от R+;
   voltCore В39, raceCast v2.0 В40, exquisiteMain В41, expHypothesis В42,
   ratingTruth В43 — все FAIL-эра с T5-30; skinCast В48; **ratingMass В51 —
@@ -80,8 +87,8 @@ Batch-Prompt Conveyer Belt
   R+: named object в тег-ране + зона грудь/низ + материал/холд носитель,
   процесс — только второй (two-carrier), WARN с T5-35; калибровка: ретро
   T5-34 ловит 13 из 15 ложных R+, P04/P13 чисто (тикет #5)**)
-  + `gate-registry.json` 1.7.0
-  (реестр «гейт → код → тест → квитанция», 39 секций); `raw-plus.json` 2.3.0
+  + `gate-registry.json` 1.9.0
+  (реестр «гейт → код → тест → квитанция», 41 секция); `raw-plus.json` 2.3.0
   (PROSE PLUS + закон ТЕГ-ПОРЯДКА, LAWS §20); `delivery-stats.json` 0.16.0
   (101 канал, волна 16); **`delivery-index.json` 1.1.0 — статус сдачи
   draft/ready/delivered/superseded + поле mode (CLOCK-дисциплина Коула §4),
@@ -90,9 +97,12 @@ Batch-Prompt Conveyer Belt
   (HIGH/MID/LOW из JSON-вердиктов, Коул §7; draw --trust — CLOCK-жребий по
   HIGH+MID ≤ 80)**; `ultimate-dice.json`, `open-hypotheses.json` 1.3.0
   (+H-14 СБОРЩИК-ЧЕРНОВИКА, testing на T5-33),
-  `rating-techniques.json` 1.8.0 — 166 приёмов + nude_truth-блок (В57
+  `rating-techniques.json` 1.9.0 — 166 приёмов + nude_truth-блок (В57
   прямые ню-токены · В58 коллизия POS/NEG · В59 гравитационный якорь ·
-  В60 лестница носителей — вердикт T5-35; импорт из базового таксонома
+  В60 лестница носителей — вердикт T5-35; В61 carrier_tokens —
+  данбоору-first, ≥2 носителя в каждый R+ слот, P01-паттерн, канон-просвет
+  see-through = R+ — тикет #7; volt_run.groups + carriers — voltRun
+  считает данбоору-носители; импорт из базового таксонома
   эччи-оракла + законы автора 2026-11-26 в principle.laws_author,
   sum_rules.hard_carriers),
   `dresser.json` 1.5.0 (y_stack + **carrier-first В47** + ПРЕ-ГАРДЕРОБ с
@@ -103,8 +113,8 @@ Batch-Prompt Conveyer Belt
   аудит P1-02): структурированные `verdicts/T5-NN.json` (схема t5-verdict/1:
   loved/ok_with_issues/lessons/hypothesis_hits) — канонический вход вкуса;
   `taste.py` читает JSON, Markdown — фолбэк** (T5-27 — первый JSON-вердикт)
-- `tools/` — `gates.py` (машинные гейты печи: 39 секций, реестр
-  specs/gate-registry.json 1.7.0 «гейт → код → тест → квитанция», валидатор
+- `tools/` — `gates.py` (машинные гейты печи: 41 секция, реестр
+  specs/gate-registry.json 1.9.0 «гейт → код → тест → квитанция», валидатор
   сверяет цепочку; флоры, заявка/салиенс, claim-exists, char-spec,
   oc-class-floor, neg-anchor, header-contract, movesGate, storyCardsGate,
   yCardGate — Y-first, claimPhysics — В31, conceptFlag, negDressGuards,

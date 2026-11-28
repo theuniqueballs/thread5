@@ -47,11 +47,23 @@ def _run_gates(path: Path) -> dict:
 
 
 class TestCrlfGoldenRun(unittest.TestCase):
-    """Воспроизведение Windows-чекаута: тот же T5-27, концы строк CRLF."""
+    """Воспроизведение Windows-чекаута: тот же T5-27, концы строк CRLF.
+
+    Обе копии (CRLF и LF) — СИНТЕТИЧЕСКИЕ, из контента в памяти (аудит
+    тикета #7, третье напоминание): чтение рабочего файла ассертило LF —
+    на любом чекауте, материализованном до .gitattributes (у автора
+    такой), тест падал без единого реального дрейфа. Теперь рабочий файл
+    только читается и нормализуется в памяти (\\r\\n → \\n = LF-канон),
+    варианты строк генерируются из него: тест платформо-независим.
+    """
+
+    def _canonical_bytes(self) -> bytes:
+        """Контент эталона в LF-каноне — из рабочего файла, любой EOL."""
+        data = T5_27.read_bytes()
+        return data.replace(b"\r\n", b"\n")
 
     def _crlf_copy(self) -> Path:
-        data = T5_27.read_bytes()
-        self.assertNotIn(b"\r\n", data, "эталонный T5-27 в репо — LF; тест гоняет копию")
+        data = self._canonical_bytes()
         tmp = Path(tempfile.mkdtemp(prefix="t5-crlf-"))
         # полный CRLF-чекаут: батч и его папка (stories.md) — концы строк CRLF
         (tmp / "T5-27.md").write_bytes(data.replace(b"\n", b"\r\n"))
@@ -59,6 +71,18 @@ class TestCrlfGoldenRun(unittest.TestCase):
         cards_dir.mkdir()
         (cards_dir / "stories.md").write_bytes(
             (REPO / "batches" / "T5-27" / "stories.md").read_bytes().replace(b"\n", b"\r\n")
+        )
+        return tmp / "T5-27.md"
+
+    def _lf_copy(self) -> Path:
+        """Синтетическая LF-копия — двойной канон без ставки на рабочий файл."""
+        data = self._canonical_bytes()
+        tmp = Path(tempfile.mkdtemp(prefix="t5-lf-"))
+        (tmp / "T5-27.md").write_bytes(data)
+        cards_dir = tmp / "T5-27"
+        cards_dir.mkdir()
+        (cards_dir / "stories.md").write_bytes(
+            (REPO / "batches" / "T5-27" / "stories.md").read_bytes()
         )
         return tmp / "T5-27.md"
 
@@ -80,10 +104,16 @@ class TestCrlfGoldenRun(unittest.TestCase):
                          "считает не по LF-канону (тикет #1, регресс)")
 
     def test_lf_original_still_locked(self):
-        """Регресс-страховка: LF-оригинал не сдвинулся (двойной канон)."""
-        receipt = _run_gates(T5_27)
+        """Регресс-страховка: LF-канон не сдвинулся (двойной канон).
+
+        Гоняет СИНТЕТИЧЕСКУЮ LF-копию: на старом CRLF-чекеуте автора
+        живой файл читался бы CRLF — gates.py нормализует sha, но тест
+        не обязан зависеть от состояния рабочего дерева (тикет #7,
+        п.5 остатка)."""
+        receipt = _run_gates(self._lf_copy())
         ref = json.loads(T5_27_RECEIPT.read_text(encoding="utf-8"))
         self.assertEqual(receipt.get("sha256"), ref["sha256"])
+        self.assertEqual(receipt.get("verdict"), "PASS")
 
 
 class TestGitattributesLfCanon(unittest.TestCase):

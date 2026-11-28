@@ -1,4 +1,4 @@
-"""Юнит-тесты гейта nudeTruth (gates.json 1.29.0) — В57/В58, вердикт T5-35.
+"""Юнит-тесты гейта nudeTruth (gates.json 1.30.0) — В57/В58, вердикт T5-35.
 
 Разбор автора 2026-11-28 (послотовый вердикт 30/30): fact-hit R+ 1 чистый +
 1 грань из 17 — «всё обучение по эччи почему-то не особо сработало». Корень:
@@ -8,15 +8,19 @@ underneath X but Y» — рендерер Tsubaki.2 Pro читает literal-т�
 «уточняй, что она под лентами — голая», «не стесняйся — мы в рамках эччи»).
 
 В57: R+ обязан нести ню-состояние literal-токеном (nude/naked/topless/bare
-chest/bare underneath/covered only by), hard-якорем автора (tapeEvidence —
-Закон 1, crotchFocus — Закон 2, handbra-холд) или wet-sheer-на-коже (P06).
-В58: bare-зона POS не глушится bare-зоной той же группы в NEG (P08:
-«bare thigh-strip» × «bare legs»).
+chest/bare underneath/covered only by + 1.30.0: covered nipples/clothed
+nipples/pasties/nipple tape — канон R+ №1 автора), hard-якорем автора
+(tapeEvidence — Закон 1, crotchFocus — Закон 2, handbra-холд) или
+wet-sheer-на-коже (P06; 1.30.0: wetSheerSkin вычищен от фраз-фрагментов —
+целые данбоору-токены, тикет #7). В58: bare-зона POS не глушится bare-зоной
+той же группы в NEG (P08: «bare thigh-strip» × «bare legs»).
 
-Эра: applyFrom 37, failFrom 37 — T5-36 (контрольная, сдана до вердикта)
-не бьётся; T5-37+ FAIL. Ретро-калибровка T5-35: 17 no-state (P06/P14/P17
-проходят: wet-sheer / crotchFocus-якорь / «only cover»), poetic_only 17,
-коллизий 1 (P08).
+Эра: applyFrom 37, failFrom 37 — живое принуждение с T5-37 (T5-36 несёт
+danbooru-first слой через carrierTruth 1.30.0, applyFrom 36).
+
+Ретро-калибровка T5-35 (после чистки wetSheerSkin 1.30.0): 16 ню-флагов
++ 1 коллизия (P08) = 17 WARN; P06/P13/P14/P17 проходят (wet-sheer /
+wet shirt целым токеном / crotchFocus-якорь / «only cover»), poetic_only 16.
 """
 import sys
 import unittest
@@ -51,7 +55,7 @@ class TestNudeTruthGate(unittest.TestCase):
         return stats, warns, fails
 
     def test_spec_pin(self):
-        self.assertEqual(gates.GATES.get("version"), "1.29.0")
+        self.assertEqual(gates.GATES.get("version"), "1.30.0")  # 1.30.0 — directNude += covered nipples… (тикет #7); 1.29.0 — nudeTruth born
         self.assertEqual(self.cfg["applyFrom"], 37)
         self.assertEqual(self.cfg["failFrom"], 37)
 
@@ -92,6 +96,27 @@ class TestNudeTruthGate(unittest.TestCase):
                      "against the chest, the only cover in the frame")
         stats, warns, fails = self.run_gate([s])
         self.assertEqual(stats["no_nude_state"], [])
+
+    def test_covered_nipples_canon_passes(self):
+        """1.30.0 (тикет #7): канон R+ №1 автора — bare breasts + covered
+        nipples (P01-паттерн «голая под лентами») — прямой ню-токен."""
+        self.assertIn("covered nipples", self.cfg["directNude"])
+        self.assertIn("clothed nipples", self.cfg["directNude"])
+        self.assertIn("pasties", self.cfg["directNude"])
+        s = _slot(5, "1girl, solo, silk ribbon crossing bare breasts in a "
+                     "bow, covered nipples, the knot held between her lips")
+        stats, warns, fails = self.run_gate([s])
+        self.assertEqual(stats["no_nude_state"], [])
+
+    def test_wet_sheer_tokens_whole(self):
+        """1.30.0: wetSheerSkin вычищен от фраз-фрагментов — целые
+        данбоору-токены (см. тикет #7: wet transparent не данбоору-токен,
+        cloth sealed to the — фрагмент фразы)."""
+        for frag in ("wet transparent", "cloth sealed to the"):
+            self.assertNotIn(frag, self.cfg["wetSheerSkin"],
+                             f"фрагмент «{frag}» остался в wetSheerSkin")
+        for whole in ("see-through", "wet clothes", "wet shirt", "soaked cloth"):
+            self.assertIn(whole, self.cfg["wetSheerSkin"])
 
     # ── В57: мёртвые носители ─────────────────────────────────────────
 
@@ -207,16 +232,17 @@ class TestNudeTruthCalibration(unittest.TestCase):
         warns, fails = [], []
         stats = gates.check_nude_truth(
             self.slots, warns, fails, batch_no=35, retro=True)
-        # 20 R+ слотов: 17 без literal-ню (P06/P14/P17 проходят: wet-sheer /
-        # crotchFocus-якорь / «only cover»), 17 poetic_only, 1 коллизия (P08)
+        # 20 R+ слотов: 16 без literal-ню (после чистки wetSheerSkin 1.30.0
+        # P13 проходит целым токеном «wet shirt» — урок её же вердикта;
+        # P06/P14/P17 проходили и раньше), 16 poetic_only, 1 коллизия (P08)
         self.assertEqual(stats["rplus_slots"], 20)
-        self.assertEqual(stats["passing"], 3)
-        self.assertEqual(len(stats["no_nude_state"]), 17)
-        self.assertEqual(stats["poetic_only"], 17)
+        self.assertEqual(stats["passing"], 4)
+        self.assertEqual(len(stats["no_nude_state"]), 16)
+        self.assertEqual(stats["poetic_only"], 16)
         self.assertEqual(stats["collisions"], 1)
         self.assertIn("P01", stats["no_nude_state"])
         self.assertIn("P08", stats["no_nude_state"])
-        self.assertEqual(len(warns), 18, "17 ню-флагов + 1 коллизия в retro")
+        self.assertEqual(len(warns), 17, "16 ню-флагов + 1 коллизия в retro")
         self.assertEqual(fails, [])
 
     def test_passing_slots(self):

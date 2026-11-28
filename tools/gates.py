@@ -2223,6 +2223,15 @@ def check_claim_fact(slots, warns, fails, batch_no=-1, retro=False):
     tape_toks = [t for t in list(rt.get("tapeEvidence", [])) if t]
     hold_toks = [t for t in (
         list(rt.get("handHold", [])) + list(cfg.get("holdTokens", []))) if t]
+    # v1.30.0 (тикет #7/В61): claimFact считает данбоору-носители — заявка
+    # = носитель рендерера + named object + зона; пулы по зонам carrierTruth
+    ct = GATES.get("carrierTruth") or {}
+    ct_chest = [str(c.get("token", "")).lower()
+                for c in ct.get("carriers", []) if c.get("zone") == "chest"]
+    ct_bottom = [str(c.get("token", "")).lower()
+                 for c in ct.get("carriers", []) if c.get("zone") == "bottom"]
+    chest_toks = chest_toks + [t for t in ct_chest if t]
+    bottom_toks = bottom_toks + [t for t in ct_bottom if t]
     obj_res = [_cf_word_re(n) for n in cfg.get("objectNouns", [])]
     mat_res = [_cf_stem_re(m) for m in cfg.get("materialStates", [])]
     chest_zone = cfg.get("zoneChest", [])
@@ -2478,6 +2487,97 @@ def check_nude_truth(slots, warns, fails, batch_no=-1, oc_names=(), retro=False)
                         f"bare-зону из NEG или переформулировать строку")
                     (fails if hard_era else warns).append(entry)
                     break
+    return st
+
+
+def check_carrier_truth(slots, warns, fails, batch_no=-1, retro=False):
+    """v1.30.0 carrierTruth — В61 DANBOORU-FIRST CARRIER LAW (тикет #7,
+    остаток по аудиту Доу + приказ автора «редактировать Т5-36, чтобы она
+    точно соответствовала рейтингу»).
+
+    Заявка R+ слота живёт в каноничных данбоору-токенах, которые рендерер
+    (Tsubaki.2 Pro → Yodayo) обучен читать, — не в приватном диалекте
+    писца. Матрица #7: на R+ слот приходилось 7.80 фраз-носителей машины
+    (ratingTruth/claimFact/wetSheerSkin — словарь писца, гейт
+    подтверждал поэзию против словаря поэта) и 0.05 данбоору-токенов;
+    19/20 R+ слотов T5-35 не имели НИ ОДНОГО носителя, который рендерер
+    умеет рисовать. Приказ автора: «не стесняйся — всё в рамках эччи».
+
+    Правило: каждый R+ слот несёт ≥minCarriers (2) РАЗЛИЧНЫХ носителя из
+    словаря carrierTruth, из них ≥1 класса тела/прикрытия (hard/see/body);
+    бельё-импакт (lingerie) считается только вторым+ (В60: R+ собирается
+    от голого тела). Носитель, попавший в NEG своего слота, мёртв
+    (В58-класс: NEG глушит собственный носитель). Приватный диалект
+    («breast shape», «soft crests», «reading through», «imprint», «press»,
+    «dent») носителем не считается — стиль-детекция; слот без носителей,
+    но с диалектом, получает отметку dialect_only в сообщении.
+
+    Канон-решение автора по просвету (2026-11-28): see-through = R+
+    носитель; поэтическая тень ткани («breast shape printing through») —
+    R-этаж (В60).
+
+    Эра: applyFrom 36 (T5-36 пересобрана danbooru-first тем же приказом —
+    контроль отменён, см. шапку батча), failFrom 36 — FAIL сразу
+    (T5-34 2/17, T5-35 ~1.5/20 fact-hit)."""
+    cfg = GATES.get("carrierTruth")
+    if not cfg:
+        return {}
+    if 0 <= batch_no < int(cfg.get("applyFrom", 10 ** 9)) and not retro:
+        return {"mode": "silent"}
+    hard_era = batch_no >= int(cfg.get("failFrom", 10 ** 9))
+    carriers = []
+    for c in cfg.get("carriers", []):
+        tok = str(c.get("token", "")).lower()
+        if tok:
+            carriers.append((tok, c.get("class", "body")))
+    min_c = int(cfg.get("minCarriers", 2))
+    dead_poetic = [t.lower() for t in cfg.get("deadPoetic", [])]
+    body_classes = {"hard", "see", "body"}
+    st = {
+        "mode": "RETRO-WARN" if retro else "on",
+        "rplus_slots": 0, "passing": 0, "thin": [],
+        "dialect_only": 0, "neg_killed": 0,
+    }
+    for s in slots:
+        if s.rating != "R+":
+            continue
+        st["rplus_slots"] += 1
+        pos_l = (s.pos or "").lower()
+        neg_l = (s.neg or "").lower()
+        body, soft = [], []
+        for tok, cls in carriers:
+            if tok not in pos_l:
+                continue
+            if tok in neg_l:
+                # В58-класс: носитель заглушен собственным NEG — мёртв
+                st["neg_killed"] += 1
+                continue
+            (body if cls in body_classes else soft).append(tok)
+        n_body = len(set(body))
+        total = n_body + len(set(soft) - set(body))
+        if total >= min_c and n_body >= 1:
+            st["passing"] += 1
+            continue
+        st["thin"].append(s.sid)
+        dialect = any(t in pos_l for t in dead_poetic)
+        if dialect:
+            st["dialect_only"] += 1
+        neg_dead = any(t in pos_l and t in neg_l for t, _ in carriers)
+        msg = (
+            f"данбоору-носителей {total} (<{min_c}, тела/прикрытия {n_body}) — "
+            "заявка R+ живёт в каноничных токенах рендерера, а не в "
+            "приватном диалекте (В61, тикет #7: 19/20 R+ слотов T5-35 "
+            "без единого данбоору-носителя — рендерер читает covered "
+            "nipples/see-through/wet clothes/no bra, а не «breast shape»/"
+            "«nothing underneath»"
+        )
+        if neg_dead:
+            msg += "; носитель в NEG своего слота мёртв (В58-класс)"
+        if dialect:
+            msg += ("; слот держится только приватным диалектом — "
+                    "стиль-детекция, не носитель")
+        msg += ") — вплести ≥2 носителя из словаря carrierTruth (gates.json)"
+        (fails if hard_era else warns).append((s.sid, "carrier-truth", msg))
     return st
 
 
@@ -3281,6 +3381,7 @@ def main():
     themeecho_stats = check_theme_echo(batch_path, slots, warns, fails, batch_no, oc_names, retro)  # В54
     claimfact_stats = check_claim_fact(slots, warns, fails, batch_no, retro)  # тикет #5: В56 fact-слой
     nudetruth_stats = check_nude_truth(slots, warns, fails, batch_no, oc_names, retro)  # В57/В58 вердикт T5-35
+    carriertruth_stats = check_carrier_truth(slots, warns, fails, batch_no, retro)  # В61 тикет #7: данбоору-носители
     cross_shared, cross_canon_exempt = check_cross_batch(
         batch_path, slots, warns, canon_grams
     )
@@ -3455,6 +3556,15 @@ def main():
             "no_nude_state": nudetruth_stats.get("no_nude_state", []),
             "poetic_only": nudetruth_stats.get("poetic_only", 0),
             "collisions": nudetruth_stats.get("collisions", 0),
+            "retro": bool(retro),
+        },
+        "carrier_truth": {  # v1.30.0 В61 (тикет #7): данбоору-носители R+
+            "mode": carriertruth_stats.get("mode", "silent"),
+            "rplus_slots": carriertruth_stats.get("rplus_slots", 0),
+            "passing": carriertruth_stats.get("passing", 0),
+            "thin": carriertruth_stats.get("thin", []),
+            "dialect_only": carriertruth_stats.get("dialect_only", 0),
+            "neg_killed": carriertruth_stats.get("neg_killed", 0),
             "retro": bool(retro),
         },
         "complexity_budget": dict(complexity_budget(batch_no)),  # 9.3: T4-тревога числом

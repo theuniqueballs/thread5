@@ -1,5 +1,5 @@
 {
- "version": "1.8.0",
+ "version": "1.9.0",
  "born": "2026-09-21",
  "source": "таблица приёмов рейтинга автора (PG-13 → R → R+ → X Cut), доставлена 2026-09-21 — буру-стиль тегов для Tsubaki 2 / PixAI; перенесена дословно, efficacy ●/○ сохранена | 2026-11-25 (v1.3.0) — приём «проступающие сосочки» (covered_nipples бугорки без цвета, R/R+) по рендер-вердикту T5-31 и поручению автора; §14.1 RATING-REPAIR. | 1.4.0 2026-11-26 «калибровка принята»: импорт недостающих приёмов из базового таксонома эччи-оракла (mini-services/ecchi-oracle/taxonomy/techniques.json 1.1.0, 120 приёмов; добавлено 52) по поручению автора «там МОРЕ приёмов того, как можно сделать ебанутую эротику и при этом не светить сиськами»; законы автора 2026-11-26 вшиты в principle.laws_author. | 2026-11-26 (v1.5.0) — импорт недостающего из базового таксонома эччи-оракла 1.1.0 (поручение «копай оракла на приёмы… больше эротики в волт», вердикт T5-33): T213 shape telegraph (сухая ткань несёт рельеф), T214 breast weight contact-geometry (вес прозой контакт-геометрии), T711 fanservice framing (кадр построен ради тела), T313 dead fabrics АНТИ (мёртвая ткань заявку не несёт), T405/T512 catalog-calm АНТИ-фейк-высокий (каталог-кадр R+ не держит). 161 → 166 приёмов; дубли уже-в-1.4.0 (panchira/swimsuit/onsen/beach/changing/threadbare/silhouette/ahegao и др.) отсеяны — реестровая диета 5.3. | 2026-11-27 (v1.6.0) — ЗАКОН 3 «покрытие-в-позе» (заказ автора по датасету оракула; тег pose_coverage в combo_book dresser 1.8.0).",
  "relation": "rating-recipes.json = ЗАКОН (что делает заявку тира правдой на рендере: рендер-доказанные заявки, носители, контр-NEG). rating-techniques.json = КАРТА (куда теги обычно попадают: ●/○ по тирам, принцип четырёх слоёв, закон суммы факторов, X Cut hold, факторы вне промпта). Рецепт навигирует по карте; где карта и рендер-вердикт расходятся (cameltoe), вердикт сильнее.",
@@ -3614,8 +3614,28 @@
     "collarbone",
     "spine",
     "small of the back"
+   ],
+   "carriers": [
+    "covered nipples",
+    "clothed nipples",
+    "see-through",
+    "wet clothes",
+    "wet shirt",
+    "underboob",
+    "sideboob",
+    "no bra",
+    "handbra",
+    "cameltoe",
+    "visible pantyline",
+    "pasties",
+    "nipple tape",
+    "bare breasts",
+    "bare shoulders",
+    "bare back",
+    "topless"
    ]
-  }
+  },
+  "groups_note": "группа carriers добавлена 1.9.0 (тикет #7): voltRun считает данбоору-носители частью вольт-рана — второй тег-ран может строиться на носителях заявки"
  },
  "reforged": "1.8.0 — 2026-11-28, вердикт T5-35: nude_truth-блок (В57 прямой ню-токен · В58 коллизия POS/NEG · В59 гравитационный якорь · В60 лестница носителей); volt_run 1.7.0 (В45) не тронут",
  "nude_truth": {
@@ -3656,6 +3676,23 @@
    "id": "В59",
    "title": "Гравитационный якорь для нестандартной опоры",
    "law": "Позы sidesaddle/lean/hang/perch/invert несут в POS якорь вертикали: «parked upright on its wheels», «level horizon», «weight settled in the saddle», «feet on the ground»; для осознанных инверсий — перевёрнутый якорь обязанный («inverted on her palms, the ceiling below her feet») + страж в NEG («feet on floor»). Урок T5-35 P23: без якоря кадр переворачивается — «она перевёрнута и девка едет вверх»"
+  },
+  "carrier_tokens": {
+   "id": "В61",
+   "title": "DANBOORU-FIRST: заявка живёт в данбоору-токенах",
+   "law": "Каждый R+ слот несёт ≥2 каноничных данбоору-носителя в POS (≥1 тела/прикрытия: hard/see/body-классы carrierTruth); бельё-импакт (lingerie/garter/panties) — только вторым+. Словарь носителей — specs/gates.json carrierTruth (каждый токен с рендер-уликой) + recipes RPLUS signals_hard. Приватный диалект писца («breast shape», «soft crests», «reading through», «imprint», «press», «dent») — стиль-детекция, носителем не считается (матрица #7: 19/20 R+ слотов T5-35 с 0 данбоору-токенов)",
+   "p01_pattern": "Канон автора «уточняй, что она под лентами — голая»: covered nipples + bare breasts + носитель-крышка (лента/шаль/халат-распах) в тег-ране; «nothing underneath» остаётся прозой-гарниром и заявки не несёт",
+   "see_through_canon": "Решение автора 2026-11-28: канон-«просвет» («вроде сосок, но не разберёшь») = токен see-through = R+ носитель; поэтическая тень ткани («breast shape printing through») — R-этаж (В60). Разрешает конфликт В60 с каноном-просветом",
+   "demoted_dialect": [
+    "breast shape",
+    "soft crests",
+    "soft points",
+    "reading through",
+    "printing through",
+    "imprint",
+    "press",
+    "dent"
+   ]
   }
  }
 }

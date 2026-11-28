@@ -113,9 +113,9 @@ class TestCalibrationRegistryPins(unittest.TestCase):
         self.gt = json.loads((ROOT / "specs" / "gates.json").read_text(encoding="utf-8"))
 
     def test_versions(self):
-        self.assertEqual(self.rt["version"], "1.8.0")  # 1.8.0 — nude_truth В57–В60 (вердикт T5-35)
+        self.assertEqual(self.rt["version"], "1.9.0")  # 1.9.0 — nude_truth.carrier_tokens В61 (тикет #7); 1.8.0 — В57–В60
         self.assertEqual(self.dr["version"], "1.11.0")  # 1.11.0 — niche_volt (T5.2)
-        self.assertEqual(self.gt["version"], "1.29.0")  # 1.28.0 — claimFact (тикет #6); 1.29.0 — nudeTruth (вердикт T5-35)
+        self.assertEqual(self.gt["version"], "1.30.0")  # 1.29.0 — nudeTruth (вердикт T5-35); 1.30.0 — carrierTruth (тикет #7/В61)
 
     def test_hard_carriers_present(self):
         hc = self.rt["sum_rules"]["hard_carriers"]
