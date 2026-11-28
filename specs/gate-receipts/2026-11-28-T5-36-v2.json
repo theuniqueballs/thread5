@@ -1,0 +1,976 @@
+{
+ "tool": "tools/gates.py (specs/gates.json v1.30.0)",
+ "batch": "batches/T5-36.md",
+ "sha256": "407d3b7fa12a582080c34d1b19235142aadc1aa36ef54aa1747d4bccde9fece0",
+ "utc": "2026-11-28T11:28:49+00:00",
+ "verdict": "PASS",
+ "slots": 33,
+ "fails": [],
+ "warns": [
+  {
+   "slot": "P01+P07",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «covered nipples no bra bare shoulders»"
+  },
+  {
+   "slot": "P05+P06",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «clothes and see through where the»"
+  },
+  {
+   "slot": "P05+P06",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «gone wet clothes and see through»"
+  },
+  {
+   "slot": "P05+P06",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «wet clothes and see through where»"
+  },
+  {
+   "slot": "P09+P29",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «worn road no bra see through»"
+  },
+  {
+   "slot": "P10+P12",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the only cover in the frame»"
+  },
+  {
+   "slot": "P12+P26",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «behind the viewer both palms flat»"
+  },
+  {
+   "slot": "P12+P26",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the viewer both palms flat on»"
+  },
+  {
+   "slot": "P12+P26",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «viewer both palms flat on the»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «at the tips sea glass eyes»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «curled loose ringlets drying at the»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «drying at the tips sea glass»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «green hair in steam curled loose»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «hair in steam curled loose ringlets»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «in steam curled loose ringlets drying»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «loose ringlets drying at the tips»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «ringlets drying at the tips sea»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «sea green hair in steam curled»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «steam curled loose ringlets drying at»"
+  },
+  {
+   "slot": "P15+P32",
+   "gate": "copypaste",
+   "msg": "пара делит n-грамму: «the tips sea glass eyes on»"
+  },
+  {
+   "slot": "P02",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P07",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P13",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P20",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P28",
+   "gate": "claim-physics",
+   "msg": "R+ бейдж само-сертифицирован (нет объекта-прикрытия (коридор A)) — поле Corridor не равно физике: вшить токен-объект/геометрию/раскрытие или писать честный R (В31, постмортем рейтинга T5-23)"
+  },
+  {
+   "slot": "P33",
+   "gate": "y-card",
+   "msg": "R+ слот собран мимо Y-множества (нет Y-card) — Y-first: собрать по карте из camera.json (Y1–Y559, y_assembly) или записать в THESIS причину PL-сборки (PG-13/NICHE-выдох не считается)"
+  },
+  {
+   "slot": "P28",
+   "gate": "details",
+   "msg": "фишечек-ФОРМ 1 < 2 (В32 «детали — постоянный слой»): вшить ≥2 из словаря formTokens (тату/повязка/шрам/украшения/предмет-подпись) — деталь читается формой в первых 12 тегах"
+  },
+  {
+   "slot": "P31",
+   "gate": "claim-fact",
+   "msg": "на зоне заявки ≥2 панели одежды — вторая панель глушит чтение (панель ткани держит потолок R, В43): заявка обязана указывать ЕДИНСТВЕННУЮ вещь-носитель (В56, тикет #5: гейты больше не меряют бумагу — заявка привязана к физике кадра; WARN-эра, FAIL — словом автора после первого рендера; чинено тикетом #6 — дефис-хвосты/окно ±1/панель-модификаторы)"
+  },
+  {
+   "slot": "BATCH",
+   "gate": "cross-copypaste",
+   "msg": "23 общих 6-грамм с предыдущими партиями (T5-34.md, T5-35.md) — межбатчевый копипаст (аудит 2026-10-31, F6); детально в квитанции"
+  }
+ ],
+ "slot_table": [
+  {
+   "id": "P01",
+   "slug": "harrow-breath-at-the-gate",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 17,
+   "posWords": 245
+  },
+  {
+   "id": "P02",
+   "slug": "liebe-ink-tide-gate",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 246
+  },
+  {
+   "id": "P03",
+   "slug": "ila-polarity-inn",
+   "genre": "EXQUISITE",
+   "rating": "R",
+   "channel": "oc-rplus",
+   "channelStatus": "candidate",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 195
+  },
+  {
+   "id": "P04",
+   "slug": "fordstep-hem-catch",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A+B",
+   "claimToken": 35,
+   "posWords": 217
+  },
+  {
+   "id": "P05",
+   "slug": "ferrybench-knees-low",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 29,
+   "posWords": 233
+  },
+  {
+   "id": "P06",
+   "slug": "wayglass-spine-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 31,
+   "posWords": 209
+  },
+  {
+   "id": "P07",
+   "slug": "hauntmile-crouch-listen",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 226
+  },
+  {
+   "id": "P08",
+   "slug": "cartbelly-belt-cinch",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 25,
+   "posWords": 211
+  },
+  {
+   "id": "P09",
+   "slug": "tunnelveil-steam-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 216
+  },
+  {
+   "id": "P10",
+   "slug": "fordstone-towel-hug",
+   "genre": "NICHE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 223
+  },
+  {
+   "id": "P11",
+   "slug": "springcolumn-water-cup",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 193
+  },
+  {
+   "id": "P12",
+   "slug": "atlasshelf-braced-reach",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 31,
+   "posWords": 206
+  },
+  {
+   "id": "P13",
+   "slug": "dusthollow-vest-pin",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 242
+  },
+  {
+   "id": "P14",
+   "slug": "passledge-legs-dangle",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 193
+  },
+  {
+   "id": "P15",
+   "slug": "tideflat-hoop-press",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 33,
+   "posWords": 242
+  },
+  {
+   "id": "P16",
+   "slug": "dawnsash-wrap-swap",
+   "genre": "EXQUISITE",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 24,
+   "posWords": 221
+  },
+  {
+   "id": "P17",
+   "slug": "springrim-chin-stack",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 176
+  },
+  {
+   "id": "P18",
+   "slug": "archway-full-drop",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "r-geometry",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 27,
+   "posWords": 217
+  },
+  {
+   "id": "P19",
+   "slug": "ferryhammock-drift",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 187
+  },
+  {
+   "id": "P20",
+   "slug": "coachclock-mid-change",
+   "genre": "VOLT",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 21,
+   "posWords": 205
+  },
+  {
+   "id": "P21",
+   "slug": "shrinestep-kneel",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 186
+  },
+  {
+   "id": "P22",
+   "slug": "innwall-hip-cock",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 184
+  },
+  {
+   "id": "P23",
+   "slug": "bellstair-chin-rest",
+   "genre": "NICHE",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 187
+  },
+  {
+   "id": "P24",
+   "slug": "mileend-door-collapse",
+   "genre": "VOLT",
+   "rating": "R",
+   "channel": "",
+   "channelStatus": "",
+   "corridor": "",
+   "claimToken": "—",
+   "posWords": 192
+  },
+  {
+   "id": "P25",
+   "slug": "diceway-cup-gaze-down",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A+B",
+   "claimToken": 28,
+   "posWords": 213
+  },
+  {
+   "id": "P26",
+   "slug": "larderway-sack-over",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "x-coverage-block",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 22,
+   "posWords": 231
+  },
+  {
+   "id": "P27",
+   "slug": "tablebreath-named-knickers",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "named-underlayer-display",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 230
+  },
+  {
+   "id": "P28",
+   "slug": "hookway-unnamed-layer",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "named-underlayer-display",
+   "channelStatus": "candidate",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 212
+  },
+  {
+   "id": "P29",
+   "slug": "fordhem-wet-only",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 23,
+   "posWords": 208
+  },
+  {
+   "id": "P30",
+   "slug": "stormleg-soaked-through",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 26,
+   "posWords": 222
+  },
+  {
+   "id": "P31",
+   "slug": "windowpane-directed-light",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 25,
+   "posWords": 216
+  },
+  {
+   "id": "P32",
+   "slug": "kelpgate-caustic-light",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "wet-sheer-delivery",
+   "channelStatus": "live",
+   "corridor": "A",
+   "claimToken": 32,
+   "posWords": 240
+  },
+  {
+   "id": "P33",
+   "slug": "webtoll-silk-hoard",
+   "genre": "EXP",
+   "rating": "R+",
+   "channel": "contact-physics",
+   "channelStatus": "live",
+   "corridor": "B",
+   "claimToken": 25,
+   "posWords": 202
+  }
+ ],
+ "crossBatchShared": [
+  {
+   "gram": "amber bronze eyes level through large",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "bronze eyes level through large round",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "eyes level through large round smoke",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "level through large round smoke tinted",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "through large round smoke tinted glasses",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "large round smoke tinted glasses warm",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "round smoke tinted glasses warm light",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "smoke tinted glasses warm light skin",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "tinted glasses warm light skin flushing",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "moon mark on the forehead holding",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "mark on the forehead holding its",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "on the forehead holding its shade",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P03"
+   ]
+  },
+  {
+   "gram": "hair in a hip length straight",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "in a hip length straight sheet",
+   "slotsHere": [
+    "P07"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P07"
+   ]
+  },
+  {
+   "gram": "the only cover in the frame",
+   "slotsHere": [
+    "P10",
+    "P12"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P17"
+   ]
+  },
+  {
+   "gram": "accents one sun line her colors",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "one sun line her colors the",
+   "slotsHere": [
+    "P19"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P30"
+   ]
+  },
+  {
+   "gram": "hair in hat flattened bedhead waves",
+   "slotsHere": [
+    "P20"
+   ],
+   "sourceBatch": "T5-34.md",
+   "slotsThere": [
+    "P21"
+   ]
+  },
+  {
+   "gram": "and the composition making the claim",
+   "slotsHere": [
+    "P25"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P25"
+   ]
+  },
+  {
+   "gram": "accents one thread line her colors",
+   "slotsHere": [
+    "P28"
+   ],
+   "sourceBatch": "T5-35.md",
+   "slotsThere": [
+    "P29"
+   ]
+  }
+ ],
+ "crossBatchCanonExempt": [
+  {
+   "gram": "raven black hair in low finger",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md"
+  },
+  {
+   "gram": "black hair in low finger waves",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md"
+  },
+  {
+   "gram": "black crescent moon mark on the",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md"
+  },
+  {
+   "gram": "crescent moon mark on the forehead",
+   "slotsHere": [
+    "P01"
+   ],
+   "sourceBatch": "T5-35.md"
+  },
+  {
+   "gram": "hair in a crown braid halo",
+   "slotsHere": [
+    "P14"
+   ],
+   "sourceBatch": "T5-34.md"
+  }
+ ],
+ "copypasteCanonExempt": [],
+ "movesDeclared": [],
+ "storyCards": true,
+ "k1_sense": {
+  "mode": "WARN",
+  "cards": 3,
+  "with_k1": 3,
+  "without": []
+ },
+ "fact_label": {
+  "label_R+": 25,
+  "fact_R+": 25
+ },
+ "claim_physics": {
+  "self_certified_Rplus": 5
+ },
+ "y_cards": {
+  "used": [
+   "Y530",
+   "Y514",
+   "Y329",
+   "Y1",
+   "Y3",
+   "Y45",
+   "Y526",
+   "Y15",
+   "Y516",
+   "Y328",
+   "Y333",
+   "Y443",
+   "Y523",
+   "Y137",
+   "Y518",
+   "Y36",
+   "Y131",
+   "Y541",
+   "Y51",
+   "Y545",
+   "Y44",
+   "Y38",
+   "Y128",
+   "Y66",
+   "Y437",
+   "Y450",
+   "Y415",
+   "Y179",
+   "Y19",
+   "Y258",
+   "Y351",
+   "Y513"
+  ],
+  "rplus_without_card": 1,
+  "pattern_misses": 0,
+  "duplicates": 0
+ },
+ "y_stack": {
+  "checked": 22,
+  "stacked": 22,
+  "choked": 0,
+  "canon_without_codes": 2,
+  "geometry_only": 7
+ },
+ "combo_pose": {
+  "composite_used": 0,
+  "without_card": 0,
+  "card_mismatch": 0
+ },
+ "y_stamp": {
+  "mode": "FAIL",
+  "with_card": 32,
+  "weaved": 9,
+  "no_weave": 0,
+  "mismatch": 0,
+  "banned": 0,
+  "empty_class_rplus": 0,
+  "not_executed": 0,
+  "window_hits": 0,
+  "corridor_warn": 0,
+  "legacy_used": 23,
+  "legacy_material": 23,
+  "legacy_verbatim": 0,
+  "legacy_skeleton_miss": 0
+ },
+ "buffs": {
+  "concept_flagged": 0,
+  "neg_dress_guards": 0
+ },
+ "palette_skin": {
+  "token_bleed": 0,
+  "retro": false
+ },
+ "skin_cast": {
+  "caught": 0,
+  "retro": false
+ },
+ "race_cast": {
+  "kin": 4,
+  "human": 17,
+  "window": [
+   0,
+   10
+  ],
+  "policy": "v2.0"
+ },
+ "volt_core": {
+  "mains": 21,
+  "volt": 15,
+  "niche": 6,
+  "max_run": 3,
+  "retro": false
+ },
+ "exquisite_main": {
+  "mains": 21,
+  "exquisite": 2,
+  "retro": false
+ },
+ "exp_hypothesis": {
+  "cells": 9,
+  "with_h": 9,
+  "without": [],
+  "hyps_used": [
+   "H-07",
+   "H-08",
+   "H-09",
+   "H-10",
+   "H-13"
+  ],
+  "retro": false
+ },
+ "rating_truth": {
+  "checked": 33,
+  "implied_rplus": 25,
+  "false_rplus": 0,
+  "soft_drift": 0,
+  "retro": false
+ },
+ "rating_mass": {
+  "mains": 21,
+  "rplus": 14,
+  "r": 7,
+  "pg13": 0,
+  "retro": false
+ },
+ "neg_canon_guard": {
+  "mode": "FAIL",
+  "oc_slots": 3,
+  "canon_hits": 0,
+  "special": false,
+  "guest": null,
+  "invariant_hits": 0,
+  "retro": false
+ },
+ "volt_run": {
+  "mode": "WARN",
+  "rplus_mains": 14,
+  "with_run": 14,
+  "thin": 0,
+  "groups": {
+   "breast": 14,
+   "hands": 14,
+   "hips_ass_skin": 13,
+   "carriers": 14
+  },
+  "retro": false
+ },
+ "theme_echo": {
+  "mode": "WARN",
+  "brief": "batches/T5-36/00-brief.md",
+  "dict_size": 8,
+  "mains": 21,
+  "with_echo": 18,
+  "share": 0.857,
+  "retro": false
+ },
+ "claim_fact": {
+  "mode": "WARN",
+  "rplus_slots": 25,
+  "passing": 24,
+  "caught": [
+   "P31"
+  ],
+  "reasons": {
+   "no_claim": 0,
+   "no_object": 0,
+   "zone": 0,
+   "panel": 1,
+   "carrier": 0
+  },
+  "retro": false
+ },
+ "nude_truth": {
+  "mode": "silent",
+  "rplus_slots": 0,
+  "passing": 0,
+  "no_nude_state": [],
+  "poetic_only": 0,
+  "collisions": 0,
+  "retro": false
+ },
+ "carrier_truth": {
+  "mode": "on",
+  "rplus_slots": 25,
+  "passing": 25,
+  "thin": [],
+  "dialect_only": 0,
+  "neg_killed": 0,
+  "retro": false
+ },
+ "complexity_budget": {
+  "active": 42,
+  "total": 43,
+  "pending": [
+   "nudeTruth·T5-37"
+  ]
+ }
+}

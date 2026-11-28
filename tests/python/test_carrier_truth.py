@@ -354,5 +354,71 @@ class TestCarrierTruthCalibration(unittest.TestCase):
                             "«20/20 тонкие» протухла, пересчитай пин")
 
 
+class TestT536Live(unittest.TestCase):
+    """Живая калибровка T5-36 «FANTASY JOURNEY» (пересборка danbooru-first,
+    приказ автора 2026-11-28 «редактировать Т5-36, чтобы она точно
+    соответствовала рейтингу»; контроль отменён). Эра carrierTruth —
+    applyFrom 36: партия ПЕРВАЯ под законом В61.
+
+    Квитанция: specs/gate-receipts/2026-11-28-T5-36-v2.json
+    (PASS 0F/29W, sha заперт)."""
+
+    @classmethod
+    def setUpClass(cls):
+        _, _, cls.slots = gates.parse_batch(
+            ROOT / "batches" / "T5-36.md")
+
+    def test_t536_all_carriers_live(self):
+        """25/25 R+ слотов несут ≥2 данбоору-носителя (≥1 тела/прикрытия):
+        пересборка danbooru-first исполнена, гейт в эре 36 — FAIL-режим."""
+        warns, fails = [], []
+        stats = gates.check_carrier_truth(
+            self.slots, warns, fails, batch_no=36, retro=False)
+        self.assertEqual(stats["mode"], "on")
+        self.assertEqual(stats["rplus_slots"], 25)
+        self.assertEqual(stats["passing"], 25)
+        self.assertEqual(stats["thin"], [])
+        self.assertEqual(stats["neg_killed"], 0)
+        self.assertEqual(warns, [])
+        self.assertEqual(fails, [])
+
+    def test_t536_carriers_front_loaded(self):
+        """Салиенс-урок пересборки: первый данбоору-носитель в POS каждого
+        R+ слота стоит в первых 60 токенах (claim в OPENER, AGENTS)."""
+        import re as _re
+        lexemes = sorted(
+            gates.GATES["claim"]["signal_lexemes"], key=len, reverse=True)
+        for s in self.slots:
+            if s.rating != "R+":
+                continue
+            first = None
+            for lx in lexemes:
+                m = _re.search(_re.escape(lx), s.pos or "", _re.I)
+                if m and (first is None or m.start() < first[0]):
+                    first = (m.start(), lx)
+            self.assertIsNotNone(first, f"{s.sid}: лексемы заявки нет")
+            idx = len(gates.words((s.pos or "")[: first[0]]))
+            self.assertLessEqual(
+                idx, gates.GATES["claim"]["maxTokenRplus"],
+                f"{s.sid}: первая лексема «{first[1]}» на токене {idx} > 60 "
+                "— носитель не во фронт-лоаде")
+
+    def test_t536_b43_agrees_with_badge(self):
+        """В43-согласованность: rating_implied = R+ на всех 25 R+ слотах
+        (В61-ветка), R-слоты не подняты (аддитивность)."""
+        cfg = gates.GATES["ratingTruth"]
+        for s in self.slots:
+            implied = gates.rating_implied(s.pos, cfg)
+            if s.rating == "R+":
+                self.assertEqual(
+                    implied, "R+",
+                    f"{s.sid}: бейдж R+, состав несёт {implied} — В61-ветка "
+                    "не признала носители пересборки")
+            else:
+                self.assertNotEqual(
+                    implied, "R+",
+                    f"{s.sid} ({s.rating}): состав горячее бейджа")
+
+
 if __name__ == "__main__":
     unittest.main()
