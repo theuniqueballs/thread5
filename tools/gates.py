@@ -1753,6 +1753,23 @@ def rating_implied(pos, cfg):
     is_pair = "2girls" in pos_l or "yuri" in pos_l
     has_pair = is_pair and any(
         t in pos_l for t in cfg.get("pairContact", []))
+    # В61 (тикет #7, 1.30.0): данбоору-носители = R+ состав — заявка живёт
+    # в токенах рендерера (≥minCarriers, ≥1 тела/прикрытия hard/see/body;
+    # бельё-импакт только вторым+). Аддитивная ветка: приватные списки
+    # В43 не тронуты (калибровка T5-29 33/33 заперта, история не
+    # переписывается) — на старых слотах ветка молчит (там токенов нет).
+    ct = GATES.get("carrierTruth") or {}
+    if ct:
+        ct_toks = set()
+        ct_body = 0
+        for c in ct.get("carriers", []):
+            t = str(c.get("token", "")).lower()
+            if t and t in pos_l:
+                ct_toks.add(t)
+                if c.get("class") in ("hard", "see", "body"):
+                    ct_body += 1
+        if len(ct_toks) >= int(ct.get("minCarriers", 2)) and ct_body >= 1:
+            return "R+"
     win = int(cfg.get("window", 100))
     panel_on = False
     for p in cfg.get("panels", []):
@@ -1817,8 +1834,10 @@ def check_rating_truth(slots, warns, fails, batch_no=-1, retro=False):
                 f"ложный R+ бейдж: состав несёт {implied} — панель ткани на "
                 f"груди держит потолок R; заявка-строка не делает слот R+. "
                 f"R+-доказательство: транзиентный холд объекта руками "
-                f"(единственная крышка, нижний слой снят) или bare-line со "
-                f"стрэпами (В43, вердикт T5-29, пункт 7)")
+                f"(единственная крышка, нижний слой снят), bare-line со "
+                f"стрэпами (В43, вердикт T5-29, пункт 7) или ≥2 данбоору-"
+                f"носителя В61 (carrierTruth — covered nipples/see-through/"
+                f"wet clothes/no bra…)")
             (fails if hard else warns).append(entry)
         elif s.rating == "R" and implied == "PG-13":
             stats["soft_drift"] += 1

@@ -863,7 +863,11 @@ wet clothes / underboob…) — 0.05. 19/20 R+ слотов без единог�
    но не разберёшь»); поэтическая тень ткани («breast shape printing
    through») остаётся R-этажом (В60). BODY-класс — no bra, bare
    breasts/chest/shoulders/back, topless, underboob, sideboob, through
-   shirt.
+   shirt. SUPPORT-классы (считаются только вторыми+, сами не несут
+   тело/прикрытие): WET — мокрая непрозрачная ткань (wet clothes/wet
+   shirt/wet body — R-этаж по В60, урок ролла TB-20261122-777 P16:
+   «wet clothes + lingerie» в одиночку не R+); LINGERIE — бельё-импакт
+   (lingerie/garter/panties/pantyshot).
 3. P01-паттерн (голая под лентами): covered nipples + bare breasts +
    носитель-крышка (лента/шаль/халат-распах) в тег-ране; «nothing
    underneath» остаётся прозой-гарниром и заявки не несёт.

@@ -60,8 +60,36 @@ class TestCarrierTruthGate(unittest.TestCase):
         for c in self.cfg["carriers"]:
             self.assertTrue(c.get("evidence"),
                             f"токен «{c.get('token')}» без рендер-улики")
-            self.assertIn(c.get("class"), ("hard", "see", "body", "lingerie"))
+            self.assertIn(c.get("class"),
+                          ("hard", "see", "body", "wet", "edge", "lingerie"))
             self.assertIn(c.get("zone"), ("chest", "bottom"))
+
+    def test_wet_is_support_class(self):
+        """Урок золотого ролла TB-20261122-777 P16: мокрая непрозрачная
+        ткань — support-класс (вторым+), сама не несёт тело/прикрытие:
+        пара «wet clothes + lingerie» в одиночку не поднимает R+ (В60:
+        мокрая ткань без просвета/голой кожи = R-этаж, T5-35 P13)."""
+        wet = [c for c in self.cfg["carriers"] if c["class"] == "wet"]
+        self.assertEqual({c["token"] for c in wet},
+                         {"wet clothes", "wet shirt", "wet body"})
+
+    def test_edge_is_support_class(self):
+        """Урок золотого ролла TB-20261122-999 P11: граничные токены без
+        состояния груди (bare shoulders/back, through shirt/clothes) —
+        support-класс (вторым+): bare shoulders + lingerie ≠ R+."""
+        edge = [c for c in self.cfg["carriers"] if c["class"] == "edge"]
+        self.assertEqual({c["token"] for c in edge},
+                         {"bare shoulder", "bare back",
+                          "through shirt", "through clothes"})
+
+    def test_edge_with_lingerie_only_fails(self):
+        """Ролл-999-P11-класс: bare shoulders + lingerie + panties — не R+.
+        (ИИН в тексте нет — «the linen pinafore dress» держит панель.)"""
+        s = _slot(7, "1girl, solo, bare shoulders above, nothing "
+                     "underneath, lingerie; panties — the linen pinafore "
+                     "dress buttoned over the chest")
+        stats, warns, fails = self.run_gate([s])
+        self.assertEqual(stats["thin"], ["P07"])
 
     def test_carrier_dictionary_covers_ticket7(self):
         """Приёмка #7: весь R+ словарь живёт токенами рендерера."""
@@ -140,6 +168,14 @@ class TestCarrierTruthGate(unittest.TestCase):
         stats, warns, fails = self.run_gate([s])
         self.assertEqual(stats["thin"], ["P07"])
 
+    def test_wet_with_lingerie_only_fails(self):
+        """Урок ролла TB-20261122-777 P16: wet clothes + lingerie + panties
+        в одиночку — НЕ R+ (класс wet не несёт тело/прикрытия)."""
+        s = _slot(7, "1girl, solo, wet clothes under the coat, lingerie set "
+                     "with garter belt, the panties' line at the cut")
+        stats, warns, fails = self.run_gate([s])
+        self.assertEqual(stats["thin"], ["P07"])
+
     def test_lingerie_as_second_carrier_passes(self):
         """Бельё-импакт ВТОРЫМ носителем — легален (см. P27/P28)."""
         s = _slot(8, "1girl, solo, no bra under the sheer organza gone "
@@ -191,6 +227,91 @@ class TestCarrierTruthGate(unittest.TestCase):
         self.assertEqual(stats["mode"], "RETRO-WARN")
         self.assertEqual(len(warns), 1)
         self.assertEqual(fails, [])
+
+
+class TestRatingImpliedCarrierBranch(unittest.TestCase):
+    """В43-согласованность (1.30.0): rating_implied признаёт В61-носители.
+
+    Машина В43 по приватным словарям звала пересобранные слоты «ложным
+    R+ бейджем» (панель ткани), пока nudeTruth/carrierTruth пропускали
+    их же по В57/В61 — два гейта противоречили друг другу. Ветка
+    аддитивная: приватные списки В43 не тронуты (калибровка T5-29 33/33
+    заперта), на старых слотах ветка молчит."""
+
+    def setUp(self):
+        self.cfg = gates.GATES["ratingTruth"]
+
+    def test_carrier_pair_implies_rplus(self):
+        """P01-паттерн: bare breasts + covered nipples — implied R+."""
+        implied = gates.rating_implied(
+            "1girl, solo, silk ribbon crossing bare breasts in a bow, "
+            "covered nipples, the knot held between her lips",
+            self.cfg,
+        )
+        self.assertEqual(implied, "R+")
+
+    def test_wet_channel_implies_rplus(self):
+        """Мокрый канал: no bra + wet clothes + see-through — implied R+."""
+        implied = gates.rating_implied(
+            "1girl, solo, no bra under the soaked silk slip, wet clothes "
+            "gone see-through across the chest, clothed nipples reading "
+            "through ruined silk",
+            self.cfg,
+        )
+        self.assertEqual(implied, "R+")
+
+    def test_single_carrier_does_not_imply_rplus(self):
+        """Один носитель — ветка молчит (модель В43 судит как раньше)."""
+        implied = gates.rating_implied(
+            "1girl, solo, the wet shirt clinging, everything else dry",
+            self.cfg,
+        )
+        self.assertNotEqual(implied, "R+")
+
+    def test_lingerie_only_does_not_imply_rplus(self):
+        """Бельё-импакт в одиночку — не R+ (В60: от голого тела)."""
+        implied = gates.rating_implied(
+            "1girl, solo, lingerie set with garter belt under the coat, "
+            "everything buttoned",
+            self.cfg,
+        )
+        self.assertNotEqual(implied, "R+")
+
+    def test_wet_with_lingerie_does_not_imply_rplus(self):
+        """Урок ролла TB-20261122-777 P16: wet clothes + lingerie + panties
+        — не R+ (мокрая непрозрачная ткань = R-этаж, В60)."""
+        implied = gates.rating_implied(
+            "1girl, solo, wet clothes under the coat, lingerie set with "
+            "garter belt, the panties' line at the cut",
+            self.cfg,
+        )
+        self.assertNotEqual(implied, "R+")
+
+    def test_edge_with_lingerie_does_not_imply_rplus(self):
+        """Урок ролла TB-20261122-999 P11: bare shoulders + lingerie —
+        не R+ (граничные токены не несут состояния груди)."""
+        implied = gates.rating_implied(
+            "1girl, solo, bare shoulders above, nothing underneath, "
+            "lingerie; panties — the linen pinafore dress buttoned over "
+            "the chest",
+            self.cfg,
+        )
+        self.assertNotEqual(implied, "R+")
+
+    def test_t535_retro_unaffected(self):
+        """Калибровка заперта: В61-ветка аддитивна — на T5-35 ни один
+        R/PG-13 слот не поднят до R+ (ложная инфляция исключена), а все
+        R+ слоты модель согласует с бейджем (как и при В43 — бумага
+        всегда соглашалась с бейджем, урок «гейты меряют бумагу")."""
+        _, _, slots = gates.parse_batch(ROOT / "batches" / "T5-35.md")
+        for s in slots:
+            if s.rating not in ("R", "PG-13"):
+                continue
+            implied = gates.rating_implied(s.pos, self.cfg)
+            self.assertNotEqual(
+                implied, "R+",
+                f"{s.sid} ({s.rating}): В61-ветка подняла слот — ложная "
+                "инфляция, пересчитай пин")
 
 
 class TestCarrierTruthCalibration(unittest.TestCase):
